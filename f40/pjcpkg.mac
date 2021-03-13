@@ -1,0 +1,298 @@
+TITLE PJCPKG    - PROJECT CODE PACKAGE FOR F40.
+        ENTRY  CHFPJC,RDFPJC,CHPJC,RDPJC
+VER= 1
+P=17
+;
+; CHFPJC - CHANGE FILE PROJECT CODE.
+;
+; CALLING SEQUENCE:
+;       INTEGER INAME(5),FPJC(3),IERROR
+;       CALL CHFPJC(INAME,FPJC,IERROR)
+;
+; RETURNS:
+;
+;    IERROR=0 MEANS ALL IS OK, FPJC IS GOOD.
+;    IERROR= 1 TO 7 - SAME ERRORS AS IN THE FILE OPERATION
+;            SUBROUTINES.
+;    IERROR=10 MEANS THAT THE CHANGE WAS NOT MADE. THE PROGRAM
+;           DIDN'T HAVE THE LICENSE NEEDED.
+;
+; INAME AND FPJC ARE NOT MODIFIED.
+;
+CHFPJC: 0
+        SETZM   @2(16)          ; ZAP ERROR CODE.
+        PUSHJ   P,SETBLK        ; SET UP EXTENDED BLOCK.
+        PUSHJ   P,FNAME         ; GATHER FILE NAME.
+        PUSHJ   P,OPNDSK        ; OPEN DSK AND GET CHANNEL IN AC1.
+        PUSHJ   P,LKUP          ; DO LOOKUP.
+        MOVEI   2,@1(16)        ; ADDR OF FILE PROJECT CODE.
+        HRL     3,2             ; MOVE THE PROJECT CODE
+        HRRI    3,EXTBLK+35     ; TO THE EXTENDED LOOKUP/ENTER
+        BLT     3,EXTBLK+37     ; BLOCK.
+        PUSHJ   P,RNM           ; DO A RENAME TO EFFECT THE CHANGE.
+        PUSHJ   P,CLSDSK        ; CLOSE UP.
+        JRA     16,2(16)        ; RETURN
+PAGE
+;
+; RDFPJC - READ FILE PROJECT CODE.
+;
+; CALLING SEQUENCE:
+;       INTEGER INAME(5),FPJC(3),IERROR
+;       CALL RDFPJC(INAME,FPJC,IERROR)
+;
+; RETURNS:
+;
+;    IERROR=0 MEANS ALL WENT OK.
+;    IERROR NONZERO - SAME AS IN FILE OPERATION SUBROUTINES.
+;
+;    FPJC IS SET TO THE FILE'S PROJECT CODE IF IERROR=0,
+;         OTHERWISE IT MAY BE GARBAGED.
+;
+;    INAME IS NOT MODIFIED.
+;
+RDFPJC: 0
+        SETZM   @2(16)          ; ZAP ERROR CODE.
+        PUSHJ   P,SETBLK        ; SET UP THE EXTENDED BLOCK.
+        PUSHJ   P,FNAME         ; GATHER FILE NAME.
+        PUSHJ   P,OPNDSK        ; OPEN DSK & GET CHANNEL IN AC1.
+        PUSHJ   P,LKUP          ; LOOKUP TO GET FILE PJC.
+        MOVEI   3,@1(16)        ; GET SET UP TO MOVE FILE PJC
+        HRLI    3,EXTBLK+35
+        MOVEI   0,2(3)          ; TO USER'S ARG.
+        IOR     0,[BLT 3,0]
+        XCT     0
+        PUSHJ   P,CLSDSK        ; ALL DONE - CLOSE UP.
+        JRA     16,2(16)        ; RETURN.
+PAGE
+;
+; CHPJC - CHANGE PROJECT CODE.
+;
+; CALLING SEQUENCE:
+;       INTEGER PJC(3),VERIFY,IERROR
+;       CALL CHPJC(PJC,VERIFY,IERROR)
+;
+; RETURNS:
+;
+;    IERROR=0 IF SUCCESSFUL.
+;    IERROR=-1 IF AN ERROR OCCURRED.
+;    PJC = OLD PROJECT CODE IF SUCCESSFUL.
+;    VERIFY= OLD VERIFY.
+;
+CHPJC:  0
+        SETZM   @2(16)          ; ZERO THE ERROR CODE.
+        HRLI    0,@(16)         ; MOVE USER'S NEW PJC TO LOCAL.
+        HRRI    0,LPJC
+        BLT     0,LPJC+2
+        PUSHJ   P,RDPJC.        ; READ PROJECT CODE, SET VERIFY.
+        MOVEI   1,LPJC          ; GET READY TO CHANGE THE PROJECT CODE.
+        HRLI    1,3             ; SET PJC & SET VERIFY.
+        CALLI   1,-61           ; CHPJC 1,
+        SETOM   @2(16)          ; ERROR RETURN- SET TO -1.
+        JRA     16,2(16)        ; RETURN.
+PAGE
+;
+; RDPJC - READ THE PROJECT CODE.
+;
+; CALLING SEQUENCE:
+;       INTEGER PJC(3),VERIFY,IERROR
+;       CALL RDPJC(PJC,VERIFY,IERROR)
+;
+; RETURNS:
+;    IERROR=0 MEANS SUCCESS.
+;    IERROR= -1 -- AN ERROR OCCURRED.
+;    PJC - CURRENT PROJECT CODE IN SYSTEM.
+;    VERIFY = 0 IF NOT VERIFYING,
+;             NONZERO IF VERIFYING.
+;
+RDPJC:  0
+        PUSHJ   P,RDPJC.        ; CALL ROUTINE TO READ.
+        JRA     16,2(16)        ; DONE -- RETURN.
+;
+RDPJC.: MOVEI   1,BLK           ; DESTINATION.
+        CALLI   1,-61           ; CHPJC 1,
+        JRST    RPJERR          ; ERROR RETURN.
+        SETZM   @2(16)          ; ZAP ERROR CODE.
+        HRRZ    BLK+2           ; GET VERIFY BIT.
+        ANDI    1               ; ZAP ALL OTHER BITS.
+        MOVEM   @1(16)          ; SET USER'S ARG.
+        MOVNI   0,2             ; ZAP VERIFY BIT FROM PJC.
+        ANDM    0,BLK+2
+        MOVEI   3,@(16)         ; MOVE PJC TO USER'S 1'ST ARG.
+        MOVEI   0,2(3)
+        HRLI    3,BLK
+        IOR     0,[BLT 3,0]
+        XCT     0
+RET:    POPJ    P,
+
+
+RPJERR: SETOM   @2(16)
+        JRST    RET
+PAGE
+;
+; ROUTINES FOR FILE PROJECT CODE SETTERS & GETTERS.
+;
+
+SETBLK: SETZM   EXTBLK          ; CLEAR OUT THE EXTENDED LOOKUP BLOCK.
+        MOVE    0,[EXTBLK,,EXTBLK+1]
+        BLT     0,EXTBLK+37
+        MOVEI   0,37    ; NUMBER OF ARGS IN EXT BLOCK.
+        MOVEM   0,EXTBLK
+        SETZM   UNAME           ; CLEAR USERNAME.
+        SETZM   UNAME+1
+        POPJ    P,
+
+
+
+
+
+FNAME:  MOVEI   1,@(16)         ; GET FILENAME, TRANSLATE TO 6BIT, & STORE
+        IOR     1,[POINT 7,0, ] ; IN EXTENDEDE LOOKUP BLOCK.
+        MOVE    2,[POINT 6,EXTBLK+2, ] ; DESTINATION FILE NAME.
+        MOVE    3,[POINT 6,UNAME, ] ; FOR USERNAME IF PRESENT.
+
+        MOVEI   0,5*5           ; MAXIMUM NUMBER OF CHARACTERS TO SERCH.
+        MOVEM   0,FNMCNT        ; & SET.
+        PUSHJ   P,FNMNBK        ; SKIP TO NONBLANK.
+        JRST    FNMERR          ; ERROR RETURN - OUT OF CHARACTERS.
+        CAIE    0,"("-40        ; IS THERE A USER NAME?
+        JRST    FNM2            ; NO.
+        MOVEI   0,UNAME         ; YES - SET PARAMETER IN LOOKUP BLOCK.
+        MOVEM   0,EXTBLK+1
+        MOVEI   10,2*6          ; LOAD COUNTER WITH 12 FOR MAX NR OF
+                                ; CHARACTERS IN USERNAME.
+FNM1A:  PUSHJ   P,FNMCHR        ; GET A CHARACTER.
+        JRST    FNMERR          ; PREMATURE TERMINATION - ERROR.
+        CAIN    0,")"-40        ; END OF USERNAME?
+        JRST    FNM1B           ; YES.
+        SOJL    10,FNM1A        ; IGNORE IF > 12 CHARACTERS.
+        IDPB    0,3             ; STORE CONVERTED CHARACTER.
+        JRST    FNM1A           ; NEXT....
+;
+FNM1B:  PUSHJ   P,FNMNBK        ; GET CHARACTER AFTER ')' .
+        JRST    FNMERR          ; PREMATURE TERMINATION - ERROR.
+;
+;
+FNM2:   MOVEI 10,6              ; LIMIT FILE NAME TO 6 CHARS.
+FNM3:   CAIN    0,"."-40        ; START OF EXTENSION?
+        JRST    FNM4            ; YES.
+        JUMPE   0,FNMDUN        ; TERMINATE ON A BLANK.
+        PUSHJ   P,FNMCHK        ; CHECK FOR ALLOWED CHARACTER.
+        SOSL    10              ; IGNORE MORE THAN 6 CHARS.
+        IDPB    0,2             ; STORE CHAR IN FILE NAME.
+        PUSHJ   P,FNMCHR        ; NEXT CHARACTER.
+        JRST    FNMDUN          ; END OF FILE NAME.
+        JRST    FNM3            ; BACK FOR MORE.
+
+FNM4:   MOVE    2,[POINT 6,EXTBLK+3, ] ; GET BYTE POINTER.
+        MOVEI   10,3            ; LIMIT EXTENSION TO 3 CHARACTERS.
+FNM5:   PUSHJ   P,FNMCHR        ; GE A CHARACTER.
+        JRST    FNMDUN          ; NO MORE.
+        JUMPE   0,FNMDUN        ; IF BLANK.
+        SOJL    10,FNMDUN       ; IF MORE THAN 3 CHARS.
+        PUSHJ   P,FNMCHK        ; CHECK FOR ALLOWED CHARACTER.
+        IDPB    0,2             ; STORE CHAR IN EXTENSION FIELD.
+        JRST    FNM5            ; FOR MORE.
+FNMDUN: ; 
+        POPJ    P,
+;
+RNM:    MOVE    0,1             ; GET CHANNEL.
+        IOR     0,[RENAME 0,EXTBLK]
+        XCT     0
+        JRST    RNMERR          ; ERROR RETURN.
+        POPJ    P,
+;
+;
+FNMNBK: PUSHJ   P,FNMCHR        ; GET A CHARACTER.
+        POPJ    P,              ; NO MORE CHARACTERS.
+        JUMPE   0,FNMNBK        ; IGNORE BLANKS.
+        AOS     (P)             ; SKIP RETRUN.
+        POPJ    P,
+
+
+
+;
+;
+FNMCHK: CAIL    0,"0"-40        ; IS CHAR < "0"?
+        CAILE   0,"Z"-40        ; OR > "Z"?
+        JRST    FNMERR          ; YES - ILLEGAL CHAR.
+        CAILE   0,"9"-40        ; IS CHARACTER A DIGIT?
+        CAIL    0,"A"-40        ; OR A LETTER?
+        POPJ    P,              ; YES - LEGAL.
+        JRST    FNMERR          ; NO - ILLEGAL CHARACTER.
+;
+;
+FNMCHR: SOSGE   FNMCNT          ; SHOULD WE LOOK FOR ANY MORE?
+        POPJ    P,              ; NO, TERMINATE FILE NAME.
+        ILDB    0,1             ; GET NEXT CHAR.
+        JUMPE   0,FC1           ; TERMINATE ON NULL.
+        SUBI    0,40            ; CVRT TO 6BIT.
+        JUMPL   0,FNMCHR        ; IGNORE CTL CHARS.
+        AOS     (P)             ; SKIP RETURN.
+FC1:    POPJ    P,
+
+
+OPNDSK: MOVE    1,[13,,-1]      ; OPEN DSK AND RETURN CHANNEL # IN AC FIELD.
+        CHANIO  1,OPNBLK
+        JRST    OPNERR          ; ERROR RETURN.
+        LSH     1,27            ; ALIGN.
+        POPJ    P,
+
+
+LKUP:   MOVE    0,1             ; GET CHANNEL.
+        IOR     0,[LOOKUP 0,EXTBLK]
+        XCT     0
+        JRST    LKPERR          ; ERROR RETURN.
+        POPJ    P,
+
+
+CLSDSK: MOVE    0,1     ; GET CHANNEL.
+        IOR     0,[CLOSE 0, ]
+        XCT     0
+
+        POPJ    P,
+
+
+FNMERR: MOVEI   0,1             ; ERROR CODE 1.
+ER1:    MOVEM   0,@2(16)        ; SET USER'S ERROR CODE.
+        POP     P,
+        JRA     16,2(16)
+
+OPNERR: MOVEI   0,6
+        JRST    ER1
+
+RNMERR: HRRZ    1,EXTBLK+3      ; GET MONITOR ERROR.
+        MOVE    0,ERRTAB(1)     ; CVRT TO OUR OWN CODE.
+        JRST    ER1
+
+LKPERR=RNMERR
+
+
+ERRTAB: 3
+        3
+        5
+        10
+        4
+        7
+        2
+        7
+        7
+        7
+        7
+        7
+        7
+        2
+        2
+        2
+        2
+        7
+   7
+UNAME:  BLOCK   2
+EXTBLK: BLOCK   40
+OPNBLK: 17
+        SIXBIT/DSK/
+        0
+FNMCNT: 0
+BLK:    BLOCK   3
+LPJC:   BLOCK   3
+END
+    CI
