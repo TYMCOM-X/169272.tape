@@ -1,0 +1,522 @@
+!WATCH ALL ;This CTL file checks for COMPILE/LOAD errors
+
+!CORE
+0:0+0/512 pages
+Vir. core left=3964
+
+!;
+!GFD M33
+[21:47:14]
+[ 62 P035/A08 12-18-86 /JMS ]
+[0.36 00.83 10 0]
+
+!CTEST SETPROC MACRO=(SYS)MACRO
+[21:47:15]
+[0.88 00.70 1 1]
+
+!COMPILE @MONF3
+[21:47:16]
+MACRO: COMTXT
+X930-P035/A06
+12-11-86
+M01914 (id)
+6 = CPU serial number                         
+Pacific Standard Time  
+32 frames                         
+32 network ports                         
+16 pairs of PTYs                         
+4 disk drives                         
+1 tape drive                         
+MACRO: COMMON
+[CPU status variables at .CPSLF:: need to be defined by a macro]   
+[Requesting supervisor clock from base at startup]
+[LINKDB: Store STRNAM of only STR in QUESTR]   
+[Need to change SKIP to SKIPA at TTY0: for CTY]   
+[RSVDPG - reserving pages at 1 meg boundries for SA10 bug]   
+[ODEBUG routine could use more work]   
+[CRSDEV should be replaced by RCDSTB]   
+[MONCRS check DSKCLN completed only SYSTEM structure?]   
+[MONCRS @MONCR2+5 Save STRPID in inter-monitor area REPSID]   
+[Need a SYSTEM structure to check BOOTS options?]   
+MACRO: COMMOD
+[STRDDB is vestigal.  Should the actual data block be in COMMON?]   
+[4 units on APA]
+MACRO: SETETY
+Defining SETE01 for Bill Soley
+Defining SETE04 for Dennis Coffey
+Defining SETE05 for Osman Guven
+Defining SETE06 for Joe Smith
+Defining SETE07 for Carl Baltrunas
+MACRO: MONBTS
+[Need to implement BUGDMP for CRASH.EXE]   
+[F3 disk definitions are duplicated in COMMON and APXKON]   
+MACRO: FILUUO
+[DSKCLR This entire UUO needs work, maybe a STRUUO function]   
+[NAMSTR Ought to return STRNAM( DRBSTR( DEVDRB(F) ) ) as name]   
+[UENTR++ ROOM ON DSK?  DRBALC(P4) + SKIPG STRTAL(DRBSTR(P4))]   
+[Including HACK at CHKPP1 that makes SYS:[1,1] work for accounting]   
+[RENM4A++ STROVR check for room in dir, must check file STR+STROVR]   
+[DSKCHR @DSKFND setup P2 with default DSK structure, for this job.]   
+MACRO: FILIO
+:    FTDPAG set for blocks
+[SEKPTS+5: Check need to use DRBSTR instead of STRDDB]   
+[SEKPTS+6: Uses STRPPU as divisor - all units must be same size!!!]   
+[SWPFNP Checking DSKCLN done should use DRBSTR for file]   
+MACRO: FRMSER
+[FRMGTP Needs to use DRBSTR for free disk page for CREFRM UUO]   
+MACRO: PCBIO
+[PCBCLR @PCBCL3+1 Clearing STT tables for one/all structures?]   
+[PCBCLR Called by DSKCLN UUO - should have STR setup as argument]   
+MACRO: SWAMP
+[KEPPAG,GETPAG,GETAPG Need DRBSTR setup to check DSKCLN done]   
+[GTSPAG,GTSAPG Check for DSKCLN done needs DRBSTR setup for user]   
+[GTSA48+4 Checking for space should use STR for this unit]   
+[GTSA70+7 Use right structure or DRBSTR block to look for SAT space]   
+[MOSPAU Most space on unit n - Needs STRucture DDB DRBSTR?]   
+[RPTSAT+3++ Check-Clear STRBTS for bad SATs needs STRucture loop]   
+[FPCSET Another DSKCLN UUO routine needs STR setup right]   
+[CHKQTA needs STR data block setup - F/DDB already for DRBSTR?]   
+MACRO: MAPIO
+[MAPUS1+5 Can't have different size units in structure?]   
+[SPRBNS STR inited? Does U already have a STR pointer?]   
+[SUPBEG++ Check STRNAM - Why bother if DSKB is only STR]   
+[Need to convert KCREAT code at CREAT2 to use LOKHPW routine.]   
+MACRO: CLUBS
+MACRO: FILFND
+[PPBBIT Why must the STR name be DSKB here?  If DRBSTR setup?]   
+MACRO: FILRIB
+MACRO: APXKON
+MACRO: CLOCK1
+[CIP5B: Check out ERRTLE, cause may want 1/sec or 1/minute]   
+[BIGBEN Check DRBSTR instead of STRDDB?]   
+[Need to use STRNXT at WDOG]   
+[Need to define other bits for RH of CTYBLF, SET HAPPY]   
+[What do we do on FOONLY for accounting?]
+[Should HRLM F,JBTPC(J) for wait states that set up F to DDB]   
+MACRO: COMCON
+[Need to teach ENABLE/DISABLE/SETE how to parse license names]   
+[COR4+1 Loop through STRs for STRTAL - Is STRNXT defined?]   
+[VERPR does not print version number of HISEG]   
+[SKEDUL @SKDCOM checks DSKCLN done in fixed STRDDB -- needs thought]   
+MACRO: CORE1
+[CORUUO @SIZCOR+5 Use DRBSTR instead of STRDDB]   
+[VCREATE @VCREA2+5 checking for DSKCLN -- Use DRBSTR not STRDDB]   
+[REMOVE +++ Checking DSKCLN done flag for error log - use DRBSTR]   
+[PGFSP Setup U/STRNAM -- USE proper DRBSTR instead of STRDDB]   
+MACRO: ERRCON
+MACRO: JOBDAT
+MACRO: ACTSER
+MACRO: PICON
+[Need more work at EXCPAR - typeout info on EXEC parity error]   
+[APRTXT macro needs to be moved into K?SYM]   
+[APRXXX should be removed]   
+[Need symbol for KI WRPI 1B21]   
+[SNNMI: SNOOP has not been written for FOONLY]
+MACRO: F3TSER
+[F3TRWC+0: Check for drive dropping off line during rewind check]
+[WRERR: What happens on memory parity?]
+[WRLOSE+2: Are there any detectable device errors?]
+[SRFX: Word count not stored in buffer]
+MACRO: SCHED1
+MACRO: SCNSER
+[TTYBPN needs filter to skip multi-word IRING messages to continue]   
+[Need to put host number somewhere, @LOGIN and RCVAUX]
+%BUG at LDEC has not been completely fixed, causes TTYNNC
+[STTLK to job -1 does not SEND ALL]   
+[EBUS02.J01 translates PARM-D(15.) to KATAKANA(16.) for ISIS]   
+[Need to set WIDTH, ERASE, etc at ACTTYP]   
+[Need to make SVPPC work on KS]   
+MACRO: CIOPR
+MACRO: CTYSIM
+MACRO: SEGCON
+[SAVJB3+10: Page 400 (locations 400000 and 377777) hardcoded in SAVE]   
+[INIJDA: Page 400 (locations 400000 and 377777) hardcoded in GET]   
+[UGTSEG: Page 400 (locations 400000 and 377777) hardcoded in GETSEG]   
+[USTUWP: Page 400 (locations 400000 and 377777) hardcoded in SETUWP]   
+MACRO: TMPUUO
+MACRO: SIMIO
+[SIMIOY Check DRBSTR instead of STRDDB?]   
+MACRO: IOCSS
+[Need to add ersatz devices at DEVPHY]   
+MACRO: UUOCON
+[F3 does not execute ADJBP correctly, it does IBP ignoring nonzero AC]   
+[DEVTYP uuo is not implemented]   
+MACRO: DEBUG
+MACRO: ONCE
+[Need to preserve THSDAT across monitor loads]   
+MACRO: ONCDSK
+[Need to define seperate UNTTBL for each STR]   
+[All references to STRPPU should be eliminated]   
+MACRO: REFSTR
+[KS-FEFILE not allocated on ADD PACK]   
+% BAT conflict - SCNBAT uses page entries, PAKCOPY does not   
+[Should allocate all 14. data pages in UFDSET for UFD project]   
+[286.88 57:13.46 255 1734]
+
+!CROSS
+[22:44:30]
+CROSS: CMNF3F
+CROSS: MONBTF
+CROSS: CIOPRF
+[29.95 01:34.06 798 827]
+
+!CTEST SETPROC LOADER=(SYS)LOADER
+[22:46:04]
+[0.84 01.43 1 1]
+
+!LOAD @MONF3
+[22:46:06]
+MACRO: COMTXT
+X930-P035/A06
+12-11-86
+M01914 (id)
+6 = CPU serial number                         
+Pacific Standard Time  
+32 frames                         
+32 network ports                         
+16 pairs of PTYs                         
+4 disk drives                         
+1 tape drive                         
+MACRO: ERRCON
+ERRCON PAGE 7
+U	001265'	552302	000000*		HRRZM	T1,JBTPC(J)	; before printing it
+
+JBTPC	UNDEFINED 
+?1 ERROR DETECTED
+[12.86 02:12.18 490 40]
+
+!;
+!GFD M33
+[22:48:18]
+[ 62 P035/A08 12-18-86 /JMS ]
+[0.29 01.08 10 0]
+
+!CTEST SETPROC MACRO=(SYS)MACRO
+[22:48:20]
+[0.84 00.68 1 1]
+
+!COMPILE @MONKI
+[22:48:20]
+MACRO: COMTXT
+KI00-P035/A04
+11-30-86
+M01899 (id)
+742 = CPU serial number                         
+Pacific Standard Time  
+64 frames                         
+128 network ports                         
+64 disk drives                         
+4 tape drives                         
+MACRO: COMMON
+[Will reload on JOB/DEBUG stopcodes]
+[Requesting supervisor clock from base at startup]
+MACRO: COMMOD
+[4 units on FTA]
+[16 units on BPA]
+[16 units on BPB]
+[16 units on BPC]
+[16 units on BPD]
+MACRO: SETETY
+Defining SETE01 for Bill Soley
+Defining SETE04 for Dennis Coffey
+Defining SETE05 for Osman Guven
+Defining SETE06 for Joe Smith
+Defining SETE07 for Carl Baltrunas
+MACRO: MONBTS
+MACRO: FILUUO
+MACRO: FILIO
+:    FTDPAG set for blocks
+MACRO: FRMSER
+MACRO: PCBIO
+MACRO: SWAMP
+MACRO: MAPIO
+MACRO: CLUBS
+MACRO: FILFND
+MACRO: FILRIB
+MACRO: CPXKON
+MACRO: BOTLOD
+MACRO: CLOCK1
+MACRO: COMCON
+MACRO: CORE1
+MACRO: ERRCON
+MACRO: JOBDAT
+MACRO: ACTSER
+MACRO: PICON
+MACRO: FTASER
+MACRO: LPTSER
+MACRO: PTPSER
+MACRO: PTRSER
+MACRO: SCHED1
+MACRO: SCNSER
+[Need to put host number somewhere, @LOGIN and RCVAUX]
+%BUG at LDEC has not been completely fixed, causes TTYNNC
+MACRO: CTYSIM
+MACRO: SEGCON
+MACRO: TMPUUO
+MACRO: SIMIO
+MACRO: IOCSS
+MACRO: UUOCON
+MACRO: DEBUG
+MACRO: ONCE
+MACRO: ONCDSK
+MACRO: REFSTR
+[301.39 41:17.71 224 2822]
+
+!CROSS
+[23:29:38]
+CROSS: CMNKII
+CROSS: CMDKII
+CROSS: FILIOI
+CROSS: CPXKNI
+[60.60 03:22.98 1792 1784]
+
+!CTEST SETPROC LOADER=(SYS)LOADER
+[23:33:01]
+[0.84 01.20 1 1]
+
+!LOAD @MONKI
+[23:33:03]
+MACRO: COMTXT
+KI00-P035/A04
+11-30-86
+M01899 (id)
+742 = CPU serial number                         
+Pacific Standard Time  
+64 frames                         
+128 network ports                         
+64 disk drives                         
+4 tape drives                         
+LOADING
+220 PAGES CORE
+[86.93 01:30.10 1259 2]
+
+!;
+!GFD M33
+[23:34:33]
+[ 62 P035/A08 12-18-86 /JMS ]
+[0.29 01.86 10 0]
+
+!CTEST SETPROC MACRO=(SYS)MACRO
+[23:34:35]
+[0.83 00.81 1 1]
+
+!COMPILE @MONKL
+[23:34:36]
+MACRO: COMTXT
+KL00-P035/A04
+11-30-86
+M01900 (id)
+1096 = CPU serial number                         
+Pacific Standard Time  rames                         
+128 network ports                         
+64 disk drives                         
+4 tape drives                         
+MACRO: COMMON
+[Will reload on JOB/DEBUG stopcodes]
+[Requesting supervisor clock from base at startup]
+MACRO: COMMOD
+[4 units on FTA]
+[16 units on BPA]
+[16 units on BPB]
+[16 units on BPC]
+[16 units on BPD]
+MACRO: SETETY
+Defining SETE01 for Bill Soley
+Defining SETE04 for Dennis Coffey
+Defining SETE05 for Osman Guven
+Defining SETE06 for Joe Smith
+Defining SETE07 for Carl Baltrunas
+MACRO: MONBTS
+MACRO: FILUUO
+MACRO: FILIO
+:    FTDPAG set for blocks
+MACRO: FRMSER
+MACRO: PCBIO
+MACRO: SWAMP
+MACRO: MAPIO
+MACRO: CLUBS
+MACRO: FILFND
+MACRO: FILRIB
+MACRO: CPXKON
+MACRO: BOTLOD
+MACRO: CLOCK1
+MACRO: COMCON
+MACRO: CORE1
+MACRO: ERRCON
+MACRO: JOBDAT
+MACRO: ACTSER
+MACRO: PICON
+MACRO: FTASER
+MACRO: LPTSER
+MACRO: SCHED1
+MACRO: SCNSER
+[Need to put host number somewhere, @LOGIN and RCVAUX]
+%BUG at LDEC has not been completely fixed, causes TTYNNC
+MACRO: CTYSIM
+MACRO: SEGCON
+MACRO: TMPUUO
+MACRO: SIMIO
+MACRO: IOCSS
+MACRO: UUOCON
+MACRO: DEBUG
+MACRO: ONCE
+MACRO: ONCDSK
+MACRO: REFSTR
+[333.99 01:00:48.01 689 3573]
+
+!CROSS
+[00:35:24]
+CROSS: CMNKLL
+CROSS: CMDKLL
+CROSS: FILIOL
+CROSS: CPXKNL
+CROSS: ONCELL
+CROSS: ONCDSL
+[81.88 05:12.00 2533 2533]
+
+!CTEST SETPROC LOADER=(SYS)LOADER
+[00:40:37]
+[0.85 01.90 1 1]
+
+!LOAD @MONKL
+[00:40:39]
+MACRO: COMTXT
+KL00-P035/A04
+11-30-86
+M01900 (id)
+1096 = CPU serial number                         
+Pacific Standard Time  
+64 frames                         
+128 network ports                         
+64 disk drives                         
+4 tape drives                         
+LOADING
+222 PAGES CORE
+[87.99 01:35.11 1269 2]
+
+!;
+!GFD M33
+[00:42:14]
+[ 62 P035/A08 12-18-86 /JMS ]
+[0.29 01.53 10 0]
+
+!CTEST SETPROC MACRO=(SYS)MACRO
+[00:42:16]
+[0.84 01.13 1 1]
+
+!COMPILE @MONKS
+[00:42:17]
+MACRO: COMTXT
+KS00-P035/A03
+11-19-86
+M01891 (id)
+4267 = CPU serial number                         
+Pacific Standard Time  
+32 frames                         
+32 network ports                         
+4 disk drives                         
+1 tape drive                         
+MACRO: COMMON
+[Will reload on JOB/DEBUG stopcodes]
+[Requesting supervisor clock from base at startup]
+MACRO: COMMOD
+[4 units on RMA]
+MACRO: SETETY
+Defining SETE04 for Dennis Coffey
+Defining SETE05 for Osman Guven
+Defining SETE06 for Joe Smith
+Defining SETE07 for Carl Baltrunas
+MACRO: MONBTS
+MACRO: FILUUO
+MACRO: FILIO
+:    FTDPAG set for blocks
+MACRO: FRMSER
+MACRO: PCBIO
+MACRO: SWAMP
+MACRO: MAPIO
+MACRO: CLUBS
+MACRO: FILFND
+MACRO: FILRIB
+MACRO: RMXKON
+MACRO: CLOCK1
+MACRO: COMCON
+MACRO: CORE1
+MACRO: ERRCON
+MACRO: JOBDAT
+MACRO: ACTSER
+MACRO: PICON
+MACRO: MAGSER
+MACRO: LP2SER
+MACRO: SCHED1
+MACRO: SCNSER
+[Need to put host number somewhere, @LOGIN and RCVAUX]
+%BUG at LDEC has not been completely fixed, causes TTYNNC
+MACRO: CTYSIM
+MACRO: DZKON
+MACRO: DR11C
+MACRO: KMCSER
+MACRO: CIOPR
+CIOPR  PAGE 2
+Q				> ;END IFCPU (KS) STARTING PAGE 1.
+
+?1 ERROR DETECTED
+MACRO: SEGCON
+MACRO: TMPUUO
+MACRO: SIMIO
+MACRO: IOCSS
+MACRO: UUOCON
+MACRO: DEBUG
+MACRO: ONCE
+MACRO: ONCDSK
+MACRO: REFSTR
+[276.89 38:45.06 771 1053]
+
+!CROSS
+[01:21:02]
+CROSS: CIOPRS
+[2.42 07.51 67 66]
+
+!CTEST SETPROC LOADER=(SYS)LOADER
+[01:21:10]
+[0.84 00.85 1 1]
+
+!LOAD @MONKS
+[01:21:11]
+MACRO: COMTXT
+KS00-P035/A03
+11-19-86
+M01891 (id)
+4267 = CPU serial number                         
+Pacific Standard Time  
+32 frames                         
+32 network ports                         
+4 disk drives                         
+1 tape drive                         
+LOADING
+194 PAGES CORE
+[73.50 01:20.55 1223 2]
+
+!;
+!DAYTIME
+3-JAN-1987 01:22:32 PST
+
+!CORE
+194:194+0/512 pages
+Vir. core left=3874
+
+!SEND JMS
+[01:22:33]
+TYPE LETTER:
+; PCOM v1.63 - processed: (M33)CPUS.LOG = (M33)CPUS.CTL
+; Options: DETACH  LOG NOAPPEND SUPERSEDE LICENSE 
+; Limits: TIME:60 TRULIMIT:0 
+; Status: completed.
+; Output recorded in file (M33)CPUS.LOG.
+[1.76 03.23 5 3]
+
+mail waiting
+!LOGOUT
+[01:22:37]
+1645.32 tru
+terminal time: 3:35:24
+ @ O_
