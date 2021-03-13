@@ -1,0 +1,1599 @@
+From: CARL@X930.Tymnet 
+Date: Fri, 25 Jul 86 13:17:47 PDT 
+To: fletcherc 
+
+Re:  My pass on annual review...
+
+Craig,
+  I am still not feeling well, and will NOT be in today (Friday), so it
+will be impossible to give you anything by today.  I will try to come in
+(at least on Sunday, when I do the incremental) and work on the review
+so you will have the first pass to go over on Monday morning.
+
+  I've pretty much been resting, sleeping or running a small fever since
+Monday evening and have not been getting any work done.  I will give you
+a recount of sick vs. work hours for the payroll records on monday (since
+I did take my weekend on Wednesday & Thursday even thought I was sick).
+
+  Leave me mail if you have any questions... I am going back to sleep for
+now.  /Carl
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sun, 27 Jul 86 21:57:47 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: SZRPT.MAC is a mess. 
+
+The author of SZRPT really screwed up.  Look at the following:
+	T1=6
+	T2=7
+	LS=12
+	T3=13
+	54=54
+	UFDBF=12
+	MFDBF=13
+...
+	ARRAY UFDBF[3],MFDBF[3]
+...
+	CALLI
+	INIT UF,17
+	SIXBIT /DSK/
+	UFDBF
+	  JRST ...
+...
+GTUFD1:	MOVE T1,UFDBLK(UFDBF)
+...
+The coding is atrocious.  It's a wonder it works at all.  (In fact, it doesn't
+even wait for an answer when it asks for "sort by").  It looks very much as if
+the program was written before the CHANIO function that reads the UFD.  Then
+someone added the .CHUFD call, which made the 3-word buffer header for reading
+the UFD in buffered mode obsolete, so that person decided to reuse the name
+UFDBF, but did not purge all the previous references to the symbol.
+
+As currently coded, SZRPT attempts to use two overlaping buffer headers in the
+ACs, which causes it to die with "?Address check for device at user PC 174"
+when running under the /P33 monitor.  Since this program is so blatently wrong,
+I will put a new version of SZRPT on SYS, and not retract the edit to the
+Monitor that caught this problem.   /Joe
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Mon, 28 Jul 86 23:50:18 PDT 
+To: William R Soley <wrs@C39.Tymnet>, Monitor Group <CARL@X930>, Osman Guven
+	<osman@X930.Tymnet>, Joe Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey
+	<dencoff@X930.Tymnet>, Bartletw@B39 
+Subject: Password version 20 
+
+It was transmitted... it think there was a breakdown in the transmittal
+procedure and never made it to the rest of the world.
+
+/Carl
+From: FLETCHERC@X930.Tymnet 
+Date: Tue, 29 Jul 86 14:51:15 PDT 
+To: jms 
+
+Joe:
+Would you come to my office at 10:00 a.m. on Wednesday July 30th
+so that we can talk about training requirements for Roe West
+and company.
+
+	CRaig
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Tue, 29 Jul 86 15:37:31 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: P034/P33-1 has hang fixed. 
+
+My fault.  I started to re-arrange the dispatch table for the base-to-host
+messages, got part way thru, then changed my mind.  I undid the changes except
+for the case when we get a message type 5 = New Supervisor has taken over the
+node.  The <AOJA P4,SCNIN1> was missing, causing SCNSER to POPJ without
+advancing the IRING pointer, therefore it saw the same message over and over
+and did not do anything about it.  24XP33 and 26XP33 have been patched on
+M33 on their respective systems.  The /P33-1 monitor will not have this
+particular hang problem anymore.		/Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Wed, 30 Jul 86 5:21:11 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: I'm on call this week. C26 hotline call. 
+
+30-Jul-86 05:14/Joe
+Contact:  Cupertino Operation, (408)446-7705, Tom, System C26.
+
+Reason:   System 26 was left running the P034/P33 monitor with instructions to
+          call the hotline if the machine crashed (to get a dump if the "hang"
+          problem occurred.  The hang has been fixed, but SIMUUF hasn't.  Told
+          them to reload from SYSTEM.SAV, no further notification necessary.
+
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Wed, 30 Jul 86 5:33:53 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Correction to previous message 
+
+30-Jul-86 05:14/Joe
+Contact:  Cupertino Operation, (408)446-7705, Tom, System C26.
+
+Reason:   The plans were to leave 26 running P034/P33 monitor with instructions
+          to call the hotline if the machine crashed (to get a dump if the
+          "hang" problem occurred).  The hang has been fixed, but the notice to
+          call the hotline was not cancelled.  Anyway, they got a SIMUUF
+          stopcode while running the /P19-4 monitor, which means that RESET.PAT
+          has not solved the problem.  Told them to reload from SYSTEM.SAV,
+          no further notification necessary.  26XP33 still not tested?
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Wed, 30 Jul 86 13:49:08 PDT 
+To: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: Still not feeling too well 
+
+Craig, (Dennis)
+  I'm still not feeling too well, so I expect to only be in for the
+afternoon.  See you in a while.  /Carl
+Received: From EMSTXS.Ontyme.Tymnet by X930.Tymnet; Wed, 9 Jul 86 1:07:06 UT
+From: OTSUPA.ONTYME@Ontyme.Tymnet 
+Date: 08 JUL 86 22:21:05 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: A02933@Ontyme.Tymnet 
+Subject: OnTyme Version 22 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Fri, 1 Aug 86 15:47:20 PDT 
+Resent-to: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey
+	<dencoff@C26.Tymnet>, Joe Smith <jms@X930.Tymnet>, Osman Guven
+	<osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet> 
+
+                      APPLIED COMMUNICATIONS SYSTEMS
+ 
+                           M E M O R A N D U M
+ 
+ 
+                                                      []  ISG     
+ 
+DATE>      08 JUL 86  13:47
+
+TO>        OnTyme Account Supervisors
+
+COPIES>    
+
+FROM>      Bill Bartlett
+           OnTyme Marketing Support Manager
+
+
+SUBJECT>   OnTyme Version 22
+
+
+-----------------------------------------------------------------------
+
+
+    Applied Communications Systems (ACS) is pleased to announce that
+    version 22 of OnTyme will be deployed for customers beginning in
+    August!  The following features and enhancements have been added.
+ 
+    SUBJECT LINE.  On a :SEND or :REPLY the system will prompt for
+    subject.  The subject text supplied by the sender will appear in
+    the message header and all the message lists (:IN, :OUT, old,
+    long, short, etc.).
+ 
+    X.ONTYME.  This feature is an interface with which applications,
+    PC "front ends", or intelligent terminal procedures may interact
+    with OnTyme in a consistent, reliable, binary, machine-oriented
+    format.
+    
+    PATHWAY.  This feature allows the user to log into any network
+    host during an OnTyme session, capture data from the target host
+    into the OnTyme workspace, transfer data between OnTyme and the
+    network host, and execute commands on the host. The target host
+    may reside in either the same network as OnTyme or in another
+    network accessible through a gateway.
+ 
+    XMODEM.  This feature is used for binary file transfer using the
+    XMODEM protocol.
+ 
+    SYSTEM GENERATED MESSAGES.  Version 22 of OnTyme will put a
+    message in the :IN list of the sender regarding invalid recipients
+    so they will no longer have to look through their :OUT (OLD) lists.
+ 
+    RESERVED CHARACTERS. To facilitate future enhancements, six
+    characters (!,@,#,$,%,&) will no longer be allowed in file names.
+    These will be used later as 'wildcard' characters for displaying
+    information with the :LIST command.
+ 
+    :REPLY (cc)(msg#).  This command will send the contents of the
+    workspace to the original recipients of msg#.
+ 
+                                                                Page  2
+
+    COMMAND SCANNER. The OnTyme code has been improved and made more
+    efficient.  Many system messages have been grammatically improved
+    and made more consistent.
+ 
+    Version 22 is available on the Marketing test host so that you can
+    become familiar with the new product features. To request a
+    temporary id on the test host, send a request to ACS.ONTYME.
+ 
+    More complete documentation is being written and included in user
+    manuals, technical manuals, and *** files in OnTyme as
+    appropriate.  Definitions of the enhancements in version 22 of
+    OnTyme may be found in the public file *** ONTYME.NEWS. Please
+    distribute this announcement within your organization.  
+ 
+ 
+    Version 22 WARNING!
+    -------------------
+    All 'intelligent front end' processes should be adequately tested
+    for compatibility with version 22 of OnTyme before August 1.  
+ 
+    ACS will provide technical assistance to complete this test.  To
+    provide the longest possible lead time for any necessary code
+    conversions, please schedule these tests as soon as possible.  Ids
+    on the Marketing test host are now available upon request from
+   ONTYME. Please keep ACS.ONTYME informed of the results.
+ 
+    There are two enhancements in version 22 of OnTyme that have the
+    POTENTIAL of disrupting 'intelligent front end' processes such as
+    OnTyme :EXEC procedures, PC based packages, and intelligent
+    terminal procedures that match on the text of OnTyme messages or
+    the format of the :SEND, :REPLY, :IN and :OUT commands.  
+    
+    First, the text of many of the more obscure (not frequently
+    encountered) system and error messages has been revised for
+    grammatical improvement and consistencey. The most common messages
+    such as ACCEPTED and ALL MESSAGES READ have not been changed.  You
+    may obtain a list of the text changes by sending a request to
+    ACS.ONTYME.  In the event that an incompatibility is found between
+    a front-end process and version 22, ACS will urge that the
+    X.ONTYME protocol be adopted in the front-end to preclude any
+    future problems.  Use of X.ONTYME will fix the problem once and
+    for all.  Please :READ *** ONTYME22.XONTYME for further
+    information about this protocol.
+    
+    Second, each OnTyme session will default to having subject line
+    enabled.  Each :SEND or :REPLY command will be followed by a
+    prompt for subject.  The format of the :IN and :OUT lists will
+    change to show a subject line for each message.  The subject line
+    feature may be disabled at the session level providing a very
+    simple solution to any compatibility problems caused by subject
+    line.  Please :READ *** ONTYME22.SUBJLINE for further information
+    about the subject line feature.
+ 
+    Please direct any questions about this announcement to ACS.ONTYME.
+ 
+    Thank you.
+    ACS.ONTYME
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Tue, 15 Jul 86 21:14:40 UT
+From: IPC.SRAMAIL@Ontyme.Tymnet 
+Date: 15 JUL 86 18:45:33 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: A06589@Ontyme.Tymnet 
+Subject: 940'S SHUTDOWN 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Fri, 1 Aug 86 15:47:26 PDT 
+Resent-to: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey
+	<dencoff@C26.Tymnet>, Joe Smith <jms@X930.Tymnet>, Osman Guven
+	<osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet> 
+
+                         M E M O R A N D U M
+
+
+
+
+
+DATE>      15 JUL 86  10:42
+
+TO>        THE WORLD
+
+COPIES>    
+
+FROM>      RESOURCE PLANNING AND MANAGEMENT
+
+
+SUBJECT>   940'S SHUTDOWN
+
+
+-----------------------------------------------------------------------
+
+
+
+     
+FOR YOUR INFORMATION ALL XDS940 SYSTEMS WILL BE TAKEN OUT OF SERVICE BY    
+DECEMBER 31, 1986.  
+     
+AT PRESENT, WE HAVE SCHEDULED TO SHUTDOWN C-14 ON JULY 31, 1986 AT 2400 PST.    
+     
+ALL CUSTOMERS VALID ON C-14 WILL BE MOVED TO C-16. WE WILL COORDINATE THE  
+DETAILS OF THE MOVE WITH THE BRANCH OFFICES. 
+     
+ALL INTERNAL USERS VALID ON C-14 MUST BEGIN TO SAVE ANY FILES OR TAPES
+CREATED ON C-14 TO ANOTHER HOST PRIOR TO THE SHUTDOWN ON 07/31/86.    
+     
+IF YOU HAVE ANY QUESTIONS REGARDING THE XDS940 SYSTEMS SHUTDOWN, I CAN BE  
+REACHED AT (408) 446-6630 OR ONTYME IPC.SRAMAIL.  
+     
+     
+THANK YOU,
+LINDA FREITAS, RPM
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Sun, 20 Jul 86 1:20:50 UT
+From: ISGHQ.K/PETERS@Ontyme.Tymnet 
+Date: 16 JUL 86 16:12:02 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: J63991@Ontyme.Tymnet 
+Subject: "MCDONNELL DOUGLAS INFORMATION"... 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Fri, 1 Aug 86 15:47:29 PDT 
+Resent-to: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey
+	<dencoff@C26.Tymnet>, Joe Smith <jms@X930.Tymnet>, Osman Guven
+	<osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet> 
+
+
+            MCDONNELL DOUGLAS INFORMATION SYSTEMS GROUP
+
+                      ADMINISTRATIVE BULLETIN
+
+
+No. ISG-86-71                                      16 July 1986
+
+
+To:           All ISG Employees
+
+Subject:      SMOKING POLICY
+
+                                                                   
+
+
+Many of our employees and visitors prefer to conduct their 
+business in a smoke-free atmosphere.  While we respect each 
+individual's right to smoke or not, we are also responsible for 
+providing a comfortable, safe and healthy workplace.
+
+The following guidelines are an attempt to appropriately balance 
+the preferences of both smokers and nonsmokers.
+
+    o    Employees who smoke should do so primarily in their 
+         immediate work areas, should respect the wishes of their 
+         fellow employees, and should observe all designated 
+         no-smoking areas.
+
+    o    Employees may designate their office/cubicle or work area 
+         as a smoking or no-smoking area.  "No Smoking" signs are 
+         available through stationery.
+
+    o    Smoking is not permitted in elevators, hallways, 
+         libraries and restrooms.
+
+    o    Smoking will not be permitted in meetings or classes, 
+         unless the meeting leader determines that it is agreeable 
+         to all participants.
+
+    o    Smoking will be permitted in designated areas within 
+         breakrooms, dining areas (other than the food service 
+         areas), lobbies and reception areas, provided that these 
+         areas are properly ventilated.  Such areas must be 
+         clearly designated and have adequate separation from 
+         no-smoking areas.
+
+    o    Smoking is not permitted in areas where it would endanger 
+         lives, damage equipment and/or otherwise pose a safety 
+         hazard.  These areas will be designated accordingly.
+
+    o    Management has the responsiblity to resolve disputes 
+         which may arise and to make reasonable accommodations for 
+         all employees.
+
+
+
+Page 2
+
+
+In addition to these guidelines, all ISG organizations must ensure 
+that smoking policies for their work locations are in accordance 
+with any local government ordinances.
+
+The successful implementation of this policy will require your 
+cooperation, courtesy and accommodation of individual 
+preferences.  Questions regarding this policy should be directed 
+to your local Human Resources organization.
+
+
+
+
+R. A. Fischer
+Chairman
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Wed, 23 Jul 86 21:18:42 UT
+From: ISGHQ.K/PETERS@Ontyme.Tymnet 
+Date: 23 JUL 86 20:22:20 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: J66860@Ontyme.Tymnet 
+Subject: "MCDONNELL DOUGLAS CORPORATION"... 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Fri, 1 Aug 86 15:47:34 PDT 
+Resent-to: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey
+	<dencoff@C26.Tymnet>, Joe Smith <jms@X930.Tymnet>, Osman Guven
+	<osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet> 
+
+
+                   MCDONNELL DOUGLAS CORPORATION
+
+                      ADMINISTRATIVE BULLETIN
+
+
+No. MDC-86-57                                      23 July 1986
+
+
+To:           ISG Lists A - H
+
+Subject:      DEPARTURE OF R. A. FISCHER
+
+                                                                   
+
+
+Effective immediately, ISG Chairman Bob Fischer is leaving MDC to 
+accept a position with Prime Computer Inc., of Natick, 
+Massachusetts.
+
+
+Bob has played a crucial role is shaping MDC's information systems 
+strategy and in building an organization to pursue that strategy.  
+I hope you will join me in wishing him all the best.
+
+
+
+
+J. F. McDonnell
+President
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Fri, 25 Jul 86 1:21:29 UT
+From: TYMOPS.V/STAFFORD@Ontyme.Tymnet 
+Date: 10:12 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: M10546@Ontyme.Tymnet 
+Subject: Validations Move to Orchard Parkway 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Fri, 1 Aug 86 15:47:38 PDT 
+Resent-to: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey
+	<dencoff@C26.Tymnet>, Joe Smith <jms@X930.Tymnet>, Osman Guven
+	<osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet> 
+
+                 MCDONNELL DOUGLAS NETWORK SYSTEMS COMPANY
+
+                     T Y M N E T    O P E R A T I O N S
+
+                            M E M O R A N D U M
+
+DATE>      24 JUL 86  18:09
+
+TO>        The World
+
+COPIES>    
+
+FROM>      Tymnet Validations Department
+
+
+SUBJECT>   Validations Move to Orchard Parkway
+
+
+---------------------------------------------------     [7mI[0m	SKIP T1,[SI[IXBIT /DSKions Department will be moving to the Orchard Parkway
+facility on Friday July 25. We can be reached all day on Friday at our
+present numbers. But beginning on Monday July 28, our phone numbers will
+be changed to the following:
+
+
+    EMPLOYEE NAME                          EMPLOYEE PHONE NUMBER
+    --------------                         ----------------------
+
+Stephanie Aiken                              942-5361
+Do     [7mI[0m	SKIP                    942-5386
+Emy Lonero                                   942-5355
+Karen Lynas                                  942-5339
+Patti Quevedo                                942-5009
+Vida Stafford                                942-5352
+
+Our ontyme names WILL NOT CHANGE. If you have problems reaching us during
+the first few days after our move, just send an ontyme.
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Thu, 31 Jul 86 21:05:27 UT
+From: ACS.L/METOUR@Ontyme.Tymnet 
+Date: 31 JUL 86 18:22:16 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: A15277@Ontyme.Tymnet 
+Subject: Significant Business Issue 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Fri, 1 Aug 86 15:47:44 PDT 
+Resent-to: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey
+	<dencoff@C26.Tymnet>, Joe Smith <jms@X930.Tymnet>, Osman Guven
+	<osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet> 
+
+ 
+July 29, 1986
+ 
+To :  All ISG employees
+Re :  Significant Business Issue
+ 
+=================================================================
+ 
+In the mail you will be receiving an invitation to participate in 
+selecting ISG's Significant Business Issue (SBI) from Jeremy J. 
+Causley.  In the attached Participant's Guide, you are provided 
+SBI Idea Sheets to submit your ideas.  In addition to these 
+hardcopy Idea Sheets, you have the option of submitting your 
+ideas via OnTyme.
+ 
+To submit your ideas via OnTyme, type the following :
+ 
+                    :EXEC *** FORMS.SBI/IDEA
+ 
+This OnTyme Idea Sheet will forward automatically to St Louis.  
+Each Idea Sheet must be submitted as soon as possible.
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Fri, 1 Aug 86 17:05:07 UT
+From: ISGHQ.K/PETERS@Ontyme.Tymnet 
+Date: 01 AUG 86 17:31:52 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: J70565@Ontyme.Tymnet 
+Subject: "MCDONNELL DOUGLAS COMPUTER SYSTEMS"... 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Fri, 1 Aug 86 15:47:48 PDT 
+Resent-to: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey
+	<dencoff@C26.Tymnet>, Joe Smith <jms@X930.Tymnet>, Osman Guven
+	<osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet> 
+
+
+
+            MCDONNELL DOUGLAS COMPUTER SYSTEMS COMPANY
+
+                      ADMINISTRATIVE BULLETIN
+
+
+No. CSC-86-26                                      28 July 1986
+
+
+
+Effective immediately, Vern Z. Smith, Executive Vice President, 
+McDonnell Douglas Computer Systems Company, is being re-assigned 
+to a position of Special Assistant to the President of McDonnell 
+Douglas Computer Systems Company.  As a result of this change, 
+Vern's direct reports will now report directly to me.
+
+
+Your cooperation during this period of transition will be 
+appreciated.
+
+
+
+Otis H. Brinkley
+President
+McDonnell Douglas
+Computer Systems Company
+From: Osman Guven <osman@X930.Tymnet> 
+Date: Fri, 1 Aug 86 16:21:03 PDT 
+To: Monitor Group <Osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: ADD-PACK on C26.. 
+
+BE AWARE!!!!
+
+Operation will be doing a "ADD-PACK" to C26 tonight.
+I gave them the correct pakcopy "PAKCP5" and remind
+them about INIT commend, doesn't initilize second HOME
+and BAT pages but system take care of it during ADD-PACK
+
+-Osman-
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sat, 2 Aug 86 8:41:58 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Hotline call for F30. 
+
+2-Aug-86 05:15/Joe
+Contact:  Fremont Operation, (415)498-2588, Merina, System F30.
+
+Problem:  UIL stopcode with memory errors.  Deselected sector of memory, then
+          got "Inconsistant Hash Constant" and "Too many last logical units"
+          and "Logical unit 89 missing from DSKB".
+
+Solution: Went on-site set breakpoints and check the home pages.  DSKB11
+          messed up.  Of the 24 nonzero words in the HOM page, all but 5 were
+          zero.  The check for missing logical units gets into an infinite loop
+          if HOMLUN does not match HOMLOG.  Patched the HOM page on BPA13.
+          Came up in CONSOL mode, ran DSKCLN in CHECK mode.  It complained that
+          unit 9 was missing RIB pointers.  Put them in using (SPL)FILDDT.
+          DSKCLN ran on in check mode, recycled and ran FULL DSkCLN at 8:30am.
+
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sat, 2 Aug 86 20:39:16 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: F58 still down. 
+
+Progress report in first page of (M33)HOTLIN.LOG.
+From: JMS@X930.Tymnet 
+Date: Mon, 4 Aug 86 0:14:00 PDT 
+To: fletcherc 
+
+I had 9 hours of call-in time this week.  /Joe
+From: FLETCHERC@X930.Tymnet 
+Date: Mon, 4 Aug 86 8:44:26 PDT 
+To: CARL 
+
+SUBJECT: REVIEW
+ HILE LOOKING OVER THINGS FOR YOUR REVIEW  FIND THAT  WILL NEED SOME MORE
+PAPERWORK FROM YOU.   @LEASE FILL OUT "JPERFORMANCE EVIEW UPPLEMENT"
+PART 2 GOALS AND OBJECTIVES.  ANDHUMAN RESOURCE MANAGEMENT FORMS.  I
+THINK YOU RECEIVED COPIES OF EACH INITIALLY. IF NOT, \OIS CAN SUPPLY.
+FOR SOME REASON CAPS DONT SEEM TO BE WORKING.  SEE YOU IN MID AUGUST.
+
+    CRAIG
+From: FLETCHERC@X930.Tymnet 
+Date: Mon, 4 Aug 86 8:48:09 PDT 
+To: JMS 
+
+SUBJECT: PRIORITIES
+
+PLEASE MAKE GETTING THE /P33 MONITOR INTO PRODUCTION YOUR NUMBER ONE
+PRIORITY OVER THE NEXT TWO WEEKS.  THAT IS KEY TO BOTH 3650 PROJECT AND
+PERPL PROJECT.
+
+    CRAIG
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Mon, 4 Aug 86 21:07:21 UT
+From: ISGHQ.K/PETERS@Ontyme.Tymnet 
+Date: 04 AUG 86 18:28:55 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: J71255@Ontyme.Tymnet 
+Subject: "MCDONNELL DOUGLAS INFORMATION"... 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Tue, 5 Aug 86 4:12:04 PDT 
+Resent-to: Dennis Coffey <dencoff@C26.Tymnet>, Joe Smith <jms@X930.Tymnet>,
+	Craig Fletcher <fletcherc@X930.Tymnet>, Osman Guven <osman@X930.Tymnet>
+	
+
+
+            MCDONNELL DOUGLAS INFORMATION SYSTEMS GROUP
+
+                      ADMINISTRATIVE BULLETIN
+
+
+No. ISG-86-75                                      28 July 1986
+
+
+To:           ISG Lists A - H
+              MDC and Corporate Office Lists A - D
+
+Subject:      CHANGE IN REPORTING FOR E. T. HORN AND S. M. SELTZER
+
+                                                                   
+
+
+Effective 1 August 1986, Gene Horn, President-McDonnell Douglas 
+Payment Systems Company, and Sol Seltzer, Chariman of the Board 
+and President-MSGI, will report to Rich Calvert, President-
+McDonnell Douglas Diversified Information Systems Company.
+
+Under Gene's and Sol's continued leadership, the Payment Systems 
+Company, Unitax and MSGI will expand and strengthen the broad 
+range of solutions that the Diversified/Information Processing 
+family offers to ISG's customers.  It is our pleasure to welcome 
+them into the family.
+
+
+Jeremy J. Causley
+Group Executive Officer
+
+
+Richard A. Calvert, President
+McDonnell Douglas Diversified
+Information Systems Company
+From: Osman Guven <osman@X930.Tymnet> 
+Date: Tue, 5 Aug 86 10:41:21 PDT 
+To: Monitor Group <Osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: I AM IN BLDG C TODAY.. 
+
+I FORGOT THE MEETING AND CAME HERE STRAIGHT FROM HOME.
+OSMAN
+Received: from X62.Tymnet by X930.Tymnet; Tue, 5 Aug 86 11:09:13 PDT
+Return-path: <DENCOFF@C62.Tymnet> 
+From: Dennis Coffey Tymcom-X <DENCOFF@C62> 
+Date: Tue, 5 Aug 86 11:06:35 PDT 
+To: Osman Guven <osman@X930.Tymnet> 
+Cc: Monitor Group <Osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet>, Craig Fletcher <fletcherc@X930.Tymnet> 
+Subject: Re: I AM IN BLDG C TODAY.. 
+In-reply-to: your message of Tue, 5 Aug 86 10:41:21 PDT
+
+O.,
+
+Craig is in St. Louis this week.  (He'll be in Hawaii next week.)  I'm the
+only one here.  You haven't missed anything.  No problem.  /D.  
+From: Osman Guven <osman@X930.Tymnet> 
+Date: Thu, 7 Aug 86 10:39:44 PDT 
+To: Monitor Group <Osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: Escalation #M03757 
+
+(begin forwarded message)
+----------------------------------------------------------------
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Thu, 7 Aug 86 17:03:41 UT
+From: UKNS.LEEWAKE@Ontyme.Tymnet 
+Date: Thu, 7 Aug 86 17:03:41 UT 
+To: TXS.O/GUVEN@Ontyme.Tymnet 
+Cc: TXS.O/GUVEN@Ontyme.Tymnet, QSATS.S/TSUI@Ontyme.Tymnet,
+	UKNS.WALLACE@Ontyme.Tymnet, UKNS.LEEWAKE@Ontyme.Tymnet 
+Message-id: J72826@Ontyme.Tymnet 
+Subject: Escalation #M03757 
+
+=======================  M E M O R A N D U M  =========================
+
+                                           MCDONNELL DOUGLAS INFORMATION
+DATE>      07 AUG 86  16:06                          SYSTEMS CONSULTANT
+
+TO>        Osman Guven
+
+COPIES>    S.Tsui B.Wallace
+
+FROM>      Lee Wakefield
+
+
+SUBJECT>   Escalation #M03757
+
+
+-----------------------------------------------------------------------
+
+
+ Osman,
+
+ I sent you a message on system 26, but incase you did not get it I will
+repeat my findings here.
+
+ I logged into system 26 for about an hour (40 times or so) and the
+system did not crash. I noted one small point that maybe worth a mention,
+a few times when the server set read file, not all of the "did not set"
+message was printed IE.
+
+ TYMSHARE C26-P034/P19-5 2-28-86
+-
+-
+Did not set WC RC OP GD TD ST JL AC XC WA
+-
+
+
+ I would get :-
+
+
+ TYMSHARE C26-P034/P19-5 2-28-86
+-
+-
+AC XC WA
+-
+
+ I just got your message on sys26 stating the above is a side effect
+of the patch untill a better solution is found. Suits me!
+
+   Thanks
+
+    Lee
+----------------------------------------------------------------
+(end forwarded message)
+
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Thu, 7 Aug 86 23:28:59 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Solved some of the APRFAT and UIL stopcodes. 
+
+Osman and I tracked down the cause some of the APRFAT and UIL stopcodes.
+It starts when a user in Great Britain uses a menu server to login and set
+status.  Apparently a leave-deferred-echo message catches up to input characters
+with all the satellite delays.  In any case, SCNSER sees message type 15 when
+it is not ready for it.  On the KLs running P034/P-12, this causes a TTYZNE
+info stopcode, with contents of P1 = 15 (the system stays running).  On the
+KIs, any INFO stopcode turns off paging and causes a UIL halt stopcode.  On
+C26-P034/P19-4, the INFO stopcode runs to completion, but accidently sets the
+NXM flag causing an APRFAT stopcode at the next clock tick.
+
+For C26, putting a JFCL at LDEC+2 in SCNSER will avoid the INFO stopcode.
+For the KI systems, (M33)INFOKI.PAT will make INFO stopcodes work.
+
+It is possible that the menu server is not strictly following TYMNET-II
+protocol in respect to green balls and deferred echoing.  Since it tells the
+host it has echoed the characters it is sending (but really doesn't), I
+suspect the menu server.  We need to come up with a better way for SCNSER
+to handle this problem.
+
+				/Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Mon, 11 Aug 86 21:16:32 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: P034/P33 status. 
+
+The file (M33)P33TMP.PAT shows what has been patched to solve the problems
+found in the /P33 monitor.  I don't plan to make a /P34 until I find out why
+INFO stopcodes set the NXM flag on the KL.  INFO stopcodes work find on the F3,
+the KS, and now that SVSETS has been patched, the KI.  It may be in the code
+that reads S-bus diags from all possible memory controllers (code borrowed from
+TOPS-10 which may not be worth keeping on TYMCOM-X).
+
+			/JOE
+From: Osman Guven <osman@X930.Tymnet> 
+Date: Tue, 12 Aug 86 12:30:30 PDT 
+To: Monitor Group <Osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: I am on call 8/11 to 817.. 
+
+o I am on call this week.
+
+o I will be spending some of this week at Fremont D. C.
+  debuging the BASE diagnostic. If you need me call
+  Fremont or my pager.
+
+-Osman-
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Mon, 18 Aug 86 1:16:23 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: I am on call this week. 
+
+The schedule worked out fortuitously.  I am on call 18-Aug to 24-Aug and 8-Sep
+to 14-Sep, which means my requested vacation time won't disrupt the rotation.
+	/Joe
+From: Osman Guven <osman@X930.Tymnet> 
+Date: Mon, 18 Aug 86 8:59:26 PDT 
+To: Monitor Group <Osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: I am in Fremont D.C. today.. 
+
+
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Tue, 5 Aug 86 17:09:57 UT
+From: NETS.TTE@Ontyme.Tymnet 
+Date: Tue, 5 Aug 86 17:09:57 UT 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: I07083@Ontyme.Tymnet 
+Subject: 4th Quarter Schedule 86' 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Mon, 18 Aug 86 13:24:03 PDT 
+Resent-to: Joe Smith <jms@X930.Tymnet>, Osman Guven <osman@X930.Tymnet>, Dennis
+	Coffey <dencoff@C26.Tymnet>, Craig Fletcher <fletcherc@X930.Tymnet> 
+
+                            M E M O R A N D U M
+
+                          NETWORK SYSTEMS COMPANY
+                         NETWORK SYSTEMS MARKETING
+
+
+DATE>      05 AUG 86  08:30
+
+TO>        All Employees
+
+COPIES>    
+
+FROM>      Tymnet Training and Education
+
+
+SUBJECT>   4th Quarter Schedule 86'
+
+
+-----------------------------------------------------------------------
+
+
+Below is the schedule of TTE classes to be held at the Tymnet Training
+Center in San Jose during the 4th quarter 1986.
+
+Employees may enroll by accessing executive file-  :EXEC *** TTE.ENROLL
+To arrange for classes at your location or for customized classes contact
+Bob Grandey, OnTyme NETS.R/GRANDEY or call 408/942-5085.
+
+Please note the following new classes.
+
+     TTE 600 Basic Satellite Communication
+     TTE 610 TYMSTAR
+     TTE 465 Configuration Management Facility
+
+Descriptions of these and other courses are available  OnLine.
+Consult your Training and Education 1986 brochure pub# E-007 for complete
+details on TTE courses and services.
+
+We look forward to seeing you in class.
+
+
+COURSE                                       LENGTH (DAYS)        SCHEDULED
+
+TTE 510 - Network Systems Management             5           October 27-31
+TTE 440 - TYMNET Engine Programming              5           October 6-10
+TTE 442 - ISIS Slot Programming and Debugging    10          October 13-24
+                                                                Page  2
+
+TTE 445 - System Code Generation                 5           October 27-31
+TTE 110 - TYMNET Field Service Basics            5           October 20-24
+TTE 300 - Communication Line Operations          5           October 27-31
+TTE 340 - Hardware Troubleshooting               5           October 6-10
+TTE 225 - X.25/X.PC Protocols                    8           Oct. 27-Nov. 5
+TTE 230 - 3270/CMT Interfaces                    8           October 6-15
+TTE 240 - SNA/SDLC Interfaces                    8           Oct. 27-Nov. 5
+TTE BPS - Basic Products School                  4           October 20-23
+
+
+TTE 100 - Basic Data Communications              3           November 5-7
+TTE 501 - TYMNET Concepts (Private Network)      2           November 10-11
+TTE 502 - TYMNET Network Operations (Priv. Net.) 8           November 12-21
+TTE 520 - Network Design (TOPS)                  10          November 3-14
+TTE 530 - Network Performance Analysis (TOPS)    5           November 17-21
+TTE 450 - Network Troubleshooting                10          November 10-21
+TTE 460 - Menu/Network Service                   5           November 10-14
+TTE 330 - TYMNET Engine Maintenance              10          November 3-14
+TTE 340 - Hardware Troubleshooting               5           November 17-21
+
+
+TTE 101 - TYMNET Concepts                        2           December 8-9
+TTE 102 - TYMNET Network Operations              8           December 10-19
+TTE 503 - Network Control Center Operations      5           December 1-5
+TTE 600 - Basic Statellite Communications        5           December 8-12
+TTE 610 - TYMSTAR                                5           December 15-19
+TTE 540 - Network Project Management             10          December 1-12
+TTE 455 - Utilities Code Generation              5           December 8-12
+TTE 400 - Introduction to ISIS Software          5           December 1-5
+TTE 465 - Configuration Management Facility      5           December 8-12
+TTE 345 - Tape and Disk Maintenance              5           December 1-5
+TTE 240 - SNA/SDLC Interfaces                    8           December 8-17
+TTE 245 - 2780/3780/HASP Interfaces              5           December 1-5
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Wed, 6 Aug 86 21:10:17 UT
+From: ACS.M/HEINRICH@Ontyme.Tymnet 
+Date: July ACS Newsflash 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: A18504@Ontyme.Tymnet 
+Subject: "The Monthly Newsletter of the"... 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Mon, 18 Aug 86 13:24:12 PDT 
+Resent-to: Joe Smith <jms@X930.Tymnet>, Osman Guven <osman@X930.Tymnet>, Dennis
+	Coffey <dencoff@C26.Tymnet>, Craig Fletcher <fletcherc@X930.Tymnet> 
+
+ 
+ 
+     ========================================================================
+     The Monthly Newsletter of the APPLIED COMMUNICATIONS SYSTEMS COMPANY
+     from
+     ACS MARKETING PUBLICATIONS, Cupertino, CA . . . July 22, 1986
+     ========================================================================
+     
+     
+       . . . Tym/COMM 4.0 RELEASED AUGUST 6:  MORE FOR THE SAME PRICE . . .
+     
+     Tym/COMM 4.0 now offers more, but at a price that keeps this product
+     competitive with CrossTalk and SmartModem.
+     
+     New features include...
+     
+     X.PC, an advanced async communications protocol that enables users to
+     connect to up to 15 different hosts or network services
+     TYMGEN, a simple menu-driven means to set parameters (a breeze for
+     novice users)
+     SNAPSHOT, a feature that "takes a picture" of scrolling data
+     REPLAY, the feature that displays that picture
+     
+     Enhancements for the novice and the experienced Tym/COMM user:  improved
+     menus, monitor color control, and 20 new procedure statements
+     
+     Tym/COMM's excellent support continues through the Customer Service
+     Center 800 number and with a revised user's guide that documents the new
+     features.
+     
+     All this for the competitive price of $295.  However, the other guys
+     don't offer site licensing.  (Yet!)  According to product manager Rose
+     Hayden, corporations want good discounts, and site licenses are an
+     effective way to offer discounts.
+     
+     New data sheets accompanied the July NEWSFLASH.  Demo diskettes are
+     available.  To learn more about the new features or to obtain a demo
+     diskette, contact Rose Hayden at ACS.R/HAYDEN.
+     
+     
+              . . . ONTYME VERSION 22:  JUST AROUND THE CORNER . . .
+     
+     The release of OnTyme Version 22 is scheduled for mid-August, 1986.  The
+     new features are highlighted below:
+     
+     Pathway--enables users to access any computer on the TYMNET network
+     XMODEM Protocol--provides error-free file transfer
+     X.ONTYME--increases throughput, efficiency, and saves money
+     The Reply command--sends the contents of the workspace to the original
+     recipients of the message
+     Subject line--the text supplied by the sender appears in the message
+     header and all the message lists (in, out, old, long, short, etc.)
+     
+     For a more detailed description of Pathway, XMODEM, and X.ONTYME, please
+     see the enclosed data sheet.
+     
+     
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                              . . . HOT SALES . . .
+     
+     The Newsflash congratulates the following marketing reps, who have
+     closed, renewed, or enhanced significant new business.  New business is
+     indicated by an asterisk.
+     
+     Rep                   Branch            Customer
+     
+     P. Cote (Tymnet)      Michigan          Clark Equipment*
+     M. Dunnell            Boston            National Fuel Gas
+     R. Filipiak           Michigan          Rockwell International*
+     J. Goldman            St. Louis         Ralston Purina
+     T. Herman             New York          Basix*
+     H. Spencer            St. Louis         Edison Bros*
+     
+     
+       . . . NATIONAL COTTON COUNCIL PILOT CLOSES--BIG ONTYME ACCOUNT . . .
+     
+     ACS Sales Specialist Diane Biegel and Sales Rep Claire Pribula closed an
+     OnTyme application with the National Cotton Council of America for a
+     pilot to run 9/86 through 1/87.
+     
+     The OnTyme pilot will enable the National Cotton Council, located in
+     Memphis, Tennessee, to save time and money and to communicate between
+     
+     - farmers and the USDA
+     - its staff members
+     - dealers and customers of the cotton industry
+     
+     GTE Telemail came in with a figure 30% lower than ACS.  But ACS got the
+     close due to our superior consulting services, our ability to address
+     the National Cotton Council's long-term needs, and the fact that
+     Telemail has inferior error checking.
+     
+     Pribula first called on the National Cotton Council in September '85.
+     In May '86, she got the RFP.  She contacted Diane Biegel, and, with the
+     help of Nancy Browning, Bill Price, Nancy Shelton, Nick Corsano, and the
+     Customer Service Center, made the close in July '86.
+     
+     According to Nancy Browning, ACS Manager of Business Development, this
+     foot in the door has great potential for big future business!
+     
+     
+                  . . . HOW TO PREPARE A WINNING PROPOSAL . . .
+     
+               by Patt Christie, Sr. Section Mgr., Marketing Media
+     
+     How well you prepare proposals may determine the success of your
+     organization.  Here are some suggested mechanics from a just-announced
+     book written to help you market your services:
+     
+     * Begin each new section at the top of the page
+     * Be sure that no section is more than three times the number of pages
+       of any other section
+     * Place the table of contents and a list of exhibits and appendixes in
+       the front of the proposal
+     * Try to limit lists to six items; make nine the maximum
+     * Include exhibits in the text adjacent to where the exhibit is noted
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     * Avoid acronyms, abbreviations, and colloquialisms.  Write for an
+       uninformed audience that has moderate interest
+     * Limit sentence length.  Sentences that run more than 30 words and
+       contain more than two ideas are difficult to follow
+     * Include a "you will receive" benefit statement for each "we will do"
+       statement
+     
+     Richard  A.   Conner,  Jr.  and  Jeffrey  P.  Davidson,  Marketing  Your
+     Consulting and  Professional Services  (New York:  John  Wiley  &  Sons,
+     1986[?]).
+     
+     
+                  . . . PUBS SYSTEM STILL SEMI-OPERATIONAL . . .
+     
+     All publications printed before May 1986 are still available through the
+     Pubs system.  All new publications--and ACS has printed quite a few
+     since then--are available by sending an OnTyme to ACS.B/RAYMOND or by
+     writing to Bob Raymond at 20705 Valley Green Drive, Cupertino, CA
+     95014.  Check the "New in Pubs" column to see what is new--a new
+     OrderXchange brochure, a Tym/COMM 4.0 data sheet, a new OnTyme price
+     schedule, several issues of "What's Selling?"  All are packaged by 25.
+     
+     ACS publishes many collateral pieces to assist your sales efforts.
+     Check them out.
+     
+     
+                      . . . FROM THE DIRECTOR'S CHAIR . . .
+     
+     LEGENDS...
+     
+     How many basketball players can shoot, pass, and rebound?  How many
+     football players can run, pass, and defend?  How many baseball players
+     can run, hit, and pitch?
+     
+     How many ISG Sales Reps are maintaining existing business relationships,
+     selling the big ticket items, and building a growing base of business?
+     It's a lot to ask, but all three of these are critical to our long-term
+     success.
+     
+     The pressure is on to close big opportunities before the end of the
+     year.  It's business as usual -- right?  Come 1/1/87, you'll be asked
+     "what have you done for me lately" by you-know-who!
+     
+     In between selling those "big ones," why not sell two or three pieces of
+     ACS business?  Come January, you might have an "extra" $15,000/mo.  By
+     June, with our nurturing, you've got $30,000/mo.  By year end, the
+     combined ongoing revenue from these closes could be worth half a million
+     dollars a year!
+     
+     
+                  . . . XCHANGE CALENDARS STILL AVAILABLE . . .
+     
+     ACS still has some Xchange calendars available.  They cover from July 86
+     to July 87, and they are available in lots of 10 from ACS.B/RAYMOND.
+     
+     
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                       . . . CURRENT ACS PUBLICATIONS. . .
+     
+     All publications ACS has available to assist your sales efforts are
+     listed in the OnTyme file *** ACS.PUBLICATIONS.
+     
+     Brochures:
+      ACS Brochure (Pubs #61)
+      ACS "New Partnerships" Mailer (Pubs # 11)
+      OrderXchange mailer (Pubs #55)*
+     
+      Coming Soon:
+      SalesMate Brochure
+     
+     Data Sheets:
+      FileXchange (Pubs #64)
+      FOCUS (Pubs #38)
+      OnTyme New Features (Pubs #31)*
+      PC/FOCUS (Pubs #37)
+      Tymnet (Pubs #148)
+      Tym/COMM Data Sheet update (Pubs #13)*
+     
+     Selling Tools:
+      ComputerLand Success Story (Pubs #185)
+      IDP Success Story (Pubs #131)
+      "What's Selling?: Issue 4" (Pubs #151)
+      "What's Selling?: Issue 5" (Pubs #26)
+      "What's Selling?: Issue 6" (Pubs #12)*
+      "What's Selling?: Issue 7" (Pubs #41)*
+      "What's Selling?: Issue 8" (Pubs #72)*
+      "What's Selling?: Issue 9" (Pubs #84)*
+     
+      Coming Soon:
+      Florafax Success Story
+      Ford Success Story
+      CLASS Success Story
+      TWRA Success Story
+      ACS Slide Show and script
+     
+     Reference:
+      Auxiliary Services Price Schedule (Pubs #466)
+      FOCUS User's Manual Rel 5.0 (Pubs #149)
+      OnTyme Beg. Class Instructor's Guide (Pubs
+       #56)
+      OnTyme Beg. Class Student's Guide (Pubs #57)
+      OnTyme Beg. Class Slides (Pubs #54)*
+      OnTyme Quick Reference Guide (Pubs #603)
+      3033-TYMSLICE Price Schedule (Pubs #593)
+      3083-TYMSLICE Price Schedule (Pubs #181)
+      OnTyme Price Schedule Update (Pubs #45)*
+     
+     
+     From the  TYMNET "please  log in"  prompt, type  PUBS;ORDERPUBS84.   The
+     system is  self-prompting.   (If your department is not yet valid in the
+     PUBS system,  send an  OnTyme to  ACS.MKTSVCS.)    A  complete  list  of
+     publications is available in *** ACS.PUBLICATIONS.
+     
+     * = Order from ACS.B/RAYMOND
+     
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     
+      =====================================================================
+     Send your Newsflash news or news leads to ACS.NEWSFLASH or telephone Bob
+     Raymond of  Marketing Publications  at 408-446-6758 by the first week of
+     the month.
+     
+     The Newsflash  is distributed around the 22nd of each month.  It is also
+     listed as a public file, *** ACS.NEWSFLASH.
+     
+     News gathered,  written, word  processed, and  distributed by  Marketing
+     Publications.
+      =====================================================================
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Thu, 7 Aug 86 17:05:44 UT
+From: ISGHQ.K/PETERS@Ontyme.Tymnet 
+Date: Thu, 7 Aug 86 17:05:44 UT 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: J72750@Ontyme.Tymnet 
+Subject: "MCDONNELL DOUGLAS INFORMATION"... 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Mon, 18 Aug 86 13:24:25 PDT 
+Resent-to: Joe Smith <jms@X930.Tymnet>, Osman Guven <osman@X930.Tymnet>, Dennis
+	Coffey <dencoff@C26.Tymnet>, Craig Fletcher <fletcherc@X930.Tymnet> 
+
+
+            MCDONNELL DOUGLAS INFORMATION SYSTEMS GROUP
+
+                      ADMINISTRATIVE BULLETIN
+
+
+No. ISG-86-80                                      7 August 1986
+
+
+To:           All ISG Employees
+
+Subject:      STATUS OF ISG MERIT REVIEW PROGRAM AND EMPLOYEE 
+              SAVINGS PLAN
+
+                                                                   
+
+
+In the past few months, there has been considerable discussion 
+over two ISG-wide issues:
+
+    o    When will merit increases be reinstated?
+
+    o    What changes, if any, will be made in the ISG Employee 
+         Savings Plan?
+
+The purpose of this memo is to let you know where things stand 
+regarding these issues.
+
+We plan to resume ISG's merit review program in January 1987.  
+While I cannot provide details just yet, I can assure you that 
+whatever process we use will address the fact that some 
+individuals have gone longer than others without a merit review.  
+I realize that the suspension of such review has been, at best, a 
+major inconvenience for all of us.  However, it really has 
+bettered our chances of achieving ISG's earnings objective.  I'm 
+counting on your continued patience until we've finished the job 
+we set out to do this year.
+
+As for the ISG Employee Savings Plan, you received word several 
+months ago that we were considering changes in the way matching 
+contributions are handled.  After careful study, however, we have 
+decided to make no changes in the plan at this time.
+
+
+
+Jeremy J. Causley
+Group Executive Officer
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Tue, 12 Aug 86 21:05:46 UT
+From: ISGHQ.K/PETERS@Ontyme.Tymnet 
+Date: Tue, 12 Aug 86 21:05:46 UT 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: J74500@Ontyme.Tymnet 
+Subject: "MCDONNELL DOUGLAS COMPUTER SYSTEMS"... 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Mon, 18 Aug 86 13:24:33 PDT 
+Resent-to: Joe Smith <jms@X930.Tymnet>, Osman Guven <osman@X930.Tymnet>, Dennis
+	Coffey <dencoff@C26.Tymnet>, Craig Fletcher <fletcherc@X930.Tymnet> 
+
+
+             MCDONNELL DOUGLAS COMPUTER SYSTEMS GROUP
+
+                      ADMINISTRATIVE BULLETIN
+
+
+No. CSC-86-27                                      11 August 1986
+
+
+To:           MDCSC & MDFSC Lists A-G, ISG List A-E, MDC List A-C
+
+Subject:      NEW ASSIGNMENT/PROMOTION FOR BILL FREEMAN
+
+                                                                   
+
+It gives me great pleasure to announce the promotion of Bill 
+Freeman, currently Director of Business Management, Computer 
+Systems in MDISI.  Effective August 11, Bill will assume the 
+position of Vice President, Research and Development for the 
+Computer Systems Company.  Bill will be based at CSC headquarters 
+in Newport Beach, California and will report to myself.  The 
+following individuals will report to Bill:
+
+    Steve Vernon, Vice President, UK Development
+    Bill Schrader, Vice President, US Development
+    Frank Reinhart, Vice President, Advanced Product Development
+
+Bill's extensive background in sales, marketing, and business 
+management within the computer industry over the past 12 years has 
+provided him with the skills that I feel are important to the task 
+of coordinating our internal worldwide engineering functions as 
+well as coordinating with the sales and marketing entities which 
+distribute our products.  Bill's experience in his most recent 
+role of translating MDISI market needs into specific product 
+development requirements will be invaluable to this effort as 
+well.
+
+I feel that this level of coordination will allow us to remain 
+competitive by targeting our efforts on products to meet the needs 
+and demands of our internal and external clients.  Through the 
+coordinated efforts of this organization with the worldwide 
+manufacturing organization under Greg Lawson (Vice President, 
+Manufacturing), CSC will be even better positioned to deliver high 
+quality competitive products.
+
+
+Otis H. Brinkley
+President
+McDonnell Douglas
+Computer Systems Company
+
+Concurrence:
+
+J. J. Causley
+Group Executive Officer
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Thu, 14 Aug 86 1:05:56 UT
+From: ACS.P/LEHAGRE@Ontyme.Tymnet 
+Date: Tym/COMM Ordering Procedure 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: A22619@Ontyme.Tymnet 
+Subject: "1 APPLIED COMMUNICATIONS SYSTEMS"... 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Mon, 18 Aug 86 13:24:40 PDT 
+Resent-to: Joe Smith <jms@X930.Tymnet>, Osman Guven <osman@X930.Tymnet>, Dennis
+	Coffey <dencoff@C26.Tymnet>, Craig Fletcher <fletcherc@X930.Tymnet> 
+
+ 
+
+ 
+ 
+                                                                        1
+ 
+ 
+                         APPLIED COMMUNICATIONS SYSTEMS
+                                        
+                              M E M O R A N D U M
+                                        
+                                                                   [ ]  ISG
+     DATE>        August 11 1986
+     
+     TO>          The World
+     
+     FROM>        Rose Hayden, Applied Communications Systems Company
+     
+     SUBJECT>     Tym/COMM 4.0 with X.PC
+     
+     ----------------------------------------------------------------------
+     
+     Tym/COMM 4.0 is now available!  Tym/COMM 4.0 provides multiple channel
+     X.PC support, which enables users to connect to 15 different hosts or
+     network services simultaneously.  Tym/COMM 4.0 also contains TYMGEN ,
+     a menu-driven program that makes it easy to set operating parameters,
+     even for novice users.
+     
+     Other enhancements include approximately 20 new procedure statements,
+     variable support, and expanded appendices in the user's manual.
+     
+         1.   Internal users may order Tym/COMM either of two ways:
+     
+              A. Sending a requisition or Sales Order Form to:
+     
+                         McDonnell Douglas ACS
+                         20605 Valley Green Drive
+                         Cupertino, CA  95014
+                         Attn:  SMD Order Administration VG3-05
+     
+              B. Sending an OnTyme to ACS.SOFTORDER
+     
+              Each requisition or OnTyme should contain the following       
+              information:
+     
+                         - name
+                         - quantity desired
+                         - shipping address
+                         - phone number
+                         - requested arrival date
+                         - cost code and/or department number
+                         - general ledger account number
+     
+     Orders are generally processed the day they are received, and are
+     shipped UPS.  Customers can usually expect to receive the product
+     within 5 to 7 working days.  Incomplete information may delay orders.
+     
+     For Tym/COMM technical support, please call the ACS Customer Service
+     Center at 800 435-8880.  The ACS Customer Service Center operates
+     Monday through Friday, between the hours of 6:00 a.m. - 6:00 p.m.
+     Pacific Time.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                                                        2
+ 
+ 
+     
+     The internal transfer price will remain the same $114.75 per unit,
+     upgrades for versions 3.0 of Tym/COMM are available for a cost of
+     $20.00, plus the return of the system diskette.  To order an upgrade,
+     follow the instructions detailed above.  Don't forget to return your
+     diskette!
+     
+     
+     :pel
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Fri, 15 Aug 86 1:07:37 UT
+From: CORP.SUP@Ontyme.Tymnet 
+Date: ACCOUNT NAME CHANGE 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: A23396@Ontyme.Tymnet 
+Subject: "T Y M N E T MCDONNELL DOUGLAS"... 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Mon, 18 Aug 86 13:24:48 PDT 
+Resent-to: Joe Smith <jms@X930.Tymnet>, Osman Guven <osman@X930.Tymnet>, Dennis
+	Coffey <dencoff@C26.Tymnet>, Craig Fletcher <fletcherc@X930.Tymnet> 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                           T Y M N E T 
+ 
+            MCDONNELL DOUGLAS NETWORK SYSTEMS COMPANY
+ 
+ 
+ 
+                                        20705 Valley Green Drive
+                                        Cupertino, CA  95014
+ 
+ 
+ 
+ 
+ 
+DATE:          August 14, 1986
+ 
+ 
+FROM:          Carolee Neff
+ 
+SUBJECT:       ONTYME ACCOUNT NAME CHANGE
+ 
+================================================================
+ 
+As of August 18th the CORP account will be renamed 
+so please use the new Ontyme names to send messages to
+the following:
+ 
+   EXECUTIVE OFFICES
+ 
+       NSCHQ.SUP         WARREN PRINCE
+       NSCHQ.SUP         PHIL KRETER
+       NSCHQ.SUP         CAROLEE NEFF
+ 
+    
+    LEGAL DEPARTMENT
+ 
+       NSCHQ.LAW         CHARLES FAUBION
+       NSCHQ.LAW         JACK ORLOVE
+       NSCHQ.LAW         JOANNE HUGHES
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Mon, 18 Aug 86 14:17:10 PDT 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: GROUP FSC ONTYME NAME 
+
+Craig,
+  As per our actual usage of ONTYME and the cost-cutting efforts within
+FSC as a whole, in your absense we have talked about having our individual
+FSC.x/yyyyyy accounts removed and having a group ONTYME name FSC.TYMCOMX or
+FSC.TYMCOM-X.  We can discuss this at our next group meeting.
+
+/Carl
+Received: from B39.Tymnet by X930.Tymnet; Tue, 19 Aug 86 17:02:44 PDT
+From: William R. Soley <WRS@B39.Tymnet> 
+Date: Tue, 19 Aug 86 15:18:01 PDT 
+To: Joe Smith <JMS@X930.Tymnet> 
+Subject: Re: FREE program installed. 
+Resent-from: Joe Smith <JMS@X930.Tymnet> 
+Resent-date: Tue, 19 Aug 86 17:15:12 PDT 
+Resent-to: Monitor Group <JMS>, Carl, Osman 
+Resent-cc: FletcherC, DenCoff 
+In-reply-to: your message of Tue, 19 Aug 86 14:48:24 PDT
+
+Putting it in the monitor might be nice.  The only disadvantage would be the
+loss of the log.  I supose you could put stuff in the stream.  On the other
+hand, I'm not sure anybody ever looks at the log.  I'd suggest the following
+parameters:
+
+	Number of free jobs desired.
+	Minimum idle time required to kill a job.
+	Maximum idle time allowed.
+	Some method of handling exemptness (JBTPRV?)
+
+Minimum idle would normally be something like 5 minutes.
+Maximum idle would normally be 2^35-1.
+Number of free jobs desired would be JOBN/10.
+Exemptness is the only tricky part.
+
+You wouldn't need a polling interval since you can check whenever somebody
+logs in and less than the desired free jobs left.  And also whenever a job
+becomes idle for the minimum time and less than the desired free jobs left.
+
+This would be better than FREE does now.
+
+Maybe also consider ports free?
+
+-Bill
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Wed, 20 Aug 86 11:20:41 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: HOTLINE not working after hours. 
+
+I called 794-2567 last night.  It rang and rang at Mary's desk, and was not
+forwarded to South Bay Answering Service.  This was supposed to have been
+fixed Aug 12th.
+
+			/Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Wed, 20 Aug 86 13:23:28 PDT 
+To: William R. Soley <WRS@B39.Tymnet> 
+Cc: (Monitor People) Carl@930, Osman@930, FletcherC 
+Subject: Re: crash on 36 
+In-reply-to: your message of Wed, 20 Aug 86 12:53:33 PDT
+
+It does not look like this particular crash was saved.  If it happens again,
+be sure to call Operations and get them to deposit 1 in 30.  We have seen
+a couple of similar hangs, here circuits into the system are till up, but
+no response.  The base is still happy since channel 1 is being serviced, but
+channel 7 is stuck in an infinite loop, trying to find the end of the DDB
+chain.  In two of the crashes, there is a loop in the linked list of TTY
+DDBs.  It looks as if the routine that unlinks a TTY DDB when the job is
+killed or zapped was storing the wrong new forward pointer.  I have added
+a consistancy check to SCNSER, it is is the P034/P33 monitor.
+
+
+
+
+			/Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Wed, 20 Aug 86 23:12:58 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: BOTLOD works on 3650 
+
+The version of BOTLOD on (M33:70) punches a paper tape that is capable
+of reading 3330 formatted in blocks, 3330 formattedn in pages, and 3650
+formatted in pages.   It also creates BOTLOD.KL, which is a .SAV file
+that needs to be converted to a .A10 file and copied to the KL's DECtape.
+
+		/Joe
+   }KQ}¸
