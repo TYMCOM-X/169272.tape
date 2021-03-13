@@ -1,0 +1,1280 @@
+must be in first position of a unit ";
+    return( false ); 
+    END;
+
+  !---------------------------------------------------------------------------;
+  !	AS: "EVERY 5 DAYS" OR "10TH DAY OF EVERY MONTH" OR "2ND MONDAY" etc.  ;
+  !---------------------------------------------------------------------------;
+  if ValNum( Str ) then 	! a number encountered at BEGINning of unit or;
+    BEGIN                  	!   after an "EVERY";
+    cycle_ cvd( Str ); 		! store the number in "cycle";
+    if cycle = 0 then
+        BEGIN
+      GS!ERR_ "CYCLE MUST BE GREATER THAN ZERO";
+      return( false );
+        END;
+    if length( S ) = 0 then 	! so far so good, return for more;
+      return( false )
+    else
+      Str_ LopWrd( S ); 	! stuff left in string so get next word;
+
+    if KEQU( Str,"EVERY" ) then 	! such as in "10TH [OF] EVERY MONTH";
+      BEGIN
+      Str_ LopWrd( S ); 		! get next;
+      if kequ( Str,null ) then
+        return( false );
+      END;
+
+    if KEQU( Str[ 1 for 5 ],"MONTH" ) then
+      BEGIN 
+      if not GB!Coded then 	! must be expression such as "EVERY nTH MONTH";
+        BEGIN
+        SetCode( 0,TypN,Cycle,1,EndCon );
+        return( true );
+        END
+      else 				! such as "... OF EVERY nTH MONTH";
+        BEGIN
+        if cycle > 9 then ! multiplier must be < 10;
+          cycle_ 9;
+        END;
+    
+      if GB!DayCyc then 		! first unit of this same expression was days;
+        SetCode( 0,TypN,Cycle,GI!DayCyc,EndCon )
+      else 	     ! second part of exp as "1ST WED OF EVERY [cycle] MONTH";
+        SetCode( 0,0,Cycle,0,EndCon );
+  
+      GB!MonUnit_ true; 		! second unit of 2 unit exp must be month unit;
+      return( true );
+      END ;
+
+    if ValidDaOfWk( Str ) then 	! for example: "EVERY MONDAY" or "2ND WED";
+      BEGIN
+      SetCode( Cycle,TypW,0,DayNum( Str) ,EndCon );
+      return( true );
+      END;
+
+    if KEQU( Str[1 for 3], "DAY" ) then 	! as in "EVERY nTH DAY";
+      BEGIN
+      GI!DayCyc_ Cycle;
+      SetCode( 1,TypN,0,Cycle,EndCon );
+      GB!DayCyc_ true; 			! a cyclic day unit has been coded;
+      return( true );
+      END;
+
+    if KEQU( Str[1 for 6], "MINUTE" ) then 	! as in "EVERY nTH MINUTE";
+      BEGIN
+      if Cycle > 1439 then
+        BEGIN
+        GS!ERR_ "MINUTES MUST NOT BE > 1439";
+	return( false );
+        END;
+      SetCode( 0,TypT,0,Cycle,EndCon );
+      STIM( Tfract( TheTime ) ); 	  ! Default ref-time is current time. ;
+      ! SREF( Cycle );
+      return( true );
+      END;
+
+    if KEQU( Str[1 for 4], "HOUR" ) then 	! as in "EVERY nTH HOUR";
+      BEGIN
+      if Cycle > 23 then
+        BEGIN
+        GS!ERR_ "HOURS MUST NOT BE > 23";
+	return( false );
+        END;
+      SetCode( 0,TypT,0,Cycle * 60,EndCon );
+      STIM( Tfract( TheTime ) );	  ! Default ref-time is current time. ;
+      ! SREF( Cycle * 60 );
+      return( true );
+      END;
+
+    GS!ERR_ GS!ERR & "(" & Str & ")" &
+		 "EXPECTED 'MONTH' OR 'DAY' OR A DAY OF THE WEEK";
+    return( false ); 			! Fall-through to here means error ;
+
+    END; 						! if ValNum;
+
+  if KEQU( Str[ 1 for 5 ],"MONTH" ) then 		! as "EVERY MONTH";
+    BEGIN 
+    if not GB!Coded then 	! whole exp is "EVERY MONTH" or "MONTH";
+      BEGIN
+      if Cycle = 0 then
+        Cycle_ 1; 		! "MONTH" becomes "EVERY MONTH" ;
+      SetCode( 0,TypN,Cycle,1,EndCon );
+      END
+    else
+      BEGIN
+      if GB!DayCyc then ! second half of exp as: "nTH DAY EVERY [cycle] MONTHS";
+        SetCode( 0,TypN,Cycle,GI!DayCyc,EndCon )
+      else 	    ! it's the second unit of exp as "3RD MOND OF EVERY MONTH";
+        SetCode( 0,0,1,0,EndCon );
+      END;
+    GB!MonUnit_ true; 		! second unit of 2 unit exp must be month unit;
+    return( true );
+    END;
+  
+  !---------------------------------------------------------------------------;
+  !									      ;
+  !---------------------------------------------------------------------------;
+  if ValidDaOfWk( Str ) then 			! as in "EVERY MONDAY" (  );
+    BEGIN
+    if Cycle = 0 then ! Only the next DOW is required so figure the date ;
+      BEGIN
+      base_ TodaysIntrnDat;		! base is disp from 1-jan-64 ;
+      TGTday_ DayNum( Str );
+      BaseDayNum_ ( base + 4 ) mod 7;	! +4 = sat when mod 7 ;
+      BaseDay_ WkDay[ BaseDayNum ];
+      if BaseDayNum = TGTday then
+        diff_ 0
+      else
+        if BaseDayNum < TGTday then
+          diff_ abs( BaseDayNum - TGTday )
+        else
+          diff_ 7 - ( BaseDayNum - TGTday );
+      NextDate_ base + diff; 
+      SetCode( 0,TypS,0,0,EndCon );
+      if NextDate = base then
+        SREF( NextDate + 7 )
+      else
+        SREF( NextDate );
+      GB!SpecDat_ true;
+      return( true );
+      END
+    else
+      BEGIN
+      SetCode( Cycle,TypW,0,DayNum( Str ),EndCon );
+      return( true );
+      END
+    END;
+
+  if KEQU( Str[1 for 3], "MIN" ) then 		! as in "EVERY MINUTE" ;
+    GS!ERR_ "FORMAT IS 'EVERY n MINUTES'.";
+
+  if KEQU( Str[1 for 3], "HOU" ) then 			! as in "EVERY HOUR" ;
+    GS!ERR_ "FORMAT IS 'EVERY n HOURS'." ;
+
+  !---------------------------------------------------------------------------;
+  !	as: "EVERY DAY".						      ;
+  !---------------------------------------------------------------------------;
+  if KEQU( Str[1 for 3], "DAY" ) then 			! as in "EVERY DAY" ;
+    BEGIN
+    if cycle = 0 then 				! need to know how many days;
+      BEGIN
+      GS!ERR_ "NEED HOW MANY DAYS OR EVERY DAY";
+      return( false );
+      END
+    else
+      BEGIN
+      GB!DayCyc_ true; 			   ! a cyclic day unit has been coded;
+      SetCode( 1,TypN,0,cycle,EndCon );
+      return( true );
+      END
+    END;
+  return( false );		! Valid Unit will never get to this point ;
+END "unit";
+
+
+simple boolean procedure ValidExpression( string S;
+					  reference string GS!ERR
+					);
+!-----------------------------------------------------------------------------;
+!									      ;
+! returns true with GS!ERR = null if a valid expression was passed.	      ;
+!									      ;
+!-----------------------------------------------------------------------------;
+BEGIN "ValidExpression"
+  string ExpSoFar;
+
+  DEEBUG( crlf&"EXPR: "&S );
+  ExpSoFar_ null;
+
+  while true do				 ! get rid of leading blanks;
+    if kequ( S[1 for 1] , " " ) then
+      S_ S[ 2 to inf ]
+    else
+      done;
+
+  while not UNIT( ExpSoFar,GS!ERR ) do
+    BEGIN "first unit"
+    if kequ( S,null ) and kequ( GS!ERR,null )  then 
+      GS!ERR_ "INVALID EXPRESSION (A)";
+    ExpSoFar_ ExpSoFar & LopWrd( S ) & " ";   ! add next word, then retry UNIT;
+    if kequ( GS!ERR,null ) then   ! string passed to UNIT was not enough to be;
+      continue                    ! valid but no detectable error yet.;
+    else
+      return( false ); ! error;
+    END "first unit";
+
+  GB!DayCyc_ false;
+  ExpSoFar_ null;
+
+  if length( S ) > 0 then
+    BEGIN "possible second unit"
+    GB!MonUnit_ false; ! true if unit found is a month unit;
+
+    while not UNIT( ExpSoFar,GS!ERR ) do 	! same routine as above;
+      BEGIN "find month unit or time"
+      if kequ( S,null ) and kequ( GS!ERR,null )  then 
+        BEGIN "nothing valid yet but no more"
+        if kequ( ExpSoFar[ inf for 1 ]," " ) then
+          ExpSoFar_ ExpSoFar[ 1 to inf - 1 ];
+        if ValidTimeStr( ExpSoFar ) or ValNum( ExpSoFar ) then
+          BEGIN
+ 	  if ValNum( ExpSoFar ) and cvd( ExpSoFar ) > 24 then
+	    BEGIN "invalid hour"
+            GS!ERR_ "(1)Hour of THE DAY MUST NOT BE GREATER THAN 24.";
+	    return( false );
+	    END "invalid hour"
+          else
+	    BEGIN "load time"
+            STIM( TFract( ExpSoFar ) );
+            GB!MonUnit_ GB!SpecDat_ true;
+            return( true );
+	    END "load time";
+          END
+        else
+          BEGIN "nothing left but not enough"
+          GS!ERR_ "INVALID EXPRESSION (B)";
+          END "nothing left but not enough"
+        END "nothing valid yet but no more";
+
+      ExpSoFar_ ExpSoFar & LopWrd( S ) & " ";
+      if kequ( GS!ERR,null ) then
+        continue
+      else
+        return( false ); 			! error detected in UNIT;
+
+      END "find month unit or time";
+
+    if NOT GB!MonUnit then
+      BEGIN 
+      GS!ERR_ "SECOND UNIT IN TWO UNIT EXPRESION MUST BE A MONTH UNIT.";
+      return( false );
+      END
+
+    END "possible second unit";
+
+  if kequ( S[ inf for 1 ]," " ) then
+    S_ S[ 1 to inf - 1 ];
+
+  if length( S ) > 0 then 
+    BEGIN "time was after month unit"
+    if ValidTimeStr( S ) or ValNum( S ) then
+      BEGIN
+      if ValNum( ExpSoFar ) and cvd( ExpSoFar ) > 24 then
+        BEGIN
+        GS!ERR_ "(3)Hour of THE DAY MUST NOT BE GREATER THAN 24.";
+        return( false );
+        END;
+      STIM( TFract( S ) );
+      return( true );
+      END
+    else
+      BEGIN
+      GS!ERR_  "UNKNOWN TERMS: <" & s & ">";
+      return( false );
+      END
+    END "time was after month unit"
+  else
+    BEGIN
+    return( true );
+    END
+END "ValidExpression";
+
+
+boolean procedure ValidGroup( string OrigStr;
+			      reference string GS!ERR
+			    );
+!-----------------------------------------------------------------------------;
+!									 ;
+! 		Gets all up to next "AND" or the END of expression.	      ;
+!									      ;
+!-----------------------------------------------------------------------------;
+BEGIN "ValidGroup"
+  integer ModDate,ModTime,ModNum;
+  string OneExpSoFar,NxtWrd,LatestMod;
+
+  boolean procedure TooLong;
+  BEGIN "TooLong"
+    If GI!Pos = E!Length then
+      BEGIN "too large"
+      GS!ERR_ "TOO MANY EXPRESSIONS. MAX = " & cvs( E!MaxItem );
+      return( true );
+      END "too large"
+    else
+      return( false );
+  END "TooLong";
+
+  DEEBUG( crlf&"Grou: "&OrigStr );
+  OneExpSoFar_ LatestMod_ null;
+  NxtWrd_ LopWrd( OrigStr );
+
+  while true do
+    BEGIN "assemble first expression"
+    if ValModifier( NxtWrd ) then	! mod found;
+      BEGIN "modifier encountered"
+      LatestMod_ NxtWrd; 		! store the modifier;
+      done;	 			! first expression cpmplete. ;
+      END "modifier encountered"
+    else
+      BEGIN "add latest word to our expression"
+      OneExpSoFar_ OneExpSoFar & NxtWrd & " ";
+      if length( OrigStr ) = 0 then
+        done
+      else
+        NxtWrd_ LopWrd( OrigStr );
+      END "add latest word to our expression"
+    END "assemble first expression";
+
+  if ValidExpression( OneExpSoFar,GS!ERR ) then ! evaluate what we've got ;
+    BEGIN "first expression was valid"
+    if length( OrigStr ) = 0 then  ! if END of string;
+      BEGIN "no more"
+      if kequ( LatestMod,null ) then
+        BEGIN "wrap up"
+
+        GI!Pos_ GI!Pos + D!Length;			DEEBUG( "<f1>" );
+
+        if TooLong then
+          return( false );
+
+        return( true );
+
+        END "wrap up"
+      else
+        BEGIN		
+        GS!ERR_ "MODIFIER MUST BE FOLLOWED BY A DATE";
+        return( false );
+        END
+      END "no more"
+    END "first expression was valid"
+  else
+    BEGIN 
+    return( false );
+    END;
+
+  if TooLong then
+    return( false );
+
+  OrigStr_ LatestMod & " " & OrigStr;    ! modifier which caused break is Put back;
+
+  ! OrigStr now consists of a modifier followed by more words. ;
+  while true do
+    BEGIN "loop once for each mod followed by a date"
+    OneExpSoFar_ LatestMod_ null;
+    while true do
+      BEGIN  "loop once for each word"
+      NxtWrd_ LopWrd( OrigStr );
+      if ValModifier( NxtWrd ) then
+        BEGIN "found a modifier"		DEEBUG( " '"&NxtWrd&"' " );
+        if kequ( LatestMod,null ) then
+          BEGIN "first mod on this loop"
+          LatestMod_ NxtWrd;
+          case LatestMod[1 for 1] of
+            BEGIN
+            [ "A" ] [ "a" ] ModNum_ ( AftCon );
+            [ "B" ] [ "b" ] ModNum_ ( BefCon );
+            [ "S" ] [ "s" ] ModNum_ ( StaCon );
+            [ "U" ] [ "u" ] ModNum_ ( UntCon );
+            [ "E" ] [ "e" ] ModNum_ ( ExcCon )
+            END;
+
+          if length( OrigStr ) > 0 then
+	    BEGIN "there is more"
+            continue
+	    END "there is more"
+          else
+	    BEGIN "nothing left"
+            if kequ( OneExpSoFar,null ) then
+              BEGIN "nothing between modifiers"
+              GS!ERR_ "CONTIGUOUS MODIFIERS";
+              return( false );
+              END "nothing between modifiers"
+            else
+	      BEGIN "enough for a new expression"
+              done;
+	      END "enough for a new expression"
+	    END "nothing left"
+          END "first mod on this loop"
+        else
+          BEGIN "replace newfound modifier"
+          OrigStr_ NxtWrd & " " & OrigStr;
+          done;
+          END "replace newfound modifier"
+        END "found a modifier"
+      else
+        BEGIN "not a mod so add it on"
+        OneExpSoFar_ OneExpSoFar & " " & NxtWrd;
+        if length( OrigStr ) > 0 then
+          BEGIN "more to come"				DEEBUG( " "&NxtWrd );
+          continue;
+          END "more to come"
+        else
+          done;
+        END "not a mod so add it on"
+
+      END "loop once for each word";
+
+    GI!Pos_ GI!Pos + D!Length;   			DEEBUG( "<f2>" );
+
+    ! Modififier followed by some expression has been found so check it. ;
+    if ValidExpression( OneExpSoFar,GS!ERR ) then
+      BEGIN  "expression was valid"
+      ModDate_ GREF;
+      ModTime_ GTIM;
+
+      if ModNum < 4 and Not GB!SpecDat then
+        BEGIN
+        print( crlf,"ModNum=<",ModNum,">" );
+        GS!ERR_ "NEED A DATE WITH AFTER/UNTIL" & crlf &
+                  "  EX: STARTING MMM DD, YYYY .";
+        return( false );                
+        END;
+
+      GB!Coded_ true;
+
+      if ModNum = AftCon then			
+        BEGIN
+        GI!Pos_ GI!Pos - D!Length; 		DEEBUG( "<b1>" );
+        SREF( ModDate );			DEEBUG( "(3)SREF" );
+        GI!Pos_ GI!Pos + D!Length; 		DEEBUG( "<f3>" );
+        ClearCode;
+        END
+      else
+        BEGIN  "mod was not after"
+        Connect( ModNum ) ;			DEEBUG("PConn(1):"&ModNum&" ");
+        END "mod was not after";
+
+      if TooLong then
+        return( false );
+
+      if length( OrigStr )  > 0 then
+        continue
+      else
+        BEGIN
+!        GI!Pos_ GI!Pos + D!Length; 	!	DEEBUG( "<f4>" );
+        return( true );
+	END;
+
+      END "expression was valid"
+    else
+      BEGIN
+      return( false );
+      END
+    END  "loop once for each mod followed by a date";
+
+END "ValidGroup";
+
+
+simple boolean procedure ParsedOK( string S;
+				   reference string GS!ERR
+				 );
+!-----------------------------------------------------------------------------;
+!									      ;
+! takes user's date sentence up to the end and sends it to routines to parse. ;
+! If the sentence contains "and"'s, this procedure takes everything between   ;
+!   "and"'s and individually parses each until whole sentence is done.        ;
+! Returns true if no errors detected. 					      ;
+!									      ;
+!-----------------------------------------------------------------------------;
+BEGIN
+  string Onestring;
+  integer ANDcount;
+
+  DEEBUG( crlf&"PaOK: "&S );
+  if HowMany( S,"BEFORE" ) > 1 then
+    BEGIN
+    GS!ERR_ "NO MORE THEN 1 BEFORE/UNTIL PER DATE SPECIFIER";
+    return( false );
+    END;
+
+  ANDcount_ HowMany( S,"AND" );
+  while true do
+    BEGIN
+    Onestring_ S_ " " & S; 	! first word not a modifier so replace.;
+    if ANDcount > 0 then
+      Onestring_ LopTo( S,"AND" ); 	  ! get everthing upto next "and";
+    if ValidGroup( Onestring,GS!ERR ) then 	! should be a valid group;
+      BEGIN
+      if ANDcount > 0 then 		! there is another "and" ahead;
+        BEGIN
+        GB!Coded_ true;
+        Connect( AndCon ) ;
+        END;
+      ANDcount_ ANDcount - 1;
+      if ANDcount < 0 then
+        BEGIN 
+	PutConn( EndCon );
+        return( true );
+	END
+      else
+        continue;
+      END
+    else
+      BEGIN
+      return( false );
+      END
+    END 						! while true;
+END;
+
+     2SUBMSC.REQ   U06-Jun-86 13:15:07  YUWLAV    require "  Misc Submit program routines " message ;
+
+external integer		! the following integers are breaks;
+	BrkChr			! holds break character     ;
+,	ToBlnk			! sp cr lf  , omit sp,  INS ;
+,	NDigit			! digits    , omit nul, XS  ;
+,	SkJunk			! a-z0-9/:<>, omit nul, IR  ;
+,	NxtWrd			! a-z0-9/:<>, omit nul, XS  ;
+,	EB			! =	    , omit nul, INS ;
+,	ToDot			! .         , omit nul, INS ;
+,	SKCB			! , sp      , omit nul, IR ;
+,	ToCB			! , sp      , omit nul, XS ;
+,	LnBrk			! a-z0-9    , omit nul, XS  ;
+,	UpCase			! nul       , omit nul, XSK ;
+;
+
+external simple string  procedure Trim( string str );
+external simple integer procedure FndKey( String Key; String Array Names );
+external simple integer procedure Exact( String Key; String Array Names );
+external simple string  procedure LopWrd( reference string S );
+external simple string  procedure LopTo( reference string S; String Target ); 
+external simple integer procedure HowMany( string S,Target ); 
+external simple integer procedure
+  Val( string array AR; reference string S; integer ArrSize );
+external simple boolean procedure ValNum( string S );
+external simple boolean procedure ValOrd( reference string S );
+external simple integer procedure IntRead( string msg );
+external simple string procedure upper( string rawstring );
+external simple string procedure prompt( string PromptLine, default );
+external simple boolean procedure CryForHelp( string Word );
+external simple integer procedure Vik( String array Arr; 
+					reference string Target );
+external simple integer procedure Vail( String array Arr; 
+					reference string Target );
+external simple boolean procedure ValidDaOfWk( string S );
+external simple boolean procedure ValidMOY( string S );
+external simple boolean procedure ValidKey( reference  string S );
+external simple boolean procedure ValModifier( string S );
+external simple boolean procedure ValNmOrd( reference string S );
+external simple boolean procedure ValidTimeStr( reference string S );
+external simple boolean procedure ValDateStr( reference string S );
+
+
+require "(HELGEM)SUBMSC" library;
+
+     2SUBMSC.SAI   06-Jun-86 13:18:01  PECPAJ    
+entry
+
+	BrkChr, ToBlnk, NDigit, SkJunk, NxtWrd, ToCB,SKCB, EB, ToDot,  LnBrk,  UpCase,
+	Trim, FndKey, Exact,  LopWrd, LopTo,  HowMany,Val,    ValNum, ValOrd,
+	Prompt, Upper,  IntRead, ValDateStr,
+	CryForHelp, Vik, Vail, ValidTimeStr,  ValidDaOfWk,
+	ValidMOY, ValidKey, ValModifier, ValNmOrd
+;
+Begin "Miscellaneous Submit Routines"
+
+require "(SAILIB)SAIL.DEF"   source!file;
+require "(HELGEM)SUBMIT.DEF" source!file;
+
+Define	Alphs = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"}
+,	Digits = {"0123456789"}
+;
+
+
+internal integer		! the following integers are breaks;
+	BrkChr			! holds break character     ;
+,	ToBlnk			! sp cr lf  , omit sp,  INS ;
+,	NDigit			! digits    , omit nul, XS  ;
+,	SkJunk			! a-z0-9/:<>, omit nul, IR  ;
+,	NxtWrd			! a-z0-9/:<>, omit nul, XS  ;
+,	EB			! =	    , omit nul, INS ;
+,	ToDot			! .         , omit nul, INS ;
+,	SKCB			! , sp      , omit nul, IR  ;
+,	ToCB			! , sp      , omit nul, XR  ;
+,	LnBrk			! a-z0-9    , omit nul, XS  ;
+,	UpCase			! nul       , omit nul, XSK ;
+;
+external string GS!Err;
+external string array WkDay[ 0:NumWkDay - 1 ];
+external string array Mos[ 0:NumMnths - 1 ];
+external string array Keys[ 0:NumKeys - 1 ];
+external string array GoodKey[ 0:NumKeys - 1 ];
+external string array Modifiers[ 0:NumMods - 1 ];
+
+
+simple procedure SetBreaks;
+begin
+    setbreak( LnBrk_  getbreak, Alphs&Digits,         null, "XS"  );
+    setbreak( NDigit_ getbreak, Digits,               null, "XS"  );
+    setbreak( SkJunk_ getbreak, Alphs&Digits&"/-:<>", null, "IR"  );
+    setbreak( NxtWrd_ getbreak, Alphs&Digits&"/-:<>", null, "XS"  );
+    setbreak( SKCB_   getbreak, ","&" ",              null, "IR" );
+    setbreak( ToCB_   getbreak, ","&" ",              null, "XR" );
+    setbreak( EB_     getbreak, "=" ,		      null,"ins" );
+    setbreak( ToDot_  getbreak, ".",                  null, "INS" );
+    setbreak( ToBlnk_ getbreak, " "&crlf,             " ",  "INS" );
+    setbreak( UpCase_ getbreak, null,                 null, "XSK" );
+end;
+require SetBreaks initialization;
+
+
+internal simple string procedure Trim( string str );
+! Return string 'str' with all space characters removed ;
+BEGIN "Trim"
+	string sav;
+sav_ scan( str, ToBlnk, BrkChr );
+while BrkChr = 32 do
+  sav_ sav & scan( str, ToBlnk, BrkChr );
+return( sav );
+END "Trim";
+
+internal simple integer procedure FndKey( String Key; String Array CMD.Names );
+begin "Find Key"
+    Own Integer Low, High, CMD.Index, Cmd;
+
+    Low_  ArrInfo( CMD.Names, 1 );	! initialize low index   ;
+    High_ ArrInfo( CMD.Names, 2 );	! initialize high index  ;
+
+    CMD.Index_ Low - 1;			! setup default: invalid ;
+
+    For Cmd_ Low step 1 until High	! for each keyword;
+     do
+	If kequ( Key, CMD.Names[ Cmd ][1 for length(Key)] )
+	 then if kequ( Key, CMD.Names[ Cmd ] )
+	     then Return( Cmd )		!  -- exact match --;
+	     else if CMD.Index < Low	!  -check ambiguity-;
+		then CMD.Index_ Cmd	!  Ok, set instance ;
+		else Return( Low - 2 );	!  No, set error    ;
+
+    Return ( CMD.Index );		! return result;
+end "Find Key";
+
+
+internal simple integer procedure Exact( String Key; String Array Names );
+begin "Exact match"
+    Own Integer Low, High, CMD.Index, Cmd;
+
+    Low_  ArrInfo( Names, 1 );		! initialize low index   ;
+    High_ ArrInfo( Names, 2 );		! initialize high index  ;
+
+    For Cmd_ Low step 1 until High	! for each keyword ;
+     do if kequ( Key, Names[ Cmd ] )	!  if exact match  ;
+	 then return( Cmd );		!   return index   ;
+
+    return( Low - 1 );			! return default: invalid ;
+
+end "Exact match";
+
+
+internal simple string procedure LopWrd( reference string S );
+! returns everything up to the first blank space;
+  return( scan( S,ToBlnk,BrkChr ) ); 
+
+
+internal simple string procedure LopTo( reference string OrigS; String Target ); 
+! returns everything until "Target";
+begin
+    string SS,Str;
+
+    SS_ Str_ null;
+    while Not kequ( SS,Target ) do
+    begin
+      Str_ Str & SS & " "; 	! add on what we,ve got;
+      SS_ LopWrd( OrigS );	! get next word from "OrigS";
+      if length( OrigS ) = 0 then ! if break word is last word in OrigS then;
+	return( null );		!   don't bother returning anything;
+    end;
+    return( Str ); 		! return all up to, but not including "Target";
+end;
+
+
+internal simple integer procedure HowMany( string S,Target ); 
+! returns number of times "Target" appears in string S;
+BEGIN
+  integer count;
+
+  count_ 0;
+  while ( length( S ) ) do 	! check the whole string;
+  BEGIN
+    if kequ( LopWrd( S ),Target ) then	! is it same as "Target";
+      count_ count + 1;		! if so, increment counter;
+  END;
+  return( count );
+
+END; ! HowMany;
+
+
+internal simple integer procedure Val( string array AR; 
+					reference string S; integer ArrSize );
+! see if string S appears in array AR ;
+BEGIN
+  integer i,SavI ;string Str,Sav ; boolean MatchF ;
+  Sav_ S; SavI_ -1; MatchF_ false ; Str_ null;
+  if kequ( S,null ) then
+    return( false );
+  while true do
+  BEGIN "add to str"
+    if length( S ) then
+    BEGIN
+      Str_ Str & Lop( S );
+      ! print( crlf,"LOP:<",Str,">" );
+      MatchF_ false;
+      for i_ 0 upto ArrSize - 1 do
+      BEGIN
+        ! print(" ",i,":",AR[i][1 for length( Str) ] );
+        if kequ( Str,AR[ i ][ 1 for length( Str ) ] ) then
+        BEGIN 	
+          SavI_ i;
+          if MatchF then
+          BEGIN
+            continue "add to str" ;
+          END
+          else
+	  BEGIN
+            matchF_ true;
+          END
+        END
+      END; 
+      if not MatchF then
+      BEGIN
+        S_ Sav;
+        return( false );
+      END
+    END
+    else
+    BEGIN
+      if SavI geq 0 then
+      BEGIN
+        S_ AR[ SavI ];
+        return( true );
+      END
+      else
+      BEGIN
+        S_ Sav;
+        return( false );
+      END
+    END
+  END "add to str" ;
+END;
+
+
+internal simple boolean procedure ValNum( string S );
+! true if whole of "S" consists of an integer;
+BEGIN
+    integer NonDigit;
+
+  if kequ( S,null ) then
+    return( false );
+  S_ scan( S,NDigit,NonDigit );
+  if NonDigit then 
+    return( false )
+  else
+    return( true );
+
+END;
+
+
+internal simple boolean procedure ValOrd( reference string S );
+! validates words such as "FIRST" or "FOURTH";
+! if a correct abbreviation is typed, the full word will be substituted;
+BEGIN
+  preload!with
+  "FIRST","SECOND","THIRD","FOURTH","FIFTH",
+  "SIXTH","SEVENTH","EIGHTH","NINTH","TENTH";
+  own safe string array ChkOrds[ 0:NumOrds - 1 ];
+  integer i;
+
+  if length( S ) < 3 then 
+    return( false );
+
+  for i_ 0 upto NumOrds - 1 do		! check array for match;
+    if kequ( S,ChkOrds[ i ][ 1 for length( S ) ] ) then
+    BEGIN
+      S_ cvs( i + 1 );			! replace ord with integer equiv;
+      return( true );
+    END;
+
+  return( false );			! no match;
+
+END;
+
+
+
+internal simple integer procedure IntRead( string msg );
+! prompts with msg for integer TTY input.;
+begin
+	integer i;
+	string s;
+  print( msg );			! type the prompt ;
+  s_inchwl;			! get the response ;
+  i_ intscan( s,BrkChr );	! get the first integer in the response ;
+  return( i );			! return the integer ;
+end;
+
+
+internal simple string procedure upper( string rawstring );
+! converts rawstring to uppercase only.;
+begin
+	integer char;
+	string UpStr;
+  UpStr_ null;
+  while length( rawstring ) do	!  loop once for each char in rawstring ;
+    begin
+      char_ lop( rawstring );	! get char at beginning of rawstring ;
+      UpStr_ UpStr & ( if "a" LEQ char LEQ "z" then ! if char is lower ;
+  			char - '40	! change to upper ;
+  		    else
+  			char );		! already upper so leave alone ;
+    end;
+  return( UpStr );
+end;
+
+
+internal simple string procedure prompt( string PromptLine, default );
+! prompts with PromptLine and returns user response.;
+BEGIN "prompt"
+	string reply;
+  print( crlf, PromptLine );
+  if length( reply_ inchwl ) = 0 then
+    return( default )
+  else
+    return( reply );
+END "prompt";
+
+internal simple boolean procedure CryForHelp( string word );
+! ----------------------------------------------------------------------------;
+!									      ;
+! 		Returns true if "word" seems to be a help request. 	      ;
+!									      ;
+! ----------------------------------------------------------------------------;
+return(   kequ( word,"?" ) or
+	 kequ( word,"H" ) or
+	 kequ( word,"HE" ) or
+	 kequ( word,"HEL" ) or
+	 kequ( word,"HELP" ) 
+	);
+
+
+internal simple integer procedure ViK( 	string array Arr;
+				reference string Target );
+! ----------------------------------------------------------------------------;
+!									      ;
+! 	Search array "Arr" for "Target".  Return Array position if found,     ;
+!   	  else -1.  							      ;
+!									      ;
+! ----------------------------------------------------------------------------;
+				
+BEGIN "find it"
+	integer lower, upper, index, header;
+	string reply,word;
+
+if length( Target ) = 0 then
+  return( -1 );
+
+if arrinfo( Arr, -1 ) neq -1 then ! insure one dimentional string-array. ;
+  BEGIN "fatal"
+  print( "program error" );
+  call( 0,"EXIT" );
+  END "fatal" ;
+
+lower_ arrinfo( Arr, 1 );
+upper_ arrinfo( Arr, 2 );
+
+! first check for exact match. ;
+for index_ lower upto upper do
+  if kequ( Target, Arr[ index ] ) then
+    return( index );
+
+! Now look for partial matches. ;
+header_ lower - 1;
+for index_ lower upto upper do
+  if kequ( Target, Arr[ index ][ 1 for length( Target ) ] ) then
+    if header < lower then
+      header_ index		! first partial match. ;
+    else
+      BEGIN "ambiguous"
+	string tempH,
+	       tempI;
+      tempI_ Arr[ index ];
+      if header leq upper then
+        BEGIN "save ambiguity"
+        tempH_ Arr[ header ];
+        GS!ERR_ "?"& Target &"? - Ambiguous.  Could be: "& LopWrd( tempH );
+	END "save ambiguity";
+      header_ upper + 1;
+      GS!ERR_ GS!ERR & " or " & LopWrd( tempI );
+      END "ambiguous";
+
+  if lower leq header leq upper then
+    BEGIN "OK abreviation"
+    Target_ Arr[ header ];
+    return( header );
+    END "OK abreviation"
+  else
+    return( -1 );
+
+END "find it";
+
+
+internal simple boolean procedure Vail( 	string array Arr;
+				reference string Target );
+! ----------------------------------------------------------------------------;
+!									      ;
+!	 Search array "Arr" for "Target".  Return true if found, else false.  ;
+!									      ;
+! ----------------------------------------------------------------------------;
+				
+BEGIN "find it"
+	integer lower, upper, index, header;
+	string reply,word;
+
+if length( Target ) = 0 then
+  return( false );
+
+if arrinfo( Arr, -1 ) neq -1 then ! insure one dimentional string-array. ;
+  BEGIN "fatal"
+  print( "program error" );
+  call( 0,"EXIT" );
+  END "fatal" ;
+
+lower_ arrinfo( Arr, 1 );
+upper_ arrinfo( Arr, 2 );
+
+! first check for exact match. ;
+for index_ lower upto upper do
+  if kequ( Target, Arr[ index ] ) then
+    return( true );
+
+! Now look for partial matches. ;
+header_ lower - 1;
+for index_ lower upto upper do
+  if kequ( Target, Arr[ index ][ 1 for length( Target ) ] ) then
+    if header < lower then
+      header_ index		! first partial match. ;
+    else
+      BEGIN "ambiguous"
+	string tempH,
+	       tempI;
+      tempI_ Arr[ index ];
+      if header leq upper then
+        BEGIN "save ambiguity"
+        tempH_ Arr[ header ];
+        GS!ERR_ "?"& Target &"? - Ambiguous.  Could be: "& LopWrd( tempH );
+	END "save ambiguity";
+      header_ upper + 1;
+      GS!ERR_ GS!ERR & " or " & LopWrd( tempI );
+      return( false );
+      END "ambiguous";
+
+  if lower leq header leq upper then
+    BEGIN "OK abreviation"
+    Target_ Arr[ header ];
+    return( true );
+    END "OK abreviation";
+
+END "find it";
+
+
+
+internal simple boolean procedure ValidTimeStr( reference string S );
+! ----------------------------------------------------------------------------;
+!									      ;
+! 		Return true if a contiguous string of chars is of the	      ;
+! 		  form HH:MM:SS						      ;
+!									      ;
+! ----------------------------------------------------------------------------;
+
+BEGIN "valid time"
+	string HH,MM,SS,Copy;
+	integer NonDigit;
+  Copy_ S;					! save a copy;
+  HH_ scan( S,NDigit,NonDigit );
+  if NonDigit = ":" then			! was break a ":" ?;
+    BEGIN "colon found"
+    if cvd( HH ) > 23 or cvd( HH ) < 0  then 	! if yes,check hour in range;
+      BEGIN "gross hour" 			! hour out of range 0-23;
+      GS!ERR_ "?Hour (" & HH & ") - out of range.";
+      return( false );
+      END "gross hour" 				! hour out of range 0-23;
+    else 
+      BEGIN "check minutes"
+      MM_ scan( S,LnBrk,NonDigit );       	! get next number/letter;
+      if NonDigit = ":" then 			! true if break was ":";
+        BEGIN "second colon"
+        if cvd( MM ) > 59 or cvd( MM ) < 0  then  ! does minute make sense;
+          BEGIN "gross minute"		! minute was not in range 0-59 so 86;
+	  GS!ERR_ "?Minute (" & MM & ") - must be from 0 to 59";
+	  return( false );
+	  END "gross minute"		! minute was not in range 0-59 so 86;
+	else 
+	  BEGIN "examine seconds"
+	  SS_ S; 			! now include the second part;
+          if cvd( SS ) > 59 or cvd( SS ) < 0  then  ! does minute make sense;
+            BEGIN "gross second" 	! minute was not in range 0-59 so 86;
+            GS!ERR_ "?Second (" & SS & ") - must be from 0 to 59";
+	    return( false );
+	    END "gross second" 		! minute was not in range 0-59 so 86;
+	  else 
+	    BEGIN "within range"
+	    S_ Copy;  ! restore ;
+	    return( true );
+	    END "within range"
+	  END "examine seconds"
+        END "second colon"
+      else
+        BEGIN "NoMore colon"
+	if NonDigit = 0 then
+	  BEGIN  "thats all"
+	  S_ Copy;
+	  return( true ); ! string such as HH:MM ;
+	  END "thats all"
+	else 
+	  BEGIN "oh oh"
+ 	  GS!ERR_ "?UNRECOGNIZABLE WORD: " & Copy & " " ;
+	  return( false );
+	  END "oh oh"
+        END "NoMore colon"
+      END "check minutes"
+    END "colon found"
+  else 
+    BEGIN "integer only"
+    S_ Copy; 		! restore original;
+    return( false );
+    END "integer only"
+
+END "valid time";
+
+
+internal simple boolean procedure ValDateStr( reference string S );
+! ----------------------------------------------------------------------------;
+!									      ;
+! 		Return true if a contiguous string of chars is of the	      ;
+! 		  form MM/DD/YY.					      ;
+!									      ;
+! ----------------------------------------------------------------------------;
+
+BEGIN "valid date string"
+
+  preset!with 31,29,31,30,31,30,31,31,30,31,30,31;
+  own safe integer array MonthLength[1:12];
+  string MM,DD,YY,Copy;
+
+  Copy_ S;				! save a copy;
+
+  MM_ scan( S,LnBrk,BrkChr );		! scan until non-letter/number;
+  if BrkChr = "/" then			! was break a "/" ?;
+    BEGIN "slash found"
+    if cvd( MM ) > 12 or cvd( MM ) < 1  then ! if yes,check month in range;
+      BEGIN "month no good" 			! month out of range 1-12;
+      GS!ERR_ "?Month (" & MM & ") - out of range.";
+      return( false );
+      END "month no good"
+    else
+      BEGIN "legal month"
+      DD_ scan( S,LnBrk,BrkChr );       ! get next number/letter;
+      if BrkChr = "/" then 		! true if break was another "/";
+        BEGIN "second slash"
+        if not( 1 leq cvd( DD ) leq MonthLength[cvd(MM)] ) then  ! valid day?;
+          BEGIN "bad day" 		! day was not in range 1-31 so 86;
+          GS!ERR_ "?Day (" & DD & ") - must be in range 1 to "
+		    & Cvs(MonthLength[cvd(MM)]);
+          return( false );
+          END "bad day"
+        else
+          BEGIN "do year"
+          YY_ S; 			! now include the year part;
+          ! now change to form as "JANUARY 12, 85;
+          S_ mos[cvd(MM)-1] & " " & DD & " " & YY;
+          return( true );
+          END "do year"
+        END "second slash"
+      else
+        BEGIN "something omitted"
+        S_ Copy;
+        return( false );
+        END "something omitted"
+      END "legal month"
+    END "slash found"
+  else
+    BEGIN "no slash"		! no slash found so, see if dash ;
+    if BrkChr = "-" then
+      BEGIN "first hyphen"
+      DD_ MM;				! read "DD" of DD-MMM-YY ;
+      MM_ scan( S,LnBrk,BrkChr );       ! get next number/letter;
+      if BrkChr = "-" then 		! true if break was another dash;
+        BEGIN "second hyphen"
+	if ( 0 leq FndKey( MM, mos ) ) then	! if yes,check month in range;
+	  BEGIN "OK month"
+	  MM_ cvs( FndKey( MM, mos )+1 );
+	  END "OK month"
+	else
+	  BEGIN "bogus month"			! month out of range 1-12;
+	  GS!ERR_ "?Unknown month name: " & MM;
+	  return( false );
+	  END "bogus month";
+        if not( 1 leq cvd( DD ) leq MonthLength[cvd(MM)] ) then  ! does day make sense;
+          BEGIN "crazy day"		! day was not in range 1-31 so 86;
+          GS!ERR_ "?Day (" & DD & ") - must be in range 1 to "
+		  & cvs( MonthLength[ cvd(MM) ] );
+          return( false );
+          END "crazy day"
+        else
+          BEGIN  "OK return"
+          YY_ S; 			! now include the year part;
+          ! now change to form as "JANUARY 12, 85;
+          S_ mos[cvd(MM)-1] & " " & DD & " " & YY;
+          return( true );
+          END "OK return"
+        END "second hyphen"
+      END "first hyphen"
+    else
+      BEGIN
+      S_ Copy; 		! restore original;
+      return( false );
+      END
+    END "no slash"
+
+END "valid date string";
+
+
+internal simple boolean procedure ValidDaOfWk( string S );
+! ----------------------------------------------------------------------------;
+!									      ;
+! 		True if S is a day-of-the-week, ex: "MONDAY".		      ;
+!									      ;
+! ----------------------------------------------------------------------------;
+BEGIN "ValidDaOfWk"
+  integer i;
+  integer lower,upper;
+  lower_ arrinfo( WkDay, 1 );
+  upper_ arrinfo( WkDay, 2 );
+
+  for i_ lower upto upper do 
+    if kequ( S,WkDay[ i ] ) then
+      return( true );
+    return( false ); 				! no match;
+END "ValidDaOfWk";
+
+
+
+internal simple boolean procedure ValidMOY( string S );
+! ----------------------------------------------------------------------------;
+!									      ;
+! 		Validates words such as "AUGUST", or "MAY".		      ;
+!									      ;
+! ----------------------------------------------------------------------------;
+BEGIN "ValidMOY"
+  integer i; 
+  integer lower,upper;
+  lower_ arrinfo( Mos, 1 );
+  upper_ arrinfo( Mos, 2 );
+
+  for i_ lower upto upper do 
+    if kequ( S,Mos[ i ] ) then
+      return( true );
+  return( false ); 				! no match;
+END "ValidMOY";
+
+
+internal simple boolean procedure ValidKey( reference  string S );
+! ----------------------------------------------------------------------------;
+!									      ;
+! 		Validates words such as "EVERY" or "AND"		      ;
+! 		If a correct abbreviation is typed, the full word	      ;
+!		  will be substituted.					      ;
+!									      ;
+! ----------------------------------------------------------------------------;
+BEGIN "ValidKey"
+  integer i; 
+  integer lower,upper;
+  lower_ arrinfo( Keys, 1 );
+  upper_ arrinfo( Keys, 2 );
+
+  if length( S ) < 3 then 
+    return( false );
+  for i_ lower upto upper do 
+    if kequ( S,Keys[ i ][ 1 for length( S ) ] ) then
+      BEGIN
+      S_ GoodKey[ i ]; 			! replace with match from array;
+      return( true );
+      END;
+  return( false ); 				! no match;
+END "ValidKey";
+
+
+internal simple boolean procedure ValModifier( string S );
+! ----------------------------------------------------------------------------;
+!									      ;
+! 		Validates words such as "AFTER" or "EXCEPT".		      ;
+!									      ;
+! ----------------------------------------------------------------------------;
+BEGIN "ValModifier"
+  integer i;
+  integer lower,upper;
+  lower_ arrinfo( Modifiers, 1 );
+  upper_ arrinfo( Modifiers, 2 );
+
+  for  i_ lower upto upper do 
+    if kequ( S,Modifiers[ i ] ) then
+      return( true );
+  return( false ); 				! no match;
+END "ValModifier";
+
+
+internal simple boolean procedure ValNmOrd( reference string S );
+! ----------------------------------------------------------------------------;
+!									      ;
+! 		Validates words such as "3RD" or "1ST".			      ;
+! 		If a correct abbreviation is typed, the full word	      ;
+!		  will be substituted.					      ;
+!									      ;
+! ----------------------------------------------------------------------------;
+BEGIN "valid ordinal"
+  integer c,i,BrkChr;
+  string temp;
+
+  temp_ S; 				! save original string;
+  for i_ 1 upto length( S ) do
+    BEGIN "check each char"
+    c_ lop( S );			! get first char;
+    if "0" leq c leq "9" then		! is it a number;
+      BEGIN "first char was integer"
+      continue			! if yes then loop again for next char;
+      END "first char was integer"
+    else				! non-number found;
+      BEGIN "not integer"
+      if i < 2 then 			! better not be in first position;
+        BEGIN "cant be ordinal"
+        S_ temp;			! if so then restore and return;
+        return( false );
+        END "cant be ordinal"
+      else				! else replace non-number;
+        BEGIN "ordinal so far"
+        S_ c & S;
+        done;			! out of for loop;
+        END "ordinal so far"
+      END "not integer"
+    END "check each char";
+  ! now check non-number part for the right two letters;
+  if kequ( S[ 1 for 2 ] ,"RD" ) or
+    kequ( S[ 1 for 2 ] ,"ST" ) or
+    kequ( S[ 1 for 2 ] ,"TH" ) or
+    kequ( S[ 1 for 2 ] ,"ND" ) then
+    BEGIN "checks out"
+    S_ cvs( intscan( temp,BrkChr ) ); ! it's valid but just return number;
+    if cvd( S ) > 31 then
+      S_ "31";			
+    return( true )
+    END "checks out"
+  else
+  S_ temp;				! invalid so restore;
+  return( false );			! and return false;
+
+END  "valid ordinal";
+
+
+
+End "Miscellaneous Submit Routines";
+.
+
+  
+9L%f
