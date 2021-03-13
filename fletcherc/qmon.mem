@@ -1,0 +1,43 @@
+Items to be incorporated in Q monitor to be ready for test by 1June86
+
+3650 Disk project related
+
+	Fix Botlod that is in monitor; crashes missing important
+information
+
+	Make PKCP5 work in all cases
+
+	Put SA10NW diagnostic on DECtape
+
+New Base Functions.
+
+	Accept new message types graciously (written)
+
+	Read base version and store (written)
+
+	Operate with mixture of base version (partially done)
+
+PERPL
+
+	KSYS timer (written)
+
+	Interrupt cause vector (discussed)
+
+	Login UUO (done in monitor, not in CUSP)
+
+
+
+- - - - - - - - - -
+
+if time permits
+
+	Resync on base reload - base related function (one side written)
+
+
+
+added 22apr86
+
+	add license for queue manipulation
+
+
+[qmon.mem cmf]
