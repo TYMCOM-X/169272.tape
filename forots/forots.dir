@@ -1,0 +1,364 @@
+(FOROTS      :  14) FOROTS.DIR    11 28-Nov-89 16:34 JOJJUG  ALL  RD  NO   
+(FOROTS      :  32) ACCESS.LIS     2 18-Aug-81 11:01 BONGOW  ALL  RD  RD   
+(FOROTS      :  32) ACCESS.MAC     2 09-Jan-79 10:01 QEQPEG  ALL  RD  RD   
+(FOROTS      :  32) ACCESS.MSG     2 06-Dec-88 17:37 JACPIJ  ALL  RD  NO   
+(FOROTS      :  32) ACCESS.USR     2 11-Aug-87 12:30 YAMWEH  ALL  RD  NO   
+(FOROTS      :  32) BENCHM.MAC     3 03-Jan-80 21:13 BAZVOY  ALL  RD  RD   
+(FOROTS      :  32) BYE.MAC        2 03-Jan-80 21:13 HOMWAG  ALL  RD  RD   
+(FOROTS      :  32) CNSTCM.XXX    11 01-May-85 20:40 YESNIJ  ALL  RD  RD   
+(FOROTS      :  32) COM.SAV        2 18-Mar-79 12:00 QUSXIC  ALL  RD  RD   
+(FOROTS      :  32) COMMAN.XXX    29 01-May-85 20:35 GEFCUT  ALL  RD  RD   
+(FOROTS      :  32) CONNEC.MAC     2 03-Jan-80 21:14 FOJDUP  ALL  RD  RD   
+(FOROTS      :  32) CT1.MAC        2 08-Nov-79 17:25 LIRTIT  ALL  RD  NO   
+(FOROTS      :  32) DELET.MAC      2 17-Dec-80 10:45 POMDED  ALL  RD  RD   
+(FOROTS      :  32) DGCMN.XXX      2 01-May-85 20:41 POJSOH  ALL  RD  RD   
+(FOROTS      :  32) DISAB.MAC      2 15-Sep-78 08:36 XAWMOD  ALL  RD  RD   
+(FOROTS      :  32) DNPT.XXX       2 01-May-85 20:41 JOPZID  ALL  RD  RD   
+(FOROTS      :  32) DOPT.XXX       2 01-May-85 20:41 VOMZUJ  ALL  RD  RD   
+(FOROTS      :  32) DPSIM.XXX      6 01-May-85 20:39 QOXCOV  ALL  RD  RD   
+(FOROTS      :  32) DYNARY.MAC     4 14-Jan-80 23:56 HOFWAR  ALL  RD  RD   
+(FOROTS      :  32) ENAB.MAC       2 15-Sep-78 08:36 LUJTUV  ALL  RD  RD   
+(FOROTS      :  32) EQ.MAC         3 30-Mar-80 21:07 BOXRAJ  ALL  RD  RD   
+(FOROTS      :  32) ERR3.XXX       2 01-May-85 20:40 CUWYUP  ALL  RD  RD   
+(FOROTS      :  32) ERRPRI.MAC     2 30-Mar-80 21:16 GURTUH  ALL  RD  RD   
+(FOROTS      :  32) ERRTB3.XXX     5 01-May-85 20:40 QUVJED  ALL  RD  RD   
+(FOROTS      :  32) EXITPE.MAC     2 03-Jan-80 21:22 QOZROK  ALL  RD  RD   
+(FOROTS      :  32) F10CHN.MAC    12 30-Nov-79 11:53 QAYYUS  ALL  RD  RD   
+(FOROTS      :  32) F10CI.MAC      3 15-Sep-78 08:36 FUBSUT  ALL  RD  RD   
+(FOROTS      :  32) F10CRF.SWM    29 04-May-81 16:28 WAYVIN  ALL  RD  RD   
+(FOROTS      :  32) F10LIB.DOC    13 23-Apr-81 11:23 VUYWUB  ALL  RD  RD   
+(FOROTS      :  32) F10LIB.PUB    12 23-Apr-81 11:20 KELPIS  ALL  RD  RD   
+(FOROTS      :  32) F10LIB.SIT     2 22-Apr-80 22:15 FUPTAM  ALL  RD  RD   
+(FOROTS      :  32) F10NEW.DIR   101 24-Apr-85 15:59 VONDEJ  ALL  RD  RD   
+(FOROTS      :  32) F10OLD.DIR   102 24-Apr-85 16:12 YIYRAJ  ALL  RD  RD   
+(FOROTS      :  32) F22FUN.CRF    19 02-Sep-82 11:42 MOVMOX  ALL  RD  RD   
+(FOROTS      :  32) F40LIB.MAC     2 09-Mar-82 12:05 WUJYAF  ALL  RD  RD   
+(FOROTS      :  32) FDT5A.BWR      3 08-May-85 16:56 SOMVIB  ALL  RD  NO   
+(FOROTS      :  32) FDT5A.DOC      5 08-May-85 16:55 DONROB  ALL  RD  NO   
+(FOROTS      :  32) FDT5A.MIC      2 08-May-85 16:51 GAPROS  ALL  RD  NO   
+(FOROTS      :  32) FILINF.MAC     3 03-Jan-80 21:23 JICDUZ  ALL  RD  RD   
+(FOROTS      :  32) FILNM.MAC      7 09-Jan-81 17:16 NORMAB  ALL  RD  RD   
+(FOROTS      :  32) FLTGEN.XXX     5 01-May-85 20:40 CETBOT  ALL  RD  RD   
+(FOROTS      :  32) FORCNV.MAC    37 03-May-85 12:36 MEXTUD  ALL  RD  RD   
+(FOROTS      :  32) FORCNV.REL     8 15-May-85 13:40 TIQCOD  ALL  RD  NO   
+(FOROTS      :  32) FORCPU.KA      2 13-Sep-78 15:39 FEWZID  ALL  RD  RD   
+(FOROTS      :  32) FORCPU.KI      2 13-Sep-78 15:39 GOZYOW  ALL  RD  RD   
+(FOROTS      :  32) FORCPU.TYM     2 09-May-85 15:18 CAPXAJ  ALL  RD  NO   
+(FOROTS      :  32) FORCPX.MAC    22 03-May-85 12:36 MOPCIM  ALL  RD  RD   
+(FOROTS      :  32) FORDAR.MAC    13 03-May-85 12:37 RUVPOF  ALL  RD  RD   
+(FOROTS      :  32) FORDBL.MAC    23 01-May-85 20:48 BAYZOC  ALL  RD  RD   
+(FOROTS      :  32) FORDDT.DEC    66 01-May-85 20:29 HEVJUG  ALL  RD  RD   
+(FOROTS      :  32) FORDDT.HLP     2 08-May-85 16:51 TOGBAX  ALL  RD  NO   
+(FOROTS      :  32) FORDDT.MAC    67 20-May-85 17:14 DILYED  ALL  RD  NO   
+(FOROTS      :  32) FORDDT.MIC     2 01-May-85 22:16 PUJTAL  ALL  RD  RD   
+(FOROTS      :  32) FORDDT.SCM     2 20-May-85 17:23 JOMLEH  ALL  RD  RD   
+(FOROTS      :  32) FORDMP.MAC     5 01-May-85 20:50 KASQEG  ALL  RD  RD   
+(FOROTS      :  32) FORDUM.MAC     5 01-May-85 20:50 MAZDAD  ALL  RD  RD   
+(FOROTS      :  32) FORERR.DEC    18 01-May-85 20:27 NUKMUM  ALL  RD  RD   
+(FOROTS      :  32) FORERR.MAC    18 20-May-85 17:14 ZORTUN  ALL  RD  NO   
+(FOROTS      :  32) FORERR.REL     6 20-May-85 17:21 FOJZAG  ALL  RD  NO   
+(FOROTS      :  32) FORERR.SCM     3 20-May-85 17:22 XISYUQ  ALL  RD  NO   
+(FOROTS      :  32) FORFUN.DEC     8 01-May-85 20:45 TOKQAW  ALL  RD  RD   
+(FOROTS      :  32) FORFUN.MAC     9 20-May-85 17:06 SILDUK  ALL  RD  NO   
+(FOROTS      :  32) FORFUN.REL     3 20-May-85 17:21 TAHDOF  ALL  RD  NO   
+(FOROTS      :  32) FORFUN.SCM     6 20-May-85 17:22 YEWRAK  ALL  RD  RD   
+(FOROTS      :  32) FORINI.DEC     3 01-May-85 20:46 YEYCOS  ALL  RD  RD   
+(FOROTS      :  32) FORINI.MAC     3 20-May-85 16:57 REKTEC  ALL  RD  NO   
+(FOROTS      :  32) FORINI.REL     2 20-May-85 17:20 RUDNUD  ALL  RD  NO   
+(FOROTS      :  32) FORINI.SCM     3 20-May-85 17:22 MOCWOH  ALL  RD  NO   
+(FOROTS      :  32) FORJAK.MAC     5 01-May-85 20:46 XEYGEB  ALL  RD  RD   
+(FOROTS      :  32) FORLB1.CMD     2 05-May-81 11:56 BABTUX  ALL  RD  RD   
+(FOROTS      :  32) FORLB2.CMD     2 31-Mar-80 23:53 KIBRED  ALL  RD  RD   
+(FOROTS      :  32) FORLIB.CTL     2 14-May-85 16:51 DATQOH  ALL  RD  NO   
+(FOROTS      :  32) FORMSC.DEC    24 01-May-85 20:46 GUDFUJ  ALL  RD  RD   
+(FOROTS      :  32) FORMSC.MAC    24 20-May-85 17:15 BEPLIK  ALL  RD  NO   
+(FOROTS      :  32) FORMSC.SCM     2 20-May-85 17:22 QIFVAL  ALL  RD  NO   
+(FOROTS      :  32) FOROPN.MAC     4 01-May-85 20:48 HICBIX  ALL  RD  RD   
+(FOROTS      :  32) FOROTS.CHG     3 08-May-85 18:28 KOPYOP  ALL  RD  NO   
+(FOROTS      :  32) FOROTS.CTL     2 20-May-85 17:18 YAZSIB  ALL  RD  NO   
+(FOROTS      :  32) FOROTS.DEC    81 01-May-85 20:22 JIXHUT  ALL  RD  RD   
+(FOROTS      :  32) FOROTS.DIR    11 28-Nov-89 16:34 JOJJUG  ALL  RD  NO   
+(FOROTS      :  32) FOROTS.GLB     5 14-May-85 18:06 XAWNAV  ALL  RD  NO   
+(FOROTS      :  32) FOROTS.LOG     3 20-May-85 17:19 MEVNOB  ALL  RD  NO   
+(FOROTS      :  32) FOROTS.MAC    85 20-May-85 17:03 BUSTOX  ALL  RD  NO   
+(FOROTS      :  32) FOROTS.MAP     4 20-May-85 17:22 FIWMUD  ALL  RD  NO   
+(FOROTS      :  32) FOROTS.MIC     5 01-May-85 22:16 JUPVOS  ALL  RD  RD   
+(FOROTS      :  32) FOROTS.REL    14 20-May-85 17:20 POZNIB  ALL  RD  NO   
+(FOROTS      :  32) FOROTS.SCM    11 20-May-85 17:22 FUWMIM  ALL  RD  NO   
+(FOROTS      :  32) FOROTS.SHR    16 20-May-85 17:22 CUCSOF  ALL  RD  NO   
+(FOROTS      :  32) FOROTS.TYM    78 21-Oct-81 13:41 PIBCUP  ALL  RD  RD   
+(FOROTS      :  32) FORPLT.MAC    20 01-May-85 20:34 WUZHIB  ALL  RD  RD   
+(FOROTS      :  32) FORPRM.DEC    13 08-May-85 19:01 DASNAL  ALL  RD  NO   
+(FOROTS      :  32) FORPRM.MAC    13 20-May-85 16:58 JUYQUD  ALL  RD  NO   
+(FOROTS      :  32) FORPRM.REL     3 20-May-85 17:20 QULWEC  ALL  RD  NO   
+(FOROTS      :  32) FORPRM.SCM     2 20-May-85 17:22 FALJUR  ALL  RD  NO   
+(FOROTS      :  32) FORPRM.UNV     8 20-May-85 17:20 COTRAH  ALL  RD  NO   
+(FOROTS      :  32) FORPSE.MAC     3 01-May-85 20:42 SANSIK  ALL  RD  RD   
+(FOROTS      :  32) FORQUE.MAC     5 01-May-85 20:43 REWQIW  ALL  RD  RD   
+(FOROTS      :  32) FORRTF.MAC     9 01-May-85 20:43 VALFOD  ALL  RD  RD   
+(FOROTS      :  32) FORSIN.MAC    21 01-May-85 20:43 FEHCOC  ALL  RD  RD   
+(FOROTS      :  32) FORTRA.WHO     2 10-Aug-87 16:44 SAQFOK  ALL  RD  NO   
+(FOROTS      :  32) FORTRP.MAC     7 01-May-85 20:45 FIHKAF  ALL  RD  RD   
+(FOROTS      :  32) FORTRP.REL     2 15-May-85 13:39 PALSAC  ALL  RD  NO   
+(FOROTS      :  32) FORTYM.MAC     8 15-May-85 12:56 ZAJDIT  ALL  RD  NO   
+(FOROTS      :  32) FORTYM.REL     3 15-May-85 13:40 BIYCIT  ALL  RD  NO   
+(FOROTS      :  32) FORXIT.MAC     2 01-May-85 20:45 YUKMEZ  ALL  RD  RD   
+(FOROTS      :  32) FRS5A.BWR      4 08-May-85 16:55 XUMNIS  ALL  RD  NO   
+(FOROTS      :  32) FRS5A.DOC     15 08-May-85 18:46 VOLGUB  ALL  RD  NO   
+(FOROTS      :  32) FRS5A.MIC      2 08-May-85 16:51 QUWXIV  ALL  RD  NO   
+(FOROTS      :  32) FRSDM.CMD      2 03-Jan-80 22:02 GASVIF  ALL  RD  RD   
+(FOROTS      :  32) FRSGEN.CTL     2 03-May-85 15:52 XANLUN  ALL  RD  NO   
+(FOROTS      :  32) FRSKA.CMD      2 08-May-85 17:03 KIKRUT  ALL  RD  NO   
+(FOROTS      :  32) FRSKI.CMD      2 08-May-85 17:03 RUYQAY  ALL  RD  NO   
+(FOROTS      :  32) FRSKIL.COM     2 19-Feb-80 22:47 JIBCAP  ALL  RD  RD   
+(FOROTS      :  32) FRSTM.CMD      2 03-Jan-80 20:46 MOCQIC  ALL  RD  RD   
+(FOROTS      :  32) FRSV5A.DIR     3 01-May-85 16:22 VEFMUT  ALL  RD  RD   
+(FOROTS      :  32) FSPOOL.MAC     3 14-Jan-80 23:55 DEQZIV  ALL  RD  RD   
+(FOROTS      :  32) FT22.MAC       2 02-Sep-82 11:40 DEBVAN  ALL  RD  RD   
+(FOROTS      :  32) FTTENX.XXX     2 01-May-85 20:35 ZIXBOV  ALL  RD  RD   
+(FOROTS      :  32) GETBIT.MAC     2 03-Jan-80 21:24 CENREJ  ALL  RD  RD   
+(FOROTS      :  32) GETC.MAC       2 14-Jan-80 21:38 ZODZOH  ALL  RD  RD   
+(FOROTS    32) GETKCM.MAC     2 03-Jan-80 21:25 NURDOX  ALL  RD  RD   
+(FOROTS      :  32) GETMCY.MAC     2 03-Jan-80 21:26 KANTOF  ALL  RD  RD   
+(FOROTS      :  32) IINDEX.MAC     3 19-Feb-80 22:37 YIKMIG  ALL  RD  RD   
+(FOROTS      :  32) INIT.MAC       2 19-Nov-80 18:01 SUCNUK  ALL  RD  NO   
+(FOROTS      :  32) INT.MAC        8 14-May-85 16:00 JOPJUT  ALL  RD  NO   
+(FOROTS      :  32) INTDF.MAC      2 03-Jan-80 21:41 LEBGAF  ALL  RD  RD   
+(FOROTS      :  32) IROTAT.MAC     2 03-Jan-80 21:27 NAJZEG  ALL  RD  RD   
+(FOROTS      :  32) JBOPS.MAC      2 13-Sep-78 15:45 DUJSIP  ALL  RD  RD   
+(FOROTS      :  32) JOBD.XXX       2 01-May-85 20:39 PEFNUX  ALL  RD  RD   
+(FOROTS      :  32) JUNK.MAC       2 16-Mar-81 15:41 VASMAM  ALL  RD  NO   
+(FOROTS      :  32) LSH.MAC        2 31-Mar-80 23:47 DIFGES  ALL  RD  RD   
+(FOROTS      :  32) MYINI.REL      2 15-May-85 12:23 CEBJAH  ALL  RD  NO   
+(FOROTS      :  32) MYSYS.MAC      2 14-May-85 18:27 JUMRIY  ALL  RD  NO   
+(FOROTS      :  32) NAMPPN.MAC     3 03-Jan-80 21:28 KIFCUP  ALL  RD  RD   
+(FOROTS      :  32) ONECHR.MAC     2 03-Jan-80 21:30 TUSRAG  ALL  RD  RD   
+(FOROTS      :  32) OPGNTA.XXX    26 01-May-85 20:37 JUVROQ  ALL  RD  RD   
+(FOROTS      :  32) OWNDM.XXX      2 01-May-85 20:37 FUTPIS  ALL  RD  RD   
+(FOROTS      :  32) POSITI.MAC     2 03-Jan-80 21:30 LEQRES  ALL  RD  RD   
+(FOROTS      :  32) PROJEC.MAC     2 03-Jan-80 21:31 POWRUY  ALL  RD  RD   
+(FOROTS      :  32) PUTC.MAC       2 17-Mar-80 23:10 BAGJIW  ALL  RD  RD   
+(FOROTS      :  32) QTAB1.XXX      6 01-May-85 20:37 FILWIB  ALL  RD  RD   
+(FOROTS      :  32) RDTAPE.MAC     8 14-Aug-80 17:43 HIXCOV  ALL  RD  RD   
+(FOROTS      :  32) RENAM.MAC      3 03-Jan-80 21:33 LENPUX  ALL  RD  RD   
+(FOROTS      :  32) RENAME.MAC     3 03-Jan-80 21:34 GELLEL  ALL  RD  RD   
+(FOROTS      :  32) RTC.MAC        2 01-Feb-80 10:07 FAWPEQ  ALL  RD  RD   
+(FOROTS      :  32) RUN.MAC        3 26-May-80 21:53 FETXUD  ALL  RD  RD   
+(FOROTS      :  32) SETBIT.MAC     2 03-Jan-80 21:35 ZIBBEF  ALL  RD  RD   
+(FOROTS      :  32) SIMTTY.MAC     2 14-Apr-81 15:28 RUYVUY  ALL  RD  RD   
+(FOROTS      :  32) SIZE.MAC       2 03-Jan-80 21:38 LEDSUZ  ALL  RD  RD   
+(FOROTS      :  32) STC.MAC        2 01-Feb-80 10:07 MIKMEY  ALL  RD  RD   
+(FOROTS      :  32) TEST.FOR       2 15-May-85 12:28 MIMZES  ALL  RD  NO   
+(FOROTS      :  32) TEST.REL       2 15-May-85 12:28 JAXRUL  ALL  RD  NO   
+(FOROTS      :  32) TEST2.FOR      2 15-May-85 13:01 BIDNED  ALL  RD  NO   
+(FOROTS      :  32) TEST2.REL      2 15-May-85 13:01 YEQYIG  ALL  RD  NO   
+(FOROTS      :  32) TRAPS.MAC      9 15-May-85 14:05 YEMMUJ  ALL  RD  NO   
+(FOROTS      :  32) TRU.MAC        2 05-Feb-80 23:30 KEKRAD  ALL  RD  RD   
+(FOROTS      :  32) TRY.MAC        3 01-Jul-82 19:27 YUCWIW  ALL  RD  NO   
+(FOROTS      :  32) USERNA.MAC     2 03-Jan-80 21:40 XOQGAY  ALL  RD  RD   
+(FOROTS      :  32) USRNM.MAC      2 03-Jan-80 21:43 RADZAS  ALL  RD  RD   
+(FOROTS      :  32) WAIT.MAC       2 03-Jan-80 21:41 LIKCEM  ALL  RD  RD   
+(FOROTS      :  74) ACCESS.LIS     2 18-Aug-81 11:01 BONGOW  ALL  RD  RD   
+(FOROTS      :  74) ACCESS.MAC     2 09-Jan-79 10:01 QEQPEG  ALL  RD  RD   
+(FOROTS      :  74) ACCESS.MSG     2 06-Dec-88 17:37 JACPIJ  ALL  RD  NO   
+(FOROTS      :  74) ACCESS.USR     2 11-Aug-87 12:30 YAMWEH  ALL  RD  NO   
+(FOROTS      :  74) BENCHM.MAC     3 03-Jan-80 21:13 BAZVOY  ALL  RD  RD   
+(FOROTS      :  74) BYE.MAC        2 03-Jan-80 21:13 HOMWAG  ALL  RD  RD   
+(FOROTS      :  74) CNSTCM.XXX    11 01-May-85 20:40 YESNIJ  ALL  RD  RD   
+(FOROTS      :  74) COM.SAV        2 18-Mar-79 12:00 QUSXIC  ALL  RD  RD   
+(FOROTS      :  74) COMMAN.XXX    29 01-May-85 20:35 GEFCUT  ALL  RD  RD   
+(FOROTS      :  74) CONNEC.MAC     2 03-Jan-80 21:14 FOJDUP  ALL  RD  RD   
+(FOROTS      :  74) CT1.MAC        2 08-Nov-79 17:25 LIRTIT  ALL  RD  NO   
+(FOROTS      :  74) DELET.MAC      2 17-Dec-80 10:45 POMDED  ALL  RD  RD   
+(FOROTS      :  74) DGCMN.XXX      2 01-May-85 20:41 POJSOH  ALL  RD  RD   
+(FOROTS      :  74) DISAB.MAC      2 15-Sep-78 08:36 XAWMOD  ALL  RD  RD   
+(FOROTS      :  74) DNPT.XXX       2 01-May-85 20:41 JOPZID  ALL  RD  RD   
+(FOROTS      :  74) DOPT.XXX       2 01-May-85 20:41 VOMZUJ  ALL  RD  RD   
+(FOROTS      :  74) DPSIM.XXX      6 01-May-85 20:39 QOXCOV  ALL  RD  RD   
+(FOROTS      :  74) DYNARY.MAC     4 14-Jan-80 23:56 HOFWAR  ALL  RD  RD   
+(FOROTS      :  74) ENAB.MAC       2 15-Sep-78 08:36 LUJTUV  ALL  RD  RD   
+(FOROTS      :  74) EQ.MAC         3 30-Mar-80 21:07 BOXRAJ  ALL  RD  RD   
+(FOROTS      :  74) ERR3.XXX       2 01-May-85 20:40 CUWYUP  ALL  RD  RD   
+(FOROTS      :  74) ERRPRI.MAC     2 30-Mar-80 21:16 GURTUH  ALL  RD  RD   
+(FOROTS      :  74) ERRTB3.XXX     5 01-May-85 20:40 QUVJED  ALL  RD  RD   
+(FOROTS      :  74) EXITPE.MAC     2 03-Jan-80 21:22 QOZROK  ALL  RD  RD   
+(FOROTS      :  74) F10CHN.MAC    12 30-Nov-79 11:53 QAYYUS  ALL  RD  RD   
+(FOROTS      :  74) F10CI.MAC      3 15-Sep-78 08:36 FUBSUT  ALL  RD  RD   
+(FOROTS      :  74) F10CRF.SWM    29 04-May-81 16:28 WAYVIN  ALL  RD  RD   
+(FOROTS      :  74) F10LIB.DOC    13 23-Apr-81 11:23 VUYWUB  ALL  RD  RD   
+(FOROTS      :  74) F10LIB.PUB    12 23-Apr-81 11:20 KELPIS  ALL  RD  RD   
+(FOROTS      :  74) F10LIB.SIT     2 22-Apr-80 22:15 FUPTAM  ALL  RD  RD   
+(FOROTS      :  74) F10NEW.DIR   101 24-Apr-85 15:59 VONDEJ  ALL  RD  RD   
+(FOROTS      :  74) F10OLD.DIR   102 24-Apr-85 16:12 YIYRAJ  ALL  RD  RD   
+(FOROTS      :  74) F22FUN.CRF    19 02-Sep-82 11:42 MOVMOX  ALL  RD  RD   
+(FOROTS      :  74) F40LIB.MAC     2 09-Mar-82 12:05 WUJYAF  ALL  RD  RD   
+(FOROTS      :  74) FDT5A.BWR      3 08-May-85 16:56 SOMVIB  ALL  RD  NO   
+(FOROTS      :  74) FDT5A.DOC      5 08-May-85 16:55 DONROB  ALL  RD  NO   
+(FOROTS      :  74) FDT5A.MIC      2 08-May-85 16:51 GAPROS  ALL  RD  NO   
+(FOROTS      :  74) FILINF.MAC     3 03-Jan-80 21:23 JICDUZ  ALL  RD  RD   
+(FOROTS      :  74) FILNM.MAC      7 09-Jan-81 17:16 NORMAB  ALL  RD  RD   
+(FOROTS      :  74) FLTGEN.XXX     5 01-May-85 20:40 CETBOT  ALL  RD  RD   
+(FOROTS      :  74) FORCNV.MAC    37 03-May-85 12:36 MEXTUD  ALL  RD  RD   
+(FOROTS      :  74) FORCNV.REL     8 15-May-85 13:40 TIQCOD  ALL  RD  NO   
+(FOROTS      :  74) FORCPU.KA      2 13-Sep-78 15:39 FEWZID  ALL  RD  RD   
+(FOROTS      :  74) FORCPU.KI      2 13-Sep-78 15:39 GOZYOW  ALL  RD  RD   
+(FOROTS      :  74) FORCPU.TYM     2 09-May-85 15:18 CAPXAJ  ALL  RD  NO   
+(FOROTS      :  74) FORCPX.MAC    22 03-May-85 12:36 MOPCIM  ALL  RD  RD   
+(FOROTS      :  74) FORDAR.MAC    13 03-May-85 12:37 RUVPOF  ALL  RD  RD   
+(FOROTS      :  74) FORDBL.MAC    23 01-May-85 20:48 BAYZOC  ALL  RD  RD   
+(FOROTS      :  74) FORDDT.DEC    66 01-May-85 20:29 HEVJUG  ALL  RD  RD   
+(FOROTS      :  74) FORDDT.HLP     2 08-May-85 16:51 TOGBAX  ALL  RD  NO   
+(FOROTS      :  74) FORDDT.MAC    67 20-May-85 17:14 DILYED  ALL  RD  NO   
+(FOROTS      :  74) FORDDT.MIC     2 01-May-85 22:16 PUJTAL  ALL  RD  RD   
+(FOROTS      :  74) FORDDT.SCM     2 20-May-85 17:23 JOMLEH  ALL  RD  RD   
+(FOROTS      :  74) FORDMP.MAC     5 01-May-85 20:50 KASQEG  ALL  RD  RD   
+(FOROTS      :  74) FORDUM.MAC     5 01-May-85 20:50 MAZDAD  ALL  RD  RD   
+(FOROTS      :  74) FORERR.DEC    18 01-May-85 20:27 NUKMUM  ALL  RD  RD   
+(FOROTS      :  74) FORERR.MAC    18 20-May-85 17:14 ZORTUN  ALL  RD  NO   
+(FOROTS      :  74) FORERR.REL     6 20-May-85 17:21 FOJZAG  ALL  RD  NO   
+(FOROTS      :  74) FORERR.SCM     3 20-May-85 17:22 XISYUQ  ALL  RD  NO   
+(FOROTS      :  74) FORFUN.DEC     8 01-May-85 20:45 TOKQAW  ALL  RD  RD   
+(FOROTS      :  74) FORFUN.MAC     9 20-May-85 17:06 SILDUK  ALL  RD  NO   
+(FOROTS      :  74) FORFUN.REL     3 20-May-85 17:21 TAHDOF  ALL  RD  NO   
+(FOROTS      :  74) FORFUN.SCM     6 20-May-85 17:22 YEWRAK  ALL  RD  RD   
+(FOROTS      :  74) FORINI.DEC     3 01-May-85 20:46 YEYCOS  ALL  RD  RD   
+(FOROTS      :  74) FORINI.MAC     3 20-May-85 16:57 REKTEC  ALL  RD  NO   
+(FOROTS      :  74) FORINI.REL     2 20-May-85 17:20 RUDNUD  ALL  RD  NO   
+(FOROTS      :  74) FORINI.SCM     3 20-May-85 17:22 MOCWOH  ALL  RD  NO   
+(FOROTS      :  74) FORJAK.MAC     5 01-May-85 20:46 XEYGEB  ALL  RD  RD   
+(FOROTS      :  74) FORLB1.CMD     2 05-May-81 11:56 BABTUX  ALL  RD  RD   
+(FOROTS      :  74) FORLB2.CMD     2 31-Mar-80 23:53 KIBRED  ALL  RD  RD   
+(FOROTS      :  74) FORLIB.CTL     2 14-May-85 16:51 DATQOH  ALL  RD  NO   
+(FOROTS      :  74) FORMSC.DEC    24 01-May-85 20:46 GUDFUJ  ALL  RD  RD   
+(FOROTS      :  74) FORMSC.MAC    24 20-May-85 17:15 BEPLIK  ALL  RD  NO   
+(FOROTS      :  74) FORMSC.SCM     2 20-May-85 17:22 QIFVAL  ALL  RD  NO   
+(FOROTS      :  74) FOROPN.MAC     4 01-May-85 20:48 HICBIX  ALL  RD  RD   
+(FOROTS      :  74) FOROTS.CHG     3 08-May-85 18:28 KOPYOP  ALL  RD  NO   
+(FOROTS      :  74) FOROTS.CTL     2 20-May-85 17:18 YAZSIB  ALL  RD  NO   
+(FOROTS      :  74) FOROTS.DEC    81 01-May-85 20:22 JIXHUT  ALL  RD  RD   
+(FOROTS      :  74) FOROTS.DIR    11 28-Nov-89 16:35 JOJJUG  ALL  RD  NO   
+(FOROTS      :  74) FOROTS.GLB     5 14-May-85 18:06 XAWNAV  ALL  RD  NO   
+(FOROTS      :  74) FOROTS.LOG     3 20-May-85 17:19 MEVNOB  ALL  RD  NO   
+(FOROTS      :  74) FOROTS.MAC    85 20-May-85 17:03 BUSTOX  ALL  RD  NO   
+(FOROTS      :  74) FOROTS.MAP     4 20-May-85 17:22 FIWMUD  ALL  RD  NO   
+(FOROTS      :  74) FOROTS.MIC     5 01-May-85 22:16 JUPVOS  ALL  RD  RD   
+(FOROTS      :  74) FOROTS.REL    14 20-May-85 17:20 POZNIB  ALL  RD  NO   
+(FOROTS      :  74) FOROTS.SCM    11 20-May-85 17:22 FUWMIM  ALL  RD  NO   
+(FOROTS      :  74) FOROTS.SHR    16 20-May-85 17:22 CUCSOF  ALL  RD  NO   
+(FOROTS      :  74) FOROTS.TYM    78 21-Oct-81 13:41 PIBCUP  ALL  RD  RD   
+(FOROTS      :  74) FORPLT.MAC    20 01-May-85 20:34 WUZHIB  ALL  RD  RD   
+(FOROTS      :  74) FORPRM.DEC    13 08-May-85 19:01 DASNAL  ALL  RD  NO   
+(FOROTS      :  74) FORPRM.MAC    13 20-May-85 16:58 JUYQUD  ALL  RD  NO   
+(FOROTS      :  74) FORPRM.REL     3 20-May-85 17:20 QULWEC  ALL  RD  NO   
+(FOROTS      :  74) FORPRM.SCM     2 20-May-85 17:22 FALJUR  ALL  RD  NO   
+(FOROTS      :  74) FORPRM.UNV     8 20-May-85 17:20 COTRAH  ALL  RD  NO   
+(FOROTS      :  74) FORPSE.MAC     3 01-May-85 20:42 SANSIK  ALL  RD  RD   
+(FOROTS      :  74) FORQUE.MAC     5 01-May-85 20:43 REWQIW  ALL  RD  RD   
+(FOROTS      :  74) FORRTF.MAC     9 01-May-85 20:43 VALFOD  ALL  RD  RD   
+(FOROTS      :  74) FORSIN.MAC    21 01-May-85 20:43 FEHCOC  ALL  RD  RD   
+(FOROTS      :  74) FORTRA.WHO     2 10-Aug-87 16:44 SAQFOK  ALL  RD  NO   
+(FOROTS      :  74) FORTRP.MAC     7 01-May-85 20:45 FIHKAF  ALL  RD  RD   
+(FOROTS      :  74) FORTRP.REL     2 15-May-85 13:39 PALSAC  ALL  RD  NO   
+(FOROTS      :  74) FORTYM.MAC     8 15-May-85 12:56 ZAJDIT  ALL  RD  NO   
+(FOROTS      :  74) FORTYM.REL     3 15-May-85 13:40 BIYCIT  ALL  RD  NO   
+(FOROTS      :  74) FORXIT.MAC     2 01-May-85 20:45 YUKMEZ  ALL  RD  RD   
+(FOROTS      :  74) FRS5A.BWR      4 08-May-85 16:55 XUMNIS  ALL  RD  NO   
+(FOROTS      :  74) FRS5A.DOC     15 08-May-85 18:46 VOLGUB  ALL  RD  NO   
+(FOROTS      :  74) FRS5A.MIC      2 08-May-85 16:51 QUWXIV  ALL  RD  NO   
+(FOROTS      :  74) FRSDM.CMD      2 03-Jan-80 22:02 GASVIF  ALL  RD  RD   
+(FOROTS      :  74) FRSGEN.CTL     2 03-May-85 15:52 XANLUN  ALL  RD  NO   
+(FOROTS      :  74) FRSKA.CMD      2 08-May-85 17:03 KIKRUT  ALL  RD  NO   
+(FOROTS      :  74) FRSKI.CMD      2 08-May-85 17:03 RUYQAY  ALL  RD  NO   
+(FOROTS      :  74) FRSKIL.COM     2 19-Feb-80 22:47 JIBCAP  ALL  RD  RD   
+(FOROTS      :  74) FRSTM.CMD      2 03-Jan-80 20:46 MOCQIC  ALL  RD  RD   
+(FOROTS      :  74) FRSV5A.DIR     3 01-May-85 16:22 VEFMUT  ALL  RD  RD   
+(FOROTS      :  74) FSPOOL.MAC     3 14-Jan-80 23:55 DEQZIV  ALL  RD  RD   
+(FOROTS      :  74) FT22.MAC       2 02-Sep-82 11:40 DEBVAN  ALL  RD  RD   
+(FOROTS      :  74) FTTENX.XXX     2 01-May-85 20:35 ZIXBOV  ALL  RD  RD   
+(FOROTS      :  74) GETBIT.MAC     2 03-Jan-80 21:24 CENREJ  ALL  RD  RD   
+(FOROTS      :  74) GETC.MAC       2 14-Jan-80 21:38 ZODZOH  ALL  RD  RD   
+(FOROTS      :  74) GETKCM.MAC     2 03-Jan-80 21:25 NURDOX  ALL  RD  RD   
+(FOROTS      :  74) GETMCY.MAC     2 03-Jan-80 21:26 KANTOF  ALL  RD  RD   
+(FOROTS      :  74) IINDEX.MAC     3 19-Feb-80 22:37 YIKMIG  ALL  RD  RD   
+(FOROTS      :  74) INIT.MAC       2 19-Nov-80 18:01 SUCNUK  ALL  RD  NO   
+(FOROTS      :  74) INT.MAC        8 14-May-85 16:00 JOPJUT  ALL  RD  NO   
+(FOROTS      :  74) INTDF.MAC      2 03-Jan-80 21:41 LEBGAF  ALL  RD  RD   
+(FOROTS      :  74) IROTAT.MAC     2 03-Jan-80 21:27 NAJZEG  ALL  RD  RD   
+(FOROTS      :  74) JBOPS.MAC      2 13-Sep-78 15:45 DUJSIP  ALL  RD  RD   
+(FOROTS      :  74) JOBD.XXX       2 01-May-85 20:39 PEFNUX  ALL  RD  RD   
+(FOROTS      :  74) JUNK.MAC       2 16-Mar-81 15:41 VASMAM  ALL  RD  NO   
+(FOROTS      :  74) LSH.MAC        2 31-Mar-80 23:47 DIFGES  ALL  RD  RD   
+(FOROTS      :  74) MYINI.REL      2 15-May-85 12:23 CEBJAH  ALL  RD  NO   
+(FOROTS      :  74) MYSYS.MAC      2 14-May-85 18:27 JUMRIY  ALL  RD  NO   
+(FOROTS      :  74) NAMPPN.MAC     3 03-Jan-80 21:28 KIFCUP  ALL  RD  RD   
+(FOROTS      :  74) ONECHR.MAC     2 03-Jan-80 21:30 TUSRAG  ALL  RD  RD   
+(FOROTS      :  74) OPGNTA.XXX    26 01-May-85 20:37 JUVROQ  ALL  RD  RD   
+(FOROTS      :  74) OWNDM.XXX      2 01-May-85 20:37 FUTPIS  ALL  RD  RD   
+(FOROTS      :  74) POSITI.MAC     2 03-Jan-80 21:30 LEQRES  ALL  RD  RD   
+(FOROTS      :  74) PROJEC.MAC     2 03-Jan-80 21:31 POWRUY  ALL  RD  RD   
+(FOROTS      :  74) PUTC.MAC       2 17-Mar-80 23:10 BAGJIW  ALL  RD  RD   
+(FOROTS      :  74) QTAB1.XXX      6 01-May-85 20:37 FILWIB  ALL  RD  RD   
+(FOROTS      :  74) RDTAPE.MAC     8 14-Aug-80 17:43 HIXCOV  ALL  RD  RD   
+(FOROTS      :  74) RENAM.MAC      3 03-Jan-80 21:33 LENPUX  ALL  RD  RD   
+(FOROTS      :  74) RENAME.MAC     3 03-Jan-80 21:34 GELLEL  ALL  RD  RD   
+(FOROTS      :  74) RTC.MAC        2 01-Feb-80 10:07 FAWPEQ  ALL  RD  RD   
+(FOROTS      :  74) RUN.MAC        3 26-May-80 21:53 FETXUD  ALL  RD  RD   
+(FOROTS      :  74) SETBIT.MAC     2 03-Jan-80 21:35 ZIBBEF  ALL  RD  RD   
+(FOROTS      :  74) SIMTTY.MAC     2 14-Apr-81 15:28 RUYVUY  ALL  RD  RD   
+(FOROTS      :  74) SIZE.MAC       2 03-Jan-80 21:38 LEDSUZ  ALL  RD  RD   
+(FOROTS      :  74) STC.MAC        2 01-Feb-80 10:07 MIKMEY  ALL  RD  RD   
+(FOROTS      :  74) TEST.FOR       2 15-May-85 12:28 MIMZES  ALL  RD  NO   
+(FOROTS      :  74) TEST.REL       2 15-May-85 12:28 JAXRUL  ALL  RD  NO   
+(FOROTS      :  74) TEST2.FOR      2 15-May-85 13:01 BIDNED  ALL  RD  NO   
+(FOROTS      :  74) TEST2.REL      2 15-May-85 13:01 YEQYIG  ALL  RD  NO   
+(FOROTS      :  74) TRAPS.MAC      9 15-May-85 14:05 YEMMUJ  ALL  RD  NO   
+(FOROTS      :  74) TRU.MAC        2 05-Feb-80 23:30 KEKRAD  ALL  RD  RD   
+(FOROTS      :  74) TRY.MAC        3 01-Jul-82 19:27 YUCWIW  ALL  RD  NO   
+(FOROTS      :  74) USERNA.MAC     2 03-Jan-80 21:40 XOQGAY  ALL  RD  RD   
+(FOROTS      :  74) USRNM.MAC      2 03-Jan-80 21:43 RADZAS  ALL  RD  RD   
+(FOROTS      :  74) WAIT.MAC       2 03-Jan-80 21:41 LIKCEM  ALL  RD  RD   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:58 
+?unable to build circuit to JMS:58 
+?unable to build circuit to JMS:58 
+?unable to build circuit to JMS:58 
+?unable to build circuit to JMS:58 
+Creaux failed to JMS:17  
+Creaux failed to JMS:25  
+Creaux failed to JMS:54  
+Creaux failed to JMS:58  
+    Z Pš
