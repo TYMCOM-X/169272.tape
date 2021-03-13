@@ -1,0 +1,436 @@
+!RDIST (F40)*.*/CHECK/MASTER:29/HOST:33,35,74,32
+Master host: 29
+130 files on master system.
+Slave hosts: 33,35,74,32
+Checking host 33
+(F40         :  33) ACCESS.LIS     2 26-Oct-81 11:15 -- bad checksum GEPLIL
+                           should be 26-Oct-81 11:15 NAWXOJ  ALL  RD  RD
+(F40         :  33) TRULIM.REL     2 26-Jul-84 01:13 -- missing on master
+(F40         :  33) FORSE.OLD     49 01-Dec-83 09:27 -- missing on master
+(F40         :  33) FORSE.M72     49 02-Dec-83 14:26 -- missing on master
+(F40         :  33) FORSE.MAC     49 26-Jul-84 01:16 -- bad checksum GOFZAQ
+                           should be 01-Dec-82 09:36 YOWSOM  ALL  RD  NO
+(F40         :  33) FORSE.CRF    108 19-Mar-75 17:00 -- missing on master
+(F40         :  33) LIB40.REL    104 19-Apr-83 11:15 -- bad checksum MUBQOL
+                           should be 01-Dec-82 09:42 JERCEM  ALL  RD  NO
+(F40         :  33) LIB40.CKS      2 19-Apr-83 11:20 -- bad checksum GEZGAS
+                           should be 01-Dec-82 09:48 TUKLEG  ALL  RD  NO
+(F40         :  33) C40.GLB       11 25-Jul-84 23:05 -- missing on master
+(F40         :  33) LB4FD2.55    235 25-Jul-84 23:51 -- missing on master
+(F40         :  33) LIB41.REL    104 03-Oct-83 13:03 -- missing on master
+(F40         :  33) DIRIT.INI      2 21-Jul-84 18:35 -- missing on master
+(F40         :  33) TRAPS.M72      9 25-Jul-84 22:32 -- missing on master
+(F40         :  33) TRAPS.REL      3 26-Jul-84 01:12 -- missing on master
+(F40         :  33) TRAPS.MAC      9 26-Jul-84 01:12 -- missing on master
+(F40         :  33) TRAPS.LST     18 26-Jul-84 01:13 -- missing on master
+(F40         :  33) FX4.REL                          -- missing on slave
+(F40         :  33) FX4.MAC                          -- missing on slave
+(F40         :  33) CHECK.CTL                        -- missing on slave
+(F40         :  33) CHECK.LOG                        -- missing on slave
+(F40         :  33) CHECK.BAK                        -- missing on slave
+(F40         :  33) FX3.REL                          -- missing on slave
+(F40         :  33) FX3.MAC                          -- missing on slave
+(F40         :  33) FX2.MAC                          -- missing on slave
+(F40         :  33) FORSE.REL                        -- missing on slave
+(F40         :  33) REENTR.MAC                       -- missing on slave
+(F40         :  33) FX1.MAC                          -- missing on slave
+(F40         :  33) PARAM.MAC                        -- missing on slave
+(F40         :  33) F4TEST.FDM                       -- missing on slave
+(F40         :  33) F40COM.CMD                       -- missing on slave
+(F40         :  33) EXEC.REL                         -- missing on slave
+(F40         :  33) EXEC.MAC                         -- missing on slave
+(F40         :  33) FTREE.MAC                        -- missing on slave
+(F40         :  33) F40.CMD                          -- missing on slave
+(F40         :  33) F40.FIL                          -- missing on slave
+(F40         :  33) F40.SHR                          -- missing on slave
+Checking host 35
+(F40         :  35) ACCESS.LIS     2 26-Oct-81 13:15 -- bad checksum GEPLIL
+                           should be 26-Oct-81 11:15 NAWXOJ  ALL  RD  RD
+(F40         :  35) TARGET.LST   192 30-Jul-84 01:11 -- missing on master
+(F40         :  35) SIMTTY.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) MONI.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) MISC.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) INTO.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) IOADR.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) IALSUB.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) EXIT.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) IALSUB.REL    32 30-Jul-84 00:06 -- missing on master
+(F40         :  35) MISC.REL       4 30-Jul-84 00:06 -- missing on master
+(F40         :  35) IOADR.REL      2 30-Jul-84 00:05 -- missing on master
+(F40         :  35) LIB40F.V54   321 29-Jul-84 23:52 -- missing on master
+(F40         :  35) MISC.MAC      13 28-Jul-84 23:44 -- missing on master
+(F40         :  35) IOADR.MAC      2 28-Jul-84 23:44 -- missing on master
+(F40         :  35) IALSUB.F4     17 28-Jul-84 23:31 -- missing on master
+(F40         :  35) LIB40F.V55   364 19-Mar-75 19:00 -- missing on master
+(F40         :  35) TRULIM.REL     2 27-Jul-84 00:23 -- missing on master
+(F40         :  35) TFMT.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) PAUSE.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) MSPR.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) MBSR.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) INTI.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) DUMMY.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) INTI.REL       2 30-Jul-84 00:04 -- missing on master
+(F40         :  35) INTI.MAC       3 28-Jul-84 23:31 -- missing on master
+(F40         :  35) FORSE.NEW     49 27-Jul-84 00:18 -- missing on master
+(F40         :  35) FORSE.M72     49 27-Jul-84 00:42 -- missing on master
+(F40         :  35) FORSE.OLD     49 27-Jul-84 00:46 -- missing on master
+(F40         :  35) FORSE.MAC     49 02-Dec-83 16:26 -- bad checksum LABKAL
+                           should be 01-Dec-82 09:36 YOWSOM  ALL  RD  NO
+(F40         :  35) SINGLE.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) PDUMP.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) OCTO.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) FORSE.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) FDEBUG.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) FILE.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) F40CHN.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) DYNARY.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) DOUBLE.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) CHAIN.LST      2 02-Aug-84 15:27 -- missing on master
+(F40         :  35) ALLIO.LST      2 02-Aug-84 15:27 -- missing on master
+(F40         :  35) LIB54.REL      1 30-Jul-84 00:46 -- missing on master
+(F40         :  35) FORSE.REL     11 30-Jul-84 00:16 -- bad checksum DUZTUG
+                           should be 01-Dec-82 09:42 SUMFOY  ALL  RD  NO
+(F40         :  35) SINGLE.REL     5 30-Jul-84 00:05 -- missing on master
+(F40         :  35) CHAIN.REL      2 30-Jul-84 00:03 -- missing on master
+(F40         :  35) SINGLE.MAC    17 28-Jul-84 23:44 -- missing on master
+(F40         :  35) CHAIN.MAC      4 28-Jul-84 23:31 -- missing on master
+(F40         :  35) LIB.BAK        4 29-Jul-84 23:44 -- missing on master
+(F40         :  35) LIB.L56        3 30-Jul-84 00:55 -- missing on master
+(F40         :  35) OCTI.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) NMLST.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) MINMAX.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) LOUT.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) DEF40.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) DARITH.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) MINMAX.REL     2 30-Jul-84 00:06 -- missing on master
+(F40         :  35) DARITH.REL     3 30-Jul-84 00:06 -- missing on master
+(F40         :  35) NMLST.REL      3 30-Jul-84 00:04 -- missing on master
+(F40         :  35) DARITH.MAC     4 28-Jul-84 23:44 -- missing on master
+(F40         :  35) NMLST.MAC     14 28-Jul-84 23:31 -- missing on master
+(F40         :  35) MINMAX.F4      2 28-Jul-84 23:31 -- missing on master
+(F40         :  35) LB4FD2.55    235 27-Jul-84 00:24 -- missing on master
+(F40         :  35) C40.GLB       11 27-Jul-84 00:41 -- missing on master
+(F40         :  35) LIB40.CKS      2 19-Apr-83 13:20 -- bad checksum GEZGAS
+                           should be 01-Dec-82 09:48 TUKLEG  ALL  RD  NO
+(F40         :  35) LIB40.REL    104 19-Apr-83 13:15 -- bad checksum MUBQOL
+                           should be 01-Dec-82 09:42 JERCEM  ALL  RD  NO
+(F40         :  35) XYSUBS.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) LINT.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) FLIRT.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) EXER1.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) DUMMIO.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) XYSUBS.REL     3 30-Jul-84 00:07 -- missing on master
+(F40         :  35) XYSUBS.F4      2 28-Jul-84 23:31 -- missing on master
+(F40         :  35) LIB41.REL    104 03-Oct-83 15:03 -- missing on master
+(F40         :  35) TPFCN.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) RTFORT.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) MCHAIN.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) COMPLX.L  2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) ALPHO.LST      2 02-Aug-84 15:27 -- missing on master
+(F40         :  35) ALL.LOG        3 02-Aug-84 15:27 -- missing on master
+(F40         :  35) ALL.CTL        2 02-Aug-84 15:11 -- missing on master
+(F40         :  35) ALL.DIR        2 02-Aug-84 15:04 -- missing on master
+(F40         :  35) COMPLX.REL     6 30-Jul-84 00:05 -- missing on master
+(F40         :  35) COMPLX.MAC    20 28-Jul-84 23:44 -- missing on master
+(F40         :  35) TRAPS.LST     18 27-Jul-84 00:22 -- missing on master
+(F40         :  35) TRAPS.REL      3 27-Jul-84 00:23 -- missing on master
+(F40         :  35) TRAPS.MAC      9 27-Jul-84 00:23 -- missing on master
+(F40         :  35) TRAPS.M72      9 27-Jul-84 00:41 -- missing on master
+(F40         :  35) DIRIT.INI      2 27-Jul-84 00:42 -- missing on master
+(F40         :  35) XYPLOT.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) POWTAB.LST     2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) MONO.LST       2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) FLOUT.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) ERROR.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) DEVTB.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) DEROR.LST      2 02-Aug-84 15:28 -- missing on master
+(F40         :  35) ALPHI.LST      2 02-Aug-84 15:27 -- missing on master
+(F40         :  35) T.REL          2 30-Jul-84 00:26 -- missing on master
+(F40         :  35) MAIN09.VUE     2 30-Jul-84 00:15 -- missing on master
+(F40         :  35) OPDEF.MAC      2 30-Jul-84 00:11 -- missing on master
+(F40         :  35) DEROR.REL      3 30-Jul-84 00:06 -- missing on master
+(F40         :  35) FLOUT.REL      3 30-Jul-84 00:04 -- missing on master
+(F40         :  35) L40.LST        2 29-Jul-84 23:55 -- missing on master
+(F40         :  35) FLOUT.MAC      7 28-Jul-84 23:31 -- missing on master
+(F40         :  35) DEROR.F4       2 28-Jul-84 23:31 -- missing on master
+(F40         :  35) CHECK.CTL                        -- missing on slave
+(F40         :  35) CHECK.LOG                        -- missing on slave
+(F40         :  35) CHECK.BAK                        -- missing on slave
+Checking host 74
+(F40         :  74) DEVTB.REL                        -- missing on slave
+(F40         :  74) PJCPKG.REL                       -- missing on slave
+(F40         :  74) UNCARM.REL                       -- missing on slave
+(F40         :  74) MONO.REL                         -- missing on slave
+(F40         :  74) ALPHI.REL                        -- missing on slave
+(F40         :  74) XYPLOT.REL                       -- missing on slave
+(F40         :  74) ERROR.REL                        -- missing on slave
+(F40         :  74) POWTAB.REL                       -- missing on slave
+(F40         :  74) DEBUG.MAC                        -- missing on slave
+(F40         :  74) PJCPKG.INF                       -- missing on slave
+(F40         :  74) XYPLOT.MAC                       -- missing on slave
+(F40         :  74) POWTAB.MAC                       -- missing on slave
+(F40         :  74) PJCPKG.MAC                       -- missing on slave
+(F40         :  74) MONO.MAC                         -- missing on slave
+(F40         :  74) ERROR.MAC                        -- missing on slave
+(F40         :  74) DEVTB.MAC                        -- missing on slave
+(F40         :  74) DATBS.MAC                        -- missing on slave
+(F40         :  74) ALPHI.MAC                        -- missing on slave
+(F40         :  74) SLIB.MAC                         -- missing on slave
+(F40         :  74) ALPHO.REL                        -- missing on slave
+(F40         :  74) GETTAB.REL                       -- missing on slave
+(F40         :  74) RTFORT.REL                       -- missing on slave
+(F40         :  74) FX4.REL                          -- missing on slave
+(F40         :  74) MCHAIN.REL                       -- missing on slave
+(F40         :  74) SLIB.REL                         -- missing on slave
+(F40         :  74) TPFCN.REL                        -- missing on slave
+(F40         :  74) BYE.REL                          -- missing on slave
+(F40         :  74) TRUTST.F4                        -- missing on slave
+(F40         :  74) MCHAIN.MAC                       -- missing on slave
+(F40         :  74) FX4.MAC                          -- missing on slave
+(F40         :  74) BYE.MAC                          -- missing on slave
+(F40         :  74) GETTAB.MAC                       -- missing on slave
+(F40         :  74) TPFCN.MAC                        -- missing on slave
+(F40         :  74) RTFORT.MAC                       -- missing on slave
+(F40         :  74) ALPHO.MAC                        -- missing on slave
+(F40         :  74) GETTAB.DOC                       -- missing on slave
+(F40         :  74) MCHAIN.CMD                       -- missing on slave
+(F40         :  74) CHECK.CTL                        -- missing on slave
+(F40         :  74) CHECK.LOG                        -- missing on slave
+(F40         :  74) CHECK.BAK                        -- missing on slave
+(F40         :  74) LIB40.CKS                        -- missing on slave
+(F40         :  74) LIB40.FIL                        -- missing on slave
+(F40         :  74) LINT.REL                         -- missing on slave
+(F40         :  74) DUMMIO.REL                       -- missing on slave
+(F40         :  74) LIB40.REL                        -- missing on slave
+(F40         :  74) GFD.REL                          -- missing on slave
+(F40         :  74) EXER1.REL                        -- missing on slave
+(F40         :  74) FLIRT.REL                        -- missing on slave
+(F40         :  74) GFD.MAC                          -- missing on slave
+(F40         :  74) FX3.REL                          -- missing on slave
+(F40         :  74) LIBDIR.F40                       -- missing on slave
+(F40         :  74) TRU.REL                          -- missing on slave
+(F40         :  74) LIB40.DOC                        -- missing on slave
+(F40         :  74) LINT.MAC                         -- missing on slave
+(F40         :  74) FLIRT.MAC                        -- missing on slave
+(F40         :  74) EXER1.MAC                        -- missing on slave
+(F40         :  74) DUMMIO.MAC                       -- missing on slave
+(F40         :  74) FX3.MAC                          -- missing on slave
+(F40         :  74) LIB40.FDM                        -- missing on slave
+(F40         :  74) LIB40.CMD                        -- missing on slave
+(F40         :  74) F40CRF.SWM                       -- missing on slave
+(F40         :  74) F40DBG.LNK                       -- missing on slave
+(F40         :  74) F40DBG.CMD                       -- missing on slave
+(F40         :  74) F40DBG.SHR                       -- missing on slave
+(F40         :  74) F40DBG.LOW                       -- missing on slave
+(F40         :  74) LOUT.REL                         -- missing on slave
+(F40         :  74) OCTI.REL                         -- missing on slave
+(F40         :  74) DEF40.REL                        -- missing on slave
+(F40         :  74) FX2.MAC                          -- missing on slave
+(F40         :  74) OCTI.MAC                         -- missing on slave
+(F40         :  74) LOUT.MAC                         -- missing on slave
+(F40         :  74) DEF40.MAC                        -- missing on slave
+(F40         :  74) DEF40.UNV                        -- missing on slave
+(F40         :  74) FORSE.MAC                        -- missing on slave
+(F40         :  74) FDEBUG.REL                       -- missing on slave
+(F40         :  74) OCTO.REL                         -- missing on slave
+(F40         :  74) FILE.REL                         -- missing on slave
+(F40         :  74) DOUBLE.REL                       -- missing on slave
+(F40         :  74) PDUMP.REL                        -- missing on slave
+(F40         :  74) ADJ.REL                          -- missing on slave
+(F40         :  74) FORSE.REL                        -- missing on slave
+(F40         :  74) DYNARY.REL                       -- missing on slave
+(F40         :  74) REENTR.MAC                       -- missing on slave
+(F40         :  74) FX1.MAC                          -- missing on slave
+(F40         :  74) ADJ.MAC                          -- missing on slave
+(F40         :  74) OVDMP.FDM                        -- missing on slave
+(F40         :  74) PDUMP.MAC                        -- missing on slave
+(F40         :  74) PARAM.MAC                        -- missing on slave
+(F40         :  74) OCTO.MAC                         -- missing on slave
+(F40         :  74) FILE.MAC                         -- missing on slave
+(F40         :  74) FDEBUG.MAC                       -- missing on slave
+(F40         :  74) DYNARY.MAC                       -- missing on slave
+(F40         :  74) DOUBLE.MAC                       -- missing on slave
+(F40         :  74) ALLIO.MAC                        -- missing on slave
+(F40         :  74) ALLIO.REL                        -- missing on slave
+(F40         :  74) F40CHN.REL                       -- missing on slave
+(F40         :  74) MSPR.REL                         -- missing on slave
+(F40         :  74) PAUSE.REL                        -- missing on slave
+(F40         :  74) DUMMY.REL                        -- missing on slave
+(F40         :  74) MBSR.REL                         -- missing on slave
+(F40         :  74) F4TEST.FDM                       -- missing on slave
+(F40         :  74) MSPR.MAC                         -- missing on slave
+(F40         :  74) TFMT.MAC                         -- missing on slave
+(F40         :  74) PAUSE.MAC                        -- missing on slave
+(F40         :  74) MBSR.MAC                         -- missing on slave
+(F40         :  74) DUMMY.MAC                        -- missing on slave
+(F40         :  74) TFMT.REL                         -- missing on slave
+(F40         :  74) F40COM.CMD                       -- missing on slave
+(F40         :  74) INTO.REL                         -- missing on slave
+(F40         :  74) EXEC.REL                         -- missing on slave
+(F40         :  74) FLNEDI.REL                       -- missing on slave
+(F40         :  74) EXEC.MAC                         -- missing on slave
+(F40         :  74) SOAKEM.MAC                       -- missing on slave
+(F40         :  74) ACCESS.LIS                       -- missing on slave
+(F40         :  74) SIMTTY.MAC                       -- missing on slave
+(F40         :  74) MONI.MAC                         -- missing on slave
+(F40         :  74) INTO.MAC                         -- missing on slave
+(F40         :  74) FLNEDI.MAC                       -- missing on slave
+(F40         :  74) EXIT.MAC                         -- missing on slave
+(F40         :  74) LIB40F.267                       -- missing on slave
+(F40         :  74) FTREE.MAC                        -- missing on slave
+(F40         :  74) RDTAPE.503                       -- missing on slave
+(F40         :  74) LNEDIT.DOC                       -- missing on slave
+(F40         :  74) MONI.REL                         -- missing on slave
+(F40         :  74) SIMTTY.REL                       -- missing on slave
+(F40         :  74) EXIT.REL                         -- missing on slave
+(F40         :  74) F40X.FDM                         -- missing on slave
+(F40         :  74) F40.CMD                          -- missing on slave
+(F40         :  74) F40.FIL                          -- missing on slave
+(F40         :  74) F40.SHR                          -- missing on slave
+Checking host 32
+(F40         :  32) ACCESS.MSG     2 15-Jan-88 15:51 -- missing on master
+(F40         :  32) DEVTB.REL                        -- missing on slave
+(F40         :  32) PJCPKG.REL                       -- missing on slave
+(F40         :  32) UNCARM.REL                       -- missing on slave
+(F40         :  32) MONO.REL                         -- missing on slave
+(F40         :  32) ALPHI.REL                        -- missing on slave
+(F40         :  32) XYPLOT.REL                       -- missing on slave
+(F40         :  32) ERROR.REL                        -- missing on slave
+(F40         :  32) POWTAB.REL                       -- missing on slave
+(F40         :  32) DEBUG.MAC                        -- missing on slave
+(F40         :  32) PJCPKG.INF                       -- missing on slave
+(F40         :  32) XYPLOT.MAC                       -- missing on slave
+(F40         :  32) POWTAB.MAC                       -- missing on slave
+(F40         :  32) PJCPKG.MAC                       -- missing on slave
+(F40         :  32) MONO.MAC                         -- missing on slave
+(F40         :  32) ERROR.MAC                        -- missing on slave
+(F40         :  32) DEVTB.MAC                        -- missing on slave
+(F40         :  32) DATBS.MAC                        -- missing on slave
+(F40         :  32) ALPHI.MAC                        -- missing on slave
+(F40         :  32) SLIB.MAC                         -- missing on slave
+(F40         :  32) ALPHO.REL                        -- missing on slave
+(F40         :  32) GETTAB.REL                       -- missing on slave
+(F40         :  32) RTFORT.REL                       -- missing on slave
+(F40         :  32) FX4.REL                          -- missing on slave
+(F40         :  32) MCHAIN.REL                       -- missing on slave
+(F40         :  32) SLIB.REL                         -- missing on slave
+(F40         :  32) TPFCN.REL                        -- missing on slave
+(F40         :  32) BYE.REL                          -- missing on slave
+(F40         :  32) TRUTST.F4                        -- missing on slave
+(F40         :  32) MCHAIN.MAC                       -- missing on slave
+(F40         :  32) FX4.MAC                          -- missing on slave
+(F40         :  32) BYE.MAC                          -- missing on slave
+(F40         :  32) GETTAB.MAC                       -- missing on slave
+(F40         :  32) TPFCN.MAC                        -- missing on slave
+(F40         :  32) RTFORT.MAC                       -- missing on slave
+(F40         :  32) ALPHO.MAC                        -- missing on slave
+(F40         :  32) GETTAB.DOC                       -- missing on slave
+(F40         :  32) MCHAIN.CMD                       -- missing on slave
+(F40         :  32) CHECK.CTL                        -- missing on slave
+(F40         :  32) CHECK.LOG                        -- missing on slave
+(F40         :  32) CHECK.BAK                        -- missing on slave
+(F40         :  32) LIB40.CKS                        -- missing on slave
+(F40         :  32) LIB40.FIL                        -- missing on slave
+(F40         :  32) LINT.REL                         -- missing on slave
+(F40         :  32) DUMMIO.REL                       -- missing on slave
+(F40         :  32) LIB40.REL                        -- missing on slave
+(F40         :  32) GFD.REL                          -- missing on slave
+(F40         :  32) EXER1.REL                        -- missing on slave
+(F40         :  32) FLIRT.REL                        -- missing on slave
+(F40         :  32) GFD.MAC                          -- missing on slave
+(F40         :  32) FX3.REL                          -- missing on slave
+(F40         :  32) LIBDIR.F40                       -- missing on slave
+(F40         :  32) TRU.REL                          -- missing on slave
+(F40         :  32) LIB40.DOC                        -- missing on slave
+(F40         :  32) LINT.MAC                         -- missing on slave
+(F40         :  32) FLIRT.MAC                        -- missing on slave
+(F40         :  32) EXER1.MAC                        -- missing on slave
+(F40         :  32) DUMMIO.MAC                       -- missing on slave
+(F40         :  32) FX3.MAC                          -- missing on slave
+(F40         :  32) LIB40.FDM                        -- missing on slave
+(F40         :  32) LIB40.CMD                        -- missing on slave
+(F40         :  32) F40CRF.SWM                       -- missing on slave
+(F40         :  32) F40DBG.LNK                       -- missing on slave
+(F40         :  32) F40DBG.CMD                       -- missing on slave
+(F40         :  32) F40DBG.SHR                       -- missing on slave
+(F40         :  32) F40DBG.LOW                       -- missing on slave
+(F40         :  32) LOUT.REL                         -- missing on slave
+(F40         :  32) OCTI.REL                         -- missing on slave
+(F40         :  32) DEF40.REL                        -- missing on slave
+(F40         :  32) FX2.MAC                          -- missing on slave
+(F40         :  32) OCTI.MAC                         -- missing on slave
+(F40         :  32) LOUT.MAC                         -- missing on slave
+(F40         :  32) DEF40.MAC                        -- missing on slave
+(F40         :  32) DEF40.UNV                        -- missing on slave
+(F40         :  32) FORSE.MAC                        -- missing on slave
+(F40         :  32) FDEBUG.REL                       -- missing on slave
+(F40         :  32) OCTO.REL                         -- missing on slave
+(F40         :  32) FILE.REL                         -- missing on slave
+(F40         :  32) DOUBLE.REL                       -- missing on slave
+(F40         :  32) PDUMP.REL                        -- missing on slave
+(F40         :  32) ADJ.REL                          -- missing on slave
+(F40         :  32) FORSE.REL                        -- missing on slave
+(F40         :  32) DYNARY.REL                       -- missing on slave
+(F40         :  32) REENTR.MAC                       -- missing on slave
+(F40         :  32) FX1.MAC                          -- missing on slave
+(F40         :  32) ADJ.MAC                          -- missing on slave
+(F40         :  32) OVDMP.FDM                        -- missing on slave
+(F40         :  32) PDUMP.MAC                        -- missing on slave
+(F40         :  32) PARAM.MAC                        -- missing on slave
+(F40         :  32) OCTO.MAC                         -- missing on slave
+(F40         :  32) FILE.MAC                         -- missing on slave
+(F40         :  32) FDEBUG.MAC                       -- missing on slave
+(F40         :  32) DYNARY.MAC                       -- missing on slave
+(F40         :  32) DOUBLE.MAC                       -- missing on slave
+(F40         :  32) ALLIO.MAC                        -- missing on slave
+(F40         :  32) ALLIO.REL                        -- missing on slave
+(F40         :  32) F40CHN.REL                       -- missing on slave
+(F40         :  32) MSPR.REL                         -- missing on slave
+(F40         :  32) PAUSE.REL                        -- missing on slave
+(F40         :  32) DUMMY.REL                        -- missing on slave
+(F40         :  32) MBSR.REL                         -- missing on slave
+(F40         :  32) F4TEST.FDM                       -- missing on slave
+(F40         :  32) MSPR.MAC                         -- missing on slave
+(F40         :  32) TFMT.MAC                         -- missing on slave
+(F40         :  32) PAUSE.MAC                        -- missing on slave
+(F40         :  32) MBSR.MAC                         -- missing on slave
+(F40         :  32) DUMMY.MAC                        -- missing on slave
+(F40         :  32) TFMT.REL                         -- missing on slave
+(F40         :  32) F40COM.CMD                       -- missing on slave
+(F40         :  32) INTO.REL                         -- missing on slave
+(F40         :  32) EXEC.REL                         -- missing on slave
+(F40         :  32) FLNEDI.REL                       -- missing on slave
+(F40         :  32) EXEC.MAC                         -- missing on slave
+(F40         :  32) SOAKEM.MAC                       -- missing on slave
+(F40         :  32) ACCESS.LIS                       -- missing on slave
+(F40         :  32) SIMTTY.MAC                       -- missing on slave
+(F40         :  32) MONI.MAC                         -- missing on slave
+(F40         :  32) INTO.MAC                         -- missing on slave
+(F40         :  32) FLNEDI.MAC                       -- missing on slave
+(F40         :  32) EXIT.MAC                         -- missing on slave
+(F40         :  32) LIB40F.267                       -- missing on slave
+(F40         :  32) FTREE.MAC                        -- missing on slave
+(F40         :  32) RDTAPE.503                       -- missing on slave
+(F40         :  32) LNEDIT.DOC                       -- missing on slave
+(F40         :  32) MONI.REL                         -- missing on slave
+(F40         :  32) SIMTTY.REL                       -- missing on slave
+(F40         :  32) EXIT.REL                         -- missing on slave
+(F40         :  32) F40X.FDM                         -- missing on slave
+(F40         :  32) F40.CMD                          -- missing on slave
+(F40         :  32) F40.FIL                          -- missing on slave
+(F40         :  32) F40.SHR                          -- missing on slave
+
+End of SAIL execution
+!SEND JMS
+Type letter:
+; PCOM v1.63 - processed: (F40)CHECK.LOG = (F40)CHECK.CTL
+; Options: DETACH  LOG NOAPPEND SUPERSEDE LICENSE 
+; Limits: TIME:60 TRULIMIT:0 
+; Status: completed.
+; Output recorded in file (F40)CHECK.LOG.
+
+End of SAIL execution
+!LOGOUT
+382.61 tru
+terminal time: 0:07:30
+   rkP
