@@ -1,0 +1,7 @@
+define SYSNA1 (XLX,XRX) <XLX'KI00-P035/D'XRX>
+define SYSDT1 (XLX,XRX) <XLX'1-12-88'XRX>
+define SYSID1 (XLX,XRX) <XLX'M02487'XRX>
+
+; P035/D	1-12-88   M02487   JMS
+; P035/C01	9-25-87   M02324   JMS
+; This file is CNFN7I.MAC - generic KI monitor for 3675 disks
