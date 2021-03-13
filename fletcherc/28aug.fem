@@ -1,0 +1,401 @@
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Thu, 21 Aug 86 16:08:42 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Tape backup schedule 
+
+Since we have 7 days a week coverage, we should be doing TITO incremental
+saves every day.  I propose the following schedule:
+
+	Saturday, Sunday	Carl
+	Monday, Tuesday		Osman
+	Wednesday, Thursday	Joe
+	Friday			Dennis
+
+We need to decide on a new schedule for doing the ALL FILES.
+From: Osman Guven <osman@X930.Tymnet> 
+Date: Thu, 21 Aug 86 16:41:02 PDT 
+To: Monitor Group <Osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: Schedule.. 
+
+
+I will be taking this Friday 8/22 as a comp time-off.
+I have two days of comp time from last Holiday.
+-Osman-
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Thu, 21 Aug 86 18:56:04 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: MONED1 working again. 
+
+There is a bug in the GETMAP routine, which maps file pages into memory.
+Aparently it will not allow more than 12 pages to be mapped.
+
+When MONED1 is reading P034.MEM backwards from the end, it looks for the
+latest number like "/P29".  Then it looks for the major version number, such
+as "P034/Q".  If the major version number is 12 pages from the end of the
+file, then MONED1 dies trying to map SYSID.DAT.  If the major number is more
+than 12 pages from the end, then MONED1 dies trying to find it.
+
+My work-around was to duplicate the text "P034/Q" closer to the end of the
+file.  To prevent this from happening again, we need to either 1) Fix MONED1
+to not use GETMAP, or 2) Release monitors more often.
+
+			/Joe
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Fri, 22 Aug 86 8:21:39 PDT 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: Misc BACKUP & MONED1 
+
+Backup schedules...
+  incrementals every day sounds nice, but it does take time and
+requires physical access to the machine...
+
+  as we are being paid a bit more than operators, we should try to
+minimize our "operations" tasks as much as possible.  ALL-FILES are
+a fact of life... and once a month is the minimum we can get by on.
+incrementals, on the other hand vary depending on how much work we
+do on our machines.  Since there are only 4 of us, I feel that four
+times a week (unless we have a special case) is enough giving each
+of us one turn at it each week.
+
+  we should look at the amount of work done on a daily basis on each
+machine (in general) and decide when the 4 optimal times to backup
+the system are taking into consideration what time of day each of us
+would be dong the backup.
+  (clearly, my backing up the system last thing on Sunday, and someone
+else backing up the system first thing on Monday isn't very good...)
+
+As long as I work Saturday & Sunday, I feel a backup of my work as I
+finish up on Sunday lets us start the week fresh.  Tuesday afternnon
+(after our weekly meeting) sounds like another good time, since we all
+try to get things finished up for the tuesday meeting "show & tell".
+I'm not sure when the other two "best" times ought to be...  anyone
+have any better suggestions...?
+
+
+Re: MONED1 -- Good work... I'm suprised we didn't run into this on the
+    /K monitor release... must have barely made it with /J64 under the
+    wire.  We've also been a bit more verbose than on previous releases
+    of the monitor and that probably accounts for /P32 too far from
+    the end.
+
+    Now that you mention it, GETMAP does have that restriction on the
+    number of pages... I wonder if it is limited to 12, or if it can
+    just be changed to a larger number...  anyway, if I plug in the
+    VMFILE routines, it won't matter since it only keeps one page mapped
+    at a time (just like SIMIO).
+
+/Carl
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Wed, 20 Aug 86 15:45:13 PDT
+From: HRD.TRNG@Ontyme.Tymnet 
+Date: sbimemo 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: A26044@Ontyme.Tymnet 
+Subject: SIGNIFICANT BUSINESS ISSUE (SBI) IDEAS 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Fri, 22 Aug 86 8:40:44 PDT 
+Resent-to: Carl A Baltrunas <carl@X930.Tymnet>, Osman Guven
+	<osman@X930.Tymnet>, Joe Smith <jms@X930.Tymnet> 
+Resent-cc: Craig Fletcher <fletcherc@X930.Tymnet>, mosserj 
+
+*************************  MEMORANDUM  **************************
+ 
+   DATE:  AUGUST 20, 1986
+ 
+     TO:  ALL EMPLOYEES (Please Post)
+ 
+   FROM:  STEPHEN REYNOLDS
+          MANAGEMENT & PROFESSIONAL DEVELOPMENT (CUPERTINO)
+ 
+SUBJECT:  SIGNIFICANT BUSINESS ISSUE (SBI) IDEAS
+ 
+*****************************************************************
+ 
+The deadline for submitting ideas for the ISG SBI has been 
+extended to August 28.  The deadline is being extended because 
+some employees indicated that they did not receive Jerry 
+Causley's letter of July 24, 1986, and still wanted to contribute 
+SBI ideas.  (To get a copy of Jerry's letter, contact Lorna Loram 
+at 408/446-8825.)
+ 
+All employees are welcome to submit their ideas for an SBI for 
+the ISG.  All submissions will be combined with the ideas 
+generated at the brainstorming sessions held last week at various 
+ISG facilities, and will be reviewed by the ISG Management 
+Committee during the week of September 8.  Ideas can be submitted 
+prior to August 28 via two methods:
+ 
+        . Mail your idea to:
+               
+                    SBI Ideas
+                    Bldg. 306-2E, Room 278
+                    P.O. Box 516
+                    St. Louis, MO 63166
+ 
+        . Use Ontyme to submit your idea; type
+ 
+                    :EXEC *** FORMS.SBI/IDEA
+ 
+Questions about the SBI process can be directed to me (408/446-
+7811) or the User Support Center in St. Louis (314/232-6943).
+ 
+ 
+SLR/lh
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Fri, 22 Aug 86 21:47:32 PDT 
+To: William R. Soley <WRS@B39.Tymnet> 
+Cc: Wayne D. Bartlett <BARTLETW@B39.Tymnet>, nancyb@tymix, carl, Fletcherc 
+Subject: Re: NONAME 
+In-reply-to: your message of Fri, 22 Aug 86 18:25:11 PDT
+
+NONAME.SIM is in (BURRIESCIN:38) and in an FDM file (SSSPOOL:74)NONAMF.041
+I believe that we, the TYMCOM-X Support Group are responsible for it.  /Joe
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Sun, 24 Aug 86 15:32:37 PDT 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: Today 
+
+I've been at home working today... (Sunday) ...My wife  has a bad cold
+that may require me taking her to the hospital because of complications
+with her asthma.  If you need me for anything, try my home number first
+(408) 945-4314, then the office x2515, then my beeper (408) 977-7960.
+
+I will be in the office later to do the incrementals on 930 and 62.  I'm
+just waiting till the last minute because of my wife.  See you all
+tomorrow.
+
+/Carl
+
+
+Re: ON CALL
+
+    I will be on call from monday Aug 25 to sunday Aug 31.
+
+/Carl
+Received: from X62.Tymnet by X930.Tymnet; Mon, 25 Aug 86 9:41:20 PDT
+Return-path: <DENCOFF@C62.Tymnet> 
+From: Dennis Coffey Tymcom-X <DENCOFF@C62> 
+Date: Mon, 25 Aug 86 9:34:55 PDT 
+To: (Monitor Group:), Carl Baltrunas <CARL@X930.Tymnet>, Osman Guven
+	<OSMAN@X930.Tymnet>, Joe Smith <JMS@X930.Tymnet> 
+Cc: Craig Fletcher <FLETCHERC@X930.Tymnet>, Tymcom-X Acct. Sup.
+	<TXSSUP@X930.Tymnet> 
+Subject: My TTE Class this week. 
+
+I am in Tymnet Training's 445 class all week.  I will be checking my TUMS
+mail regularly.  If you need to get a phone message to me, the number here
+is 408/435-0239.  See you in a week, or sooner.
+/D.
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Tue, 26 Aug 86 19:42:32 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: The HOTLINE works (after 8 rings). 
+
+I noticed that Dallas called our beeper, so I tried dialing 794-2567 myself.
+It rang and rang, and it took 30 seconds for the phone system to decide that
+it should forward the call to South Bay Answering Service.  We may need to
+warn the Data Centers to let the phone ring 20 times before giving up.  /Joe
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Fri, 22 Aug 86 11:45:32 PDT
+From: NTD.SUP@Ontyme.Tymnet 
+Date: Fri, 22 Aug 86 11:45:32 PDT 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: I15457@Ontyme.Tymnet 
+Subject: Transfer of Ontyme User Names 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Wed, 27 Aug 86 14:16:10 PDT 
+Resent-to: Craig Fletcher <fletcherc@X930.Tymnet>, Joe Smith <jms@X930.Tymnet>,
+	Osman Guven <osman@X930.Tymnet>, Dennis Coffey <dencoff@C26.Tymnet> 
+
+Date:   August 21, 1986.
+
+To:     The World
+
+From:   Chung Lam
+
+Subject:  Transfer of Ontyme User Names
+----------------------------------------------------------
+
+
+
+        "Due to the recent reorganization, the following Ontyme user 
+names  have  been  transferred  from  the  NTD account to thePS 
+account.  Therefore,  effective  immediately,  please  forward  your 
+ontymes to the new user names.  Thank you." 
+
+
+
+        OLD Ontyme Names                NEW Ontyme Names
+        ----------------                ----------------
+
+        NTD.A/RAJARAMAN                 TYMOPS.A/RAJARAMAN
+        NTD.C/LAM                       TYMOPS.C/LAM
+        NTD.R/SHARMA                    TYMOPS.R/SHARMA
+        NTD.J/HO                        TYMOPS.J/HO
+        NTD.R/GREENSTEIN                TYMOPS.R/GREENSTEIN
+        NTD.R/HUANG                     TYMOPS.R/HUANG
+        NTD.M/LU                        TYMOPS.M/LU
+        NTD.J/JOELS                     TYMOPS.J/JOELS
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Wed, 27 Aug 86 9:46:01 PDT
+From: ISGHQ.K/PETERS@Ontyme.Tymnet 
+Date: Wed, 27 Aug 86 9:46:01 PDT 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: J79872@Ontyme.Tymnet 
+Subject: "MCDONNELL DOUGLAS INFORMATION"... 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Wed, 27 Aug 86 14:16:14 PDT 
+Resent-to: Craig Fletcher <fletcherc@X930.Tymnet>, Joe Smith <jms@X930.Tymnet>,
+	Osman Guven <osman@X930.Tymnet>, Dennis Coffey <dencoff@C26.Tymnet> 
+
+
+            MCDONNELL DOUGLAS INFORMATION SYSTEMS GROUP
+
+                      ADMINISTRATIVE BULLETIN
+
+
+No. ISG-86-84                                      26 August 1986
+
+
+To:           All ISG Employees
+
+Subject:      LABOR DAY HOLIDAY 1986
+
+                                                                   
+
+
+ISG Companies in the United States will observe the Labor Day 
+HoliE$C 1 September 1986.
+
+
+Employees required to work during the holiday, to maintain ongoing 
+operations, will be notified by their management.
+
+
+ISG Management would like to take this opportunity to wish you and 
+your family a safe and enjoyable Labor Day weekend.
+
+
+
+
+M. R. Becker
+Staff Vice President
+Human Resources - ISG
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Wed, 27 Aug 86 9:46:15 PDT
+From: ISGHQ.K/PETERS@Ontyme.Tymnet 
+Date: Wed, 27 Aug 86 9:46:15 PDT 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: J79873@Ontyme.Tymnet 
+Subject: "MCDONNELL DOUGLAS INFORMATION"... 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Wed, 27 Aug 86 14:16:18 PDT 
+Resent-to: Craig Fletcher <fletcherc@X930.Tymnet>, Joe Smith <jms@X930.Tymnet>,
+	Osman Guven <osman@X930.Tymnet>, Dennis Coffey <dencoff@C26.Tymnet> 
+
+
+
+            MCDONNELL DOUGLAS INFORMATION SYSTEMS GROUP
+
+                      ADMINISTRATIVE BULLETIN
+
+
+No. ISG-86-85                                      August 27, 1986
+
+
+To:        ISG A - E
+
+
+Subject:   ISG MAIL VERSION 2.1 UPGRADE
+
+
+E$C de is available for ISG Mail users.  This new version, 
+2.1, is necessary due to the new release of Ontyme software which 
+has been installed on all Ontyme hosts.  Without this upgrade ISG 
+Mail will not send mail or binary files.  There is no charge for 
+this upgrade, which may be obtained from the User Support Centers.
+
+
+Contact the User Support Centers at:
+
+           Cupertino, CA                           (408) 446-7031
+
+E$   Cypress, CA                             (714) 952-6152
+
+           St. Louis, MO                           (314) 233-5116
+
+
+
+
+R. D. Greco, Director
+Information Services - ISG
+Received: from EMSTXS.Ontyme.Tymnet by X930.Tymnet; Wed, 27 Aug 86 12:16:10 PDT
+From: ISGHQ.K/PETERS@Ontyme.Tymnet 
+Date: 27 AUG 86 19:04:18 
+To: TXS.SUP@Ontyme.Tymnet 
+Message-id: J80004@Ontyme.Tymnet 
+Subject: "MCDONNELL DOUGLAS INFORMATION"... 
+Resent-from: Tymcom-X Supervisor <TXSSUP@X930.Tymnet> 
+Resent-date: Wed, 27 Aug 86 14:16:22 PDT 
+Resent-to: Craig Fletcher <fletcherc@X930.Tymnet>, Joe Smith <jms@X930.Tymnet>,
+	Osman Guven <osman@X930.Tymnet>, Dennis Coffey <dencoff@C26.Tymnet> 
+
+
+            MCDONNELL DOUGLAS INFORMATION SYSTEMS GROUP
+
+                      ADMINISTRATIVE BULLETIN
+
+
+No. ISG-86-87                                      27 August 1986
+
+
+To:           ISG Management Lists A - E
+
+Subject:      ELIMINATION OF SHORT TERM TRAVEL PRE-AUTHORIZATION
+
+CC:           ISG Policy Interface Coordinators
+
+                                                             he opportu
+
+In support of ISG objectives to eliminate all unnecessary 
+approvals and delegate responsibility to the lowest practical 
+level, this directive eliminates the requirement to obtain 
+management authorization prior to engaging in Short Term Business 
+Travel.  Based upon this directive, ISG Organizations should also 
+eliminate the requirement for preparation of redundant forms 
+containing information which will be reflected on travel expenshe opportus.
+
+Management will retain responsibility for review and control of 
+travel expenditures through approval of travel expense reports, 
+and tracking of travel expenses charged to departmental budgets.
+
+ISG Organizations are expected to incorporate these guidelines 
+into their Company level directives and issue them to all involved 
+employees.  Current travel practices should not change until these 
+new guidelines are provided by the responhe opportuon within 
+each Company.  Organizational travel practices should be revised 
+to conform with this Directive as soon as possible, but no later 
+than December 31, 1986.
+
+ISG Policy Interface Coordinators and Travel Accounting functions 
+can contact Clifton S. Carter in St. Louis, at (314) 233-6544, 
+with questions and for assistance in incorporating this concept 
+into your existing procedures.
+
+All other Business Travel and Reloche opportuines remain as 
+stated in ISG Management Directive 215.
+
+
+
+Paul W. Wiedenmann
+Corporate Vice President
+Finance - ISG
+  @I?
