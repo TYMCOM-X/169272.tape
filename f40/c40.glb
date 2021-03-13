@@ -1,0 +1,599 @@
+
+Flags	Symbol	 Octal Value	Defined in  Referenced in		(all symbols)
+
+	ABS	            1'	ABS	    OUT1,NOUTT,SFORM,FORM1,DINV,RLA,RVA,NWIND,DINPD,TREND,FGRTS,
+					    RELAT,RCKEN,QUEST
+N	ACOS	            1'	ACOS	    
+N	ADJ.	            0'	ADJ.	    
+N	AFILE	            0'	AFILE	    
+N	AGREE	           53'	AGREE	    
+N	AIMAG	            1'	AIMAG	    
+N	AINT	            1'	AINT	    
+	AL	           26'	AL	    LOANL
+	ALLIO.	            0'	ALLIO.	    F40CHN,FDEBUG
+	ALOG	           14'	ALOG	    GROW,ERLA,ERVA,RN,NTRAN,CEXP.2,CEXP.3,CLOG,CEXP,CSIN,EXP3,
+					    EXP2
+	ALOG10	            1'	ALOG	    AXIS,SCALE
+S	ALPHI.	            0'	ALPHI.+	    GRAPH,QUEST,ALLIO.,PAUSE,IOADR.,+DALPHI
+S	ALPHO.	            0'	ALPHO.+	    GRAPH,QUEST,ALLIO.,PDUMP,PAUSE,IOADR.,+DALPHO
+N	AMAX0	           17'	MAX	    
+N	AMAX1	            1'	MAX	    
+N	AMIN0	           17'	MIN	    
+N	AMIN1	            1'	MIN	    
+N	AMOD	            1'	AMOD	    
+	AROPN.	          232'	ERROR.	    FORSE.
+N	ASIN	            1'	ASIN	    
+	ASTRK.	          427'	ERROR.	    FLOUT.,INTO.,OCTO.
+	ASVAR.	         2004'	FORSE.	    ERROR.
+	ATAN	            1'	ATAN	    ACOS,ASIN,ATAN2
+	ATAN2	            1'	ATAN2	    CEXP.2,CLOG
+N	AXIS	          336'	AXIS	    
+N	BENCHM	            1'	BENCHM	    
+N	BFILE	           14'	AFILE	    
+N	BINWR.	         6763'	FORSE.	    
+N	BLKRW	          224'	RTFORT	    
+	BLOCK.	         2001'	FORSE.	    MBSR.
+	BPHSE.	          361'	ERROR.	    MBSR.,FORSE.
+	BTLER.	          353'	ERROR.	    FORSE.
+N	BUF	            0'	DBUF	    
+N	BUFCA.	         5343'	FORSE.	    
+	BUFER.	          421'	ERROR.	    FORSE.
+N	BUFFER	            0'	BUFFER	    
+	BUFHD.	         1356'	FORSE.	    F40CHN
+N	BYE	          127'	SLIB	    
+N	CABS	            1'	CABS	    
+N	CBRT	            0'	CBRT	    
+	CCKEN	          201'	CCKEN	    AGREE
+N	CCOS	            1'	CSIN	    
+N	CEXP	            1'	CEXP	    
+N	CEXP.2	            1'	CEXP.2	    
+N	CEXP.3	            1'	CEXP.3	    
+N	CFDM.0	           23'	CFDV	    
+N	CFDM.2	           20'	CFDV	    
+Flags	Symbol	 Octal Value	Defined in  Referenced in		(all symbols)
+
+N	CFDM.4	           15'	CFDV	    
+N	CFDM.6	           12'	CFDV	    
+N	CFD.0	           27'	CFDV	    
+N	CFD.2	            7'	CFDV	    
+N	CFD.4	            4'	CFDV	    
+N	CFD.6	            1'	CFDV	    
+N	CFMM.0	           23'	CFMP	    
+N	CFMM.2	           20'	CFMP	    
+N	CFMM.4	           15'	CFMP	    
+N	CFMM.6	           12'	CFMP	    
+N	CFM.0	           26'	CFMP	    
+N	CFM.2	            7'	CFMP	    
+N	CFM.4	            4'	CFMP	    
+N	CFM.6	            1'	CFMP	    
+MN	CHAIN	          132'	F40CHN	    
+MN	CHAIN	            2'	CHAIN	    
+	CHAIN.	            5'	F40CHN	    FORSE.
+	CHINN.	         3622'	FORSE.	    NMLST.,MONI.,FLIRT.,INTI.,LINT.,OCTI.,ALPHI.
+	CHNIN.	            0'	F40CHN	    FORSE.
+N	CHNMN.	          163'	F40CHN	    
+	CLOG	            1'	CLOG	    CEXP.3
+	CLOSI.	         6242'	FORSE.	    MBSR.,TPFCN.
+	CLOS.	         6252'	FORSE.	    MBSR.,TPFCN.
+	CLROU.	         6225'	FORSE.	    MBSR.,MSPR.,TPFCN.
+	CLRSY.	         6232'	FORSE.	    MBSR.,MSPR.,TPFCN.
+N	CMPLX	            1'	CMPLX	    
+N	COMMA	            0'	COMMA	    
+N	CONECT	           32'	RTFORT	    
+N	CONJG	            1'	CONJG	    
+N	CONNEC	         1146'	SLIB	    
+	COS	           16'	SIN	    SFORM,FORMT,CEXP.2,CEXP.3,CEXP,CSIN
+	COSD	            1'	SIN	    AXIS,PLOT
+	COSH	            1'	COSH	    CSIN
+N	CSIN	            5'	CSIN	    
+N	CSPOOL	            3'	CSPOOL	    
+N	CSQRT	            1'	CSQRT	    
+N	DABS	            1'	DABS	    
+	DATAN	            1'	DATAN	    DATAN2
+N	DATAN2	            1'	DATAN2	    
+N	DATE	            1'	DATE	    
+	DATTB.	         1151'	FORSE.	    BUFFER
+	DAYTM.	         1773'	FORSE.	    ERROR.
+N	DBLE	            1'	DBLE	    
+N	DBUUO.	 14000 000000	FDEBUG	    
+N	DCBRT	            1'	DCBRT	    
+N	DCLOSE	         1066'	DAF	    
+N	DCOS	            1'	DSIN	    
+N	DDEL	         1214'	DAF	    
+U	DDTCH.				    F40CHN
+Flags	Symbol	 Octal Value	Defined in  Referenced in		(all symbols)
+
+	DEBCH.	         2432'	FDEBUG	    F40CHN
+N	DEBSW.	            4'	DDEBUG	    
+M	DEBUG.	           71'	FDEBUG	    FORSE.
+M	DEBUG.	            1'	DDEBUG	    FORSE.
+N	DEB.	            0'	DDEBUG	    
+N	DEFINB	           10'	DEFINE	    
+N	DEFINE	           15'	DEFINE	    
+N	DELET	         1040'	SLIB	    
+	DELIM.	         1746'	FORSE.	    NMLST.,FLIRT.,INTI.
+	DEPOT.	         3141'	FORSE.	    NMLST.,MONO.,FLOUT.,INTO.,LOUT.,OCTO.,ALPHO.,ERROR.
+	DEVER.	          220'	ERROR.	    EOFTST,SAVCK.,FORSE.
+	DEVIC.	         1516'	FORSE.	    MAGDEN,ERROR.
+N	DEVLS.	           35'	DEVTB.	    
+	DEVND.	           43'	DEVTB.	    FORSE.
+N	DEVNO.	           71'	FORSE.	    
+	DEVTB.	            0'	DEVTB.	    CHAIN,EOFTST,MAGDEN,SAVCK.,FORSE.
+	DEXP	            1'	DEXP	    DEXP.3
+N	DEXP.2	            1'	DEXP.2	    
+N	DEXP.3	            1'	DEXP.3	    
+N	DFAM.0	           15'	DFAS	    
+N	DFAM.2	           63'	DFAS	    
+N	DFAM.4	          131'	DFAS	    
+N	DFAM.6	          177'	DFAS	    
+N	DFA.0	            1'	DFAS	    
+N	DFA.2	           47'	DFAS	    
+N	DFA.4	          115'	DFAS	    
+N	DFA.6	          163'	DFAS	    
+N	DFDM.0	           21'	DFDV	    
+N	DFDM.2	           46'	DFDV	    
+N	DFDM.4	           73'	DFDV	    
+N	DFDM.6	          120'	DFDV	    
+N	DFD.0	            1'	DFDV	    
+N	DFD.2	           26'	DFDV	    
+N	DFD.4	           53'	DFDV	    
+N	DFD.6	          100'	DFDV	    
+N	DFIX	            1'	IDINT	    
+N	DFLOAT	            1'	DFLOAT	    
+N	DFMM.0	           23'	DFMP	    
+N	DFMM.2	           71'	DFMP	    
+N	DFMM.4	          137'	DFMP	    
+N	DFMM.6	          205'	DFMP	    
+N	DFM.0	            1'	DFMP	    
+N	DFM.2	           47'	DFMP	    
+N	DFM.4	          115'	DFMP	    
+N	DFM.6	          163'	DFMP	    
+N	DFSM.0	           40'	DFAS	    
+N	DFSM.2	          106'	DFAS	    
+N	DFSM.4	          154'	DFAS	    
+N	DFSM.6	          222'	DFAS	    
+Flags	Symbol	 Octal Value	Defined in  Referenced in		(all symbols)
+
+N	DFS.0	           33'	DFAS	    
+N	DFS.2	          101'	DFAS	    
+N	DFS.4	          147'	DFAS	    
+N	DFS.6	          215'	DFAS	    
+N	DGROW	          154'	DAF	    
+N	DIM	            1'	DIM	    
+	DINPD	          145'	DINPD	    MULTR
+N	DINV	          465'	DINV	    
+M	DIRT.	            1'	FLIRT.	    ALLIO.,NMLST.,IOADR.
+M	DIRT.	            0'	DDIRT	    ALLIO.,NMLST.,IOADR.
+	DISAB.	         3604'	FORSE.	    F40CHN
+N	DISCON	          116'	RTFORT	    
+N	DISMIS	          274'	RTFORT	    
+	DLOG	           31'	DLOG	    DEXP.3
+N	DLOG10	            1'	DLOG	    
+N	DMAX1	            1'	DMAX1	    
+N	DMIN1	            1'	DMIN1	    
+N	DMOD	            1'	DMOD	    
+N	DOPEN	          240'	DAF	    
+N	DOPENB	          235'	DAF	    
+S	DOUBT.	            0'	FLOUT.+	    ALLIO.,PDUMP,NMLST.,IOADR.,+DDOUBT
+N	DREAD	          664'	DAF	    
+	DSESC.	          122'	FORSE.	    ONINT,INTENA
+N	DSIGN	            1'	DSIGN	    
+N	DSIN	           16'	DSIN	    
+N	DSKERR	          470'	DSKERR	    
+N	DSQRT	            1'	DSQRT	    
+	DUMER.	          376'	ERROR.	    FORSE.,PLOTCD,PLOTFD,DMONI,DMONO,DALPHI,DALPHO,DDIRT,DDOUBT,DFLIRT,DFLOUT,
+					    DINTI,DOCTI,DINTO,DOCTO,DLINT,DLOUT,DNMLST,DTFMT,DMBSR,DMSPR,DTPFCN
+N	DUMMY.	            0'	DUMMY.	    
+N	DUMP	            0'	PDUMP	    
+	DVNUM.	          113'	FORSE.	    ERROR.
+	DVTOT.	           35	DEVTB.	    SAVCK.,FORSE.
+N	DWRITE	          776'	DAF	    
+N	DYCHR.	         2016'	FORSE.	    
+	DYDVL.	           20	FORSE.	    EOFTST,DEFINE
+N	DYEND.	         2026'	FORSE.	    
+N	DYNARY	            0'	DYNARY	    
+	DYNCH.	          353'	FORSE.	    ERROR.
+	DYNDV.	          333'	FORSE.	    F40CHN,EOFTST,NAMPPN,SAVCK.
+	DYNND.	          352'	FORSE.	    NAMPPN,SAVCK.
+N	DYPNT.	         2013'	FORSE.	    
+	ENAB.	         3607'	FORSE.	    F40CHN
+	ENDLN.	         3401'	FORSE.	    NMLST.
+	ENDTP.	          356'	ERROR.	    FORSE.
+N	END.	          120'	FORSE.	    
+N	EOF1	            0'	EOFTST	    
+	EOFC	            3'	EOFTST	    SAVE,NFETCH
+	EOFFL.	          213'	FORSE.	    EOFTST
+Flags	Symbol	 Octal Value	Defined in  Referenced in		(all symbols)
+
+N	EOFTS.	         4001'	FORSE.	    
+	EOL.	         1354'	FORSE.	    NMLST.,TFMT.
+N	EQ	          106'	CHRRTN	    
+N	ERLA	           30'	ERLA	    
+	ERRCT.	         1774'	FORSE.	    ERROR.
+	ERRFI.	          515'	ERROR.	    BENCHM
+	ERRIN.	          457'	ERROR.	    FORSE.
+S	ERRLN.	           20	FORSE.+	    +ERROR.
+M	ERRMX.	         1772'	FORSE.	    ERROR.,ERRSET
+M	ERRMX.	            1'	OXFIX	    ERROR.,ERRSET
+	ERROR.	          175'	ERROR.	    TFMT.,FORSE.
+	ERRPRI	           22'	ERRPRI	    CHRRTN
+N	ERRSET	            1'	ERRSET	    
+	ERRTB.	         1752'	FORSE.	    ERROR.
+N	ERR.	          121'	FORSE.	    
+N	ERVA	           30'	ERVA	    
+	EXER1.	            0'	EXER1.	    DUMMY.
+N	EXIT	            1'	EXIT	    
+N	EXITPE	            0'	EXITPE	    
+	EXITP.	            3'	EXIT	    FORSE.,ERROR.
+	EXIT.	            2'	EXIT	    F40CHN,PDUMP,PAUSE
+	EXP	            1'	EXP	    GROW,ERLA,ERVA,NTRAN,CEXP.2,CEXP.3,CEXP,CSIN,SINH,COSH,TANH,
+					    EXP3,EXP2
+	EXP10.	          127'	POWTAB	    FLIRT.,FLOUT.
+N	EXP1.0	           23'	EXP1	    
+N	EXP1.2	           15'	EXP1	   EXP1.4	            7'	EXP1	    
+N	EXP1.6	            1'	EXP1	    
+	EXP2.0	           23'	EXP2	    SCALE,PLOT,EXP3
+	EXP2.2	           15'	EXP2	    RLA,RVA,FV,FVA,PLA,PV,PVA,RE,AL,NGL,PVV
+	EXP2.4	            7'	EXP2	    NDDSL
+N	EXP2.6	            1'	EXP2	    
+	EXP3.0	           23'	EXP3	    CEXP.3
+	EXP3.2	           15'	EXP3	    RE,NTRAN,AXIS
+	EXP3.4	            7'	EXP3	    RN
+N	EXP3.6	            1'	EXP3	    
+	FCM1.	         6065'	FORSE.	    MBSR.
+N	FDE	           13'	FDE	    
+N	FGRTS	          164'	FGRTS	    
+	FILE1.	          633'	FORSE.	    DEFINE
+	FILE2.	          673'	FORSE.	    DEFINE
+	FILE3.	          733'	FORSE.	    DEFINE
+	FILE4.	          773'	FORSE.	    DEFINE
+	FILE5.	         1033'	FORSE.	    DEFINE
+N	FILINF	          143'	SLIB	    
+	FILPS.	          473'	FORSE.	    POSITI
+	FILSZ.	          533'	FORSE.	    SIZE
+U	FINACT				    EXIT
+	FI.	         3526'	FORSE.	    MBSR.,MSPR.,TPFCN.
+Flags	Symbol	 Octal Value	Defined in  Referenced in		(all symbols)
+
+S	FLIRT.	            0'	FLIRT.+	    OUT1,TTY1,NOUTT,INTTY,SAVE,NFETCH,NECDB,SSL,GRAPH,ALLIO.,NMLST.,
+					    IOADR.,+DFLIRT
+	FLOAT	            1'	FLOAT	    SAVE,NFETCH,SSL,SFORM,GROW,FORM1,FORMT,RLA,RVA,NSL,NSYD,
+					    NDDSL,ERLA,ERVA,RE,LOANG,RN,GRAPH,NER,MULTR,NCORL,NWIND,
+					    TREND,FGRTS,SONRA,RCKEN,CCKEN,UTEST,NRANK,AXIS,SCALE,PLOT,CEXP.2,
+					    MAX,MIN,EXP2
+S	FLOUT.	            0'	FLOUT.+	    OUT1,TTY1,NOUTT,INTTY,SAVE,NFETCH,NECDB,SSL,GRAPH,ALLIO.,PDUMP,
+					    NMLST.,IOADR.,+DFLOUT
+	FMTBG.	         1353'	FORSE.	    ERROR.
+	FMTEN.	         1352'	FORSE.	    ERROR.
+	FMTER.	          173'	ERROR.	    FORSE.
+	FNCTN.	         6210'	FORSE.	    MBSR.,TPFCN.
+	FNM.	          115'	FORSE.	    ERROR.
+	FOBPDP	            3'	FORSE.	    FDEBUG
+N	FORM1	          354'	FORM1	    
+N	FORMT	          176'	FORMT	    
+	FORSE.	            0'	FORSE.	    F40CHN,FDEBUG,PDUMP,REENT
+S	FRSTM.	        20000	FDEBUG+	    FORSE.,+DDEBUG
+N	FSPOOL	            0'	CSPOOL	    
+	FV	            7'	FV	    ERLA
+	FVA	           64'	FVA	    ERVA
+N	GETBIT	           23'	BITMOV	    
+N	GETBYT	           23'	BITMOV	    
+N	GETC	           66'	SLIB	    
+N	GETDV.	         5063'	FORSE.	    
+N	GETKCM	           40'	GETTAB	    
+N	GETMCY	           30'	GETTAB	    
+N	GETTRU	           12'	GETTAB	    
+N	GRAPH	          537'	GRAPH	    
+	GROW	          273'	GROW	    SFORM
+N	GTAB	            0'	GETTAB	    
+	HITEN.	           24'	POWTAB	    FLIRT.,FLOUT.
+	IABS	            5'	ABS	    AXIS
+N	IBUFF	           22'	BUFFER	    
+N	IDFIX	            1'	IDINT	    
+N	IDIM	            1'	IDIM	    
+N	IDINT	            1'	IDINT	    
+	IFILE	            0'	IFILE	    SAVE,NFETCH,NECDB,SSL
+	IFIX	            1'	IFIX	    PLOT,MAX,MIN
+	IIB.	         3660'	FORSE.	    NMLST.,MONI.,FLIRT.,INTI.,LINT.,OCTI.,ALPHI.
+N	IINDEX	          151'	CHRRTN	    
+N	ILL	            1'	ILL	    
+	ILLCH.	          201'	ERROR.	    FORSE.
+	ILLEG.	           73'	FORSE.	    FLIRT.,ILL
+	ILLFN.	          236'	ERROR.	    FORSE.
+	ILLMG.	          364'	ERROR.	    MSPR.,MAGDEN,FORSE.
+	ILLPS.	          226'	ERROR.	    FORSE.
+	ILRED.	          371'	ERROR.	    FORSE.
+	ILUUO.	          402'	ERROR.	    FORSE.
+Flags	Symbol	 Octal Value	Defined in  Referenced in		(all symbols)
+
+	INCNT.	          313'	FORSE.	    MBSR.
+U	INIACT				    FORSE.
+	INIER.	          215'	ERROR.	    MAGDEN,SAVCK.,FORSE.
+	INIT.	         1747'	FORSE.	    ERROR.
+N	INPDV.	          112'	FORSE.	    
+	INPT.	         7046'	FORSE.	    MSPR.
+	INP.	         6270'	FORSE.	    MBSR.
+	INT	            0'	INT	    SAVE,NFETCH,SSL,FORM1,FORMT,NTRAN,GRAPH,TREND,FGRTS,RELAT,AGREE,
+					    QUEST,NRANK,AXIS,SCALE,PLOT
+	INTAB.	          336'	TRAPS	    FORSE.,ONINT,TRULIM
+N	INTDIS	            6'	INTENA	    
+N	INTENA	            0'	INTENA	    
+S	INTI.	            0'	INTI.+	    OUT1,TTY1,NOUTT,INTTY,SAVE,NFETCH,NECDB,SSL,NGL,GRAPH,QUEST,
+					    ALLIO.,NMLST.,IOADR.,+DINTI
+S	INTO.	            0'	INTO.+	    OUT1,TTY1,NOUTT,INTTY,SAVE,NFETCH,NECDB,SSL,NGL,GRAPH,QUEST,
+					    ALLIO.,PDUMP,NMLST.,IOADR.,+DINTO
+N	INTTY	          263'	INTTY	    
+	INTVR.	           17'	SAVCK.	    BUFFER,MAGDEN
+	IOADR.	            0'	IOADR.	    FORSE.
+	IOERR.	         3766'	FORSE.	    MBSR.
+N	IORTR.	         2507'	FORSE.	    
+N	IROT	           66'	BITMOV	    
+N	IROTAT	           66'	BITMOV	    
+N	IRT	            3'	RT	    
+N	ISIGN	            7'	SIGN.	    
+	ITYPM.	           30'	ERROR.	    EXER1.,TRAPS
+U	JOB41				    CHAIN
+N	JOBCHN	          131	CHAIN	    
+N	JOBCNK	          102	CHAIN	    
+U	JOBDDT				    CHAIN
+U	JOBFF				    DYNARY,CHAIN,RDTAPE
+U	JOBHCU				    F40CHN,FORSE.,RDTAPE,SLIB
+U	JOBJDA				    F40CHN,FORSE.,RDTAPE,SLIB
+U	JOBOPC				    FDEBUG
+U	JOBREL				    DYNARY,CHAIN
+U	JOBREN				    FDEBUG
+U	JOBSA				    CHAIN,FDEBUG
+U	JOBSYM				    CHAIN,FDEBUG
+	KA10.	         2007'	FORSE.	    TRAPS
+N	LEGAL	            5'	ILL	    
+N	LEVEL.	         2006'	FORSE.	    
+N	LINE	           34'	LINE	    
+	LINK.	          132'	FORSE.	    F40CHN
+S	LINT.	            0'	LINT.+	    ALLIO.,IOADR.,+DLINT
+	LISTB.	          342'	ERROR.	    FORSE.
+N	LNEDIT	            0'	LNEDIT	    
+N	LOANA	          110'	LOANA	    
+N	LOANB	          140'	LOANB	    
+	LOANG	          216'	LOANG	    LOANL
+Flags	Symbol	 Octal Value	Defined in  Referenced in		(all symbols)
+
+N	LOANL	           64'	LOANL	    
+N	LOCK	          253'	RTFORT	    
+	LOGEN.	          170'	ERROR.	    EOFTST,FORSE.
+N	LOGOUT	            1'	LOGOUT	    
+	LOOK.	         6626'	FORSE.	    MBSR.
+	LOTEN.	           75'	POWTAB	    FLIRT.,FLOUT.
+S	LOUT.	            0'	LOUT.+	    ALLIO.,IOADR.,+DLOUT
+N	LSH	           54'	BITMOV	    
+N	MAGDEN	            0'	MAGDEN	    
+N	MAX0	            5'	MAX	    
+N	MAX1	           11'	MAX	    
+N	MAXIMA	            6'	MAXIMA	    
+N	MBFBG.	         1140'	FORSE.	    
+S	MBSR.	            0'	MBSR.+	    TPFCN.,+DMBSR
+N	MIN0	            5'	MIN	    
+N	MIN1	           11'	MIN	    
+N	MINMAX	            6'	MINMAX	    
+N	MKTBL	         1461'	PLOT	    
+N	MOD	            1'	MOD	    
+S	MONI.	            0'	MONI.+	    ALLIO.,IOADR.,+DMONI
+S	MONO.	            0'	MONO.+	    ALLIO.,IOADR.,+DMONO
+	MSNG.	          245'	ERROR.	    FORSE.
+S	MSPR.	            0'	MSPR.+	    TPFCN.,+DMSPR
+	MTABF.	         1141'	FORSE.	    MAGDEN
+	MTPZ.	         6213'	FORSE.	    MBSR.
+N	MULTR	          402'	MULTR	    
+	NAMPPN	          227'	NAMPPN	    DAF,AFILE,RUN,DEFINE
+N	NCOL	           60'	NCOL	    
+	NCORL	          323'	NCORL	    MULTR
+N	NDDSL	          137'	NDDSL	    
+N	NECDB	          165'	NECDB	    
+	NEG1.	            5	DEVTB.	    FORSE.
+	NEG2.	            7	DEVTB.	    FORSE.
+	NEG3.	            3	DEVTB.	    FORSE.
+	NEG5.	            2	DEVTB.	    FORSE.
+N	NER	          211'	NER	    
+N	NEXIT	         1171'	SLIB	    
+N	NFETCH	          212'	NFETCH	    
+N	NGL	          150'	NGL	    
+	NMLER.	          367'	ERROR.	    NMLST.
+S	NMLST.	            0'	NMLST.+	    F40CHN,FDEBUG,FORSE.,+DNMLST
+	NOROM.	          241'	ERROR.	    FORSE.
+N	NOUTT	          312'	NOUTT	    
+	NRANK	          255'	NRANK	    RCKEN,CCKEN,UTEST
+N	NSAMV	           13'	NSAMV	    
+N	NSL	           25'	NSL	    
+N	NSYD	           72'	NSYD	    
+N	NTRAN	          252'	NTRAN	    
+N	NUF	          277'	NUF	    
+Flags	Symbol	 Octal Value	Defined in  Referenced in		(all symbols)
+
+	NUMBER	         1524'	PLOT	    AXIS
+N	NWIND	           44'	NWIND	    
+	NXTCR.	         3723'	FORSE.	    MSPR.
+M	NXTCT.	         3235'	FDEBUG	    FORSE.
+M	NXTCT.	            2'	DDEBUG	    FORSE.
+S	NXTFL.	        40000	FDEBUG+	    FORSE.,+DDEBUG
+	NXTLN.	         3733'	FORSE.	    MBSR.
+N	OBUFF	           35'	BUFFER	    
+S	OCTI.	            0'	OCTI.+	    ALLIO.,IOADR.,+DOCTI
+S	OCTO.	            0'	OCTO.+	    ALLIO.,PDUMP,PAUSE,IOADR.,+DOCTO
+N	OFFINT	           21'	ONINT	    
+	OFILE	            0'	OFILE	    SAVE
+N	ONECHR	            0'	ONECHR	    
+N	ONINT	            0'	ONINT	    
+	ONLY1.	          173'	FORSE.	    EOFTST
+N	OUT1	           62'	OUT1	    
+N	OUTT.	         6303'	FORSE.	    
+	OVCNT.	         2011'	FORSE.	    TRAPS,OVERFL
+N	OVERFL	            1'	OVERFL	    
+N	OVERLA	          102'	F40CHN	    
+	OVFLS.	          111'	FORSE.	    NMLST.,MONI.,FLIRT.,INTI.,LINT.,MSPR.,OCTI.,ALPHI.
+M	OVPC.	         2010'	FORSE.	    TRAPS,CEXP.2,ATAN2,EXP2,AMOD
+M	OVPC.	            0'	OXFIX	    TRAPS,CEXP.2,ATAN2,EXP2,AMOD
+U	OVTAB.				    F40CHN
+	PARER.	          373'	ERROR.	    MBSR.,FORSE.
+	PAUSE.	            0'	PAUSE	    EXER1.
+	PDLST.	            4'	FORSE.	    FDEBUG
+N	PDUMP	            4'	PDUMP	    
+	PLA	           24'	PLA	    ERLA
+	PLOT	           34'	PLOT	    AXIS,LINE
+M	PLOTC	          374'	PLOTC	    PLOT
+M	PLOTC	            0'	PLOTCD	    PLOT
+S	PLOTF	            0'	PLOTF+	    PLOT,+PLOTFD
+N	PLOTS	            0'	PLOT	    
+N	PLOT.	           55'	PLOT	    
+N	POSITI	            0'	POSITI	    
+N	PROJEC	         1243'	SLIB	    
+	PTLEN.	           24	POWTAB	    FLIRT.,FLOUT.
+N	PUTC	          107'	SLIB	    
+N	PV	           10'	PV	    
+N	PVA	           55'	PVA	    
+N	PVV	          250'	PVV	    
+N	QUEST	          306'	QUEST	    
+N	RAN	            1'	RAN	    
+N	RANAC.	         2000'	FORSE.	    
+N	RANDV.	          373'	FORSE.	    
+	RANER.	          423'	ERROR.	    FORSE.
+	RCKEN	          345'	RCKEN	    TREND,RELAT
+N	RDTAPE	         1126'	RDTAPE	    
+Flags	Symbol	 Octal Value	Defined in  Referenced in		(all symbols)
+
+N	RE	           23'	RE	    
+N	REAL	            1'	REAL	    
+N	RECNO.	         1777'	FORSE.	    
+	REDER.	          345'	ERROR.	    MBSR.,FORSE.
+N	REENT	            0'	REENT	    
+N	REE.	         2014'	FORSE.	    
+N	RELAT	          104'	RELAT	    
+N	RELEAS	            0'	RELEAS	    
+N	RENAM	         1100'	SLIB	    
+N	RENAME	            0'	RENAME	    
+N	RERDV.	         1520'	FORSE.	    
+N	RESET	            1'	RESET	    
+	RIN.	         2415'	FORSE.	    TFMT.
+N	RLA	           76'	RLA	    
+N	RLEN.	          117'	FORSE.	    
+N	RN	           27'	RN	    
+N	RT	            0'	RT	    
+N	RTC	           61'	CHRRTN	    
+N	RTINIT	            0'	RTFORT	    
+N	RTREAD	          144'	RTFORT	    
+N	RTSLP	          175'	RTFORT	    
+N	RTSTRT	           72'	RTFORT	    
+N	RTWAKE	          211'	RTFORT	    
+N	RTWRIT	          152'	RTFORT	    
+	RUN	            0'	RUN	    MINMAX,LOGOUT,MAXIMA
+N	RVA	          110'	RVA	    
+	SAVCK.	            0'	SAVCK.	    BUFFER,MAGDEN
+N	SAVE	          376'	SAVE	    
+	SAVEAC	           31'	FORSE.	    F40CHN,FDEBUG
+	SAVFAC	           51'	FORSE.	    FDEBUG
+N	SAVP1.	           51'	SAVCK.	    
+N	SAVPL.	           50'	SAVCK.	    
+N	SAVRAN	           34'	RAN	    
+N	SCALE	            0'	SCALE	    
+N	SDE	           15'	SDE	    
+	SESTA.	         6616'	FORSE.	    MBSR.,MSPR.
+N	SETABL	         1430'	PLOT	    
+N	SETBIT	           40'	BITMOV	    
+N	SETBYT	           40'	BITMOV	    
+	SETOU.	         6217'	FORSE.	    TPFCN.
+N	SETRAN	           23'	RAN	    
+N	SFORM	          347'	SFORM	    
+N	SHIFTR	           54'	BITMOV	    
+N	SIGN	            1'	SIGN.	    
+N	SIMTTY	            0'	SIMTTY	    
+	SIN	           23'	SIN	    SFORM,FORMT,CEXP.2,CEXP.3,CEXP,CSIN
+	SIND	           10'	SIN	    AXIS,PLOT
+	SINH	            1'	SINH	    CSIN
+N	SIZE	            0'	SIZE	    
+Flags	Symbol	 Octal Value	Defined in  Referenced in		(all symbols)
+
+N	SLITE	            1'	SLITE	    
+N	SLITET	           13'	SLITE	    
+N	SNGL	            1'	SNGL	    
+N	SONRA	          234'	SONRA	    
+	SQRT	            0'	SQRT	    GROW,FORM1,FORMT,PVV,MULTR,NCORL,RCKEN,UTEST,CEXP.2,CSQRT,CLOG,
+					    CABS,ACOS,ASIN
+N	SSL	           63'	SSL	    
+N	SSWTCH	            1'	SSWTCH	    
+N	STATI	          167'	RTFORT	    
+N	STATO	          160'	RTFORT	    
+	STAT.	         6236'	FORSE.	    MBSR.,MSPR.
+N	STC	           32'	CHRRTN	    
+N	STPSIZ	         1750'	PLOT	    
+	SYMBOL	          176'	PLOT	    AXIS
+	TABP1.	         1151'	FORSE.	    MAGDEN
+N	TANH	            1'	TANH	    
+	TBLER.	          224'	ERROR.	    AFILE,DEFINE,FORSE.
+	TCNT1.	         1525'	FORSE.	    TFMT.
+	TCNT2.	         1526'	FORSE.	    TFMT.
+	TEMP.	           75'	FORSE.	    MBSR.,AFILE,ERROR.
+S	TFMT.	            0'	TFMT.+	    ALLIO.,FORSE.,+DTFMT
+N	TICR	           55'	TICR	    
+N	TIME	            1'	TIME	    
+N	TIMER	          273'	TRAPS	    
+N	TIMES	            0'	TIMES	    
+	TNAME.	          133'	FORSE.	    MBSR.,TPFCN.
+S	TPFCN.	            0'	TPFCN.+	    F40CHN,SAVE,FDEBUG,MBSR.,MSPR.,FORSE.,+DTPFCN
+	TPNTR.	         1524'	FORSE.	    TFMT.
+	TRAPF.	          124'	FORSE.	    ONINT,TRULIM
+N	TRDCH	           30'	TRDCH	    
+	TREND	          107'	TREND	    TRDCH
+M	TRPFL.	         2571'	FDEBUG	    FORSE.
+M	TRPFL.	            3'	DDEBUG	    FORSE.
+	TRPIN.	            0'	TRAPS	    FORSE.
+N	TRU	           31'	SLIB	    
+	TRUCK.	           36'	TRULIM	    FORSE.
+N	TRULIM	            0'	TRULIM	    
+N	TTY1	           24'	TTY1	    
+	TTYFL.	            1	FORSE.	    FLIRT.,INTI.,OCTI.
+M	TYPER.	          632'	ERROR.	    DEFINE,BUFFER,CEXP.2,CLOG,CEXP,CFMP,CFDV,ACOS,ASIN,ATAN2,SQRT,
+					    SINH,COSH,EXP1,EXP3,EXP2,EXP,ALOG,DMOD,DEXP.2,DEXP.3,DLOG,
+					    DSQRT,DATAN2,AMOD
+M	TYPER.	            2'	OXFIX	    DEFINE,BUFFER,CEXP.2,CLOG,CEXP,CFMP,CFDV,ACOS,ASIN,ATAN2,SQRT,
+					    SINH,COSH,EXP1,EXP3,EXP2,EXP,ALOG,DMOD,DEXP.2,DEXP.3,DLOG,
+					    DSQRT,DATAN2,AMOD
+	TYPE.	         1523'	FORSE.	    FLOUT.,ALPHI.,ALPHO.
+N	UNITC.	          573'	FORSE.	    
+N	UNLOCK	          264'	RTFORT	    
+	UNSV.	           13'	SAVCK.	    BUFFER,MAGDEN
+Flags	Symbol	 Octal Value	Defined in  Referenced in		(all symbols)
+
+N	USERNA	         1175'	SLIB	    
+	USETI.	         6314'	FORSE.	    MBSR.
+N	USETO.	         6317'	FORSE.	    
+	UTEST	          200'	UTEST	    FGRTS
+	UUOH.	         2116'	FORSE.	    F40CHN,FDEBUG,ERROR.
+	UUOL.	         2112'	FORSE.	    BENCHM,EOFTST,MAGDEN,SAVCK.,EXIT,TRAPS,PLOTCD,PLOTFD,ERROR.,SLIB,EXITPE
+	VADDR.	          106'	FORSE.	    FDEBUG
+N	VAR.	          100	FORSE.	    
+N	WAIT	           45'	SLIB	    
+	WAIT.	         6622'	FORSE.	    MBSR.
+N	WHERE	         1500'	PLOT	    
+	WLKER.	          337'	ERROR.	    FORSE.
+U	X22OV.				    F40CHN
+	XCTTM.	         1775'	FORSE.	    ERROR.
+	XIO.	         2615'	FORSE.	    TFMT.
+N	XSL	            5'	XSL	    
+	.COMM.	          465'	SAVE	    NFETCH,NECDB,XSL,SSL,SFORM,FORM1,DINV,LOANL,LOANA,LOANB,NGL,
+					    GRAPH,PVV,NER,MULTR,NCORL,TRDCH,TREND,FGRTS,RELAT,AGREE,SONRA,
+					    RCKEN,QUEST,CCKEN,UTEST
+N	.INT.	            0'	.INT.	    
+U	.JB41				    F40CHN
+U	.JBAPR				    TRAPS
+U	.JBCNI				    TRAPS,RTFORT
+U	.JBDDT				    F40CHN
+U	.JBFF				    F40CHN,PDUMP,FORSE.
+U	.JBREL				    F40CHN,FORSE.,TRAPS,RTFORT
+U	.JBREN				    F40CHN,FORSE.
+U	.JBSA				    F40CHN
+U	.JBTPC				    TRAPS
+U	.JBUUO				    FORSE.
+U	.NODB.				    FDEBUG
+N	$JBNM$	          735'	F40CHN	    
+U	%CCSFL				    FDEBUG,EXIT
+N	%CHNVR	    14 000006	F40CHN	    
+N	%DEBVR	    10 000001	FDEBUG	    
+Q 0%
