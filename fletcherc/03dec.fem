@@ -1,0 +1,1498 @@
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Tue, 14 Oct 86 18:00:18 PDT 
+To: NTD.L/MAURER@ONTYME, NTD.P/DRISCOLL@ONTYME, NTD.B/KRUEGER@ONTYME,
+	NTD.A/NEWMAN@ONTYME 
+Cc: CARL, Dennis Coffey <DenCoff@X930.Tymnet>, Craig Fletcher
+	<FletcherC@X930.Tymnet>, OSMAN 
+Subject: Found the source of the TELECOPY problem on B39. 
+
+I tried many various commands, then discovered that there were two versions of
+TELECOPY on the system.  Bad checksums occurred only when I typed "TELECOPY" or
+"DO TELECOPY" instead of "R TELECOPY".  (FTSYS)TELECO.SAV dated 16-Apr-81,
+version 21, is the culprit.  The correct version is in (SYS)TELECO.SAV, version
+22.3, last modified in 1986.
+
+I have deleted the obsolete version of TELECOPY from FTSYS.  Let me know if
+this solves the problem.
+
+		Joe Smith
+		TXS.J/SMITH@ONTYME
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Thu, 16 Oct 86 12:18:58 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: STOPCD.MEM is ready 
+
+Please give me your comments on pages 2 thru 4.  Let me know if there is 
+anything you feel should be added there.   /Joe
+Received: from X62.Tymnet by X930.Tymnet; Thu, 16 Oct 86 17:13:33 PDT
+Return-path: <Carl@X930.Tymnet> 
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Thu, 16 Oct 86 17:09:30 PDT 
+To: Carl A Baltrunas <Carl@X930.Tymnet>, Osman Guven <osman@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X62.Tymnet>,
+	SUBMIT Maintainer <submit@X62.Tymnet> 
+Subject: Sending mail to SUBMIT@X62 
+
+Sending mail to "SUBMIT Maintainer <SUBMIT@X62>" will result in appending
+to the bug/wish file (SUBMIT:62)SUBMIT.WSH without human intervention.
+
+In a future release of SUBMIT, after I get XEXMAI written, I will add the
+BUG command which will automatically send mail to SUBMIT.
+
+/Carl
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Fri, 17 Oct 86 0:39:37 PDT 
+To: WRS 
+Cc: Monitor Group <JMS>, Carl, Osman, FletcherC, DenCoff 
+Subject: LOGINN version 70.1 installed. 
+
+The latest version of LOGINN has been put on SYS on all systems.  Version 70.1
+plugs a security hole from creating a child frame and running LOGINN it in.
+The old version of LOGINN did not detect this situation, and unconditionally
+read the username from the command port.  Any unpriviliged user could attach
+a PTY to the child frame, and send the characters "OPER<CR>" to it.  LOGINN
+assumed that the characters came from TYMNET and that the Supervisor had 
+verified the password already.  The new version uses the username that the
+CREFRM uuo stored in GETTAB tables.
+
+A description of the changes to LOGINN and LOGOUT are found in (OSU)LOGINN.INF
+and (OSU)LOGOUT.INF on all systems.    /Joe
+
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sun, 19 Oct 86 18:23:23 PDT 
+To: scapik, Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: X62 died before 8pm Saturday. 
+
+Does the F3 microcode RAM go to all ones when power glitches?  I came in
+and found all the lights on the top row of 62's display on.  All the lights
+if MI ADR were on, the MEM ADDRS was 0,,577603.  The microcode reloaded with
+no problems, I cut a new tape for 62XP37 and loaded it.  /Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sun, 19 Oct 86 18:30:00 PDT 
+To: wrs, Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: New version of TAUX on SPL. 
+
+Version 21 outputs the name of the circuit when it is build and when it
+is deleted.  It also restores the previous behavior where Control-G comes
+out as BEEP instead of "^G" (so the bell from wrong OPER password comes
+thru).  The switch character has been changed to ! since / and # are legal
+in TYMNET names and/or sub-hosts.  See (SPL)TAUX.INF for more info.
+
+
+
+
+			/Joe
+Bill: We don't really need two versions of TAUX (on XEXEC and SPL) - one
+should be deleted.  And since TAUX does not respond to CCL entry, the
+comment referring to CTEST should be removed from TAUX.PUB.
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sun, 19 Oct 86 18:36:04 PDT 
+To: wrs 
+Cc: Monitor Group <JMS>, Carl, Osman, FletcherC, DenCoff 
+Subject: Searching the PGY table does not flush cache. 
+
+When the monitor wants to find whether a particular disk page is in core,
+it does not make a linear search thru the PGY tables.  On a 4-meg system,
+the last 12 bits of the disk address are used to index into an array
+of heads of linked lists.  One of the PGY entries is the pointer to the
+next core page that has the same disk hash.  The average linked list is
+a chain of 2 or 3 entries.  After 4 or so compares, the monitor can decide
+that the page is not in core, without flushing the cache.    /Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Wed, 22 Oct 86 18:15:35 PDT 
+To: wrs, Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: B39 crashes. 
+
+System 39 has 2*MAPAL1, 3*EUE, 2*CHTFNF, 2*FILANF, FILAMO+FILAUU dumps.
+I have not finished looking at all of them, but here's what I found so far.
+MAPAL1 - DDB+DEVRIB has a bogus retrieval pointer, RBREAL (1B1) not on.
+EUE - Part of the SETPRV uuo overwritten by an ATB.
+EUE - PC matches P1 which is on top of stack, wild POPJ during DEVHNG.
+EUE - Part of the CORE uuo overwritten by an FNB.
+FILAMO+FILANF+FILAUU can all be caused by an ATB pointer not really pointing
+to an ATB.
+CHTFNF - Mapped page being unmapped, can't find core page number in CHT.
+
+CRA008(EUE) and CRA009(MAPAL1) occured while running B39-P034/P-13.
+Those two dumps look almost exactly like the EUE and MAPAL1 dumps from
+running B39-P034/P37.
+
+Maybe we should try expanding the amount of memory that can be used for
+creating DDB/ATB/NMB/DRB blocks.  Running C55's monitor on B39 (which is
+cut for 80 jobs instead of 127) will have a side effect of making more
+core available for these blocks.
+
+			/Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Thu, 23 Oct 86 23:17:53 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Hotline call for F28 
+
+23-Oct-86 22:30/Joe
+Contact:  Fremont Operations, (415)498-2589, Mike, System F28
+Problem:  Incrementing hard read errors, on one particular cylinder.  FSC
+          checked the drive, OK, problem moved when pack was moved.
+          They already copied out this pack once today, this new duplicate
+          has its own set of bad spots.  Note: They were unable to copy the
+          pack on F28, and did it on F40 (an IBM system) instead.
+          FNDBAD reported 3 files with HRE.
+Solution: Told them to rename the files to *.BAD and restore good copies from
+          tape.  The files are now (NETSTAT)61014A.BAD, (SRA)PSPDAT.BAD, and
+          (MSNTRACK)DUNS.BAD.  The file in NETSTAT is 10978 pages long.
+Remark:   I will write a program tomorrow to free up all except the bad pages.
+
+
+
+Need to find out why they could not copy the pack with PAKCOP.  They should
+not have used an IBM to copy it - the problems they are having now are a
+direct result of not having alternate tracks assigned on the destination pack.
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Fri, 24 Oct 86 11:35:27 PDT 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff, William R Soley <WRS@B39.Tymnet> 
+Subject: MDC has 70 PDP-10 CPUs. 
+
+Yes, seventy of them.  For a list of their serial numbers, go into the INFO
+tree, menu SYSTEM, item HARDWARE.   /Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Wed, 29 Oct 86 0:22:45 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Why PAKCP5 got hung while accessing unit 340. 
+
+When there is something to do in the block multiplexor list, the SA10 sends
+commands to the devices, one right after another.  The 3674 controller will
+respond to the first one, and will reject all succeeding commands, saying
+"I'm busy now".  PAKCOP sees the busy flag, and sets a bit for the unit saying
+that it needs to be restarted when the control unit is available.  When the
+3674 finishes that first command, it will cause an interrupt with the CU-END
+bit set for for the first unit on the controller (disk unit 300).
+PAKCOP checks to see if any other units on this controller got the BUSY status.
+If so, those commands are put back into the block mux list and the SA10 is
+restarted.  This works just fine for the first 32 disk units on the controller.
+
+The problem is that the bits for units 340-377 are stored in a different word
+than the bits for units 300-337.  When unit 340 is busy, it reports 340 busy,
+but when the 3674 is available, it reports unit 300.  So PAKCOP got the CU-END
+interrupt for 300, saw that 300-337 were not busy, and kept waiting for the
+interrupt that said to restart I/O on units 340-337.
+
+I patched the KONEND routine to check for waiting units on all controllers
+when any CU-END was detected.  Voila - PAKCP5 saw all the units.
+
+I'm still working on a solution to the contention problem.  I could format
+units 300 and 301 together, 340+341, 300+341, and 301+340.  But attempting
+to format units 300+340 or 301+341 caused "UNRECOVERABLE ERROR - LENGTH ERROR".
+
+/JOE
+
+From: FLETCHERC@X930.Tymnet 
+Date: Wed, 29 Oct 86 10:48:57 PST 
+To: osman 
+
+Looks like the pre site for Copley be Saturday night the 8th of
+November.  I'd like you to make it with John Healy if you can, but
+understand if can't.
+
+	Craig
+From: FLETCHERC@X930.Tymnet 
+Date: Wed, 29 Oct 86 10:50:30 PST 
+To: jms 
+
+Checked with Don Weaver and he sees no problem with calling Ted Atkinson
+about the accounting programs.
+
+	Craig
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Mon, 3 Nov 86 18:31:14 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Host 4323 is SAN FRAN. OUTDIAL 
+
+To use the San Francisco OUTDIAL facility, log in to host 4323.  For the OUTDIAL
+hosts that use Tymshare model 923 modems, you dial by typing in the letter K
+(without a RETURN), wait for the modem to prompt "DIAL:", then enter the seven
+digits to be dialed in the 415 area code, end with RETURN.  For example:
+
+please log in: JMS:4323;
+
+PORT NUMBER   1
+HOST NUMBER 4323
+SAN FRAN. OUTDIAL
+
+TYMSHARE MDL 923 1.37B
+1200 BAUD
+$K
+DIAL: 9741300
+
+DIALING ..9741300                       ONLINE!
+x||x`|xxx<`xx`xx<`xx<~xx@x<`x|x@xxxx<~xxterminal identifier
+-3706-024-
+please log in: jms:930;
+
+[LONMSG San Francisco]
+[LONSTD  3-Nov-86 18:28:31 Frame: 5 on TTY13 Network: 3706-107]
+
+.sys .
+ 5* SanFrancis #13 SYSTAT 32      RN         4.37  0:00:19 JMS +$
+
+.bye
+6.52 tru
+terminal time: 0:00:27
+
+please log in: ;
+user name: ;
+user name: ;
+user name: ;
+user name: ;
+user name: ;
+user name: ;
+user name: ;
+please see your representative
+if you are having trouble logging in
+CIRCUIT TO TERMINAL DISCONNECTED
+
+please log in:
+
+Note that typing semicolon 8 times in a row will convince the TYMSAT to hang
+up on you.					/Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Thu, 6 Nov 86 14:53:03 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Names of the monitor, "/A" or not "/A". 
+
+When I tried to create P035, I had a lot of hassles from MONED1.  It refused
+to let me specify a monitor name without a slash.  Therefore I skipped ahead
+to P035/A.  But then MONED got obstinate.  After much gnashing of teeth, new
+SYSIDs were assigned and CNFNxx.MAC updated for all systems.  At that point,
+I decided it wasn't worth playing games by MONED1's rules, and decided that
+we really want P035 without "/A".
+
+In OSP, the current CNFNxx.MAC files have been amended to say P035.  When
+the people in distribution use "LOAD/SAVE:xx035 @MONxx", it will produce
+P035 - this is the released monitor version.
+
+However, if the CONFxx.MAC files need to be updated (increase jobs, more
+disks, etc), then MONED1 must be run, and this will create P035/A.
+Therefore, after the monitors have been distributed, (OSP) will produce
+only P035/A.
+
+The next monitor to be released after this one will be P035/B.
+
+			/Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Fri, 7 Nov 86 23:39:28 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Did not test 3652 on D25 Friday night. 
+
+System 25 was having problems with 3675 and/or 3672.  They had been down
+since 3:00pm our time, and did not get back up until 10:00pm our time.
+Since I at least one hour from being ready, I told them bring the system
+up for users, we will reschedule another night.   /Joe
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Sat, 8 Nov 86 13:46:09 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: hotline calls 
+
+
+08-Nov-86 02:10/Carl
+Contact:  Dallas Operations, (214)637-7445, Greg, System 25.
+
+Problem:  System 25 had been down the previous evening with disk or
+          controller problems.  Joe was expecting to use the system for
+          testing but was unable to have access until after 10 PM.  They
+          has some minor problems which Joe talked them through when the
+          system was brought up.  This call was to find out how to delete
+          some files DSKCLN had marked as bad.  The file names were all
+          jumbled punctuation characters with a few letters thrown in.
+
+Solution: I checked the ribs and the UFD data pages for errors and found
+          everything intact.  Then I renamed all the files except the bad
+          ones into OSNF and deleted *.* to remove the weird file names.
+          I restored the files to BASELINE and told operations to restore
+          from the all-files and incrementals anything that was lost.
+
+07-Nov-86 18:00/Carl
+Contact:  Fremont Operations, (415)498-2588, System 74.
+
+Problem:  System crashed with no CTY output during the ASP restore.
+
+Solution: Initially told operations that there should be no reason that
+          they could NOT continue the restore at the beginning of the
+          current tape.  Talked to Osman and found that the reason for
+          the rebuild was that they were having problems since the head
+          crash earlier this week.  I called operations back and told
+          them that it would be better to restart the restore from tape
+          one, to insure that everything was in order.
+
+
+/Carl
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Sun, 9 Nov 86 18:43:45 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: system 26 problems 
+
+System 26 has had 2-3 bad sat stopcodes and 1 USRUS1 stopcode.  It was
+related to me after not finding anything that they were doing an all-files
+when each of these occurred.  ... They were on OPER at the time... all the
+file sin OPER seem OK... the next directory is OSERANG with one file and
+that is OK... the next directory is OSMAN and that seemed ok... I say
+seemed, because after I did a directory of OSMAN and ran CKSUM on the first
+and last few files  DIR (OSMAN)/UNSORTED  then we got the rib error and
+then any lookup for files with the UFD in that directory failed...
+
+The BAD SAT is on BPA3, page 10 ... with a likelyhood that one of the
+system ufd pages reside there....
+
+anyway, I told them to PAkCOPy the pack to another drive and see if
+the problem goes away with a full dskcln, since the problem seems to
+be intermittant... but mostly that drive.   I haven't entertained the
+prospect of memory or controller beig bad, since everything else seems
+to work fine...
+
+/Carl
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Mon, 10 Nov 86 2:20:23 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Status of C26. 
+
+I had them force a fast DSKCLN, then I logged in thru the MUX, SET OPR on one
+job, and ran CKSUM on (OPER), (OSERANG), (OSMAN).  They ran TITO starting with
+some directory in the N or O range.  The following came out on my OPR terminal:
+
+?INFO stopcode "BADSAT" at 09-Nov-1986 20:11:12
+C26, hardware ZZ, KL-1286, base 4200, C26-P034/P37, 9-30-86, M01778
+   SAT IO: 000000   STT: 200153   STTFPC: 001133   SATCNT: 001132   SATBRD: 0
+Requesting FULL DSKCLN
+ ?
+? BAD SAT ON BPA4 AT PAGE 10
+
+!psp
+DSKB:   103253
+BPA4(DSKB7:260007):  SATFAIL:1
+
+SATIO=0 means no read errors detected.  STT=200153 is the address of BPA4's
+first SAT page.  STTFPC=1133 is the monitor's last known free page count for
+this SAT.  SATCNT=1132 is current count of free pages.  SATBRD=0 means this is
+the first reported bad read for any SAT.
+
+SWAMP is complaining that SATCNT does not equal STTFPC.  This means that one
+of the F or M bits got set to unavailable (zero) behind SWAMP's back.  Either
+some routine marked one of the SAT bits and did not decrement STTFPC, or what
+was read from the disk does not match what was in core when SWAMP/PCBIO
+decided to swap the SAT page out.
+
+This mangling of a bit in the SAT stored on page 10 has occurred on three
+different units on C26 today, it occurred twice on C70 when it moved to 3650
+disks, and it occurred twice on D34 when it moved to 3675 disks in Dallas.
+That is, it does not appear to be a disk hardware problem, is not limited to
+CPXKON, and could be a software or SA10 problem.  Adding the 1/2 meg of memory
+to C26 may have aggravated the problem, I don't know.
+
+I went into SYSTEM.SAV (26XP37) and boosted NMSTPC (Number of monitor SAT
+PCB's) from 30 (2*15.) to 48 (DISKS*3).  This should cut down on the amount of
+swapping of SAT pages.   /Joe
+
+See also (M33)HOTLIN.LOG
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Mon, 10 Nov 86 2:21:56 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: New version of FREE 
+
+I've put a new version of FREE on 36, and in CARL on 54.  I need to copy
+it around... but it should do the trick and we should be able to run the
+new XEXEC system on the Tymnet code systems very soon.
+
+/Carl    (progress)
+Received: from X62.Tymnet by X930.Tymnet; Mon, 10 Nov 86 6:15:18 PST
+Return-path: <Carl@X930.Tymnet> 
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Mon, 10 Nov 86 3:23:22 PST 
+To: Carl A Baltrunas <Carl@X930.Tymnet>, Osman Guven <osman@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X62.Tymnet> 
+Subject: *** Hooray! *** 
+
+I found the problem with entering a specific date.  Apparently, a routine
+to return the current date in the form MM DD YYYY was returning the year
+as 1987 since sometime in october.  I changed the routine and the check for
+past dates now works correctly again.
+
+This bug was fixed in %1(157) of SUBMIT, now on SYS on 62.  TELECOpy
+started to all systems immediately...
+
+/Carl
+Received: from X62.Tymnet by X930.Tymnet; Tue, 11 Nov 86 19:45:34 PST
+Return-path: <Carl@X930.Tymnet> 
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Tue, 11 Nov 86 19:43:40 PST 
+To: Carl A Baltrunas <Carl@X930.Tymnet>, Osman Guven <osman@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X62.Tymnet> 
+Subject: BBOARD 
+
+BBOARD is the username to send mail to to make bulletin board messages
+available to all of us.
+
+To read the messages you haven't seen... run MARKER.
+
+.MARKER                      ; for thos of us with special command mode set
+What file? (BBOARD)BBOARD.ARC
+ 
+... and away we go ...
+
+From: Osman Guven <osman@X930.Tymnet> 
+Date: Wed, 12 Nov 86 11:01:36 PST 
+To: Monitor Group <Osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: MAYBE BABY TODAY.. 
+
+Well..he/she may come today, so I wouldn't be in
+today. Will keep you posted..
+-Osman-
+From: Osman Guven <osman@X930.Tymnet> 
+Date: Wed, 12 Nov 86 11:58:53 PST 
+To: Monitor Group <Osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: PAKCOP.. 
+
+
+
+
+
+
+                             M E M O R A N D U M
+
+
+                                                      TYMCOM-X SUPPORT
+
+
+
+   DATE:  11-November-1986
+
+     TO:  ALL DATA CENTERS
+
+   FROM:  Osman Guven
+
+SUBJECT:  Status of PAKCOP..
+
+--------------------------------------------------------------------
+
+     As of this memo there are two pack copy programs. PAKCOP.SAV and
+     PAKCP5.SAV.
+
+     PAKCOP.SAV is the same old pack copy which we have been using on
+     the Memorex 3675's and Ampex DM-331's. You must still use this 
+     program when you work with 3675's and DM-331's, but there have been
+     some enhancement added to it.
+
+     PAKCP5.SAV is the new version which only works with the Memorex 
+     3650 and 3652 disks which we have started to put on the PDP10's.
+
+     Operationally, procedures of both program are the same as before.
+     Only one command REFRESH, has been changed to ZFORMAT.
+
+     If a 3650/3652 pack can not be ZFORMATed on the PDP10 because of
+     a defective track, which must be done at least once when they are
+     put on the PDP10 to work with TYMCOM-X operating system, defective
+     track could be rewritten (fixed) under IBM/VM system using FIDS
+     SA (Surface Analysis). This has been allready tested and proven to work.
+
+     If there is any question feel free to give me a call at (415)794-2513
+     or send mail to user name OSMAN on PDP10' or FSC.O/GUVEN on ONTYM.
+     Thank You..
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Wed, 12 Nov 86 12:46:35 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: BBOARD messages. 
+
+
+Due to a limitiation in the TUMS mailing system, we cannot use the username
+BBOARD.  TUMS assumes that we are trying to send mail to the UNIX BBOARD
+system and snarfs up the mail...  sigh!
+
+I've setup a mailbox for username INFO instead.  Untested as of this moment,
+and this will only change if TUMS eats that mail also.  GRRRRRRR.
+
+/Carl
+
+Example:
+
+   .SENDMA INFO
+   Type letter:
+   New LN03 printer is up on the micro-net.  To use the automatic spooling
+   capability, simply copy the file you wish to have printed into directory
+   (LPQ) on system 930 or 62.  At the moment no checking for binary files
+   is performed, so please be careful what you copy into LPQ.
+
+      Three formats are available for printing:
+
+      Normal - Elite font, letter format, 60-61 lines by 88 characters
+               all files not listed below are considered Normal
+
+      Wide   - Compressed font, landscape format, 60-61 lines by 136 chars
+               files with the extension .LSW are printed in this format
+
+      8 LPI  - Compressed font, letter format, 80-82 lines by 100 chars
+               files with the extension .LS8 are printed in this format
+
+   If you wish normal printing of files with .LS8 and .LSW extensions, you
+   must change the extension to something else (eg. .LST) when you copy it
+   to (LPQ).   Please check to see if you are overwriting a file of the
+   same name prior to copying your files to LPQ, otherwise someone else may
+   take your printout.
+
+   /Carl
+
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Wed, 12 Nov 86 13:10:34 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: BBOARD mail sent to INFO 
+
+Sending mail to INFO works.  The MARKER program can be run to see any
+current BBOARD messages.  The filename is (INFO)BBOARD.LOG  or simply
+type BBOARD to the prompt "What file?"
+
+/Carl
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Wed, 12 Nov 86 23:06:29 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: FREE & XEXEC 
+
+it appears that FREE works fine, but XEXEC still has a problem with it
+it appears that FREE works fine, but XEXEC still has a problem with it
+What this means is... don't install XEXEC on systems running FREE.. yet!
+
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Thu, 13 Nov 86 2:39:05 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: XEXEC 
+
+XEXEC is now running on C29, C35, B36, C55, C57, D23, D27, D34, D56, D65
+and D79.   Due to FREE, it is not running on C26, C33, C70, D25, D31, D37
+and D54.   C22 and D72 are inaccessible at the moment, so no verification
+can be made.
+
+  As it is late, I'll check the Fremont data centeres tomorrow.
+
+/Carl;
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Thu, 13 Nov 86 7:18:01 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: EXEXEC running in Fremont Datacenter. 
+
+It is up on 28,30,38,58,74.   /JMS
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Thu, 13 Nov 86 7:56:22 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Beeper call. 
+
+My beeper went off at 6:45am.  It had no system number.  South Bay Exchange
+said the call came in yesterday, but the girl who took the call does not
+work there anymore.  Message was "Tom McDonald has a message for Pat".
+Wonderful.
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Thu, 13 Nov 86 13:24:51 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Node 3143 will be down sometime Friday night. 
+
+NETCON called, node 3143 is scheduled to be reloaded with a new version of
+the TYMSAT code after 10pm Friday night.  During that time, systems 62 and
+node 2770 will not be connected to TYMNET.
+
+This notification is a result of a request I made to have them ONTYME TXS.SUP
+or call me at 2512 whenever 3143 or 3146 is scheduled to be down.   /Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sat, 15 Nov 86 13:43:47 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: 3650 problems. 
+
+I've fixed the APRFAT crashes, BADSAT crashes, MAPAL1 crashes, and made
+GIVPG1 be continuable.  Now we have SEAR14 crashes.  A summary of these
+problems can be found in (M33)3650.BUG.  Sigh.
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sat, 15 Nov 86 13:46:29 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: C22 rebuild. 
+
+15-Nov-86 11:35/Joe
+Contact:  Cupertino Operations, (408)446-7705, Fred, System 22.
+
+Problem:  Initialization failure - bad UFD.  DSKCLN not running.
+
+          Logged in over shut, found OPER.UFD unreadable, as well as M33.UFD
+          and others.  Ran TSTSUP, it reported DEVICE error while trying to
+          read page 4 of [1,1].UFD data.  PSP reported:
+
+BPA12(DSKB:220006):  SDATI(CTRL:2 DRV:H Data field ECC uncorrectable) SCONI(
+ Unrecoverable data check Count error) SLBN(CYL:102 HEAD:17 RECORD:8) SDAT:5
+ HDATAI(CTRL:2 DRV:H Data field ECC uncorrectable) HCONI( Unrecoverable data
+ check Count error) HLBN(CYL:102 HEAD:17 RECORD:8) HDEV:44
+
+Fix:      Told them to reformat BPA12 and rebuild system from ASP tapes.
+
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sun, 16 Nov 86 4:57:52 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Question about REBUILD proceedure. 
+
+16-Nov-86 04:45/Joe
+Contact:  Cupertino Operations, (408)446-7705, L.T. Smith, System 22.
+Problem:  When rebuilding the system, do all the packs have to be the same?
+Answer:   ASP dumps DSKB0, then DSKB1, etc.  It does not matter if DSKB0 has
+          moved from BPA1 to BPA7.  If the system had 14 packs when ASP was
+          run, then it must have 14 packs when restoring.  The physical
+          location of the packs is irrelevant.
+
+
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sun, 16 Nov 86 18:45:14 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff, William R Soley <WRS@B39.Tymnet> 
+Subject: Oper password file loses license when restoring from backup tape. 
+
+16-Nov-86 18:15/Joe
+Contact:  Cupertino Operations, (408)446-7705, Vijay, System 22.
+Problem:  Could not set license after restoring from 14th's incremental.
+Diagnosis: TITO complained about two files:
+          (SYS)DRWSPR.EPO not given license WC
+          (BOFANET)ONTYME.SAV not given license AC (SY,HF,RF,WF)
+Fix:      Ran SETE then SETLIC on those two files.  System now up.
+Note:     Carl and I have been discussing ways of giving license to TITO
+          instead of to the operators.  We need to do something about it.
+
+In this particular case, ASP restored all files with correct license.  Now if
+TITO had all the license in the world, restoring files to SYS would not lose
+license.  Giving license to TITO would be OK if
+  1) TITO threw away license if not run by OPER.
+  2) TITO threw away license if the TRANSLATE command was given.
+  3) TITO kept license only for "RESTORE ALL" and the system number in the
+     header matched the current system number.  (Operators would still need
+     do set RF on their frame to do a STORE operation.)
+
+This approach would not work if (SYS)TITO.SAV got wiped out and they had to
+run TITO from tape.  Right now, only REFLAG gives the operator license when
+running from tape.  We could make TITO use "SETE 777777,-1" to get all license
+without having to take the system down, but it may be difficult to ensure that
+only TITO gets to use it, and not some malicious program.
+
+Or we could make it a restriction that if TITO gets wiped out, they have to
+take the system down to get license from ONCE.  Then we could add a "TITO"
+command to ONCE that takes device name as an argument (such as SYS: or FTA0:,
+etc).  This command would tell ONCE to set CONSOLE-MANUAL mode, log in OPER
+(without requiring ^Z L OPER), give the process all the license in the world,
+then run TITO from the specified device.  This would avoid DDT and REFLAG and
+give them a one-shot license for restoring files to SYS.  Once SYS was
+restored and DSKCLN run, they could use the licensed copy of TITO on disk to
+restore the rest of the files.
+
+Any comments?
+                                        /JOE
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Sun, 16 Nov 86 19:35:12 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: Restore answer... 
+
+Yes, ASP restore is a structure restore... there not only must be the
+same number of packs, they must all have an intact structure (built with
+DEFINE and then REFRESH, or left from a previous set of system packs).
+
+What is on those packs doesn't matter.  For example, a system 25 pack-set
+could be used for a system 27 rebuild, as long as the system is brought
+up as system 27 (change system number) in case ASP checks things like that
+in the tape headers.
+
+/carl
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Sun, 16 Nov 86 19:43:29 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: TITO license 
+
+I'm still in favor of the  SETE 777777,-1  idea, although make it only work
+via UUO from usrname OPER.  We put that into TITO so that it can setup its
+license correctly, but only have it set the license if the given command is
+STORE ALL and no translates have been enabled.
+
+I also like the ONCE command TITO or REBUILD to come up in console mode.
+This would set both REFLAG and the DOCTY flag to be used whenever a rebuild
+operation is needed, either ASP or TITO...
+
+I think we need to write up a document with the changes in it, so we can
+hammer at the pros & cons of each situation.  We've discussed various parts
+of various proposals on this topic many times, and each time, we overlook
+a situation that we don't feel is important, which after some thought is
+the main reason none of theses schemes has ever been implemented.
+
+I'm creating (M33)OPRLIC.INF for this purpose.
+/Carl
+From: Osman Guven <osman@X930.Tymnet> 
+Date: Sun, 16 Nov 86 22:07:19 PST 
+To: Monitor Group <Osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: SHE is here.. 
+
+Well.. SHE is here..Yeahhhhhhh.....
+She is born on Nov 14, 7:21 am and named her LAYLA MARIE....
+I will stay home monday and use that as my last Labor Day
+holiday, see you guys later..
+-Osman-
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Wed, 19 Nov 86 1:23:22 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff, WRS 
+Subject: (SPL)DELPAG deletes usable pages from a bad file. 
+
+I freed up about 1000 pages by creating DELPAG and running it on the files
+in (BADFILES).  All the good pages were returned to the system, all the bad
+pages are locked up in files that have the do-not-delete bit set.
+See (SPL)DELPAG.DOC for more info.    /Joe
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Wed, 19 Nov 86 3:19:58 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: System 72 
+
+Joe,
+  Remember I mentioned that the SETUUO to talk to another job didn't
+work on system 72.  Well it still doesn't work.  It seems to work fine
+on just about all other systems.  72 is running /P37!
+
+It is very reliably broken on that system.  I wonder if there is something
+wrong with the monitor image???
+
+In any case, I'd like it checked... it seems strange that it runs well on
+all the other systems.
+
+/Carl
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Wed, 19 Nov 86 3:22:34 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: XEXEC in TI and ^C state 
+
+XEXEC seems to be goin gto ^C state, or TI state on some systems.
+The job mix doesn't seem to have much to do with it.  I haven't
+correllated whether the version number of XEXEC/EXECX has something
+to do with it or not.  If you find it stopped, please make a note
+of the version and report it to me.
+
+Everyone,  if you find XEXEC stopped on any system , either restart it
+or repor tit to me immediately so that I can cehck it.  Apparently
+there is something stopping it.
+
+/Carl
+Received: from X62.Tymnet by X930.Tymnet; Wed, 19 Nov 86 8:15:11 PST
+Return-path: <DENCOFF@X62.Tymnet> 
+From: Dennis Coffey Tymcom-X <DENCOFF@X62> 
+Date: Wed, 19 Nov 86 7:44:52 PST 
+To: (Monitor Group:), Carl Baltrunas <CARL@X930.Tymnet>, Osman Guven
+	<OSMAN@X930.Tymnet>, Joe Smith <JMS@X930.Tymnet> 
+Cc: Craig Fletcher <FLETCHERC@X930.Tymnet>, Tymcom-X Acct. Sup.
+	<TXSSUP@X930.Tymnet> 
+Subject: PERP REPLACEMENT INSTALLED 
+
+The 'going away' version of the PERP and DEFER programs (which gives a
+warning message before running the program, and which will run SUBMIT
+after 20-NOV)is everywhere.  the system banner is up on all hosts 
+except the four which currently have 'going down for p.m.' messages.
+operators have been notified to put the banner up when theirs is taken
+down.
+
+Carl & I have been getting the most reliable version on all hosts, with
+proper license and protection on ALL files.  I believe it's installed!
+-Dennis-
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Wed, 19 Nov 86 10:02:05 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: RCHARG not working on 54. 
+
+The hotline call for system D54 was a complaint that (SYS)RCHARG does not work.
+Control-T shows that it is continually in the RN state, SYSTAT shows it has
+no files open.  It has Control-C trapped, therefore the only way out of the
+program is to turn off the terminal (zap the circuit).
+
+Has this symptom been seen before?   /Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Thu, 20 Nov 86 1:57:32 PST 
+To: IPC.L/YARBOROUGH@ONTYME 
+Cc: Monitor Group <JMS>, Carl, Osman, FletcherC, DenCoff 
+Subject: Status of 3652 testing as of Wednesday night. 
+
+I finally got the system to recognize both halves the 3652 string.  It now
+recognizes all 16 units (BPA0-BPA7 & BPC0-BPC7).  I was able to define a
+two pack structure using both logical volumes of a single spindle.  The
+system came up fine, refreshed DSKB, but hung while TITO was restoring
+UFDs to the disk.  I may have lost a disk interrupt or had both units
+waiting on each other.  Progress has been made, but I'm stopping for the
+night.  I'll let you know if I find anything further.
+
+			/Joe
+Received: from B39.Tymnet by X930.Tymnet; Fri, 21 Nov 86 16:01:41 PST
+From: Postmaster@B39.Tymnet 
+Date: Sat, 22 Nov 86 0:01:33 UT 
+To: <JMS@X930.Tymnet> 
+Subject: Returned MAIL 
+Resent-from: Joe Smith <JMS@X930.Tymnet> 
+Resent-date: Fri, 21 Nov 86 16:30:19 PST 
+Resent-to: FLETCHERC 
+
+The following message was not delivered because:
+User has not read mail in 30 days: FLETCHERC
+Last logout: 25 Jan 86
+
+
+----------
+RCPT To: FletcherC 
+Received: from X930.Tymnet by B39.Tymnet; Wed, 22 Oct 86 18:29:02 PDT
+Return-path: <JMS@X930.Tymnet> 
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Wed, 22 Oct 86 18:15:35 PDT 
+To: wrs, Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: B39 crashes. 
+
+System 39 has 2*MAPAL1, 3*EUE, 2*CHTFNF, 2*FILANF, FILAMO+FILAUU dumps.
+I have not finished looking at all of them, but here's what I found so far.
+MAPAL1 - DDB+DEVRIB has a bogus retrieval pointer, RBREAL (1B1) not on.
+EUE - Part of the SETPRV uuo overwritten by an ATB.
+EUE - PC matches P1 which is on top of stack, wild POPJ during DEVHNG.
+EUE - Part of the CORE uuo overwritten by an FNB.
+FILAMO+FILANF+FILAUU can all be caused by an ATB pointer not really pointing
+to an ATB.
+CHTFNF - Mapped page being unmapped, can't find core page number in CHT.
+
+CRA008(EUE) and CRA009(MAPAL1) occured while running B39-P034/P-13.
+Those two dumps look almost exactly like the EUE and MAPAL1 dumps from
+running B39-P034/P37.
+
+Maybe we should try expanding the amount of memory that can be used for
+creating DDB/ATB/NMB/DRB blocks.  Running C55's monitor on B39 (which is
+cut for 80 jobs instead of 127) will have a side effect of making more
+core available for these blocks.
+
+			/Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sat, 22 Nov 86 17:26:54 PST 
+To: Craig Fletcher <FletcherC@X930.Tymnet> 
+Cc: Monitor Group <JMS>, Carl, Osman, FletcherC, DenCoff 
+Subject: 3652 status. 
+
+Found an interesting bug; Missing index register in "MOVEM T1,UNISTS(U)" caused
+location 36 to be wiped out, which caused DDT to get an ill mem ref when it
+went to type out the location at the next breakpoint.  Fixed that, then got a
+stopcode we have not seen before - SWPNIO = swap done to a page that is not
+marked for I/O in progress.  I've been reading over FILIO, adding more comments,
+and will have something to try Sunday or Monday.  /Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sat, 22 Nov 86 17:59:36 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: BADSAT on system 26 every Saturday. 
+
+22-Nov-86 17:44/Joe (Carl did not answer 3 beeps)
+Contact:  Cupertino Operation (408)446-7705, David Jorgenson, System 26.
+Problem:  Same as 9-Nov - System gets BADSAT when TITO all-files gets to
+          directories starting with "O".  Sometime later it gets error reading
+          RPG.SHR, then dies with something like USRUS1 stopcode.
+Workaround: Whenever system gets BADSAT while TITO is doing the all files,
+          let system stay up until either TITO gets error reading files or
+          users get error reading files from SYS, then force a fast DSKCLN
+          and tell TITO to resume starting after last complete directory saved.
+
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Sat, 22 Nov 86 18:42:27 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: BADSAT on system 26. 
+
+
+Correction: DIdn't answer 1 beep. at 17:44
+
+The previous 2 beebs, were at 6:10 am for system 26, re: BADSAT
+  and 6:20 am for system 65, re: bad pack or bad drive causing read errors.
+
+Fred called me back at 10ish this morning, re: more BADSAT problems and
+stopcode EUE after the BADSAT occurred.
+
+For system 26, I told Fred to take the system down and run a FAST DSKCLN
+and to call me if the problem was not fixed.  Apparently the problem keeps
+coming back while trying to do an all-files with TITO.  It had problems
+with directories CARL and CNFE this morning.
+
+After the DSKCLN, I told them to continue with the all-files where it left.
+Apparently, Joe told them the same for the third call today.  No other
+indications were found.
+
+
+For system 65, I restored SYSTAT and DSKCLN from another system and PSP
+indicated a bad drive/pack, so I told them to call TM to look at the drive,
+if TM says ok, to try it again, or if it fails, PAKCOP the bad pack and
+go from there...  after TM is finished.
+
+PS:  THanks Joe, for catching the 17:44 call.  I was out shopping and
+     didn't hear the beep.  Noticed it when I got home... system 26 was
+     up running FULL DSKCLN (Dave didn't force FAST) and should be up
+     for timesharing by 7:00 pm.
+
+/Carl
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Sun, 23 Nov 86 0:42:19 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: Hotline calls - busy weekend 
+
+(...and it's only saturday night!)
+
+22-Nov-86 19:20 /Carl
+Contact:  Fremont Operations via answering service, Bonnie, System F58.
+Problem:  System crashed 5 times during previous 8 hours plus a few in
+          the morning: 7:48 BADSAT, 11:21 THUNG on all drives + BADSAT
+          on unit 2, 15:03 FILAUS stopcode, 17:37 SEAR14 stopcode, 17:44
+          FILAUS stopcode.   ... (additional crashes, but times not
+          recorded by me, operations has the times)...  more SEAR14 and
+          FILAUS stopcodes.
+
+          All files save in progress, incremental backup save in progress
+          and the last crash, both incremental and all-files in progress.
+
+          Last files to tape foreach were: (NETSTAT)61119B.DMI, 61105A.DMS
+          and 61114C.DMS.  These files were ok.  Files recorded in the
+          NETSTAT directory just before and after each of these appeared
+          to be ok except 61113B.DMS which caused the system to crash with
+          FILAUS during my examination.  I renamed it to (CRASH) and set
+          NDL and NFS bits.  TThe NETSTAT directory has 470,000+ pages in
+          500+ files, many of the DMS and DMI files are 5000 to 10000 pages
+          each.  (CKSUM takes a long time!!!)   I mention this, because we
+          are badly in need of a utility program which reads the ribs of
+          all files, or all files in a directory, looking for bad pointers.
+          DSKCLN is supposed to do this, and fix them (or mark them bad)
+          and apparently it doesn't!
+
+Plan:     I've told operations to restore the file and continue with both
+          the incremental backup and the all files, and to call me if they
+          crash with FILAUS.
+
+          I told Bonnie to have operations call us every time they get the
+          FILAUS stopcode, so that we can locate the bad file immediately.
+          If they get a BADSAT error, or BADSAT crash, that they should
+          (on an error, not a crash) continue running until TITO complains
+          about reading files (or until they cannot access system files)
+          and then to recycle and force a fast DSKCLN.  I told her that we
+          need NOT be called for each BADSAT... Sending mail is enough until
+          further notice.  We are aware of the problem and are working on a
+          fix.
+
+(it's been a long weekend) sigh.
+/Carl
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Sun, 23 Nov 86 23:20:38 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: Hotline calls 
+
+** Turnover to Osman - in case you get calls **
+
+Mostly system 26 and 58.  Same problems BADSAT (26 & 58) and FILAUS (58).
+For the bad sat, operations has pretty much been told to proceed until they
+have problems accessing system files such as RPG, LOGINN or LOGOUT.  For
+FILAUS, they have been told to call us immediately, so that we may look at
+the crash and the corresponding backup or all-files tape (TITO) to see what
+file caused the crash.
+
+26 had a few problems with BADSAT during the all-files, and they reloaded to
+run a fast DSKCLN (forced over FULL) to clear the problem.
+
+System 58 had me on the phone off and on all day with FILAUS and BADSAT trying
+to do the daily backup and the all-files.  Username NETSTAT which has over
+450,000 pages in 500+ files, many of which are 5k-10k pages in size, had many
+bad files which caused FILAUS.  Some were fixed by the DSKCLN which ran, others
+have been renamed to (CRASH) with NDL and NFS set.
+
+As of this message, the all-files finished and they were working on the daily
+backup, in directory NETSTAT.  I hope yopu don't have any calls...  /Carl
+
+
+Goodnight.
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Mon, 24 Nov 86 2:09:12 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: PRPRPL versions and installations 
+
+Newest versions of XEXEC %1(174) and EXECX %1(200) have been distributed
+to most systems, (but not all--due to hosts down).  I've installed them
+on SYS on 22 but didn't start it since that system seems to be fine...
+I've installed them on SYS on 34 and 54 and started them running.  They
+appear to be working fine with the restarting scheme we discussed on
+Friday.
+It's running on 930 and 62 as well.  EXECX is started whenever necessary
+and logs itself out after 15 minutes if there is no work to do.
+
+Dennis & Osman, I'd appreciate it if you can make sure this version gets
+installed everywhere.  XEXEC %1(174) has DDT loaded to trace the ill-mem-ref
+bug (which hasn't occurred since we loaded DDT, sigh).
+
+/Carl
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Mon, 24 Nov 86 2:17:37 PST 
+To: Craig Fletcher <fletcherc@X930.Tymnet>, Lois Frost
+	<FSC.L/Frost@Ontyme.Tymnet> 
+Subject: Payroll hours and schedule 
+
+Due to my extended hours this weekend answering hotline via beeper and
+direct calls to me, I may not make it to the office before Lois turns
+in the standby hours.
+
+My hours were:
+      Regular    40.0    m-f 8.0
+      Standby    12.8    m-f 1.6, s-s 2.4
+      Call-in    22.5    m 1.0, th 1.5, f 1.5, sat 7.5, sun 11.0
+      -----------------------------------------------------------
+      Totals     75.3    m 10.6 t 9.6 w 9.6 t 11.1 f 11.1 s 9.9 s 13.4
+
+Details will be in the HOTLIN.LOG file we keep on system 930, later this
+week when I get some time.  Saturday and Sunday were mostly baby-sitting
+systems 26 and 58 which kept going down while do the all-files at all
+hours of the day and night.
+
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Wed, 26 Nov 86 3:26:11 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: FILAMO investigation 
+
+
+FILAMO on system 34 (6), 22 (1), 54 (1) and 23 (1) are all identical.
+It appears to be very reproduceable, albeit not on command.
+
+Symptoms appear to be the system crashing due to decrementing the maximum
+write count for an ATB with a zero count (causing an overflow to -1).
+The running job is XEXEC in each case, executing the exact same instruction:
+
+  FRMOP 1,BLOCK    where 1/ 23,,child-job  and block contains 7.
+
+
+XEXEC is in fact reading the HALT STATUS BLOCK of a job which it received
+an exit-in-child or logout-in-child interrupt, which appears to be gone
+by the time the system crashes, although the FRMOP doesn't complete.  It
+appears that the .FOHSB function 23 may have an interaction problem with
+jobs in the process of logging out.  The job in question has been MAILER
+running in username MAIL.  The only discrepancy I found was that the job
+state fo the target frame said NULQ, and the queue table said STOPQ.
+
+-----------------------
+
+FILAMO, FILANF on system 39 appear to be caused by a different problem.
+In both cases (3 saved crashes) the value of SYSCOR = 0, instead of having
+a link-pointer address,,0.  This indicates that we are running out of
+file-service free core blocks.   SImply raising the amount may solve the
+problem, but I thought that there was an interlock to wait for free-core
+CB wait may do it... FC is the otehr free-core.
+
+I will continue to look into this...  it should not die due to running out.
+Unless... all dormant blocks are reused, and there seems to be a good list
+of dormant atb/drb blocks.
+
+/Carl
+
+
+We may want to put in an info stopcode which warns of frecore low?
+
+/Carl
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Wed, 26 Nov 86 16:42:05 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff, Bill Soley <WRS@B39.Tymnet> 
+Subject: Locating the sources to system programs using FINDIT.TEC 
+
+If you are looking for the sources to a particular program, you can often save
+yourself some trouble by checking if the information is already on-line, on
+system 930 in the files (JMS)*.WHR.  These WHR files are created when I try
+to find where the sources are.          /Joe Smith, 26-Nov-86
+
+How to use FINDIT.TEC
+
+A) Make sure that you have (SYS) in your DO list after (XEXEC).
+   See (JMS)RPGINI.CTL for an example on how to do this.
+
+B) Copy (JMS)FINDIT.TEC to your directory.
+
+The above two steps need to be done only once.
+
+C) Have MHX run FINDIT on all systems, creating a .WHR file.
+
+D) Mung the WHR file using FINDIT.TEC to clean up the file and add host numbers.
+
+E) Optionally sort the WHR file if you want to.
+
+Example of step C - running FINDIT via MHX
+
+01	.MHX
+02	hosts: 10S
+03	commands (end with ctrl-D):
+04	O$
+05	FINDIT
+06	TELEC#.*,AUXMO#.*
+07	
+08	SYSNO
+09	record? Y
+10	output file: TELECO.WHR
+11	detach? Y
+
+01 Start (MPL)MHX.
+02 Tell MHX to go to all PDP-10 systems (as defined in JOBS.DAT).
+03 Prompt from MHX.
+04 Type "O", ESCape, and your OPER password.  Note that MHX turns off echo
+   while it is reading the password.
+05 Run (SPL)FINDIT on each system
+06 Tell FINDIT to look for TELECO.SAV, TELECF.223, and AUXMOX.SAV.
+   TELECF.223 is the FDM file for version 22.3, therefore when searching for
+   sources and FDM files, it is a good idea to have # as 6th char of filename.
+07 Blank line is required to get out of FINDIT.
+08 Dummy line, I put it in out of habit
+09 Control-D to end commands, MHX asks if you want to record output in a file.
+10 My convention is to use *.WHR to keep lists of where files are.
+11 Detach.  You can monitor MHX's progress from another terminal.  MHX changes
+   its name (as reported by SYSTAT) to be "MHX:nn" when going to host nn.
+
+Example of step D - MUNGing the file
+In this example I use a different WHR file and show only the significant lines.
+
+12	.DIR KLKS.WHR
+13	KLKS    WHR      26  26-NOV-86  400    ALL RD  NO     12402
+14	.MUNG FINDIT,KLKS.WHR
+15	FINDIT V2 - Fix output from FINDIT by putting username after file name
+16	29:
+17	CONVRT.SAV  (KL10:29)          15  07-Dec-78  14:49  ALL  RD  NO
+18	62:
+19	ACCESS.MSG  (KS2020:62)         2  24-Feb-81  14:45  ALL  RD  NO
+20	CONVRT.SAV  (KL10:62)          12  09-Jul-80  20:25  ALL  RD  NO
+21	"Done
+
+12-13 The log file does not show up until MHX is done.
+14 The MUNG command runs (SYS)MUNG.SAV which runs (JMS)TECO.SHR.  The first
+   argument is the name of the commands file (FINDIT.TEC), the argument after
+   the comma is the name of the file that FINDIT.TEC is to work on.
+15 FINDIT.TEC identifies itself.
+16+18  Each host number is typed as it is found.
+17,19-20 Note that username and host have been moved to the middle of the
+   record.  The filename is now in column 1 where it can be sorted.  Every
+   line of the file is typed out, you can use Control-O to suppress it.
+21 FINDIT.TEC is done.
+
+Example of step E - SORTing the file
+
+22	.DIR KLKS.*
+23	KLKS    WHR      25  26-NOV-86 1552    ALL RD  NO     12044
+24	KLKS    BAK      26  26-NOV-86  400    ALL RD  NO     12402
+25	.SORT KLKS.WHR=KLKS.WHR
+26	SORTED 774 RECORDS
+
+22-24 The BAK file can be deleted.  It is created in case you run FINDIT.TEC
+  on a WHR file that has already been MUNGed once.
+25 (XEXEC)SORT takes OUTPUT.FIL=INPUT.FIL, sorts in ascending order, using
+   the entire line as a key.
+26 SORT is done.
+27 I sometimes massage the sorted WHR file by replacing "(SYS:22)" with
+   "(SYS:*)" and deleting the redundant lines that say that XXX.SAV was
+   installed on all systems on the same day.
+
+[End of (JMS)FINDIT.DOC]
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Wed, 26 Nov 86 18:24:02 PST 
+To: IPC.L/YARBROUG@ONTYME 
+Cc: Monitor Group <JMS>, Carl, Osman, FletcherC, DenCoff 
+Subject: 3652's working as 3650's, but problems with 3650's. 
+
+Status of 3652 project as of Wednesday afternoon:
+
+I have a monitor that works with a string of 3652 disks, treating it as if
+it were two strings of 3650 disks.  That is, the problems caused by the
+differences between the 3652 and 3650 model disks have been taken care of.
+
+But when I try to build a two-pack system from TITO all-files, I am still
+having problems.  These problems are the same as the ones we are experiencing
+on the other systems that have the new SA10 and 3650 disks, systems 26, 58,
+and 70.  We plan to have a new KL in Fremont hooked up over this weekend.
+Anything we discover here in Fremont on this new system will be directly
+applicable to the 3652 systems.  Therefore, as soon as we get the 3650
+monitor working right, this will be the 3652 monitor as well.
+
+Osman and I will look at the problem over the weekend, and will let you know.
+
+			Joe Smith
+			TXS.J/SMITH@ONTYME
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Wed, 26 Nov 86 22:49:57 PST 
+To: Monitor Group <CARL@X930>, Osman Guven <osman@X930.Tymnet>, Joe Smith
+	<jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey
+	<dencoff@X930.Tymnet>, William R Soley <wrs@C39.Tymnet> 
+Subject: XEXEC and MAILER 
+
+The FILAMO crashes seem to be on the rise... systems 70 and 55 each
+caught one today sometime after my newest XEXEC %1(200) was installed.
+
+Since it's apparent that the problem is aggravated by XEXEC doing the
+frmop to look at the halt-status-block of the MAILER job as the mailer
+is logging out, and this reliably crashes system 34 when MAILER runs,
+I have removed MAILER from the queue on ALL, repeat ** ALL ** systems.
+
+(Well, most.  It is still running on X62, X95 and X930!)
+
+I will see if I can put a work-around into XEXEC early next week, and
+put MAILER back into the queue.
+
+--------------
+Note:  MAILER is still being run, each time someone wants to send mail
+about the batch job being run, so (bill?) if this is enough to take care
+of the queued mail files (MAIL)*.Q let me know, and I'll leave mailer
+out of the queue (since it's being run every so often anyway).
+
+/Carl
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Thu, 27 Nov 86 3:08:29 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff, Bill Soley <WRS@B39.Tymnet> 
+Subject: CTY log has wrapped on 930. 
+
+To see the internal log of all CTY output on 930 or 62, set license and
+RUN (MPL)FILDDT.  Answer "/M" for "File:".  Then type "17046$0T" (using
+ESCape for $).  That will show the last 2560 characters that have been
+typed on the CTY, plus parts of the Control Block for APA0, since $0T
+stops all the first null (ASCIZ).  By the way, the "CB"+Linefeed that
+is typed at the end is the CB for APA0.  By some wild coincidence,
+SIXBIT/APA0/ = BYTE(7)"C","B",LF,0.  Awesome.
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Thu, 27 Nov 86 13:01:00 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Faces on the TV. 
+
+Channel 54 was showing an episode of "The New Literacy", a PBS show about
+computers from 1984.  Today's subject was office automation.  One of the people
+they interviewed was Judy Norton of TRW.  I understand they are trying to ge
+a formal contract with us, and upgrade to the "/P" monitor.   /Joe
+From: Osman Guven <osman@X930.Tymnet> 
+Date: Sat, 29 Nov 86 2:13:27 PST 
+To: Monitor Group <Osman@X930.Tymnet>, Carl A Baltrunas <carl@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X930.Tymnet>
+	
+Subject: Test system in Fremont F24 is up.. 
+
+Joe..
+
+o  I will make sure B39 comes up with NEWMON, after the ASP
+   dump on Sunday.
+
+o  System F24 is up with F58's ASP dump of 11/14. FULL DSKCLN found
+   many bad files, about 40. There were some bad files neither DSKCLN
+   or anything else complained being bad, but they were. Like LOGINN,
+   CRSHID which job 3 was keep getting error when INITIA starts to
+   run CRSHID, PEAK which is still bad left it like that, I thought
+   you might want to look at it.
+
+o  24XA03 Monitor doesn't see anything past BPA7. So system up with
+   70XP37.
+
+o  Did not do any testing like TITO, CKSUM, FILLUP yet.
+
+-Osman-
+
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Sun, 30 Nov 86 20:07:23 PST 
+To: SCAPIK, Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: Parity error in 930's F3 caused damage before it was detected. 
+
+DSKCLN marked the following files bad:
+(CARL)LOOCTT.MAC = LOOKTT.MAC
+(CARL)POLASH.MAC = POLISH.MAC
+(CARL)TTYG.MAC   = TTYO.MAC
+(CARL)TRUDIM.TRN = TRULIM.TRN
+(CARL)TRUDIM.TSR = TRULIM.TSR
+(M33) SET55L.REL   (right name)
+(SYS) PEAC.HLP   = PEAK.HLP
+(SYS) LVADID.SAV = LVALID.SAV
+(SYS) BIOFIK.SAV = BIONIK.SAV
+(SYS) 091186.DAT
+(SYS) LNKGV2.SHR = LNKOV2.SHR
+(SYS) OPER.SAV   = (right name)
+(SYS) 1022C2.V20   (right name)
+(SYS) PCOE.SHR   = PCOM.SHR
+(SYS) PCOE.LOW   = PCOM.LOW
+(SYS) LOGANX.SHR = unknown, if it was LOGINX it should have been deleted
+(SYS) 092086.DAT
+(SYS) 102186.DAT
+(SYS) 111186.DAT
+
+XEXEC's job queue has been mangled.  It says user MAID running ONTEMP and
+JMS running MIDFIT (should be MAIL, ONTMTP, and MIDNIT).  In all cases,
+the difference between SIXBIT/good/ and SIXBIT/bad/ is 100000; bit 15 got
+lost.  I have copied files from (CARL:62) and (SYS:62) for those listed
+in RECOV.SYS, but there's not telling what other data files got mutilated.
+
+		/Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Mon, 1 Dec 86 7:27:15 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: I am on-call this week. 
+
+01-Dec-86 06:59/Joe
+Contact:  Cupertino Operation (408)446-7705, L.T. Smith, System 39.
+Problem:  CPU stopcode APRFAT when NEWMON loaded.  CDP=Cache Parity error.
+Fix:      Reloaded NEWMON.  B39-P035 up at 07:04.
+
+01-Dec-86 06:59/Joe
+Contact:  Fremont Operation (415)498-2588, Mary Larios, System 58.
+Problem:  System crashed with many BADSAT, GIVPG1, FILAUS.
+Fix:      Ran DSKCLN, system now up.
+
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Tue, 2 Dec 86 8:28:10 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff, Bill Soley <WRS@B39.Tymnet> 
+Subject: (MPL)CTYLOG reads CTY buffer. 
+
+I defined GETTAB 127,,11 to return the pointers to the CTY buffer.  The
+program (MPL)CTYLOG reads the log and displays it in real-time.  It works
+in P035/A04 and later, see (MPL:930)CTYLOG.MAC for details.    /Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Tue, 2 Dec 86 8:31:30 PST 
+To: Monitor Group <JMS>, Carl, Osman 
+Cc: FletcherC, DenCoff 
+Subject: P034/P will not run on a 2020 with only 256K. 
+
+TRW tried to bring up the P034/P monitor on their system.  It complained
+about not having 512K, then died with stopcode PGENDP (alias SWPNDP) when
+it ran out of core pages for DSKCLN + INITIA.
+
+I tried duplicating the problem on 95 by removing 4 memory boards.  Sure
+enough, /P dies with only 256K.  It runs with 384K, but really wants 512K.
+P034/J runs in 256K but P034/P does not.  It may be possible to diddle with
+some defaults (like reducing free-core) to squeeze into 256K, but I wouldn't
+want to support it.  I suggested that Dennis recommend they get more
+memory - used 2020 parts should be fairly cheap.  /Joe
+From: Joe Smith <JMS@X930.Tymnet> 
+Date: Tue, 2 Dec 86 14:03:57 PST 
+To: IPC.L/YARBROUGH@ONTYME, IPC.E/ROOP@ONTYME 
+Cc: Monitor Group <JMS>, Carl, Osman, FletcherC, DenCoff 
+Subject: 3652 deployment delayed until 3650 BADSAT problem solved. 
+
+I now have a monitor that talks to 3652 disks as well (or as bad) as it
+talks to 3650 disks.  The test system in Dallas is exhibiting the same
+symptoms as C70, C26, and F58 did when trying to rebuild the disk system.
+The SATs are getting clobbered, and the monitor then thinks it is OK to
+overwrite the UFDs.  C26 and F58 experience similar problems during normal
+operation, not just during the rebuild process.
+
+Until the 3650 BADSAT problem is solved, no additional systems should be
+transferred to 3650/3652 hardware.  I am hereby relinquishing use of the
+test system in Dallas, and will be using the test system in Fremont.
+
+After the next system is moved from Cupertino to Dallas, I may have a need
+for further testing of 3652 disks, but for no more than two days.
+I will keep you posted.
+
+			Joe Smith
+			JMS@X930
+			TXS.J/SMITH@ONTYME
+Received: from X62.Tymnet by X930.Tymnet; Tue, 2 Dec 86 23:34:49 PST
+Return-path: <Carl@X930.Tymnet> 
+From: Carl A Baltrunas <Carl@X930.Tymnet> 
+Date: Tue, 2 Dec 86 23:25:16 PST 
+To: Carl A Baltrunas <Carl@X930.Tymnet>, Osman Guven <osman@X930.Tymnet>, Joe
+	Smith <jms@X930.Tymnet> 
+Cc: Craig Fletcher <fletcherc@X930.Tymnet>, Dennis Coffey <dencoff@X62.Tymnet> 
+Subject: New versions: XEXEC and EXECX 
+
+XEXEC %1(204) is running on 62.
+  new featues include:
+  o Greater care taken before reading halt-status-block
+  o Record garbage collect turned off
+  o Dormant record list used for all deleted records and for
+    stock of records to use for NEW entries.
+  o Log file now in YYMMDD.JQL in directory (SUBMIT) where
+    YY MM and DD have their respective meanings, and .JQL
+    stands for Job-Queue-Log.
+  o Debug info now in YYMMDD.JQD for Job-Queue-Debugging.
+  o Mail when sent now lists the options selected, eg. LOG:NONE.
+
+EXECX %1(201) is running on 62.
+  new features include:
+  o Log file and Debug info in YYMMDD.JQL and YYMMDD.JQD.
+  o VMFILE routine modified to pass ^D, but not tested.
+
+I will begin the distribution to (SUBMIT) on all systems.  To install a new
+XEXEC, place new version on SYS and run QUEDDT to set 600000,,0 in location
+pointed to by QUEUE/ +1, or use INSTALL$G where available.
+
+To Install a new version of EXECX, simply put it on SYS.
+
+/Carl
+  D&Þ
