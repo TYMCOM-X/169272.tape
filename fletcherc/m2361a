@@ -1,0 +1,36 @@
+To:	Field Ops,Sales
+cc:	Product Support
+Subj:	Fujitsu M2361A  "Super Eagle"
+Keyword: HDA Problem, Excessive ECC errors
+From:	CRaig Fletcher
+
+Some Fujitsu Eagle M2361A's may exhibit a problem requiring replacement
+of a costly HDA.  To avoid making matters worse we must exercise
+care before quoting maintenance on this hardware by determining the
+revision level of the HDA on each drive.
+
+If the rev level of the HDA is E0 or later, quote standard prices.
+
+If the rev level of the HDA is prior to E0 (D or ...) do not quote
+maintenace unless the customer agrees to have his drives brought up
+to rev E0 by MDFSCO for time and materials.
+
+Product Support and LOgistics are negotiating with Fujitsu to reduce
+the cost of the replacemnt HDA (potentially to 0) whether required for
+drives presently under contract or for potential new customers.
+
+
+
+        or
+
+
+Some Fujitsu Eagle M2361A drives may exhibit a problem requiring HDa
+replacement after HDA's are transported.  If this occurs Fujitsu will
+exchange the HDA at no cost to MDFSCO, but we must bear the labor cost
+to remove and replace the HDA.  To recover this expected cost we must
+raise the montly maintenance price from $105 to $125.
+
+
+
+When quoting M2361A drive maintenance, quote new price of $125/month.
+
