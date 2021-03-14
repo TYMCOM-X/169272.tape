@@ -1,0 +1,1221 @@
+^^
+.FLAG CAPIT
+.PAPER SIZE 60,79
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ $$$$                        $$$$
+$$$$                          $$$$
+$$$$                          $$$$
+$$$$$                        $$$$$
+$$$$$$                      $$$$$$  LISTINGS ON THE TYMCOM-X
+$$$$$$                      $$$$$$
+$$$$$$                      $$$$$$  OPERATIONS MINI-MANUAL _#6
+$$$$$$                      $$$$$$  
+$$$$$$$                    $$$$$$$  
+$$$$$$$                    $$$$$$$
+$$$$$$$$                  $$$$$$$$
+$$$$$$$$                  $$$$$$$$
+$$$$$$$$$                $$$$$$$$$
+$$$$$$$$$                $$$$$$$$$
+$$$$$$$$$$::::::::::::::$$$$$$$$$$
+$$$$$$$$$$::::::::::::::$$$$$$$$$$
+$$$$$$$$$$$::::::::::::$$$$$$$$$$$
+$$$$$$$$$$$::::::::::::$$$$$$$$$$$
+$$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+$$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+$$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+$$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+$$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$  M C  D O N N E L L   D O U G L A S
+$$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$     WESTERN COMPUTER OPERATIONS
+$$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$    TYMSHARE COMPUTER  MANAGEMENT
+$$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$             SERVICES
+$$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$  
+$$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+$$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+$$$$$$$$$$$$    ::    $$$$$$$$$$$$  AUGUST 1984
+$$$$$$$$$$$$    ::    $$$$$$$$$$$$
+$$$$$$$$$$$     ::     $$$$$$$$$$$
+$$$$$$$$$$$     ::     $$$$$$$$$$$
+$$$$$$$$$$      ::      $$$$$$$$$$
+$$$$$$$$$$      ::      $$$$$$$$$$
+$$$$$$$$$       ::       $$$$$$$$$
+$$$$$$$$$      ::::      $$$$$$$$$
+$$$$$$$$      ::::::      $$$$$$$$
+$$$$$$$$     ::::::::     $$$$$$$$  REPLACES DOCUMENT DATED DEC 80
+$$$$$$$     ::::::::::     $$$$$$$  
+$$$$$$$    ::::::::::::    $$$$$$$  
+$$$$$$    ::::::::::::::    $$$$$$  
+$$$$$$   ::::::::::::::::   $$$$$$  
+$$$$$   ::::::::::::::::::   $$$$$
+$$$$$  ::::::::::::::::::::  $$$$$
+$$$$  ::::::::::::::::::::::  $$$$
+ $$$$::::::::::::::::::::::::$$$$
+  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+.PAGE!END OF HEADER
+.CC
+
+.SKIP 25
+.CENTER;<THIS <PAGE <INTENTIONALLY  <LEFT <BLANK
+.SUBTITLE <TABLE <OF <CONTENTS
+.PAGE
+.INDEX <TABLE <OF <CONTENTS
+.CENTER; <TABLE <OF <CONTENTS
+.CENTER; -----------------
+.SKIP 2
+.INDENT 10
+<TITLE                                          <PAGE
+.SKIP 2
+.INDENT 10
+<SPOOL <SYSTEM <OPERATOR'S <MANUAL                  5
+.SKIP 2
+.INDENT 10
+<SPOOL <MAINTENANCE                              19
+.SKIP 2
+.INDENT 10
+<LIST <AND <PRINT <IN <EXEC                         25
+.SKIP 2
+.INDENT 10
+<PRTAID <PROGRAM                                 27
+.SKIP 2
+.INDENT 10
+<INDEX                                          31
+.SKIP 14
+.PAGE
+.CC
+
+.SKIP 25
+.CENTER;<THIS <PAGE <INTENTIONALLY <LEFT <BLANK
+.SUBTITLE <SPOOL
+.PAGE
+.FILL.JUST
+.SUBTITLE <SPOOL
+.PAGE
+.FLAG CAPIT
+.upper case
+.left margin 7
+.center
+TYMCOM IX and X
+.skip
+.center
+SPOOL SYSTEM OPERATOR'S MANUAL
+.skip 1
+.INDEX <SPOOL <INTRODUCTION
+((INTRODUCTION))
+.paragraph
+^The <SPOOL system is a file listing program that copies files from a
+user's directory and, without direct intervention of the operator,
+sets user requested print switches for the files referenced by
+SPOOL REQUESTS.
+One type of print switch can be used to determine where the files
+spooled are to be listed.
+^The user may specify the switch CENTER, in which case the spooled
+files will be queued and listed at the appropriate computer center.
+Or the user may default on the printer location switch, in which case
+the spooled files are set up for listing on a REMOTE printer, typically
+located in a district office.
+.para
+Operators are provided with a range of commands and arguments which
+order the sequence of spool file listed and may transfer specified
+requests to a different printer location.
+Spool requests can be moved to a different system by use of magnetic tape
+and restarting interrupted print jobs is facilitated.
+.para
+There are <SPOOL techniques for outputting the status of a given
+job. 
+^The program will automatically enter as much of the accounting charges
+as it can, leaving only postage and handling charges for the operator
+to enter.
+.para
+This document is primarily oriented towards system operators but there
+is also a discussion of those commands used by operators at remote
+printer locations.
+.paragraph
+Note: This reflects version 4.4 (940: 5.23) of <SPOOL.
+.INDEX <SPOOL <COMMAND <SUMMARY
+.skip 3
+((COMMAND SUMMARY))
+.skip 2
+.NO FILL
+.NO JUST
+.CENTER
+PRINT COMMANDS
+.SKIP 1
+        SPOOL COMMAND           EFFECT
+        -------------           ------
+.SKIP 1
+        PRINT _<SPOOL NO.>       PRINT THE SPECIFIED SPOOL REQ.
+.SKIP 1
+        PRINT _<SPOOL NO.>FILE   WITHIN A MULTI-FILE SPOOL REQ.,
+                                PRINT THE SPECIFIED FILE.
+.SKIP 1
+        PRINT TAPE              PRINT SPOOL REQUESTS THAT HAVE
+                                BEEN STORED ON A SPOOL TAPE.
+.SKIP 1
+        PRINT FORM              PRINT ALL REQUESTS FOR A
+                                SPECIFIED PAPER FORM (EG. TTY)
+.SKIP 1
+        PRINT (ALL)             SORT ALL SPOOL REQUESTS BY
+                                FORM, PAPER PARTS AND PRINT
+                                THEM ALL.
+.SKIP 1
+        RESTART                 RESUME LISTING OF AN INCOMPLETE
+                                SPOOL REQUEST.
+.SKIP 2
+.CENTER
+UTILITY COMMANDS
+.SKIP 1
+        STORE (ALL)             STORE ALL OR SPECIFIED SPOOL
+              FORM              REQS. ON TAPE SO THEY CAN BE
+              _<SPOOL NO.>       LISTED ON ANOTHER SYSTEM'S
+                                LINE PRINTER.
+.SKIP 1
+        STATUS                  OUTPUT INFORMATION ABOUT ANY
+                                SPOOL REQS. ON THE SYSTEM.
+                                OTHER STATUS COMMANDS ARE 
+                                'LIST' AND 'REPORT'.
+.SKIP 1
+        TRANSFER                CHANGE THE DESIGNATED OUTPUT
+                                PRINTER WHERE THE SPECIFIED REQ.
+                                SHALL BE LISTED.
+.SKIP 1
+        CANCEL                  PURGE A SPOOL REQUEST WHICH IS
+                                EITHER PENDING OR ON HOLD.
+.SKIP 1
+        DELETE                  DELETE AN INAPPROPRIATE FILE (EG.
+                                BINARY TYPE) FROM A SPOOL REQUEST
+.SKIP 1
+        HOLD                    PLACE A SPOOL REQUEST ON HOLD
+                                AWAITING PAPER DELIVERY OR THE
+                                REMOVAL OF SOME OTHER OBSTACLE
+                                PREVENTING PRINTING.
+.SKIP 1
+        HARDCOPY                OUTPUT A COPY OF ORIGINAL SPOOL
+                                REQUEST. (AUTOMATIC AFTER 
+                                'PRINT' COMMAND).
+.SKIP 1
+.CENTER
+REMOTE COMMANDS
+.SKIP 1
+        SET                     ENABLES REMOTE PRINTER OPERATOR
+                                LICENSE. ASKS FOR PASSWORD.
+.SKIP 1
+        1NOTIFY                 EXEC PROGRAM ON H8
+                                WHICH IDENTIFIES HOST LOCATION OF
+                                SPOOL REQUESTS FOR GIVEN REMOTE
+                                PRINTER.
+.SKIP 1
+        PRINT REMOTE            FOR CENTER OPERATORS LISTING
+                                SPOOL REQS. AT A REMOTE SITE.
+.page
+.INDEX <SPOOL <COMMAND <DESCRIPTION
+((COMMAND DESCRIPTION))
+.FILL
+.JUST
+.paragraph
+In this discussion, operators have two divisions, system and remote.
+Remote operators are those people who have remote print license
+which is set by the DS password on the TYMCOM-IX and by SETOP in the
+user's password file on the TYMCOM-X.
+^System operators are defined as having operator license and
+being in district 0.
+^System operators may also be remote operators,
+but not conversely.
+^The term "operators" is used to encompass both types of operators.
+^All the following commands may be executed by operators unless
+specified otherwise.
+.PARAGRAPH
+Note: In command forms in this document, the items enclosed
+in angle brackets _< > are user-supplied values; the brackets are
+not typed.  In examples, user input is indicated by lowercase
+characters.
+.INDEX <SPOOL <STATUS <COMMANDS
+.center
+STATUS Commands
+.paragraph
+^The Status commands (STATUS, REPORT, and LIST) may be executed by
+operators.
+  Use of the STATUS and REPORT commands by system operators
+is slightly different from other users.  Whereas for all other
+users a carriage return after the command defaults to the ALL subcommand,
+for the operator, the default is the CENTER subcommand.  This is so
+the operator need not be bothered by remote requests unless he
+is interested in them.
+Should the operator use the ALL or REMOTE subcommand, the location
+of the remote requests is given as Rnnn where nnn is the Printer
+Location Number.
+.paragraph
+^System operators can receive information about any request
+in the system.
+Remote operators
+ receive information only for t
+printer location and their district.
+In addition, when operators execute one of the above
+commands, additional information is provided.  
+Three
+ additional status words can appear in the status line.
+.no just
+.nofill
+.skip
+  TAPE  ^The request has been placed on tape for printing on
+        other systems (See STORE command)
+  HOLD  ^The request has been placed on HOLD by an operator.
+  TRAN  ^The request is in a transfer state and needs to be
+        transferred by the operator to a different
+        printing site.
+.just
+.fill
+.paragraph
+If there are any requests to be transferred, the operator will
+be reminded of this fact before each command is processed and
+until all the requests have been transferred.
+.paragraph
+Information concerning the type of paper and number of pages is also
+given for the STATUS, REPORT and LIST commands.
+^The number of pages that the
+operator sees is the least number of pages required to complete
+the request, not the number of pages that will be charged.
+.paragraph
+Also, if a request requires a full character set (upper and lower)
+printer, it will be flagged as "FC".  This will appear after the type
+of paper required for the request.
+.skip
+.paragraph
+^When a request is printed, the accounting information is written to 
+one of two places.  If there is no delivery charge, the information
+is written directly to accounting and no further action is
+required.  If there are delivery
+charges the information is held so that the operator may add the charge.
+  ^System operators use the program 1BCHARGE (TYMCOM-IX) or
+BCHARGE (TYMCOM-X) to complete the request.
+  Remote operators use the program 1RCHARGE (TMYCOM-IX) or RCHARGE
+(TYMCOM-X) to complete the request.
+.skip 3
+.INDEX <SPOOL <PRINT <COMMANDS
+.center
+PRINT Commands
+.paragraph
+^There are 
+five
+ options for this command which can only be used by operators.
+This command does the printing of the
+spooled files on the printer.  ^When the request has been completed,
+a hardcopy is produced for the request.
+At the onset of the first PRINT command issued, the operator will
+be asked if his printer has a full character set (upper and lower).
+If the reply is "<NO", only those requests which do not specify the
+FULLCH option when spooling will be printed.  Should any of those
+requests have lower case characters, they will be converted to
+upper case before being printed.  If the printer does not have a full
+character set, requests that require it (via the FULLCH option) can be
+printed by the PRINT _<number> command.  Those requests will be
+converted to upper case before being printed.
+^The print options available are detailed below.
+^After the first print command is issued, the operator will be asked
+what remote printer is being used.  ^The operator must respond with a
+valid printer name.
+.skip 2
+PRINT [ALL]
+.paragraph
+This command will sort all pending requests (PEND)
+by type of form and number of parts before printing.  If only one type
+of form is needed for printing, the operator will be told to mount that
+type of form on the printer.  Otherwise, if several different types
+of forms are needed, a summary of the forms is printed and the operator
+will be asked which type of form he wishes to print.  ^All requests for
+the form specified will be printed and the process repeated until all
+requests for all forms are completed.
+.skip 2
+PRINT FORM
+.paragraph
+This command is used for printing all pending requests for one
+type of form.  ^The
+system will prompt the operator for the type of form
+desired, tell him how many pages are required, and then print
+all pending requests for that form.
+.skip 2
+PRINT _<number>
+.paragraph
+This will print only the request specified.  If the request
+is anything but  PEND or HOLD, confirmation as to whether the request
+is to be redone is required.  If the printer has been flagged as
+not a full character set printer and the request requires it, the 
+operator will be asked if he wants to print it.  If so, the request
+will be converted to upper case before being printed.
+^The type of paper required is then typed
+and the program
+
+waits for confirmation of the forms on the printer.  ^The request
+is then printed.
+.paragraph
+This is the only command which will print a job on HOLD status.
+In the event that multiple forms paper is unavailable, the request
+may be redone multiple times, and only one charge is recorded in the
+accounting.
+.paragraph
+Due to the possibility that a user may specify the wrong print
+switches when he makes a spool request, a feature has been included
+for the operator to override the user's print switches.
+.paragraph
+On the PRINT _<number>, RESTART _<number> and STORE _<number>
+commands, the operator will be asked OPTIONS:.  This is effectively
+asking the operator what print switches to use on the request.
+^The operator may specify the use of the user's original switches by a
+carriage return, or he may enter switches which will override only
+those switches he specifies.  Switches available are:
+HEAD, NOHEAD, SINGLE, DOUBLE, FORTRAN (TYMCOM-X), NOFORTRAN (TYMCOM-X), LINES= AND INDENT=.
+.skip 2
+PRINT _<number> Filename
+.paragraph
+This command is used to print an individual file of a request.
+^The file is printed in its entirety and only once regardless
+of how many copies the requester wants.  No accounting record is
+created.
+.skip 2
+PRINT TAPE
+.paragraph
+This command is available only to system operators.  ^It is used
+to print requests that have been placed on tape using the STORE
+command.  On the 940's the tape must be mounted on Unit 0 .
+On the PDP-10's the logical unit is requested, along with the density.
+^The operator is questioned as to the type of paper on the printer
+and if it is not available,
+all requests using that type paper are skipped.
+Otherwise, all requests for this type of paper will be done and the
+next type of paper will be requested.  This process continues
+until the end of tape.
+Information concerning these requests are transmitted back to the
+home system via PJ, with the result of a delay before transportation
+charges may be entered on the home system.
+.skip
+.paragraph
+In addition, the keyword REMOTE may be inserted after the word
+PRINT in all the Print commands except PRINT TAPE.
+This allows system operators to print remote spooled
+requests on remote printers.
+Any operator entered charges for remote requests must
+be entered by 1RCHARGE (RCHARGE).
+.skip 2
+RESTART Command
+.paragraph
+^The RESTART command is used to restart a request that has
+been only partially completed.  ^The system will prompt for the
+request number, file name, restart copy number and restart page number.
+^The copy number can be obtained from the last file title page
+of the file in question.  ^The restart page number is the
+physical page to restart printing on.  Page numbers on the listing
+cannot be relied upon as a correct indicator as
+ a restart printing point
+in the file.  A carriage return indicates to begin printing at the
+start of the file.
+^When the file is found, <SPOOL proceeds
+to print that file and all succeeding files for the request.
+.paragraph
+RESTART TAPE is used to do the same thing for files stored on
+tape using the STORE command, except that with the RESTART
+TAPE command, all other requests on the tape will be processed also.
+.skip
+.paragraph
+As with the Print commands, the keyword REMOTE may be used after the
+RESTART command, but may not be used with the RESTART TAPE.
+.skip 2
+HOLD Command
+.paragraph
+This is a utility command which is used to place individual
+requests on hold, such as when there is no paper for the request.
+Once a request is on HOLD status, it shows up as
+PEND on user STATUS commands, but are not included in the ALL
+commands for 
+STORE and
+ PRINT.  ^The only way that requests may
+be taken off HOLD status is to be printed 
+or stored
+by the operator or canceled by the user or the operator.
+.page
+.INDEX <SPOOL <UTILITY <COMMANDS
+.center
+UTILITY Commands
+.skip 2
+STORE Command
+.paragraph
+This command is available only to system operators.  ^It is used to
+print spooled requests for a system that does not have
+an operational printer.  ^The subcommands are [ALL], FORM, and _<number> and have
+the same function as their counterparts in the PRINT command.  STORE
+ALL places the requests on 
+tape in a sorted order by form.
+.paragraph
+^The [ALL] and FORM commands will operate on Center requests only,
+while a STORE _<number> will operate on a Center or Remote request.
+.paragraph
+On the 940's the tape is mounted on Unit 0.  ^The PDP-10's request the
+logical name (EG. FTA0) and density for the drive.
+.skip 2
+CANCEL Command
+.paragraph
+^Since users can only cancel requests which are pending or on hold,
+it is necessary to allow someone to cancel requests which are in other
+status states.  ^Therefore, the operator can cancel anyone's
+request regardless of a request's status.
+.skip 2
+DELETE Command
+.paragraph
+This command is for deleting a file from a request and should only
+be used when a file cannot be printed, i.e. file is bad or binary.
+.skip 2
+TRANSFER Command
+.paragraph
+A request goes into transfer status when the requester indicates
+he wants his request printed at a different site.  This command
+must be used against any request that has TRAN status.
+^The TRANSFER command is the only operator command which can be
+used against a request which is in TRAN status.
+^The TRANSFER
+command will move the request to the site desired with the 
+operator's assistance.  ^When the operator issues a transfer command
+against the request, the <SPOOL system will tell him the location
+to transfer the request to.  ^The operator will enter a node number
+and an address will be typed out that must be confirmed.  Upon
+confirmation, the request will now belong to the new site.  In
+place of a node number, the word "<CENTER" may be used, in which 
+case, the request will be moved to the computer center for printing.
+.skip
+.fill
+.paragraph
+In order to determine which requests need to be transferred, the
+operator should issue the STATUS command.
+.paragraph
+In order to get the node numbers for the TRANSFER command, the
+operator should log into the IMS system and call 1PNUPD.  ^The
+command PPA will give a complete list of printer location
+addresses and the associated nodes.
+.skip 2
+HARDCOPY Command
+.paragraph
+This command will ask the operator for the request number and the
+requester name.  ^All information entered by the
+requester at the time of spooling will be typed out on the operator's
+terminal.
+.PAGE
+.INDEX <SPOOL <COMMANDS <REMOTE
+.center
+REMOTE PRINTER OPERATION
+.skip 1
+.paragraph
+^The remote printers supported by <SPOOL are CDC, 2780, Data
+Products (DP), and Vogue.
+.paragraph
+In addition to the commands described in the <SPOOL ^System
+Users Guide, additional commands are available to designated
+people to print spooled requests.  In order
+to access these commands, license must be set using the SET
+command.  ^The SET command should be the
+first command issued after entering the <SPOOL system.
+.skip 2
+.center
+SET Command
+.paragraph
+This command is used by potential remote operators.  ^It will
+ask for your license username and license password.  ^If the user
+has Remote Print ability, the user will be flagged as a remote
+operator. This command should be issued before the remote operator
+issues a STATUS, REPORT or LIST command as it will allow the operator
+to see the pages and type of paper needed with each request.
+.skip 3
+.center
+NOTIFICATION OF REQUESTS WAITING TO BE PRINTED
+.paragraph
+In order for the remote operators to find out if they have
+any pending requests to be printed at their site, they must log
+into the IMS system and while at the EXEC level, issue the
+command 1NOTIFY.  ^This program will respond by listing all
+systems that have pending requests for that site.
+.skip 2
+.center
+Additional Information
+.paragraph
+.fill
+In reference to the REMOTE subcommand, Remote operators are not 
+required to use this command, although it may be used.  ^Systems
+operators must use this command when printing a remote request at
+a remote printer.
+.page
+((SAMPLE RUNS))
+.INDEX <SPOOL <SAMPLES
+.center
+PRINT command examples
+.nofill
+.skip2
+.center
+Example 1
+.center
+PRINT Command Using Default
+.skip 2
+:print
+.skip
+REMOTE PRINTER TYPE: cdc
+.skip
+IS THIS A FULLCASE PRINTER? yes
+.skip
+TOTAL REQUIREMENTS ARE:
+LARGE -1 PART----   29 PAGES
+LARGE -2 PART----  324 PAGES
+SMALL -3 PART----   88 PAGES
+WHAT TYPE OF FORM DO YOU WANT TO PRINT? large
+PARTS: 2
+.skip
+ARE THERE  324 PAGES OF 2 PART LARGE PAPER?
+CONFIRM BY TYPING YOUR NAME: smith
+.skip 3
+.center
+Example 2
+.center
+PRINT by Form Type command
+.skip 2
+:print form
+FORMS: large
+PARTS: 1
+.skip
+ARE THERE   29 PAGES OF 1 PART LARGE PAPER?
+CONFIRM BY TYPING YOUR NAME: smith
+.skip 3
+.center
+Example 3
+.center
+PRINT by Number Command
+.skip 2
+:print 33125
+FOR HIGGINS    ON 8/03/75? no
+FOR SMOEJOE    ON 9/10/75? yes
+.skip
+.nofill
+OPTIONS: COPIES=1,LINE=60
+OPTIONS:             (carriage return means use requester
+                      options)
+.skip
+ARE THERE  88 PAGES OF 3 PART SMALL PAPER?
+CONFIRM BY TYPING YOUR NAME: smith
+.page
+.center
+Example 4
+.center
+PRINT by Number For One File
+.skip 2
+:print 33125 a.lst
+.skip
+FOR JOHNSON  ON 9/03/75? yes
+.skip
+.nofill
+OPTIONS: COPIES=1,LINE=60
+OPTIONS: fortran        (shows to use FORTRAN carriage
+                         control on the file)
+.skip
+ARE THERE 43 PAGES OF 1 PART LARGE PAPER?
+CONFIRM BY TYPING YOUR NAME: smith
+.skip 3
+.center
+Example 5
+.center
+PRINT TAPE Command
+.skip 2
+:print tape
+.skip
+LOGICAL UNIT NAME: Fta1
+.skip
+TAPE IS 9 TRACK
+DENSITY: 6250
+.skip
+IS THERE 1 PART SMALL PAPER? no
+IS THERE 2 PART SMALL PAPER? yes
+.skip
+PRINTING REQUEST 33456
+.skip 3
+.center
+Example 6
+.center
+RESTART Command
+.skip 2
+:restart 33675
+FILE NAME: a.lst
+OPTIONS: COPIES=2,HEAD,LINE=60
+OPTIONS:                _<carriage return>
+RESTART COPY NO.: 2
+RESTART PAGE NO.: 23
+.skip
+ARE THERE 212 PAGES OF 1 PART TTY PAPER?
+CONFIRM BY TYPING YOUR NAME: smith
+.page
+.center
+Example 7
+.center
+HOLD Command
+.skip 2
+:hold 33887
+FROM 08/01/75? no
+FROM 10/08/75? yes
+.skip
+REQUEST PUT ON HOLD
+.skip
+.center
+Example 8
+.center
+TRANSFER Command
+.skip 2
+:transfer 38256
+.skip
+TRANSFER TO: SAN FRANCISCO, CALIF
+.skip
+ENTER TRANSFER NODE: 1034
+.skip
+NO REMOTE PRINTER
+ENTER TRANSFER NODE: 1001+
+TYMSHARE, INC.
+TYMSHARE CORPORATE HEADQUARTERS
+20705 VALLEY GREEN DRIVE
+CUPERTION, CA 95014
+.skip
+OKAY? no
+.skip
+ENTER TRANSFER NODE: 1052
+TYMSHARE, INC.
+SAN FRANCISCO DISTRICT
+425 CALIFORNIA, 2ND FLOOR
+SAN FRANCISCO, CA 94104
+.skip
+OKAY? yes
+TRANSFER COMPLETED
+.skip
+.center
+Example 9
+.center
+1NOTIFY Command on IMS ^System
+.skip 3
+-1NOTIFY
+.skip
+PRINTER LOCATION 8
+1 REQUEST ON SYSTEM 2
+3 REQUESTS ON SYSTEM 38
+.skip
+.page
+.INDEX <SPOOL <QUALITY <ASSURANCE
+((QUALITY ASSURANCE TECHNIQUES))
+.fill
+.just
+\\
+.flag capit
+.para
+^YOU SHOULD ALWAYS PAY CLOSE ATTENTION WHEN YOU
+  READ THE SPOOL REQUEST AND NOTE SPECIAL INSTRUCTIONS SUCH AS:
+.left margin 0
+^^
+.NO FILL
+.NO JUST
+.SKIP 1
+        - DOES REQUEST CALL FOR USE OF A FULLCASE PRINTER?
+        - IS THERE MENTION OF SPECIAL CUSTOMER-SUPPLIED PAPER?
+        - DOES THE USER REQUEST PRINTING ON THE BACKSIDE OF THE PAPER?
+        - SHOULD YOU USE MULTI-PART PAPER?
+        - SHOULD THE MULTI-PART LISTING BE DECOLLATED OR NOT?
+        - ARE THERE ANY SPECIAL HANDLING INSTRUCTIONS?
+.skip 2
+       QA THE LISTING
+       -- --- -------
+.SKIP 1
+         - IS THE LISTING PRINTED ON THE CORRECT SIDE OF THE PAPER?
+         - ARE THERE TWO HEADER PAGES AT THE FRONT OF THE LISTING?
+         - IS THERE A TRAILER PAGE WITH THE THE REQUEST NUMBER AND
+           THE MESSAGE "END OF REQUEST"?
+         - IS THE PAPER THE CORRECT SIZE AND TYPE?
+         - ARE THE CORRECT NUMBER OF PARTS PRINTED?
+         - IF SPECIFIED, WAS A FULLCASE PRINTER USED?
+         - WAS LISTING DECOLLATED? IF NOT, DID USER SPECIFY NOT
+           TO DECOLLATE?
+         - IS THE LISTING SPLIT UP? IS THE SPLITTING NECESSARY?
+.SKIP 2
+      PRINT ALIGNMENT AND FORMAT
+.SKIP 1
+         - IS THE NUMBER OF LINES PER PAGE CORRECT?
+         - IS THE PRINT ALIGNED SO THAT CHARACTERS DON'T OVERLAP
+           COLOR BARS?
+         - IS THE LISTING CORRECTLY FORMATTED? PAGE NUMBERS AND
+           TITLES AT THE TOP OF EACH PAGE?
+         - IS THE LISTING CENTERED VERTICALLY ON EACH PAGE?
+         - IS THERE SUFFICIENT MARGIN ON BOTH THE LEFT AND RIGHT SIDES?
+.SKIP 2
+      PRINT QUALITY
+.SKIP 1
+         - IS THE PRINT EVENLY DARK AND DISTINCT?
+         - IF MORE THAN ONE PART, ARE THE COPIES READABLE?
+         - IS THERE SHADOWING OR SMUDGING AROUND PRINT CHARACTERS?
+         - ARE THE PRINT LINES WAVY?
+         - ARE CHARACTERS,ROWS, OR COLUMNS BEING DROPPED?
+         - ARE THERE GARBAGE CHARACTERS?
+         - ARE THERE ANY BLANK PAGES IN THE LISTING?
+         - DOES THE LISTING LOOK PROFESSIONAL?
+\\
+.flag capit
+.LM 7
+.fill
+.just
+.PARA
+^FOR SPOOL BATCH THAT DOESN'T PASS <QA AND CAN'T BE SOLVED BY FURTHER
+  PROCESSING, GET ADVICE FROM YOUR LEAD OPERATOR OR BATCH CONTROLLER.
+.PAGE
+.CC
+
+.SKIP 25
+.CENTER;<THIS <PAGE <INTENTIONALLY <LEFT <BLANK
+.SUBTITLE <SPLFIX
+.PAGE
+\\
+.INDEX <SPLFIX <INTRODUCTION
+.INDEX <SPLFIX <WHEN <TO <RUN
+.NOFILL.NOJUST
+.INDEX <SPLFIX <HOW <TO <RUN
+.CENTER;<SPOOL <MAINTENANCE
+.CENTER;-----------------
+.SKIP 1
+<INTRODUCTION
+------------
+.SKIP 1
+.FILL.JUST
+.PARA
+^A version of the <SPOOL Maintenance program has been placed on
+all <TYMCOM-10's  for the use of ^Operations and ^system
+^Resources.  <SPLFIX is a <SPOOL data base maintenance tool for deleting
+printed files and correcting common <SPOOL data base problems.
+.PARA
+^This program has two functions, "<REPAIR" which will rebuild the <SPOOL
+data base and "<CLEAN" which will delete unnecessary files on the <SPOOL
+directory.  "<REPAIRING" the <SPOOL data base will correct most of the
+problems that <SPOOL reports as "<CANT <FIND <FD".  "<CLEANING" the directory
+is the only safe way to delete files from (<SPOOL).  
+.SKIP 1
+.NOFILL.NOJUST
+<WHEN <TO <RUN <SPLFIX
+------------------
+.FILL.JUST
+.PARA
+<SPLFIX should be run either when there is a problem running
+<SPOOL or when disk space is low on a system.
+.PARA
+^The most common <SPOOL error, "<CANT <FIND <FD", usually can be
+corrected by running <SPLFIX and giving the command "<REPAIR".  
+.PARA
+^The command "<CLEAN" will delete the files for all requests
+printed before the day it is run (these would be deleted in a few days
+with the normal updating routine but the space may be needed).
+.SKIP 1
+.NOFILL.NOJUST
+<HOW <TO <RUN <SPLFIX
+-----------------
+.FILL.JUST
+.PARA
+<SPLFIX is on directory <UTIL.  ^The user can run the program by
+typing "<R (<UTIL) <SPLFIX" at the monitor level.  ^The program will print
+out a header message such as:
+.SKIP 1
+.NOFILL.NOJUST
+	****************************************************************
+	* <SPOOL ^Data ^Base ^Maintenance ^Tool, v. 2.600                   *
+	* ^System 36 (^Cupertino)    10-<JAN-83 09:39                     *
+	*                                                              *
+	* ^Option (? for help) *                                        *
+	****************************************************************
+.PAGE
+.INDEX <SPLFIX <VALID <COMMANDS
+<VALID <COMMANDS
+--------------
+.SKIP 1
+\\
+.FILL.JUST
+.PARA
+^The user can type a "?_<cr>" after the prompt "*" to see the
+following help message:
+.SKIP 1
+.NOFILL.NOJUST
+	****************************************************************
+	* ^Legal commands are:                                          *
+	*                                                              *
+	* <CLEAN (<DIRECTORY) <HELP        <QUIT         <REPAIR (<DATABASE) *
+	* ^Option (? for help) *                                        *
+	****************************************************************
+.FILL.JUST
+.PARA
+^To see a more detailed help message displayed on the screen,
+the user can type "<HELP_<cr>".  ^The following is the help message
+displayed:
+.SKIP 1
+.NOFILL.NOJUST
+	****************************************************************
+	* <CLEAN      ^Use this to <DELETE unwanted files on the (<SPOOL)  *
+	*            directory.                                        *
+	*                                                              *
+	* <HELP       ^Repeat this message.                              *
+	*                                                              *
+	* <QUIT       ^Graceful exit from the program.  ^If you exit some *
+	*            other way, you will not get the appropriate files *
+	*            properly updated.                                 *
+	*                                                              *
+	* <REPAIR     ^Use this to rebuild <SPOOL's data base.            *
+	*                                                              *
+	* ^Type any character to continue [<CONFIRM]                     *
+	****************************************************************
+.FILL.JUST
+.PARA
+^The only legal commands which the user can input following the
+prompt "*" are:  "?", "<CLEAN", "<HELP", "<QUIT" and "<REPAIR".  ^The user
+needs only to type minimum number of characters for the inputs.  ^Since
+all commands have unique first characters, typing the first character
+of a command will be sufficient.  ^For example, typing "<C_<cr>" or
+"<CL_<cr>" or "<CLE_<cr>" will cause the program to execute the "<CLEAN"
+command.  ^But if the user types in a mispelled command such as "<CLEAM",
+the program will output the following message:
+.SKIP 1
+.NOFILL.NOJUST
+	****************************************************************
+	* <CLEAM is not a command.  ^Legal commands are:                 *
+	* <CLEAN (<DIRECTORY) <HELP        <QUIT         <REPAIR (<DATABASE) *
+	* ^Option (? for help) *                                        *
+	****************************************************************
+.PAGE
+.INDEX <SPLFIX <REPAIR <COMMAND
+.NOFILL.NOJUST
+<REPAIR <COMMAND
+--------------
+.FILL.JUST
+.PARA
+^After the user types in "<REPAIR_<cr>", <SPLFIX will try to
+disable <SPOOL in order to do the repair job.  <SPLFIX will not disable
+<SPOOL if someone is running <SPOOL; in such case <SPLFIX will ask the
+user whether it should go to sleep for 15 seconds.  ^If the user response
+is "<YES", <SPLFIX goes to sleep for 15 seconds, then wakes up and tries
+to disable <SPOOL again.  ^If the user response is "<NO", <SPLFIX will print
+out the message "<SPOOL <REPAIR <WAS <NOT <DONE" and prompt the user for the
+next command input.  ^Beware that in such a case the <SPOOL repair job was
+not done!  ^The user should try to run <SPLFIX with the "<REPAIR" command
+at a later time.
+.PARA
+^The "<REPAIR" command also automatically does a "<CLEAN" command
+to delete printed files.  ^Therefore there is no need for the user to
+issue a "<CLEAN" command after the <SPOOL repair job is completed.
+.PARA
+<CAUTION:  <SPLFIX's  <REPAIR command disables <SPOOL to do the
+repair job.  ^It will enable <SPOOL when the repair job is done.  ^Whenever
+<SPLFIX finishes a repair command, the user should <RUN <SPOOL <IMMEDIATELY
+<AFTER <EXITING <FROM <SPLFIX.  ^This is to make sure that <SPOOL has been
+enabled by <SPLFIX.  ^If the user types in "<SPOOL", and "?<SPOOL <NOT <FOUND"
+appears on the screen, please immediately contact the <TYMCOM-10 ^Support
+^Line (408) 446-6709.
+.PARA
+<CAUTION:  ^It is important to let "<REPAIR" complete in order for
+the <SPOOL data files to be written correctly.
+.PAGE
+.INDEX <SPLFIX <PROBLEMS
+.NOFILL.NOJUST
+<WHAT <TO <DO <IN <CASE <OF <PROBLEMS
+------------------------------
+.FILL.JUST
+.PARA
+^When <SPLFIX runs into problems during execution, it prints out
+the following message on the terminal and returns the user to the
+monitor level:
+.SKIP 1
+.NOFILL.NOJUST
+	****************************************************************
+	* ^Cannot continue <REPAIR!                                      *
+	* ^Please call the <TYMCOM-10 ^Support ^Line : (408) 446-6709      *
+	* .                                                            *
+	****************************************************************
+.FILL.JUST
+.PARA
+<SPLFIX will print out "<CANNOT <CONTINUE <CLEAN!" or "<CANNOT
+<CONTINUE <REPAIR!"  depending on which command it is executing.  ^In either
+case, call the <TYMCOM-10 ^Support ^Line immediately so the problem can be
+fixed.
+.PAGE
+.INDEX <SPLFIX <SAMPLE <SESSION
+.NOFILL.NOJUST
+<SAMPLE <SESSION
+--------------
+.SKIP 1
+.NOFILL.NOJUST
+_.<R (<UTIL)SPLFIX
+.SKIP 1
+<SPOOL ^Data ^Base ^Maintenance ^Tool, v. 2.600
+^System 36 (^Cupertino)    11-<JAN-83 09:08
+.SKIP 1
+^Option (? for help) *<CLEAN
+.SKIP 1
+^Scanning the <SPOOL data base...
+^Will not keep files for requests completed before 10-<JAN-83
+^Found 3 files to keep.
+.SKIP 1
+4 files were deleted.
+^Option (? for help) *<REPAIR
+^Checking the status of <SPOOL . . . . . . ^No one running <SPOOL
+^Disabling <SPOOL . . . <SPOOL disabled.
+.SKIP 1
+^Beginning <SPOOL data base repair at 11-<JAN-83 09:08.
+^Beginning pass 1:
+  ^Scanning the <GDF file... 
+  ^Scanning the <FDF file... 
+  ^Scanning the internal records...
+  ^Pass 1 statistics:
+    ^Scanned 100 <GDF records and found 100 good ones.
+    ^Scanned 111 <FDF records, and saved 111 for ^Pass 2.
+    ^Dates on the good records ranged from 2-<DEC-82 to 10-<JAN-83.
+    ^No bad records detected.
+.SKIP 1
+^Beginning pass 2...
+  ^Scanning <FDF file...
+  ^Scanning <GDF file...
+    ^All 100 <GDF records were used.
+    ^All 111 <FDF records were used.
+.SKIP 1
+^Renaming files, wait... done!!
+^Updating <SPLCNT and <REMCNT, wait... done!!
+^Cleaning the <SPOOL directory, wait... 
+^Scanning the <SPOOL data base...
+^Will not keep files for requests completed before 10-<JAN-83
+^Found 3 files to keep.
+.SKIP 1
+0 files were deleted.
+^Enabling <SPOOL . . . Enabled.
+.SKIP 1
+^Data base repair completed at 11-<JAN-83 09:08
+^Option (? for help) *<QUIT
+.SKIP 1
+_.<SPOOL
+<SPOOL 6.2
+.SKIP 1
+:<QUIT
+.PAGE
+.CC
+
+.SKIP 25
+.CENTER;<THIS <PAGE <INTENTIONALLY  <LEFT <BLANK
+.SUBTITLE <LIST <AND <PRINT
+.PAGE
+\\
+.FLAG CAPIT
+.LEFT MARGIN 7
+.INDEX <LIST <AND <PRINT <IN <XEXEC
+.CENTER
+<LIST <AND <PRINT <IN <XEXEC
+.CENTER
+---- --- ----- -- -----
+.FILL.JUST
+.PARA
+^FOR ALL PRINTER LISTINGS WHICH DO NO USE THE <SPOOL SUBSYSTEM,
+THE <XEXEC COMMANDS <LIST AND <PRINT SHOULD BE USED. 
+.PARA
+^THE <LIST COMMAND PRINTS A FILE(S) ON THE LINE PRINTER USING A PAGE
+FORMAT WHERE A HEADING IS AUTOMATICALLY SUPPLIED AT THE TOP OF EACH
+PAGE. 
+^THIS HEADING CONTAINS THE DATE, TIME, FILE NAME AND A TWO-DIGIT PAGE
+NUMBER.
+^THE FIRST NUMBER REFLECTS THE LOGICAL PAGE NUMBER THAT IS ONLY
+INCREMENTED WHEN A TOP-OF-FORM CHARACTER (CONTROL ^L) IS ENCOUNTERED
+IN THE SOURSE FILE ITSELF. 
+^THE SECOND NUMBER IS THE SEQUENTIAL PAGE SUBNUMBER INCREMENTED BY
+THE PHYSICAL TOP-OF-FORM EACH TIME THE PRINTER ADVANCES
+THE PAPER TO THE NEXT PAGE.
+.PARA
+<PRINT IS USED ON THE <TYMCOM-X TO OUTPUT A FILE(S) TO THE LINE PRINTER
+WITHOUT PAGE NUMBERS OR HEADINGS.
+.PARA
+^BOTH COMMANDS DEFAULT TO LARGE PRINTER PAPER (11" BY 14 7/8")
+AND WILL PRINT 60 LINES ON EACH PAGE. 
+^SWITCHES ALLOW THE OPERATOR TO ESTABLISH SPACING, PAPER SIZE, LINE LENGTH,
+PAGE COUNT, HEADING, CASE AND SPECIAL PROGRAM VARIABLES WHICH WILL
+MODIFY HOW THE FILE IS LISTED.
+.PARA
+^FOR A FULL DESCRIPTION OF THESE SWITCHES YOU ARE REFERRED TO THE
+<XEXEC <MANUAL DATED ^DECEMBER 1974 PAGES 27-30.
+.PAGE
+.CC
+
+.SKIP 25
+.CENTER;<THIS <PAGE <INTENTIONALLY <LEFT <BLANK
+.SUBTITLE <PRTAID
+.PAGE
+.INDEX <PRTAID <INTRODUCTION
+.CENTER;<PRTAID <PROGRAM
+.CENTER;--------------
+.SKIP 1
+((<INTRODUCTION))
+\\
+.FILL.JUST
+.PARA
+<PRTAID REFORMATS THE INFORMATION GIVEN AT THE PROMPTS AND PLACES
+EXECUTABLE <LIST OR <PRINT STATEMENTS IN A NUMBER OF ^TEMPORARY
+^COMMANDS ^FILES. ^AS EACH ^COMMAND ^FILE IS FILLED, ^THE LAST LINE WRITTEN
+IS A COMMAND TO RUN THE NEXT ^COMMAND ^FILE IN SEQUENCE. ^THE LAST FILE
+TO BE FILLED WILL CONTAIN A <DAY COMMAND TO SERVE AS A RECOGNIZABLE
+TERMINATION TO THE USER OF HIS ^COMMANDS ^FILES. ^AFTER A ^LIST OF ^FILENAMES
+HAS BEEN PROCESSED AND SPACE REMAINS IN THE ^COMMANDS ^FILES, THE PROGRAM
+WILL RETURN TO THE <USERNAME PROMPT. ^A CARRIAGE RETURN TERMINATES THE 
+PROGRAM AT THIS POINT OR ANOTHER <USERNAME CAN BE ENTERED (<LIST OR <PRINT
+AND THE OPTIONS PREVIOUSLY SELECTED WILL REMAIN CONSTANT) AND THE 
+PROGRAM WILL PROCEED TO THE <FILENAMES PROMPT.
+.SKIP 1
+.INDEX <PRTAID <COMMAND <DESCRIPTION
+((<COMMAND <DESCRIPTION))
+.PARA
+^THE PROGRAM WILL RESPOND WITH FOUR PROMPTS:
+.SKIP 1
+^^
+.NOFILL.NOJUST
+        PROMPT          RECOGNIZED REPLIES              EXPLANATION
+        ------          ------------------              -----------
+.SKIP 1
+LIST OR PRINT:
+                       LIST     PRINT             
+                       LIS      PRIN              PROGRAM WILL RECOGNIZE
+                       LI   OR  PRI               ANY LEFT SUBSET OF THE
+                       L        PR                WORDS LIST OR PRINT.
+                                P
+.SKIP 1
+OPTIONS EX: /OPT1/OPT2/... :
+.SKIP 1
+                       /SINGLE/COUNT/...
+                       /LARGE                     PROGRAM ACCEPTS ANY
+                       /ONENUM                    LEGAL SWITCHES FOR
+                       /SEQUENCE                  MODIFYING PRINTOUT.
+                       /COPIES=_#_#                 IF "/COPIES=_#_#"
+                                                  IS INCLUDED IN THE
+                                                  OPTION LIST, IT WILL
+                                                  ACT IN THE SAME MANNER
+                                                  AS THE COPIES OPTION
+                                                  IN SPOOL.  THE COPIES
+                                                  OPTION WILL BE REMOVED
+                                                  FROM THE OPTIONS
+                                                  STRING BEFORE FORMAT-
+                                                  TING THE LIST OR
+                                                  PRINT COMMANDS TO THE
+                                                  TEMPORARY FILES.
+                                                  MAXIMUM _# OF COPIES
+                                                  IS 15.
+                        ETC.
+.PAGE
+USERNAME:
+                       SMITHJOHN
+                         OR                       PROGRAM WILL ACCEPT
+                        _<CR>                      USERNAMES WITHOUT
+                                                  SURROUNDING PARENS.
+                                                  A CARRIAGE RETURN AT
+                                                  THIS PROMPT TERMIN-
+                                                  ATES THE PROGRAM.
+.SKIP 1
+FILENAMES (SEPARATED BY COMMAS ONLY):
+.SKIP 1
+                       FN1,FN2,FN3,...
+                           OR                     PROGRAM ACCEPTS A
+                       FN4,@FN5,@FN6,...          LIST OF FILENAMES
+                                                  SEPARATED BY COMMAS
+                                                  WITH THE OPTION OF
+                                                  ANY NUMBER OF THE
+                                                  FILENAMES BEING A
+                                                  FILE WITH OTHER
+                                                  FILENAMES WITHIN IT
+                                                  TO BE ACCESSED.
+                                                  (MAXIMUM NUMBER
+                                                   OF CHARACTERS
+                                                   PERMITTED IS
+                                                   320).
+.PAGE
+.INDEX <PRTAID <SAMPLE <RUN
+((<SAMPLE <RUN))
+.SKIP 1
+_.<R (<UTIL)PRTAID (CR)
+.SKIP 1
+VERSION 1.0  5/1/78
+.SKIP 1
+LIST OR PRINT: P (CR)                           (ENTER 'L' OR 'P')
+.SKIP 1
+OPTIONS EX: /OPT1/OPT2/...: /FULLCH/COUNT (CR)  (ENTER OPTIONS AS
+                                                 DESCRIBED ABOVE)
+.SKIP 1
+USERNAME: DANIELSR (CR)
+.SKIP 1
+FILENAMES (SEPARATED BY COMMAS ONLY): PRTAID.MEM,PRTAID,ETC (CR)
+.SKIP 1
+USERNAME: (CR)                                  (ENTER (CR) HERE
+                                                 IF NO OTHER ENTRIES)
+.SKIP 1
+016PR1.TMP IS THE FIRST COMMAND FILE            (OUTPUTS AFTER 
+                                                 ENTERING A (CR)
+                                                 ABOVE)
+\\
+.FILL.JUST
+.NOTE
+^THE FOLLOWING IS A BREAKDOWN OF THE FIRST COMMAND FILE:  016 = YOUR
+JOB NUMBER; <PR1 INDICATES IT IS THE FIRST FILE; AND, <TMP SHOWS IT IS
+A TEMPORARY FILE.
+.END NOTE
+^^
+.NOFILL.NOJUST
+EXIT                                            (PROGRAM 'EXITS' OUT
+                                                 AFTER PRINTING THE
+                                                 FIRST COMMANDS FILE
+                                                 NAME)
+\\
+.FILL.JUST
+.NOTE
+^BEFORE PRINTING OR LISTING FILE TO THE LINE PRINTER, MAKE
+SURE YOU HAVE THE PAPER SET UP CORRECTLY.  ^AFTER SETTING THE PAPER
+UP, TYPE THE FOLLOWING COMMAND.
+.END NOTE
+^^
+.NOFILL.NOJUST
+_.<RUN (<QASYS)COM;016PR1.TMP (CR) (CR)             (MAXIMUM _# OF
+                                                  COMMAND FILES =
+                                                  36).
+.PAGE
+.CC
+
+.SKIP 25
+.CENTER;<THIS <PAGE <INTENTIONALLY <LEFT <BLANK
+.SUBTITLE <INDEX
+.PAGE!END OF PRTAID DOCUMENT
+.INDEX <INDEX
+.DO INDEX
+.PAGE
+
+.SKIP 25
+.CENTER;<THIS <PAGE <INTENTIONALLY <LEFT <BLANK
+.SUBTITLE <READER'S <COMMENT <FORM
+.PAGE
+^^
+.INDEX <READER'S <COMMENT <FORM
+.SUBTITLE <READER'S <COMMENT <FORM
+.CENTER;READER'S COMMENT FORM
+.SKIP 1
+.CENTER;LISTINGS ON THE TYMCOM-X
+.SKIP 1
+.CENTER;MINI-MANUAL _#6
+\\
+.SKIP 1
+.FILL.JUST
+^YOUR COMMENTS ON THIS DOCUMENT ARE WELCOME.  ^PLEASE LIST PAGE NUMBERS
+WHERE APPROPRIATE AND ANY SUGGESTIONS FOR FURTHER DEVELOPMENT.  ^HARDCOPY
+OF <"LIVE" RUNS WOULD BE HELPFUL.
+^^
+.SKIP 25
+.NOFILL.NOJUST
+^PLEASE SEND COMMENTS, WITH HARDCOPY, TO:
+.SKIP 1
+FREMONT COMPUTER OPERATIONS
+4340 SOLAR WAY
+FREMONT, CALIFORNIA 94537
+.SKIP 1
+ATTENTION:  TYMCOM-10 COORDINATOR
+.PAGE
+_ 
+9
