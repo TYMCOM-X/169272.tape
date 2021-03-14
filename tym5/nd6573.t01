@@ -1,0 +1,80 @@
+
+::======================================================================
+::  DATE WRITTEN:  NOVEMBER 10, 1989  MER/SWTS
+::         
+::          CUSTOMER:          TERADATA CORPORATION
+::
+::          ADDRESS:           5400 ALLA ROAD
+::                             LOS ANGELES,CA 90066
+::                                       
+::
+::          CONTACT:  RON MACKEY             PH: (213)827-8777
+::                    JEFF SHANK                 (213)302-7073
+::
+::          NODE:              ND6573
+::          KERNEL:            2826
+::          HOST:              8980
+::          SLOT:              01
+::
+::          INTERFACE:         3270 CMT
+::          VERSION:           7.04
+::          CIRCUIT #:         56FDDA710057     LINE SPEED: 9600
+::          TROUBLE #:         
+::
+::          ****  SNA:  N 2264  H 8604  KH 2138  SL 2
+::
+::          HOST TYPE:         IBM 4341 / AMDAHL 580
+::          FEP TYPE:          IBM 3705 / AMDAHL 4705
+::          TECHNICAL REP:     MARK REEVES    SWTS
+::=====================================================================
+::>>>>>>>>>>>>>>>>>>>>>>>>  REVISION HISTORY  <<<<<<<<<<<<<<<<<<<<<<<<<
+::=====================================================================
+
+
+DEFHST(8980,32)                         :HOST 8980, 32 CRTS & NO PRINTERS
+DEFIAT(900)				: 15 MIN ACTIVITY TIMER
+
+:DEFINE A STORED LOGON
+DEFELE(ELE1,NEWCODE"BBSNACMT"8D)        :LOGON STRING TO 3270 HOST
+DEFELE(DIP,33106008604"8D"8D"8D"8D)             
+
+:DEFINE STRINGS
+DEFSTR(STRNG1,PLEASE HIT RETURN TO LOGIN,ELE1,DIP)
+
+:DEFINE MENU
+DEFMEN(MAN1,STRNG1)
+
+:DEFINE USERS
+
+DEFCAL("01"02"03"04"05"06"07"08)
+
+DEFUSR("00"00"00"00"00"00"00"00)
+DEFTTY(-1)
+MENUSR(MAN1)
+
+CHRMAP  MACRO[]
+
+
+:DEFINE TERMINAL TYPE
+DEFTRM MACRO [
+       VT100M                           :DEFINE VT100
+       ADM3AM                           :DEFINE ADM3A
+       CM3101                           :DEFINE 3101 ASCII
+       VT220M                           :DEFINE VT220
+       VT52M                            :DEFINE VT52
+       T78HDX                           :DEFINE TYMNET78 HALF-DUPLEX PC
+       FT3101                           :DEFINE FTTERM - USES IND$FILE ON HOST
+                                        :FOR FILE TRANSFER.
+]
+
+DEFSTA(OFF)				:STATUS LINE OFF
+DEFTRC(ON)				:COM DIAG UNTIL INCLUDED
+
+CRSTOP  EQ  1
+
+PHSIZE    EQ     800
+P1SIZE    EQ     800
+
+
+
+
