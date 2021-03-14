@@ -1,0 +1,1820 @@
+  This  appendix presents at least one example for each of the
+      data elements defined in this message format specification.    In
+      these examples, identifier octets are represented in binary form.
+      All  other  numbers  are presented in hexadecimal.  ASCII strings
+      are shown as characters rather  than  their  numerical  represen-
+      tation.    Although  this  message  format specification does not
+      define the syntax of names and addresses, message originators and
+      recipients are identified by their names.  This  does  not  imply
+      anything  about  how naming and addressing can or should be done;
+      it is simply a convenient way to identify message originators and
+      recipients in these examples.
+
+
+
+      H.1  Primitive Data Elements
+
+
+           This section contains an example of each  of  the  primitive
+      data  elements.   Each example contains a short explanation and a
+      series of octets.
+
+           No-Op data element:
+
+
+           +--------+--------+
+           |00000000|00000000|
+           +--------+--------+
+
+
+
+
+
+           End-of-Constructor data element:
+
+
+           +--------+--------+
+           |00000001|00000000|
+           +--------+--------+
+
+
+
+
+
+
+
+
+
+
+
+                                     80
+
+                                                             Appendix H
+
+           Boolean data element whose value is true:
+
+
+           +--------+--------+--------+
+           |00001000|00000001|11111111|
+           +--------+--------+--------+
+
+
+
+
+
+           Integer  data  element  containing five octets of data.  Its
+      value is 4,294,967,296 (decimal):
+
+
+           +--------+--------+--------+--------+--------+
+           |00100000|  0   5 |  0   1    0   0    0   0
+           +--------+--------+--------+--------+--------+
+
+                    +--------+--------+
+                       0   0    0   0 |
+                    +--------+--------+
+
+
+
+
+
+           Padding data element containing  three  octets  of  padding.
+      The values of those three octets are meaningless:
+
+
+           +--------+--------+--------+--------+--------+
+           |00100001|  0   3 |  F   F    F   F    F   F |
+           +--------+--------+--------+--------+--------+
+
+
+
+
+
+           ASCII-String  data  element containing nine characters.  Its
+      value is "Hi There.":
+
+
+           +--------+--------+---- ----+
+           |00000010|  0   9 |Hi There.|
+           +--------+--------+---- ----+
+
+
+
+
+
+
+
+
+
+                                     81
+
+                                                             Appendix H
+
+           Bit-String data element containing 44 bits of data (((7-1) x
+      8)  - 4).  Six octets are used to hold those 44 bits.  The last 4
+      bits in the final octet are padding and are therefore ignored.
+
+
+           Bit-String  Length   Spare
+           +--------+--------+--------+--------+--------+
+           |01000011|  0   7 |  0   4 |  0   A    3   B
+           +--------+--------+--------+--------+--------+
+
+                    +--------+--------+--------+--------+
+                       5   F    2   9    1   C    D   0 |
+                    +--------+--------+--------+--------+
+
+
+
+
+
+      H.2  Constructor Data Elements
+
+
+           This section contains an example of each of the  constructor
+      data  elements.    Each  example contains a short explanation and
+      then an annotated series of  the  data  elements  making  up  the
+      constructor.
+
+           Property-List  data  element  containing  one  Property data
+      element.    The  property  is  Printing-Name  and  its  value  is
+      "Distribution":
+
+
+           Prop-List  Length  Property  Length    PID
+           +--------+--------+--------+--------+--------+
+           |00100100|  1   1 |01000101|  0   F |  0   2 |
+           +--------+--------+--------+--------+--------+
+
+                      ASCII    Length
+                    +--------+--------+----    ----+
+                    |00000010|  0   C |Distribution|
+                    +--------+--------+----    ----+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     82
+
+                                                             Appendix H
+
+           Printing-Name  Property.   The value of the Printing-Name is
+      "Distribution":
+
+
+            Property  Length    PID     ASCII    Length
+           +--------+--------+--------+--------+--------+
+           |01000101|  0   F |  0   2 |00000010|  0   C |
+           +--------+--------+--------+--------+--------+
+
+                    +----    ----+
+                    |Distribution|
+                    +----    ----+
+
+
+
+
+
+           Compressed data element.  Its contents were compressed using
+      an unspecified data compression algorithm.  The  compressed  data
+      is in a bit-string that is 56 bits long, fully filling 7 octets:
+
+
+           Compressed  Length   CID   Bit-String  Length
+           +--------+--------+--------+--------+--------+
+           |01000110|  0   B |  0   0 |01000011|  0   8 |
+           +--------+--------+--------+--------+--------+
+
+                       Spare
+                    +--------+--------+--------+--------+
+                    |  0   0 |  1   C    5   F    2   D
+                    +--------+--------+--------+--------+
+
+                    +--------+--------+--------+--------+
+                       7   7    B   A    F   6    2   9 |
+                    +--------+--------+--------+--------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     83
+
+                                                             Appendix H
+
+           Encrypted  data  element.    The  encryption  method used to
+      encrypt its contents has been intentionally not specified.   This
+      element contains a Bit-String which contains 22 bits (((4-1) x 8)
+      - 2) of data.  These 22 bits are represented in octets; the final
+      2 bits in the final octet are padding and are therefore ignored:
+
+
+           Encrypted   Length   EID   Bit-String  Length
+           +--------+--------+--------+--------+--------+
+           |01000111|  0   7 |  0   0 |01000011|  0   4 |
+           +--------+--------+--------+--------+--------+
+
+                       Spare
+                    +--------+--------+--------+--------+
+                    |  0   2 |  A   3    7   8    1   C |
+                    +--------+--------+--------+--------+
+
+
+
+
+
+           Date  data  element.    This  example includes a date but no
+      time.  The date shown in this example is August 15, 1980:
+
+
+             Date     Length   ASCII    Length
+           +--------+--------+--------+--------+---  ---+
+           |00101000|  0   A |00000010|  0   8 |19800815|
+           +--------+--------+--------+--------+---  ---+
+
+
+
+
+
+           Unique-ID data element, which is represented as  an  Integer
+      data element whose value is 129 (decimal).
+
+
+           Unique-ID  Length   Integer  Length
+           +--------+--------+--------+--------+--------+--------+
+           |00001001|  0   4 |00100000|  0   2 |  0   0    8   1 |
+           +--------+--------+--------+--------+--------+--------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     84
+
+                                                             Appendix H
+
+           Sequence  data element containing two ASCII-String data ele-
+      ments.  The first ASCII-String is  "This  is"  while  the  second
+      string is " a list":
+
+
+            Sequence  Length   ASCII    Length
+           +--------+--------+--------+--------+--- ---+
+           |00001010|  1   2 |00000010|  0   7 |This is|
+           +--------+--------+--------+--------+--- ---+
+
+                      ASCII    Length
+                    +--------+--------+--- ---+
+                    |00000010|  0   7 | a list|
+                    +--------+--------+--- ---+
+
+
+
+
+
+           Set  data element containing two Integer data elements.  The
+      first integer has a value of 519 (decimal) while the value of the
+      second is 71 (decimal).   (These  two  values  have  no  ordering
+      because they belong to a set.)
+
+
+              Set     Length   Integer  Length
+           +--------+--------+--------+--------+--------+--------+
+           |00001011|  0   8 |00100000|  0   2 |  0   2    0   7 |
+           +--------+--------+--------+--------+--------+--------+
+
+                      Integer  Length
+                    +--------+--------+--------+--------+
+                    |00100000|  0   2 |  0   0    4   7 |
+                    +--------+--------+--------+--------+
+
+
+
+
+
+           Field  data  element.   The specific field shown is the Text
+      field with the contents "I will see you at lunch.":
+
+
+             Field    Length    FID      ASCII   Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  1   B |  0   4 |00000010|  1   8 |
+           +--------+--------+--------+------------+
+
+                    +----                ----+
+                    |I will see you at lunch.|
+                    +----                ----+
+
+
+
+
+                                     85
+
+                                                             Appendix H
+
+           Message containing four fields, Posted-Date, From, Text, and
+      To.  It was sent on July 4, 1980 at 6 p.m. eastern daylight time.
+      It  is  from  a person named Smith.  The text of the message is a
+      question asking  the  recipient  "Are  you  going  to  watch  the
+      fireworks?".  The message is sent to Jones:
+
+
+            Message   Length    Type    Field    Length
+           +--------+--------+--------+--------+--------+
+           |01001101|  5   A |  0   1 |01001100|  1   9 |
+           +--------+--------+--------+--------+--------+
+
+                       FID      Date    Length   ASCII
+                    +--------+--------+--------+--------+
+                    |  0   2 |00101000|  1   6 |00000010|
+                    +--------+--------+--------+--------+
+
+                      Length
+                    +--------+----            ----+
+                    |  1   4 |19800704-180000-0400|
+                    +--------+----            ----+
+
+
+                      Field    Length    FID     ASCII
+                    +--------+--------+--------+--------+
+                    |01001100|  0   8 |  0   1 |00000010|
+                    +--------+--------+--------+--------+
+
+                      Length
+                    +--------+-- --+
+                    |  0   5 |Smith|
+                    +--------+-- --+
+
+                       Field   Length    FID     ASCII
+                    +--------+--------+--------+--------+
+                    |01001100|  2   8 |  0   4 |00000010|
+                    +--------+--------+--------+--------+
+
+                      Length
+                    +--------+
+                    |  2   5 |
+                    +--------+
+
+                    +----                             ----+
+                    |Are you going to watch the fireworks?|
+                    +----                             ----+
+
+                      Field    Length    FID     ASCII
+                    +--------+--------+--------+--------+
+                    |01001100|  0   8 |  0   5 |00000010|
+                    +--------+--------+--------+--------+
+
+
+
+
+                                     86
+
+                                                             Appendix H
+
+
+                      Length
+                    +--------+-- --+
+                    |  0   5 |Jones|
+                    +--------+-- --+
+
+
+
+
+
+      H.3  Data Elements that Extend this Specification
+
+
+           This  section  contains  examples  of  data elements used to
+      extend this specification.  These data  elements  can  be  either
+      primitives or constructors, depending on the extension.
+           Extension  data  element  containing  a  length  code  and 3
+      octets.  The octet immediately following the  length  code  iden-
+      tifies it as Extension Data Element 7.  The Data Element Contents
+      is  the final two octets.  The interpretation of the Data Element
+      Contents would be defined in an extension or  successor  to  this
+      message  format  specification.    [Note: this is an example. Any
+      actual extension data element 7 (if it were ever used)  would  be
+      completely different from anything done here.]:
+
+
+           Extension  Length
+           +--------+--------+--------+--------+--------+
+           |01111110|  0   3 |  0   7 |  4   A    E   9 |
+           +--------+--------+--------+--------+--------+
+
+
+
+
+
+           Vendor-Defined  data  element containing a length code and 3
+      octets.  The first octet identifies this as  vendor-defined  data
+      element  number  114  (decimal), which this particular vendor has
+      defined to  contain  three  printable  ASCII  characters  in  two
+      octets.    (Data  element 114 (decimal) for another user would be
+      completely different.  For example, it might contain  a  floating
+      point number.):
+
+
+              User    Length
+           +--------+--------+--------+--------+--------+
+           |01111111|  0   3 |  7   2 |   P    O    E   |
+           +--------+--------+--------+--------+--------+
+
+
+
+
+
+
+
+                                     87
+
+                                                             Appendix H
+
+      H.4  Fields
+
+
+           This  section  contains  examples of Field data element con-
+      structors for each of several different fields  (Keywords,  Text,
+      Subject, Vendor-Defined).
+           Field  data  element  for keywords .  The field contains two
+      keywords, Message and Computer, each represented  in  a  separate
+      ASCII-string data element.
+
+
+              Field   Length  Keywords   ASCII   Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  1   4 |  1   4 |00000010|  0   7 |
+           +--------+--------+--------+--------+--------+
+
+                    +--- ---+
+                    |Message|
+                    +--- ---+
+
+                      ASCII    Length
+                    +--------+--------+---  ---+
+                    |00000010|  0   8 |Computer|
+                    +--------+--------+---  ---+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     88
+
+                                                             Appendix H
+
+           Field  data  element  for  Text  with  a  Property-List data
+      element containing a comment attached.  The text  field  contains
+      the ASCII-String data element "Do you want lunch?"; the Property-
+      List  data element contains a comment property, which consists of
+      an ASCII-string data element containing "Now?":
+
+
+             Field    Length   Text    Prop-List  Length
+           +--------+--------+--------+--------+--------+
+           |11001100|  2   0 |  0   4 |00100100|  0   9 |
+           +--------+--------+--------+--------+--------+
+
+                     Property  Length    PID     ASCII
+                    +--------+--------+--------+--------+
+                    |01000101|  0   7 |  0   1 |00000010|
+                    +--------+--------+--------+--------+
+
+                      Length
+                    +--------+-  -+
+                    |  0   4 |Now?|
+                    +--------+-  -+
+
+                      ASCII    Length
+                    +--------+--------+----          ----+
+                    |00000010|  1   2 |Do you want lunch?|
+                    +--------+--------+----          ----+
+
+
+
+
+
+           Field data element for Subject  containing  an  ASCII-String
+      data  element  ("Good  restaurants  in  Detroit"  followed  by  a
+      carriage return and a line feed).  (A recipient would expect  the
+      message  to  contain  some  information  about restaurants in the
+      Detroit area.):
+
+
+             Field    Length   Subject   ASCII   Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  2   1 |  0   7 |00000010|  1   E |
+           +--------+--------+--------+--------+--------+
+
+                    +----                            ----+
+                    |Good restaurants in Detroit.<cr><lf>|
+                    +----                            ----+
+
+
+
+
+
+
+
+
+
+                                     89
+
+                                                             Appendix H
+
+           Field  data  element whose form and meaning was defined by a
+      vendor.    This  vendor  has  defined  vendor-defined  field   12
+      (decimal)  to  be  a field with a printing name of "Reply-by" and
+      contents consisting of a date; January  7,  1981  in  this  case.
+      (The  meaning of vendor-defined field 12 is unique to the vendor;
+      the same field number would  have  different  meaning  for  other
+      vendors.):
+
+
+             Field    Length  Qualifier   User   number
+           +--------+--------+--------+--------+--------+
+           |11001100|  1   F |  8   2 |  0   0    0   C |
+           +--------+--------+--------+--------+--------+
+
+                     Prop-List Length  Property  Length
+                    +--------+--------+--------+--------+
+                    |00100100|  0   E |01000101|  0   C |
+                    +--------+--------+--------+--------+
+
+                        PID    ASCII    Length
+                    +--------+--------+--------+---- ----+
+                    |  0   2 |00000010|  0   9 |Reply-By:|
+                    +--------+--------+--------+---- ----+
+
+                       Date    Length   ASCII    Length
+                    +--------+--------+--------+--------+
+                    |00101000|  0   A |00000010|  0   8 |
+                    +--------+--------+--------+--------+
+
+               +---  ---+
+                    |19810107|
+                    +---  ---+
+
+
+
+      H.5  Messages
+
+
+           This  section contains several examples of complete messages
+      and shows the results of  reissuing  a  message.    (See  Section
+      3.2.2.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     90
+
+                                                             Appendix H
+
+           The  following  sample message had Stevens as its originator
+      and Johnson as its recipient.  The message was sent on August 14,
+      1980 at 10 a.m. EDT.  The subject  of  the  message  is  "Project
+      Deadline"  and the message is a reminder that the deadline is the
+      next day and that the section of the report for the project being
+      done by Johnson should be turned in to Stevens  by  3  p.m.  that
+      day.
+
+
+            Message       Length         Type
+           +--------+--------+--------+--------+
+           |01001101|  8   1 |  B   6 |  0   1 |
+           +--------+--------+--------+--------+
+
+              Field   Length    FID     ASCII
+           +--------+--------+--------+--------+
+           |01001100|  0   A |  0   5 |00000010|
+           +--------+--------+--------+--------+
+
+                      Length
+                    +--------+--- ---+
+                    |  0   7 |Johnson|
+                    +--------+--- ---+
+
+             Field    Length    FID      ASCII
+           +--------+--------+--------+--------+
+           |01001100|  0   A |  0   1 |00000010|
+           +--------+--------+--------+--------+
+
+                      Length
+                    +--------+--- ---+
+                    |  0   7 |Stevens|
+                    +--------+--- ---+
+
+             Field    Length    FID     ASCII    Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  1   3 |  0   7 |00000010|  1   0 |
+           +--------+--------+--------+--------+--------+
+
+                    +----        ----+
+                    |Project Deadline|
+                    +----        ----+
+
+             Field    Length    FID      Date    Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  1   7 |  0   2 |00101000|  1   4 |
+           +--------+--------+--------+--------+--------+
+
+
+
+
+
+
+
+
+                                     91
+
+                                                             Appendix H
+
+
+                      ASCII    Length
+                    +--------+--------+----          ----+
+                    |00000010|  1   2 |19800814-1000-0400|
+                    +--------+--------+----          ----+
+
+             Field    Length    FID      ASCII   Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  6   D |  0   4 |00000010|  6   A |
+           +--------+--------+--------+--------+--------+
+
+                    +----
+                    |Don't forget the project report is
+                    +----
+
+                     due tomorrow.  Please have<CrLf>
+
+                     your section to me by three this
+
+                           ----+
+                     afternoon.|
+                           ----+
+
+
+
+
+
+           The  following  example illustrates the results of reissuing
+      the first message in this section.   This  message  contains  the
+      original  message  (as  a  Message  data  element), To, From, and
+      Posted-Date fields, and a Reissue-Type field  with  Redistributed
+      as its value:
+
+
+            Message       Length         Type
+           +--------+--------+--------+--------+
+           |01001101|  8   1 |  F   C |  0   1 |
+           +--------+--------+--------+--------+
+
+              Field   Length    FID      ASCII
+           +--------+--------+--------+--------+
+           |01001100|  0   9 |  0   5 |00000010|
+           +--------+--------+--------+--------+
+
+                      Length
+                    +--------+--  --+
+                    |  0   6 |Cooper|
+                    +--------+--  --+
+
+
+
+
+
+
+
+                                     92
+
+                                                             Appendix H
+
+
+             Field    Length    FID      ASCII
+           +--------+--------+--------+--------+
+           |01001100|  0   A |  0   1 |00000010|
+           +--------+--------+--------+--------+
+
+                      Length
+                    +--------+--- ---+
+                    |  0   7 |Johnson|
+                    +--------+--- ---+
+
+             Field    Length    FID      Date    Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  1   7 |  0   2 |00101000|  1   4 |
+           +--------+--------+--------+--------+--------+
+
+                       ASCII   Length
+                    +--------+--------+----          ----+
+                    |00000010|  1   2 |19800814-1030-0400|
+                    +--------+--------+----          ----+
+
+             Field    Length    FID      ASCII   Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  1   0 |  2   5 |00000010|  0   D |
+           +--------+--------+--------+--------+--------+
+
+                    +----     ----+
+                    |Redistributed|
+                    +----     ----+
+
+            Message       Length         Type
+           +--------+--------+--------+--------+
+           |01001101|  8   1 |  B   6 |  0   1 |
+           +--------+--------+--------+--------+
+
+              Field   Length    FID      ASCII
+           +--------+--------+--------+--------+
+           |01001100|  0   A |  0   5 |00000010|
+           +--------+--------+--------+--------+
+
+                      Length
+                    +--------+--- ---+
+                    |  0   7 |Johnson|
+                    +--------+--- ---+
+
+             Field    Length    FID      ASCII
+           +--------+--------+--------+--------+
+           |01001100|  0   A |  0   1 |00000010|
+           +--------+--------+--------+--------+
+
+
+
+
+
+
+                                     93
+
+                                                             Appendix H
+
+
+                      Length
+                    +--------+--- ---+
+                    |  0   7 |Stevens|
+                    +--------+--- ---+
+
+             Field    Length    FID     ASCII    Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  1   3 |  0   7 |00000010|  1   0 |
+           +--------+--------+--------+--------+--------+
+
+                    +----        ----+
+                    |Project Deadline|
+                    +----        ----+
+
+             Field    Length    FID      Date    Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  1   7 |  0   2 |00101000|  1   4 |
+           +--------+--------+--------+--------+--------+
+
+                      ASCII    Length
+                    +--------+--------+----          ----+
+                    |00000010|  1   2 |19800814-1000-0400|
+                    +--------+--------+----          ----+
+
+             Field    Length    FID      ASCII   Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  6   D |  0   4 |00000010|  6   A |
+           +--------+--------+--------+--------+--------+
+
+                    +----
+                    |Don't forget the project report is
+                    +----
+
+                     due tomorrow.  Please have<CrLf>
+
+                     your section to me by three this
+
+                           ----+
+                     afternoon.|
+                           ----+
+
+
+
+      H.6  Unknown Lengths
+
+
+           This  section contains two examples of data elements with an
+      unknown length.  The two examples have been presented in sections
+      H.2 and H.5, but with a known rather than an unknown length.
+
+
+
+
+
+                                     94
+
+                                                             Appendix H
+
+           Set  data  element  with  an  unknown  length containing two
+      Integer data elements.  The first integer  has  a  value  of  519
+      (decimal)  while the value of the second is 71 (decimal).  (These
+      two values have no ordering because they belong to a set.)
+
+
+              Set     Length   Integer  Length
+           +--------+--------+--------+--------+--------+--------+
+           |00001011|  8   0 |00100000|  0   2 |  0   2    0   7 |
+           +--------+--------+--------+--------+--------+--------+
+
+                      Integer  Length
+                    +--------+--------+--------+--------+
+                    |00100000|  0   2 |  0   0    4   7 |
+                    +--------+--------+--------+--------+
+
+                    End-of-Con Length
+                    +--------+--------+
+                    |00000000|00000000|
+                    +--------+--------+
+
+
+
+
+
+
+           The following sample message  with  an  unknown  length  had
+      Stevens  as  its  originator  and  Johnson as its recipient.  The
+      message was sent on August 14, 1980 at 10 a.m. EDT.  The  subject
+      of  the  message  is  "Project  Deadline"  and  the  message is a
+      reminder that the deadline is the next day and that  the  section
+      of  the  report  for  the project being done by Johnson should be
+      turned in to Stevens by 3 p.m. that day.
+
+
+            Message   Length    Type
+           +--------+--------+--------+
+           |01001101|  8   0 |  0   1 |
+           +--------+--------+--------+
+
+              Field   Length    FID     ASCII
+           +--------+--------+--------+--------+
+           |01001100|  0   A |  0   5 |00000010|
+           +--------+--------+--------+--------+
+
+                      Length
+                    +--------+--- ---+
+                    |  0   7 |Johnson|
+                    +--------+--- ---+
+
+
+
+
+
+
+                                     95
+
+                                                             Appendix H
+
+
+             Field    Length    FID      ASCII
+           +--------+--------+--------+--------+
+           |01001100|  0   A |  0   1 |00000010|
+           +--------+--------+--------+--------+
+
+                      Length
+                    +--------+--- ---+
+                    |  0   7 |Stevens|
+                    +--------+--- ---+
+
+             Field    Length    FID     ASCII    Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  1   3 |  0   7 |00000010|  1   0 |
+           +--------+--------+--------+--------+--------+
+
+                    +----        ----+
+                    |Project Deadline|
+                    +----        ----+
+
+             Field    Length    FID      Date    Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  1   7 |  0   2 |00101000|  1   4 |
+           +--------+--------+--------+--------+--------+
+
+                      ASCII    Length
+                    +--------+--------+----          ----+
+                    |00000010|  1   2 |19800814-1000-0400|
+                    +--------+--------+----          ----+
+
+             Field    Length    FID      ASCII   Length
+           +--------+--------+--------+--------+--------+
+           |01001100|  6   D |  0   4 |00000010|  6   A |
+           +--------+--------+--------+--------+--------+
+
+                    +----
+                    |Don't forget the project report is
+                    +----
+
+                     due tomorrow.  Please have<CrLf>
+
+                     your section to me by three this
+
+                           ----+
+                     afternoon.|
+                           ----+
+
+                    End-of-Con Length
+                    +--------+--------+
+                    |00000000|00000000|
+                    +--------+--------+
+
+
+
+
+                                     96
+
+                                                             Appendix H
+
+
+
+
+
+
+
+      H.7  Message Encoding Using Vendor-Defined Fields
+
+
+           This  example is provided to illustrate the encoding of non-
+      FIPS format messages in the FIPS format.  It is the intent of the
+      standard to deal with computer based message  systems  which  are
+      primarily  intended for person-to-person use.  This example deals
+      with the definition and use of vendor-defined  fields  to  extend
+      the  use  of  the  standard to station-to-station messaging.  The
+      context is a military message using the military standard  JANAP-
+      128 format.
+
+
+      H.7.1  Example of a JANAP-128 Message
+
+
+          JANAP-128
+          RTTUZYUW RUABCDE0010 0330930-UUUU--RUXABYE.
+          ZNR UUUUU
+          R 020830Z FEB 82
+          FM Commander,Atlantic Fleet
+          TO USS SHIPA
+          BT
+          UNCLAS
+
+           MESSAGE        BODY
+
+          BT
+          #0010
+          NNNN
+
+
+      H.7.2  Encoding of Example using the FIPS Message Format
+
+
+            Message   Length             Type
+           +--------+--------+--------+--------+
+           |01001101|  8   1 |  D   0 |  0   1 |
+           +--------+--------+--------+--------+
+
+                      Field    Length    FID
+                    +--------+--------+--------+
+                    |01001100|  0   4 |  1   8 |
+                    +--------+--------+--------+
+
+
+
+
+
+                                     97
+
+                                                             Appendix H
+
+
+                               ASCII    Length
+                             +--------+--------+--------+
+                             |00000010|  0   1 |    R   |
+                             +--------+--------+--------+
+
+                      Field    Length    FID
+                    +--------+--------+--------+--------+--------+
+                    |01001100|  0   7 |  8   2 |  0   0 |  0   1 |
+                    +--------+--------+--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+--------+--------+
+                             |00000010|  0   2 |    T   |    T   |
+                             +--------+--------+--------+--------+
+
+                      Field    Length    FID
+                    +--------+--------+--------+--------+--------+
+                    |01001100|  0   6 |  8   2 |  0   0 |  0   2 |
+                    +--------+--------+--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+--------+
+                             |00000010|  0   1 |    U   |
+                             +--------+--------+--------+
+
+                      Field    Length    FID
+                    +--------+--------+--------+--------+--------+
+                    |01001100|  0   9 |  8   2 |  0   0 |  0   3 |
+                    +--------+--------+--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+----  ----+
+                             |00000010|  0   4 |   ZYUW   |
+                             +--------+--------+----  ----+
+
+                      Field    Length    FID
+                    +--------+--------+--------+
+                    |01001100|  0   A |  2   2 |
+                    +--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+----   ----+
+                             |00000010|  0   7 |  RUABCDE  |
+                             +--------+--------+----   ----+
+
+                      Field    Length    FID
+                    +--------+--------+--------+
+                    |01001100|  0   7 |  1   7 |
+                    +--------+--------+--------+
+
+
+
+
+
+                                     98
+
+                                                             Appendix H
+
+
+                               ASCII    Length
+                             +--------+--------+----  ----+
+                             |00000010|  0   4 |   0010   |
+                             +--------+--------+----  ----+
+
+                      Field    Length    FID      Date    Length
+                    +--------+--------+--------+--------+--------+
+                    |01001100|  1   8 |  0   2 |00101000|  1   5 |
+                    +--------+--------+--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+----           ----+
+                             |00000010|  1   3 |19820202093000-0000|
+                             +--------+--------+----           ----+
+
+                      Field    Length    FID
+                    +--------+--------+--------+--------+--------+
+                    |01001100|  0   9 |  8   2 |  0   0 |  0   2 |
+                    +--------+--------+--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+----  ----+
+                             |00000010|  0   4 |   UUUU   |
+                             +--------+--------+----  ----+
+
+                      Field    Length    FID
+                    +--------+--------+--------+--------+--------+
+                    |01001100|  0   C |  8   2 |  0   0 |  0   4 |
+                    +--------+--------+--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+----  ----+
+                             |00000010|  0   7 |  RUXABYE |
+                             +--------+--------+----  ----+
+
+                      Field    Length    FID
+                    +--------+--------+--------+--------+--------+
+                    |01001100|  0   A |  8   2 |  0   0 |  0   2 |
+                    +--------+--------+--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+----   ----+
+                             |00000010|  0   5 |   UUUUU   |
+                             +--------+--------+----   ----+
+
+                      Field    Length    FID
+                    +--------+--------+--------+
+                    |01001100|  0   4 |  1   8 |
+                    +--------+--------+--------+
+
+
+
+
+
+                                     99
+
+                                                             Appendix H
+
+
+                               ASCII    Length
+                             +--------+--------+--------+
+                             |00000010|  0   1 |    R   |
+                             +--------+--------+--------+
+
+                      Field    Length    FID      Date    Length
+                    +--------+--------+--------+--------+--------+
+                    |01001100|  1   4 |  1   1 |00101000|  1   1 |
+                    +--------+--------+--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+----       ----+
+                             |00000010|  0   F |8202020830-0000|
+                             +--------+--------+----       ----+
+
+                      Field    Length    FID
+                    +--------+--------+--------+
+                    |01001100|  1   B |  0   1 |
+                    +--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+
+                             |00000010|  1   8 |
+                             +--------+--------+
+
+                                      +----                ----+
+                                      |Commander,Atlantic Fleet|
+                                      +----                ----+
+
+                      Field    Length    FID
+                    +--------+--------+--------+
+                    |01001100|  0   C |  0   5 |
+                    +--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+----   ----+
+                             |00000010|  0   9 | USS SHIPA |
+                             +--------+--------+----   ----+
+
+                      Field    Length    FID
+                    +--------+--------+--------+
+                    |01001100|  0   7 |  0   4 |
+                    +--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+----  ----+
+                             |00000010|  0   4 |   BODY   |
+                             +--------+--------+----  ----+
+
+
+
+
+
+
+                                     100
+
+                                                             Appendix H
+
+
+                      Field    Length    FID
+                    +--------+--------+--------+
+                    |01001100|  0   7 |  1   7 |
+                    +--------+--------+--------+
+
+                               ASCII    Length
+                             +--------+--------+----  ----+
+                             |00000010|  0   4 |   0010   |
+                             +--------+--------+----  ----+
+
+
+      H.7.3  Field Mappings of JANAP-128 to FIPS Format
+
+
+          JANAP-128 Field              FIPS Format Field
+
+          Precedence                   Precedence (Appendix A)
+          Language Media Format        Vendor-Defined
+          Security                     Vendor-Defined
+          Content Indicator Code       Vendor-Defined
+          Origination Station          Sender (Appendix A)
+            Routing Indication
+          Station Serial Number        Originator-Serial-Number
+                                         (Appendix A)
+          Time of File                 Posted-Date (Appendix A)
+          Security                     Vendor-Defined
+          Destination Station          Vendor-Defined
+            Routing Indicator
+          Security                     Vendor-Defined
+          Precedence                   Precedence (Appendix A)
+          Date/Time Group              Date (Appendix A)
+          FM                           From (Appendix A)
+          TO                           To (Appendix A)
+          Body of Message              Text (Appendix A)
+          Station Serial Number        Originator-Serial-Number
+                                         (Appendix A)
+
+
+      H.7.4  Vendor-Defined Fields
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     101
+
+
+
+      -----------------------------------------------------------------
+
+
+           Field Name                                Identifier Value  
+                                                                     8
+
+                                 Description
+
+
+      -----------------------------------------------------------------
+
+
+           Language Media Format                                    01 
+                                                                      8
+           This   field   contains  two  ASCII  characters;  the  first
+      indicates the input media and the second the output media.
+
+           Security                                                 02 
+                                                                      8
+           This  field  contains  a  variable  length  ASCII  character
+      indicator of the security classification of the messages.
+
+           Content Indicator Code                                   03 
+                                                                      8
+           This  field  contains  four  ASCII  characters  and provides
+      information describing the message content and  message  handling
+      actions to be performed.
+
+           Destination Station Routing Indicator                    04 
+                                                                      8
+           This field contains four ASCII characters indicating the CPU
+      and terminal device to which the message should be sent.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     102
+
+
+
+                                 REFERENCES
+
+
+
+
+      [BlaR-80]
+           R. P. Blanc and J. F. Heafner. The NBS Program in Computer
+           Network Protocol Standards. In Proceedings, ICCC 80.  1980.
+
+      [CCIT-82]
+           CCITT Study Group VII/5. Draft recommendation X.MHS1:
+           Message Handling Systems: System Model - Service Elements
+           (Version 2). Technical Report, International Telegraph and
+           Telephone Consultative Committee (CCITT), December, 1982.
+
+      [CroD-77]
+           David H. Crocker, John J. Vittal, Kenneth T. Pogran,
+           D. Austin Henderson, Jr. Standard for the Format of ARPA
+           Network Text Messages. RFC 733, The Rand Corporation, Bolt
+           Beranek and Newman Inc, Massachussets Institute of
+           Technology, Bolt Beranek and Newman Inc., November, 1977.
+
+      [FeiE-79]
+           E. Feinler, J. Pickens, and A. Sjoberg. Computer Message
+           Services Bibliography. Technical Report NIC-BIBLIO-791201,
+           SRI International, December, 1979.
+
+      [ISOD-79]
+           ISO/TC97/SC6 Data Communications. Second Draft Proposed
+           Communication Heading Format Standard. ISO/TC97/SC6 N 1948,
+           ISO International Organization for Standardization
+           Organization Internationale de Normalisation, September,
+           1979. Secretariat: USA (ANSI).
+
+      [ISOD-82]
+           ISO/TC97/SC16. Information Processing Systems - Open Systems
+           Interconnection - Basic Reference Model. ISO/DIS 7498, ISO
+           International Organization for Standardization Organization
+           Internationale de Normalisation, December, 1982.
+
+      [NatB-68]
+           National Bureau of Standards. Calendar Date. Federal
+           Information Processing Standards Publication 4, U.S.
+           Department of Commerce / National Bureau of Standards,
+           November, 1968.
+
+      [NatB-75]
+           National Bureau of Standards. Code Extension Techniques in 7
+           or 8 Bits. Federal Information Processing Standards
+           Publication 35, U.S. Department of Commerce / National
+           Bureau of Standards, June, 1975.
+
+
+
+
+                                     103
+
+
+
+      [NatB-77]
+           National Bureau of Standards. Data Encryption Standard.
+           Federal Information Processing Standards Publication 46,
+           U.S. Department of Commerce / National Bureau of Standards,
+           January, 1977.
+
+      [NatB-79a]
+           National Bureau of Standards. Representations of Local Time
+           of the Day for Information Interchange. Federal Information
+           Processing Standards Publication 58, U.S. Department of
+           Commerce / National Bureau of Standards, February, 1979.
+
+      [NatB-79b]
+           National Bureau of Standards. Representations of Universal
+           Time, Local Time Differentials, and United States Time Zone
+           References for Information Interchange. Federal Information
+           Processing Standards Publication 59, U.S. Department of
+           Commerce / National Bureau of Standards, February, 1979.
+
+      [NatB-80]
+           National Bureau of Standards. Code for Information
+           Interchange. Federal Information Processing Standards
+           Publication 1-1, U.S. Department of Commerce / National
+           Bureau of Standards, December, 1980.
+
+      [PosJ-79]
+           Jonathan B. Postel. INTERNET MESSAGE PROTOCOL. RFC 753,
+           Information Sciences Institute, March, 1979.
+
+      [TasG-80]
+           Task Group X3S33 on Data Communications Formats, ANSI
+           Subcommittee X3S3 on Data Communications. Third Draft
+           Proposed American National Standard for Heading Format
+           Structure for Code Independent Communication Headings. ANSI
+           document X3S37/80-01, Computer and Business Equipment
+           Manufacturers Association, 1980.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     104
+
+
+
+                                    INDEX
+
+
+
+
+
+                ASCII-String   35, 36, 47, 50, 52, 54, 58, 59, 60, 61,
+                        63, 65, 69
+                Assignment   22, 28, 61
+                Attachments   23, 57
+                Author   19, 57
+
+                BASIC   18
+                BASIC Data Elements
+                   ASCII-String   47, 63
+                   Date   50, 65
+                   End-of-Constructor   48, 66
+                   Field   50, 66
+                   Message   51, 67
+                BASIC fields
+                   Cc   20
+                   Reply-To   19
+                   Subject   23
+                   Text   23
+                BASIC syntactic elements   35
+                Bcc   19, 25, 57
+                Bit numbering in octets   37
+                Bit-String   36, 42, 47, 49, 50, 52, 64, 65, 69
+                Boolean   36, 48, 64
+
+                Cc   20, 58
+                Chains of correspondence   29
+                Circulate-Next   20, 31, 58
+                Circulate-To   20, 31, 58
+                Circulation   31
+                Comment   36, 37, 44, 54
+                Comments   23, 58
+                Compliance requirements   41
+                Compressed   37, 43, 49, 54, 65
+                Compression identifier   49, 65
+                Compression Identifiers
+                   Unspecified   54
+                Constructor data element   35, 36
+                Contents   38, 76
+                Cross Referencing   29
+
+                Data Element Contents   43, 44, 87, 42, 44, 52, 69, 42,
+                        44, 46, 47, 51, 64, 69, 87
+                Data Elements
+                   ASCII-String (BASIC)   47, 63
+                   Bit-String (OPTIONAL)   47, 64
+
+
+
+
+                                     105
+
+
+
+                   Boolean (OPTIONAL)   48, 64
+                   Compressed (OPTIONAL)   49, 65
+                   Date (BASIC)   50, 65
+                   Encrypted (OPTIONAL)   50, 65
+                   End-of-Constructor (BASIC)   48, 66
+                   Extension (OPTIONAL)   52, 66
+                   Field (BASIC)   50, 66
+                   Integer (OPTIONAL)   48, 67
+                   Message (BASIC)   51, 67
+                   No-Op (OPTIONAL)   49, 67
+                   Padding (OPTIONAL)   49, 68
+                   Property (OPTIONAL)   51, 68
+                   Property-List (OPTIONAL)   51, 68
+                   Sequence (OPTIONAL)   51, 69
+                   Set (OPTIONAL)   52, 69
+                   Unique-ID (OPTIONAL)   52, 69
+                   Vendor-Defined (OPTIONAL)   53, 70
+                Date   20, 50, 58, 60, 61, 62, 65
+                Dating   30
+                Delivery   13, 20, 60
+                Delivery Protocol   13
+                Delivery Slot   13
+
+                Encapsulating   26
+                Encrypted   37, 43, 50, 54, 65
+                Encryption identifier   50, 65
+                Encryption Identifiers
+                   FIPS-Standard   54
+                   Unspecified   54
+                End-Date   20, 21, 30, 58, 62
+                End-Of-Constructor   36, 42, 44, 48, 66
+                Extension   35, 46, 52, 66
+
+                Field   14, 31, 35, 36, 37, 43, 50, 51, 66, 67, 72
+                Field Identifier   50, 66
+                Field label presentation   35
+                Fields
+                   Attachments (OPTIONAL)   57, 23
+                   Author (OPTIONAL)   57, 19
+                   Bcc (OPTIONAL)   57, 19
+                   Cc (BASIC)   58, 20
+                   Circulate-Next (OPTIONAL)   58, 20
+                   Circulate-To (OPTIONAL)   58, 20
+                   Comments (OPTIONAL)   58, 23
+                   Date (OPTIONAL)   58, 20
+                   End-Date (OPTIONAL)   58, 20
+                   From (REQUIRED)   59, 19
+                   In-Reply-To (OPTIONAL)   59, 21
+                   Keywords (OPTIONAL)   59, 23
+                   Message-Class (OPTIONAL)   59, 22
+                   Message-ID (OPTIONAL)   59, 21
+
+
+
+
+                                     106
+
+
+
+                   Obsoletes (OPTIONAL)   59, 21
+                   Originator-Serial-Number (OPTIONAL)   59, 21
+                   Posted-Date (REQUIRED)   60, 20
+                   Precedence (OPTIONAL)   60, 22
+                   Received-Date (OPTIONAL)   60, 20
+                   Received-From (OPTIONAL)   60, 22
+                   References (OPTIONAL)   60, 22
+                   Reissue-Type (OPTIONAL)   61, 22
+                   Reply-To (BASIC)   61, 19
+                   Sender (OPTIONAL)   61, 19
+                   Start-Date (OPTIONAL)   61, 21
+                   Subject (BASIC)   61, 23
+                   Text (BASIC)   61, 23
+                   To (REQUIRED)   61, 19
+                   Warning-Date (OPTIONAL)   62, 21
+                FIPS-Standard   54, 55
+                From   17, 19, 29, 57, 59, 61
+
+                Globally unique identifiers   29
+
+                Identifier octet   38, 41, 37, 38, 42, 44, 76
+                Identifiers
+                   globally unique   29
+                In-Reply-To   21, 29, 59
+                Indefinite length code   41
+                Integer   36, 48, 52, 67, 69
+
+                Keywords   23, 59, 88
+
+                Length Code   40, 41, 42, 38, 39, 40, 41, 42, 44, 46,
+                        76, 77, 87
+                Long length code   41
+
+                Message Transfer System   13, 22, 60
+                Message   14, 17, 35, 36, 37, 43, 51, 67
+                Message content   13
+                Message envelope   13
+                Message stores   30
+                Message Transfer System   13, 22, 60, 12, 13, 14, 17,
+                        20, 22, 60
+                Message Types
+                   FIPS-Standard   55
+                Message-Class   22, 59
+                Message-ID   21, 22, 29, 31, 59, 60
+
+                No-Op   49, 67
+                Numbering bits in octets   37
+
+                Obsoletes   21, 29, 59
+                Octets
+                   bit numbering in   37
+
+
+
+
+                                     107
+
+
+
+                OPTIONAL   18
+                OPTIONAL Data Elements
+                   Bit-String   47, 64
+                   Boolean   48, 64
+                   Compressed   49, 65
+                   Encrypted   50, 65
+                   Extension   52, 66
+                   Integer   48, 67
+                   No-Op   49, 67
+                   Padding   49, 68
+                   Property   51, 68
+                   Property-List   51, 68
+                   Sequence   51, 69
+                   Set   52, 69
+                   Unique-ID   52, 69
+                   Vendor-Defined   53, 70
+                OPTIONAL fields
+                   Attachments   23
+                   Author   19
+                   Bcc   19
+                   Circulate-Next   20
+                   Circulate-To   20
+                   Comments   23
+                   Date   20
+                   End-Date   20
+                   In-Reply-To   21
+                   Keywords   23
+                   Message-Class   22
+                   Message-ID   21
+                   Obsoletes   21
+                   Originator-Serial-Number   21
+                   Precedence   22
+                   Received-Date   20
+                   Received-From   22
+                   References   22
+                   Reissue-Type   22
+                   Sender   19
+                   Start-Date   21
+                   Warning-Date   21
+                OPTIONAL syntactic elements   35
+                Originator   15, 18, 20, 30, 57, 58, 59, 61
+                Originator-Serial-Number   21, 30, 59
+
+                Padding   49, 68
+                Person   18
+                Posted-Date   17, 20, 31, 58, 60
+                Posting   13
+                Posting Protocol   13
+                Posting Slot   13
+                Precedence   22, 60
+                Precedence categories   22
+
+
+
+
+                                     108
+
+
+
+                Precedence scheme   60
+                Presentation
+                   field label   35
+                Primitive data element   36, 35, 36
+                Printing-Name   36, 37, 44, 54, 82
+                Process   18
+                Properties
+                   Comment   54
+                   Printing-Name   54
+                Property   38, 43, 51, 68
+                Property-Identifier   51, 68
+                Property-List   36, 38, 44, 46, 51, 68, 76
+
+                Qualifier   38, 39, 40, 41, 42, 43, 44, 46, 47, 49, 50,
+                        51, 52, 53, 64, 65, 66, 68, 70, 76
+                Qualifiers   43
+
+                Received-Date   20, 60
+                Received-From   22, 60
+                Recipient   15, 19, 20, 22, 57, 58, 60, 61
+                Redistribution   22, 26, 61
+                References   22, 29, 60
+                Reissue-Type   22, 61
+                Reply   18, 28
+                Reply-to   19, 28, 59, 61
+                REQUIRED   18
+                REQUIRED fields
+                   From   19
+                   Posted-Date   20
+                   To   19
+                Requirements
+                   compliance   41
+                Role   18
+
+                Sender   19, 31, 61
+                Sequence   35, 36, 51, 69
+                Sequences   36
+                Serial Numbers   21, 30, 59
+                Set   36, 51, 52, 69
+                Short length code   41
+                Slot   13
+                Start-Date   21, 30, 61
+                Subject   23, 61
+                Syntactic reissuing   26
+
+                Text   23, 32, 61
+                To   17, 19, 31, 37, 61
+
+                Unique identifiers   29
+                Unique-ID   52, 59, 60, 69
+                Unspecified   54
+
+
+
+
+                                     109
+
+
+
+
+                User Agent   12, 13, 14
+                User interface   35
+
+                Vendor-Defined   35, 46, 53, 70
+
+                Warning-Date   21, 30, 62
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     110
+ _@Á
