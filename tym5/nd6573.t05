@@ -1,0 +1,76 @@
+::======================================================================
+::  DATE WRITTEN:  11 AUG 88 BY: DORIS DEATRICK/SWTS
+::         
+::          CUSTOMER:          NICHOLS INSTITUTE
+::          ADDRESS:           26441 VIA DE ANZA
+::                             SAN JUAN CAPISTRANO
+::                             CA  92675
+
+::          CONTACT:           TODD FRANK PH (714)240-5206
+
+::          NODE:              ND6573
+::          KERNEL:            2826
+::          HOST:              9903
+::          SLOT:              05
+
+::          INTERFACE:         X-25
+::          VERSION:           4.03
+::          CIRCUIT #:         81FDDP703555
+::          TROUBLE #:         TODD FRANK (714) 240-5206
+
+::          HOST TYPE:         MICRODATA
+::
+::          TECHNICAL REP:     MARK REEVES - SWTS
+::=====================================================================
+::>>>>>>>>>>>>>>>>>>>>>>>>  REVISION HISTORY  <<<<<<<<<<<<<<<<<<<<<<<<<
+:: 04-06-88  turned off negotiation for pwind, psize, tclass.
+::           added charge(+cpt) for no reversed charging.
+::           and removed chkclg(3106004657) to work with cust pad. ann d,swts
+:: 07-20-88  CHANGED CALL CONNECTED MSG TO HAVE "0D"0A INSTEAD OF "8D"8A DORIS
+:: 07-20-88  TOOK OFF +DATA,+CUD,+ALLCALLS PER KEN STONE STS. DORIS/SWTS
+:: 08-26-88  CHANGED PARITY FROM SAVE TO SPACE PER REQUEST OF BETH. MARK
+:: 10-03-88  added reverse charging and caddr patch for calls from conn-net MR
+:: 03/14/89  CHANGED DPORTS FROM 64 TO 48 PER REQUEST OF BETH  MER/SWTS
+:: 04/06/89  UPGRADED PATCH DIRECTORY TO (XCOMPAT)CADDR.301  MER/SWTS
+:: 09/15/89  UPGRADED TO XCOM 4.03. ALSO ADDED HOSTCO AND COSTCO FOR
+::           LOAD BALANCING PER BRAD HOLLAND.  MER/SWTS
+::====================================================================
+SEECON(3)                                    :PRINT ENTIRE GEN
+PROTOCOL(X.25,HDLC,LAPB)                     :LINK LEVEL PROTOCOL
+DPORTS(48)                                   :64 CHANNELS ASSIGNED
+HOSTLINKS(9903,0)                            :HOST # FOR LINK 0
+LINKS(0)                                     :ONLY 1 LINK
+HOSTCO(0,244,48,0,48,48)                     :1 TO 1 BALANCE
+COSTCO(ON)                                   :COST CODE MODULE ON
+HIHOST(99999)                                :FOR OUTBOUND CALLS
+PSADR(03,01)                                 :TYMNET IS DCE
+K(7)                                         :FRAME WINDOW = 7
+N2(10)                                       :FRAME RETRANSMISSIONS
+T1(30)                                       :3 SECS BTW RETRANS
+FRMOPT(-FM128)                               :FRAME MODULUS 8
+TCNL(1,64)                                   :64 TWO-WAY CHANNELS
+CHARGE(+CPT,+RCNS)                           :REVERSED CHARGING
+PWIND(2,2,-NEGOTIATION)                      :PKTWINDOW = 2 W/O NEGOTIATION
+PSIZE(128,128,-NEGOTIATION)                  :PACKET SIZE IS 128
+TCLASS(10,10,-NEGOTIATION)                   :THRUPUT CLASS 9600 BAUD
+PKTOPT(+IPRNR,-HILCN,-PM128,+TKSUP)          :SUPPRESS RNR'S FROM INTERFACE
+                                             :PACKET MODULUS 08
+                                             :ASSIGN FROM LOW VALUES
+                                             :TALK TO SUP
+PADFORWARD(126,126)                          :FORWARD ON DEFAULT
+PADIDLE(10,10)                               :FWD PKT AT 1 SEC IDLE
+PADBRE(21)                                   :SEND INTERRUPT PACKET
+                                             :SEND INDICATION OF BREAK PAD MSG
+                                             :DISCARD OUTPUT TO TERMINAL
+PADOPT(-NECHO,+NCRLF,-NLFCR)                 :NETWORK WILL ECHO CR
+ECHOAB(08,0A,0D,20-7E)                       :ECHO ALL INC BS AND CR
+INPARITY(SPACE)                              :LEAVE PARITY AS IS ON ALL
+XOMUSERNAME(ISISTECH)                        :FOR XOM USE
+XOMUSERNAME(OMNC)                            :FOR NETWORK CONSOLE
+XOMHOST(9903)                                :HOST NUMBER FOR XOM
+ODNIC(3106)                                  :OUR DNIC
+CUDSTRING()                                  :NO + PROMPT FOR CUD
+CLDADR(310600990300,,PKTCLD)                 :CALLED ADDRESS
+:CHKCLG(3106009903)                           :CHECK CALLING ADDRESS
+MTEXT(0001,"0D"0ATYMNET: )                   :OCCUR WHEN CALL CLRD BY TYMNET
+MTEXT(0455,CALL CONNECTED"0D"0A)
