@@ -1,0 +1,64 @@
+                                                             Page 1 of 2
+
+
+                                M E M O
+
+From:              Todd Corenson
+                   PDP-10 monitor group
+
+Date:              May 21, 1980  16:53
+
+Subject:           Operator Procedure for New DSKCLN
+
+
+        -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+In monitors previous to P034/E DSKCLN was invoked after every
+crash and ONCE auto restart to check the consistency of all
+RIBs and SATs in the mounted structure.  This had a significant
+impact on system availability.  Now with P034/E the capability
+exists to ascertain which files were undergoing modification at
+crash time.  If the crash did not occur because of a file system
+malfunction, then DSKCLN can run in a new mode called 'FAST'
+which only scans recently altered files.  If this is not possible
+DSKCLN should run in 'FULL' mode (i.e. do what the old DSKCLN did).
+In some cases, such as after a TAKEIT take-down that terminates
+normally, DSKCLN can run in mode 'NONE', that is, it need not
+check the structure at all.  Normally, the current monitor is
+capable of communicating to the next monitor (via special core
+and disk areas set aside for that purpose) the appropriate
+DSKCLN type to run.  If it is not able to do so the operator will
+be prompted at the CTY to supply the DSKCLN type with the message:
+
+DSKCLN MODE IS NULL
+DSKCLN TYPE DESIRED:
+
+the next time the monitor is brought up.  The question should be
+answered with either 'FULL', 'FAST', or 'NONE' depending upon the
+particular circumstances:
+
+        If the following occurs:                Answer with:
+
+        (1) First time bring up under           NONE
+        monitor capable of suporting new
+        DSKCLN after successfull TAKEIT
+        take-down of previous monitor.
+
+        (2) Memory parity crash.                FAST
+
+        (3) Receive "SEVERE ERR ENCOUNTERED:    FULL after hardware has
+        HARDWARE SUSPECT" message on CTY.       been checked out and/or
+                                                repaired.
+
+        (4) Other.                              FULL
+
+If either (3) or (4) occur the DSKCLN type and the events leading
+up to the crash should be reported in the crash mail.
+
+The mechanism described above has additional features not detailed
+Operator Procedure for New DSKCLN                            Page 2 of 2
+
+
+in this memo.  Please contact me if a situation arises that cannot
+be handled by the information provided here.
+ 
+
