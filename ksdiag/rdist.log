@@ -1,0 +1,296 @@
+.:logfile rdist.log
+:define $substitution=$true
+sysno
+TYMSHARE X32-P035/E-1 3-2-89
+.daytime
+13-FEB-1990 18:24:18 PST
+
+.run (xexec)minit
+
+.rdist *.*/master:33/host:14,32/check
+Master host: 33
+98 files on master system.
+Slave hosts: 14,32
+Checking host 14
+(KSDIAG      :  14) RDIST.LOG      3 13-Feb-90 15:15 -- bad checksum TENLEG
+                           should be 13-Feb-90 15:19 RERHAG  ALL  RD  NO
+(KSDIAG      :  14) KSMON.SAV    155 20-Dec-83 06:22 -- bad checksum LECRAQ
+                           should be 20-Dec-83 06:22 KUBRAB  ALL  RD  NO
+Checking host 32
+(KSDIAG      :  32) 011TEL.COM     2 28-Nov-89 20:01 -- extra not on master
+(KSDIAG      :  32) 011TEL.OUT     2 28-Nov-89 20:01 -- extra not on master
+(KSDIAG      :  32) RDIST.LOG      1 13-Feb-90 18:24 -- bad checksum VIVVOR
+                           should be 13-Feb-90 15:19 RERHAG  ALL  RD  NO
+(KSDIAG      :  32) RDIST.OUT      2 30-Nov-89 15:18 -- bad checksum BONRUW
+                           should be 13-Feb-90 15:19 PIXBEL  ALL  RD  NO
+(KSDIAG      :  32) RDIST.FRI      2 24-Nov-89 15:20 -- bad checksum FIHDIG
+                           should be 26-Jan-90 15:20 XUVVOR  ALL  RD  NO
+(KSDIAG      :  32) RDIST.MON      2 27-Nov-89 18:59 -- bad checksum RURWON
+                           should be 01-Feb-90 15:20 YEXNIB  ALL  RD  NO
+(KSDIAG      :  32) RDIST.THU      2 30-Nov-89 15:18 -- bad checksum JEPGUJ
+                           should be 01-Feb-90 15:20 CAJFIY  ALL  RD  NO
+(KSDIAG      :  32) RDIST.SUN      2 01-Oct-89 15:20 -- bad checksum WIZFIT
+                           should be 04-Feb-90 15:19 DOVNUT  ALL  RD  NO
+(KSDIAG      :  32) RDIST.WED      2 15-Nov-89 15:22 -- bad checksum KIZXUP
+                           should be 07-Feb-90 15:21 HOLFAX  ALL  RD  NO
+(KSDIAG      :  32) RDIST.TUE      2 24-Nov-89 15:20 -- bad checksum XEQLAX
+                           should be 13-Feb-90 15:19 TUPQIF  ALL  RD  NO
+(KSDIAG      :  32) RDIST.SAT      2 18-Nov-89 15:22 -- bad checksum DICSUD
+                           should be 10-Feb-90 15:19 CIZSUK  ALL  RD  NO
+(KSDIAG      :  32) KSMON.SAV    155 20-Dec-83 06:22 -- bad checksum LECRAQ
+                           should be 20-Dec-83 06:22 KUBRAB  ALL  RD  NO
+
+End of SAIL execution
+.copy rdist.log,rdist.out
+
+.mung findit,rdist.out
+
+FINDIT.TEC V5 - Clean up log from MHX+(SPL)FINDIT and sort by file name
+14
+R SORT
+rdist.out=rdist.out/R80/K21.10/K54.6/K1.20
+SORTED 14 RECORDS
+
+EXIT
+
+.copy rdist.log,rdist.Tuesday
+
+.; System X17 has only RDIST.* files
+.rdist rdist.*/host:14,17,32,33
+Master host: 32
+11 files on master system.
+Slave hosts: 14,17,32,33
+Checking host 14
+(KSDIAG      :  14) RDIST.LOG      3 13-Feb-90 15:15 -- bad checksum TENLEG
+                           should be 13-Feb-90 18:24 DUQFES  ALL  RD  NO
+(KSDIAG      :  14) RDIST.OUT      2 13-Feb-90 15:18 -- bad checksum PIXBEL
+                           should be 13-Feb-90 18:30 RIFTIW  ALL  RD  NO
+(KSDIAG      :  14) RDIST.FRI      2 26-Jan-90 15:19 -- bad checksum XUVVOR
+                           should be 24-Nov-89 15:20 FIHDIG  ALL  RD  NO
+(KSDIAG      :  14) RDIST.MON      2 29-Jan-90 15:18 -- bad checksum YEXNIB
+                           should be 27-Nov-89 18:59 RURWON  ALL  RD  NO
+(KSDIAG      :  14) RDIST.THU      2 01-Feb-90 15:19 -- bad checksum CAJFIY
+                           should be 30-Nov-89 15:18 JEPGUJ  ALL  RD  NO
+(KSDIAG      :  14) RDIST.SUN      2 04-Feb-90 15:18 -- bad checksum DOVNUT
+                           should be 01-Oct-89 15:20 WIZFIT  ALL  RD  NO
+(KSDIAG      :  14) RDIST.WED      2 07-Feb-90 15:20 -- bad checksum HOLFAX
+                           should be 15-Nov-89 15:22 KIZXUP  ALL  RD  NO
+(KSDIAG      :  14) RDIST.TUE      2 13-Feb-90 15:18 -- bad checksum TUPQIF
+                           should be 13-Feb-90 18:31 QORMIP  ALL  RD  NO
+(KSDIAG      :  14) RDIST.SAT      2 10-Feb-90 15:18 -- bad checksum CIZSUK
+                           should be 18-Nov-89 15:22 DICSUD  ALL  RD  NO
+Checking host 17
+
+?unable to build circuit to KSDIAG:17
+?host unavailable
+
+?unable to build circuit to KSDIAG:17
+?host unavailable
+
+?unable to build circuit to KSDIAG:17
+?host unavailable
+
+?unable to build circuit to KSDIAG:17
+?host unavailable
+
+?unable to build circuit to KSDIAG:17
+?host unavailable
+Creaux failed to KSDIAG:17
+Checking host 32
+(KSDIAG      :  32) RDIST.LOG      1 13-Feb-90 18:24 -- bad checksum LECXAS
+                           should be 13-Feb-90 18:24 DUQFES  ALL  RD  NO
+Checking host 33
+(KSDIAG      :  33) RDIST.FRI      2 26-Jan-90 15:20 -- bad checksum XUVVOR
+                           should be 24-Nov-89 15:20 FIHDIG  ALL  RD  NO
+(KSDIAG      :  33) RDIST.OUT      2 13-Feb-90 15:19 -- bad checksum PIXBEL
+                           should be 13-Feb-90 18:30 RIFTIW  ALL  RD  NO
+(KSDIAG      :  33) RDIST.LOG      3 13-Feb-90 15:19 -- bad checksum RERHAG
+                           should be 13-Feb-90 18:24 DUQFES  ALL  RD  NO
+(KSDIAG      :  33) RDIST.MON      2 01-Feb-90 15:20 -- bad checksum YEXNIB
+                           should be 27-Nov-89 18:59 RURWON  ALL  RD  NO
+(KSDIAG      :  33) RDIST.THU      2 01-Feb-90 15:20 -- bad checksum CAJFIY
+                           should be 30-Nov-89 15:18 JEPGUJ  ALL  RD  NO
+(KSDIAG      :  33) RDIST.WED      2 07-Feb-90 15:21 -- bad checksum HOLFAX
+                           should be 15-Nov-89 15:22 KIZXUP  ALL  RD  NO
+(KSDIAG      :  33) RDIST.SUN      2 04-Feb-90 15:19 -- bad checksum DOVNUT
+                           should be 01-Oct-89 15:20 WIZFIT  ALL  RD  NO
+(KSDIAG      :  33) RDIST.TUE      2 13-Feb-90 15:19 -- bad checksum TUPQIF
+                           should be 13-Feb-90 18:31 QORMIP  ALL  RD  NO
+(KSDIAG      :  33) RDIST.SAT      2 10-Feb-90 15:19 -- bad checksum CIZSUK
+                           should be 18-Nov-89 15:22 DICSUD  ALL  RD  NO
+Starting TELECOPY
+
+: 
+: 
+: 
+REPLACING FILE (KSDIAG:14)RDIST.LOG
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.LOG COPIED TO (KSDIAG:14)RDIST.LOG
+
+6912 (4274) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:14)RDIST.OUT
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.OUT COPIED TO (KSDIAG:14)RDIST.OUT
+
+972 (805) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:14)RDIST.FRI
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.FRI COPIED TO (KSDIAG:14)RDIST.FRI
+
+2304 (1007) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:14)RDIST.MON
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.MON COPIED TO (KSDIAG:14)RDIST.MON
+
+2304 (896) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:14)RDIST.THU
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.THU COPIED TO (KSDIAG:14)RDIST.THU
+
+2304 (1022) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:14)RDIST.SUN
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.SUN COPIED TO (KSDIAG:14)RDIST.SUN
+
+2304 (893) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:14)RDIST.WED
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.WED COPIED TO (KSDIAG:14)RDIST.WED
+
+2304 (908) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:14)RDIST.TUE
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.TUE COPIED TO (KSDIAG:14)RDIST.TUE
+
+2304 (1834) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:14)RDIST.SAT
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.SAT COPIED TO (KSDIAG:14)RDIST.SAT
+
+2304 (1318) CHARS. TRANSMITTED
+
+: 
+"COPY TO" AND "COPY FROM" SYSTEM MUST NOT BE THE SAME.
+
+: 
+REPLACING FILE (KSDIAG:33)RDIST.FRI
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.FRI COPIED TO (KSDIAG:33)RDIST.FRI
+
+2304 (1007) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:33)RDIST.OUT
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.OUT COPIED TO (KSDIAG:33)RDIST.OUT
+
+972 (805) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:33)RDIST.LOG
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.LOG COPIED TO (KSDIAG:33)RDIST.LOG
+
+6912 (5647) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:33)RDIST.MON
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.MON COPIED TO (KSDIAG:33)RDIST.MON
+
+2304 (896) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:33)RDIST.THU
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.THU COPIED TO (KSDIAG:33)RDIST.THU
+
+2304 (1022) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:33)RDIST.WED
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.WED COPIED TO (KSDIAG:33)RDIST.WED
+
+2304 (908) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:33)RDIST.SUN
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.SUN COPIED TO (KSDIAG:33)RDIST.SUN
+
+2304 (893) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:33)RDIST.TUE
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.TUE COPIED TO (KSDIAG:33)RDIST.TUE
+
+2304 (1834) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KSDIAG:33)RDIST.SAT
+
+COPY STARTING
+
+(KSDIAG:32)RDIST.SAT COPIED TO (KSDIAG:33)RDIST.SAT
+
+2304 (1318) CHARS. TRANSMITTED
+
+: 
+.LOGOUT
+320.83 tru
+terminal time: 0:13:53
+
+; Req #7997 completed
+    
