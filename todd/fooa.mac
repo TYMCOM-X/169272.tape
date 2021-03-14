@@ -1,0 +1,13 @@
+x:	twoseg
+	reloc 0
+integer xx
+integer yy
+qq:	777
+zz:	jfcl
+	reloc 400000
+foo:	jfcl
+	reloc
+fooa:	jfcl
+	reloc 400000
+foob:	jfcl
+	end x
