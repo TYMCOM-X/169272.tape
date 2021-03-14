@@ -1,0 +1,51 @@
+!:LOGFILE FNDBAD.LOG
+COPY (SYS)JQUEUE.SYS,(SYS)JQUEUE.OLD
+
+!DAYTIM
+15-FEB-1990 12:26:54 PST
+
+!RUN (MPL)FNDBAD
+Output file: FNDBAD.RPT
+
+EXIT
+
+!DECLARE ALL RD RD FNDBAD.RPT
+
+
+!MAKE (OPER)ACCESS.MSG
+
+*ERFNDBAD.RPT$ A A <SNFS$; 0L T K>EX$$
+
+!
+!DECLARE ALL RD RD (OPER)ACCESS.MSG
+
+
+!TYPE (OPER)ACCESS.MSG
+(UN1)041389.SAT                 HRE
+(SYS)CRA025.SAV                 BDA
+(SYS)COST.SAV                   BDA
+(SYS)CRA024.SAV                 HRE
+(EXECX)011TEL.COM               BDA
+
+Legend:
+  HRE: Hard Read Error (3 times)
+  BDA: found Bad by Damage Assessment program (DSKCLN)
+
+
+EXIT
+
+!CORE
+22:4+18/512 pages
+Vir. core left=22649
+
+!PJOB
+Frame 9  TTY203  JMS[3,431116] at X32
+
+!DAYTIM
+15-FEB-1990 12:29:20 PST
+
+!LOGOUT
+59.31 tru
+terminal time: 0:02:30
+
+; Req #8017 completed
