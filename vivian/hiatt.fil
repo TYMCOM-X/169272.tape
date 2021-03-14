@@ -1,0 +1,32 @@
+
+
+FILENAME         SYSTEM DIRECTORY         DESCRIPTION
+
+
+Indent.sai       930    (HIATT)           Modifies the indentation of files
+Dusage.sai       930    (HIATT)           Monitors disk usage
+Dusage.pub       930    (HIATT)           Describes Dusage
+Filnst.sai       930    (HIATT)           Uses 'push' and 'pop' routines
+Recur.sai        930    (HIATT)           Recursive version of Filnst
+Example          930    (HIATT)           Text read by Filnst and Recur
+Update.rpt       930    (M33)magnum       Mongen procedure
+Report.sys       930    (M33)magnum       Mongen procedure
+Mongen.hlp       930    (M33)magnum       Mongen help file
+Dumpfile.hlp     930    (HIATT)           Dumpfile help file
+Xco.pub          930    (XCONSULT)        Xconsult help file
+Dumpfile         118    <HIATT.MAG>magnum Dumpfile schema
+Edit.dmp         118    <HIATT.MAG>magnum Dumpfile procedure
+Findfile         118    <HIATT.MAG>magnum Dumpfile procedure
+Systems.accounts 118    <HIATT>magnum     Systems.accounts schema
+Dlu.ser          118    <HIATT>magnum     Systems.accounts procedure
+New.system       118    <HIATT>magnum     Systems.accounts procedure
+Users.cmd        118    <HIATT>magnum     Systems.accounts command file
+Accnt.txt        118    <HIATT>magnum     Systems.accounts information
+Files.lst        118    <HIATT>magnum     Systems.accounts information
+Software          94    <DBSD.HIATT.SOFT> 
+                        magnum            Software procedure
+Soft              94    <DBSD.HIATT.SOFT> 
+                        magnum            Software procedure
+Software          33    (HIATT)           Software schema and procedures
+Dir.com           84    <HIATT>           Directory command file
+Dir1.com          84    <HIATT>           Directory command file
