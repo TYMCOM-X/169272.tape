@@ -1,0 +1,70 @@
+.library memo.lib;
+.to |S. Gavette|
+.to |M. Hinckley|
+.to |G. Lyons|
+.to |B. Martinez|
+.to |E. Socci|
+.to |B. Soley|
+.re |Operator Procedure for New DSKCLN|
+.body; nofill
+
+In monitors previous to P034/E DSKCLN was invoked after every crash and
+ONCE auto restart to check the consistency of all RIBs and SATs in the
+mounted structure.  This had a significant impact on system
+availability.  Now with P034/E (and later) the capability exists to
+ascertain which files were undergoing modification at crash time.  If
+the crash did not occur because of a file system malfunction and no
+serious file system errors were detected during the period of time that
+the system was up (such as SAT errors) then DSKCLN can run in a new
+mode called 'FAST' which only scans recently altered files.  If this is
+not possible DSKCLN should run in 'FULL' mode (i.e.  do what the old
+DSKCLN did).  In some cases, such as after a TAKEIT take-down that
+terminates normally, and assuming a stable file system, DSKCLN can run
+in mode 'NONE', that is, it need not check the structure at all.
+Normally, the current monitor is capable of communicating to the next
+monitor (via special core and disk areas set aside for that purpose)
+the appropriate DSKCLN type to run.  If it is not able to do so the
+operator will be prompted at the CTY to supply the DSKCLN type with the
+message:
+
+	DSKCLN MODE IS NULL
+	DSKCLN TYPE DESIRED:
+
+the next time the monitor is brought up.  The question should be
+responded to with either 'FULL', 'FAST', or 'NONE' depending upon the
+manner in which the previous incarnation of the monitor terminated:
+
+	If the following occured:		Answer with:
+
+	(1) Monitor not capable of supporting	NONE
+	new DSKCLN was brought down successfully
+	with TAKEIT to reload with P034/E or
+	later
+
+	(2) Memory parity crash			FAST
+
+	(3) Processor hung			FAST
+
+.GROUP
+	(4) Received "KL FATAL PROCESSOR ERROR"	FAST
+	message on CTY
+.APART
+
+	(5) Received "SEVERE ERR ENCOUNTERED:	FULL after hardware has
+	HARDWARE SUSPECT" message on CTY	been checked out and/or
+						repaired.
+
+	(6) Received "BAD SAT" message on OPR	FULL
+	terminal or CTY
+
+	(7) Other				FULL
+
+In general, regardless of the primary reason for a crash, if disk
+subsystem errors have been detected, DSKCLN should always be run
+in 'FULL' mode.  Additionally, FULL DSKCLN should be run periodically
+to reclaim lost pages (i.e. pages marked in use but really free).
+
+The mechanism described above has additional features not detailed
+in this memo.  Please contact me or Ernie Socci if a situation
+arises that cannot be handled by the information provided here.
+.endbody
