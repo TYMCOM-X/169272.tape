@@ -1,0 +1,13 @@
+begin
+  require "(sailib)sail.def" source!file;
+  integer num,nm1,nm2,nm3;
+      start!code
+      movei 1, '112233445566;	! move immediate ;
+      movem 1, num;		! move to memory ;
+      movmm 1, nm1;		! move magnitude to memory ;
+      hrlzm 1, nm2;		! half right to left, zeros, memory ;
+      hrlem 1, nm3;		! half right to left, extend, memory ;
+      end;
+  print("num: ",cvos(num),"  nm1: ",cvos(nm1),
+      "  nm2: ",cvos(nm2),"  nm3:  ",cvos(nm3),crlf);
+end;
