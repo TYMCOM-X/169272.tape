@@ -1,0 +1,47 @@
+00:00:23 S 15-Feb-90
+01:59:38 S 15-Feb-90 Signing off.
+03:56:46 S ** 15-Feb-90 XEXEC %1(215) in frame 5 ** user PERPOPER **
+03:56:46 S -S- run #1 job 9 Req #0 :()
+03:56:47 S -S- stream #1 Req #8012 DSK:(DIAG10F)STARTU.TMP=DSK:(DIAG10F)STARTU.SYS
+03:56:53 S Processor status JSU EXECX Setup in frame 6
+03:56:53 P Waiting for interlock
+03:56:54 P Got interlock
+03:56:54 P EXECX Job Processor %1(226) starting in frame 6
+03:56:55 P Stream #1 Req #8012 DSK:(DIAG10F)STARTU.TMP=DSK:(DIAG10F)STARTU.SYS
+03:56:55 S Starting job processor in frame 6
+03:56:55 S -S- stream #2 Req #8007 DSK:(KS2020)RDIST.LOG=DSK:(KS2020)RDIST.CTL
+03:56:57 P Stream #2 Req #8007 DSK:(KS2020)RDIST.LOG=DSK:(KS2020)RDIST.CTL
+03:57:55 S 15-Feb-90
+03:58:11 P Stream #1 Req #8012 * completed *
+03:58:12 S -R- stream #1 Done-End <0>
+04:18:50 P Stream #2 Req #8007 * completed *
+04:18:53 S -R- stream #2 Done-End <0>
+04:33:56 P Signing off.
+06:00:57 S 15-Feb-90
+08:45:05 S -S- stream #1 Req #8013 DSK:(JMS)SZRPTX.LOG=DSK:(JMS)SZRPTX.CTL
+08:45:11 S Processor status JSU EXECX Setup in frame 6
+08:45:11 P Waiting for interlock
+08:45:13 P Got interlock
+08:45:13 P EXECX Job Processor %1(226) starting in frame 6
+08:45:13 S Starting job processor in frame 6
+08:45:13 P Stream #1 Req #8013 DSK:(JMS)SZRPTX.LOG=DSK:(JMS)SZRPTX.CTL
+08:49:41 P Stream #1 Req #8013 * completed *
+08:49:42 S -R- stream #1 Done-End <0>
+09:00:12 S 15-Feb-90
+09:05:12 P Signing off.
+12:00:12 S 15-Feb-90
+15:00:12 S 15-Feb-90
+18:00:12 S 15-Feb-90
+20:26:24 S -S- stream #1 Req #7982 DSK:(JMS)GAN3.LOG=DSK:(JMS)GAN3.X32
+20:26:31 P Waiting for interlock
+20:26:31 S Processor status JSU EXECX Setup in frame 7
+20:26:32 P Got interlock
+20:26:32 P EXECX Job Processor %1(226) starting in frame 7
+20:26:32 S Starting job processor in frame 7
+20:26:34 P Stream #1 Req #7982 DSK:(JMS)GAN3.LOG=DSK:(JMS)GAN3.X32
+20:26:49 S -S- stream #2 Req #8017 DSK:(JMS)FNDBAD.LOG=DSK:(JMS)FNDBAD.CTL
+20:26:52 P Stream #2 Req #8017 DSK:(JMS)FNDBAD.LOG=DSK:(JMS)FNDBAD.CTL
+20:30:03 P Stream #2 Req #8017 * completed *
+20:30:03 S -R- stream #2 Done-End <0>
+21:00:33 S 15-Feb-90
+00:00:33 S 16-Feb-90
