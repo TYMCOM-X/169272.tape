@@ -1,0 +1,1431 @@
+
+
+
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        $$$$                        $$$$
+       $$$$                          $$$$
+       $$$$                          $$$$
+       $$$$$                        $$$$$
+       $$$$$$                      $$$$$$      DISC ON THE TYMCOM-X
+       $$$$$$                      $$$$$$
+       $$$$$$                      $$$$$$      OPERATIONS MINI-MANUAL #5
+       $$$$$$$                    $$$$$$$
+       $$$$$$$                    $$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$      WESTERN COMPUTER OPERATIONS
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$      COMPUTER OPERATIONS DIVISION
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$      DECEMBER 1980
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$      
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$              
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$              
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$              
+       $$$$$$$$$$$     ::     $$$$$$$$$$$              
+       $$$$$$$$$$$     ::     $$$$$$$$$$$              
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$       ::       $$$$$$$$$
+       $$$$$$$$$      ::::      $$$$$$$$$
+       $$$$$$$$      ::::::      $$$$$$$$
+       $$$$$$$$     ::::::::     $$$$$$$$      
+       $$$$$$$     ::::::::::     $$$$$$$
+       $$$$$$$    ::::::::::::    $$$$$$$      REPLACES DOCUMENT
+       $$$$$$    ::::::::::::::    $$$$$$      DATED JULY 1980
+       $$$$$$   ::::::::::::::::   $$$$$$              
+       $$$$$   ::::::::::::::::::   $$$$$
+       $$$$$  ::::::::::::::::::::  $$$$$
+       $$$$  ::::::::::::::::::::::  $$$$
+        $$$$::::::::::::::::::::::::$$$$
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+                                                                         Page 2
+
+
+                               TABLE OF CONTENTS
+                               -----------------
+
+
+               TITLE                            PAGE NO.
+               -----                            --------
+
+               DISC OVERVIEW                        3
+
+               AMPEX DC 830                         8
+
+               MEMOREX 3674 PROCEDURES             12
+
+               ERRCHK                              13
+
+               FILE SYSTEM                         20
+
+               DSKCLN                              25
+
+               INDEX                               30
+                                                                         Page 3
+DISC
+
+
+                             DISC DRIVES AND PACKS
+                             ---------------------
+
+            A disc is generally the largest random-access storage device  in  a
+       computer  system  (a  single  unit  usually  holds more bits than all of
+       core), and it also provides the fastest storage outside of core.   These
+       devices  are  exceptionally  desirable  as  backup  storage  for memory,
+       especially for storage of large files and for swapping in  time  sharing
+       systems - while the currently active user programs are in core, inactive
+       programs are stored  on  a  disc.   Unlike  magnetic  tape,  a  disc  is
+       constantly  in motion and has a predetermined format with data blocks of
+       fixed length.  Hence, individual blocks  are  addressable,  and  at  the
+       simplest level, reading and writing may be the only functions the system
+       need perform.
+
+            In a disc unit, the storage  medium  is  similar  to  a  phonograph
+       record.   Data  is  stored  in tracks that are concentric circles on the
+       disc surface (there may be tracks  on  both  surfaces  or  on  only  one
+       surface).   The  disc  is  further  divided  into sectors, ie pie-shaped
+       sections.  Hence the tracks are divided into arcs, each  arc  being  the
+       intersection of a track with a sector.  In common terminology these arcs
+       of a track are also referred  to  as  sectors.   The  basic  data  block
+       consists  of  a set of data words in one sector of a track.  Generally a
+       disc is divided into n+1 sectors, where n sectors  are  for  data.   The
+       extra  sector can be used for maintenance, but it also provides time for
+       changing tracks without skipping a  data  sector.   Besides  data,  each
+       sector  may contain information for synchronization, error checking, and
+       addressing.  The  disc  also  may  have  extra  tracks  for  timing  and
+       addressing information.
+
+            The inner tracks are shorter than those on the outer  part  of  the
+       disc,  but  timing  is  usually  kept constant, with the result that the
+       information  density  in  the  tracks  increases  toward   the   center.
+       Sometimes  tracks  are  grouped  into  rings, where the inner rings have
+       fewer sectors;  this grouping means  that  the  time  is  constant  only
+       within rings but the variation in density is less.
+
+            In a disc pack unit the storage medium  is  a  removable  stack  of
+       disc.   Hence,  not  only  is the storage capacity much greater, but the
+       data can literally be stored on the shelf like magnetic tape  while  the
+       drive is being used with another pack.  Each disc surface has tracks and
+       sectors.  However, there are many surfaces, and the set  of  identically
+       numbered  tracks  on  the  various  surfaces  constitutes a cylinder.  A
+       cylinder is often defined as  all  the  tracks  that  can  be  processed
+       without  repositioning  the heads.  As before, the basic data block is a
+       sector of a track, which is addressed as the intersection of a  cylinder
+       and  a  surface.   In  terms of the addressing scheme used in continuous
+       data processing, the hardware counts through all the  tracks  (surfaces)
+       in one cylinder at a time.
+
+            Unlike drums where there is a separate  read-write  head  for  each
+       track   (the  average  random-access  time  is  a  little  over  half  a
+       revolution)  disc  drives  require  additional  time   positioning   the
+       read-write  heads.   Since the storage medium is continuous, has a fixed
+       format, and is  in  constant  motion  (both  in  speed  and  direction),
+       functions  can  be  limited  simply to read and write, with an automatic
+                                                                         Page 4
+DISC
+
+
+       search for an initially specified  sector.   However,  in  more  complex
+       systems,  there  may  be  a  separate  search  function and even special
+       functions for handling nondata parts of a sector.
+
+            A disc system always consists of a control and  a  number  of  disc
+       pack  units.   For TYMCOM-X, control is the Ampex DC830 or Memorex 3674.
+       In all cases, the program communicates with the control, which  in  turn
+       governs  all  the  units but effectively communicates with only one at a
+       time.  Data transfers between the control and device are governed by the
+       controller.   The  control is always connected by the channel bus to the
+       SA-10 on the TYMCOM-X.  This in turn interfaces the I/O bus but only for
+       the transfer of initial conditions and status.  Once the program sets up
+       the system for reading or writing, data transmission between control and
+       memory  is handled automatically via a separate memory bus (ie bypassing
+       the central processor).  To accomplish this the control is connected  to
+       the memory bus through a data channel or contains the necessary hardware
+       for direct connection to the bus.
+                                                                         Page 5
+FIGURE 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                         Page 6
+FIGURE 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                         Page 7
+FIGURE 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                         Page 8
+DC 830 PROCEDURES
+
+
+                             AMPEX DC 830 MODEL 2
+                             ----- -- --- ----- -
+
+
+                             STORAGE CONTROL UNIT
+                   CHECKING AND LOADING PROCEDURE
+                        -------- --- ------- ---------
+
+       (((INTRODUCTION)))
+
+            The Control Unit can control up to eight AMPEX  DM  330  disk  pack
+       drives.   All  internal  functions and logic capabilities of the storage
+       unit, mechanical operations of  the  disk  pack  drives  and  diagnostic
+       testing  of  both  the  control unit and the drives, are controlled by a
+       micro-program.  This micro-program is permanently stored on a  read-only
+       disk  and is transferred into control storage (read/write memory) during
+       the initial Micro-Program Load (MPL) function of the power-up sequence.
+
+
+       (((CHECKING THE DC 830)))
+
+            If a problem is suspected in the storage control unit,  you  should
+       obtain  a  copy  of the PROBLEM FLOW CHART (see sample below).  Open the
+       door on the DC 830 control unit exposing the inside panel.  Fill out the
+       chart  appropriately  and  if  required  by  the  circumstances, contact
+       Tymshare Maintenance.
+
+
+       (((THE MICRO-PROGRAM LOAD (MPL))))
+
+            The MPL  file  is  a  direct-access  read-only  single  disk  drive
+       commonly referred to as the floppy disk drive and is an integral part of
+       the storage unit.  It is used for:
+
+              . INITIAL PROGRAM LOADING
+              . DIAGNOSTIC MICRO-PROGRAM STORAGE
+              . MICRO-PROGRAM STORAGE BACKUP
+              . AUXILLIARY LOW-COST DATA OR CONTROL STORAGE.
+                                                                         Page 9
+DC 830 PROCEDURES
+
+
+                       HOW TO LOAD CONTROL UNIT (DC 830)
+                       --- -- ---- ------- ---- --------
+
+       1.  OPEN DOOR TO CONTROL UNIT EXPOSING INSIDE BACK PANEL.
+
+       2.  ASSURE POWER IS ON.
+
+       3.  INSERT CARTRIDGE (FLOPPY DISK) LABELLED "OPERMOD 6 OPERATIONAL MICRO
+       PROGRAM" INTO THE CONTROL UNIT AND LOCK.
+
+       4.   ASSURE  THE  "MODE"  SWITCH  IS  SET  TO  "CE   NORMAL"   AND   THE
+       "ENTER/DISPLAY" SWITCH IS SET TO "PROG.  DATA ENTER DSPL".
+
+       5.  TOGGLE THE "STOP/SI" SWITCH AND RESET SWITCH.
+
+       6.  TOGGLE THE "IMPL" SWITCH.  THE PROGRAM SHOULD LOAD NOW.
+
+
+       (((ERROR RECOVERY)))
+
+
+            The power light next to the "IMPL" switch should  flicker  on  then
+       off  again indicating that the load is good.  If the power light doesn't
+       go off go back to step  2.
+                                                                        Page 10
+DC 830 PROCEDURES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        Page 11
+DC 830 PROCEDURES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        Page 12
+MEMOREX 3670
+
+
+                          MEMOREX 3670 DISK PROCEDURE
+                          ------- ---- ---- ---------
+
+       To clear a solid select condition on a 3670 disk drive, power the  drive
+       off, then power back on.  It may also be helpful to 'pop the i.d.  plug'
+       on the drive to cause an interrupt.
+
+
+                      MEMOREX 3674 CONTROLLER PROCEDURES
+                      ------- ---- ---------- ----------
+
+                                     RESET
+                                     -----
+
+       If the disk problem is not indicated at a particular disk drive,  or  if
+       the   above  procedure  is  unsuccessful,  procede  to  reset  the  disk
+       controller as follows:
+
+            1) On the 3674, flip the 'FE-NORM' switch to 'FE';
+            2) Press the 'RESET-L.T.' switch;
+            3) Restore 'FE-NORM' to the 'NORM' position;
+
+
+                                    RE-IMPL
+                                    -------
+
+       If resetting the controller fails, procede to  IMPL  the  controller  as
+       follows:
+
+            1) At the top of  the  control  panel,  select  the  'F'  function;
+            record  the  address  bit  lights  for  this  function;  rotate the
+            display and record the 'D' function lights.
+            2) Flip the 'FE-NORMAL' switch to 'FE';
+            3) Hit the spring-loaded 'RESET-L.T.' switch;
+            4) Hit 'IMPL';
+            5) Wait for the IMPL  to  finish  then  flip  'FE-NORMAL'  back  to
+            'NORMAL'.
+
+       If the above procedures cause the machine check 'IMPL' light to come on,
+       it  may  be  helpful  to  open the side panel door on the controller and
+       wiggle the floppy disk drive door and then repeat the IMPL procedure.
+
+       Another approach involves powering off the  controller  from  the  front
+       panel switch then powering it back on.  this forces an automatic RE-IMPL
+       to occur.
+
+       If all else fails, record the 3674 address bits  of  function  'F'  (see
+       step  1 above) and call for Memorex Field Service.  Be sure to keep your
+       manager informed of the situation.
+                                                                        Page 13
+ERRCHK
+
+
+                   ERRCHK - CHECKING ERRORS ON SA-10 DEVICES
+                   -----------------------------------------
+
+       ((INTRODUCTION))
+
+       ERRCHK prints error information gathered by CHKPNT regarding  the  SA-10
+       DATA  CHANNEL  that  handles  the  transfer of data to and from the 'IBM
+       TYPE' disc and tape units and memory.
+
+       The Systems Concepts SA-10  IBM-TO-DEC  Subsystems  Adapter  connects  a
+       PDP-10  input-output  bus  and  memory bus and to any peripheral devices
+       which can be connected to a standard IBM  System-370  block  multiplexor
+       channel.   It  enables  the  PDP-10 to run these devices as if they were
+       connected to  a  standard  IBM  System/370  block  multiplexor  channel.
+       channel.   One SA-10 simiulates two or four channels.  To run the SA-10,
+       the PDP-10 program compiles a channel program which contains commands to
+       be  sent  to device controllers and pointers to data areas to be read or
+       written.  Then the PDP-10 starts up the SA-10 with  commands  sent  over
+       the  input-output  bus, whereupon the SA-10 proceeds to read the channel
+       program and transfer data  over  the  memory  bus  without  further  CPU
+       intervention  until  the  end  of  the channel program is reached, or an
+       error occurs, or one of the instructions in the channel program requests
+       that the CPU be interrupted.
+
+       ((COMMAND SUMMARY))
+
+       COMMANDS ARE:
+
+       QUIT    QUIT
+       ERROR   SET ERROR CONDITIONS DESIRED
+          ERROR        ALL
+          ERROR DPA3   ONLY DPA3
+          ERROR -DPA3  EXCLUDE DPA3
+          ERROR DP     ONLY DISC PACKS
+          ERROR DPA    ONLY PACKS ON CONTROLLER A
+          ERROR 4000   ONLY ERRORS WITH CONI BIT 4000
+          ERROR -4000  EXCLUDE ERRORS WITH CONI BIT 4000
+          ERROR HARD   ONLY HARD ERRORS
+          ERROR -HARD  INCLUDE BOTH HARD AND SOFT ERRORS
+          ERROR SHORT  ERRORS IN SHORT FORM (ACTUAL BITS)
+          ERROR -SHORT ERRORS IN LONG FORM (NAMES OF BITS)
+          ERROR SENSE  INCLUDE SENSE DATA IN ERROR PRINTOUT
+          ERROR -SENSE EXCLUDE SENSE DATA
+          ERROR ENVIRO INCLUDE ENVIRONMENTAL DATA IN PRINTOUT
+          ERROR -ENVIRO EXCLUDE ENVIRONMENTAL DATA
+          ERROR ALL    SAME AS JUST ERROR
+          ERROR -ALL   SUPPRESS ALL ERRORS (JUST SENSE AND ENVIRO IF ON)
+
+          MORE THAN ONE ERROR COMMAND MAY BE INCLUDED ON A SINGLE LINE
+          AS ERROR SENSE ENVIRO -FT -FH
+
+       CONTIG  START AND THE DATE AND TIME SPECIFIED AND REPEAT ERROR
+               REPORTING FOR EACH DATE THROUGH TODAY
+       ONEDAY  TURN OFF CONTIG MODE
+       SORT    SORT ERRORS BY DEVICE
+       UNSORT  SORT ERRORS BY TIME
+                                                                        Page 14
+ERRCHK
+
+
+       DATE    SET DATE AND PRINT DATA
+       START   SET STARTING TIME
+       STOP    SET ENDING TIME
+
+
+                                         NOTE
+
+           THE 'DATE' COMMAND MUST BE USED BEFORE ANY ERROR INFORMATION
+           WILL BE OUTPUT.
+
+
+       ((COMMAND DESCRIPTION))
+
+       BELOW IS A LIST OF COMMANDS WITH DESCRIPTION THAT IS OUTPUT WHEN  ERRCHK
+       IS RUN BY OPERATORS.
+
+       BP SENSE DATA:
+
+       IF THE SENSE DATA IS NOT ENVIRONMENTAL DATA IT WILL BE
+       PRINTED AS 24 BYTES (8 BIT)IN OCTAL.  THE BYTES WILL BE PRINTED
+       4 PER LINE SEPARATED BY COMMAS. THERE WILL BE A HEADING WITH
+       THE UNIT NAME AND LEGEND.
+
+       BP ENVIRONMENTAL DATA:
+
+       IF THE SENSE DATA FOR A 230 (3330) IS ENVIRONMENTAL DATA,
+       IT WILL BE PRINTED (USING THE 'ERR ENV' COMMAND) WITH THE TIME,
+       UNIT NAME AND ENVIRONMENTAL DATA.  A SAMPLE IS GIVEN BELOW:
+
+       1:12    BPA1 ENVIRONMENTAL DATA
+       CONTROL 2 DRIVE H
+       BYTES READ,SEARCHED 83,427,265
+       CORRECTABLE DATA CHECKS 0
+       RETRY DATA CHECKS 0
+       SEEKS 3,638
+       SEEK ERRORS 0
+       COMMAND OVERRUN INTERFACE A 0
+       DATA OVERRUN INTERFACE A 0
+       COMMAND OVERRUN INTERFACE B 0
+       DATA OVERRUN INTERFACE B 0
+
+       ((ERRORS))
+
+       ERRCHK WILL ALSO REPORT MAGTAPE ERRORS.  MAGTAPE ERRORS ALSO
+       HAVE A LONG AND A SHORT MODE.  IN THE SHORT FORM THE REPORT
+       CONSISTS OF:
+
+       ERRS     THE TOTAL NUMBER OF TAPE ERRORS
+       WRT      THE TOTAL NUMBER OF WRITE RETRYS
+       WRT OK   THE NUMBER OF TIMES WRITE RETRY WAS SUCCESSFUL
+       WRT FL   THE NUMBER OF TIMES WRITE RETRY FAILED
+       RD OK    THE NUMBER OF TIMES READ RETRY WAS SUCCESSFUL
+       RD FL    THE NUMBER OF TIMES READ RETRY FAILED
+       CONI     THE CONI BITS FOR THE LAST ERROR
+
+       IN LONG FORM ERRCHK REPORTS
+                                                                        Page 15
+ERRCHK
+
+
+       NUMBER OF ERRORS                SAME AS ERRS
+
+       WRITE RETRYS, NUMBER            SAME AS WRT
+        SUCCESSFUL                     SAME AS WRT
+        FAILED                         SAME AS WRT FL
+
+       READ RETRYS, NUMBER             RD OK+RD FL
+        SUCCESSFUL                     SAME AS RD OK
+        FAILED                         SAME AS RD FL
+
+       CONI                            (DEC 'CONDITIONS IN' WORD)
+        CONTROL WORD PARITY ERROR
+        NO SUCH MEMORY
+        DATA PARITY ERROR
+        UNIT HUNG
+        ILLEGAL
+        TAPE PARITY ERROR
+        END OF FILE
+        READ COMPARE ERROR
+        RECORD LENGTHS DIFFER
+        DATA LATE
+        BAD TAPE
+
+       FT ERRORS:
+
+       THE FORMAT FOR FT ERRORS IN SHORT FORM IS 
+
+       1:12 FTA3 WRT RT 2 WRT FL 1 RD RT 3 RD FL 2 HUNG 5
+       HARD CONI 123456
+       SOFT CONI 123456
+       HUNG CONI 23456 FUNCT 13
+
+       THE BITS IN THE CONI'S ARE LISTED IN THE MONITOR INFORMATION
+       FOR P022 AS IS THE HUNG FUNCTION (FUNCTION IN PROGRESS WHERE LAST
+       HUNG).  THE HUNG CONI IS FROM THE SA-10.  THE BITS ARE:
+
+       WRT RT  NUMBER OF WRITES WHICH NEEDED RETRY
+       WRT FL  NUMBER OF WRITES WHICH NEEDED RETRY AND FAILED
+       RD RT   NUMBER OF READS WHICH NEEDED RETRY
+       RD FL   NUMBER OF READS WHICH NEEDED RETRY AND RETRY FAILED
+       HUNG    NUMBER OF TIMES DEVICE WAS FOUND HUNG (NO RESPONSE)
+
+       ANY OF THESE FIELDS MAY BE OMITTED IF =0 OR NOT MEANINGFUL.
+       ALL COUNTS ARE INCREMENTAL (SINCE LAST ERROR REPORT).
+       IN LONG FORM THE INFORMATION IS:
+
+       1:12 FTA3
+       WRITE RETRYS, NUMBER 2
+               FAILED 1
+
+       READ RETRYS, NUMBER 3
+               FAILED 2
+
+       HARD CONI
+               <DATA FROM HARD CONI, SEE BELOW>
+                                                                        Page 16
+ERRCHK
+
+
+       SOFT CONI
+               <DATA FROM SOFT CONI, SEE BELOW>
+
+       TIMES HUNG 5
+               FUNCTION <FUNCTION>
+
+       SA-10 CONI
+               <CONI DATA FROM SA-10>
+
+       THE CONI BITS AND THEIR NAMES ARE:
+
+       1.      SELECT ERROR
+       2.      BUS IN PARITY ERROR
+       3.      CONTROL ERROR
+       4.      EQUIPMENT CHECK
+       5.      INTERVENTION REQUIRED
+       6.      COMMAND REJECT
+       7.      NOT CAPABLE
+       8.      BUSY
+       9.      CAN'T SENSE
+       10.     MEMORY ERROR
+       11.     BUS OUT CHECK
+       12.     OVERRUN
+       13.     DATA CHECK ON ERASE GAP
+       14.     DATA CHECK ON WRITE OR WRITE TAPE MARK
+       15.     DATA CHECK ON READ
+       16.     ID BURST CHECK
+
+       THE SA-10 CONI BITS ARE
+
+       18.     PI REQUEST
+       19.     PARITY ERROR
+       20.     NON-EXISTANT MEMORY
+       21.     INTERUPT ENABLE CHL 0
+       22.     INTERUPT ENABLE CHL 1
+       23.     INTERUPT ENABLE CHL 2
+       24.     INTERUPT ENABLE CHL 3
+       25.     GO CHL 0
+       26.     GO CHL 1
+       27.     GO CHL 2
+       28.     GO CHL 3
+       29.     STATUS CHL 0
+       30.     STATUS CHL 1
+       31.     STATUS CHL 2
+       32.     STATUS CHL 3
+
+       THE HUNG FUNCTIONS ARE:
+
+       0       UNKNOWN
+       1       REWIND
+       2       WRITE TAPE MARK
+       4       SKIP RECORD
+       5       REWIND AND UNLOAD
+       6       ERASE GAP
+       7       SKIP FILE
+       8       BACKSPACE FILE
+                                                                        Page 17
+ERRCHK
+
+
+       9       UGETF SENSE
+       10      READ
+       11      WRITE
+
+       IF ERR SENSE IS USED, THE SENSE DATA WILL BE PRINTED IN THE
+       SAME FORMAT AS FOR BP SENSE DATA
+
+       ERRCHK HAS BOTH A LONG AND A SHORT OUTPUT MODE.  THE SHORT
+       MODE IS THE SAME AS PREVIOUS VERSIONS OF ERRCHK. THE LONG MODE
+       ATTEMPTS TO CONVERT THE CONI AND DATAI BITS TO A READABLE SET
+       OF MESSAGES TAKING INTO ACCOUNT THE TYPE OF DEVICE. ERRCHK
+       IS NORMALLY IN LONG MODE.
+
+       ERRCHK RECOGNIZES THREE TYPES OF DEVICES IN LONG MODE
+
+       BP       AMPEX DM331, MEMOREX 3670, CALCOMP 230 OR IBM 3330
+       DP       CALCOMP 268 OR DEC RP03 OR DEC RP02
+       FH       DEC RM10B
+
+       THE MESSAGES WHICH MAY BE PRINTED FOR THE DIFFERENT DEVICES
+       ARE GIVEN BELOW. FOR AN EXPLANATION OF THEIR MEANING
+       SEE THE DEC HARDWARE MANUAL AND THE IBM 3330 MANUAL.
+
+       DISC (BP)
+        WRITE PROTECT ERROR
+        SELECT ERROR
+        CONTROL ERROR
+        LENGTH ERROR
+        EQUIPMENT CHECK
+        PERMANENT EQUIPMENT CHECK
+        UNIT EXCEPTION
+        ATTENTION FLAG
+        BUSY
+        COUNT ERROR
+        UNRECOVERABLE DATA CHECK
+        RECOVERABLE DATA CHECK
+        INVALID TRACK FORMAT
+        SEARCH ERROR
+        CORE PARITY ERROR
+        NO SUCH MEMORY
+        DATA LATE
+        UNKNOWN ERROR
+        PROTECTION FAILURE
+        BUS IN PARITY ERROR
+        BUS OUT PARITY ERROR
+        COMMAND REJECT
+       THE ABOVE FROM SENSE BYTE 0-3
+
+        CONTROL
+        DRIVE
+       THE ABOVE FROM SENSE BYTE 4
+
+       PROGRAM ERROR OR SYSTEM CHECK
+        NO MESSAGE
+        INVALID COMMAND
+        INVALID SEQUENCE
+                                                                        Page 18
+ERRCHK
+
+
+        CCW COUNT LESS THAN REQUIRED
+        DATA VALUE NOT AS REQUIRED
+        DIAGNOSTIC WRITE NOT PERMITTED
+        CHANNEL DISCONTINUED RETRY
+        CHANNEL RETURNED WITH INCORRECT RETRY CCW
+        23FD - NOT READY
+        23FD - HARD SEEK CHECK
+        23FD HARD READ CHECK
+        IMPROPER DEFFECTIVE TRACK POINTER
+        SERDES MALFUNCTION - NO ST 4'S
+        DIAGNOSTIC WRITE CONTROL CODE MISMATCH
+        CONTROL STORAGE BUSY WITH MICRODIAGNOSTIC
+        RETRY BYTE COUNT/SECTOR VALUE INCORRECT
+
+       DISC DRIVE EQUIPMENT CHECK
+        NO MESSAGE
+        SET TARGET ERROR
+        NOT USED
+        NO WRITE GATE AT DRIVE
+        NO WRITE CURRENT SENSE
+        TRANSMIT CYLINDER ERROR
+        TRANSMIT HEAD ERROR
+        TRANSMIT DIFFERENCE ERROR
+        FILE STATUS NOT AS EXPECTED
+        SEEK ERROR
+        SEEK INCOMPLETE ON RETRY
+        NO INTERRUPT FROM DRIVE
+
+       STORAGE CONTROL EQUIPMENT CHECK
+        NO MESSAGE
+        ECC P1 OR P3 COMPARE FAILURE
+        ECC P2 COMPARE FAILURE
+
+       DATA CHECK WITHOUT DISPLACEMENT
+        HA FIELD ECC UNCORRECTABLE
+        COUNT FIELD ECC UNCORRECTABLE
+        KEY FIELD ECC UNCORRECTABLE
+        DATA FIELD ECC UNCORRECTABLE
+        HA FIELD NO SYNC BYTE FOUND
+        COUNT FIELD NO SYNC BYTE FOUND
+        KEY FIELD NO SYNC BYTE FOUND
+        DATA FIELD NO SYNC BYTE FOUND
+        NOT USED
+        AM DETECTION FAILURE ON RETRY
+
+       DATA CHECK WITH DISPLACEMENT
+        HA FIELD CORRECTABLE
+        COUNT FIELD CORRECTABLE
+        KEY FIELD CORRECTABLE
+        DATA FIELD CORRECTABLE
+        NOT USED
+       THE ABOVE FROM SENSE BYTE 7
+
+        CYLINDER
+        HEAD
+        RECORD
+                                                                        Page 19
+ERRCHK
+
+
+       THE ABOVE FROM BLOCK NUMBER
+
+
+
+       ((SAMPLE RUN))
+
+       -R ERRCHK
+       "*"ERROR
+       "*"DATE
+
+       30-SEPT-76
+
+       1:45    BPA1(330100)    SDEV 1 SDAT 2
+               SOFT ERROR DATA
+                 COUNT ERROR
+                 RECOVERABLE DATA CHECK
+                 DATA CHECK WITH DISPLACEMENT
+                 DATA FIELD CORRECTABLE
+                 CYLINDER  599 HEAD  8 RECORD 10 CONTROL 0 DRIVE B
+               NUMBER OF RETRIES 1
+
+       1:50    FTA2
+               WRITE RETRYS, NUMBER 1 FAILED 0
+               SOFT CONI
+                 DATA CHECK ON WRITE OR WRITE TAPE MARK
+
+       2:51    BPA1(330100)    SDEV 1 
+               SOFT ERROR DATA
+                 EQUIPMENT CHECK
+                 COUNT ERROR
+                 DISC DRIVE EQUIPMENT CHECK
+                 NO MESSAGE
+                 CYLINDER    0 HEAD  7 RECORD 11 CONTROL 0 DRIVE B
+               NUMBER OF RETRIES 1
+
+       "*"START
+       "*"START 9/25
+       "*"CONTIG
+       "*"ERROR FT
+       "*"DATE
+
+       30-SEPT-76
+
+       1:50    FTA2
+               WRITE RETRYS, NUMBER 1 FAILED 0
+               SOFT CONI
+                 DATA CHECK ON WRITE OR WRITE TAPE MARK
+
+       "*"Q
+       EXIT
+       -
+                                                                        Page 20
+FILE SYSTEM
+
+
+                             TYMCOM-X FILE SYSTEM
+                              ------------------
+
+       The file system consists of a number of elements called  structures.   A
+       structure  is  the  smallest  self-contained element of the file system.
+       That is, all pointers contained in a structure point to places  in  that
+       structure.   Each  structure  has a name by which it is known.  There is
+       only one structure in the current TYMCOM-X file system.   It's  name  is
+       DSKB.   A  structure  is  composed of one or more physical units such as
+       BPA0, BPA4.  The smallest directly addressable element of a single  unit
+       is  the  page which contains 1000(8) words.  Each unit has a set of HOME
+       PAGES and a set of BAT PAGES.  There are two copies of each HOME or  BAT
+       page.   The  HOME  PAGES  are  located on Pages 1(8) and 4(8).  The HOME
+       PAGES give information about  the  unit  number  of  this  unit  in  the
+       structure, swapping space, etc.  The BAT PAGES are located on Pages 2(8)
+       and 5(8).  The BAT PAGES contain a list of all PAGES on the  unit  which
+       are known to be bad.
+
+           The basic element in a structure is a FILE.  A FILE consists of  one
+       or  more RIB (Retrieval Information Block) pages and some number of data
+       pages.  The data pages of a file contain only data.  The RIB page  of  a
+       file  contains  various  pieces  of  information about the file (such as
+       name, size, date created, etc) and pointers  to  either  data  pages  or
+       other  RIBS  which  at  some  level,  point  to  data pages.  The system
+       distinguishes between ordinary files and directories.   Directories  are
+       modified  only  by  the monitor and contain the information necessary to
+       associate a file name with a pointer to its RIB.  There is one directory
+       for  each  Project-Programmer  Number  (PPN).   There  is  a  one-to-one
+       correspondence between PPN'S and User Names.
+
+           Each structure contains a Master File  Directory  (MFD).   The  home
+       pages  on each unit in the structure contain information on the location
+       of the RIB for the MFD.  The  MFD  has  in  it  the  names  of  all  the
+       directories  in  the structure and pointers to their RIB'S.  The name of
+       the MFD is 1,1,UFD[1,1] (the name in octal  is  actually  000001000001).
+       The  directories  pointed to by the MFD are called User File Directories
+       (UFD'S).  A UFD always has the extension UFD and a  name  which  is  the
+       PPN.
+
+           Allocation of the pages on the structure is recorded in the  Storage
+       Allocation  Tables  (SAT'S).   The  only element of storage which may be
+       allocated is the PAGE.  The SAT pages are  all  contained  in  the  file
+       SAT.SYS[1,4].   In addition, the home pages contain a pointer to the RIB
+       for this file.
+                                                                        Page 21
+FILE SYSTEM
+
+
+       Below, a more detailed explanation of HOME PAGES, SAT PAGES,  STRUCTURE,
+       BAT PAGES and RIB PAGES is given:
+
+                              FILE SPECIFICATIONS
+                              -------------------
+
+           The basic unit of the file structure is a PAGE - 512 36  bit  words.
+       The  monitor  makes  some  attempt to have files pages contiguous but in
+       general,  a  file  gets  spread  across  all  units  in  the  structure.
+       Therefore,  if  one pack in the structure becomes damaged, we are forced
+       to assume that all files in the structure are lost.
+
+                                   STRUCTURE
+                                   ---------
+
+           A structure is a chain or linking of elements.  In the case of  DSKB
+       it  is  a  chain of PDP-10 System Packs, all members of the same family.
+       One pack belonging to DSKB points to the next member of DSKB  or  it  is
+       the  last  in  the  chain.  There is an active swapping list with a pack
+       that does swapping pointing to the next swapping  pack  until  the  last
+       pack in the active swapping list is encountered.
+
+                                  HOME PAGES
+                                  ----------
+
+           One HOME PAGE is 512 words or one page.   There  are  two  duplicate
+       copies  of  the home page on each PDP10 system pack.  The home pages are
+       located in the first and fourth physical page on every PDP10 pack.   The
+       following  information  is contained in the Home Page.  Each item is one
+       word or the Home Page.
+
+               1.  PACK I.D.
+
+               2.  NAME OF STRUCTURE (I.E. DSKB)
+
+               3.  LOGICAL UNIT IN STRUCTURE
+
+               4.  INDICATES THE NEXT LOGICAL UNIT OR CONTAINS A -1 IF
+                   ITS THE LAST PACK IN THE STRUCTURE
+
+               5.  PACKCOPY DATE
+
+               6.  INDICATES IF THE PACK IS IN THE SWAPPING LIST,
+
+               7.  IF IN THE SWAPPING LIST, HOW MUCH SWAP SPACE
+
+               8.  STARTING ADDRESS OF SWAPPING SPACE
+
+               9.  LOGICAL UNIT IS FOR SWAPPING ONLY
+
+               10.  INDICATES NEXT LOGICAL UNIT IN SWAPPING LIST OR
+                    HAS A -1 IF IT IS LAST ONE
+
+               11.  POINTS TO STARTING ADDRESS OF MFD RIB
+
+               12.  POINTS TO SAT PAGE
+                                                                        Page 22
+FILE SYSTEM
+
+
+       Most of the information in the home page is  created  in  the  following
+       manner:
+
+               1.  INITIALIZING A PACK WITH PAKCOP TO CREATE HOME PAGES
+                   WITH ZEROS
+
+               2.  SETTING SYSTEM PARAMETERS WITH REFRESH AND BY
+                   CHANGING SPECIFIC ITEMS WITH ONCE ONLY COMMANDS
+
+       During a packcopy only the PACK ID and the COPY DATE get  changed.   The
+       rest of the home page remains the same.
+
+                                   SAT PAGES
+                                   ---------
+
+           Storage allocation table.  Currently, there are three SAT pages  per
+       pack  but as many as necessary may be utilized in the file system.  Each
+       contains a map of storage in use and not in use on that pack.  There  is
+       one  bit assigned to each page.  If the bit is on (set to 1) the page in
+       question is in 'free storage' (that is,  is  not  currently  in  use  by
+       another file).
+
+                                   BAT PAGE
+                                   --------
+
+           Bad allocation table.  This is one page  on  each  PDP  system  pack
+       which  contains  an  entry  for  each  bad page on that pack giving it's
+       address along with other information.  This information is  utilized  by
+       the  PAKCOP  program  for  purposes  of determining where alternate pack
+       tracks might be advantageous.
+
+                                   RIB PAGE
+                                   --------
+
+           Retrieval information block.  Each RIB Page consists  of  512  words
+       containing  information  about one PDP file.  Every PDP file requires at
+       least one RIB pointing to it.   The  example  below  shows  a  RIB.   It
+       contains  a  header and other information concerning the logical address
+       of each page of the file in question or else where the  next  additional
+       (spare)  RIB of the file can be located.  If the whole file is less than
+       500 pages in length, the  information  in  the  first  (prime)  RIB  can
+       contain  all  the necessary logical addresses to access all the pages of
+       the file.  For larger files, it will be necessary for at least  part  of
+       the  prime RIB to point to an additional level (or levels) of spare RIBS
+       to obtain the desired data page address.  Information within  the  prime
+       RIB  indicates  how many levels of additional RIBS are in effect for the
+       specified file so that searches in the 'tree structure' of the RIBS  for
+       the file's page addresses is facilitated.  The theoretical number of RIB
+       levels in a given 'tree' is unlimited and the maximum file size is 2  to
+       the 36th power words (a very gargantuan file indeed!)
+                                                                        Page 23
+FILE SYSTEM
+
+
+                             SAMPLE PRIME RIB PAGE
+
+                                               RIB PAGE
+                                         --------------------
+           EACH LINE = 1 WORD            :    FILENAME      :
+                                         --------------------
+           MAX SIZE = 512 WORDS          : EXTENSION:   0   :
+                                         --------------------
+           NUMBER OF RIB LEVELS          : PTR. TO SPARE RIB:
+               INCLUDED IN HEADER        --------------------
+                                         :   ETC.   :   ETC :
+                                         --------------------
+                                         :          :       :
+                                         --------------------
+                                         : PTR. TO DATA PG. :
+                                         --------------------
+                                         :   ETC    :   ETC :
+                                         --------------------
+
+
+
+                              SYSTEM FILE LOOKUP
+                              ------------------
+
+           The TYMCOM-X system has to go through  several  links  to  access  a
+       specified  file.   The  diagram on the next page indicates how the chain
+       works.
+                                                                        Page 24
+FIGURE 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        Page 25
+DSKCLN
+
+
+                                    DSKCLN
+                                    ------
+
+
+       ((INTRODUCTION))
+
+            The purpose of running DSKCLN on the TYMCOM-X is to verify that the
+       file  system  has not been damaged by hardware or software problems;  If
+       it has, DSKCLN will assess and possibly cleanup the damage.   DSKCLN  is
+       one of the jobs which run automatically if Sense Switch 4 on the console
+       is off or, if SSW4 is on and the operator types "go" in ONCE ONLY  code.
+       If,  however,  the operator has SSW4 on and types "readonly" then DSKCLN
+       will have to be run by the operator as described in the summary below.
+
+            There are three DSKCLN run modes, each requiring different  amounts
+       of  runtime  and  each  checking  different extents of the mounted files
+       structure:
+
+          DSKCLN MODE     ACTION PERFORMED
+          -----------     ----------------
+
+          FULL            CHECKS CONSISTANCY OF ALL RIBS AND SATS
+                          IN ENTIRE FILE SYSTEM; MOST TIME CONSUMING.
+
+          FAST            CHECKS CONSISTANCY OF RIBS AND SATS FOR
+                          ONLY FILES THAT WERE BEING ALLOCATED STORAGE
+                          AT THE TIME OF THE SYSTEM CRASH. RUNS FASTER.
+
+          NONE            SELDOM USED, VERY RAPID MODE IN WHICH THE
+                          FILE STRUCTURE IS NOT CHECKED AT ALL.
+
+       In monitor versions P034/E and beyond, a version of DSKCLN  is  able  to
+       determine the cause of downtime and generally, cause the correct mode of
+       DSKCLN to occur automatically during the next system bringup.
+
+            If this information is not communicated automatically, upon  system
+       bringup  you  will  receive  a message that 'DSKCLN MODE IS NULL'.  This
+       will be followed by a prompt to enter the 'DSKCLN TYPE  DESIRED:'.   The
+       table below describes guidelines for responding:
+
+          CRASH SITUATION                         ANSWER WITH
+          ---------------                         -----------
+
+          SUCCESSFUL SHUTDOWN WITH TAKEIT         FAST
+          AND SYS BROUGHT RIGHT BACK UP
+
+          MEMORY PARITY CRASH                     FAST
+
+          PROCESSOR HUNG                          FAST
+
+          MESSAGE ON KL CTY                       FAST
+          'KL FATAL PROCESSOR ERROR'
+
+          BOOTS OR BASE INITIATED CRASH           FULL
+          WITHOUT OTHER ERROR MESSAGE
+                                                                        Page 26
+DSKCLN
+
+
+          MESSAGE ON CTY                          FULL (AFTER
+          'SEVERE ERR ENCOUNTERED                 HARDWARE IS
+           HARDWARE SUSPECT'                      CHECKED/FIXED)
+
+          MESSAGE ON CTY REGARDING                FULL
+          DISK ERRORS
+
+          HARDWARE MAINTENANCE                    FULL
+
+          ANY COMPONENT POWERED DOWN              FULL
+
+          OPERATING SYSTEM DEVELOPMENT            FULL (UNLESS
+                                                  DIRECTED OTHERWISE)
+
+          OTHER DOWNTIME                          FULL
+
+            Beyond this, consult with your  lead  or  supervisor  if  you  have
+       questions  about  which  mode of DSKCLN to run.  When in doubt, run FULL
+       mode DSKCLN.
+
+
+       ((COMMAND SUMMARY))
+
+            If 'fix-it' DSKCLN must be run manually, it will  use  the  default
+       mode  (FULL  FAST  OR  NONE)  as  determined  by the monitor (P034/E and
+       above).  If this automatic mode selection  is  not  appropriate,  inform
+       your   shift   leader   who  will  have  to  contact  operating  systems
+       programming.  They will use a 'ONCE ONLY' FILES  dialog  to  change  the
+       mode  for  the  manual  DSKCLN.   Once this has been done, the following
+       steps must be taken:
+
+       1.     READ IN MONITOR WITH SSW4 SET;
+       2.     TYPE READONLY(CR) WITHIN ONCE CODE;
+       3.     LOGIN OVER THE SHUT AND SET OP LICENCE;
+       4.     SET OPR:;
+       5.     SET SCHED 600000 FOR CORRECTIVE ACTION BY DSKCLN;
+       6.     TYPE R DSKCLN.
+       7.     WHEN DSKCLN FINISHES, CHANGE SCHED TO 400000 AND
+              LOGOUT. THIS WILL PREVENT CRASHES CAUSED BY SYSTEM
+              STATE FOLLOWING THE DSKCLN RUN.
+
+            If 'check-only' DSKCLN is to run, SCHED must NOT be 600000.  follow
+       these steps:
+
+       1.      SET OP AND WF LICENCE;
+       2.      MAKE THE LINE PRINTER READY OR ASSIGN TTY LPT
+       3.      TYPE 'R DSKCLN(CR)'
+       4.      WHEN THE PROGRAM PROMPTS FOR 'DSKB MODE CODE, ENTER
+               1 FOR FAST MODE AND 7 FOR FULL MODE.
+                                                                        Page 27
+DSKCLN
+
+
+       ((COMMAND DESCRIPTION))
+
+            DSKCLN will run in either of two forms:  If SCHED  is  not  set  to
+       600000 (supershut), the program will just check for and report problems;
+       but if the program is run while SCHED is set to 600000 (as it is  during
+       system  bringup)  DSKCLN will attempt to both report and correct errors.
+       For both situations, the program can be run in any one of  three  modes:
+       FULL (code 7), FAST (code 1) or NONE (code 0).
+
+            If the program runs in 'NONE' mode, it assumes the  file  structure
+       needs no analysis.  For FAST and FULL mode runs, DSKCLN runs as follows:
+       First the program determines the logical units  in  the  structure  DSKB
+       assigned  by  the  ONCE  ONLY  code (eg.  dskb0, dskb1).  Next, based on
+       information in the HOM pages of these units, it  checks  the  number  of
+       pages  on  each  unit  and  various SATS (Storage Allocation Tables) for
+       consistancy.  From the HOM pages, the program determines  the  Retrieval
+       Information  Block  (RIB)  address  of  the Master File Directory (MFD).
+       From the MFD, it next reads the User File Directory (UFD) for each  file
+       and  finally,  examines  each file.  If FAST mode is running, only files
+       that have recently been involved in storage allocation are checked;  for
+       FULL mode, all files in the mounted disk structure are checked.
+
+            If DSKCLN is run in 'check-only' form, files are  checked  and  any
+       errors  indicated  to  the  device  LPT.  If DSKCLN is being run in this
+       form, be sure the printer is online  or  else  assign  the  terminal  to
+       device  LPT:.   Be  aware  that  some  of the error messages reported by
+       'check-only' DSKCLN migh be inaccurate if more than one job  is  running
+       on the system when you run the program.
+
+            When DSKCLN is in the normal 'fix it' form,  it  makes  a  pass  (2
+       passes  for  multiple  use errors) through the disc, generates a list of
+       all errors which it couldn't fix and rebuilds the SATS.  Whenever DSKCLN
+       detects  damaged files, it reports its findings on the console teletype.
+       A  copy  of  what  is  printed  is  also  written  to  a   file   called
+       (SYS)RECOV.SYS.
+
+            If the bad file is a critical one  (SAT.SYS,SWAP.SYS,  etc)  DSKCLN
+       prints  an error message saying to not bring the system up.  An analysis
+       of the SAT images also determines the existence of FREE pages (that  is,
+       available  pages  not  currently  used  by  any  file),  LOST pages, and
+       MULTIPLE USE pages.  These last two types of pages are described in  the
+       ERRORS section of this document.
+
+            In order to catch any DSKCLN messages, you  should  check  the  CTY
+       whenever the system comes up or whenever you get the message "OPR MSG ON
+       CONSOLE TTY" on the SUPCHK logger or "MESSAGE ON  CONSOLE  TELETYPE"  on
+       the OPR terminal.  Then do a SET HAPPY.
+                                                                        Page 28
+DSKCLN
+
+
+       ((SAMPLE RUN))
+
+            (See the introduction and command summary for the procedure outline
+       on manual DSKCLN.)
+
+
+       ((ERRORS AND RECOVERIES))
+
+
+            As mentioned above, the various SAT'S on the system keep  track  of
+       all  pages  that are either free for future storage or already in use by
+       some file.  Under certain rare types of  crashes  there  could  be  some
+       inconsistancy in this regard.
+
+            If a file had just used a previously free page but the monitor  was
+       unable to update the relevant SAT prior to the crash, the pages involved
+       are in danger of being incorrectly listed as free even though some  file
+       is  making  use  of  them.   The problem that could result is that other
+       files might be allowed to use those pages.  Such a  use  conflicts  with
+       prior file usage.  This is a MULTIPLE USE error.
+
+            Another inconsistancy possible if the SAT is not updated is when  a
+       file  is deleted, but this is not reflected in the relevant SAT prior to
+       a crash.  In this case the SAT would have a LOST PAGE error:   That  is,
+       the  page(s) would be marked in use but there would be no file using it.
+       This type of error is less serious than the MULIPLE USE problem  because
+       only storage space, not file data, is lost.
+
+            The DSKCLN messages usually list files that "HAVE LOST  DATA".   In
+       this situation, DSKCLN has deleted some part of the file(s) or there was
+       a bad RIB pointer.  These files should be restored  from  tape  and  the
+       users sent mail that:
+
+       "THE DISC ASSESSMENT PROGRAM HAS REPORTED THAT YOUR  FILE  NAME.EXT  WAS
+       BAD AND WE HAVE RESTORED IT FROM THE MONTH/DAY BACKUP." 
+
+       If the file belonged to an accounting directory  notify  the  accounting
+       group;   if  it  belonged to (SYS) or (UPL) or a similar directory, send
+       mail to username (WRS) on C37 or C33.
+
+            PDPPSP checks for the existence of a  file  called  (SYS)RECOV.SYS.
+       If  such  a  file exists, it reports "DISC DAMAGE REPORT", a copy of the
+       output to the CTY by DSKCLN.  If this contains a  list  of  files  which
+       have  lost  data,  the file should always be deleted once the files have
+       been restored.
+                                                                        Page 29
+DSKCLN
+
+
+       Possible ERROR messages are:
+
+            ONLY MINOR ERRORS DETECTED.  OK TO BRING SYSTEM UP FOR
+            USERS.
+
+            ERRORS DETECTED WHICH MAY BE SERIOUS TO
+            INDIVIDUAL USERS.  SHOULD NOT KILL SYSTEM.
+
+            ERRORS DETECTED WHICH MAY CAUSE SYSTEM CRASHES.
+            SUGGEST FIXING ERRORS BEFORE BRINGING SYSTEM
+            UP FOR USERS.
+
+            ERRORS DETECTED WHICH MAY CAUSE SEVERE DISC
+            GARBAGING.  DO NOT BRING SYSTEM UP FOR USERS
+            UNTIL ERRORS ARE FIXED.
+                                                                        Page 30
+INDEX
+
+
+                                     INDEX
+                                     -----
+
+       DC 830 PROCEDURES . . . . . . . . .  8
+       DC830 CONTROL UNIT  . . . . . . . .  10
+       DC830 PROBLEM FLOW CHART  . . . . .  11
+       DISC CONFIGURATION FIGURE 3 . . . .  7
+       DISC INTRODUCTION . . . . . . . . .  3
+       DISC PACK FIGURE 1  . . . . . . . .  5
+       DISC PACK FIGURE 2  . . . . . . . .  6
+       DSKCLN  . . . . . . . . . . . . . .  25
+       DSKCLN COMMAND DESCRIPTION  . . . .  27
+       DSKCLN COMMAND SUMMARY  . . . . . .  26
+       DSKCLN ERRORS AND RECOVERIES  . . .  28
+       DSKCLN INTRODUCTION . . . . . . . .  25
+       DSKCLN SAMPLE RUN . . . . . . . . .  28
+
+       ERRCHK  . . . . . . . . . . . . . .  13
+       ERRCHK COMMAND DESCRIPTION  . . . .  14
+       ERRCHK COMMAND SUMMARY  . . . . . .  13
+       ERRCHK INTRODUCTION . . . . . . . .  13
+       ERRCHK MAGTAPE ERRORS . . . . . . .  14
+       ERRCHK SAMPLE RUN . . . . . . . . .  19
+
+       FILE SYSTEM . . . . . . . . . . . .  20
+       FILE SYSTEM BAT PAGES . . . . . . .  22
+       FILE SYSTEM FIGURE 1  . . . . . . .  24
+       FILE SYSTEM FILE LOOKUP . . . . . .  23
+       FILE SYSTEM FILE SPECIFICATIONS . .  21
+       FILE SYSTEM FILE STRUCTURE  . . . .  21
+       FILE SYSTEM HOME PAGES  . . . . . .  21
+       FILE SYSTEM RIB PAGES . . . . . . .  22
+       FILE SYSTEM SAT PAGES . . . . . . .  22
+
+       INDEX . . . . . . . . . . . . . . .  30
+
+       MEMOREX 3674 PROCEDURE  . . . . . .  12
+
+       TABLE OF CONTENTS . . . . . . . . .  2
+
+    ]@ ê
