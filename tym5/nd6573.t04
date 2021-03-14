@@ -1,0 +1,70 @@
+::**********************************************************************
+::  DATE WRITTEN:  26 JULY 1988 DD/SWTS
+::
+::      CUSTOMER:     CCH COMPUTAX
+::      CONTACT:      BILL DAVID - 213-335-5360 OR 213-640-3270 X 5345
+::      
+::      NODE          6573
+::      KERNEL:       2826
+::      HOST:         6932
+::      SLOT:          04
+::
+::      INTERFACE:    XCOM
+::      VERSION:      4.03
+::
+::      HOST TYPE:    IBM 3081
+::      FRONT END:    COMTEN
+::      TECHNICAL REP:  DORIS DEATRICK/SWTS
+::**********************************************************************
+::>>>>>>>>>>>>>>>>>>>>>>>>>REVISION HISTORY<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+:: 21 Jun 83 - Add patch to avoid reset upon q-bit violation from host
+::             Kf/Swts
+:: 03 JAN 85 - TO UPGRADE THIS CUSTOMER TO VERSION 2.02  TN/SWTS.
+:: 13 MAY 86   UPGRADED TO XCOM 3.01   MW/SWTS
+:: 16 JAN 87   ADDED XOMUSERNAME(OMNC) FOR NETWORK CONSOLE'S ABILITY, AN-D/SWTS
+:: 19 NOV 87   ADDED (JLUCAS)SIOCHK.301 TO AVOID SPURIOUS RESETTING OF LINK
+::             BY INVALID SIO ERROR STATUS.  DD/SWTS
+:: 24 NOV 87   CHANGED PATCH (JLUCAS)SIOCHK.301 TO (QSATS)XCOM03.PCT - SAME
+::              PATCH - SAME CHECKSUM - TO CONFORM TO STANDARDS.  DORIS/SWTS
+:: 01 JUN 88   COSMETICS.  CHANGED TCLASS FROM 1200 TO 9600. ADDED DEFAULTS
+::             TO AID IN TROUBLESHOOTING.  DORIS/SWTS
+:: 26 JUL 88   CHANGED PATCH (QSATS)XCOM03.PCT TO (XCOMPAT)SIOCHK.301 TO
+::             CONFORM WITH STANDARDS. NEW INTERFACE FOR CUST MOVE. DORIS/SWTS
+:: 16 SEP 88   CHANGED CLDADR FROM 310600693200,00 TO 31060069320000
+::             CUSTOMER NEEDS TO SEE LAST TWO DIGITS AS ZEROES. CBK/WTSSF
+:: 23 OCT 89   UPGRADED TO VERSION 4.03     MAHA/SWTS
+:: 23 OCT 89   DELETED SIOCHK.301 - IT HAS BEEN INCORPORATED IN THE
+::             XCOM04.R03 SOURCE FILE.      MAHA/SWTS
+:: 23 OCT 89   ADDED CADDR.403              MAHA/SWTS
+::**********************************************************************
+SEECON(3)                                   :PRINT ENTIRE GEN
+PROTOCOL(X.25,HDLC,LAPB)                    :LINK LEVEL PROTOCOL
+DPORTS(50)                                  :50 CHANNELS ASSIGNED
+HOSTLINKS(6932,0)                           :HOST # FOR LINK 0
+LINKS(0)                                    :ONLY 1 LINK
+HIHOST(99999)                               :FOR OUTBOUND CALLS
+PSADR(03,01)                                :TYMNET IS DCE
+K(7)                                        :FRAME WINDOW = 7
+N2(10)                                      :FRAME RETRANSMISSIONS
+T1(30)                                      :3 SECS BTW RETRANSMISSIONS
+FRMOPT(-FM128)                              :FRAME MODULO 8
+TCNL(1,50)                                  :50 TWO-WAY CHANNELS
+PKTOPT(+IPRNR,+TKSUP,-PM128,-HILCN)         :SUPPRESS RNR'S FROM INTERFACE
+                                            :PACKET MODULO 8
+                                            :ASSIGN FROM LOW VALUES
+                                            :TALK TO SUP
+PWIND(2,2,-NEGOTIATION)                     :PKTWINDOW = 2 W/O NEGOTIATION
+PSIZE(128,128,-NEGOTIATION)                 :PACKET SIZE IS 128
+TCLASS(10,10,-NEGOTIATION)                  :THRUPUT CLASS IS 9600 BAUD
+PADFORWARD(126,126)                         :FORWARD ON DEFAULT
+PADIDLE(20,20)                              :FWD PKT ON 1 SEC IDLE
+PADBREAK(2)                                 :SEND INTERRUPT PACKET AT BREAK
+ECHOAB(0-7F)                                :ECHO ON DEFAULT
+INPARITY(SAVE)                              :LEAVE PARITY AS IS ON ALL
+XOMHOST(6932)                               :HOST NUMBER FOR XOM
+ILRR(3)
+CUDUSERNAME(-2)
+ECHOABLE(00-7F)
+XOMUSERNAME(ISISTECH)
+XOMUSERNAME(OMNC)
+CLDADR(31060069320000,,,PKTCLD)
