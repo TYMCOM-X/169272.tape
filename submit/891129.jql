@@ -1,0 +1,37 @@
+00:00:28 S 29-Nov-89
+02:15:03 S -S- stream #2 Req #7985 DSK:(KS2020)RDIST.LOG=DSK:(KS2020)RDIST.CTL
+02:15:07 P Stream #2 Req #7985 DSK:(KS2020)RDIST.LOG=DSK:(KS2020)RDIST.CTL
+02:42:29 P Stream #2 Req #7985 * completed *
+02:42:32 S -R- stream #2 Done-End <0>
+03:00:27 S 29-Nov-89
+04:00:03 S -S- stream #2 Req #7964 DSK:(M33)RDIST.LOG=DSK:(M33)RDIST.CTL
+04:00:06 P Stream #2 Req #7964 DSK:(M33)RDIST.LOG=DSK:(M33)RDIST.CTL
+04:52:41 P Stream #2 Req #7964 * completed *
+04:52:42 S -R- stream #2 Done-End <0>
+06:00:27 S 29-Nov-89
+08:45:02 S -S- stream #2 Req #7989 DSK:(JMS)SZRPTX.LOG=DSK:(JMS)SZRPTX.CTL
+08:45:03 P Stream #2 Req #7989 DSK:(JMS)SZRPTX.LOG=DSK:(JMS)SZRPTX.CTL
+08:51:47 P Stream #2 Req #7989 * completed *
+08:51:51 S -R- stream #2 Done-End <0>
+09:00:30 S 29-Nov-89
+09:05:07 S -R- stream #1 Abort-Notice <0>
+09:05:08 P Stream #1 Req #7982 * aborted - halted by operator at line 7 *
+09:05:13 P Signing off.
+09:05:13 S 29-Nov-89 Signing off.
+14:05:42 S ** 29-Nov-89 XEXEC %1(215) in frame 5 ** user PERPOPER **
+14:05:42 S -S- run #1 job 9 Req #0 :()
+14:05:42 S -S- stream #1 Req #7990 DSK:(DIAG10F)STARTU.TMP=DSK:(DIAG10F)STARTU.SYS
+14:05:48 S Processor status JSU EXECX Setup in frame 6
+14:05:48 P Waiting for interlock
+14:05:49 P Got interlock
+14:05:50 P EXECX Job Processor %1(226) starting in frame 6
+14:05:50 P Stream #1 Req #7990 DSK:(DIAG10F)STARTU.TMP=DSK:(DIAG10F)STARTU.SYS
+14:05:50 S Starting job processor in frame 6
+14:06:50 S 29-Nov-89
+14:07:44 P Stream #1 Req #7990 * completed *
+14:07:49 S -R- stream #1 Done-End <0>
+14:22:50 P Signing off.
+15:00:51 S 29-Nov-89
+18:00:51 S 29-Nov-89
+21:00:51 S 29-Nov-89
+00:00:51 S 30-Nov-89
