@@ -1,0 +1,2140 @@
+
+
+
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        $$$$                        $$$$
+       $$$$                          $$$$
+       $$$$                          $$$$
+       $$$$$                        $$$$$  TYMNET AND THE TYMCOM-X
+       $$$$$$                      $$$$$$
+       $$$$$$                      $$$$$$  OPERATIONS MINI-MANUAL #4
+       $$$$$$                      $$$$$$
+       $$$$$$$                    $$$$$$$  REPRINTED MAY 1981
+       $$$$$$$                    $$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$  WESTERN COMPUTER OPERATIONS
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$  TYMSHARE COMPUTER MANAGEMENT
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$           SERVICES
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$  
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$
+       $$$$$$$$$$$     ::     $$$$$$$$$$$              
+       $$$$$$$$$$$     ::     $$$$$$$$$$$              
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$       ::       $$$$$$$$$
+       $$$$$$$$$      ::::      $$$$$$$$$
+       $$$$$$$$      ::::::      $$$$$$$$
+       $$$$$$$$     ::::::::     $$$$$$$$      
+       $$$$$$$     ::::::::::     $$$$$$$  REPLACES MINI-MANUAL #4
+       $$$$$$$    ::::::::::::    $$$$$$$  
+       $$$$$$    ::::::::::::::    $$$$$$  DATED JUNE 1978
+       $$$$$$   ::::::::::::::::   $$$$$$  
+       $$$$$   ::::::::::::::::::   $$$$$
+       $$$$$  ::::::::::::::::::::  $$$$$
+       $$$$  ::::::::::::::::::::::  $$$$
+        $$$$::::::::::::::::::::::::$$$$
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                                                                         Page 2
+TABLE OF CONTENTS
+
+
+                             ((TABLE OF CONTENTS))
+
+               INTRODUCTION TO TYMNET                  3
+                       NETWORK DEVELOPMENT             4
+                       ESTABLISHING A CONNECTION       4
+                       LOGIN ERROR MESSAGES            6
+                       SUPERVISORY TAKEOVER            7
+                       GENERAL NET SCHEMATIC           9
+                       TYMNET IN ACTION                10
+                       SAMPLE TYMNET MAP               11
+                       MAP KEY                         12
+
+               BASE CRASHES AND RECOVERIES             13
+                       COMMAND SUMMARY                 14
+                       COMMAND DESCRIPTION             15
+                       BASE CONSOLE DIAGRAM            17
+                       BASECODE RESTART                18
+                       LINE TABLE FOR DOWNSTREAM LOAD  19
+                       ERRORS AND BOOTSTRAP RELOAD     20
+                       BOOTSTRAP CHECKING              21
+                       CHANGING BOOTSTRAP ENTRIES      22
+
+               PROBE - NETWORK CHECKING                23
+                       STARTUP AND COMMAND MODE        24
+                       INFORMATION COMMANDS            25
+                       TYMNET STATUS COMMANDS          26
+                       NODE STATUS COMMANDS            27
+                       LOGGER EXTRACT COMMANDS         29
+                       SAMPLE RUNS                     30
+                       ERROR RECOVERY                  31
+
+               TELECOPY - MOVING FILES OVER TYMNET     32
+                       COMMAND SUMMARY                 33
+                       COMMAND DESCRIPTION             39
+                       TYMCOM-IX SPECIFICS             41
+                       TYMCOM-X SPECIFICS              42
+                       TYMCOM-370 SPECIFICS            42
+                       TELECOPY COMMANDS FILES         43
+                       SAMPLE RUNS                     44
+                       ERROR RECOVERY                  46
+
+               ALPHABETICAL INDEX                      47
+                                                                         Page 3
+INTRODUCTION TO TYMNET
+
+
+                           AN INTRODUCTION TO TYMNET
+                           -- ------------ -- ------
+
+            TYMNET is a geographically distributed  virtual  circuit  switching
+       computer network.  Circuit switching involves the dicipline of utilizing
+       preestablished phone line routes  between  each  entry  point  and  each
+       computer host.  If any path blockage, deterioration of signal quality or
+       overload condition develops along this 'preferred  route'  an  alternate
+       phone  line path for subsequent traffic can be automatically substituted
+       by the centralized network control supervisor.  This is possible because
+       the  geographical  distribution  of  the network uses an 'expanded ring'
+       structure:  there are two (or more) possible paths to  route  data  from
+       any point in the net to any destination computer.
+
+            Since TYMNET became fully operational in 1971, it has expanded  and
+       evolved   into   an   international  data  communications  network  with
+       considerable scope and flexibility.  The principle use  of  the  network
+       has been providing users with timesharing services and applications.  It
+       is therefore  organized  around  a  'terminal  to  computer'  technology
+       involving  low  speed,  full  duplex,  voice grade communications lines.
+       TYMNET nulifies any geographical distances  between  the  user  and  the
+       user's  data.   In  fact,  the  geographical location of the user's data
+       becomes irrelevant once the user dials a local rotor number and accesses
+       the  net.   An additional advantage of this geographical distribution is
+       the ability to level  usage  loads  across  time  zones:   for  example,
+       daytime  European users can take advantage of the light loads that exist
+       at night on California computers.
+
+            TYMNET also insulates the user from phoneline  errors  by  checking
+       all  data packets each time the data is passed from one point to another
+       along a given route.  If this checksum indicates an  error,  the  'store
+       and  forward'  of the data is deferred until an automatic retransmission
+       of correct data is performed.
+
+            The ability to accomodate a variety of users requires  that  TYMNET
+       be  able  to  understand  a wide variety of terminal types.  The network
+       accomplishes this at the entry points into TYMNET.  Once  the  user  has
+       entered  the  network,  the  local  minicomputer (remote or Tymsat), the
+       system prompts for a terminal identifier.  This identifier sets  up  all
+       the  parameters  which allow the terminal to understand the net and vice
+       versa.
+
+            TYMNET also has a 'computer to computer' capability  so  that  data
+       and  computing  can  be  dispersed throughout the network.  This enables
+       remote job entry and distributed processing.   For  example,  local  tax
+       return  data  can  be  entered  into  regional  batch computers and then
+       transmitted over the network to  large  scale  systems  where  the  main
+       processing can be accomplished.
+
+            Still another way to use TYMNET is for a client organization to use
+       only  the  network  to interconnect terminals and computers owned by the
+       client.  This saves the client the cost and effort  of  setting  up  and
+       maintaining  a separate network.  This illustrates how TYMNET is a 'VAN'
+       - Value Added Network.
+                                                                         Page 4
+TYMNET DEVELOPMENT
+
+
+                              TYMNET DEVELOPMENT
+
+            In 1969, a centrally directed network of Varian 620  mini-computers
+       was developed by Tymshare.  When the network became fully operational in
+       1971 it consisted of 30 nodes and a central supervisor  (with  3  backup
+       supervisors)  that  ran  on an SDS 940 computer system.  The network has
+       since undergone a prolonged evolution and has grown to over  300  NODES.
+       These  nodes connect 90 domestic and international cities utilizing over
+       50,000 miles  of  leased  telephone  lines,  including  two  independent
+       trans-Atlantic  cables  and  a  trans-Pacific  ca  Over  4000 users
+       perform a wide range of data processing activies on 95 large scale  host
+       computers  tied  into  Tymnet.  The nodes (or TYMSATS) are equipped with
+       hardware to handle up to 32 or 64 asynchronous low speed  ports  (110  -
+       1200  baud)  and  up  to  12  synchronous ports (2400 - 9600 baud) and 4
+       bisynchronous ports (2400 to 4800 baud).  Connected to the  asynchronous
+       ports  are  either  Bell 103/113 modems or Tymshare's equivalent MARK XV
+       modems.  The TYMSATS are connected  using  Bell  long  Lines  with  Bell
+       (201C,  202,  208,  209,  212, Bell's D.D.S.  service) and Vadic modems.
+       Virtually every TYMSAT is connected with multiple phone lines permitting
+       alternate  routing capability.  Routing within the nodes is done through
+       routing tables called permuter tables.
+
+            Tymnet technology is  moving  into  several  new  areas:   A  major
+       message  switching  system called ONTYME has been implemented to provide
+       mail storage and forwarding to a variety of  user  groups;   Design  and
+       production  of a powerful network mini-computer called the TYMNET ENGINE
+       is underway to assume a major  role  in  supervisor  and  node  hardware
+       requirements of the future.
+
+                           ESTABLISHING A CONNECTION
+
+                A user connects his/her terminal to a host on  the  network  by
+       dialing  a  local  node.   After  typing a character to identify his/her
+       terminal characteristics, the user enters his/her user name, host number
+       and  password.   This  information  is  sent,  by the local node, to the
+       network supervisor.  The supervisor verifies  the  user's  name  in  the
+       Master  User Directory (MUD) and then checks for a correct password.  If
+       the user did not specify a host number,  his/her  standard  "home"  host
+       number is taken from the MUD.    The supervisor now knows the node which
+       the user called  (origination)  and  the  node  to  which  he  wishes  a
+       connection (destination).  The supervisor then computes the minimum cost
+       path for the virtual  circuit.   Once  a  path  has  been  plotted,  the
+       supervisor  allocates  buffer pairs and permuter table positions in each
+       node on the path to create the virtual circuit.  Messages  are  sent  to
+       all nodes along the path to make the appropriate permuter table entries.
+       This implicitly causes buffer assignments in the nodes.  Nodes  send  an
+       acknowledgement  to  the supervisor after making a permuter table entry.
+       Once all the acknowledgements are in,  the  supervisor  sends  the  user
+       name,  the user's status (from the MUD), the originating node number and
+       port number, and the terminal characteristics to the  destination  node,
+       plus a message to tell the attached host that there is a new login.
+                                                                         Page 5
+TYMNET DEVELOPMENT
+
+
+                The host may now read the user name to verify  that  this  user
+       name  is  valid on this host.  No further checking is required!  All the
+       security checking has been done for the host, with access restricted  to
+       network  personnel.   And  all  passwords  are virtually invulnerable to
+       theft.  This allows a host with minimal login security to  be  connected
+       to  the  network, with confidence that only authorized people may log in
+       through the network.  Additional log in  security  may,  of  course,  be
+       imposed by the host computer system.
+                                                                         Page 6
+LOGIN ERROR MESSAGES
+
+
+                     ERROR MESSAGES ASSOCIATED WITH LOGINS
+
+            The following messages are transmitted to the  user  when  a  login
+       attempt fails:
+
+       1. HOST NOT AVAILABLE THROUGH NET
+          ------------------------------
+
+          THIS MESSAGE INDICATES THAT THE SUPERVISORS ARE NOT AWARE OF
+          THE HOST NUMBER THE USER REQUESTED. IT CAN OCCUR WHEN (1) THE 
+          SUPERVISOR HAS NOT TAKEN OVER THE BASE ASSOCIATED WITH THE 
+          REQUESTED HOST (I.E., ITS BASE IS DOWN), OR (2) IF THE SUPER-
+          VISOR IS IN THE PROCESS OF TAKING OVER ALL OR A PORTION OF THE
+          NETWORK AND HAS NOT TAKEN OVER THE BASE OR HOST BEING
+          REQUESTED.
+
+       2. HOST DOWN
+          ---------
+
+          THIS MESSAGE INDICATES THE BASE ASSOCIATED WITH THE REQUESTED
+          HOST IS UP; HOWEVER, THE HOST ITSELF IS DOWN. THIS MESSAGE
+          SHOULD ONLY OCCUR WHEN THE HOST IS TRULY DOWN.
+
+       3. HOST SHUT
+          ---------
+
+          THIS INDICATES THE BASE AND HOST ARE UP; HOWEVER, LINES
+          HAVE NOT BEEN ANSWERED. CERTAIN USERS (IE. OPER) CAN STILL
+          LOGIN WITH THE 'SHUT OVERRIDE' BIT. THIS WILL NOT AFFECT
+          ANY USERS ALREADY LOGGED ON THE SYSTEM.
+
+       4. HOST OUT OF PORTS
+          -----------------
+
+          THIS MESSAGE INDICATES EVERYTHING IS UP AND OPERATIONAL;
+          THERE ARE NO MORE PORTS AVAILABLE BETWEEN THE BASE AND HOST.
+          IN OTHER WORDS, THE SYSTEM IS FULL.
+
+       5. CIRCUITS BUSY
+          -------------
+
+          THIS MESSAGE INDICATES EVERYTHING IS WORKING; HOWEVER, THERE
+          IS NOT ENOUGHT CAPACITY BETWEEN THE USER AND SELECTED HOST
+          TO COMPLETE THE CIRCUIT.  TRY A DIFFERENT PHONE NUMBER,
+          OR WAIT AND TRY AGAIN LATER.
+
+       6. TRY AGAIN IN 5 MINS.
+          --------------------
+
+          DURING A SUPERVISOR TAKEOVER, LOG-INS ARE INHIBITED.
+          THIS WAS DONE AS PART OF THE FIX TO PREVENT GARBAGE FROM
+          ACCUMULATING IN THE NETWORK, AND THE HUNG USERS. DURING
+          THE TWO TO FIVE MINUTES THE SUPERVISOR RETAKES THE NETWORK
+          THE ABOVE MESSAGE WILL BE SENT.
+                                                                         Page 7
+NETWORK SUPERVISOR
+
+
+                              NETWORK SUPERVISOR
+
+                The network supervisor is a program that runs under  a  special
+       time  sharing  system  on  an  Interdata 7/32.  The supervisor, like any
+       piece of software, and the 7/32, like any piece of hardware, are subject
+       to failure.  Although failures are infrequent (on the order of one every
+       3 weeks) the absence of a supervisor to build virtual circuits cannot be
+       tolerated  for  very  long.   To  deal  with  this  problem  4 potential
+       supervisors exist in the network, only one of which is active at any one
+       time.   The  active  supervisor  keeps  the other supervisors dormant by
+       sending "sleeping pills" to them at regular intervals.   If  the  active
+       supervisor  fails,  the  operators  at  the  network  control center can
+       immediately awaken one of the dormant supervisors.  Even  without  human
+       intervention,  the  dormant  supervisors  will notice the absence of the
+       active supervisor when they cease  to  receive  "sleeping  pills".   The
+       various  supervisors  have staggered 'drowsiness factors', at the end of
+       which they will awaken if no sleeping pills have arrived.  Thus, in case
+       of  a  supervisor failure one of the dormant supervisors will awaken and
+       take control of the network.  It is possible for multiple supervisors to
+       be  trying  to  take over the network simultaneously.  This situation is
+       resolved gracefully by the less dominant supervisor going to sleep  when
+       it discovers the presence of a more dominant supervisor.
+
+                               NETWORK TAKEOVER
+
+                In order to  control  nodes  and  carry  out  the  supervisor's
+       function  of  building  virtual  circuits,  the supervisor must know the
+       capacity of all nodes, their link capacities, the network  topology  and
+       the value of every permuter table entry in the network.          A
+       supervisor starting network takeover has no presupposed knowledge of the
+       network  topology.  The supervisor first sends a takeover command to its
+       own node, and learns of that node's capacity, the capacity of its links,
+       every  permuter  table entry in that node and the neighbors of that node
+       on each link.  The latter is the basis on which the supervisor discovers
+       the topology of the network.  The supervisor now sends takeover commands
+       to each neighbor of its own node.  As each of these  nodes  comes  under
+       complete  control of the supervisor, each of its neighbors is checked to
+       discover previously unknown nodes, and these are in turn taken over.  In
+       this  way  the  supervisor  learns  the topology of the network, all its
+       capacities and (from the permuter tables) which resources  are  in  use.
+       In  1975  the supervisor running on the SDS 940 reached its capacity and
+       was replaced by a supervisor running  on  an  Interdata  7/32,  reducing
+       network  takeover  time  from  15  minutes  to  2.5  minutes.   The time
+       determining factors are the number of nodes, the bandwidth of  links  in
+       the vicinity of the supervisor, the number of permuter table entries and
+       the connectivity of the network vis-a-vis  the  supervisor's  own  node.
+       From  a  control  standpoint the supervisor views the network as a tree.
+       The control tree comprises a subset of the links in  the  network.   The
+       balance  and  depth  of  this tree is the measure of connectivity of the
+       network in relation to the supervisor's own node.        If a previously
+       non-operational link becomes operational it may reveal one or more nodes
+       that were previously inaccessible.  The supervisor would then extend the
+       control  tree by taking over these newly discovered nodes.  On the other
+       hand, if a link  that  is  part  of  the  control  tree  goes  out,  the
+       supervisor loses control of the nodes in that subtree.  The control tree
+       is then rebuilt to regain control of all the lost nodes that  are  still
+                                                                         Page 8
+NETWORK SUPERVISOR
+
+
+       accessible through the network topology.
+
+                The original TYMNET I nodes allowed  only  3  links  per  node.
+       Presently  TYMNET I  nodes  allow  16  links per node.  The cost of more
+       links is increased CPU and memory requirements for the  node.   However,
+       even 16 links per node will soon be inadequate for the growth of TYMNET.
+       One solution to this problem is  the  use  of  node  clusters.   A  node
+       cluster is a group of 2 or more nodes in close proximity, interconnected
+       by an inexpensive high speed distributed  memory  transfer  device.   We
+       call  this  device  a  "memory  shuffler",  and  it  is  capable of data
+       transfers at memory bandwidth rates.  A fully interconnected eight  node
+       cluster  at  TYMNET's Cupertino center, with 72 links to the rest of the
+       network is planned.  This approach creates a logically very  large  node
+       (including two supervisor machines) that does not change the fundamental
+       logical structure of the network.  
+                                                                         Page 9
+TYMNET GENERAL SCHEMATIC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        Page 10
+TYMNET IN ACTION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        Page 11
+TYMNET MAP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        Page 12
+KEY TO TYMNET MAP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        Page 13
+BASE CRASHES
+
+
+                     TYMCOM-X BASE CRASHES AND RECOVERIES
+                     -------- ---- ------- --- ----------
+
+       ((INTRODUCTION))
+
+            Since the Tymbase provides network access to two hosts,  if  either
+       host  crashes,  the  base will continue to function as a node in Tymnet.
+       But for most base crashes, the chances are very good that the base  will
+       crash the primary host connected to that base;  a host without a base is
+       cut off from the outside world  and  cannot  timeshare  effectively.   A
+       large majority of base crashes will be self-recovering.  This means that
+       the base has routines within itself to dump a copy of  it's  core  image
+       into  the  respective hosts for analysis later on.  After the base crash
+       code has been dumped, the base then crashes the primary  host  connected
+       to  it  and  returns  to  it's  normal  operation automatically.  On the
+       secondary host, it will be possible for users to attach  to  their  jobs
+       which may have detached when the base went down.
+
+            Occasionally however, the Tymbase will hangup in a  loop  with  the
+       RUN  light flashing or simply stop functioning with the 'step' light on.
+       In these cases the operator must follow the procedures described in this
+       document  in  order that the base crash code can be saved, the hosts can
+       be halted in an orderly fashion and the base can be returned  to  normal
+       functioning  through  a  TYMNET  CONTROL  initiated downstream base code
+       load.
+
+            Always remember to keep TYMNET NETWORK CONTROL CENTER  informed  on
+       the status of any unusual activity that occurs on any base.
+                                                                        Page 14
+BASE CRASH SUMMARY
+
+
+       ((COMMAND SUMMARY))
+
+
+                                         NOTE
+
+           Full details on all summarized procedures  are  in  the  COMMAND
+           DESCRIPTION section of this document.
+
+
+               1) ANNOUNCE THE CRASH OVER THE COMLINE SPEAKER; CONTACT
+                  TYMNET CONTROL TO ADVISE THEM OF THE SITUATION.
+
+               2) CHECK IF THE BASE IS IN STEP. IF NOT AND THE BIT LAMPS
+                  ARE NOT FLICKERING FAINTLY OR IF THE 'RUN' LIGHT
+                  IS FLASHING, THE BASE IS HUNG IN A LOOP.
+
+               3) FOR V73 TYPE BASES TURN THE FRONT PANEL KEY TO ON'
+                  TO UNLOCK THE CONSOLE. IF THE BASE WAS LOOPING HIT THE
+                  'STEP-RUN' SWITCH.
+
+               4) CHECK AND RECORD (ON BASECRASH FORM) THE FOLLOWING
+                  V73 REGISTERS:    RECORD P,I,REG (0), (1) AND (2)
+
+               5) CLEAR THE REGISTERS AND ATTEMPT TO RESTART FROM
+                  P LOCATION 0; WHEN 'BOOTS LOADED' TYPES ON THE CTTY
+                  TYPE A '/D';
+
+               6) IF RESTART FROM 0 FAILS, YOU MAY HAVE TO SET
+                  SENSE SWITCH 4 ON THE PRIMARY HOST TO PREVENT AUTO-
+                  RESTART. TAKE THE HOST DOWN WITH A NON-ZERO DEPOSIT
+                  INTO MEMORY ADDRESS LOCATION 30; CONTACT NETCON
+                  AND REQUEST NEW COPY OF THE BASECODE BE LOADED OVER
+                  THE NETWORK USING THE DOWNSTREAM LOADING PROTOCOL;
+
+               7) IF NETWORK CONTROL IS UNABLE TO LOAD THE CODE, CHECK
+                  AND IF NEEDED CORRECT THE BOOTSTRAP FOR THAT BASE;
+
+               8) WAIT A FEW MINUTES, THEN LOG A  TTY INTO PROBE;
+                  CHECK THE STATUS OF THE BASE YOU JUST RESTARTED
+                  OR NETWORK CONTROL JUST RELOADED WITH PROBE;
+
+               9) IF THE BASE IS RUNNING PROPERLY, BRINGUP THE HOSTS
+                  CONNECTED TO IT FOR TIMESHARING WITH PAPERTAPE BOOTS;
+
+               10) LEAVE A THOROUGH RECORD OF WHAT YOU DID WITH THE
+                  M.A.R. YOU GIVE YOUR LEAD OPERATOR. MAIL SHOULD ALSO
+                  BE SENT TO @(UTIL)CRALIST (A LIST OF USERS).
+                                                                        Page 15
+BASE SAVE DESCRIPTION
+
+
+       ((COMMAND DESCRIPTION))
+                                      1.
+
+            From time to time the automatic self recovery of  a  Tymbase  crash
+       will  not  occur.  Generally if portions of the base code are clobbered,
+       correcting the situation depends on the operator's ability to coordinate
+       the  appropriate  procedures with TYMNET CONTROL.  There are over 10,000
+       instructions in a base code.  These instructions are  reflected  in  the
+       various  registers  of  the  minicomputer.   Part  of  this  code is the
+       BOOTSTRAP - a series of instructions which the base uses to bring itself
+       to a functioning state by loading and running the rest of the code.
+
+            If any type of base crash occurs, the primary  host  (in  CUPC  the
+       left  host)  interfacing TYMNET through that base will crash if and when
+       the base dumps it's crash code into the TYMCOM-X.  When you first notice
+       the  crash,  announce  it  over the loudspeaker.  On the console TTY the
+       'BOOTS LOADED' message will probably be accompanied by the message 'BASE
+       INITIATED  CRASH'.  These messages will occur on both affected hosts and
+       generally both the hosts and the  Tymbase  will  recover  automatically.
+       This auto-restart includes the '/D' to save the base crash code.
+
+                                      2.
+
+            If however, the base is unable to recover, then the hosts  may  not
+       crash even though they are now cut off from the net.  All login attempts
+       will fail and the message 'HOST NOT AVAILABLE  THROUGH  NET'  will  type
+       out.   By  this  time,  the operator should have begun to suspect a base
+       problem requiring manual intervention.  When the base crashes and is not
+       able to restart itself the machine will either be in 'STEP' (that is the
+       STEP light will be lit and there will be  no  activity  in  any  of  the
+       register  lights)  or the machine will be hung up in a loop.  If the V73
+       is in a loop, the lights on the console will not  be  flickering  and/or
+       the RUN light will be flashing.  Additional symptoms of a non-recovering
+       base crash can be obtained by using  the  PROBE  program  to  check  the
+       status  of  the  base  from the vantage of the network supervisor.  This
+       program is documented in another section of this manual.
+
+
+                                         NOTE
+
+           For the following description you are referred  to  the  console
+           diagram on the page after next.
+
+
+                                      3.
+
+            The first recovery procedure is to turn the console enable  key  to
+       'unlock'  the  V73  console.   If the base is not in STEP-RUN, press the
+       'STEP-RUN' key to stop the machine  from  looping.   On  the  hosts  you
+       should  enable  the console by pushing the lock and data lock buttons so
+       the lights go off.
+
+                                      4.
+
+            At this  point  you  should  record  the  contents  of  the  base's
+       registers on the base crash form.
+                                                                        Page 16
+BASE SAVE DESCRIPTION
+
+
+            To do this on the V73 type base (TYMCOM-X), first get the form  and
+       prepare  to  write the contents of the various registers.  You must push
+       the following buttons one at a time:  (from right to left) REG (the  REG
+       SELECT  lights  should show 0), 'INCR' button (to display REG SELECT 1),
+       'INCR' again (to display REG SELECT 2), DISPLAY  SELECT  P  and  DISPLAY
+       SELECT  I.   For  each register an octal number will be displayed in the
+       data  display  labeled  (from  right  to  left)  0  through  15.    This
+       information should be recorded in the form '0=NNNNNN, 1=NNNNNN' etc.
+
+            Once you have recorded all of the register one at a  time,  proceed
+       to  clear  each  register.  To do this set the REG button and so you are
+       selecting REG 0.  While holding the DISPL CLR  button,  press  the  INCR
+       button  (near  the  REG  SELECT  keys)  several  times  to clear all the
+       registers.  As you do this the lights above REG 1-2-4-8 will  light  and
+       then go out.  After REG light 8 has gone out press the P register button
+       and then DISPL CLR.  Do the same thing with the I register.
+
+                                      5.
+
+            Now that the registers are clear, attempt to restart the base  from
+       'P'  register  = 0.  To do this press the RESET button twice, then press
+       STEP-RUN.  At this point the RUN light will be  blinking.   Press  START
+       and  the RUN light should remain on.  It may be necessary to press START
+       a few times (if the console switches are tempermental) to get  the  base
+       to  stay  in  RUN.   The  data  display  lights  should start to flicker
+       faintly.   When  you  restart  the  base  from  0,  the  base  code   is
+       automatically  dumped  into TYMCOM-X core.  After the code is dumped the
+       host will crash.  After the 'BOOTS LOADED'  message  on  the  CTTY,  you
+       should  type  '/D'  to  save the base crash code so it will be available
+       when the COPYCR program writes it's crash files.
+
+            It always takes at least two minutes for a  restarted  base  to  be
+       recognized  by  the network.  You should use the PROBE program to verify
+       that the base has restarted correctly.
+                                                                        Page 17
+V73 CONSOLE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        Page 18
+BASE CODE RELOAD
+
+
+                                      6.
+
+            If restarting the code from 0 fails, chances are the base  will  go
+       into  step  or  the  RUN  light will flash indicating a hangup.  If that
+       happens, or if the network does not acknowledge the  base  restart  with
+       PROBE  within  3  minutes,  the  next corrective procedure is to contact
+       TYMNET NETWORK CONTROL (408-446-6180 or ext.   6468)  and  request  that
+       they  force the base to it's appropriate synchronous bootstrap location,
+       load a fresh copy of base code from downstream  and  start  it  running.
+       Base  code on the tens is contained in a diskfile on either system 33 or
+       system 36 in directory TYMNET.  Under normal situations, this  code  can
+       be  loaded  over  TYMNET so long as the host (or hosts) involved is down
+       and the base is in the net.  However, at this point, it is assumed  that
+       the  base  is in step, that the registers have been recorded and cleared
+       (step 4 above).  Also, you should have already tried  the  less  drastic
+       procedure  of attempting to restart the base from P location 0 (step 5).
+       Since the base may not have been able to dump itself  into  the  primary
+       host  and crash it, you should set sense switch 4 and take the host down
+       by depositing a non-zero number into PDP-10 memory location 30.  Contact
+       NETWORK  CONTROL  and find out which net line from the base will be used
+       for the downstream code load.  If they indicate that  the  current  line
+       set  up for the downstream load will be used, enter a 57640 into the V72
+       P register, then press RESET  twice,  STEP-RUN  and  START.   From  this
+       point, NETCON can proceed with the code reload.
+
+                                     NOTE
+
+       The bootstrap location above reflects a V73 with 24K of core (standard).
+       If however, the V73 has 
+
+               16K of core    use     P=37640
+               32K of core    use     P=77640
+
+                                      7.
+
+            If however, NETCON indicates that some line other than the  current
+       line  will  be  used for the downstream load, you will have to check and
+       possibly change the contents of five locations in the  bootstrap  before
+       proceeding to start the synchronous boot.  The locations and contents to
+       be changed in these cases are listed below.
+
+            To determine which line is currently  set  up  for  the  downstream
+       load,  check  the  value of one of these locations and compare it to the
+       table below.  If for example, a  24k  V73  bootstrap  P  location  57655
+       contains  50040,  downstream  loading  is  set  up  for  net line 0 (the
+       default) on the base.
+
+            The table below contains the  appropriate  locations  and  contents
+       necessary to load basecode downstream from various network lines.  Refer
+       to the procedure under ERRORS AND  RECOVERIES  for  details  on  how  to
+       examine and change these locations.
+                                                                        Page 19
+BASE CODE RELOAD
+
+
+         BOOTSTRAP VALUES FOR USE OF VARIOUS LINES ON DOWNSTREAM LOADS
+
+      LOCATION   LINE   LINE   LINE   LINE   LINE   LINE   LINE   LINE
+                  0      1      2      3      4      5      6      7
+      --------   ----   ----   ----   ----   ----   ----   ----   ----
+      X7655      50040  50044  50050  50054  50060  50064  50070  50074
+      X7656      50042  50046  50052  50056  50062  50066  50072  50076
+      X7663      50043  50047  50053  50057  50063  50067  50073  50077
+      X7666      50041  50045  50051  50055  50061  50065  50071  50075
+      X7770      00021  00023  00025  00027  00031  00033  00035  00037
+
+               THE 'X' PORTION OF THE LOCATION IS A NUMBER DEPENDING ON
+               THE MEMORY SIZE OF THE MACHINE IN QUESTION. THE 'X' IS
+               REPLACED BY ONE OF THE FOLLOWING NUMBERS:
+
+                               MEMORY          X REPLACED
+                                SIZE               BY
+                               ------          ----------
+                                12K                2
+                                16K                3
+                                20K                4
+                 (STANDARD)     24K                5
+                                32K                7
+
+            Once  these  five  locations  have  been  changed  to  reflect  the
+       appropriate net line for the downstream load, now enter a 57640 into the
+       V72 P register.  Press RESET  twice,  STEP-RUN  and  START.   From  this
+       point, NETCON can proceed with the code load.
+
+            If the base reload fails you may have to manually reload  the  base
+       bootstrap;   the  procedure  for  this  is  detailed  in  the ERRORS AND
+       RECOVERIES section of this document.
+
+                                      8.
+
+            If this base load was a success, the initial evidence will be  that
+       the  RUN  light stays on steady and the DATA DISPLAY lights will flicker
+       faintly.  Conclusive evidence of success comes from checking the  status
+       of the base node NETCON just reloaded with the PROBE program.  Remember,
+       it will take the network at least 2 minutes to recognize the base again.
+
+                                      9.
+
+            If this procedure has succeeded, you can proceed to bring  up  both
+       TYMCOM-X'S  for  timesharing  using  the  papertape bootstrap.  When the
+       console terminal  outputs  a  carriage-return  simply  type  in  another
+       carriage-return.   Once the monitor has started you can reset (turn off)
+       sense switch 4.
+
+                                      10.
+
+            Follow up  whatever  steps  were  necessary  by  writing  a  M.A.R.
+       outlining  the  initial  problem,  the  steps  you  took  to correct the
+       situation and the name of the crash-save file (ie.  CRA003).
+                                                                        Page 20
+BOOTSTRAP RELOAD
+
+
+       ((SAMPLE RUN))
+
+            See the COMMAND DESCRIPTION above for the procedures and an outline
+       of the results from each step.
+
+       ((ERRORS AND RECOVERIES))
+
+            The most common  cause  of  base  reload  failure  is  a  clobbered
+       bootstrap.   If  any  of  the  instructions  in  the bootstrap have been
+       altered by an earlier hardware malfunction or  crash,  the  base  reload
+       will  not  work  correctly.  To identify this problem it is necessary to
+       check the current bootstrap in the V73;  if any instruction(s) are found
+       to  deviate  from the correct entry, the instruction(s) involved must be
+       changed to the correct value.
+
+
+                                         NOTE
+
+           The starting location of  the  V73  bootstrap  varies  with  the
+           amount  of  memory  online  for  the machine in question.  It is
+           assumed here that the V73 is a 24K machine.  If less  memory  is
+           online  you must alter the starting location as indicated on the
+           note in COMMAND DESCRIPTION '6'.
+
+
+                        ((RELOADING SYNCHRONOUS BOOTS))
+
+            With  the  downstream  loader,  the  bootstrap  used  is  called  a
+       'synchronous'  boot;   if  it  should  fail,  you can reload it by first
+       loading the older 'system' bootstrap.
+
+       a) READIN the TYMCOM-X BOTLOD tape;  on the console terminal a  carriage
+       return will output;
+
+       b) type in the filename (TYMNET) SYNCLD to  load  the  system  bootstrap
+       into PDP-10 memory;
+
+       c) on the V73 hit the RESET key twice;
+
+       d) on the V73 set the three sense switches to indicate the octal  number
+       of the net line that will be used for the downstream load;
+
+       e) finally, hit STEP-RUN  and  START  twice  to  start  the  synchronous
+       bootstrap;   once  this  is  done, reset the sense switches.  NETCON can
+       resume with the actual base code load at this point.
+                                                                        Page 21
+BASE RELOAD ERRORS
+
+
+                          ((CHECKING THE BOOTSTRAP))
+
+               1) THE V73 MUST BE IN 'STEP'; IF NOT HIT 'STEP-RUN'
+                  TO PUT IT INTO STEP. NEXT HIT 'RESET'.
+
+               2) YOU MUST CLEAR ALL THE REGISTERS (SEE STEP 5 IN THE
+                  COMMAND DESCRIPTION ABOVE).
+
+               3) SELECT THE 'P' REGISTER AND (FOR A 24K V73) ENTER AN
+                  OCTAL 57640 (OR WHICHEVER LOCATION YOU WISH TO CHECK)
+                  INTO THE DATA DISPLAY LIGHTS.
+
+               4) GET A HARDCOPY OF THE CORRECT BOOTSTRAP LISTING OR
+                  THE TABLE CONTAINING THE FIVE LOCATIONS INVOLVED IN
+                  DETERMINING WHICH LINE WILL BE USED FOR THE LOAD; HIT
+                  'MEM' ON THE V73 THEN 'DISPLAY'. THE ENTRY FOR THAT
+                  LOCATION IN THE BOOTSTRAP WILL BE SHOWN AS AN OCTAL
+                  NUMBER IN THE DATA DISPLAY LIGHTS. IF YOU ARE
+                  CHECKING THE ENTIRE BOOTSTRAP, THIS ENTRY SHOULD
+                  BE IDENTICAL TO THE FIRST OCTAL ENTRY ON YOUR LIST.
+                  FOR THE LOCATIONS INVOLVED IN NET LINE SETTING, THE
+                  ENTRY SHOULD BE THE SAME AS THE APPROPRIATE VALUE
+                  OF THE LINE TABLE CONTAINED IN THIS DOCUMENT. IF IT
+                  IS NOT CORRECT, MAKE A MARK NEXT TO THE LOCATION ON
+                  YOUR HARDCOPY SO YOU CAN CHANGE THAT LOCATION LATER.
+
+               5) TO MOVE ON TO THE NEXT INSTRUCTION IN THE BOOTSTRAP,
+                  HIT THE 'DISPLAY' BUTTON ON THE V73. THIS INCREMENTS
+                  THE REGISTER AND DISPLAYS THE NEXT BOOTSTRAP ENTRY
+                  IN THE DATA DISPLAY LIGHTS. REPEAT THE COMPARISON
+                  WITH THE BOOTSTRAP LISTING AND MAKE A MARK IF THE V73
+                  ENTRY IS INCORRECT. IF YOU WISH TO CHECK THE ENTIRE
+                  BOOTSTRAP, PROCEED TO CHECK EACH SUCCESSIVE ENTRY
+                  BY HITTING THE 'DISPLAY' KEY.
+                                                                        Page 22
+BASE RELOAD ERRORS
+
+
+                         ((CHANGING A BOOTSTAP ENTRY))
+
+               6) NOW, REFERRING TO THE INCORRECT ENTRIES YOU'VE CHECKED
+                  ON THE BOOTSTAP LIST, (OR, TO THE LIST OF THE FIVE
+                  LOCATIONS THAT NEED TO BE MODIFIED TO LOAD FROM A
+                  NET LINE OTHER THAN THE CURRENT LINE SETTING) SELECT
+                  SELECT THE 'P' REGISTER AND ENTER THE BOOTSTRAP
+                  LOCATION TO BE CHANGED INTO THE DATA LIGHTS.
+
+               7) HIT THE 'MEM' BUTTON, THEN HIT 'DISPL-CLR' TO CLEAR
+                  THE DATA LIGHTS FOR THE BAD ENTRY IN THAT LOCATION.
+
+               8) KEY INTO THE DATA LIGHTS THE CORRECT ENTRY FOR THAT
+                  LOCATION FROM THE BOOTSTRAP HARDCOPY LIST (OR
+                  THE LINE TABLE). NOW HIT THE 'ENTER' BUTTON ONCE.
+                  REPEAT STEPS 6 THRU 8 FOR EACH ENTRY YOU WISH TO
+                  CHANGE.
+
+               9) WHEN ALL THE APPROPRIATE ENTRIES HAVE BEEN MADE,
+                  RECHECK ALL THE CHANGES (WITH STEPS 1 THRU 5) TO 
+                  MAKE SURE THE V73 NOW CONTAINS THE EXACT ENTRY FOR
+                  EACH LOCATION AS YOU HAVE ON THE LIST.
+
+               10) IF NOT, REDO THIS PROCEDURE UNTIL THE BOOTSTRAP
+                  IS CORRECT; IF IT IS CORRECT, YOU CAN PROCEED TO
+                  RESTART THE BOOTSTRAP AND NOTIFY NETCON TO RESUME
+                  THE BASE CODE LOAD AGAIN.
+
+
+                                         NOTE
+
+           There have been occasions where the buttons on the V73 stick  or
+           do  not  take  effect  correctly.  Be particularly aware of this
+           when using the 'ENTER' button:  If  the  key  is  touchy  it  is
+           possible  to  enter  a  value into two locations instead of just
+           one.  If you enter anything, doublecheck that the next  location
+           in  the  'P' register does not contain the same value as the one
+           you just entered.
+
+
+            Remember to keep TYMNET DESK informed on all developments regarding
+       corrective  measures  to  the  base.   If  none  of the above procedures
+       correct a base problem, contact TYMSHARE MAINTENANCE for assistance.
+                                                                        Page 23
+PROBE
+
+
+                          PROBE ON THE INTERDATA 7/32
+                          ----- -- --- --------- ----
+
+       ((INTRODUCTION))
+
+            PROBE is the access and control program for the TYMNET  supervisor.
+       It  is  a  major  subsystem which runs on the Interdata model 7/32.  The
+       primary operator functions in PROBE are:
+
+               1) to determine the general status of the network;
+
+               2) to check on the status of individual nodes in the net
+                  especially if it becomes necessary to reload a node
+                  or move a host from one hardware to another;
+
+               3) to establish a central logger terminal which can
+                  extract information of interest to operations about
+                  all the systems in an entire computer center.
+
+            In addition,  PROBE  can  be  used  to  manipulate  the  useage  of
+       individual  nodes  and  long lines, move the network supervisor from one
+       Interdata  to  another,  and  perform  other  activities  vital  to  the
+       maintenance of TYMNET.  For the most part, these additional capabilities
+       are within the domain of  TYMNET  NETWORK  CONTROL  CENTER  and  require
+       special  status.   It  is imperative that NETWORK CONTROL be involved as
+       much as possible in any of these other procedures.
+
+       ((COMMAND SUMMARY))
+
+               1) LOGIN TO PROBE ON THE ACTIVE SUPERVISOR;
+
+               2) NEXT ENTER THE NAME WCO AND THE CURRENT OPER PASSWORD;
+
+               3) TYPE THE PROBE COMMAND 'STATUS';
+
+                    (A. NODE CHECKING - N IS A NODE NUMBER)
+                    ---------------------------------------
+
+               A4) TYPE THE COMMAND 'HOST N' TO DETERMINE THE STATUS OF
+                   THAT HOST (EG. 'HOST 38')
+
+               A5) TYPE 'NODE N' FOR ADDITIONAL INFO ON THAT NODE;
+
+               A6) QUIT THE PROGRAM AND LOGOUT OF THE INTERDATA WITH
+                   THE 'EXIT' COMMAND.
+
+                      (B. FOR RUNNING A LOGGER TERMINAL)
+                      ----------------------------------
+
+               B4) TYPE THE COMMAND 'EXTRACT 700' FOR CUPA CHECKING
+                   TYPE 'EXTRACT 701' FOR CUPC CHECKING.
+
+                                                                        Page 24
+PROBE OPERATION
+
+
+                                    STARTUP
+
+            The first person to login to PROBE after the 7/32 has been  brought
+       up  will  be  asked  to  supply  Greenwich Mean Time (GMT) in the format
+       DD:HH:MM where DD is the number of days since the begining of the  year.
+       When  the  TYMNET  clock  is  installed,  this function will normally be
+       handled by the TYMNET clock.  By typing a control  Q  here  the  program
+       will skip the date input and prompt for login.
+
+                                     LOGIN
+
+            All Interdata supervisors will run on "host"  systems  120  through
+       127.  The following are valid ways of getting into PROBE:
+
+                       PROBE:127;(password);
+                       PROBE:*;(password)cr
+
+            The asterisk (*) refers to the currently active supervisor.
+
+
+                                         NOTE
+
+           One may end the PROBE password  with  a  semicolon  or  carriage
+           return, but not both.
+
+
+
+            After the circuit has been built to the 7/32, PROBE will ask for an
+       additional  username.   You  should  use WCO as the username.  After the
+       name has been entered, PROBE will ask for the password.   This  password
+       is the same for WCO as the login password for OPER on Tymshare hosts.
+
+                                 COMMAND MODE
+
+            Whenever a colon appears on the left hand margin, PROBE is ready to
+       accept another command.
+
+            All PROBE commands must be typed out in full on one line and  ended
+       with a carriage return.
+
+            To get back to PROBE command mode (after login has been  completed)
+       type  a  control  Q or escape.  This will abort the current activity and
+       return to command mode.
+                                                                        Page 25
+GENERAL PROBE COMMANDS
+
+
+                  COMMANDS WHICH INVOLVE GENERAL INFORMATION
+                  -------- ----- ------- ------- -----------
+
+       HELP (or H, or ?)
+
+       Refers user to the document file PROBE.DOC.
+
+       SEND J MESSAGE 
+
+       This sends a message to the user on job j.  Use the WHO command to  find
+       out the proper job label.
+
+       SYS 
+
+       Type out host, or system number.
+
+       TIME 
+
+       Type out the current time.
+
+       WHO 
+
+       The WHO command lists the current PROBE users and their job labels.  The
+       joblabels are needed for the SEND and HANG commands.
+
+       VERSION 
+
+       Print out the version numbers of PROBE, the kernel, and the supervisor.
+
+       EXIT
+
+       This command quits the PROBE program and logs out of the INTERDATA 7/32.
+                                                                        Page 26
+TYMNET STATUS COMMANDS
+
+
+                  COMMANDS WHICH INVOLVE THE STATUS OF TYMNET
+                  -------- ----- ------- --- ------ -- ------
+
+       STAT 
+
+       This command prints out the numbers of nodes in each of the  5  takeover
+       states,  the  df (see below), and the reject count.  The reject count is
+       the count of the number of  times  the  supervisor  could  not  build  a
+       circuit  because  of  shut lines, lines out of channels, or nodes out of
+       passthroughs.  The source and destination nodes  of  the  last  rejected
+       login attempt are printed after the reject count.  If SUP is not running
+       (neither awake nor asleep) the kernel's Status will appear at the end of
+       the first line.  The kernel status may be interpreted as follows:
+
+               NUMBER  MEANING
+               ------  -------
+        1000    FROZEN BY OPERATOR
+         800    PARITY ERROR IN THE SUPERVISOR - OR JOE RINDE HAS
+                STOPPED THE SUPERVISOR FOR EXAMINATION
+         100    SUPERVISOR HAS FAILED TO RECOVER FROM A CRASH - THE
+                SUPERVISOR CODE AREA HAS PROBABLY BEEN CLOBBERED.
+
+       COUNT 
+
+       This counts the number of nodes, terminations, and passthroughs  in  the
+       net.  It does not count internal circuits as terminations.
+
+       DF (NUMBER) (Requires Status 01)
+
+       This is used to compute the drowsiness factor.  When a  supervisor  goes
+       to  sleep  or  otherwise  fails  to  send  'sleeping  pills',  the other
+       supervisor systems will remain dormant for only the  number  of  seconds
+       they  are  supposed  to  remain  asleep  based  on  their ranking in the
+       'supervisor pecking order'.  The drowsiness factor is a number  that  is
+       factored  into  this.   1000  decimal is the largest number that one may
+       enter.  This has the effect of suppressing the supervisor.
+
+       AWAKE (Requires Status 01)
+
+       This command will awaken the supervisor immediately.  This overrides all
+       previous reasons for sleeping, including a large DF (Drowsiness Factor -
+       how long the supervisor in question will remain dormant when  an  active
+       supervisor goes to 'sleep'.
+
+       SLEEP (Requires Status 01)
+
+       Put the current active supervisor to sleep.
+
+       LSHUT 
+
+       List all the shut lines.
+                                                                        Page 27
+NODE COMMANDS
+
+
+                  COMMANDS WHICH INVOLVE THE STATUS OF NODES
+                  -------- ----- ------- --- ------ -- -----
+
+       CT NODE 
+
+       This command traces all circuits terminating at  this  node.   All  port
+       numbers are in decimal.
+
+       CP NODE 
+
+       This traces all circuits passing through this node.
+
+       CL NODE LINE 
+
+       Use this to trace all circuits on this line.
+
+       HOST 
+
+       This command types information about a host or hosts.  If  for  example,
+       you  type  'HOST  19'  PROBE  types  info  about  host  19.  If you type
+       'HOST'(CR), the program types info about all hosts.  The info  typed  is
+       host  number,  down,  shut or answered, position number on its base, and
+       base number.
+
+       AN 
+
+       This command will type out node number, version number, host numbers (if
+       any), terminations (not counting internal circuits), passthroughs, crash
+       count, upstream node number, and downstream node number for all nodes in
+       the net.
+
+       AD 
+
+       This will list all down nodes including those nodes  which  are  not  in
+       net, but are known by nodes which are in the net.
+
+       EXC 
+
+       List lines which are out or in some other exceptional state.
+
+       N
+
+       N is short for node.  see below.
+
+       NODE NODE 
+
+       This  will  give  version  number,  crash  count,  upstream   direction,
+       downstream  direction,  and  exceptional conditions for this node.  This
+       command will also provide the number of passthroughs  and  terminations.
+       If the node is a base it will give host numbers and status of each host.
+       Hosts will appear in order of position  on  base  (0  or  1).   neighbor
+       number, number of groups, cost of using line, and exceptional conditions
+       for each line will be output.
+                                                                        Page 28
+NODE COMMANDS
+
+
+       NEIGHBOR NODE 
+
+       This will scan node descriptors of all nodes to find references  to  the
+       specified node.  Output from this command includes the node number, line
+       number, and number of groups for the neighbor of the specified node.
+
+       RETAKE NODE (Requires Status 20)
+
+       This instructs the supervisor to retake the node.
+
+       BORI node LINE (Requires Status 20)
+
+       This tells a node to reset it's BORI header (Beginning Of Record Input).
+
+       ESHUT NODE NODE (Requires Status 10)
+
+       This will make an entry to the supervisor's shut line table.  The effect
+       is  to shut the line between the specified nodes.  This can also be done
+       by using the 1DOWN program.
+
+       RSHUT NODE NODE (Requires Status 10)
+
+       Use this command to remove a shut between these two nodes.
+
+       CLEAR NODE (Requires Status 10)
+
+       This removes all line shuts involving the specified node.
+
+       NSHUT NODE (Requires Status 10)
+
+       This puts a shut in all lines on the specified node.
+                                                                        Page 29
+PROBE EXTRACT
+
+
+               COMMANDS WHICH EXTRACT INFORMATION TO THE LOGGER
+               -------- ----- ------- ----------- -- --- ------
+
+       EXTRACT NODE NODELIST
+
+            EXTRACT will generate current log reports from  certain  nodes  and
+       provide  messages of interest to operations such as 'HOST DOWN', 'OUT OF
+       DBITS' and so on.  To specify  all  relevant  bases  within  a  computer
+       center, a code may be typed:
+
+               CUPERTINO BUILDING A    700
+               CUPERTINO BUILDING C    701
+               PALO ALTO               702
+               HOUSTON                 703
+               VALLEY FORGE            704
+
+            The format of this PROBE command is 'EXTRACT NODE NODE LIST'.   For
+       example if you type 'EXTRACT 1 701, this will report data from all bases
+       in Cupertino C plus base 1.  If you type 'EXTRACT 703' the program  will
+       report  only  information on SCO - Tymshare's computer center in Houston
+       Texas.
+
+       LOG TIME
+
+            The 'LOG TIME' command starts the logger output of all or specified
+       information  on  all  hosts,  lines and nodes in the network.  The valid
+       formats to this command are:
+
+       LOG 100         Start 100 minutes before now.
+       LOG 123:12:30   Start on the 123 day of the year, 12 hour,
+                       30 minutes. The time is in GMT.
+       LOG             Start now.
+       LOG S10         Start 10 minutes ago. Print each record with
+                       the time to the nearest second.
+       LOG H5          Start 5 minutes ago. Print all records in hex.
+       LOG B3          Start 3 blocks before current supervisor
+                       position. A block is 64 entries.
+                       This is useful when time is scrambled.
+
+            The PROBE LOG command  will  allow  the  option  of  single  letter
+       qualifiers  which  modify  what  information  will be output and in what
+       format.  The S qualifier instructs the program to print a  time  to  the
+       nearest  second with each record output.  If the qualifier H is used all
+       records output will be in  hexadecimal.   The  other  qualifiers  are  D
+       (Disable) and X (eXceptions only).  The D qualifier will ignore nonfatal
+       errors, bad records, and certain undecoded errors.  The X qualifier will
+       print  out  only  host and line related information (Line Out, Reset, or
+       OK, Host Up, Down, Answered, or  Shut,  Host  Unhappy  bits).   The  'X'
+       qualifier will override a D qualifier.
+                                                                        Page 30
+PROBE SAMPLES
+
+
+       ((SAMPLE RUN))
+
+                  (LOGGING INTO PROBE ON THE INTERDATA 7/32)
+
+       'PLEASE LOG IN:' PROBE:*;               (A '*' DIRECTS LOGIN
+                                                TO THE ACTIVE SUPERVISOR
+                                                ALSO NOTE: NO FINAL ';')
+       'NAME' WCO(CR)                          (NOW IDENTIFY YOURSELF
+                                                TO THE PROBE PROGRAM)
+       'PASSWORD:'                             (USE THE OPER PSWD HERE)
+       '121'                                   (THIS IS ACTIVE SUPV.)
+       ':'                                     (PROBE IS READY FOR
+                                                COMMAND INPUT NOW)
+
+                      (PROBE COMMANDS FOR OVERALL STATUS)
+
+       ':'STAT(CR)                             (SEE COMMAND DESCR.
+       '0 0 0 0 204'                            ABOVE FOR THE MEANING
+       'DF 0 REJECTS 196 1015 53'               OF THESE NUMBERS)
+
+       ':'COUNT(CR)                            (THIS COUNTS NODES,
+       '204 NODES 2303 TERMINATIONS 2340 PASSTHROUGHS'
+                                                AND TRAFFIC IN NET)
+
+       ':'LSHUT(CR)                            (WHICH LINES ARE SHUT?)
+       '1201 1026'                             (THESE ARE THE NODES
+       '34 127'                                 WHOSE LINES ARE SHUT)
+       '1026 1070'
+       '1026 1172'
+       'ETC'
+
+       ':'AD(CR)                               (USE THIS TO LIST ALL
+                                                NODES DOWN IN THE NET)
+       '16 125 131 377 1026 1077 1151 1206     (NODES DOWN LISTED
+       1220 1224 1231 1240 1370 1374 1377      IN NUMERICAL ORDER)
+
+                    (PROBE SAMPLES OF INDIVIDUAL NODE INFO)
+
+       ':'NODE 1000(CR)                        (LIST ALL INFO ON THAT
+       'VERSION 413 TYPE 3 CRASH 3 UP 177       NODE)
+       DOWN 1006 PORTS 26 PASSTHROUGHS 126
+       LINE STATUS:
+       0 5 3 0 1
+       1 1006 3 6 5 
+       ETC'                                   (HERE ARE CIRCUITS TO
+                                                THAT NODE. SEE COMMAND
+                                                DESCR. ABOVE)
+
+       ':'HOST 33(CR)                          (ALL NET INFO ON C33)
+       '33 ANSWERED 0 47'                       33 IS HOST 0 ON BASE)
+
+                        (EXTRACTING TO THE LOGGER TTY)
+
+       ':'EXTRACT 700 30(CR)                     (USE THIS FOR CUPA AND
+                                                THE PERP SYSTEM ON H8)
+                                                                        Page 31
+PROBE SAMPLES
+
+
+       ':'EXTRACT 701(CR)                      (MONITOR CUPC ONLY)
+
+       ':'EXTRACT 702(CR)                      (LOGGER FOR PALO ALTO)
+
+       ':'EXTRACT 703(CR)                      (USE THIS FOR SCO)
+
+       ':'EXTRACT 704(CR)                      (AND THIS FOR VFO)
+
+
+
+       ((ERRORS AND RECOVERIES))
+
+            As mentioned earlier, all PROBE commands must be typed in full.  In
+       general  if  an  operand  is  ommitted the program will assume 'ALL' was
+       intended.  Any command can be aborted by using the Control Q or 'ESCAPE'
+       key.
+
+            Regarding login errors, the most common has  been  forgetting  that
+       the password typein must be terminated by EITHER a CR or a semicolon (;)
+       but NOT BOTH.  If you type both the program will assume the CR was  part
+       of  the  probe  user  input and will loop with this incorrect input.  In
+       cases where the login was correct but the message 'PLEASE LOG IN' occurs
+       instead  of  being  logged  into the INTERDATA, the most likely cause is
+       that there  are  no  available  job  slots  remaining  on  the  machine.
+       Currently  there  are 12 available slots and often many of these must be
+       used in the field while corrective maintenance occurs on the net.
+                                                                        Page 32
+TELECOPY
+
+
+                       TELECOPY - MOVING FILES ON TYMNET
+                       --------   ------ ----- -- ------
+
+
+
+       ((INTRODUCTION))
+
+            TELECOPY is a file transfer program used to copy files between  two
+       Tymshare  host  computer  systems.   It can copy any type of files to or
+       from similar systems (ie.  one TYMCOM-X to another TYMCOM-X) and it  now
+       has  the  ability to transfer files in other modes to and from different
+       types of hosts (ie.  TYMCOM-X to TYMCOM-IX).
+
+
+                                         NOTE
+
+           For information on these capabilities, you are referred  to  the
+           TYMCOM-X file (*6NEWS)TELECO.INF on any TYMCOM-X.
+
+
+            In all cases, the conventions and protocols of the systems involved
+       must  be followed.  For example, on the TYMCOM-IX, the maximum allowable
+       file size is the same for TELECOPY as it is for the EXEC command 'COPY'.
+       Also,  the  file naming conventions must meet the syntax requirements on
+       both the sending and the receiving systems.
+
+            To copy files between systems with this program,  it  is  necessary
+       that  the  same  username  be valid on both the originating host and the
+       destination host.  It is best to TELECOPY files from one username  on  a
+       system  to  the  same username on the other system.  Files can be copied
+       either from or to the system the user is currently logged on, but he/she
+       must  be  logged  in to one of the two systems involved in the TELECOPY.
+       For example, if the user is logged into C33, he/she cannot telecopy from
+       H8 to C38.
+                                                                        Page 33
+TELECOPY SUMMARY
+
+
+       ((COMMAND SUMMARY))
+
+
+            When TELECOPY is ready to accept commands from the terminal, a  ":"
+       prompt is printed.  The following commands are implemented:
+
+       RUn
+                           Begins program execution.   Will  prompt  for  "copy
+                           from" filename and "copy to" filename.  When entered
+                           from the RUN command, filenames must be specified in
+                           full with only one filename per line in form:
+
+                           (username:sysno)filename
+
+       VErsion
+                           Prints the controller version number.
+
+       ONlc
+                           Allows lower case to appear in  ASCII  transmission.
+                           Unless  this  command  is issued, lower case will be
+                           converted to  upper  case  when  transferring  files
+                           between dissimilar operating systems.
+
+       OFlc
+                           Turns   off   lower   case   (default   for    ASCII
+                           transmission).
+
+       Truncate (length)
+                           Affects ASCII transmission from TYMCOM 370 to TYMCOM
+                           X  or TYMCOM IX.  {length} must be an integer from 2
+                           to 255.  Indicates that TYMCOM 370 files  should  be
+                           truncated  starting at the specified column in order
+                           to delete sequence numbers.   Usually,  this  option
+                           must  be  specified when a file has sequence numbers
+                           before SUPRESS will have any useful effect.
+
+       No Truncate
+                           Turns off truncate feature of TYMCOM 370.   This  is
+                           the default setting.
+
+       SUppress
+                           Affects ASCII transmission from TYMCOM 370 to TYMCOM
+                           X  or  TYMCOM  IX.   Causes  trailing  blanks  to be
+                           discarded   from   TYMCOM   370   records,   greatly
+                           shortening  transmission  time  and  the size of the
+                           target file.  This is the default setting.
+
+       No Suppress
+                           Stops the removal of trailing blanks by  the  TYMCOM
+                           370.
+                                                                        Page 34
+TELECOPY SUMMARY
+
+
+       Fixed [frecl]
+                           Causes a TYMCOM 370  to  create  fixed  length  file
+                           records  of  length  [frecl]  where  [frecl]  is  an
+                           integer not to exceed 65536.  If [frecl] is omitted,
+                           then  frecl=80  is assumed.  The TYMCOM 370 will use
+                           blanks to pad the records it receives to the desired
+                           length.
+
+       VAriable [vrecl]
+                           Causes a TYMCOM 370 to create variable  length  file
+                           records  of  maximum length [vrecl] where [vrecl] is
+                           an integer not to exceed  65536.   When  [vrecl]  is
+                           omitted,  65536  is assumed, and the default setting
+                           of this switch is such  that  the  TYMCOM  370  will
+                           create  variable  length  records  of maximum length
+                           65536 unless the FIXED option has been set.
+
+                       { Native }
+                       { Serial }
+       Mode {[Transmit]  Binary [BLocking= N1] [Fill= Left] [BYtesize= N2]}
+            {[Receive ]                        [Fill= Right]              }
+                        { Ascii }
+                        { Katakana }
+                        { Image }
+
+                           This  command  is   used   to   force   setting   of
+                           transmission mode to other than the program default.
+                           In the case of BINARY mode, parameters  may  be  set
+                           differently  for  the  transmitter  (file donor) and
+                           receiver.  N1 is the number of bytes  to  be  packed
+                           (unpacked)per  machine  word.   N1 must be between 1
+                           and 16.  n2 is the bytesize in bits,  and  must  lie
+                           between  1  and  8 inclusive.  When FILL=LEFT, bytes
+                           are packed left justified and  unused  bits  to  the
+                           right are zeroed.  When FILL=RIGHT, bytes are packed
+                           right justified and the more  significant  bits  are
+                           zeroed.
+
+                           SERIAL, NATIVE, and IMAGE are all special  cases  of
+                           binary  transmission which have been given their own
+                           names.    When   BLOCKING,   FILL,   and    BYTESIZE
+                           specifications  are  all  omitted  from  the  BINARY
+                           parameter list, BINARY becomes equivalent to  SERIAL
+                           mode.
+
+                           ASCII and KATAKANA modes  are  nearly  identical  in
+                           their  character  sets  and  are subject to the same
+                           option switches.
+                                                                        Page 35
+TELECOPY SUMMARY
+
+
+                { Off }
+       Compress { Duplicate }
+                { Rank [Auto]}
+
+                           This  command  forces  the  setting  of   the   data
+                           compression   method   to  other  than  the  program
+                           default.  Compression may be disabled altogether  by
+                           specifying  OFF.   The  AUTO  option  of RANK causes
+                           TELECOPY to decide for itself  whether  to  use  the
+                           RANK or the DUPLICATE method.
+
+       SCratch
+                           This  command  clears  all  user-supplied  MODE  and
+                           COMPRESS   switches   so  that  the  normal  program
+                           defaults will be reinstated.
+
+       Talk [sysno]
+                           This command builds a TYMNET circuit to  the  system
+                           number  given  by  integer  [sysno].   If [sysno] is
+                           omitted, an existing circuit will  be  used  if  one
+                           exists.   Once the circuit has been established, the
+                           logged in userid begins to accrue usage charges just
+                           as if the userid had logged directly into the remote
+                           system with his  terminal.   Input  from  the  local
+                           terminal  is  passed along to the remote system, and
+                           its  terminal  output  is  directed  to  the   local
+                           terminal,  allowing  the  user  to converse with the
+                           remote system.  This feature will be needed  to  use
+                           TELECOPY  when  the  logged-in  userid has a PROFILE
+                           EXEC  or  inititialized  file  that  asks  questions
+                           before  proceeding  to the system command level.  It
+                           is also useful for modifying the environment at  the
+                           remote system prior to file transfer.
+
+                           TALK mode may be exited by  typing  %%F(cr)  at  the
+                           local terminal.  A %%U(cr) sends a unit separator to
+                           the remote  system.   Escapes  typed  at  the  local
+                           terminal will be sent to the remote system.
+
+                           Due to the difference in echoing rules of the TYMCOM
+                           370  and  the  TYMCOM  IX  or  X,  echo is currently
+                           doubled by a TYMCOM IX or X system, and  type-a-head
+                           is not supported.
+                                                                        Page 36
+TELECOPY SUMMARY
+
+
+                           When connection is made to a TYMCOM X or TYMCOM  370
+                           via  the  TALK  command, the possibility exists that
+                           the user may be detached for up to 1/2 hour  if  the
+                           circuit  is  broken.   The recommended procedure for
+                           breaking such a circuit is to use the  TALK  command
+                           and  to  send a LOGOUT command to the remote system.
+                           The  warning  message  "CIRCUIT  REMAINS  TO  SYSTEM
+                           xx--USE  TALK  COMMAND  TO  LOGOUT" will be given by
+                           TELECOPY prior to breaking the TYMNET circuit.   The
+                           QUIT command will ask a user if he wishes to exit if
+                           a TALK connection  to  a  TYMCOM  X  or  TYMCOM  370
+                           exists.
+
+       Loquacious
+                           This command causes checkpoint and other messages to
+                           be printed on the terminal during program execution.
+                           Information  about  modes  selected   and   progress
+                           reports  are given.  The progress reports are useful
+                           when copying very large files.
+
+       Not Loquacious
+                           Stops printing of checkpoint information.   This  is
+                           the default setting.
+
+       Ask
+                           This command will cause TELECOPY to require a 'Y' or
+                           'N'  confirmation  before  copying  over an existing
+                           file.  This is the default mode of operation.
+
+       REplace
+                           This command will cause TELECOPY to  copy  over  any
+                           existing   files   without  requiring  confirmation.
+                           TELECOPY will print "REPLACING FILE ..."  when  this
+                           option is in effect and a file is to be overwritten.
+
+       Keep
+                           This command will cause TELECOPY to  bypass  copying
+                           over    an    existing   file,   without   requiring
+                           confirmation.  TELECOPY  will  print  "KEEPING  FILE
+                           ..."  when  this option is in effect and an existing
+                           file was specified to be overwritten.
+                                                                        Page 37
+TELECOPY SUMMARY
+
+
+       Update
+                           This command  will  force  TELECOPY  to  update  the
+                           contents  of an old file being replaced, rather than
+                           copy an entire file.  This is the  default  setting.
+                           Effective  only  for  BINARY, SERIAL, or NATIVE mode
+                           file  transfers  between  TELECOPY  controllers  and
+                           slaves  which  have  UPDATE capability (that is, all
+                           except TYMCOM 370).
+
+       No Update
+                           Forces copying the entire contents of a file even if
+                           UPDATE  mode  could  have  been used.  May be faster
+                           than UPDATE mode if the old file being replaced  has
+                           been   modified   sequentially   starting  near  the
+                           beginning, or greatly differs from the replacement.
+
+       Help
+                           Prints a list of valid program commands.
+
+       Instructions
+                           Prints brief instructions on how to use the program.
+
+       PDP
+                           TYMCOM   IX   command   for   printing    additional
+                           instructions  relating  to  TYMCOM IX, TYMCOM X file
+                           transfers.
+
+       SYS940
+                           TYMCOM   X   command   for    printing    additional
+                           instructions  relating  to  TYMCOM X, TYMCOM IX file
+                           transfers.
+
+       SYS#
+                           Additional  instructions  relating  to  TYMCOM   IX,
+                           TYMCOM 370 file transfers.
+
+       SYS370
+                           TYMCOM   X   command   for    printing    additional
+                           instructions  relating  to TYMCOM X, TYMCOM 370 file
+                           transfers.
+
+       Quit
+                           This command breaks any existing TYMNET circuit,  so
+                           that  the  logged-in  remote  userid  stops accruing
+                           usage charges, and exits the TELECOPY program to the
+                           system command level.
+                                                                        Page 38
+TELECOPY SUMMARY
+
+
+       CAPabilities
+                           TYMCOM IX command for printing program capabilities.
+
+       PROject
+                           TYMCOM IX command  for  changing  the  project  code
+                           which is used when logging into the target system.
+
+       Why
+                           Causes a TYMCOM 370 slave to send its  latest  error
+                           explanation message.
+                                                                        Page 39
+TELECOPY DESCRIPTION
+
+
+       ((COMMAND DESCRIPTION))
+
+            To start the program, enter the following  program  name  from  the
+       exec:
+
+               On TYMCOM-IX  hosts            'TELECOPY'
+               On TYMCOM-X   hosts            'R TELECO'
+               On TYMCOM-370 hosts            'TELECOPY'
+
+       The program responds with a colon (:) prompt at which point the user may
+       enter  any  valid  TELECOPY command.  If any of the preliminary commands
+       are needed to establish parameters relevant to the  use  of  lower  case
+       characters, trailing blanks and so on, they should be input first.
+
+            As a user with Tymshare license, you may receive  progress  reports
+       periodically  by  using  the  'TIME'  command at this point.  It is only
+       necessary to do this once to set the switch.  This will also report  the
+       rate per second characters are being transferred.
+
+            there are two ways to begin program execution.   the  first  is  to
+       issue  the  run command, which will prompt for the "copy from" and "copy
+       to" filenames as shown in the following example:
+
+       ':RUN (CR)
+
+       'COPY FROM FILE:' (YOUNGERC:38)TELECO.RNO(cr)
+
+       'COPY TO FILE:' (YOUNGERC:33)TELECO.RNO(cr)
+
+       'COPY STARTING'
+
+       '(YOUNGERC:38)TELECO.RNO COPIED TO (YOUNGERC:33)TELECO.RNO'
+       '32000 (26454) CHARS. TRANSMITTED'
+
+       ':'
+
+       Only one file can be specified for transfer  when  the  RUN  command  is
+       used.   The  filename must be preceded by the username and system number
+       which complete the path name for the file.  The syntax for  both  "FROM"
+       and "TO" pathnames is:
+
+            (username:{sysno})filename
+                      { *   }
+
+       The filename that is typed must obey the syntax rules on its  respective
+       system.
+
+       An asterisk "*" may be used in place  of  the  system  number  on  which
+       TELECOPY  is  being  run.   The  system nos.  in the "FROM" and the "TO"
+       specifications must not the same system, and at least one of  them  must
+       be the system on which TELECOPY is being run.
+
+            In the example above, if the file TELECO.RNO already existed on the
+       destination system and was to be replaced, TELECOPY would have printed
+
+       'OK TO WRITE ON OLD FILE? '
+                                                                        Page 40
+TELECOPY DESCRIPTION
+
+
+       In order to require confirmation of the replacement.  This question must
+       be  answered  YES  or  NO.   If  the answer is YES, and file transfer is
+       between identical system types (except TYMCOM 370's),  or  is  a  binary
+       mode  transfer  between dissimilar system types (but neither is a TYMCOM
+       370), then TELECOPY will switch to UPDATE mode and send only  blocks  of
+       the  donor  file  which  differ from blocks in the destination file.  In
+       this case, TELECOPY would have printed "'UPDATING STARTED'"  instead  of
+       "'COPY STARTED'".
+
+            Two commands, REPLACE and KEEP, may be used  to  provide  automatic
+       confirmation  or rejection, respectively, of file replacement.  The KEEP
+       command, for example, will cause TELECOPY to retain any  existing  files
+       that  would  otherwise  have  been written over.  Still another command,
+       ASK, restores  the  normal  mode  of  requiring  confirmation  from  the
+       terminal.  These commands are useful when creating commands files and it
+       is uncertain whether the files being copied  will  need  a  'Y'  or  'N'
+       response in the commands file.
+
+            When TELECOPY has finished  copying  the  file,  it  will  print  a
+       message   to   this   effect,   including   complete   "FROM"  and  "TO"
+       specifications.   TELECOPY  also  prints  the  total  number  of   8-bit
+       characters  transfered,  and the number of TYMNET characters transmitted
+       in parentheses.
+
+
+            The second, and prefered, method of beginning program execution  is
+       to  type  the  "FROM"  and  "TO" filename specifications directly at the
+       prompting ":".  When the command dispatcher sees a left  parentheses  as
+       the first character of any command, a RUN is implied and extended syntax
+       rules apply.  The format for this command line is
+
+       "FROM"specifications[,]"TO"specifications(cr)
+
+       The comma separating "FROM" and "TO" specifications  is  optional.   The
+       "TO"  specifications  will  be recognized by the presence of a colon ":"
+       somewhere in the "TO" system no.  specification.
+
+            The total length of the line cannot exceed 300 chars.   A  linefeed
+       may be used to continue typing the line.
+
+                             "FROM" SPECIFICATIONS
+
+       (username[:{sysno}])filename1[,filename2[,...]]
+                [:{ *   }]
+
+            A number of  filenames  belonging  to  the  same  username  may  be
+       specified.   If  the  system no.  and its preceding colon ":" is omitted
+       altogether, ":*" is assumed (the system on which TELECOPY is run).
+
+                              "TO" SPECIFICATIONS
+
+       [(username]:{sysno}[)][filename1[,filename2[,...]]]
+                   { *   }
+
+       If the "to" username is omitted, the "FROM" username  is  assumed.   The
+       "TO" system number and its preceding colon ":" may never be omitted.  If
+                                                                        Page 41
+TELECOPY DESCRIPTION
+
+
+       fewer filenames are listed in the "TO" specifications than appear in the
+       list   of   "FROM"   filenames,  then  the  name  given  in  the  "FROM"
+       specifications  is  assumed.   The  "TO"  filenames   may   be   omitted
+       altogether,  and  then  all files specified on the "FROM" system will be
+       copied to identical filenames on the "TO" system.
+
+                        TYMCOM-IX SPECIFIC INSTRUCTIONS
+                       --------- -------- -------------
+
+            The following  differences  prevail  when  using  this  program  to
+       transfer files from or to a TYMCOM-IX and another type of host:
+
+            ASCII files may be transferred, and to a lesser degree of  success,
+       SERIAL  binary mode also.  Between the TYMCOM-IX and TYMCOM-X, IMAGE and
+       BINARY files can be transferred.  Tymcom-x line numbered files, such  as
+       created   with   LINED,   will  have  the  line  numbers  stripped  when
+       transferring to the TYMCOM-IX system.  TYMCOM-X tabs will be expanded to
+       spaces   based  on  standard  tab  settings  when  transferring  to  the
+       TYMCOM-IX.  The  TYMCOM-IX  compressed  blanks  will  be  expanded  when
+       transferring   to  the  TYMCOM-X.   File  names  must  meet  the  syntax
+       requirements of the appropriate system.
+
+            You are referred to the naming conventions for the TYMCOM-IX in the
+       EXECUTIVE MANUAL (May 1976) page 23,24.
+                                                                        Page 42
+TELECOPY DESCRIPTION
+
+
+                        TYMCOM-X SPECIFIC INSTRUCTIONS
+                        -------- -------- ------------
+
+            The following differences should be borne in mind when  using  this
+       program to transfer files between the TYMCOM-X and other host types:
+
+            ASCII files may be transferred, and to a lesser degree of  success,
+       SERIAL  binary mode also.  Between the TYMCOM-X and TYMCOM-IX, IMAGE and
+       BINARY files can be transferred.  TYMCOM-X line numbered files, such  as
+       created with LINED, will have the line numbers stripped when transferred
+       to the TYMCOM-IX system.  TYMCOM-IX compressed blanks will  be  expanded
+       when transferred to TYMCOM-X.  TYMCOM-X tabs will be converted to spaces
+       based on standard tab setting when transferred to the  TYMCOM-IX.   When
+       transferring  onto an old file on the TYMCOM-IX, the file will be opened
+       in sequential mode, meaning  that  the  old  contents  are  lost.   This
+       differs from the TYMCOM-IX transfer where old files are opened in update
+       mode.  This means that if the the TELECOPY is aborted by using an escape
+       key the original contents of the old file will be preserved.  File names
+       must meet the syntax requirements of the recipient system.
+
+            Refer to the Tymshare XEXEC MANUAL (Dec.  1974) page  13,14  for  a
+       discussion of valid file names on the TYMCOM-X.
+
+                       TYMCOM-370 SPECIFIC INSTRUCTIONS
+                       ---------- -------- ------------
+
+            The following  differences  prevail  when  using  this  program  to
+       transfer files from or to a TYMCOM-370 and another type of system:
+
+            ASCII files may be transferred, and to a lesser degree of  success,
+       SERIAL  binary mode also.  Between the TYMCOM-370 and TYMCOM-X, KATAKANA
+       mode files can be transfered.  TYMCOM-X line  numbered  files,  such  as
+       created   with   LINED,   will  have  the  line  numbers  stripped  when
+       transferring to the TYMCOM-370 system.  TYMCOM-X tabs will  be  expanded
+       to  spaces  based  on  standard  tab  settings  when transferring to the
+       TYMCOM-370.  Blank lines in the TYMCOM-X file will cause a record of one
+       blank  on the TYMCOM-370, and if the file is returned to the TYMCOM-X by
+       a subsequent file transfer, the "SUPRESS" option should be given.   File
+       names must meet the syntax requirements of the appropriate system.
+
+            For a discussion of these requirements on the TYMCOM-370, refer  to
+       Tymshare's 'CMS REFERENCE MANUAL' (Oct 1974) page 20-22.
+                                                                        Page 43
+TELECOPY DESCRIPTION
+
+
+                            TELECOPY COMMANDS FILES
+                            -------- -------- -----
+
+            On the TYMCOM IX  system,  TELECOPY  input  may  be  taken  from  a
+       commands  file;   output  will always be directed to the terminal.  When
+       input is from a commands file, questions  requiring  a  YES/NO  type  of
+       response  may  not  be  anticipated.   The  user is advised to include a
+       replace or keep command at the beginning of his commands file.
+
+            On the TYMCOM X, commands file input may be initiated by creating a
+       .TMP  file  containing  the  user  commands.   This file should be named
+       XXXTEL.TMP or XXXTEL.COM, where XXX = PJOB number as typed by  the  PJOB
+       command,  with  sufficient leading 0's as required.  Several jobs logged
+       into the same userid may use different commands files, each with its own
+       PJOB number.  To initiate TELECOPY, type:
+
+       -GET (SYS)TELECO
+
+       -REE
+
+            TELECOPY will now begin execution, taking commands from the .TMP or
+       .COM file, until it reaches a QUIT command or end-of-file.  Furthermore,
+       TELECOPY will run detached if the commands file has the .COM  extension.
+       In  this  case,  terminal  output may be found in a commands output file
+       named XXXTEL.OUT.  TELECOPY will  continue  to  run  detached  until  it
+       reaches a QUIT command or end-of-file, when the job will log itself out.
+                                                                        Page 44
+TELECOPY DESCRIPTION
+
+
+       ((SAMPLE RUNS))
+
+       '.'R TELECO (CR)                        (CALL THE PROGRAM)
+
+       ':'RUN (CR)
+       'COPY FROM FILE:' (TRAINING:33)TELECO.DOC (CR)
+
+       'COPY TO FILE:' (TRAINING:40)TELECO TEXT (CR)
+                                               (NOTE FILENAME
+                                                FOR 370 SYNTAX)
+       'COPY STARTING'
+
+       'TELECO.DOC SYSTEM 33
+        COPIED TO
+        TELECO TEXT SYSTEM 40'
+
+       '10354 CHARS. TRANSMITTED'              (COMPLETION MESSAGE)
+       ':'QUIT (CR)                            (RETURN TO EXEC)
+
+       Here the same transfer is accomplished but prompting is
+       omitted. It is assumed the user is logged on to C33 so the
+       'TO' system may also be omitted.
+
+       '.'R TELECO (CR)
+
+       ':'(TRAINING)TELECO.DOC,(TRAINING:40)TELECO TEXT (CR)
+       'COPY STARTING'
+
+       'TELECO.DOC SYSTEM 33
+        COPIED TO
+        TELECO TEXT SYSTEM 40'
+
+       10354 CHARS. TRANSMITTED'
+
+       In this example, the file is transferred to C35 with the same
+       file name kept on both systems. Also, 'FROM' and 'TO' specifications
+       are input together on the same line.
+
+       ':'(TRAINING:33)TELECO.DOC,:35 (CR)     (NOTE USE OF : TO 
+       'COPY STARTING'                          SEPARATE 'FROM' AND
+                                                'TO' SPECS.)
+
+       'TELECO.DOC SYSTEM 33
+       COPIED TO
+         SYSTEM 35'                            (SAME FILENAME)
+
+       '10354 CHARS. TRANSMITTED'
+       ':'
+
+       Now TELECOPY is run on a TYMCOM-IX. Several files can be copied
+       with a single command string input.
+
+       '-'TELECOPY (CR)
+
+       ':'(MARTINEZ:10)AFILE,BFILE,CFILE,:8,AFILE1,BFILE1,CFILE1 (CR)
+                                               (USE COMMA BETWEEN FILES)
+                                                                        Page 45
+TELECOPY DESCRIPTION
+
+
+       'COPY STARTING'
+
+       'AFILE SYSTEM 10
+       COPIED TO
+       'AFILE1 SYSTEM 8'
+
+       '25 CHARS. TRANSMITTED'
+
+       'BFILE SYSTEM 10
+       COPIED TO                               (THE PROGRAM CONTINUES
+       BFILE1 SYSTEM 8'                         WITH THE NEXT FILE)
+
+       '465 CHARS. TRANSMITTED'
+
+       'CFILE SYSTEM 10
+       COPIED TO
+       CFILE1 SYSTEM 8'
+
+       '2534 CHARS. TRANSMITTED'               (WHEN ALL DONE TELECOPY
+       ':'                                      RETURNS TO COMMAND
+                                                MODE)
+
+       In this example, the destination name for the TELECOPY 
+       already exists.
+
+       ':'(940MAN:35)OPSYS.DOC,:33 (CR)
+
+       'OKAY TO WRITE ON OLD FILE?' Y (CR)     (A 'NO' HERE ABORTS THE
+                                                TELECOPY AND RETURNS
+                                                TO COMMAND MODE)
+
+       'COPY STARTED'
+
+       'OPSYS.DOC SYSTEM 35
+        COPIED TO
+          SYSTEM 33'
+
+       '243578 CHARS. TRANSMITTED'
+       ':'
+                                                                        Page 46
+TELECOPY ERROR RECOVERY
+
+
+       ((ERRORS AND RECOVERIES))
+
+            If the error message 'UNABLE TO LOG INTO SYSTEM NN' outputs,  there
+       is  a  possibility  that the destination system is unavailable.  To test
+       this possibility, login to the destination system.  If  you  can  login,
+       proceed  to  'pull'  the  file from the source system.  Another cause of
+       this error message is attempting to use  a  different  username  on  one
+       system  than  another.   If not, perhaps one of the the usernames is not
+       valid on the host system it references.
+
+            For error messages in the form  'UNABLE  TO  OPEN  FILE  FILENAME',
+       chances  are  there  is  a protection on the file or directory involved.
+       Check this by using the appropriate EXEC commands that  output  file  or
+       directory protection status.
+
+            The   error   message   'CIRCUIT   ZAPPED'   indicates    that    a
+       telecommunications  problem  occurred  during  the  TELECOPY.   For best
+       results, quit out of telecopy and reenter the program to try again.   If
+       the  method of old file overwriting was sequential, then the destination
+       file is probably gone.
+                                                                        Page 47
+INDEX
+
+
+       BASE CODE RELOAD  . . . . . . . . .  17
+       BASE CRASH SUMMARY  . . . . . . . .  13
+       BASE RELOAD ERRORS  . . . . . . . .  20
+       BASE SAVE DESCRIPTION . . . . . . .  14
+
+       CHANGING A BOOTSTRAP ENTRY  . . . .  21
+       CHECKING BASE BOOTSTRAP . . . . . .  21
+
+       DOWNSTREAM LINE TABLE IN BOOTS  . .  19
+
+       EXTRACT . . . . . . . . . . . . . .  28
+
+       GENERAL PROBE COMMANDS  . . . . . .  24
+
+       KEY TO TYMNET MAP . . . . . . . . .  12
+
+       LOGGER TERMINAL . . . . . . . . . .  28
+       LOGIN ERROR MESSAGES  . . . . . . .  6
+
+       NETWORK SUPERVISOR  . . . . . . . .  7
+       NODE COMMANDS . . . . . . . . . . .  26
+
+       PROBE COMMAND MODE  . . . . . . . .  23
+       PROBE ERROR RECOVERIES  . . . . . .  31
+       PROBE LOGIN PROCEDURE . . . . . . .  23
+       PROBE SAMPLE RUNS . . . . . . . . .  29
+       PROBE START UP  . . . . . . . . . .  23
+
+       RECORDING BASE REGISTERS  . . . . .  14
+       RELOADING SYNCHRONOUS BOOT  . . . .  20
+       RESTARTING BASE FROM 0  . . . . . .  14
+
+       TELECO COMMANDS FILES . . . . . . .  43
+       TELECOPY DESCRIPTION  . . . . . . .  38
+       TELECOPY ERROR RECOVERY . . . . . .  46
+       TELECOPY SUMMARY  . . . . . . . . .  32
+       TYMNET DEVELOPMENT  . . . . . . . .  3
+       TYMNET GENERAL SCHEMATIC  . . . . .  9
+       TYMNET IN ACTION  . . . . . . . . .  10
+       TYMNET MAP  . . . . . . . . . . . .  11
+       TYMNET STATUS COMMANDS  . . . . . .  25
+
+       V73 CONSOLE . . . . . . . . . . . .  16
+
+ tOk#…
