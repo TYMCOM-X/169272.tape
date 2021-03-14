@@ -1,0 +1,893 @@
+
+
+
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        $$$$                        $$$$
+       $$$$                          $$$$
+       $$$$                          $$$$
+       $$$$$                        $$$$$
+       $$$$$$                      $$$$$$  MESSAGE PROGRAMS ON THE TYMCOM-X
+       $$$$$$                      $$$$$$
+       $$$$$$                      $$$$$$  OPERATIONS MINI-MANUAL #7
+       $$$$$$                      $$$$$$  
+       $$$$$$$                    $$$$$$$  
+       $$$$$$$                    $$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$  M C  D O N N E L L   D O U G L A S
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$     WESTERN COMPUTER OPERATIONS
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$    TYMSHARE COMPUTER  MANAGEMENT
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$             SERVICES
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$  
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$
+       $$$$$$$$$$$     ::     $$$$$$$$$$$
+       $$$$$$$$$$$     ::     $$$$$$$$$$$
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$       ::       $$$$$$$$$
+       $$$$$$$$$      ::::      $$$$$$$$$
+       $$$$$$$$      ::::::      $$$$$$$$
+       $$$$$$$$     ::::::::     $$$$$$$$  AUGUST 1984
+       $$$$$$$     ::::::::::     $$$$$$$  
+       $$$$$$$    ::::::::::::    $$$$$$$  
+       $$$$$$    ::::::::::::::    $$$$$$  
+       $$$$$$   ::::::::::::::::   $$$$$$  
+       $$$$$   :::::::::::::::::    $$$$$  UPDATES MANUAL OF MARCH 1980
+       $$$$$  ::::::::::::::::::::  $$$$$
+       $$$$  ::::::::::::::::::::::  $$$$
+        $$$$::::::::::::::::::::::::$$$$
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                                                                         Page 2
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                         Page 3
+
+
+                               TABLE OF CONTENTS
+                               -----------------
+
+               TITLE                            PAGE NO.
+               -----                            --------
+
+               SEND AND CRASH MAIL                  5
+
+               TMCS 1DOWN FACILITY                  9
+
+               BROADCAST LETTER AND PSCHED         12
+
+               THE TALK COMMANDS                   18
+
+               THE ACCESS MESSAGE                  19
+
+               INDEX                               20
+                                                                         Page 4
+
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                         Page 5
+SEND AND CRALST
+
+
+                        THE SEND PROGRAM AND CRASH MAIL
+                        -------------------------------
+
+       ((INTRODUCTION))
+
+            The SEND program is used to input  a  message  and  send  it  to  a
+       specific  user  or  users.   The program is a simplification of the SEND
+       program on the TYMCOM-IX hosts.
+
+            Most commonly, this program is used to communicate status regarding
+       batch requests.  If a problem exists with a particular request, the SEND
+       program might be used (rather than calling) to notify the user  involved
+       or to request additional information.  Send messages of this type should
+       accompany the hardcopy of the incomplete request to facilitate  turnover
+       of  the  job.   In  WCO  these requests are queued in the 'WAITING MAIL'
+       shelf.
+
+            When batch requests are completed, SEND is used to inform the  user
+       that  this  has  been  done.  Unlike the 940 SEND program, no mail ID is
+       output by the program  and  terminal  hardcopy  of  the  message  should
+       accompany  the  completed batch request when it is submitted for quality
+       assurance checking.
+
+            The other major use of this program is to pass along information to
+       hardware  and  software usernames who need to be informed about each and
+       every system crash.  SEND is directed to @(UTIL)CRALST for every  crash.
+       It  should  be sent as part of the restart procedure on the system which
+       crashed.  Included in the message should be the following information:
+
+               1. SYSTEM NUMBER, / HARDWARE ID, / APR SERIAL NO.
+               2. DATE AND TIME OF THE CRASH
+               3. REASON (EG. BOOTS LOADED, MEMORY PARITY, HANGUP)
+               4. DETAILS - MEMORY BOX, SECTOR, MODULE NUMBERS
+               5. CRASH SAVE FILE NAME (EG. CRA001)
+               6. ACTION TAKEN - SWAPPED DISK DRIVES, DESELECTED CORE,
+                  RELOADED BASE ETC.
+               7. TIME SYSTEM CAME BACK UP FOR TIMESHARING
+               8. ANY ADDITIONAL COMMENTS FELT TO BE RELEVANT
+               9. THE MAR/IR NUMBER NUMBER REFERENCING THE CRASH
+              10. OPERATOR INITIALS.
+
+            Given the limitations  as  to  maximum  number  of  characters  per
+       message,  the  above data should be entered concisely.  If more input is
+       needed, this information can  be  continued  on  another  message.   The
+       important  thing  is that the appropriate people addressed in the CRALST
+       are sent all the necessary information needed to follow-up.
+                                                                         Page 6
+SEND AND CRALST
+
+
+       ((COMMAND SUMMARY))
+
+            When SEND is used, it will prompt  for  username(s)  to  which  the
+       message is to be sent unless this input is typed as a direct argument to
+       the SEND command.  If multiple usernames are  to  receive  the  message,
+       each  username  must be separated by a colon.  Alternately, this list of
+       usernames may be kept in a separate text file and referenced  indirectly
+       in SEND by using an at sign (@) before the file name.
+
+            A maximum of 240 characters of message may be  typed  in  following
+       the  SEND  prompt 'TYPE LETTER'.  To terminate this type in and send the
+       message, type control d.  Users addressed by this procedure will  see  a
+       'MAIL  WAITING'  message  on their terminal when they enter or return to
+       EXEC.  To output the message they must type 'MAIL'.
+
+       ((SAMPLE RUNS))
+
+       SENDING A MESSAGE
+       -----------------
+
+       TO SEND A MESSAGE TO ANOTHER USER, USE THE SEND COMMAND AS FOLLOWS:
+
+       '.'SEND USERNAME(CR)      (OR SEPARATE MULTIPLE USERNAMES
+                                  WITH A COLON (:) TO SEND THE
+                                  MESSAGE TO MORE THAN ONE USER)
+       'TYPE LETTER:' (CR)
+       ATTENTION (NAME OF PERSON SENDING REQUEST)
+       REQUEST NUMBER XXXXX IS COMPLETED.
+       THANK YOU,
+       TYMSHARE OPERATIONS
+       (YOUR NAME)             (CONTROL D TO SEND LETTER)
+       '.'                     (BACK TO EXEC)
+
+       SENDING CRASH MAIL
+       ------------------
+
+       '.'SEND @(UTIL)CRALST (CR)          (INDIRECT REFERENCE TO
+                                            FILE WITH USERNAMES)
+
+       'TYPE LETTER:' C36/ZZ  666 HUNG @1750; DEP 1 IN 30; CRA002.
+        SYS UP @1820 W/ MAR/IR NUMBER  4545.
+        (YOUR NAME)/CUPC            (CONTROL D TO SEND IT)
+       '.'
+                                                                         Page 7
+SEND AND CRALST
+
+
+       (ADDITIONAL EXAMPLES OF CRASH MAIL LETTERS ARE AS FOLLOWS)
+
+       C38/XX  641: MEM PARITY @1542; CORESCAN SOLID AT ARM 123
+       SECT 1 MOD 2. DESEL 16K AND UP @ 1700 W/ 496K. MAR/IR NUMBER
+       4546.
+       (YOUR NAME)/WCO
+
+                                     (OR)
+
+       C36/ZZ  666: BASE INITIATED CRASH @ 1825; BASE IN STEP
+       P= 17336 DUMPED/RELOADED; CRA003 AND UP @1913. V73 REGISTERS
+       RECORDED W/ MAR/IR NUMBER  4547.
+       (YOUR NAME)/CUPC
+
+       ((ERRORS AND RECOVERIES))
+
+            There are no common errors involved with the SEND program.   Should
+       it  be  decided  that  a message sent should be removed, a fairly simple
+       minded program called POSTMAN can both type the date, time and addressee
+       of  all  messages.   For  each  and every entry, it allows the option of
+       typing out and canceling specifid messages.  POSTMAN lists all mail
+       sent  from  the user's particular directory whether it has been received
+       or not.  There are no commands in POSTMAN.  After  a  short  delay,  the
+       program  merely lists each message sent in a random order and allows the
+       options shown in the sample below:
+
+       '.'POSTMAN (CR)                 (NO STATUS NECESSARY)
+
+       'MAIL SENT ON: JAN 19, 1978 2:36
+        TO: MARTINEZ
+        TYPE MAIL?' N
+
+       "CANCEL MAIL?' N
+
+       'MAIL SENT ON: DEC 8, 1977 10:45
+        TO DANIELSR
+        TYPE MAIL?' Y                  (MAIL STILL AROUND EVEN
+                                        THOUGH IT WAS RECEIVED)
+               'A NEW VERSION OF MINI-MANUAL 6 IS IN YOUR DIR NOW.
+                THANX...BOBM'
+
+       "CANCEL MAIL?' Y                (PROBABLY A GOOD IDEA
+                                        TO HOUSECLEAN THIS
+       'MAIL CANCELLED'                 STUFF PERIODICALLY ANYWAY)
+
+       ....ETC                    (ALL MAIL MESSAGES ARE REFERENCED)
+               '.'                 (WHEN DONE, BACK TO EXEC)
+                                                                         Page 8
+SEND AND CRALST
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                         Page 9
+TMCS 1DOWN
+
+
+                              TMCS 1DOWN FACILITY
+                              -------------------
+
+       ((INTRODUCTION))
+
+       The facility to maintain the  host  status  message  data  base  on  the
+       supervisor  has  been  added  to TMCS.  This facility replaces the 1DOWN
+       program on the 940's.  Host status messages are sent by  the  supervisor
+       when  a  login  was  attempted  to a down, shut, or gone host.  The host
+       status message is sent to all supervisors in the network.   If  TMCS  is
+       unable to set or clear a message on a specific supervisor, it will again
+       attempt the set or clear within an hour and then every  hour  until  the
+       message is set or cleared.  "HST" license must be in the "PROFILE".
+
+       This facility is used for situations where it is  necessary  to  send  a
+       message  to  all  DISTRICTS  informing  them  of the unavailability of a
+       system during scheduled timesharing hours.  If a system will be down  15
+       minutes or longer, it should be used.
+
+       ((COMMAND SUMMARY))
+
+           *SET HOST MESSage [TO mm/dd/yy] hh:mm[:ss]] host
+
+       This command sends the message entered to all supervisors  as  the  host
+       status message for the given host.  If a date and time is entered, it is
+       the time which TMCS should attempt to clear the message.   If  DATE/TIME
+       is  not specified, message will exist forever.  There is no way to track
+       the message (source).
+
+       The text entered for the command may be multiline.  To add another line,
+       end the current line with a line feed rather than a carriage return.
+
+           ENTER MESSAGE:
+
+           THIS ONTYME SYSTEM IS CURRENTLY UNAVAILABLE.  WE (LF)
+           ESTIMATE ITS RETURN TO SERVICE AT (HH:MM) (PDT) OR (LF)
+           (PST).  THANK YOU (CR)
+
+           Supervisor 121 host status set.
+           Supervisor 122 host status circuit build error:
+                      host unavailable, TMCS will try again.
+           Supervisor 123 host status set.
+           Supervisor 124 host status set.
+                                                                        Page 10
+TMCS 1DOWN
+
+
+           *SET HOST TIMEout [TO mm/dd/yy] hh:mm[:ss]] <host_index>
+
+       This command changes the time  when  TMCS  will  attempt  to  clear  the
+       message.
+
+           *CLEAR HOST MESSage <host_index>
+
+       This command clears the host status message on the given host  from  all
+       supervisors  and TMCS data base.  If the clear fails on any supervisors,
+       TMCS will continue to attempt to clear the message.
+
+           *CLEAR HOST ENTRY <host_index>
+
+       This command causes TMCS to discard  the  record  for  the  given  host,
+       concerning  whether a host status message is set or being cleared.  Does
+       NOT CLEAR the message from the Supervisor.
+
+           *LISt HOST MESSage SUPervisor <supervisor_index> <host_index>
+
+       This command will display host status message text of the specified host
+       from the specified supervisor.
+
+           *LISt HOST ENTRY [host_index]
+
+       This command will display host status entry of the specified  host.   If
+       no  host is specified, all entries will be displayed.  If message is NOT
+       in TMCS data base, it will not be DISPLAYED.
+
+       The  host  number,  message  set  time,  message  clear  time,  and  set
+       pending/clear  supervisors,  will be listed for each entry.  If no clear
+       time has been set for  a  host  status  message  then  the  output  will
+       indicate "NEVER".
+                                                                        Page 11
+LETTER AND PSCHED
+
+
+                        THE LETTER AND PSCHED PROGRAMS
+                        ------------------------------
+
+       ((INTRODUCTION))
+
+            The LETTER program is used to broadcast a message to all users on a
+       specific  TYMCOM-X.  In general, this program is a simplification of the
+       1LETTER  program  on  the  TYMCOM-IX  hosts.   The  program  itself   is
+       structured  so  that  six  letters  are available for broadcasting.  The
+       purpose of the message may be to inform them of a special change in  the
+       timesharing schedule or to announce that a shutdown has been scheduled.
+
+            Of the six available letter  numbers  in  this  program,  letter  5
+       contains  a  special  schedule  broadcast letter.  A special MAGNUM data
+       base and procedure has been established to  process  shutdown  data  and
+       generate   time-zone  equivalents  for  each  system.   This  BROADCAST.
+       MESSAGE is shown in the SAMPLE RUN section of this document.   Once  the
+       MAGNUM  procedure  has  been  performed,  the sending of letter 5 can be
+       automated by use of the COM commands file string.
+
+            Letter 6 will contain the 'stock' shutdown  schedule  and  be  used
+       with  the current date as part of normal shutdown procedures.  A special
+       program called PSCHED is used to input this letter.  This program  sends
+       letter  number  6 and informs the PERP subsystem of the pending shutdown
+       so that deferred processing jobs can be scheduled  around  the  shutdown
+       times.
+
+            Occasionally, the System Resourse Allocation group  will  use  this
+       program to warn users on inhouse systems that file space is low and that
+       files not required online should be deleted.  A  message  of  this  type
+       would  normally  reside  in  letter number 3.  At times, this program is
+       used by the  technical  services  or  marketing  people  to  indicate  a
+       revision  in  a  widely  used software package has been implemented.  In
+       this case, the letter will usually  point  to  an  information  file  in
+       directory   (SYSNEWS).   Traditionally,  letter  numbers  1  and  2  are
+       allocated for this purpose.
+
+            It is necessary that OP license be set to access  LETTER.   Once  a
+       letter  has  been sent, new users will automatically see the letter upon
+       login;  current users will see the 'MAIL WAITING' message from EXEC.  To
+       output  a  copy  of  the  letter, these users must type the EXEC command
+       'MAIL'.
+
+       ((COMMAND SUMMARY))
+
+                   TO ENTER THE PROGRAM, SET OP LICENSE
+
+                   THEN IN THE EXEC TYPE:   R LETTER(CR)
+
+                                    OR
+
+                   FOR SHUTDOWN LETTER:     R PSCHED(CR)
+                                                                        Page 12
+LETTER AND PSCHED
+
+
+       VALID COMMANDS
+       --------------
+
+            In all cases, the first character of each command listed below will
+       serve  to  identify  your  command  input;   if  you  wish  a command to
+       reference a particular  letter  number,  that  number  must  follow  the
+       command  as  an  argument separated by a comma.  For example, the LETTER
+       command 'D,5' will display only letter number 5.  
+
+       LETTER CMD            ACTIVITY RESULTING
+       ----------            ------------------
+
+       COUNT                 DISPLAYS THE NUMBER OF USERS WHO
+                             HAVE NOT YET RECEIVED EACH LETTER
+
+       DISPLAY               DISPLAYS THE CONTENTS OF ALL OR
+                             SPECIFIED LETTERS (INCLUDING
+                             THOSE THAT HAVE EXPIRED)
+
+       HELP                  OUTPUTS THIS LIST OF COMMANDS.
+
+       AGAIN                 RESENDS A SPECIFIED LETTER WITH A
+                             NEW INPUT FOR NUMBER OF DAYS THE
+                             LETTERS WILL AGAIN BE IN EFFECT.
+
+       REMOVE                CANCELS A SPECIFIED LETTER
+
+       SEND                  ALLOWS ATHE OPER TO INPUT A NEW
+                             MESSAGE AND SEND IT TO ALL USERS
+                             FOR A SPECIFIED NUMBER OF DAYS
+
+       QUIT                  QUITS TO THE EXECUTIVE
+                                                                        Page 13
+LETTER AND PSCHED
+
+
+       ((SAMPLE RUNS))
+                      SETTING UP TIME ZONES FOR LETTER 5
+                      ----------------------------------
+
+       "."GFD UTIL (CR)                (ASSUMES OP LICENSE)
+
+       "."FTMAGNUM TIME.ZONES (CR)     (CALL MAGNUM DATA BASE)
+       "(DATE/TIME)"
+
+       ":"RUN BROADCAST.MESSAGE (CR)   (RUN MAGNUM PROCEDURE)
+       "LOADING BROADCAST.MESSAGE"
+       "EXECUTION"
+
+       "TIME ZONE ABBREVIATIONS:"
+        -----------------------
+       "P = PACIFIC"
+       "M = MOUNTAIN"
+       "C = CENTRAL"
+       "E = EASTERN
+       "G = GMT"
+       "J = JAPAN"
+       "L = LONDON
+       "F = FRANCE, BELGIUM, HOLLAND (I.E. WESTERN EUROPE)"
+       "D = GERMANY"
+
+       "ENTER YOUR (OPERATOR'S) INITIALS:"  (YOUR INITIALS) (CR)
+
+       "ENTER YOUR TIME ZONE (USE ABOVE ABBREVIATIONS):" P (CR)
+
+       "IS DAYLIGHT SAVINGS IN EFFECT?"  Y OR N (CR)
+
+       "ENTER SYSTEM (E.G. C35):" 37 (CR)
+
+       "ENTER TIME ZONES FOR OUTPUT (USE ABOVE ABBREV.):" G P F(CR)
+
+       (For example, on the following TYMCOM-X systems the time zones
+       in effect for the BROADCAST letter are as follows:
+               SYSTEM                  TIME ZONES USED
+               RR/C33                  P G E F L
+               TT/C37                  P G F
+               VV/C39                  P G J F)
+
+       "ENTER START DATE AND TIME AS MM/DD/YY,HH:MM:" 02/25/80,23:00 (CR)
+
+       "ENTER STOP DATE AND TIME AS MM/DD/YY,HH:MM:" 02/26/80,06:00 (CR)
+
+       "ANOTHER SCHEDULE FOR THIS SYSTEM (Y OR N)?" Y OR N (CR)
+
+       "THE OUTPUT FILE IS LTR.TMP"
+
+       "EXECUTION COMPLETED"
+
+       ":"Q (CR)                       (QUIT FROM MAGNUM)
+       "(DATE/TIME)"
+
+       "EXIT"
+                                                                        Page 14
+LETTER AND PSCHED
+
+
+                           COMMANDS FILE LETTER RUN
+                           ------------------------
+
+       (Now use COM to process the message you created in MAGNUM)
+
+       "."RU COM;LTR.TMP (CR) (CR)     (THIS COMMAND DOES IT ALL)
+
+       "EXIT"
+
+       ".R LETTER"
+       "@C"
+       "1   0"
+       "2   0"
+       "3   0"
+       "4   0"
+       "5   0"
+       "6   0"
+       "@S"
+       "TYPE LETTER NO. (1-6): 5"
+       "HOW MANY DAYS? 1"
+
+       "TYPE LETTER:"
+       "SYSTEM 37 WILL BE TERMPORARILY UNAVAILABLE DURING"
+       "THE FOLLOWING PERIOD(S):"
+
+       "EASTERN: MON 2/26 0200-0900"
+
+       "GMT: MON 2/26 0600-1300"
+
+       "LONDON: MON 2/27 0700-1400"
+
+       "PACIFIC: SUN 2/25 2300-MON 2/26 0600"
+
+       "THANK YOU,"
+       "OPERATIONS"
+       "(YOUR INITIALS)"
+
+       "@C"
+       "1   0"
+       "2   0"
+       "3   0"
+       "4   0"
+       "5   2634"
+       "6   0"
+       "@Q"
+
+       "MAIL WAITING"
+       "."
+                                                                        Page 15
+LETTER AND PSCHED
+
+
+       SENDING STANDARD SHUTDOWN LETTER
+       --------------------------------
+
+       (SET STATUS AND ENTER THE "PSCHED" PROGRAMS AS SHOWN BELOW)
+
+       '.'R PSCHED
+       'SCHEDULE VERSION 1.1
+       'ENTER SCHEDULED DOWN TIME MM/DD/YY HR:MIN :' 01/13/77 23:00
+       'ENTER SCHEDULED UP TIME MM/DD/YY HR:MIN:' 01/14/77 06:00
+
+       'REMEMBER ...... THE SYSTEM WILL LEAVE TIMESHARING AT...
+       2300 PACIFIC TIME
+       0000 MOUNTAIN TIME          (THE LETTER OUTPUTS FOR
+       0100 CENTRAL TIME            YOU TO CHECK.)
+       0200 EASTERN TIME
+       0700 LONDON TIME
+       0800 WESTERN EUROPE TIME
+
+       THANK YOU                   (ADJUSTMENTS ARE MADE FOR TIME
+       TYMSHARE'                    ZONE DIFFERENCES AUTOMATICALLY)
+
+       'OK?' Y OR N                (ENTERING 'N' ABORTS, ENTERING
+                                    'Y' SENDS THE LETTER)
+       'LETTER SENT'                AND 'N' ABORTS)
+       'EXIT'
+       '.'                         (BACK TO EXEC)
+
+       ((ERRORS AND RECOVERIES))
+
+            Frankly, the 1LETTER program itself is  fairly  buggy.   There  are
+       several  TSR'S  outstanding  on  features  which do not work or would be
+       desirable additions.  It appears that the program ignores the  input  as
+       to  'HOW  MANY  DAYS'  the  letter  in question will be in effect before
+       expiring.  For this reason, it is necessary to remove an obsolete letter
+       explicitly with the 'REMOVE' command.  Also, the program apparently sets
+       the 'mail waiting' bit in the LUD before a  letter  is  even  typed  in.
+       Thus, if the program is aborted, chances are fairly good that users will
+       see the 'MAIL WAITING' message even though there is  no  letter  waiting
+       for them.
+
+            The BROADCAST.message and PSCHED procedures  fortunately  insultate
+       the operator from the run-time problems with this utility.  
+                                                                        Page 16
+LETTER AND PSCHED
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                        Page 17
+TALK
+
+
+                               THE TALK COMMAND
+                               ----------------
+
+            The TALK command allows one  terminal  to  communicate  immediately
+       with another terminal or terminals.  This form of the command requires a
+       TTY NO.  as an argument.  To obtain this, the  SYSTAT  (USERNAME)  SHORT
+       program  can  be  used.   After typing 'TALK TTYNN' (where NN is the tty
+       number) the program allows a one line message  to  be  typed  in.   Upon
+       receiving  the  terminating  carriage return, the message will appear on
+       the terminal referenced immediately.  Although any programs running from
+       that  terminal  will  be unaffected, the TALK message will appear in the
+       middle of any typeout which may be listing at that time.
+
+            Another important use of the TALK command requiring OP  license  is
+       the ability to immediately convey a one line message to all terminals on
+       the system.  This feature is only justified under emergency  situations.
+       If  it  becomes  necessary to take the TYMCOM-X down in a hurry TALK can
+       notify all users on the system to return to EXEC  and  read  the  LETTER
+       explaining the situation.  During a scheduled shutdown, this form of the
+       TALK command can be  used  as  a  final  request  for  users  to  logoff
+       voluntarily before HANGUP is used to bring down the system.
+
+       ((SAMPLE RUN))
+
+       TALK TO SPECIFIC TERMINALS
+       --------------------------
+
+       '.'SYSTAT (NAME) SHORT         (USE THIS TO OBTAIN TTY NOS.)
+
+       '13 *1303*  13  EDITOR 22 OPER +$       (13 IS TTY NO.)
+
+       '.'TALK TTY13 IS THE LPT READY? PLS CALL 6354 BOBM(CR)
+                                      (ONLY ONE LINE FOR TALK STRING)
+
+                         (ON TERMINAL 13 THIS HAPPENS)
+
+       'DUMDY-DUMDY DUM....           (REGARDLESS OF WHAT IS HAPPENING
+                                       ON TTY 13, TALK MSG OUTPUTS)
+       ';;TTY8: - IS THE LPT READY? PLS CALL 6354 BOBM'
+                                      (TTY8 IS THE SENDING TTY)
+
+       TALK TO ALL TERMINALS
+       --------------------- (REQUIRES "OP" LICENSE FOR THIS)
+
+       '.'TALK ALL PLEASE RETURN TO EXEC LEVEL AND READ MAIL(CR)
+
+                                       (THIS TALK MESSAGE WILL
+                                        OUTPUT ON ALL TERMINALS AND 
+                                        INTERFERE WITH WHATEVER OUTPUT
+                                        IS TYPING...USE THIS FOR 
+                                        EMERGENCIES OR AFTER SCHED 
+                                        400000 ONLY)
+                                                                        Page 18
+ACCESS MESSAGE
+
+
+                                ACCESS MESSAGE
+                                ------ -------
+
+
+            It is  possible  to  notify  users  of  system  problems  or  other
+       communications thru the (SYS)ACCESS.MSG mechanism.
+
+            Prepare a short message using the R EDITOR  and  write  it  out  to
+       (SYS)ACCESS.MSG.   Users  will  see  this  message first thing when they
+       logon tho the system.  Once the message is no longer valid or needed, it
+       is removed by deleting (SYS)ACCESS.MSG.
+
+       ((SAMPLE RUN))
+
+       '.'R EDITOR
+
+       '*'APPEND
+
+       WELCOME TO THE 1980'S!! THANK YOU. OPERATIONS 
+       (CONTROL D)
+
+       '*'WRITE (SYS)ACCESS.MSG
+        'NEW FILE - OK?' (CR)
+       '45 CHARS'
+
+       '*'QUIT
+
+       '.'EXIT                 (LOGOUT)
+
+       'PLEASE LOG IN:' OPER:NN;PSWD;(CR)
+
+       'WELCOME TO THE 1980'S!! THANK YOU. OPERATIONS'
+
+       'TYMSHARE 0155 06-MAR-1980'
+       (ETC)
+
+       '.'DELETE (SYS)ACCESS.MSG       (TO REMOVE THE ACCESS MESSAGE)
+
+       '.'
+                                                                        Page 19
+INDEX
+
+
+                                     INDEX
+                                     -----
+
+
+       ACCESS MESSAGE  . . . . . . . . . .  18
+
+       BROADCAST. MESSAGE  . . . . . . . .  13
+
+       COMMANDS FILE LETTER RUN  . . . . .  14
+       CRASH MAIL CONTENTS . . . . . . . .  5
+
+       LETTER ALLOCATIONS  . . . . . . . .  11
+       LETTER COMMANDS . . . . . . . . . .  12
+       LETTER ERROR RECOVERIES . . . . . .  15
+       LETTER INTRODUCTION . . . . . . . .  11
+       LETTER LIMITATIONS  . . . . . . . .  15
+
+       PSCHED INTRODUCTION . . . . . . . .  11
+
+       SAMPLE PSCHED LETTER  . . . . . . .  15
+       SAMPLE SEND FOR BATCH . . . . . . .  6
+       SAMPLE SEND FOR CRASH . . . . . . .  6
+       SEND CHARACTER MAXIMUM  . . . . . .  6
+       SEND ERROR RECOVERIES . . . . . . .  7
+       SEND INTRODUCTION . . . . . . . . .  5
+       SEND SUMMARY  . . . . . . . . . . .  6
+
+       TABLE OF CONTENTS . . . . . . . . .  3
+       TALK ALL  . . . . . . . . . . . . .  17
+       TALK INTRODUCTION . . . . . . . . .  17
+       TALK TTYNO  . . . . . . . . . . . .  17
+       THE POSTMAN UTILITY . . . . . . . .  7
+       TMCS 1DOWN COMMAND SUMMARY  . . . .  9
+       TMCS 1DOWN INTRODUCTION . . . . . .  9
+
+                                                                        Page 20
+INDEX
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                        Page 21
+INDEX
+
+
+                             READER'S COMMENT FORM
+
+                       MESSAGE PROGRAMS ON THE TYMCOM-X
+
+       Your comments on this document are welcome.  Please  list  page  numbers
+       where appropriate and any suggestions for further development.  Hardcopy
+       of "LIVE" runs would be helpful.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       PLEASE SEND COMMENTS, WITH HARDCOPY, TO:
+
+       FREMONT COMPUTER OPERATIONS
+       4340 SOLAR WAY
+       FREMONT, CALIFORNIA 94537
+
+       ATTENTION:  TYMCOM-10 COORDINATOR
+  a 	9ó
