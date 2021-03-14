@@ -1,0 +1,122 @@
+begin	"ACOM"
+
+require "(SAILIB)SAIL.DEF" source!file;
+require "(SAILIB)TYMINT.DEF" source!file;
+require "(MPL)UUOSYM.SAI" source!file;
+require "(WRS)AUXLIB.REQ" source!file;
+require "CLONE.REQ" source!file;
+
+item	INTPRO;
+forward simple procedure CHR;
+forward simple procedure ZAP;
+simple procedure IntIni(integer Port);
+begin
+    intmap (tinass(Port,!IACHR,11),CHR,0);
+    intmap (tinass(Port,!IAZAP,12),ZAP,0);
+    enable (newenb(11));
+    enable (newenb(12));
+    auxclv (Port,0,!AXLDE);
+end;
+
+simple procedure OutPtr (integer PORT; string S);
+begin!code
+	MOVEI	1,!AXOPC;	! output SAIL string;
+	HRL	1,PORT;
+	AUXCAL	1,-1(SP);	! output through pointer;
+end ;
+
+string S,SLOGOUT,IFile,OFile;
+integer IChan,OChan,cchan;
+boolean Detach,EOF;
+
+simple procedure CHR;
+begin	! called when a character is received from the port;
+    integer C;
+    while true do begin
+	auxclr(AuxPort,C,!AXI8S);
+	if !SKIP! 
+	    then begin
+		wordout(OChan,C);
+		auxclv(-1,C,!AXO8);
+	    end
+	    else done;
+    end;
+    auxclv(AuxPort,0,!AXLDE);
+end;
+
+simple procedure ZAP;
+begin
+    disable (newenb(11));
+    disable (newenb(12));
+    calli(AuxPort,calli!ZAPCIR);
+    outstr("[circuit zapped]");
+    close(OChan);
+    release(IChan); release(OChan);
+    if Detach
+	then calli(0,calli!LOGOFF)
+	else calli(0,calli!EXIT);
+end;
+
+string LogStr,MyName;
+ttyup(true);
+
+print("input file: "); 
+IFile _ inchwl;
+open(IChan_getchan,"DSK",0,4,0, 1024,0,EOF);
+lookup(IChan,IFile,EOF);
+if EOF then usererr(EOF,2,"?cant read input file: ","X");
+
+print("output file: "); 
+OFile _ inchwl;
+if length(OFile)=0 then OFile _ "ACOM."& cvs(calli(0,calli!PJOB));
+open(OChan_getchan,"DSK",0,0,4, 0,0,EOF);
+enter(OChan,OFile,EOF);
+if EOF then usererr(EOF,2,"?cant write output file: ","X");
+open(CChan_getchan,"DSK",0,0,4, 0,0,EOF);
+enter(CChan,"cfile",EOF);
+print("detach? "); 
+Detach _ (inchwl = "Y");
+
+LogStr _ (if calli(!xwd(!CNSYS,!GTCNF),calli!GETTAB) neq 930 then #ctrl("B") else null)&
+    ! ^B gouged circuit (a littler slower) to prevent lost characters;
+	(MyName _ cv6str(calli(!xwd(-1,!GTUNM),calli!GETTAB)) &
+	cv6str(calli(!xwd(-1,!GTUN1),calli!GETTAB)) )&
+    ! build to our user name;
+	":" & cvs(calli(!xwd(!CNSYS,!GTCNF),calli!GETTAB)) ;
+    ! build to our host (warning Tymnet limits internal circuits to 6);
+Creaux(LogStr);
+if not !SKIP! then calli(0,calli!EXIT);
+ifcr compiler!switch("B") thenc usererr(0,0,0,"B"); endc
+IntIni (AuxPort);		! enable interrupts;
+if Detach then CLONE;		! don't tie up the terminal;
+
+setbreak(1,#lf,null,"SINF");
+OutPtr(AuxPort,#cr&#cr);
+while not EOF do begin
+    string S;
+    integer chrout;
+    S _ input(IChan,1);
+    if S neq ":" then OutPtr(AuxPort,S);
+    chrout_chrout+length(s);
+    disable (newenb(11));
+    out(cchan,cvs(chrout)&#cr&#lf);
+    enable (newenb(11));
+end;
+
+disable (newenb(11));
+out(cchan,"end of file"&crlf);
+enable (newenb(11));
+
+OutPtr(AuxPort,"SEND "&MyName&#cr& ! send mail (assumes command level);
+    "Job "&IFile&", submitted to ACOM has completed."&#cr&
+    "Output in "&OFile&"."&#cr&#ctrl("D") );
+OutPtr(AuxPort,"LOGOUT"&#cr);	! logout (assumes command level);
+
+disable (newenb(11));
+out(cchan,"SEND/LOGOUT"&crlf);
+enable (newenb(11));
+
+while true do 			! wait for a zapper;
+    calli(0,calli!HIBER);
+
+end $
