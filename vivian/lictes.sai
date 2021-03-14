@@ -1,0 +1,70 @@
+BEGIN
+
+  REQUIRE "(SAILIB)SAIL.DEF" SOURCE!FILE;
+  REQUIRE "LIC.REQ" SOURCE!FILE;
+
+integer
+  Oper.License,			! License specified in the oper file ;
+  Look.At;			! Which GAN to look at ;
+
+
+! These are the possible values of "Look.At" above:
+;
+
+define
+  UNDEFINED     = 0,
+  THIS.GAN.ONLY = 1,
+  ALL.GANS      = 2;
+
+! Verify that the user has certain license. ;
+
+simple integer procedure Verify.License (integer License);
+begin "Verify.License"
+  print(crlf," oper.license: ",oper.license,"   ");
+  if (not Oper.License) then
+    Oper.License _ Oper.Lic;
+  print(crlf," oper.license: ",oper.license);
+
+  if (not Oper.License) then
+    print(crlf);
+
+  return(Oper.License land License);
+end "Verify.License";
+
+
+! Decide which GANs the user will look at. ;
+
+procedure Decide.GANs;
+begin "Decide.GANs"
+  define
+    exit  "<>" = <calli(0, '12)>,
+    crlf2 "<>" = <crlf & crlf>;
+
+  define
+    TP =  !bit(21)	! Tymshare Personnel (in privilege word);,
+    AS =  !bit(22)	! Account Supervisor (in privilege word);,
+    RF =  !bit(32)	! Read Files         (in oper license word);,
+    CS =  !bit(15)	! Customer Support   (in oper license word);;
+
+PRINT(CRLF,"TP  ",TP,", AS  ",AS,",  RF  ",RF,",  CS  ",CS,"  ");
+  Oper.License _ 0;
+  Look.At      _ UNDEFINED;
+PRINT(CRLF,"GET.PRIV  ",GET.PRIV);
+PRINT(CRLF,CVOS(GET.PRIV));
+  if (TP land Get.Priv) then
+
+  begin
+    print(crlf,"tp: ",tp,"    rf: ",rf,"  cs: ",cs);
+      if ( Verify.License(RF lor CS)) then
+        Look.At _ ALL.GANS;
+  end;
+
+  if (Look.At = UNDEFINED) then
+    if ((AS land Get.Priv) or Verify.License(RF lor CS)) then
+      Look.At _ THIS.GAN.ONLY
+    else
+      exit;
+end "Decide.GANs";
+
+decide.gans;
+end;
