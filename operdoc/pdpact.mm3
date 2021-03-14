@@ -1,0 +1,2165 @@
+
+
+
+       M   M   CCC   DDDD    OOO   N   N  N   N  EEEEE  L      L
+       MM MM  C   C  D   D  O   O  NN  N  NN  N  E      L      L
+       M M M  C      D   D  O   O  N   N  N   N  E      L      L
+       M M M  C      D   D  O   O  N N N  N N N  EEE    L      L
+       M   M  C      D   D  O   O  N   N  N   N  E      L      L
+       M   M  C   C  D   D  O   O  N  NN  N  NN  E      L      L
+       M   M   CCC   DDDD    OOO   N   N  N   N  EEEEE  LLLLL  LLLLL
+
+                      OOO
+                     O   O
+                     O   O
+                     O   O
+                     O   O         TYMCOM-X ACCOUNTING AND USERS
+                     O   O
+                      OOO            OPERATIONS MINI-MANUAL #3
+
+                     U   U
+                     U   U
+                     U   U
+                     U   U
+                     U   U
+                     U   U
+                      UUU
+
+                      GGG
+                     G   G
+                     G
+                     G
+                     G GGG
+                     G   G
+                      GGG
+
+                     L
+                     L                 INFORMATION SYSTEMS GROUP
+                     L
+                     L
+                     L              INFORMATION PROCESSING SERVICES
+                     L
+                     LLLLL
+
+                       A                  PRODUCTION SERVICES
+                      A A
+                     A   A
+                     A   A                 29 OCTOBER 1987
+                     AAAAA
+                     A   A
+                     A   A
+
+                      SSSS         SUPERSEDES: 16 SEPTEMBER 1987 MANUAL
+                     S
+                     S
+                      SSS
+                         S
+                         S
+                     SSSS          (FREMONTDOC:74)PDPACT.MM3
+                                                                         Page 2
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONNALY LEFT BLANK
+                                                                         Page 3
+CHKPNT
+
+
+                        CHKPNT ACCOUNTING-SAVE PROGRAM
+                        ------------------------------
+
+       ((INTRODUCTION))
+
+            CHKPNT is an essential program that saves the  billing  information
+       every  twenty  minutes.  The program performs a scan of who is logged on
+       and establishes points of reference for accumulating system usage  data.
+       This  limits  the  amount  of  billing  that can be lost due to a crash.
+       CHKPNT also records all disk, memory  and  tape  errors  that  may  have
+       occurred  and  writes  error information into a file that is used by the
+       ERRCHK program.
+
+       ((COMMAND SUMMARY))
+
+            See the COMMAND DESCRIPTION and SAMPLE RUN below.
+
+       ((COMMAND DESCRIPTION))
+
+            CHKPNT will normally  be  started  automatically  by  INITIA.   The
+       program  is  issued  a  MARK  and a CCONtinue command so that it runs in
+       detached mode (usually under OPER job  2).   This  should  occur  before
+       SCHED is set to allow other users on the system.  CHKPNT initializes the
+       pseudo device ACT.
+
+            Having sense switch #4 on the console set allows options  that  can
+       disable this automatic CHKPNT:  If the operator types MANUAL then INITIA
+       will not function and CHKPNT (and all the other startup  jobs)  must  be
+       run  manually.   If  SSW#4  is  on  and  the  operator types GO then the
+       automatic startup jobs will run without further manual intervention.
+
+            It is essential that ONLY ONE CHKPNT at a time is running.
+                                                                         Page 4
+CHKPNT
+
+
+       ((SAMPLE RUN))
+
+            CHKPNT is run manually as follows:
+
+           'PLEASE LOG IN:' OPER:SYS;(PSWD);;      ;LOG INTO OPER
+
+           '.'O OP WF                              ;SET YOUR LICENSE
+           (YOUR OPER NAME)
+
+           (YOUR OPER PSWD)
+
+           '.'R CHKPNT (CR)                        ;NOW RUN THE PROGRAM
+                                                   ;WHICH GETS ITSELF
+                                                   ;STARTED AND DETACHES
+
+           'PLEASE LOG IN:'OPER:SYS;(PSWD);;       ;LOG BACK INTO OPER
+
+       ((ERRORS AND RECOVERIES))
+
+            CHKPNT should be allowed to run for the remainder of the  day.   If
+       by mistake you attempt to attach to the CHKPNT job, you will receive the
+       message:
+
+           CHKPNT ATTACHED!  SHUTTING DOWN...
+           CHKPNT SHUT DOWN.  THERE IS NOW NO ACCOUNTING FOR THIS SYSTEM.
+
+           IF THIS WAS UNINTENTIONAL, RUN (SYS)CHKPNT.
+
+           EXIT
+
+           R CHKPNT        (YOU WILL BE AUTOMATICALLY DETACHED)
+
+            The above safeguard must be followed explicitly.
+
+            If CHKPNT fails to start up correctly  you  will  see  the  message
+       CHKPNT  CANNOT  INIT  ACT DEVICE;  NOTIFY O.S.  GROUP.  The program will
+       also report if any license needed to run is missing on the beginning  of
+       CHKPNT'S execution.
+
+            If you try to run an additional CHKPNT, the message CHKPNT  ALREADY
+       RUNNING will type out.  The additional CHKPNT job will not be allowed to
+       run because this would garble the accounting.
+
+            You can check on the CHKPNT job by typing:
+
+           '.'SYS (OPER)           ;DISPLAY ALL OPER JOBS INCL. CHKPNT
+
+                                               OR
+
+           '.'SYS <CHKPNT>         ;DISPLAY ANY JOBS RUNNING CHKPNT
+
+            Consult documentation in the OPERATING SYSTEM Mini-manual for  more
+       information on SYSTAT, INITIA, and SYSTEM RESTARTS.
+                                                                         Page 5
+PJ
+
+
+                             PJ ON THE TYMCOM-10'S
+                             ---------------------
+
+       ((INTRODUCTION)) 
+
+            PJ is a User Name that should always be logged in on the  TYMCOM-10
+       system.  It stands for PHANTOM JOB.  The Supervisor tries to login a JOB
+       under this Username whenever a system goes from a "SHUT" state to an "UP
+       STATE".   PJ  is  set  up  with  an  initialization  file  "PAM";  which
+       automatically runs whenever PJ is logged in.  The first thing "PAM" does
+       is  to  see  if there are any other jobs logged in under "PJ".  If there
+       are, the job logs itself out.  If there are no other jobs running  under
+       "PJ",   "PAM"   then  reads  the  file  "(PJ)JOBS.DAT".   The  following
+       information is included in the file:
+
+           THE LOGGED IN SYSTEM NUMBER
+
+           A LIST OF JOBS TO BE RUN (NUMBERED 1 THROUGH 10)
+
+           TIME INTERVAL TO RUN EACH JOB IN THE LIST
+
+           A TABLE OF SYSTEMS AND THEIR ATTRIBUTES (SYSTEM TABLE)
+
+            "PAM" sets up tables in core so it can determine the next job to be
+       run,  and  when  it  should  be  run,  according  to  the information in
+       "(PJ)JOBS.DAT".  It computes how much time should elapse before the next
+       job is to be executed and goes to "SLEEP" for that amount of time.  When
+       it "WAKES UP", "PJ" tries to run the job described in the Job table.  It
+       looks  for  the  file  "(PJ)JOB00X.HGH" (where X = the job number to run
+       next).  When that job has completed, "PJ" computes when the  job  should
+       be run again, saves that information, and looks for the next job to run.
+
+            "JOB001.HGH"  updates  the  "PASSWORD"   file   and   "NODE   MAP".
+       "JOB002.HGH"  monitors  users, "JOB005.HGH" transfers Network Accounting
+       and "JOB006.HGH" updates "TAPELIB" Database.
+                                                                         Page 6
+TYMCOM-X DAILY ACCOUNTING
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                         Page 7
+TYMCOM-X DAILY ACCOUNTING
+
+
+                           TYMCOM-X DAILY ACCOUNTING
+                           -------------------------
+
+       ((INTRODUCTION))
+
+            Accounting on the  TYMCOM-X  processes  the  computer  usage,  disk
+       storage  and  royalty processing of USERS preparing this data into lists
+       and totals that determine billing information.
+
+            Computer usage is calculated in TRU'S - MDC  Resourse  Units  which
+       incorporate a calculation of a variety of computing activities.
+
+            When a USER logs  in,  a  session  of  accounting  transactions  is
+       started.  Periodically the CHKPNT job (documented elsewhere) gathers the
+       raw data for that USER and all other's logged in at the time.  Later,  a
+       logout  can  end  the  session of usage and raw accounting gathering for
+       that USER.
+
+            Disk storage is calculated on the USER'S files by a  count  of  the
+       number   of  characters  indicated  in  the  USER'S  UFD  -  (User  File
+       Directory).  This character count can be associated wigiven PROJECT
+       CODE  if  the  USER  in  question  has  been  validated for this type of
+       accounting.
+
+            Use of programs for which MDC must  pay  a  royalty  charge  to  an
+       outside software vendor is also calculated.
+
+            The accounting is run each day after 2400  GMT  on  each  TYMCOM-X.
+       When  completed,  files are copied into the directory of STLOUOPS on the
+       HOME System.
+
+       ((COMMAND SUMMARY))
+
+            The program (BILLING10)RAWACT is run  daily  for  a  full  24  hour
+       period.   Thus  it  must  be run after 2400 hours GMT (this is converted
+       below) 
+                             TIME ZONE       TIME
+                                PST          1600
+                                MST          1700
+                                CST          1800
+                                EST          1900
+                                PAR          0100
+
+                                PDT          1700
+                                MDT          1800
+                                CDT          1900
+                                EDT          2000
+                                PAR          0200
+                                                                         Page 8
+TYMCOM-X DAILY ACCOUNTING
+
+
+                       THE FOUR PARTS OF THE ACCOUNTING
+                       --------------------------------
+
+       1.  PRIMARY ACCOUNTING
+
+           A.  Establish correct time record for the run.
+
+           B.  Calculate USER disk storgae (USRSTG).
+
+           C.  Rename appropriate files to the BILLING10 directory.
+
+           D.  Format binary accounting data into ASCII records.
+
+       2.  MAGNUM generates storage and session records.
+
+       3.  RUN the Royalty Accounting commands file.
+
+       4.  COPY the three (3) output files from above programs to
+           the directory of (STLOUOPS) on the HOME system.
+
+                    THE OPERATOR'S INPUTS TO THE PROCEDURE
+                    --------------------------------------
+
+             PART 1 - A.  LOG INTO BILLING10.
+                          Set STATUS (O OP SY RF WF)
+
+                      B.  TYPE GO RAWACT and ENTER NAME, PSWD.
+
+                      C.  CHECK THAT DATE OF LAST RUN IS OK.
+
+                      D.  INPUT DATE FOR CURRENT RUN.
+
+                      E.  CHECK PROGRESS OF PROGRAM THRU FORMAT
+
+             PART 2 - F.  TYPE 'MAGNUM DAILYX' and ENTER COMMAND 
+                          'DO DAILY'.
+
+             PART 3 - G.  MAGNUM QUITS.  TYPE 'R (UAS)COM;ROYRUN'.
+                          END command with 'CR DEL CR'.
+
+             PART 4 - H.  When done, then COPY SR(MMDD).(XXX), PS(MMDD).(XXX)
+                          and RT(MMDD).(XXX) to (STLOUOPS) directory
+                          on the HOME system.
+
+
+                                         NOTE
+
+           Where XXX is the number of the respective host (i.  e.  022,
+           023, 025, etc.) and MMDD is the current date.
+
+
+                      I.  LOGOUT of BILLING10 and into OPER.
+
+                      J.  SAVE ALL TTY HARDCOPY.
+                                                                         Page 9
+TYMCOM-X DAILY ACCOUNTING
+
+
+       ((COMMAND DESCRIPTION))
+
+                      PART 1: THE PRIMARY ACCOUNTING RUN
+
+            A.  DATE and TIME:  The  program  checks  for  the  previous  day's
+       accounting run;  if it has been run successfully you will be prompted to
+       enter the billing date for the current day's run.   Naturally,  entering
+       the  correct  date  is very important.  If the previous day's accounting
+       was  not  completed  successfully  the  program  will  report  where  it
+       terminated and will attempt to restart at the appropriate place once the
+       operator has confirmed that it is okay to do so.  If the date entered is
+       acceptable the PRIMARY ACCOUNTING run continues.  The file MMDDYY.CTL is
+       the control file used in this way to ensure the  completion  of  a  run.
+       This  file  (described  in  more  detail  below)  allows the operator to
+       restart the accounting if for example, the system crashes in the  middle
+       of the run.
+
+            B.  USRSTG:  Disk storage for each valid username on the host  will
+       be  calculated  next  by checking the MFD (Master File Directory).  Then
+       the program indexes to the UFD and  determines  if  the  USER  has  been
+       validated  for Project Code Accounting.  If so, the size of each file in
+       characters is recorded with the PROJECT CODE associated with  the  given
+       file  name.   If  the  USER  has  not  been  validated  for Project Code
+       Accounting the storage for the entire file directory is recorded with  a
+       blank  PROJECT CODE.  When this section has been completed successfully,
+       it writes the  name  of  the  storage  file  it  has  created  into  the
+       MMDDYY.CTL control file.
+
+            C.  RENAME:  The primary accounting files  are  then  renamed  from
+       USER  UN1 to the BILLING directory.  The primary accounting file name is
+       MMDDYY.SAT and any subsequent accounting files that have been created by
+       the monitor will have the name of "MMDDYY.SNN" where NN in the extension
+       is an octal number from 01 to 77.  When  the  RAWACT  rename  starts  it
+       creates a list of source files which is written into MMDDYY.CTL.  If all
+       the files in the list are availible for  that  day's  accounting  RAWACT
+       proceeds with the rename and records completion in the control file.
+
+            D.  FORMAT:  This routine merges and converts  the  binary  primary
+       accounting  files  to  one symbolic file in preparation for MAGNUM.  The
+       name of this file is written into the MMDDYY.CTL file.  Another  control
+       file  'DAILY.CTL'  is  created  in  this  section and contains a list of
+       source and destination files that will be used in the next part  of  the
+       run:  the MAGNUM Session.
+                                                                        Page 10
+TYMCOM-X DAILY ACCOUNTING
+
+
+                     PART 2: THE MAGNUM SESSION RECORD RUN
+
+            The MAGNUM section is run via a commands file that is entered  when
+       the  operator  enters the 'DO DAILY' command.  A control file is checked
+       for last successful run in much the same way as in  the  RAWACT  section
+       above.   This  control  file DAILY.CTL, checks the previous day's MAGNUM
+       run.  If the previous day's MAGNUM run was interrupted  or  aborted  the
+       control  file  will  determine  where  the  failure  occurred and make a
+       request of the operator to initiate the appropriate  restart  procedure.
+       If the failure occurred for any reason other than a program failure, the
+       operator should always initiate restart procedures.  If the control file
+       indicates that everything is ok then processing continues by duplicating
+       (for backup purposes) the suspense records - transactions for USERS  who
+       are  still  logged  on  while the accounting is being run.  When this is
+       done all LOGIN, LOGOUT, CHKPNT and PROJECT CODE changes for each  USER'S
+       computing session for that day are merged to form session records in the
+       MAGNUM data base.  There are two noteworthy procedures in  this  section
+       of  the MAGNUM commands file:  The first 'DAILY.STG.UPD.X' combines like
+       PROJECT CODES for the same UUN into one daily storage  record  for  that
+       UUN and each unique PROJECT CODE.  The second procedure 'DAILY.SES.UPD.X
+       processes entries in the primary accounting  file  as  described  above.
+       These are output to the file SR(MMDD).(XXX).
+
+            When processing is completed, you will be  reminded  that  the  two
+       files  'PS(MMDD).(XXX)'  and  'SR(MMDD).(XXX)'  have to be copied to the
+       directory of (STLOUOPS) on the HOME system.
+
+                   PART 3: EXECUTE THE ROYRUN COM PROCEDURE
+
+            Many of the software packages on MDC computers have been  developed
+       by  outside  software vendors.  Generally, MDC must pay a royalty fee to
+       these vendors based on special data records generated when  the  package
+       is  run.   These  data  records  must  be merged with the MAGNUM session
+       records so that a  distinction  can  be  made  between  prime  time  and
+       non-prime  time use;  this can be the basis of an adjustment on how much
+       royalty payment is due.
+
+            When the MAGNUM DAILY procedure ends, you will receive a message to
+       start the ROYRUN commands file.  To do this the SR(MMDD).(XXX) file must
+       be good and you must be in XEXEC.  Type 'RUN (UAS)COM;ROYRUN CR DEL  CR'
+       to  start  the  commands  file.  Data and system number will be supplied
+       automatically.  The procedure will open several royalty data records and
+       merge  them  with  session record information.  There may be recoverable
+       error messages but the procedure should continue processing.   Once  all
+       the  available  royalty records have been 'shuffled' with session record
+       data, the file RT(MMDD).(XXX) will be created.
+
+            At the last day of  each  month,  an  additional  procedure  called
+       EORMON  (End  Of  Royalty  MONth)  will  automatically follow the ROYRUN
+       section.  This trys to process SUSPENSE records for the  previous  three
+       months.  If this procedure ABORTS, forget it.
+                                                                        Page 11
+TYMCOM-X DAILY ACCOUNTING
+
+
+                   PART 4:COPYING OUTPUT FILES TO (STLOUOPS)
+
+            Now that the daily accounting has been processed, you must move the
+       three  output  files  to the directory of (STLOUOPS) on the HOME system.
+       PS(MMDD).(XXX) is the Permanent Storage file and SR(MMDD).(XXX)  is  the
+       Session  Record file;  RT(MMDD).(XXX) contains Royalty Transactions.  In
+       all the files, the 'MMDD is the numeric month/data of the file  and  XXX
+       is the system number where the run occurred (eg.  '033').  If the ROYRUN
+       procedure fails,  you  should  move  the  'SR'  and  'PS'  output  files
+       regardless.
+                                                                        Page 12
+TYMCOM-X DAILY ACCOUNTING
+
+
+       ((SAMPLE RUN))
+
+       'PLEASE LOG IN:' BILLING10:SYSNO;<PSWD>
+
+       '!'O OP SY RF WF
+       (YOUR NAME)
+
+       '!'(YOUR PASSWORD)
+
+       '!'GO RAWACT (CR)            (START THE PROGRAM)
+
+       'BEGINNING PRIMARY ACCOUNTING.....(CURRENT VERSION #)(DATE/TIME)'
+
+       'ENTER YOUR NAME:' (YOUR NAME) (CR)
+
+       'ENTER YOUR PASSWORD:' (YOUR PASSWORD) (CR)
+
+       'THANK YOU!'
+
+       'PROCESSING HOST COMPUTER NUMBER (XXX)'
+
+       'CHECKING PREVIOUS DAYS ACCOUNTING RUN DATED (DATE)'
+
+       'PREVIOUS DAYS ACCOUNTING RUN COMPLETED SUCCESSFULLY'
+
+       'ENTER BILLING DATE FOR TODAYS ACCOUNTING RUN AS (MM/DD/YY):' (DATE)
+
+
+                                         NOTE
+
+           This date must  be  entered  correctly:   the  current  date  or
+           earlier.   Check  if  someone  may  have  started the accounting
+           earlier.  You'll see a message to that effect and you  would  be
+           given the option to continue from the point where it left off.
+
+
+       'END OF CONTROL LOGIC(DATE/TIME)'
+
+       'BEGINNING USER STORAGE.....(CURRENT VERSION #)(DATE/TIME)'
+
+       '1920 USER STORAGE RECORDS CREATED - STOR05.(MTH)'
+
+       'END USER STORAGE(DATE/TIME)'
+
+       'BEGINNING RENAME.....(CURRENT VERSION #)(DATE/TIME)'
+
+       'BUILDING RENAME LIST...'
+
+       'RENAME LIST BUILT - 1 FILE(S) TO BE RENAMED'
+
+       'BEGINNING RENAME...'
+
+       '(MMDDYY).SAT RENAMED TO BILLING DIRECTORY'
+
+       'RENAME COMPLETED'
+                                                                        Page 13
+TYMCOM-X DAILY ACCOUNTING
+
+
+       'END RENAME(DATE/TIME)'
+
+       'FORMATTING STREAM ACCOUNTING FILE(S)..(CURRENT VERSION #)
+                                              (DATE/TIME)'
+
+       '(MMDDYY).SAT PROCESSED...'
+
+       '1 SYSTEM UP RECORD(S) ENCOUNTERED.'
+
+       '  3543 RECORDS PROCESSED - ACTG05.(MTH)'
+
+       'DAILY.CTL UPDATED'
+
+       'END FORMAT(DATE/TIME)'
+
+       'EXIT'
+
+       '!'MAGNUM DAILYX (CR)         (CALL THE MAGNUM SUBSYS)
+       '(DATE/TIME)'
+
+       ':'DO DAILY (CR)             (AND START THE COMMANDS FILE)
+
+       '>:RUN DAILY.CNTL'
+       'LOADING DAILY.CNTL'
+       'EXECUTION'
+
+       'BEGINNING DAILY CONTROL CHECK.....(CURRENT VERSION #)(DATE/TIME)'
+
+       'LAST DAILY MAGNUM RUN COMPLETED SUCCESSFULLY'
+
+       'END DAILY CONTROL CHECK(DATE/TIME)'
+
+       'EXECUTION COMPLETED'
+
+       '>:RUN DAILY.CTL.1'
+       'LOADING DAILY.CTL.1'
+       'EXECUTION'
+
+       'EXECUTION COMPLETED'
+
+       '>:RUN DAILY.STG.UPD.X'
+       'LOADING DAILY.STG.UPD.X'
+       'EXECUTION'
+
+       'BEGINNING DAILY STORAGE UPDATE ----- (CURRENT VERSION #.#)(DATE/TIME)'
+
+       'PROCESSING DAILY STORAGE FILE: STOR05.(MTH)'
+
+           '1920 RECORDS PROCESSED'
+
+       'END DAILY STORAGE UPDATE(DATE/TIME)'
+
+       'EXECUTION COMPLETED'
+                                                                        Page 14
+TYMCOM-X DAILY ACCOUNTING
+
+
+       '>:RUN DAILY.CTL.2'
+       'LOADING DAILY.CTL.2'
+       'EXECUTION'
+
+       'EXECUTION COMPLETED'
+
+       '>:BACKUP X.SUSPENSE'
+       'BACKUP OF X.SUSPENSE CREATED.'
+
+       '>:RUN DAILY.CTL.3'
+       'LOADING DAILY.CTL.3'
+       'EXECUTION'
+
+       'EXECUTION COMPLETED'
+
+       '>:RUN DAILY.SESS.UPD.X'
+       'LOADING DAILY.SESS.UPD.X'
+       'EXECUTION'
+
+       'BEGINNING DAILY SESSION UPDATE ----- (CURRENT VERSION #.#)(DATE/TIME)'
+
+       'PROCESSING DAILY ACCOUNTING FILE ACTG05.(MTH)'
+
+               '3543 VALID RECORDS INPUT'
+
+       'ENCOUNTERED UP-TIME RECORD (DATE/TIME)'
+
+       '       17 RECORD(S) BEING CLEARED FROM SUSPENSE'
+
+       'SESSION SUMMARY FOLLOWS:'
+
+       'CHKPNT-CHKPNT       =====>     1'
+       'CHKPNT-LOGOUT       =====>     0'
+       'CHKPNT-ONLY         =====>     0'
+       'CHKPNT-PC.CHANGE    =====>     0'
+       'LOGIN-CHKPNT        =====>     2'
+       'LOGIN-LOGOUT        =====>  1036'
+       'LOGIN-PC.CHANGE     =====>    10'
+       'LOGOUT-ONLY         =====>     2'
+       'PC.CHANGE-ONLY      =====>     0'
+       'PC.CHANGE-CHKPNT    =====>     0'
+       'PC.CHANGE-LOGOUT    =====>    11'
+       'PC.CHANGE-PC.CHANGE =====>     1'
+
+       'ERRORS              =====>     0'
+
+       'RECS IN X.SUSPENSE  =====>    16'
+
+       'CHARGE SESSIONS     =====>  1049'
+       'NON-CHARGE SESSIONS =====>    11'
+
+       'FIRST.SESSION:    29080'
+       'LAST.SESSION:     30138'
+                                                                        Page 15
+TYMCOM-X DAILY ACCOUNTING
+
+
+       'PLEASE MOVE FILES PS(MMDD).(XXX) AND SR(MMDD).(XXX)' 
+
+       'TO THE CENTRAL ACCOUNTING SYSTEM - HOST 38 (AFTER ROYALTY IS RUN)'
+
+       'PLEASE COPY THE FILES SR(MTH/DAY).(XXX) AND PS(MTH/DAY).(XXX)'
+       'TO THIS HOST'S STLOUOPS DIRECTORY AFTER ROYALTY IS RUN.'
+
+       'END DAILY SESSION UPDATE(DATE/TIME)'
+
+       'EXECUTION COMPLETED'
+
+       '>:RUN MK.DAILY.RTY.CF'
+       'LOADING MK.DAILY.RTY.CF'
+       'EXECUTION'
+
+       'BEGINNING MK.DAILY.RTY.CF............(CURRENT VERSION #.#)'
+
+       '**********************************************************'
+       '*                                                        *'
+       '* PLEASE TYPE:  RUN (UAS)COM;ROYRUN CR DEL CR            *'
+       '*                                                        *'
+       '* NOTE ----------                                        *'
+       '* IF CRASH OCCURS, TYPE:  RUN (UAS)COM;BAKROY CR DEL CR  *'
+       '*    FOLLOWED BY:         RUN (UAS)COM;ROYRUN CR DEL CR  *'
+       '*                                                        *'
+       '**********************************************************'
+
+       'END MK.DAILY.RTY.CF'
+
+       'EXECUTION COMPLETED'
+
+       '>:Q'
+       '(DATE/TIME)'
+
+       'EXIT'
+
+         (NOW THE ROYALTY SECTION IS RUN.  IF STATUS WAS NOT SET AT THE
+          BEGINNING OF THE RAWACT RUN, THEN SET O OP SY RF
+          STATUS HERE)
+
+       '!'RUN (UAS)COM;ROYRUN CR DEL CR
+
+       'EXIT'
+
+       '-RUN REFORM'
+       'OPENING FILE SR(MMDDSYS) FOR INPUT'
+       'SR(MMDDSYS) OPENED.'
+       'INPUT PROCESSING AND SORTING BEGINS.'
+       'TRAILER RECORD ENCOUNTERED AFTER 25 DATA RECORDS.'
+       'CHECKSUM FROM TRAILER RECORD IS 96,658,114'
+       'CHECKSUM FROM PROGRAM IS        96,658,114' (THESE MUST MATCH)
+                                                                        Page 16
+TYMCOM-X DAILY ACCOUNTING
+
+
+       '-DEL ROYPOS.BKX'
+
+       '-DEL ROYPOS.BKA'
+
+       '-RUN GETRTY'
+       'OPENING ROYALTY FILE:RTA005(MTH)'
+       'OPENING ROYALTY FILE:MGA005(MTH)'
+       'OPENING ROYALTY FILE:MGA004(MTH)'
+       'OPENING ROYALTY FILE:RTA003(MTH)'
+       'OPENING ROYALTY FILE:MGA005(MTH)'
+
+       'OPENING ROYALTY FILE:RTA005(MTH)'
+          (ETC)
+
+       'WE SHUFFLED 0 TIMES'
+       'WITH A MAXIMUM DELTA OF 0.0116'
+
+       'PLEASE TRANSFER THE FILE:RT(MMDD).(XXX) TO BILLING10 ON THE BILLING
+       HOST 38'.
+
+       '-RUN MAKDIR'
+
+       'BEGINNING FILE DIRECTORY IMAGE.....(CURRENT VERSION #)(DATE/TIME)'
+
+       ' 340 FILE NAME(S) IN THIS DIRECTORY'
+
+       'END FILE DIRECTORY IMAGE (DATE/TIME)'
+
+       'EXIT'
+
+       '-RUN FIXRTY'
+
+       'FIXTRY - (CURRENT VERSION #.#)(DATE/TIME)'
+
+       'OPENING FILE RT(MTH/DAY).(XXX):ALREADY HAS HEADER RECORD; FILE NOT
+       MODIFIED.'
+
+                                      OR
+
+       'OPENING FILE RT(MTH/DAY).(XXX); ## RECORDS WERE READ AND WRITTEN.'
+       'END OF FIXTRY'
+
+
+                                         NOTE
+
+           THE FOLLOWING FILES ARE COPIED AUTOMATICALLY BY THE SOFTWARE.
+
+
+       '-COPY SR(MTH/DAY).(XXX) TO (STLOUOPS)SESSIO.(XXX)'
+
+       '-COPY RT(MTH/DAY).(XXX) TO (STLOUOPS)ROYLTY.(XXX)'
+
+       '-COPY PS(MTH/DAY).(XXX) TO (STLOUOPS)STORGE.(XXX)'
+                                                                        Page 17
+TYMCOM-X DAILY ACCOUNTING
+
+
+       '-COPY SR(MTH/DAY).(XXX) TO (ACTGTYM)SR(MTH/DAY).(XXX)'
+
+       '-COPY RT(MTH/DAY).(XXX) TO (ACTGTYM)RT(MTH/DAY).(XXX)'
+
+       '-COPY PS(MTH/DAY).(XXX) TO (ACTGTYM)PS(MTH/DAY).(XXX)'
+
+                      THIS ENDS THE DAILY ACCOUNTING RUN
+
+
+                                         NOTE
+
+           AFTER THE DAILY ACCOUNTING RUN IS COMPLETED.  THE OPERATOR
+           COPIES THE FOLLOWING (BILLING10) FILES TO (STLOUOPS) DIRECTORY.
+
+
+       COPY SR(MTH/DAY).(XXX),(STLOUOPS)SAME
+
+       COPY RT(MTH/DAY).(XXX),(STLOUOPS)SAME
+
+       COPY PS(MTH/DAY).(XXX),(STLOUOPS)SAME
+
+       DIR (STLOUOPS)*.(XXX)/TODAY
+
+
+                                         NOTE
+
+           DO A "DIR" TO INSURE THE FILES ARE THERE.
+
+
+                               MONTH END OUTPUT
+
+       '-COPY ROYPOS.IDS TO EORMON.IDA'
+
+       '-COPY ROYPOS.IDX TO EORMON.IDX'
+
+       '-RUN EORMON'
+       'MGA002JAN OPENED.'
+       'RTA002JAN OPENED.'
+       'RTB002JAN OPENED.'
+       'RTC002JAN OPENED.'
+       'RTD002JAN OPENED.'
+       'INITIAL SUSPENSE FILE OPEN'
+
+         (ETC)
+
+       'EXIT'
+
+       '!'
+                                                                        Page 18
+TYMCOM-X DAILY ACCOUNTING
+
+
+       ((ERRORS AND RECOVERIES))
+
+            There are two types of  errors  that  could  be  encountered  while
+       running  RAWACT:   RECOVERABLE  ERRORS  from  which  you  may be able to
+       continue;  and FATAL ERRORS from which you  cannot  continue  until  the
+       ACCOUNTING GROUP has intervened.
+
+            In the PRIMARY ACCOUNTING run and the  MAGNUM  run,  (as  mentioned
+       above)  control  files keep track of the status of the run;  if there is
+       an interruption the control files will be checked on the next run of the
+       program.   If  possible,  the  operator  will  be  given  the  option of
+       continuing from the point prior to the interruption.   If  the  operator
+       mistakenly  types  'YES'  to continue, it is possible to altmode to stop
+       processing.   If  this  is  necessary  mail  should  be  sent  to   USER
+       (BILLING10)  relating  the  details.  Also send mail to RJK and FRANK on
+       System 38.
+
+            If the system crashes during the accounting run,  try  and  do  the
+       RESTART.  If this doesn't work, notify the MIS Group.
+
+            Should the ROYRUN session be interrupted, you will have to run  the
+       PERFORM file 'BAKROY' to recover.
+
+            If a date is entered that is greater than 1 day later than the last
+       successful  accounting  run,  you  will  receive a message comparing the
+       previous date with the date you entered.  The only  reason  to  continue
+       under  this  circumstance  is  if  the  system was actually down for the
+       complete day (in GMT).  When the question is asked 'Okay  to  continue?'
+       you  should  normally  type  'NO'  in which case you will be prompted to
+       enter the correct date.  Or you  may  type  'QUIT'  in  which  case  the
+       program  will  abort  and  you  will  be  returned  to the EXEC.  Do not
+       continue if the date you entered is the same as the last completed run.
+
+            Other recoverable errors that  might  be  encountered  are  'LOOKUP
+       FAILURE'  in situations where you are not logged into (or GFD'ED to) the
+       correct directory to be able to run the program.
+
+            All the other fatal errors within the program will  be  accompanied
+       by  the  message  'PLEASE  NOTIFY  THE  ACCOUNTING GROUP !!!';  in these
+       cases, alert your manager or  lead  operator  so  that  the  appropriate
+       people can be presented with the problem and can correct it.
+
+            All hardcopy output from the terminal should be  saved  whether  an
+       error  occurs  or  not.  This is collected regularly by the EDP SERVICES
+       ACCOUNTING group.  All mail regarding RAWACT problems should be directed
+       to  username  (BILLING10).  Mail should also be sent to RJK and FRANK on
+       System 38.
+                                                                        Page 19
+BCHARGE
+
+
+                           BATCH ACCOUNTING PROGRAM
+                           ------------------------
+
+       ((INTRODUCTION))
+
+       The BCHARGE program is used to enter charges for  batch  requests  (also
+       called  PPR'S  -  Peripheral  Processing  Requests)  into the accounting
+       system.  The program uses information in the file  (*1BATCH)  PARCHG.DAT
+       which is updated when a customer enters a BATCH or SPOOL request.
+
+
+       ((COMMAND SUMMARY))
+
+
+          COMMANDS MAY BE SHORTENED TO THE FIRST THREE CHARACTERS
+
+          COMMAND             RESULT
+          -------             ------
+
+          LIST PROCESSED      OUTPUTS THE FOLLOWING INFO FOR ALL 
+                              PROCESSED REQUESTS: REQ. NUMBER, GAN,
+                              DISTRICT, USERNAME, PROJECT CODE,
+                              TYPE OF JOB, VOLUME, PARTS, DATE
+                              POSTAGE, DECOLLATION AND
+                              TOTAL CHARGES.
+
+          LIST UNPROCESSED    OUTPUTS THE FOLLOWING INFO FOR ALL
+                              UNPROCESSED REQUESTS: REQ. NO., GAN, 
+                              DIST., USER, PROJ-CODE, DATE OF REQ.
+                              THIS COMMAND CAN INCLUDE A DATE TO LIST
+                              ALL REQUESTS CREATED ON OR BEFORE THAT 
+                              DATE.
+
+          LIST VOID           OUTPUTS THE FOLLOWING INFO FOR ALL
+                              VOIDED REQUESTS: REQ., GAN, DIST.,
+                              USERNAME, PROJ-CODE, DATE REQUESTED, AND 
+                              THE OPER NAME THAT VOIDED THE REQUEST.
+
+          LIST                IF REQUEST IS FOUND IN THE UNPROCESSED
+                              FILE THE INFO IS LIKE THE UNPROCESSED
+                              COMMAND. IF NOT FOUND IN THE UNPROCESSED
+                              FILE, IT WILL LOOK IN THE PROCESSED FILE 
+                              AND LIST THE APPROPRIATE INFORMATION.
+                              IF NOT FOUND IT WILL SEARCH THE VOIDED
+                              FILE AND LIST VOIDED INFO.
+
+          VOID                CANCELS THE SPECIFIED REQUEST.
+
+          CHARGE ALL          INPUTS CHARGES FOR ALL PENDING REQUESTS.
+
+          CHARGE              INPUTS CHARGES FOR SPECIFIED REQUEST.
+
+          POSTAGE             ALLOWS USER TO ENTER POSTAGE FOR A
+                              REQUEST THAT IS ALREADY PROCESSED.
+
+          RECHARGE            ALLOWS OPERATORS TO RECHARGE A REQUEST
+                                                                        Page 20
+BCHARGE
+
+
+                              THAT HAS ALREADY BEEN CHARGED.
+                              THE OLD CHARGE IS REMOVED.
+
+          CREATE              ALLOWS OPERATORS TO CREATE A NEW BATCH
+                              REQUEST AND CHARGE IT.
+
+          HELP                REPRINTS THIS LIST OF BCHARG COMMANDS
+
+          QUIT                EXITS FROM PROGRAM.
+                                                                        Page 21
+BATCH ACCOUNTING
+
+
+       ((COMMAND DESCRIPTION))
+
+
+                         ACCOUNTING FOR BATCH REQUESTS
+                         -----------------------------
+
+
+       All batch requests, except SPOOL (which are  handled  differently),  are
+       entered into accounting whether or not postage or transportation charges
+       are due.  However, on the last day of the month batch accounting may  be
+       deferred  if  you  are  not  able  to obtain postage charges which would
+       otherwise be lost unless the 'HOLD' answer was used in response  to  the
+       BCHARG prompter about these charges.
+
+                                PPR BATCH TYPES
+
+               TYPE 1: LISTINGS; SPOOL SHOULD BE USED FOR LISTINGS
+       INSTEAD OF BATCH REQUESTS; IF A BATCH REQUEST IS USED THE
+       FOLLOWING ITEMS ON THE REQUEST PERTAIN:
+
+              *1-----PAGES-----PARTS TO LISTING-----LISTING DECOLLATED
+
+
+              JOB TYPE 2 AND 3: CARD WORK; READING WITH PIP; PUNCHING
+       ON 940'S.
+
+              *2-----CARDS TO DISC    *3-----DISC TO CARDS
+
+
+              TYPE 4: RESTORES; TITO, FAILSA, 1STORE, MAGCON, VARREC,
+       OR VARIAN.
+
+              *4-----FILES TAPE TO DISC
+
+
+              TYPE 5: STORES; TITO, 1STORE, MAGCON, VARIAN AND VARREC.
+
+              *5-----FILES TO DISC TO TAPE-----TAPE CHARGE
+
+
+              TYPE 7: MAGNETIC TAPE CONVERSIONS; MAGCON, VARREC AND
+       VARIAN.
+
+              *7-----TAPE CONVERSION
+
+
+               TYPE 8: FOREIGN STORES OR RESTORES; THESE CAUSE A
+       CURRENCY CONVERSION AND OTHER BILLING CHANGES IN BCHARGE.
+
+              *8-----FOREIGN BATCH
+
+
+       (*= JOB TYPES)
+                                                                        Page 22
+BATCH ACCOUNTING
+
+
+            After a batch request has been completed  the  operator  signs  and
+       dates  the  request.   Next  the  BCHARGE  program  should be run.  This
+       program accepts inputs concerning the work that was just  completed  and
+       is  indexed by the PPR (Peripheral Processing Request) number.  The file
+       (*1BATCH)PARCHG.DAT is searched for the  request  number  and  once  the
+       BCHARGE  run  has been completed, the finished accounting information is
+       output to (*1BATCH)BATONN.MON where NN is the system number and  MON  is
+       the abbreviated month.
+
+
+            If the request has not been entered into accounting, it  should  be
+       'QA'D'  by  the  lead  operator/batch  controller  and then filed in the
+       system folder for 'BCHARGE due' requests.  If it has been  entered  into
+       accounting it can be filed in the system folder for completed requests.
+
+
+            If postage or transportation charges are due, the 'HOLD' answer  is
+       used  to postpone the BCHARG entry until the charges are available.  Two
+       copies of the request are made and clipped to  the  job.   The  original
+       request  and the job hardcopy are filed.  When the job is mailed, a copy
+       of the request is sent with the job.  Consult the document entitled 'FCO
+       MAILROOM  PROCEDURES' for further information in this regard.  The other
+       copy of the request is  marked  with  the  charges  and  placed  in  the
+       appropriate folder.
+
+
+            When the lead operator/batch controller,  picks  up  these  copies,
+       they  are distributed to the operator of the particular system involved,
+       so that postage can be entered using the 'POSTAGE' command.  The minimum
+       charge  allowed is $00.13.  After BCHARGE is run, the TTY outputs should
+       be attached to the request and returned to batch control.
+
+
+            It is the responsibility of lead operators or batch controllers, to
+       ensure that all batch requests are properly entered into accounting.
+                                                                        Page 23
+SPOOL ACCOUNTING
+
+
+                         ACCOUNTING FOR SPOOL REQUESTS
+
+
+            The SPOOL request hardcopy can  be  output  to  the  SUPCHECK  TTY,
+       allowing  the  lead operator/batch controller to queue requests by paper
+       type.  In this way, it should be possible to  minimize  set-up  time  by
+       printing  all  requests of a certain paper type at one session using the
+       'TAPE' command for files from another system.  The  lead  operator/batch
+       controller  should pay close attention to all relevent SPOOL information
+       before printing is started for cases where special delivery instructions
+       should  be  used  for  assigning  priority  (i.   e.   air mail, special
+       delivery jobs might be done immediately rather than held for other SPOOL
+       requests of the same paper type).
+
+
+            The SPOOL requests should be analyzed, logged in and then given  to
+       the  system  operator to be printed.  After the printing is completed, a
+       copy of the request will be printed out to  the  operator's  TTY.   Upon
+       completion  of the SPOOL job, if delivery charges are due a statement on
+       the bottom of the hardcopy will indicate  that.   All  other  accounting
+       charges are automatically entered when the job has completed.
+
+
+       The following paragraphs describe what the SPOOL program does  and  what
+       steps the operator takes to enter it into accounting.
+
+
+       The SPOOL program will place records in  the  unprocessed  batch  record
+       files  when the mode of delivery to the user is other than pickup;  that
+       is, when postage or delivery charges are to be determined later.
+
+
+                                         NOTE
+
+           Consult the document  for  mail  room  procedures  for  more  on
+           postage and delivery techniques.
+
+
+       Records falling under this category will remain in the unprocessed batch
+       record  file  identified  by  the comment "SPOOL RECORD AWAITING POSTAGE
+       CHARGES" until the operator runs the charge command against that record.
+       The  operator will only be presented with the question "ENTER POSTAGE OR
+       TRANSPORTATION CHARGES" when charging a spooling record.
+                                                                        Page 24
+SPOOL ACCOUNTING
+
+
+            Upon careful completion of a SPOOL job, the SPOOL request  hardcopy
+       is initialed by the operator and returned to batch control area with the
+       job.
+
+
+            After  it  is  checked  for  accuracy,  quality   of   print,   and
+       completeness, it will be placed in the mail room on the shelf designated
+       for mailing.
+
+
+            Exceptions to this are those jobs that  need  immediate  attention.
+       The  lead  operator/batch  controller should perform the task of getting
+       the request ready for pickup  and  delivery,  completing  the  necessary
+       paperwork,  and  calling the delivery company.  The hardcopy should then
+       be filed.
+
+
+            When the mailing of SPOOL  requests  has  been  completed,  a  copy
+       should  be  placed  in  the  folder designated for pickup.  The operator
+       should run BCHARGE using the command 'CHARGE' or 'POSTAGE' to enter  the
+       delivery charges into the accounting.  The TTY output should be attached
+       to the request and returned to batch control.
+                                                                        Page 25
+SAMPLE BATCH BCHARG
+
+
+       ((SAMPLE RUNS))
+
+                           ENTERING A BATCH REQUEST:
+
+
+          (IN THE EXEC TYPE:)
+
+          R BCHARGE
+
+          'CREATE BATCH ACCOUNTING CHARGES - (CURRENT VERSION)'
+
+          '5/11/76  1:29'
+
+          '*'CHARGE -         (WHERE -  IS THE REQUEST NO.
+                              TO BE ENTERED INTO 
+                              ACCOUNTING)
+          'ENTER YOUR NAME:'  OPERNAME
+          'PASSWORD:'         OPERPASSWORD
+
+          'REQUEST NUMBER:  35631
+          DATE REQUESTED:  06/01  16:18
+          BILLED TO:  CLMRK
+          DISTRICT:  91
+          PROJECT CODE:  SAL75
+          CUSTOMER REQUEST:'
+
+          'OKAY?'
+
+        (ENTER 'Y' IF THE ITEMS OUTPUT ABOVE MATCH THE ACTUAL
+         REQUEST.  ENTER 'N' IF THINGS DON'T MATCH AND CHECK TO
+         SEE IF REQUEST -  ENTERED WAS CORRECT AND IF SO, BRING
+         ALL OUTPUT TO LEAD OPERATOR/BATCH CONTROLLER)
+
+          'COMPLETION DATE:' (MM-DD-YY)
+
+        (ENTER DATE REQUEST WAS COMPLETED)
+
+          'BATCH TYPE:'
+
+        (ENTER NUMBER INDICATED ON BATCH REQUEST.  THESE NUMBERS
+         RANGE FROM 1 TO 8.  IF NUMBER 1 IS ENTERED, PROGRAM PROMPTS
+         WITH)
+
+          'PAGES:'
+
+          'PARTS:'
+
+        (ENTER TOTAL PAGES PRINTED AND PARTS.  WHEN A JOB ENTAILS
+          MULTIPLE PART PAPER, THE PROGRAM PROMPTS WITH)
+
+          'WERE LISTINGS DECOLATED?'
+
+        (A 'Y' WILL BE ENTERED HERE.  BATCH TYPE 1 MAY NEED TO BE
+         USED A COUPLE OF TIMES, DEPENDING ON THE NUMBER OF PARTS
+         NEEDED BY THE REQUESTOR.  AFTER PROVIDING ALL INFORMATION
+         FOR BATCH TYPE 1, THE PROGRAM WILL ASK)
+                                                                        Page 26
+SAMPLE BATCH BCHARG
+
+
+          'ANOTHER BATCH TYPE FOR THIS REQUEST?'
+
+        (IF 'Y' IS ENTERED THE PROGRAM WILL ASK FOR THE NEXT BATCH
+         TYPE.  IF THERE IS, ENTER IT AT THIS TIME.  IF 'N' IS 
+         ENTERED, PROGRAM WILL ASK)
+
+          'ANY POSTAGE OR OTHER TRANSPORTATION CHARGE?'
+
+        (ENTER 'Y' IF POSTAGE OR TRANSPORTATION CHARGES ARE KNOWN.
+         ENTER 'N' IF THERE ARE NONE. ENTER 'HOLD' IF POSTAGE OR
+         TRANSPORTATION CHARGES ARE DUE BUT UNKNOWN AT THE PRESENT
+         TIME. THE NEXT PROMPT WILL BE ONE OF THE FOLLOWING:)
+
+         1. 'DELIVERY CHARGES' (IF A 'Y' WAS ENTERED ABOVE)
+                        OR
+         2. 'ALL ENTRIES CORRECT?' (IF 'N' OR 'HOLD' WAS USED)
+
+
+        (IF 'N' IS GIVEN IN RESPONSE TO THE SECOND QUESTION, YOU WILL
+         NEED TO REENTER ALL DATA AGAIN.  IF 'Y' IS ENTERED, THE
+         PROGRAM WILL ASK:)
+
+          'ANOTHER REQUEST?'
+
+        (IF 'Y' IS GIVEN IN RESPONSE TO THIS PROMPT, THE PROGRAM
+         WILL PROMPT WITH 'REQUEST NO.'.  IF 'N' IS GIVEN TO THIS
+         PROMPT, YOUR NEXT PROMPT WILL BE)
+
+          '*'
+
+        (ENTERING A 'Q' HERE RETURNS YOU TO THE EXEC)
+                                                                        Page 27
+SAMPLE SPOOL BCHARG
+
+
+                           ENTERING A SPOOL REQUEST
+
+
+
+       USING THE 'CHARGE' COMMAND
+
+
+          (IN THE EXEC TYPE:)
+
+          R BCHARGE
+
+          'BATCH ENTRY PROGRAM VERSION - (CURRENT VERSION)'
+
+          '6/3/76  17:55'
+
+          '*'CHARGE NO.       (THE <SPOOL REQUEST NUMBER
+                              TO BE ENTERED)
+          'ENTER YOUR NAME:'  OPERNAME
+          'PASSWORD:'         OPERPASSWORD
+
+          'REQUEST NUMBER:'   (DETAILS OF THIS PARTICULAR
+          'DATE REQUESTED:'   SPOOL REQUESTS ARE OUTPUT
+          'BILLED TO:'        HERE)
+          'DISTRICT:'
+          'PROJECT CODE:'
+          'CUSTOMER REQUEST'
+
+          'OKAY?'             (DO DETAILS MATCH THE REQUEST?
+                              SEE COMMENTS IN SAMPLE BATCH
+                              RUN ABOVE)
+
+          'POSTAGE OR OTHER TRANSPORTATION CHARGE? (Y,N OR HOLD)' Y
+
+          'DELIVERY CHARGE:' 5.00 (DELIVERY CHARGE ENTERED HERE)
+
+          'ALL ENTRIES CORRECT?' (SEE COMMENTS IN SAMPLE BATCH
+                              RUN ABOVE)
+
+          'CHARGE PROCESSED'  (PROGRAM RESPONSE AFTER CHARGE
+                              HAS BEEN ENTERED)
+
+          'ANOTHER REQUEST?'  (SEE COMMENTS IN SAMPLE BATCH
+                              RUN ABOVE)
+
+          '*'                 (RETURN TO EXEC)
+                                                                        Page 28
+POSTAGE AND ERRORS
+
+
+       USING THE 'POSTAGE' COMMAND
+
+
+          (IN THE EXEC TYPE:)
+
+          R BCHARGE
+
+          'CREATE BATCH ACCOUNTING CHARGES - (CURRENT VERSION)'
+
+          '6/3/76  17:59'
+
+          '*'POSTAGE          (SEE COMMENTS IN SAMPLE
+                              RUN ABOVE)
+
+               (HERE ALL INFO PERTAINING TO THE REQUEST IS OUTPUT)
+
+          'OKAY?'             (SEE COMMENTS IN SAMPLE
+                              RUN ABOVE)
+
+          'POSTAGE OR OTHER TRANSPORTATION CHARGE? (Y,N OR HOLD)' Y
+
+
+          'DELIVERY CHARGE:' 1.97 (DELIVERY CHARGE ENTERED HERE)
+
+          'OLD TOTAL =  5.00' (OLD TOTAL IS FROM WHEN THE
+                              REQUEST WAS FIRST ENTERED
+                              INTO ACCOUNTING)
+
+          'NEW TOTAL ='  6.97 (UPDATED TOTAL AFTER DELIVERY
+                              CHARGE HAS BEEN ENTERED
+                              INTO ACCOUNTING)
+
+          'OKAY?'             (SEE COMMENTS IN SAMPLE
+                              RUN ABOVE)
+
+          'POSTAGE ADDED.'    (RESPONSE AFTER POSTAGE
+                              HAS BEEN ENTERED)
+
+          '*'                 (RETURN TO EXEC)
+
+
+       ((ERRORS/RECOVERIES))
+
+            Any errors encountered while running the batch  accounting  program
+       should   be   brought  to  the  attention  of  the  lead  operator/batch
+       controller.
+                                                                        Page 29
+TYMCOM-X LICENSES
+
+
+                               TYMCOM-X LICENSE
+                               ----------------
+
+
+       ((INTRODUCTION))
+
+            One level of the  TYMCOM-X  security  system  is  to  require  that
+       license be set for performing certain functions.  Operators must set the
+       appropriate license to be able to use the  special  system  capabilities
+       that  are  involved  in  operation's  service for and to the user.  Once
+       license has been  set,  it  remains  with  the  job  involved  until  an
+       alternate license or related command changes it.
+
+
+       ((LICENSE SUMMARY))
+
+
+
+
+                      ***************************************
+                      *         TYMCOM-X LICENSES           *
+                      ***************************************
+                      *    License           Abbreviation   *
+                      ***************************************
+                      *                                     *
+                      * Auxiliary Circuits        AC        *
+                      * Accounting Programs       AP        *
+                      * Account Supervisor        AS        *
+                      * Customer Services         CS        *
+                      * Get Devices               GD        *
+                      * Hang Users                HU        *
+                      * Home Files                HF        *
+                      * JACCT-LOGIN               JL        *
+                      * Manager                   MG        *
+                      * Maintenance               MT        *
+                      * Operator                  OP        *
+                      * Queue Manager             QM        *
+                      * Read Absolute             RA        *
+                      * Read Core                 RC        *
+                      * Read Files                RF        *
+                      * Remote License            RL        *
+                      * Read Project              RP        *
+                      * Spooling                  SP        *
+                      * Structures                ST        *
+                      * Systat                    SY        *
+                      * Transfer Devices          TD        *
+                      * Tymshare Proprietary      TP        *
+                      * XEXEC Mode                TY        *
+                      * Validations               VL        *
+                      * Write Absolute            WA        *
+                      * Write Core                WC        *
+                      * Write Files               WF        *
+                      * Write Project             WP        *
+                      * Modify Charges            XC        *
+                      *                                     *
+                      ***************************************
+                                                                        Page 30
+TYMCOM-X LICENSES
+
+
+       ((LICENSE DEFINITIONS))
+
+
+            Most of the read and write licenses are arranged in a hierarchy  so
+       that  a  read or write license that is more powerful than others implies
+       possession of the less powerful licenses as well.  These read and  write
+       licenses are listed below in order of most powerful to least powerful.
+
+                      Read Absolute          Write Absolute
+                      Read Files             Write Files
+                      Read Project           Write Project
+
+
+            Thus, a Read Absolute license implies the Read Files  and  Read  in
+       Project licenses.
+
+
+            Each write license listed above also implies the corresponding read
+       license  as  well  as  the  less  powerful read and write licenses.  For
+       example, an operator holding the Write  Files  license  also  holds  the
+       Write in Project, Read Files, and Read Project licenses.
+
+       MANAGER (MG)       _______ ____
+
+
+            The Manager license allows the  Center  Manager  to  use  SETOP  to
+       perform validation of various operator licenses for personnel who report
+       to him/her.
+
+       CUSTOMER SERVICES (CS)       ________ ________ ____
+
+
+            The  Customer  Services  license  allows  the   Customer   Services
+       (RESOURCES  ALLOCATIONS) personnel who hold it to perform administrative
+       tasks,  such  as  adding  users,  deleting  users,  and  changing  LOGIN
+       passwords.
+
+       ACCOUNTING PROGRAMS (AP)       __________ ________ ____
+
+
+            The Accounting  Programs  license  allows  the  holder  to  execute
+       accounting programs.
+
+       OPERATOR (OP)       ________ ____
+
+
+            The Operator license allows the holder the following privileges:
+
+            He/She can attach to any device which is not in use even if it is
+            assigned to another job.
+
+            He/She can use the SET DATE and SET TIME commands to set the
+            current date and time.
+
+            He/She can use the SCHEDULE command to set schedule bits.
+                                                                        Page 31
+TYMCOM-X LICENSES
+
+
+            He/She can run certain programs that require the Operator license,
+            such as the accounting programs.
+
+
+
+       SYSTAT (SY)       ______ ____
+
+
+            The SYSTAT license allows the  operator  to  run  detailed  SYSTATs
+       containing information about jobs other than his own.
+
+       GET DEVICES (GD)       ___ _______ ____
+
+
+            The Get Device license allows the operator to  use  the  ASSIGN  or
+       ATTACH command to assign or attach devices to his own job.
+
+       TRANSFER DEVICES (TD)       ________ _______ ____
+
+
+            The Transfer Devices license  allows  the  operator  to  release  a
+       device from his own job and assign it to another user's job.
+
+       HANG USER (HU)       ____ ____ ____
+
+
+            The Hang User license allows the operator to log out  a  user;   he
+       can  disconnect  a  user  from  the  TYMCOM-X system.  In addition, this
+       license is required for bringing down a TYMCOM-X.
+
+       AUXILIARY CIRCUITS (AC)       _________ ________ ____
+
+
+            The Auxiliary Circuit license allows the operator to:
+
+                 1.  Build more than two auxiliary circuits, and
+
+                 2.  To build an auxiliary circuit to any desired User name.
+
+       JACCT-LOGIN (JL)       ___________ ____
+
+
+            The JACCT-LOGIN license allows the operator to set  the  JACCT  and
+       JLOG in the job status word;  write any UFD.
+                                                                        Page 32
+TYMCOM-X LICENSES
+
+
+       READ PROJECT (RP)       ____ _______ ____
+
+
+            The Read Project license allows read access  to  files  having  the
+       same GAN as the current job.
+
+       WRITE PROJECT (WP)       _____ _______ ____
+
+
+            The Write Project license allows write (and  read)  access  to  all
+       files having the same GAN as the current job.
+
+       READ FILES (RF)       ____ _____ ____
+
+
+            The Read Files license allows the operator to read all files on the
+       disk.
+
+       WRITE FILES (WF)       _____ _____ ____
+
+
+            The Write Files license allows the operator to write (and read)  to
+       all files on the disk.
+
+
+                                         NOTE
+
+           The JACCT-LOGIN license combined with the  Write  Files  license
+           allows the operator to write on User File Directories.
+
+
+       READ ABSOLUTE (RA)       ____ ________ ____
+
+
+            The Read Absolute license  allows  read  access  to  absolute  disk
+       addresses.   Note  that all less powerful read licenses are available to
+       the holder of the Read Absolute license.
+
+       WRITE ABSOLUTE (WA)       _____ ________ ____
+
+
+            The Write Absolute  license  allows  write  (and  read)  access  to
+       absolute  disk  addresses.   Note  that all less powerful read and write
+       licenses are available to the holder of the Write Absolute license.
+
+       READ CORE (RC)       ____ ____ ____
+
+
+            The Read Core license allows the reading of any area of core.
+                                                                        Page 33
+TYMCOM-X LICENSES
+
+
+       WRITE CORE (WC)       _____ ____ ____
+
+
+            The Write Core license allows the operator to write in any area  of
+       core.  This is the most powerful TYMCOM-X license.
+
+       ACCOUNT SUPERVISOR (AS)       _______ __________ ____
+
+
+            The Account Supervisor license allows changing passwords  of  users
+       within  the  given  account.   Also  allows  1UPDATE  to change username
+       parameters, add users, project code validation, initialized files, etc.
+
+       HOME FILES (HF)       ____ _____ ____
+
+
+            The Home File license allows  access  to  certain  files  in  other
+       directories  as though the current job's PPN was the same as that of the
+       program being run.
+
+       STRUCTURES (ST)       __________ ____
+
+
+            The  Structure  license  allows  execution  of  privileged   STRUUO
+       functions.
+
+       MODIFY CHARGES (XC)       ______ _______ ____
+
+
+            The Modify Charges license is set to allow monitor call  to  remove
+       TRU's and otherwise adjusts charges.
+
+       TYMSHARE PROPRIETARY (TP)       ________ ___________ ____
+
+
+            The Tymshare Proprietary license allows access to programs  on  the
+       TYMCOM-X  which  have  premium charges.  For internal users, the charges
+       for these proprietary programs is waived.
+
+       EXEC MODE (TY)       ____ ____ ____
+
+
+            The XEXEC Mode license refers to the capability of converting  EXEC
+       mode between monitor (PDP) and XEXEC (TYM) modes.
+                                                                        Page 34
+TYMCOM-X LICENSES
+
+
+       ((LICENSE DESCRIPTION))
+
+            The levels of license pertient to  operations  are  OPerator  (OP),
+       SYstat (SY), Get Devices (GD), Write File (WF) and Read File (RF).
+
+            Operator license allows the operator to  do  almost  everything  he
+       normally  needs  to  do.   This  includes  running  billing programs and
+       running TITO.
+
+            Systat license allows access to all information about all users and
+       processes on the system.
+
+            Get Devices license allows use of devices such as mag tape  drives,
+       paper tape, and the card reader.
+
+            Write Files (WF) license is a very powerful  license  which  allows
+       the  operator  to  read and write any file on the system.  Because it is
+       such a powerful license, it  should  not  be  set  except  for  specific
+       operations  for  which  it  is needed.  When WF is set for a job then RF
+       (see below) WP and RP (write and read within your GAN) is also obtained.
+       This license is sufficient to enable tape stores, DIR, DIFF, and CKSUM.
+
+            The  operator's  password  which  authenticates  the  user  setting
+       license should be changed regularly.  This is done with the OPPS program
+       documented elsewhere.
+
+
+                       OTHER COMMANDS RELATED TO LICENSE
+
+          SYST .  /LIC        REPORTS LICENSE OF YOUR JOB
+
+          SYST/LIC            CHECKS LICENSE OF ALL JOBS
+
+          SETE OP SY          KEEPS OPER and SYSTAT if set and
+                              eliminates all other license.
+
+          SETE O              ELIMINATES ALL STATUS
+
+
+       ((SAMPLE RUN))
+
+            The current version of OPER will accept  the  desired  licenses  as
+       arguments.  For example, to set operator and read file license, type:
+
+                              .O OP RF
+                              MARTINEZ
+                              .PASSWORD   (The password does not echo)
+
+       If no arguments are typed, only operator license is given.
+                                                                        Page 35
+TYMCOM-X LICENSES
+
+
+       ((ERRORS AND RECOVERIES))
+
+            The great majority  of  errors  that  occur  when  setting  license
+       involves  mistyping.  If a typing error is made it can be corrected with
+       control A (in TYMEX mode, or Rubout (in PDP-10 mode).
+
+            The operating system uses a special file to match valid license and
+       password  entries.   If there is reason to believe the file has gone bad
+       you must contact your manager  immediately.   This  error  can  only  be
+       corrected by the Operating Systems group.
+
+
+                                         NOTE
+
+           Rebuilding a TYMCOM-X (eg.  loading an entire backup tape)  will
+           almost always invalidate operator passwords unless 'all' license
+           is in effect.  This license is obtained by following the correct
+           rebuild  procedures  as  documented  in  Mini-Manual  #5A  (Disc
+           Recovery Procedures) on the TYMCOM-X.
+
+
+                                                                        Page 36
+GFD
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                        Page 37
+GFD
+
+
+                           GFD - GET FILE DIRECTORY
+                           ------------------------
+
+
+       ((INTRODUCTION))
+
+            The GFD program is used to Get a File Directory.  This enables  the
+       user  to  act  from within another directory which is different from the
+       login directory.  All references to files  then  pertain  to  the  'GFD'
+       directory  rather  than  the  directory  originally  logged  into.  This
+       capability may require special license (as described below).  It  always
+       requires special care by the operator:  while it may be necessary to use
+       GFD for service to a user, one must always be  mindful  of  the  privacy
+       requirements  of user files and the assurance of directory security that
+       must be maintained.
+
+
+       ((COMMAND SUMMARY))
+
+            Using the monitor GFD command, the format is:
+
+                 GFD USERNAME
+
+
+       ((COMMAND DESCRIPTION))
+
+            To get another file directory with the  GFD  command,  the  monitor
+       will  check  to  see  if  one  of  the below requirements applies before
+       enabling the capability.
+
+       -If the user has WF license, the GFD is allowed to any directory.
+
+       -If the user is an Account Supervisor, he may GFD to any  user  name  in
+       his account.
+
+       -If the user is in the same account as the destination user name and the
+       destination user name has the 'GFD' bit set in the lud entry, the GFD is
+       allowed.
+
+       -If none of the above are true, the destination directory is checked for
+       a  file  by the name of ACCESS.LIS.  For more info on this mechanism you
+       are referred to the file (*6NEWS)GFD.INF.
+
+            In all cases where GFD is used there must be a GFD  back  to  one's
+       original  directory  (usually  OPER).   Otherwise  there  is a dangerous
+       possibility  that  the  user's  directory  could  be   altered   in   an
+       unauthorized  way.   For  example,  if  the operator used the TITO 'GET'
+       command, files would be restored into the user's directory  rather  than
+       the OPER directory;  likewise, the monitor 'DELETE *.*' command could be
+       disasterous if one neglected the status of being GFD'ED into  the  wrong
+       directory.
+
+            There are two equivalent SYSTAT  commands  which  will  report  the
+       current  status  of  your job with regard to any GFD:  These are 'SYSTAT
+       ME' and 'WHO .' and both are shown in the samples below.
+                                                                        Page 38
+GFD
+
+
+       ((SAMPLE RUN))
+
+          (IT IS ASSUMED THERE IS A VALID REASON FOR USING THE GFD
+           COMMAND: THAT IS, RF LICENSE AND ACCESSING THE 
+           THE USER'S DIRECTORY WITH THE FORM... 
+
+                'COMMAND (USERNAME)FILE.EXT'
+
+           IS INSUFFICIENT FOR THE JOB TO BE DONE.)
+
+
+          O OP WF SY               (FIRST SET STATUS)
+          OPERNAME
+          OPERPSWD
+
+          GFD USERNAME             (THIS GETS THE FILE DIRECTORY)
+
+          (NOW YOU PERFORM THE JOB TO BE DONE)
+
+          SYSTAT ME (CR)           (ARE YOU GFD'ED ELSEWHERE?)
+          '30 *MARTINEZ (USERNAME) (THE SECOND USERNAME IS
+                                    THE CURRENT FILE DIRECTORY
+                                    ACCESSED BY THE ABOVE GFD)
+
+          GFD MARTINEZ             (SO I GFD BACK TO WHERE I BELONG)
+
+          WHO .                    (THIS HAS THE SAME EFFECT AS
+          '30 *MARTINEZ +           THE SYSTAT ME COMMAND
+                                    AND I AM NO LONGER GFD'D TO
+                                    THE OTHER USER'S DIRECTORY.)
+
+
+       ((ERRORS AND RECOVERIES))
+
+            If insufficient status is set for a GFD  outside  of  one's  Global
+       Account the monitor will return a '?'.  In general you must have WF set.
+
+            If you have input a  name  that  is  invalid  on  the  system  (eg.
+       misspelling the name) you will receive the following GFD error message:
+
+            'NOT A VALID USER.....  EXIT'
+
+                     ALWAYS REMEMBER TO GFD BACK TO OPER!!
+                                                                        Page 39
+NONAME AND PPN
+
+
+                                NONAME AND PPN
+                                --------------
+
+
+
+       ((INTRODUCTION))
+
+
+            Each MDC computer system has a Local User Directory called the LUD.
+       This  user  directory  is used by the monitor to keep track of users and
+       user parameters on that system.  Two of these parameters are the  Global
+       Account  Number  (GAN)  and  the  Universal  User Number (UUN).  The GAN
+       organizes users within  the  same  account  into  a  grouping  for  file
+       security  and certain billing purposes.  The UUN provides each user with
+       a number which is unique to that  user  and  will  reference  that  user
+       regardless  of any similar username on any other MDC computers.  It will
+       remain with that user even if  he/she  requests  that  the  username  be
+       changed.
+
+
+            Together, these two  parameters  comprise  the  Project  Programmer
+       Number  (PPN).   The  PPN  originated  with the standard DEC file system
+       architecture where it took the place of  usernames.   For  this  reason,
+       several  of  the DEC subsystems which are still in use by MDC Operations
+       require that a PPN be  used  rather  than  a  username.   The  two  most
+       commonly used subsystems requiring PPN'S are PIP (Peripheral Interchange
+       Program) and FAILSA.  (**NOTE:  These two  programs  are  documented  in
+       Mini-Manual PDPTAP.M1A (COMMON TAPE PROGRAMS)).
+
+
+            To facilitate the conversion of a  username  to  a  PPN,  the  EXEC
+       command PPN is used.
+
+
+            To convert the other way (from PPN to username) the program  NONAME
+       is used.
+                                                                        Page 40
+NONAME SUMMARY
+
+
+       ((COMMAND SUMMARY))
+
+                                The PPN Command
+
+     COMMAND             RESULT
+     -------             ------
+
+     PPN USERNAME        Output the Project Programmer Number
+                         for the username that is typed in.
+
+
+                                NONAME Commands
+
+     HELP                List all valid commands of NONAME to the TTY.
+
+     INSTRUCTIONS        Describe NONAME commands and give examples.
+
+     USER                Convert a GAN,UUN (that is  a PPN) to a
+                         username.
+
+     LIST USER           Output information about a specified user.
+
+     LIST GAN            List all entries in a Global Account to
+                         a file or the terminal.
+
+     LIST DISTRICT       List all entries within a Global Account
+                         for a specified district.
+
+     CHANGE USER         Allow the user to change how the login
+                         message is handled, set up an INIT file,
+                         change a user's time zone,
+                         change the user's EXEC mode and
+                         what is done in case of a network disconnect.
+                         This should never be done except
+                         on your own private username.
+
+     NAMES               If Account Supervisor status is set
+                         this will list all usernames in your account
+                         to a file.
+
+     QUIT                Exits the program and returns to EXEC.
+                                                                        Page 41
+NONAME DESCRIPTION
+
+
+       ((COMMAND DESCRIPTION))
+
+            The PPN command is self  explanitory.   (see  command  summary  and
+       sample)
+
+            In general, Account Supervisor (which is obtained when you log into
+       OPER)  and  Read File license are necessary to output information in the
+       NONAME program.
+
+            The NONAME user may either type in  an  entire  command  string  or
+       input  parts  of the command string to NONAME prompts.  For example, the
+       user may type:
+
+                                LIST USER ABCD
+
+       or he may type one word at a time and the program will ask for the  next
+       part of the command string.
+
+            Normally the program will repeat a question if an invalid reply  is
+       given.   If the user gets a question he/she does not know the answer to,
+       he/she can force the program back to the command dispatcher by  entering
+       a  question  mark  as  a reply to any yes or no question or whenever the
+       program is requesting a user name.
+
+            Within the Sample Run below, several of the  parameters  referenced
+       are  abbreviated in the output from NONAME.  A breakdown and explanation
+       of these parameters is as follows:
+
+       LICENSE - ACT.SUP. = ACCOUNT SUPERVISOR
+               TYM. = TYMSHARE
+
+       MSG - WHAT IS DONE WITH TYMSHARE MESSAGE AT LOGIN.
+                         SUP=SUPRESS MESSAGE
+                         TYP=TYPE MESSAGE
+
+       ZONE - TIME ZONE
+                         D=DAYLIGHT SAVINGS
+                         S=STANDARD
+
+       DISC - WHAT IS DONE IF THE TELEPHONE LINE DISCONNECTS.
+                         LOG=LOGOUT JOB
+                         DET=DETACH JOB
+
+       DET-T=DETACH, 15 MIN. TIME OUT SET
+
+       CORE - MAXIMUM AMOUNT OF USER CORE
+                         DEF = SYSTEM DEFAULT
+
+       GFD - ACCESS TO GFD
+            ACC = ACCESS TO GFD
+            NO = NO ACCESS TO GFD
+
+       MODE - THE MODE THE USER RUNS UNDER
+            TYM - XEXEC OR TYMEX MODE
+            PDP10 - MONITOR OR PDP MODE
+            GE - GENERAL ELECTRIC SUDS MODE
+                                                                        Page 42
+NONAME SAMPLES
+
+
+       ((SAMPLE RUN))
+                                THE PPN COMMAND
+                                ---------------
+
+       PPN SYS(CR)
+       '1,4'
+
+                                NONAME SAMPLES
+                                --------------
+
+       NONAME(CR)                      (ENTER THE PROGRAM)
+
+       ':'LIST USER
+       'ENTER USER NAME:' JONES
+
+       '1. USER NAME: JONES
+       2. DISTRICT: 63
+       3. GLOBAL ACCOUNT: 12345
+       UNIVERSAL USER NO.: 65432
+       4. LICENSE: ACT.SUP.
+       5. SUPRESS TYMSHARE MESSAGE AT LOGIN.
+       6. NO INIT FILE.
+       7. TIME ZONE NOT SET.
+       8. DETACH ON DISCONNECT.
+       9. MODE: XEXEC
+       10. QUOTA IN: 10000
+       QUOTA OUT: 10000
+       11. AMOUNT OF CORE: SYSTEM DEFAULT
+       12. GFD ACCESS
+       13. RUB: NOT SET
+
+
+       ':'USER(CR)                     (THIS CONVERTS PPN (GAN,UUN) TO
+                                        A USERNAME.)
+       'GLOBAL ACCOUNT:' 1    
+       'UUN:' 4
+       SYS                             (THUS PPN 1,4 IS USERNAME SYS)
+
+
+       ':'LIST ACCOUNT
+       'OUTPUT TO:' TEL
+       '7-22-72  14:32'
+
+       'GLOBAL ACCOUNT:' 1234
+
+       'USER           DIST   UUN      LICENSE         MSG INIT FILE
+                          ZONE     DISC   MODE   Q-IN   Q-OUT    CORE GFD
+
+       JONES             3   234567        ACT.SUP.   SUP
+       JONES            NOT SET    LOG    XEXEC  10000   10000    DEF NO
+       SMITHY            5   112234                   TYP
+       SMITHY           PACIF-D    DET-T  PDP10  30000   30000    DEF NO
+       JOHNSON           3   445675                   TYP (USERNAME    )FILE
+       JOHNSON          CENTR-S    DET    GE     50000   50000     60 ACC'
+                                                                        Page 43
+NONAME SAMPLES
+
+
+       ':'CHANGE JONES
+       'USER NAME: JONES
+       5. SUPRESS TYMSHARE MESSAGE AT LOGIN.
+       6. NO INIT FILE.
+       7. TIME ZONE NOT SET.
+       8. DETACH ON DISCONNECT.
+       9. MODE: PDP10'
+
+       'CHANGE WHICH ITEM - TYPE NUMBER:' 5
+
+       'SUPRESS TYMSHARE MESSAGE AT LOGIN?' NO
+
+       '5. DO NOT SUPRESS TYMSHARE MESSAGE AT LOGIN.'
+       'OKAY?' YES
+       'CHANGE COMPLETED.
+       ANOTHER?' NO
+
+
+       ':'QUIT                         (EXIT TO EXEC)
+       'E.O.J.'
+
+
+
+       ((ERRORS AND RECOVERIES))
+
+            There are only type-in or misspelling  errors  in  these  programs.
+       Refer  to  the  use  of  '?'  in NONAME above in the Command Description
+       section of this document for how to get out of a problem  while  running
+       NONAME.  You may also use control 'C' or 'ESCAPE' to return to EXEC.
+                                                                        Page 44
+NONAME SAMPLES
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                        Page 45
+INDEX
+
+
+       ACCTG COMMAND DESCRIPTION . . . . .  9
+       ACCTG COMMAND SUMMARY . . . . . . .  7
+       ACCTG COPYING FILES . . . . . . . .  11
+       ACCTG ERRORS/RECOVERY . . . . . . .  18
+       ACCTG FOUR PARTS  . . . . . . . . .  8
+       ACCTG INTRODUCTION  . . . . . . . .  7
+       ACCTG MONTH END OUTPUT  . . . . . .  17
+       ACCTG OPERATORS INPUT . . . . . . .  8
+       ACCTG PRIMARY RUN . . . . . . . . .  9
+       ACCTG ROYRUN COM PROCEDURE  . . . .  10
+       ACCTG SAMPLE RUN  . . . . . . . . .  12
+       ACCTG SESSION RECORD RUN  . . . . .  10
+
+       BCHARGE ACCTG FOR BATCH REQUESTS  .  21
+       BCHARGE ACCTG FOR SPOOL REQUESTS  .  23
+       BCHARGE COMMAND DESCRIPTION . . . .  21
+       BCHARGE COMMAND SUMMARY . . . . . .  19
+       BCHARGE ERRORS/RECOVERY . . . . . .  28
+       BCHARGE INTRODUCTION  . . . . . . .  19
+       BCHARGE SAMPLE BATCH  . . . . . . .  25
+       BCHARGE SAMPLE RUN  . . . . . . . .  25
+       BCHARGE SPOOL JOB POSTAGE . . . . .  28
+       BCHARGE SPOOL SAMPLE  . . . . . . .  27
+
+       CHKPNT  . . . . . . . . . . . . . .  3
+       CHKPNT COMMAND DESCRIPTION  . . . .  3
+       CHKPNT COMMAND SUMMARY  . . . . . .  3
+       CHKPNT ERRORS AND RECOVERIES  . . .  4
+       CHKPNT INTRODUCTION . . . . . . . .  3
+       CHKPNT SAMPLE RUN . . . . . . . . .  4
+
+       GFD COMMAND DESCRIPTION . . . . . .  37
+       GFD COMMAND SUMMARY . . . . . . . .  37
+       GFD ERRORS/RECOVERY . . . . . . . .  38
+       GFD INTRODUCTION  . . . . . . . . .  37
+       GFD SAMPLE RUN  . . . . . . . . . .  38
+
+       INDEX . . . . . . . . . . . . . . .  45
+
+       NONAME COMMAND DESCRIPTION  . . . .  41
+       NONAME COMMAND SUMMARY  . . . . . .  40
+       NONAME ERRORS/RECOVERY  . . . . . .  43
+       NONAME INTRODUCTION . . . . . . . .  39
+       NONAME SAMPLE RUN . . . . . . . . .  42
+
+       PJ  ON TYMCOM'S . . . . . . . . . .  5
+
+       TYMCOM-X LICENSE DEFINITIONS  . . .  30
+       TYMCOM-X LICENSE DESCRIPTION  . . .  34
+       TYMCOM-X LICENSE ERRORS/RECOVERY  .  35
+       TYMCOM-X LICENSE INTRO  . . . . . .  29
+       TYMCOM-X LICENSE SAMPLE RUN . . . .  34
+       TYMCOM-X LICENSE SUMMARY  . . . . .  29
+
+                                                                        Page 46
+INDEX
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                        Page 47
+READER'S COMMENT FORM
+
+
+                             READER'S COMMENT FORM
+
+                               MINI-MANUAL #MM3
+                          ACCOUNTING AND USERS MANUAL
+
+       Your comments on this document are welcome.  Please  list  page  numbers
+       where appropriate and any suggestions for further development.  Hardcopy
+       of "ACTUAL" runs would be helpful.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       PLEASE SEND COMMENTS, WITH HARDCOPY, TO:
+
+       FREMONT COMPUTER OPERATIONS
+       4340 SOLAR WAY
+       FREMONT, CALIFORNIA 94538
+
+       ATTENTION:  TYMCOM-10 COORDINATOR
+    o XÍ
