@@ -1,0 +1,154 @@
+(IMPORT      :  14) IMPORT.DIR     5 28-Nov-89 17:01 SAYPAX  ALL  RD  NO   
+(IMPORT      :  26) IMPORT.DIR     5 28-Nov-89 17:02 SAYPAX  ALL  RD  NO   
+(IMPORT      :  30) IMPORT.DIR     5 28-Nov-89 17:02 SAYPAX  ALL  RD  NO   
+(IMPORT      :  32) B.INF          2 22-Jan-82 09:30 CASWUH  ALL  RD  RD   
+(IMPORT      :  32) BIGCAL.CCF     2 21-Jan-82 19:25 SIJSIF  ALL  RD  RD   
+(IMPORT      :  32) BIGCAL.CMD     2 21-Jan-82 19:28 YUNCUN  ALL  RD  RD   
+(IMPORT      :  32) BIGCAL.COM     2 22-Jan-82 09:36 MOHFUT  ALL  RD  RD   
+(IMPORT      :  32) BIGCAL.DAT    29 01-Apr-82 12:32 RIZKEM  ALL  RD  RD   
+(IMPORT      :  32) BIGCAL.DOC     8 22-Jan-82 14:57 YEVFUJ  ALL  RD  RD   
+(IMPORT      :  32) BIGCAL.EXE    11 21-Jan-82 19:24 FOHVOV  ALL  RD  RD   
+(IMPORT      :  32) BIGCAL.FOR     3 21-Jan-82 19:38 CAHSUN  ALL  RD  RD   
+(IMPORT      :  32) BIGCAL.INF     2 07-Dec-81 23:30 VUHJID  ALL  RD  RD   
+(IMPORT      :  32) BIGCAL.RND     7 21-Jan-82 20:40 RUQJUB  ALL  RD  RD   
+(IMPORT      :  32) BIGCAL.SAV     7 05-Nov-70 04:26 HAQBAL  ALL  RD  NO   
+(IMPORT      :  32) BIGDEB.CMD     2 22-Jan-82 14:55 CAXGUD  ALL  RD  RD   
+(IMPORT      :  32) BIRTH.DAT      2 23-Jan-82 04:38 VUHJID  ALL  RD  RD   
+(IMPORT      :  32) BLDPIP.CTL     2 11-Nov-83 08:41 RUXMAP  ALL  RD  RD   
+(IMPORT      :  32) CAB.MAC       13 22-Jan-82 13:46 NUBQOX  ALL  RD  RD   
+(IMPORT      :  32) CAL.SAI        2 23-Dec-83 02:42 WACVUJ  ALL  RD  NO   
+(IMPORT      :  32) CARL.MAC       6 22-Jan-82 01:57 ROFMEP  ALL  RD  RD   
+(IMPORT      :  32) CARL.UNV       3 22-Jan-82 01:58 SAKLIV  ALL  RD  RD   
+(IMPORT      :  32) CENTER.FOR     2 21-Jan-82 16:00 DUQYUK  ALL  RD  RD   
+(IMPORT      :  32) CLEARL.FOR     2 22-Jan-82 12:01 QAZQID  ALL  RD  RD   
+(IMPORT      :  32) DATES.FOR      4 21-Jan-82 19:20 DAWLUD  ALL  RD  RD   
+(IMPORT      :  32) DRT5.DOC      14 06-Nov-78 02:10 HUQJOX  ALL  RD  NO   
+(IMPORT      :  32) FD             2 22-Jan-82 03:54 HOFWAF  ALL  RD  RD   
+(IMPORT      :  32) FOO.HGH       20 21-Jan-82 19:40 JOWYUJ  ALL  RD  RD   
+(IMPORT      :  32) FOO.LOW        4 21-Jan-82 19:40 FERGON  ALL  RD  RD   
+(IMPORT      :  32) FUR.CMD        2 16-Mar-82 13:13 MIFPIZ  ALL  RD  NO   
+(IMPORT      :  32) FUR.EXE       22 22-Jan-82 21:57 YIRDUJ  ALL  RD  RD   
+(IMPORT      :  32) FUR.LOW        2 24-Mar-82 10:26 YUHKEY  ALL  RD  NO   
+(IMPORT      :  32) FUR.MAC       43 20-Mar-82 01:29 GOVKAD  ALL  RD  NO   
+(IMPORT      :  32) FUR.SHR       21 24-Mar-82 10:26 TUHYEX  ALL  RD  NO   
+(IMPORT      :  32) GCREF.COM      2 11-Nov-83 00:47 DUWXEX  ALL  RD  RD   
+(IMPORT      :  32) GCREF.EXE      7 11-Nov-83 08:29 NEKCOD  ALL  RD  RD   
+(IMPORT      :  32) GCREF.MAC     11 11-Nov-83 03:00 XERGET  ALL  RD  RD   
+(IMPORT      :  32) GCREF.RNH      2 11-Nov-83 09:04 GISYIZ  ALL  RD  RD   
+(IMPORT      :  32) GETNAM.FOR     2 22-Jan-82 10:41 YAVJEX  ALL  RD  RD   
+(IMPORT      :  32) GETYR.FOR      3 22-Jan-82 14:42 VESCUM  ALL  RD  RD   
+(IMPORT      :  32) GREGOR.FOR     2 22-Jan-82 14:33 PEHHOL  ALL  RD  RD   
+(IMPORT      :  32) HEADER.FOR     2 21-Jan-82 16:36 PASZOQ  ALL  RD  RD   
+(IMPORT      :  32) IMPORT.DIR     5 28-Nov-89 17:01 SAYPAX  ALL  RD  NO   
+(IMPORT      :  32) LEAPYR.FOR     2 22-Jan-82 14:33 LALQAX  ALL  RD  RD   
+(IMPORT      :  32) LINKUP.DEC    47 20-Dec-79 02:13 YEBWAP  ALL  RD  NO   
+(IMPORT      :  32) LINKUP.MAC    48 17-Aug-82 22:24 REZNUD  ALL  RD  NO   
+(IMPORT      :  32) LINKUP.MEM    10 08-Nov-79 00:25 JAMSOR  ALL ALL  NO   
+(IMPORT      :  32) LINKUP.SYS     2 17-Aug-82 22:28 FUGKOF  ALL  RD  NO   
+(IMPORT      :  32) LNKMTC.CCL     2 11-Nov-83 03:40 MIFDIM  ALL  RD  RD   
+(IMPORT      :  32) LNKPIP.CCL     2 11-Nov-83 08:42 SAQBOV  ALL  RD  RD   
+(IMPORT      :  32) LNSMTC.CCL     2 11-Nov-83 03:42 LOLBET  ALL  RD  RD   
+(IMPORT      :  32) LNSPIP.CCL     2 11-Nov-83 15:42 SUTXIJ  ALL  RD  RD   
+(IMPORT      :  32) MAKLIB.CTL     2 20-Oct-82 05:16 QEJJIR  ALL  RD  NO   
+(IMPORT      :  32) MAKLIB.DIR     2 20-Oct-82 02:47 SEMJUN  ALL  RD  NO   
+(IMPORT      :  32) MAKLIB.EXE    29 20-Oct-82 10:16 WESNUH  ALL  RD  NO   
+(IMPORT      :  32) MAKLIB.HLP     1 17-Aug-83 14:47 VAVVAV  ALL  RD  NO   
+(IMPORT      :  32) MAKLIB.MAC   110 20-Oct-82 07:49 WANREL  ALL  RD  NO   
+(IMPORT      :  32) MAKLIB.MAN    17 20-Oct-82 09:07 VIGRIN  ALL  RD  NO   
+(IMPORT      :  32) MAKLIB.RNH     2 20-Oct-82 02:40 MOSPOL  ALL  RD  NO   
+(IMPORT      :  32) MAKLIB.RNM    14 20-Oct-82 08:33 RUHMEP  ALL  RD  NO   
+(IMPORT      :  32) MAKLIB.SHR    27 03-Aug-71 09:57 WOCMOT  ALL  RD  NO   
+(IMPORT      :  32) MAKVFU.DOC     4 02-Sep-81 04:44 RUJQOZ  ALL  RD  NO   
+(IMPORT      :  32) MAKVFU.HLP     3 02-Sep-81 04:44 RILWOM  ALL  RD  NO   
+(IMPORT      :  32) MAKVFU.MAC    26 02-Sep-81 04:44 KEYCEH  ALL  RD  NO   
+(IMPORT      :  32) MAKVFU.SHR     4 15-Jun-70 22:00 TIRDUW  ALL  RD  NO   
+(IMPORT      :  32) MATCH.FOR      2 22-Jan-82 06:37 FOKGAV  ALL  RD  RD   
+(IMPORT      :  32) MKL2A.DOC      4 20-Oct-82 02:00 LOXZOL  ALL  RD  NO   
+(IMPORT      :  32) MKL2A.RND      4 20-Oct-82 02:30 KOQRUH  ALL  RD  NO   
+(IMPORT      :  32) MTCOPY.MAC     7 11-Nov-83 05:17 RAKDIH  ALL  RD  RD   
+(IMPORT      :  32) NARC.DAT      13 31-May-82 19:51 FOWBEB  ALL  RD  NO   
+(IMPORT      :  32) NARC.DMD       2 22-May-82 18:43 POXLEM  ALL  RD  NO   
+(IMPORT      :  32) NARC.DMS      48 22-May-82 18:43 DIWLAH  ALL RUN  NO   
+(IMPORT      :  32) NARC.MST       2 22-May-82 18:07 TEPVOK  ALL  RD  NO   
+(IMPORT      :  32) NARC.OUT      17 31-May-82 19:58 YEQPOL  ALL  RD  NO   
+(IMPORT      :  32) NEWD.CMD       2 22-Jan-82 03:22 KITFOC  ALL  RD  RD   
+(IMPORT      :  32) NEWD.EXE       6 22-Jan-82 03:08 CINQON  ALL  RD  RD   
+(IMPORT      :  32) NEWD.HLP       3 22-Jan-82 09:08 CASBIV  ALL  RD  RD   
+(IMPORT      :  32) NEWD.MAC      10 22-Jan-82 14:07 RERHOH  ALL  RD  RD   
+(IMPORT      :  32) PIP.MAC       74 10-Nov-83 19:41 GEKMAM  ALL  RD  RD   
+(IMPORT      :  32) PRINTM.FOR     2 22-Jan-82 04:15 XOJZUZ  ALL  RD  RD   
+(IMPORT      :  32) PRUNE.DAT      4 02-Nov-82 18:45 ZIRWES  ALL  RD  NO   
+(IMPORT      :  32) READ.ME        2 22-Jan-82 03:24 XEQVEC  ALL  RD  RD   
+(IMPORT      :  32) SCANER.MAC     7 22-Jan-82 07:29 MUNQUY  ALL  RD  RD   
+(IMPORT      :  32) SCOOP.COM      2 11-Nov-83 01:31 XEQPUR  ALL  RD  RD   
+(IMPORT      :  32) SCOOP.DOC     10 10-Nov-83 17:24 ZELGUG  ALL  RD  RD   
+(IMPORT      :  32) SCOOP.FOR     15 11-Nov-83 13:44 ZABQOM  ALL  RD  RD   
+(IMPORT      :  32) SCOOP.MIC      2 11-Nov-83 13:55 PIJLES  ALL  RD  RD   
+(IMPORT      :  32) SCOOP.RND      8 10-Nov-83 17:22 FIPJEB  ALL  RD  RD   
+(IMPORT      :  32) SCOOP.RNH      2 11-Nov-83 02:41 KIVJIM  ALL  RD  RD   
+(IMPORT      :  32) SCOOP.UTH      2 11-Nov-83 13:49 MEFYUP  ALL  RD  RD   
+(IMPORT      :  32) SCOOPM.MAC     5 10-Nov-83 21:42 VEQWEG  ALL  RD  RD   
+(IMPORT      :  32) SETDAY.FOR     2 22-Jan-82 14:56 ZOLNAW  ALL  RD  RD   
+(IMPORT      :  32) SETWEE.FOR     3 21-Jan-82 18:29 SANZUV  ALL  RD  RD   
+(IMPORT      :  32) STUART.MAC     2 26-Jan-82 12:35 POFDIQ  ALL  RD  RD   
+(IMPORT      :  32) STUART.UNV     2 26-Jan-82 03:15 YAGLIG  ALL  RD  RD   
+(IMPORT      :  32) SZRPT.930      5 15-Aug-87 00:16 SIZLOZ  ALL  RD  NO   
+(IMPORT      :  32) SZRPT.LST      5 15-Aug-87 00:13 SIZLOZ  ALL  RD  NO   
+(IMPORT      :  32) TALK.CUA      11 26-Jan-82 04:03 WAGCEH  ALL  RD  RD   
+(IMPORT      :  32) TALK.EXE       6 26-Jan-82 04:15 NEMNOD  ALL  RD  RD   
+(IMPORT      :  32) TALK.MAC      11 26-Jan-82 04:15 SIRKON  ALL  RD  RD   
+(IMPORT      :  32) UFD.COM        2 23-Jan-82 04:34 JOFYAN  ALL  RD  RD   
+(IMPORT      :  32) UFD.OLD        4 29-Jul-81 02:12 WODHOZ  ALL  RD  RD   
+(IMPORT      :  32) UTLIB.MAC      2 10-Nov-83 22:30 CABYUR  ALL  RD  RD   
+(IMPORT      :  38) IMPORT.DIR     5 28-Nov-89 17:02 SAYPAX  ALL  RD  NO   
+(IMPORT      :  74) IMPORT.DIR     5 28-Nov-89 17:03 SAYPAX  ALL  RD  NO   
+(IMPORT      :  74) NARC.DAT      13 31-May-82 19:51 FOWBEB  ALL  RD  NO   
+(IMPORT      :  74) NARC.DMD       2 22-May-82 18:43 POXLEM  ALL  RD  NO   
+(IMPORT      :  74) NARC.DMS      48 22-May-82 18:43 DIWLAH  ALL RUN  NO   
+(IMPORT      :  74) NARC.MST       2 22-May-82 18:07 TEPVOK  ALL  RD  NO   
+(IMPORT      :  74) NARC.OUT      17 31-May-82 19:58 YEQPOL  ALL  RD  NO   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:54 
+?unable tod circuit to JMS:54 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:58 
+?unable to build circuit to JMS:58 
+?unable to build circuit to JMS:58 
+?unable to build circuit to JMS:58 
+?unable to build circuit to JMS:58 
+Creaux failed to JMS:17  
+Creaux failed to JMS:25  
+Creaux failed to JMS:54  
+Creaux failed to JMS:58  
+    tK6 â
