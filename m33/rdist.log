@@ -1,0 +1,478 @@
+.:LOGFILE RDIST.LOG
+RUN (XEXEC)MINIT
+
+.WATCH DAY
+
+.PJOB
+Frame 11  TTY205  M33[3,42754] at X32
+
+.RDIST (M33)*.A##/MASTER:33/HOST:32/CHECK
+[18:36:58]
+Master host: 33
+2 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.B##/MASTER:33/HOST:32/CHECK
+[18:37:21]
+Master host: 33
+17 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) P035E.BAK      2 09-Nov-89 10:17 -- extra not on master
+(M33         :  32) SHOINA.BAK     2 26-Sep-89 12:38 -- extra not on master
+(M33         :  32) PHONES.BAK                       -- missing on slave
+
+End of SAIL execution
+.RDIST (M33)*.C##/MASTER:33/HOST:32/CHECK
+[18:38:03]
+Master host: 33
+130 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) 006TEL.COM     2 28-Nov-89 21:43 -- extra not on master
+(M33         :  32) 003TEL.COM     2 09-Nov-89 14:09 -- extra not on master
+
+End of SAIL execution
+.RDIST (M33)*.D##/MASTER:33/HOST:32/CHECK
+[18:42:03]
+Master host: 33
+133 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) SYSID.DAT      2 16-Nov-89 14:04 -- bad checksum SOXTAB
+                           should be 03-May-89 13:33 ZOCCEB  ALL  RD  NO
+(M33         :  32) BOOTKS.DMP     3 24-Jan-87 17:13 -- bad checksum SEMNUF
+                           should be 24-Jan-87 17:13 DUXWUV  ALL  RD  NO
+
+End of SAIL execution
+.RDIST (M33)*.E##/MASTER:33/HOST:32/CHECK
+[18:51:42]
+Master host: 33
+9 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) FILIO.E00     24 27-Apr-89 15:25 -- extra not on master
+(M33         :  32) FILIO.E01                        -- missing on slave
+
+End of SAIL execution
+.RDIST (M33)*.F##/MASTER:33/HOST:32/CHECK
+[18:52:24]
+Master host: 33
+22 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) BOOTSO.F3      3 05-Jun-87 17:37 -- bad checksum NECBOK
+                           should be 05-Jun-87 17:37 MUTJUK  ALL  RD  NO
+(M33         :  32) BOOTS.F3B      3 25-Aug-86 20:40 -- bad checksum LAJXEF
+                           should be 25-Aug-86 20:40 HUYZOY  ALL  RD  NO
+
+End of SAIL execution
+.RDIST (M33)*.G##/MASTER:33/HOST:32/CHECK
+[18:53:01]
+Master host: 33
+0 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.H##/MASTER:33/HOST:32/CHECK
+[18:53:27]
+Master host: 33
+9 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.I##/MASTER:33/HOST:32/CHECK
+[18:54:10]
+Master host: 33
+19 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.J##/MASTER:33/HOST:32/CHECK
+[18:54:51]
+Master host: 33
+0 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) 34035E.JJJ   170 28-Nov-89 15:23 -- extra not on master
+
+End of SAIL execution
+.RDIST (M33)*.K##/MASTER:33/HOST:32/CHECK
+[18:55:33]
+Master host: 33
+15 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) BOOT5B.KL      3 13-Jan-87 14:03 -- bad license      3
+                           should be 13-Jan-87 14:03 XOTCUW  ALL  RD  NO
+(M33         :  32) BOOT3P.KL      3 13-Jan-87 14:04 -- bad license      3
+                           should be 13-Jan-87 14:04 DAKWIB  ALL  RD  NO
+(M33         :  32) BOOT3B.KI      3 08-Jul-85 16:24 -- bad license      3
+                           should be 08-Jul-85 16:24 RIRFUB  ALL  RD  NO
+(M33         :  32) BOOT3B.KL      3 08-Jul-85 16:04 -- bad license      3
+                           should be 08-Jul-85 16:04 YAWCAW  ALL  RD  NO
+(M33         :  32) BOOT5P.KI      3 31-Jan-86 15:04 -- bad license      3
+                           should be 31-Jan-86 15:04 FUGGUT  ALL  RD  NO
+(M33         :  32) BOOT5B.KI      3 13-Jan-87 14:02 -- bad license      3
+                           should be 13-Jan-87 14:02 GEKNAR  ALL  RD  NO
+(M33         :  32) BOOT5P.KL      3 09-Mar-86 00:18 -- bad license      3
+                           should be 09-Mar-86 00:18 SOHJEB  ALL  RD  NO
+(M33         :  32) BOOT3P.KI      3 13-Jan-87 14:03 -- bad license      3
+                           should be 13-Jan-87 14:03 HOFSES  ALL  RD  NO
+
+End of SAIL execution
+.RDIST (M33)*.L##/MASTER:33/HOST:32/CHECK
+[18:55:58]
+Master host: 33
+17 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) HOTLIN.LOG    43 28-Jul-89 00:50 -- bad checksum XIRFOG
+                           should be 16-Oct-89 01:03 VEXRUT  ALL  RD  NO
+(M33         :  32) CPUS.LOG       4 06-Jul-89 18:26 -- bad checksum NOZTEC
+                           should be 06-Jul-89 16:39 YAGQOC  ALL  RD  NO
+(M33         :  32) NOTICE.LOG     2 30-Nov-89 06:00 -- bad checksum LAPJIF
+                           should be 19-Dec-89 15:22 SOTREG  ALL  RD  NO
+(M33         :  32) RDIST.LOG      1 13-Feb-90 18:36 -- bad checksum CERSAD
+                           should be 04-Feb-90 20:00 VOHBIZ  ALL  RD  NO
+(M33         :  32) CRSHID.LOG     2 19-Sep-89 20:52 -- bad checksum SERLUG
+                           should be 19-Sep-89 20:52 MIDPAL  ALL  RD  NO
+(M33         :  32) SHOINA.LOG     2 26-Sep-89 14:13 -- extra not on master
+(M33         :  32) MCOPY.LOG                        -- missing on slave
+(M33         :  32) MONCPY.LOG                       -- missing on slave
+(M33         :  32) LUD.LOG                          -- missing on slave
+
+End of SAIL execution
+.RDIST (M33)*.M##/MASTER:33/HOST:32/CHECK
+[18:56:38]
+Master host: 33
+321 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) ACCESS.MSG     2 16-Nov-89 14:03 -- bad checksum KEPVUY
+                           should be 16-Nov-89 16:02 DUNVOD  ALL  RD  NO
+(M33         :  32) CONF22.MAC     2 27-Apr-89 17:39 -- bad checksum FEXLUN
+                           should be 09-Aug-89 11:12 VEDDAX  ALL  RD  NO
+(M33         :  32) CONF32.MAC     2 03-May-89 13:03 -- extra not on master
+(M33         :  32) CONF23.MAC     2 21-Sep-89 13:27 -- bad checksum KINDIY
+                           should be 21-Nov-89 11:11 NOYJED  ALL  RD  NO
+(M33         :  32) CNFN34.MAC     2 04-Mar-89 12:02 -- bad checksum COGJUN
+                           should be 16-Nov-89 16:02 FEGCEP  ALL  RD  NO
+(M33         :  32) FILIO.MAC     24 06-Jul-89 16:03 -- bad checksum JIZWUL
+                           should be 27-Apr-89 15:26 BEZQOD  ALL  RD  NO
+(M33         :  32) CONF34.MAC     2 28-Nov-89 15:55 -- bad checksum VIJTAF
+                           should be 11-Dec-89 11:11 QEWYET  ALL  RD  NO
+(M33         :  32) CNFN23.MAC     2 04-Mar-89 12:01 -- bad checksum XUWMUZ
+                           should be 09-Aug-89 11:15 JEHHES  ALL  RD  NO
+(M33         :  32) SHOINA.MAC     2 26-Sep-89 12:39 -- extra not on master
+(M33         :  32) CNFN58.MAC                       -- missing on slave
+
+End of SAIL execution
+.RDIST (M33)*.N##/MASTER:33/HOST:32/CHECK
+[19:08:52]
+Master host: 33
+20 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.O##/MASTER:33/HOST:32/CHECK
+[19:10:11]
+Master host: 33
+8 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) RDIST.OUT      3 28-Nov-89 20:51 -- bad checksum FESGAJ
+                           should be 27-Jan-90 20:27 MODTEF  ALL  RD  NO
+(M33         :  32) CNFN58.OLD     2 16-Nov-89 14:03 -- extra not on master
+(M33         :  32) 006TEL.OUT     2 28-Nov-89 21:43 -- extra not on master
+(M33         :  32) CONF58.OLD     2 17-Apr-89 11:40 -- bad checksum QIRBON
+                           should be 09-Aug-89 11:15 JILCAQ  ALL  RD  NO
+(M33         :  32) CONF32.OLD                       -- missing on slave
+
+End of SAIL execution
+.RDIST (M33)*.P##/MASTER:33/HOST:32/CHECK
+[19:10:36]
+Master host: 33
+21 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.Q##/MASTER:33/HOST:32/CHECK
+[19:11:18]
+Master host: 33
+1 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.R##/MASTER:33/HOST:32/CHECK
+[19:12:00]
+Master host: 33
+124 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) FILUUL.REL    17 06-Jul-89 18:34 -- bad checksum JIKXAC
+                           should be 28-Nov-89 15:24 FEZLEK  ALL  RD  NO
+(M33         :  32) FILUUS.REL    17 06-Nov-89 09:32 -- extra not on master
+(M33         :  32) FILIOS.REL     5 06-Jul-89 16:50 -- bad checksum KETWUK
+                           should be 13-Jul-89 21:03 JOCQAB  ALL  RD  NO
+(M33         :  32) SHOINA.REL     2 26-Sep-89 12:39 -- extra not on master
+(M33         :  32) SIMIOS.REL     6 06-Jul-89 17:27 -- bad checksum NOWHAQ
+                           should be 06-Jul-89 18:16 SOHZOX  ALL  RD  NO
+(M33         :  32) CMD34L.REL                       -- missing on slave
+(M33         :  32) SET34L.REL                       -- missing on slave
+(M33         :  32) CMN34L.REL                       -- missing on slave
+(M33         :  32) CMT34L.REL                       -- missing on slave
+(M33         :  32) SET58L.REL                       -- missing on slave
+(M33         :  32) CMN58L.REL                  -- missing on slave
+(M33         :  32) CMD58L.REL                       -- missing on slave
+(M33         :  32) CMT58L.REL                       -- missing on slave
+
+End of SAIL execution
+.RDIST (M33)*.S##/MASTER:33/HOST:32/CHECK
+[19:14:48]
+Master host: 33
+88 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) PAKCPX.SAV    26 22-Jul-88 17:01 -- bad checksum FOZZEQ
+                           should be 22-Jul-88 17:01 VICCAF  ALL  RD  NO
+(M33         :  32) F02593.SAV    66 22-Apr-89 17:03 -- extra not on master
+(M33         :  32) CRSHID.SAV    40 30-Aug-85 20:32 -- bad license   1410
+                           should be 19-Mar-85 13:13 PEWJEC  ALL  RD  NO
+(M33         :  32) P034N.SWM    430 11-Sep-84 10:39 -- bad checksum QIXHIL
+                           should be 11-Sep-84 10:39 NUKSIX  ALL  RD  NO
+(M33         :  32) S3035E.SAV   169 19-Mar-89 20:20 -- bad checksum SUYTEY
+                           should be 19-Mar-89 20:17 BETKUZ  ALL  RD  NO
+(M33         :  32) 34035E.SAV   170 28-Nov-89 15:46 -- bad checksum COJHUL
+                           should be 11-Dec-89 11:19 DORNAY  ALL  RD  NO
+(M33         :  32) FRECOR.SAV    17 19-Feb-85 09:49 -- bad license 240000
+                           should be 19-Feb-85 09:49 FUMVEV  ALL  RD  NO
+(M33         :  32) CRSUPD.SAV     2 28-Mar-80 23:10 -- bad license   1000
+                           should be 28-Mar-80 23:10 GEFVUW  ALL  RD  NO
+(M33         :  32) 14035E.SAV   169 04-May-89 15:12 -- extra not on master
+(M33         :  32) F3035E.SAV   160 19-Mar-89 19:20 -- bad checksum RANNIT
+                           should be 02-Mar-89 17:24 YOJLUB  ALL  RD  NO
+(M33         :  32) FILUUO.SCM                       -- missing on slave
+(M33         :  32) TWXD09.S                         -- missing on slave
+(M33         :  32) FILIO.SCM                        -- missing on slave
+(M33         :  32) TWXD08.S                         -- missing on slave
+(M33         :  32) 14XE01.SAV                       -- missing on slave
+(M33         :  32) RBGG01.S                         -- missing on slave
+(M33         :  32) F02594.SAV                       -- missing on slave
+
+End of SAIL execution
+.RDIST (M33)*.T##/MASTER:33/HOST:32/CHECK
+[19:24:54]
+Master host: 33
+62 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.U##/MASTER:33/HOST:32/CHECK
+[19:28:09]
+Master host: 33
+6 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.V##/MASTER:33/HOST:32/CHECK
+[19:28:48]
+Master host: 33
+2 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.W##/MASTER:33/HOST:32/CHECK
+[19:29:30]
+Master host: 33
+2 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.X##/MASTER:33/HOST:32/CHECK
+[19:30:12]
+Master host: 33
+3 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.Y##/MASTER:33/HOST:32/CHECK
+[19:30:54]
+Master host: 33
+2 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.Z##/MASTER:33/HOST:32/CHECK
+[19:31:50]
+Master host: 33
+1 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.0##/MASTER:33/HOST:32/CHECK
+[19:32:18]
+Master host: 33
+1 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.1##/MASTER:33/HOST:32/CHECK
+[19:33:01]
+Master host: 33
+23 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) BOOTKI.169     3 06-Oct-80 16:59 -- bad checksum RIRFUB
+                           should be 06-Oct-80 16:59 XOQQEG  ALL  RD  NO
+(M33         :  32) BOOTKL.164     3 05-Jun-80 20:14 -- bad license      3
+                           should be 05-Jun-80 20:14 JEMHED  ALL  RD  NO
+(M33         :  32) BOOTF3.170     3 02-Jul-82 17:25 -- bad license      3
+                           should be 02-Jul-82 17:25 NECBOK  ALL  RD  NO
+(M33         :  32) NOTICE.17      3 27-Nov-89 20:21 -- bad checksum ZINZEM
+                           should be 27-Jan-90 18:42 SEZRIV  ALL  RD  NO
+
+End of SAIL execution
+.RDIST (M33)*.2##/MASTER:33/HOST:32/CHECK
+[19:34:18]
+Master host: 33
+9 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) NOTICE.26      2 27-Nov-89 20:20 -- bad checksum FAFYUD
+                           should be 13-Feb-90 08:00 GALGIZ  ALL  RD  NO
+(M33         :  32) NOTICE.23      2 27-Nov-89 20:20 -- bad checksum QIJDEC
+                           should be 10-Feb-90 05:00 POKNAY  ALL  RD  NO
+(M33         :  32) NOTICE.25      2 27-Nov-89 20:20 -- bad checksum HAGLUQ
+                           should be 21-Jan-90 10:03 SOWBAD  ALL  RD  NO
+
+End of SAIL execution
+.RDIST (M33)*.3##/MASTER:33/HOST:32/CHECK
+[19:34:54]
+Master host: 33
+13 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) NOTICE.30      2 27-Nov-89 20:20 -- bad checksum LUSZUH
+                           should be 09-Feb-90 03:36 MIGBID  ALL  RD  NO
+(M33         :  32) NOTICE.31      2 27-Nov-89 20:20 -- bad checksum HUXPAB
+                           should be 13-Feb-90 03:11 VAVVAV  ALL  RD  NO
+(M33         :  32) NOTICE.37      2 27-Nov-89 20:20 -- bad checksum PIWWID
+                           should be 11-Feb-90 00:44 RATHOT  ALL  RD  NO
+(M33         :  32) NOTICE.38      2 27-Nov-89 20:20 -- bad checksum COVXUG
+                           should be 07-Feb-90 00:51 PEMZES  ALL  RD  NO
+(M33         :  32) NOTICE.34      2 27-Nov-89 20:20 -- bad checksum DAKNEL
+                           should be 06-Feb-90 20:46 QIPRAH  ALL  RD  NO
+
+End of SAIL execution
+.RDIST (M33)*.4##/MASTER:33/HOST:32/CHECK
+[19:35:40]
+Master host: 33
+0 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.5##/MASTER:33/HOST:32/CHECK
+[19:36:09]
+Master host: 33
+5 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) NOTICE.56      2 27-Nov-89 20:20 -- bad checksum CUBJAQ
+                           should be 11-Feb-90 04:20 TEGDIR  ALL  RD  NO
+(M33         :  32) NOTICE.54      2 27-Nov-89 20:20 -- bad checksum RUWHUF
+                           should be 10-Jan-90 10:07 GEJBAV  ALL  RD  NO
+(M33         :  32) NOTICE.57                        -- missing on slave
+
+End of SAIL execution
+.RDIST (M33)*.6##/MASTER:33/HOST:32/CHECK
+[19:36:51]
+Master host: 33
+2 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.7##/MASTER:33/HOST:32/CHECK
+[19:37:33]
+Master host: 33
+3 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) NOTICE.74      2 27-Nov-89 20:20 -- bad checksum DONSIT
+                           should be 12-Feb-90 19:07 PURSIL  ALL  RD  NO
+
+End of SAIL execution
+.RDIST (M33)*.8##/MASTER:33/HOST:32/CHECK
+[19:38:15]
+Master host: 33
+2 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*.9##/MASTER:33/HOST:32/CHECK
+[19:38:57]
+Master host: 33
+0 files on master system.
+Slave hosts: 32
+Checking host 32
+
+End of SAIL execution
+.RDIST (M33)*./MASTER:33/HOST:32/CHECK
+[19:39:39]
+Master host: 33
+31 files on master system.
+Slave hosts: 32
+Checking host 32
+(M33         :  32) PHONES         3 13-Jul-89 13:01 -- bad checksum HIDHOF
+                           should be 27-Jan-90 21:25 MUCGOY  ALL  RD  NO
+
+End of SAIL execution
+.FINDIT (M33)RDIST.*
+[19:40:21]
+(M33         :  32) RDIST.CTL      2 11-Jan-89 13:33 MOHZIR  ALL  RD  NO
+(M33         :  32) RDIST.OUT      3 28-Nov-89 20:51 FESGAJ  ALL  RD  NO
+(M33         :  32) RDIST.LOG      1 13-Feb-90 18:36 PACMIJ  ALL  RD  NO
+
+.DAYTIME		;There are 2 lines after this one.
+13-FEB-1990 19:40:25 PST
+
+.COPY RDIST.LOG,RDIST.OUT
+[19:40:25]
+
+.MUNG FINDIT,RDIST.OUT
+[19:40:27]
+
+FINDIT.TEC V5 - Clean up log from MHX+(SPL)FINDIT and sort by file name
+94
+R SORT
+RDIST.OUT=RDIST.OUT/R80/K21.10/K54.6/K1.20
+SORTED 94 RECORDS
+
+EXIT
+
+.LOGOUT
+[19:41:25]
+1894.02 tru
+terminal time: 1:04:41
+
+; Req #7992 completed
+   ._š
