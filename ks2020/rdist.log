@@ -1,0 +1,148 @@
+.:logfile rdist.log
+:define $substitution=$true
+sysno
+TYMSHARE X32-P035/E-1 3-2-89
+.daytime
+14-FEB-1990 19:57:01 PST
+
+.run (xexec)minit
+
+.rdist *.*/master:33/host:14,32/check
+Master host: 33
+377 files on master system.
+Slave hosts: 14,32
+Checking host 14
+(KS2020      :  14) RDIST.LOG      3 14-Feb-90 18:29 -- bad checksum COPKUJ
+                           should be 14-Feb-90 18:42 FOPRUP  ALL  RD  NO
+(KS2020      :  14) KSXG03.SAV   152 20-Nov-80 21:53 -- bad checksum SEXVUL
+                           should be 20-Nov-80 21:53 KUMDUF  ALL  RD  NO
+(KS2020      :  14) BOOTS.OLD      3 05-Nov-80 17:30 -- bad checksum ZUGLIR
+                           should be 05-Nov-80 17:30 TUFSIQ  ALL  RD  NO
+Checking host 32
+(KS2020      :  32) RDIST.WED      2 22-Nov-89 18:37 -- bad checksum HOTWUS
+                           should be 14-Feb-90 18:43 SIFNEF  ALL  RD  NO
+(KS2020      :  32) RDIST.OUT      2 13-Feb-90 18:58 -- bad checksum DUZKOS
+                           should be 14-Feb-90 18:43 XIMCAB  ALL  RD  NO
+(KS2020      :  32) RDIST.LOG      1 14-Feb-90 19:56 -- bad checksum ZAYVIV
+                           should be 14-Feb-90 18:42 FOPRUP  ALL  RD  NO
+(KS2020      :  32) KSXG03.SAV   152 20-Nov-80 21:53 -- bad checksum SEXVUL
+                           should be 20-Nov-80 21:53 KUMDUF  ALL  RD  NO
+(KS2020      :  32) BOOTS.OLD      3 05-Nov-80 17:30 -- bad checksum ZUGLIR
+                           should be 05-Nov-80 17:30 TUFSIQ  ALL  RD  NO
+(KS2020      :  32) 006TEL.COM     2 28-Nov-89 19:43 -- extra not on master
+(KS2020      :  32) 006TEL.OUT     2 28-Nov-89 19:43 -- extra not on master
+
+End of SAIL execution
+.copy rdist.log,rdist.out
+
+.mung findit,rdist.out
+?TECO not found
+
+.copy rdist.log,rdist.Wednesday
+
+.; System X17 has only RDIST.* files
+.rdist rdist.*/host:14,17,32,33
+Master host: 32
+10 files on master system.
+Slave hosts: 14,17,32,33
+Checking host 14
+(KS2020      :  14) RDIST.WED      2 14-Feb-90 18:41 -- bad checksum SIFNEF
+                           should be 14-Feb-90 20:16 KUBHUM  ALL  RD  NO
+(KS2020      :  14) RDIST.OUT      2 14-Feb-90 18:41 -- bad checksum XIMCAB
+                           should be 14-Feb-90 20:16 YAHNAJ  ALL  RD  NO
+(KS2020      :  14) RDIST.LOG      3 14-Feb-90 18:29 -- bad checksum COPKUJ
+                           should be 14-Feb-90 19:56 GASWIB  ALL  RD  NO
+Checking host 17
+
+?unable to build circuit to KS2020:17
+?host unavailable
+
+?unable to build circuit to KS2020:17
+?host unavailable
+
+?unable to build circuit to KS2020:17
+?host unavailable
+
+?unable to build circuit to KS2020:17
+?host unavailable
+
+?unable to build circuit to KS2020:17
+?host unavailable
+Creaux failed to KS2020:17
+Checking host 32
+(KS2020      :  32) RDIST.LOG      1 14-Feb-90 19:56 -- bad checksum KOKROL
+                           should be 14-Feb-90 19:56 GASWIB  ALL  RD  NO
+Checking host 33
+(KS2020      :  33) RDIST.LOG      3 14-Feb-90 18:42 -- bad checksum FOPRUP
+                           should be 14-Feb-90 19:56 GASWIB  ALL  RD  NO
+(KS2020      :  33) RDIST.WED      2 14-Feb-90 18:43 -- bad checksum SIFNEF
+                           should be 14-Feb-90 20:16 KUBHUM  ALL  RD  NO
+(KS2020      :  33) RDIST.OUT      2 14-Feb-90 18:43 -- bad checksum XIMCAB
+                           should be 14-Feb-90 20:16 YAHNAJ  ALL  RD  NO
+Starting TELECOPY
+
+: 
+: 
+: 
+REPLACING FILE (KS2020:14)RDIST.WED
+
+COPY STARTING
+
+(KS2020:32)RDIST.WED COPIED TO (KS2020:14)RDIST.WED
+
+2304 (1381) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KS2020:14)RDIST.OUT
+
+COPY STARTING
+
+(KS2020:32)RDIST.OUT COPIED TO (KS2020:14)RDIST.OUT
+
+2304 (1306) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KS2020:14)RDIST.LOG
+
+COPY STARTING
+
+(KS2020:32)RDIST.LOG COPIED TO (KS2020:14)RDIST.LOG
+
+4608 (2946) CHARS. TRANSMITTED
+
+: 
+"COPY TO" AND "COPY FROM" SYSTEM MUST NOT BE THE SAME.
+
+: 
+REPLACING FILE (KS2020:33)RDIST.LOG
+
+COPY STARTING
+
+(KS2020:32)RDIST.LOG COPIED TO (KS2020:33)RDIST.LOG
+
+4608 (3156) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KS2020:33)RDIST.WED
+
+COPY STARTING
+
+(KS2020:32)RDIST.WED COPIED TO (KS2020:33)RDIST.WED
+
+2304 (1381) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (KS2020:33)RDIST.OUT
+
+COPY STARTING
+
+(KS2020:32)RDIST.OUT COPIED TO (KS2020:33)RDIST.OUT
+
+2304 (1306) CHARS. TRANSMITTED
+
+: 
+.LOGOUT
+1010.47 tru
+terminal time: 0:21:32
+
+; Req #8007 completed
