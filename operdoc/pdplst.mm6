@@ -1,0 +1,1405 @@
+
+
+
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        $$$$                        $$$$
+       $$$$                          $$$$
+       $$$$                          $$$$
+       $$$$$                        $$$$$
+       $$$$$$                      $$$$$$  LISTINGS ON THE TYMCOM-X
+       $$$$$$                      $$$$$$
+       $$$$$$                      $$$$$$  OPERATIONS MINI-MANUAL #6
+       $$$$$$                      $$$$$$  
+       $$$$$$$                    $$$$$$$  
+       $$$$$$$                    $$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$  M C  D O N N E L L   D O U G L A S
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$     WESTERN COMPUTER OPERATIONS
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$    TYMSHARE COMPUTER  MANAGEMENT
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$             SERVICES
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$  
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$  AUGUST 1984
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$
+       $$$$$$$$$$$     ::     $$$$$$$$$$$
+       $$$$$$$$$$$     ::     $$$$$$$$$$$
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$       ::       $$$$$$$$$
+       $$$$$$$$$      ::::      $$$$$$$$$
+       $$$$$$$$      ::::::      $$$$$$$$
+       $$$$$$$$     ::::::::     $$$$$$$$  REPLACES DOCUMENT DATED DEC 80
+       $$$$$$$     ::::::::::     $$$$$$$  
+       $$$$$$$    ::::::::::::    $$$$$$$  
+       $$$$$$    ::::::::::::::    $$$$$$  
+       $$$$$$   ::::::::::::::::   $$$$$$  
+       $$$$$   ::::::::::::::::::   $$$$$
+       $$$$$  ::::::::::::::::::::  $$$$$
+       $$$$  ::::::::::::::::::::::  $$$$
+        $$$$::::::::::::::::::::::::$$$$
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                                                                         Page 2
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY  LEFT BLANK
+                                                                         Page 3
+TABLE OF CONTENTS
+
+
+                               TABLE OF CONTENTS
+                               -----------------
+
+
+                 TITLE                                          PAGE
+
+
+                 SPOOL SYSTEM OPERATOR'S MANUAL                  5
+
+
+                 SPOOL MAINTENANCE                              19
+
+
+                 LIST AND PRINT IN EXEC                         25
+
+
+                 PRTAID PROGRAM                                 27
+
+
+                 INDEX                                          31
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                         Page 4
+TABLE OF CONTENTS
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                         Page 5
+SPOOL
+
+
+                                TYMCOM IX and X
+
+                        SPOOL SYSTEM OPERATOR'S MANUAL
+
+       ((INTRODUCTION))
+
+            The SPOOL system is a file listing program that copies files from a
+       user's  directory and, without direct intervention of the operator, sets
+       user  requested  print  switches  for  the  files  referenced  by  SPOOL
+       REQUESTS.   One  type of print switch can be used to determine where the
+       files spooled are to be listed.  The user may specify the switch CENTER,
+       in  which  case  the  spooled  files  will  be  queued and listed at the
+       appropriate computer center.  Or the user may  default  on  the  printer
+       location  switch, in which case the spooled files are set up for listing
+       on a REMOTE printer, typically located in a district office.
+
+            Operators are provided with a range of commands and arguments which
+       order  the  sequence  of  spool  file  listed and may transfer specified
+       requests to a different printer location.  Spool requests can  be  moved
+       to a different system by use of magnetic tape and restarting interrupted
+       print jobs is facilitated.
+
+            There are SPOOL techniques for outputting the  status  of  a  given
+       job.   The  program  will  automatically enter as much of the accounting
+       charges as it can, leaving only postage and  handling  charges  for  the
+       operator to enter.
+
+            This document is primarily oriented towards  system  operators  but
+       there is also a discussion of those commands used by operators at remote
+       printer locations.
+
+            Note:  This reflects version 4.4 (940:  5.23) of SPOOL.
+
+
+
+       ((COMMAND SUMMARY))
+
+
+                                PRINT COMMANDS
+
+               SPOOL COMMAND           EFFECT
+               -------------           ------
+
+               PRINT <SPOOL NO.>       PRINT THE SPECIFIED SPOOL REQ.
+
+               PRINT <SPOOL NO.>FILE   WITHIN A MULTI-FILE SPOOL REQ.,
+                                       PRINT THE SPECIFIED FILE.
+
+               PRINT TAPE              PRINT SPOOL REQUESTS THAT HAVE
+                                       BEEN STORED ON A SPOOL TAPE.
+
+               PRINT FORM              PRINT ALL REQUESTS FOR A
+                                       SPECIFIED PAPER FORM (EG. TTY)
+
+               PRINT (ALL)             SORT ALL SPOOL REQUESTS BY
+                                       FORM, PAPER PARTS AND PRINT
+                                                                         Page 6
+SPOOL
+
+
+                                       THEM ALL.
+
+               RESTART                 RESUME LISTING OF AN INCOMPLETE
+                                       SPOOL REQUEST.
+
+
+                               UTILITY COMMANDS
+
+               STORE (ALL)             STORE ALL OR SPECIFIED SPOOL
+                     FORM              REQS. ON TAPE SO THEY CAN BE
+                     <SPOOL NO.>       LISTED ON ANOTHER SYSTEM'S
+                                       LINE PRINTER.
+
+               STATUS                  OUTPUT INFORMATION ABOUT ANY
+                                       SPOOL REQS. ON THE SYSTEM.
+                                       OTHER STATUS COMMANDS ARE 
+                                       'LIST' AND 'REPORT'.
+
+               TRANSFER                CHANGE THE DESIGNATED OUTPUT
+                                       PRINTER WHERE THE SPECIFIED REQ.
+                                       SHALL BE LISTED.
+
+               CANCEL                  PURGE A SPOOL REQUEST WHICH IS
+                                       EITHER PENDING OR ON HOLD.
+
+               DELETE                  DELETE AN INAPPROPRIATE FILE (EG.
+                                       BINARY TYPE) FROM A SPOOL REQUEST
+
+               HOLD                    PLACE A SPOOL REQUEST ON HOLD
+                                       AWAITING PAPER DELIVERY OR THE
+                                       REMOVAL OF SOME OTHER OBSTACLE
+                                       PREVENTING PRINTING.
+
+               HARDCOPY                OUTPUT A COPY OF ORIGINAL SPOOL
+                                       REQUEST. (AUTOMATIC AFTER 
+                                       'PRINT' COMMAND).
+
+                                REMOTE COMMANDS
+
+               SET                     ENABLES REMOTE PRINTER OPERATOR
+                                       LICENSE. ASKS FOR PASSWORD.
+
+               1NOTIFY                 EXEC PROGRAM ON H8
+                                       WHICH IDENTIFIES HOST LOCATION OF
+                                       SPOOL REQUESTS FOR GIVEN REMOTE
+                                       PRINTER.
+
+               PRINT REMOTE            FOR CENTER OPERATORS LISTING
+                                       SPOOL REQS. AT A REMOTE SITE.
+                                                                         Page 7
+SPOOL
+
+
+       ((COMMAND DESCRIPTION))
+
+            In this  discussion,  operators  have  two  divisions,  system  and
+       remote.  Remote operators are those people who have remote print license
+       which is set by the DS password on the TYMCOM-IX and  by  SETOP  in  the
+       user's  password  file on the TYMCOM-X.  System operators are defined as
+       having operator license and being in district 0.  System  operators  may
+       also  be  remote operators, but not conversely.  The term "operators" is
+       used to encompass both types of operators. the  following  commands
+       may be executed by operators unless specified otherwise.
+
+            Note:  In command forms in this document,  the  items  enclosed  in
+       angle  brackets  <  >  are  user-supplied  values;  the brackets are not
+       typed.  In examples, user input is indicated by lowercase characters.
+                                STATUS Commands
+
+            The Status commands (STATUS, REPORT, and LIST) may be  executed  by
+       operators.  Use of the STATUS and REPORT commands by system operators is
+       slightly different from other users.  Whereas  for  all  other  users  a
+       carriage  return  after  the command defaults to the ALL subcommand, for
+       the operator, the default is the CENTER  subcommand.   This  is  so  the
+       operator need not be bothered by remote requests unless he is interested
+       in them.  Should the operator use the  ALL  or  REMOTE  subcommand,  the
+       location  of  the  remote  requests  is  given  as Rnnn where nnn is the
+       Printer Location Number.
+
+            System operators can receive information about any request  in  the
+       system.   Remote  operators  receive  information only for their printer
+       location and their district.  In addition, when operators execute one of
+       the   above   commands,   additional  information  is  provided.   Three
+       additional status words can appear in the status line.
+
+         TAPE  The request has been placed on tape for printing on
+               other systems (See STORE command)
+         HOLD  The request has been placed on HOLD by an operator.
+         TRAN  The request is in a transfer state and needs to be
+               transferred by the operator to a different
+               printing site.
+
+            If there are any requests to be transferred, the operator  will  be
+       reminded of this fact before each command is processed and until all the
+       requests have been transferred.
+
+            Information concerning the type of paper and  number  of  pages  is
+       also  given  for  the  STATUS,  REPORT and LIST commands.  The number of
+       pages that the operator sees is the least number of  pages  required  to
+       complete the request, not the number of pages that will be charged.
+
+            Also, if a request requires a full character set (upper and  lower)
+       printer, it will be flagged as "FC".  This will appear after the type of
+       paper required for the request.
+
+
+            When a request is printed, the accounting information is written to
+       one  of  two places.  If there is no delivery charge, the information is
+       written directly to accounting and no further action  is  required.   If
+                                                                         Page 8
+SPOOL
+
+
+       there  are delivery charges the information is held so that the operator
+       may  add  the  charge.   System  operators  use  the  program   1BCHARGE
+       (TYMCOM-IX)  or  BCHARGE  (TYMCOM-X)  to  complete  the request.  Remote
+       operators use the program 1RCHARGE (TMYCOM-IX) or RCHARGE (TYMCOM-X)  to
+       complete the request.
+
+
+
+                                PRINT Commands
+
+            There are five options for this command which can only be  used  by
+       operators.   This  command does the printing of the spooled files on the
+       printer.  When the request has been completed, a  hardcopy  is  produced
+       for  the  request.   At the onset of the first PRINT command issued, the
+       operator will be asked if his printer has a full  character  set  (upper
+       and  lower).   If  the  reply  is "NO", only those requests which do not
+       specify the FULLCH option when spooling will be printed.  Should any  of
+       those  requests  have  lower  case characters, they will be converted to
+       upper case before being printed.  If the printer does not  have  a  full
+       character  set,  requests that require it (via the FULLCH option) can be
+       printed by the PRINT <number> command.  Those requests will be converted
+       to  upper  case  before  being printed.  The print options available are
+       detailed below.  After the first print command is issued,  the  operator
+       will  be  asked  what  remote  printer is being used.  The operator must
+       respond with a valid printer name.
+
+
+       PRINT [ALL]
+
+            This command will sort all pending requests (PEND) by type of  form
+       and number of parts before printing.  If only one type of form is needed
+       for printing, the operator will be told to mount that type  of  form  on
+       the printer.  Otherwise, if several different types of forms are needed,
+       a summary of the forms is printed and the operator will be  asked  which
+       type  of  form  he wishes to print.  All requests for the form specified
+       will be printed and the process repeated  until  all  requests  for  all
+       forms are completed.
+
+
+       PRINT FORM
+
+            This command is used for printing all pending requests for one type
+       of  form.   The  system  will  prompt  the operator for the type of form
+       desired, tell him how many  pages  are  required,  and  then  print  all
+       pending requests for that form.
+
+
+       PRINT <number>
+
+            This will print only the request  specified.   If  the  request  is
+       anything  but PEND or HOLD, confirmation as to whether the request is to
+       be redone is required.  If the printer has been flagged as  not  a  full
+       character  set printer and the request requires it, the operator will be
+       asked if he wants to print it.  If so, the request will be converted  to
+       upper  case  before  being  printed.  The type of paper required is then
+       typed and the program  waits  for  confirmation  of  the  forms  on  the
+                                                                         Page 9
+SPOOL
+
+
+       printer.  The request is then printed.
+
+            This is the only command which will print a job on HOLD status.  In
+       the  event  that multiple forms paper is unavailable, the request may be
+       redone  multiple  times,  and  only  one  charge  is  recorded  in   the
+       accounting.
+
+            Due to the possibility that a user  may  specify  the  wrong  print
+       switches  when he makes a spool request, a feature has been included for
+       the operator to override the user's print switches.
+
+            On  the  PRINT  <number>,  RESTART  <number>  and  STORE   <number>
+       commands,  the  operator  will  be  asked OPTIONS:.  This is effectively
+       asking the operator what print switches to  use  on  the  request.   The
+       operator  may  specify  the  use  of  the  user's original switches by a
+       carriage return, or he may enter switches which will override only those
+       switches  he  specifies.  Switches available are:  HEAD, NOHEAD, SINGLE,
+       DOUBLE, FORTRAN (TYMCOM-X), NOFORTRAN (TYMCOM-X), LINES= AND INDENT=.
+
+
+       PRINT <number> Filename
+
+            This command is used to print an individual file of a request.  The
+       file  is  printed  in  its entirety and only once regardless of how many
+       copies the requester wants.  No accounting record is created.
+
+
+       PRINT TAPE
+
+            This command is available only to system operators.  It is used  to
+       print  requests  that  have been placed on tape using the STORE command.
+       On the 940's the tape must be mounted on Unit 0 .  On the  PDP-10's  the
+       logical  unit  is  requested,  along  with the density.  The operator is
+       questioned as to the type of paper on the  printer  and  if  it  is  not
+       available,  all  requests using that type paper are skipped.  Otherwise,
+       all requests for this type of paper will be done and the  next  type  of
+       paper  will be requested.  This process continues until the end of tape.
+       Information concerning these requests are transmitted back to  the  home
+       system  via PJ, with the result of a delay before transportation charges
+       may be entered on the home system.
+
+
+            In addition, the keyword REMOTE may  be  inserted  after  the  word
+       PRINT  in  all the Print commands except PRINT TAPE.  This allows system
+       operators to print remote spooled  requests  on  remote  printers.   Any
+       operator entered charges for remote requests must be entered by 1RCHARGE
+       (RCHARGE).
+
+
+       RESTART Command
+
+            The RESTART command is used to restart a request that has been only
+       partially  completed.   The  system  will prompt for the request number,
+       file name, restart copy number and restart page number.  The copy number
+       can  be  obtained from the last file title page of the file in question.
+       The restart page number is the physical page  to  restart  printing  on.
+                                                                        Page 10
+SPOOL
+
+
+       Page numbers on the listing cannot be relied upon as a correct indicator
+       as a restart printing point in the file.  A carriage return indicates to
+       begin  printing at the start of the file.  When the file is found, SPOOL
+       proceeds to print that file and all succeeding files for the request.
+
+            RESTART TAPE is used to do the same thing for files stored on  tape
+       using  the STORE command, except that with the RESTART TAPE command, all
+       other requests on the tape will be processed also.
+
+
+            As with the Print commands, the keyword REMOTE may  be  used  after
+       the RESTART command, but may not be used with the RESTART TAPE.
+
+
+       HOLD Command
+
+            This is a  utility  command  which  is  used  to  place  individual
+       requests  on hold, such as when there is no paper for the request.  Once
+       a request is on HOLD  status,  it  shows  up  as  PEND  on  user  STATUS
+       commands,  but are not included in the ALL commands for STORE and PRINT.
+       The only way that requests may be taken off HOLD status is to be printed
+       or stored by the operator or canceled by the user or the operator.
+                                                                        Page 11
+SPOOL
+
+
+                               UTILITY Commands
+
+
+       STORE Command
+
+            This command is available only to system operators.  It is used  to
+       print  spooled  requests  for a system that does not have an operational
+       printer.  The subcommands are [ALL], FORM, and  <number>  and  have  the
+       same  function  as  their  counterparts in the PRINT command.  STORE ALL
+       places the requests on tape in a sorted order by form.
+
+            The [ALL] and FORM commands will operate on Center  requests  only,
+       while a STORE <number> will operate on a Center or Remote request.
+
+            On the 940's the tape is mounted on Unit 0.  The  PDP-10's  request
+       the logical name (EG.  FTA0) and density for the drive.
+
+
+       CANCEL Command
+
+            Since users can only cancel requests which are pending or on  hold,
+       it  is  necessary to allow someone to cancel requests which are in other
+       status states.  Therefore, the  operator  can  cancel  anyone's  request
+       regardless of a request's status.
+
+
+       DELETE Command
+
+            This command is for deleting a file from a request and should  only
+       be used when a file cannot be printed, i.e.  file is bad or binary.
+
+
+       TRANSFER Command
+
+            A request goes into transfer status when the requester indicates he
+       wants  his  request  printed  at a different site.  This command must be
+       used against any request that has TRAN status.  The TRANSFER command  is
+       the  only  operator command which can be used against a request which is
+       in TRAN status.  The TRANSFER command will move the request to the  site
+       desired  with  the  operator's  assistance.   When the operator issues a
+       transfer command against the request, the SPOOL system will tell him the
+       location  to  transfer  the  request to.  The operator will enter a node
+       number and an address will be typed out that must  be  confirmed.   Upon
+       confirmation,  the request will now belong to the new site.  In place of
+       a node number, the word "CENTER" may be used, in which case, the request
+       will be moved to the computer center for printing.
+
+
+            In order to determine which requests need to  be  transferred,  the
+       operator should issue the STATUS command.
+
+            In order to get the node numbers  for  the  TRANSFER  command,  the
+       operator  should  log  into the IMS system and call 1PNUPD.  The command
+       PPA will give a complete list of  printer  location  addresses  and  the
+       associated nodes.
+                                                                        Page 12
+SPOOL
+
+
+       HARDCOPY Command
+
+            This command will ask the operator for the request number  and  the
+       requester name.  All information entered by the requester at the time of
+       spooling will be typed out on the operator's terminal.
+                                                                        Page 13
+SPOOL
+
+
+                           REMOTE PRINTER OPERATION
+
+
+            The remote printers supported by SPOOL are CDC, 2780, Data Products
+       (DP), and Vogue.
+
+            In addition to the commands described in  the  SPOOL  System  Users
+       Guide,  additional  commands are available to designated people to print
+       spooled requests.  In order to access these commands,  license  must  be
+       set  using the SET command.  The SET command should be the first command
+       issued after entering the SPOOL system.
+
+
+                                  SET Command
+
+            This command is used by potential remote operators.   It  will  ask
+       for  your license username and license password.  If the user has Remote
+       Print ability, the user will be flagged  as  a  remote  operator.   This
+       command  should  be  issued  before the remote operator issues a STATUS,
+       REPORT or LIST command as it will allow the operator to  see  the  pages
+       and type of paper needed with each request.
+
+
+
+                NOTIFICATION OF REQUESTS WAITING TO BE PRINTED
+
+            In order for the remote operators to find  out  if  they  have  any
+       pending requests to be printed at their site, they must log into the IMS
+       system and while at the EXEC level, issue  the  command  1NOTIFY.   This
+       program  will  respond by listing all systems that have pending requests
+       for that site.
+
+
+                            Additional Information
+
+            In reference to the REMOTE subcommand,  Remote  operators  are  not
+       required  to  use  this  command,  although  it  may  be  used.  Systems
+       operators must use this command when printing  a  remote  request  at  a
+       remote printer.
+                                                                        Page 14
+SPOOL
+
+
+       ((SAMPLE RUNS))
+                            PRINT command examples
+
+
+                                   Example 1
+                          PRINT Command Using Default
+
+
+       :print
+
+       REMOTE PRINTER TYPE: cdc
+
+       IS THIS A FULLCASE PRINTER? yes
+
+       TOTAL REQUIREMENTS ARE:
+       LARGE -1 PART----   29 PAGES
+       LARGE -2 PART----  324 PAGES
+       SMALL -3 PART----   88 PAGES
+       WHAT TYPE OF FORM DO YOU WANT TO PRINT? large
+       PARTS: 2
+
+       ARE THERE  324 PAGES OF 2 PART LARGE PAPER?
+       CONFIRM BY TYPING YOUR NAME: smith
+
+
+
+                                   Example 2
+                          PRINT by Form Type command
+
+
+       :print form
+       FORMS: large
+       PARTS: 1
+
+       ARE THERE   29 PAGES OF 1 PART LARGE PAPER?
+       CONFIRM BY TYPING YOUR NAME: smith
+
+
+
+                                   Example 3
+                            PRINT by Number Command
+
+
+       :print 33125
+       FOR HIGGINS    ON 8/03/75? no
+       FOR SMOEJOE    ON 9/10/75? yes
+
+       OPTIONS: COPIES=1,LINE=60
+       OPTIONS:             (carriage return means use requester
+                             options)
+
+       ARE THERE  88 PAGES OF 3 PART SMALL PAPER?
+       CONFIRM BY TYPING YOUR NAME: smith
+                                                                        Page 15
+SPOOL
+
+
+                                   Example 4
+                         PRINT by Number For One File
+
+
+       :print 33125 a.lst
+
+       FOR JOHNSON  ON 9/03/75? yes
+
+       OPTIONS: COPIES=1,LINE=60
+       OPTIONS: fortran        (shows to use FORTRAN carriage
+                                control on the file)
+
+       ARE THERE 43 PAGES OF 1 PART LARGE PAPER?
+       CONFIRM BY TYPING YOUR NAME: smith
+
+
+
+                                   Example 5
+                              PRINT TAPE Command
+
+
+       :print tape
+
+       LOGICAL UNIT NAME: Fta1
+
+       TAPE IS 9 TRACK
+       DENSITY: 6250
+
+       IS THERE 1 PART SMALL PAPER? no
+       IS THERE 2 PART SMALL PAPER? yes
+
+       PRINTING REQUEST 33456
+
+
+
+                                   Example 6
+                                RESTART Command
+
+
+       :restart 33675
+       FILE NAME: a.lst
+       OPTIONS: COPIES=2,HEAD,LINE=60
+       OPTIONS:                <carriage return>
+       RESTART COPY NO.: 2
+       RESTART PAGE NO.: 23
+
+       ARE THERE 212 PAGES OF 1 PART TTY PAPER?
+       CONFIRM BY TYPING YOUR NAME: smith
+                                                                        Page 16
+SPOOL
+
+
+                                   Example 7
+                                 HOLD Command
+
+
+       :hold 33887
+       FROM 08/01/75? no
+       FROM 10/08/75? yes
+
+       REQUEST PUT ON HOLD
+
+                                   Example 8
+                               TRANSFER Command
+
+
+       :transfer 38256
+
+       TRANSFER TO: SAN FRANCISCO, CALIF
+
+       ENTER TRANSFER NODE: 1034
+
+       NO REMOTE PRINTER
+       ENTER TRANSFER NODE: 1001+
+       TYMSHARE, INC.
+       TYMSHARE CORPORATE HEADQUARTERS
+       20705 VALLEY GREEN DRIVE
+       CUPERTION, CA 95014
+
+       OKAY? no
+
+       ENTER TRANSFER NODE: 1052
+       TYMSHARE, INC.
+       SAN FRANCISCO DISTRICT
+       425 CALIFORNIA, 2ND FLOOR
+       SAN FRANCISCO, CA 94104
+
+       OKAY? yes
+       TRANSFER COMPLETED
+
+                                   Example 9
+                         1NOTIFY Command on IMS System
+
+
+
+       -1NOTIFY
+
+       PRINTER LOCATION 8
+       1 REQUEST ON SYSTEM 2
+       3 REQUESTS ON SYSTEM 38
+
+                                                                        Page 17
+SPOOL
+
+
+       ((QUALITY ASSURANCE TECHNIQUES))
+
+            You should always pay close  attention  when  you  read  the  spool
+       request and note special instructions such as:
+
+        - DOES REQUEST CALL FOR USE OF A FULLCASE PRINTER?
+        - IS THERE MENTION OF SPECIAL CUSTOMER-SUPPLIED PAPER?
+        - DOES THE USER REQUEST PRINTING ON THE BACKSIDE OF THE PAPER?
+        - SHOULD YOU USE MULTI-PART PAPER?
+        - SHOULD THE MULTI-PART LISTING BE DECOLLATED OR NOT?
+        - ARE THERE ANY SPECIAL HANDLING INSTRUCTIONS?
+
+
+       QA THE LISTING
+       -- --- -------
+
+         - IS THE LISTING PRINTED ON THE CORRECT SIDE OF THE PAPER?
+         - ARE THERE TWO HEADER PAGES AT THE FRONT OF THE LISTING?
+         - IS THERE A TRAILER PAGE WITH THE THE REQUEST NUMBER AND
+           THE MESSAGE "END OF REQUEST"?
+         - IS THE PAPER THE CORRECT SIZE AND TYPE?
+         - ARE THE CORRECT NUMBER OF PARTS PRINTED?
+         - IF SPECIFIED, WAS A FULLCASE PRINTER USED?
+         - WAS LISTING DECOLLATED? IF NOT, DID USER SPECIFY NOT
+           TO DECOLLATE?
+         - IS THE LISTING SPLIT UP? IS THE SPLITTING NECESSARY?
+
+
+      PRINT ALIGNMENT AND FORMAT
+
+         - IS THE NUMBER OF LINES PER PAGE CORRECT?
+         - IS THE PRINT ALIGNED SO THAT CHARACTERS DON'T OVERLAP
+           COLOR BARS?
+         - IS THE LISTING CORRECTLY FORMATTED? PAGE NUMBERS AND
+           TITLES AT THE TOP OF EACH PAGE?
+         - IS THE LISTING CENTERED VERTICALLY ON EACH PAGE?
+         - IS THERE SUFFICIENT MARGIN ON BOTH THE LEFT AND RIGHT SIDES?
+
+
+      PRINT QUALITY
+
+         - IS THE PRINT EVENLY DARK AND DISTINCT?
+         - IF MORE THAN ONE PART, ARE THE COPIES READABLE?
+         - IS THERE SHADOWING OR SMUDGING AROUND PRINT CHARACTERS?
+         - ARE THE PRINT LINES WAVY?
+         - ARE CHARACTERS,ROWS, OR COLUMNS BEING DROPPED?
+         - ARE THERE GARBAGE CHARACTERS?
+         - ARE THERE ANY BLANK PAGES IN THE LISTING?
+         - DOES THE LISTING LOOK PROFESSIONAL?
+
+            For spool batch that doesn't pass QA and can't be solved by further
+       processing, get advice from your lead operator or batch controller.
+                                                                        Page 18
+SPOOL
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                        Page 19
+SPLFIX
+
+
+                               SPOOL MAINTENANCE
+                               -----------------
+
+       INTRODUCTION
+       ------------
+
+
+            A version of the SPOOL maintenance program has been placed  on  all
+       TYMCOM-10'S for the use of Operations and System Resources.  SPLFIX is a
+       SPOOL  data  base  maintenance  tool  for  deleting  printed  files  and
+       correcting common SPOOL data base problems.
+
+            This program has two functions, "REPAIR"  which  will  rebuild  the
+       SPOOL  data  base and "CLEAN" which will delete unnecessary files on the
+       SPOOL directory.  "REPAIRING" the SPOOL data base will correct  most  of
+       the  problems  that  SPOOL  reports  as  "CANT FIND FD".  "CLEANING" the
+       directory is the only safe way to delete files from (SPOOL).  
+
+       WHEN TO RUN SPLFIX
+       ------------------
+
+            SPLFIX should be run either when there is a problem  running  SPOOL
+       or when disk space is low on a system.
+
+            The most common  SPOOL  error,  "CANT  FIND  FD",  usually  can  be
+       corrected by running SPLFIX and giving the command "REPAIR".  
+
+            The command "CLEAN" will delete the files for all requests  printed
+       before  the day it is run (these would be deleted in a few days with the
+       normal updating routine but the space may be needed).
+
+       HOW TO RUN SPLFIX
+       -----------------
+
+            SPLFIX is on directory UTIL.  The  user  can  run  the  program  by
+       typing  "R  (UTIL) SPLFIX" at the monitor level.  The program will print
+       out a header message such as:
+
+        ****************************************************************
+        * SPOOL Data Base Maintenance Tool, v. 2.600                   *
+        * System 36 (Cupertino)    10-JAN-83 09:39                     *
+        *                                                              *
+        * Option (? for help) *                                        *
+        ****************************************************************
+                                                                        Page 20
+SPLFIX
+
+
+       VALID COMMANDS
+       --------------
+
+
+            The user can type a  "?<cr>"  after  the  prompt  "*"  to  see  the
+       following help message:
+
+        ****************************************************************
+        * Legal commands are:                                          *
+        *                                                              *
+        * CLEAN (DIRECTORY) HELP        QUIT         REPAIR (DATABASE) *
+        * Option (? for help) *                                        *
+        ****************************************************************
+
+            To see a more detailed help message displayed on  the  screen,  the
+       user can type "HELP<CR>".  The following is the help message displayed:
+
+        ****************************************************************
+        * CLEAN      Use this to DELETE unwanted files on the (SPOOL)  *
+        *            directory.                                        *
+        *                                                              *
+        * HELP       Repeat this message.                              *
+        *                                                              *
+        * QUIT       Graceful exit from the program.  If you exit some *
+        *            other way, you will not get the appropriate files *
+        *            properly updated.                                 *
+        *                                                              *
+        * REPAIR     Use this to rebuild SPOOL'S data base.            *
+        *                                                              *
+        * Type any character to continue [CONFIRM]                     *
+        ****************************************************************
+
+            The only legal commands which the  user  can  input  following  the
+       prompt  "*"  are:   "?", "CLEAN", "HELP", "QUIT" and "REPAIR".  The user
+       needs only to type minimum number of characters for the  inputs.   Since
+       all commands have unique first characters, typing the first character of
+       a command will be sufficient.  For example, typing "C<CR>"  or  "CL<CR>"
+       or "CLE<CR>" will cause the program to execute the "CLEAN" command.  But
+       if the user types in a mispelled command such as  "CLEAM",  the  program
+       will output the following message:
+
+        ****************************************************************
+        * CLEAM is not a command.  Legal commands are:                 *
+        * CLEAN (DIRECTORY) HELP        QUIT         REPAIR (DATABASE) *
+        * Option (? for help) *                                        *
+        ****************************************************************
+                                                                        Page 21
+SPLFIX
+
+
+       REPAIR COMMAND
+       --------------
+
+            After the user types in "REPAIR<CR>", SPLFIX will  try  to  disable
+       SPOOL  in  order to do the repair job.  SPLFIX will not disable SPOOL if
+       someone is running SPOOL;  in such case SPLFIX will ask the user whether
+       it  should  go  to sleep for 15 seconds.  If the user response is "YES",
+       SPLFIX goes to sleep for 15 seconds, then wakes up and tries to  disable
+       SPOOL  again.   If  the user response is "NO", SPLFIX will print out the
+       message "SPOOL REPAIR WAS NOT DONE" and prompt the  user  for  the  next
+       command  input.  Beware that in such a case the SPOOL repair job was not
+       done!  The user should try to run SPLFIX with the "REPAIR" command at  a
+       later time.
+
+            The "REPAIR" command also automatically does a "CLEAN"  command  to
+       delete  printed files.  Therefore there is no need for the user to issue
+       a "CLEAN" command after the SPOOL repair job is completed.
+
+            CAUTION:  SPLFIX'S REPAIR command disables SPOOL to do  the  repair
+       job.  It will enable SPOOL when the repair job is done.  Whenever SPLFIX
+       finishes a repair command, the user should RUN SPOOL  IMMEDIATELY  AFTER
+       EXITING  FROM  SPLFIX.  This is to make sure that SPOOL has been enabled
+       by SPLFIX.  If the user types in "SPOOL", and "?SPOOL NOT FOUND" appears
+       on  the  screen,  please  immediately contact the TYMCOM-10 Support Line
+       (408) 446-6709.
+
+            CAUTION:  It is important to let "REPAIR" complete in order for the
+       SPOOL data files to be written correctly.
+                                                                        Page 22
+SPLFIX
+
+
+       WHAT TO DO IN CASE OF PROBLEMS
+       ------------------------------
+
+            When SPLFIX runs into problems during execution, it prints out  the
+       following  message  on  the terminal and returns the user to the monitor
+       level:
+
+        ****************************************************************
+        * Cannot continue REPAIR!                                      *
+        * Please call the TYMCOM-10 Support Line : (408) 446-6709      *
+        * .                                                            *
+        ****************************************************************
+
+            SPLFIX will print out "CANNOT CONTINUE CLEAN!" or "CANNOT  CONTINUE
+       REPAIR!"  depending  on  which command it is executing.  In either case,
+       call the TYMCOM-10 Support Line immediately so the problem can be fixed.
+                                                                        Page 23
+SPLFIX
+
+
+       SAMPLE SESSION
+       --------------
+
+       .R (UTIL)SPLFIX
+
+       SPOOL Data Base Maintenance Tool, v. 2.600
+       System 36 (Cupertino)    11-JAN-83 09:08
+
+       Option (? for help) *CLEAN
+
+       Scanning the SPOOL data base...
+       Will not keep files for requests completed before 10-JAN-83
+       Found 3 files to keep.
+
+       4 files were deleted.
+       Option (? for help) *REPAIR
+       Checking the status of SPOOL . . . . . . No one running SPOOL
+       Disabling SPOOL . . . SPOOL disabled.
+
+       Beginning SPOOL data base repair at 11-JAN-83 09:08.
+       Beginning pass 1:
+         Scanning the GDF file... 
+         Scanning the FDF file... 
+         Scanning the internal records...
+         Pass 1 statistics:
+           Scanned 100 GDF records and found 100 good ones.
+           Scanned 111 FDF records, and saved 111 for Pass 2.
+           Dates on the good records ranged from 2-DEC-82 to 10-JAN-83.
+           No bad records detected.
+
+       Beginning pass 2...
+         Scanning FDF file...
+         Scanning GDF file...
+           All 100 GDF records were used.
+           All 111 FDF records were used.
+
+       Renaming files, wait... done!!
+       Updating SPLCNT and REMCNT, wait... done!!
+       Cleaning the SPOOL directory, wait... 
+       Scanning the SPOOL data base...
+       Will not keep files for requests completed before 10-JAN-83
+       Found 3 files to keep.
+
+       0 files were deleted.
+       Enabling SPOOL . . . enabled.
+
+       Data base repair completed at 11-JAN-83 09:08
+       Option (? for help) *QUIT
+
+       .SPOOL
+       SPOOL 6.2
+
+       :QUIT
+                                                                        Page 24
+SPLFIX
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY  LEFT BLANK
+                                                                        Page 25
+LIST AND PRINT
+
+
+                            LIST AND PRINT IN XEXEC
+                            ---- --- ----- -- -----
+
+            For all printer listings which do no use the SPOOL  subsystem,  the
+       XEXEC commands LIST and PRINT should be used.  
+
+            The LIST command prints a file(s) on the line printer using a  page
+       format  where  a  heading  is  automatically supplied at the top of each
+       page.  This heading contains the date, time, file name and  a  two-digit
+       page  number.  The first number reflects the logical page number that is
+       only incremented when a top-of-form character (control L) is encountered
+       in  the  sourse  file  itself.  The second number is the sequential page
+       subnumber incremented by the physical top-of-form each time the  printer
+       advances the paper to the next page.
+
+            PRINT is used on the TYMCOM-X to  output  a  file(s)  to  the  line
+       printer without page numbers or headings.
+
+            Both commands default to large printer paper (11" by 14  7/8")  and
+       will  print  60  lines  on  each  page.   Switches allow the operator to
+       establish spacing, paper size, line length, page  count,  heading,  case
+       and special program variables which will modify how the file is listed.
+
+            For a full description of these switches you are  referred  to  the
+       XEXEC MANUAL dated December 1974 pages 27-30.
+                                                                        Page 26
+LIST AND PRINT
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                        Page 27
+PRTAID
+
+
+                                PRTAID PROGRAM
+                                --------------
+
+       ((INTRODUCTION)) 
+
+            PRTAID reformats the information given at the  prompts  and  places
+       executable  LIST  or  PRINT statements in a number of Temporary Commands
+       Files.  As each Command File is filled,  The  last  line  written  is  a
+       command  to  run the next Command File in sequence.  The last file to be
+       filled will contain a DAY command to serve as a recognizable termination
+       to  the  user of his Commands Files.  After a List of Filenames has been
+       processed and space remains in the  Commands  Files,  the  program  will
+       return to the USERNAME prompt.  A carriage return terminates the program
+       at this point or another USERNAME can be entered (LIST or PRINT and  the
+       options  previously  selected will remain constant) and the program will
+       proceed to the FILENAMES prompt.
+
+       ((COMMAND DESCRIPTION))
+
+            The program will respond with four prompts:
+
+               PROMPT          RECOGNIZED REPLIES              EXPLANATION
+               ------          ------------------              -----------
+
+       LIST OR PRINT:
+                              LIST     PRINT             
+                              LIS      PRIN              PROGRAM WILL RECOGNIZE
+                              LI   OR  PRI               ANY LEFT SUBSET OF THE
+                              L        PR                WORDS LIST OR PRINT.
+                                       P
+
+       OPTIONS EX: /OPT1/OPT2/... :
+
+                              /SINGLE/COUNT/...
+                              /LARGE                     PROGRAM ACCEPTS ANY
+                              /ONENUM                    LEGAL SWITCHES FOR
+                              /SEQUENCE                  MODIFYING PRINTOUT.
+                              /COPIES=##                 IF "/COPIES=##"
+                                                         IS INCLUDED IN THE
+                                                         OPTION LIST, IT WILL
+                                                         ACT IN THE SAME MANNER
+                                                         AS THE COPIES OPTION
+                                                         IN SPOOL.  THE COPIES
+                                                         OPTION WILL BE REMOVED
+                                                         FROM THE OPTIONS
+                                                         STRING BEFORE FORMAT-
+                                                         TING THE LIST OR
+                                                         PRINT COMMANDS TO THE
+                                                         TEMPORARY FILES.
+                                                         MAXIMUM # OF COPIES
+                                                         IS 15.
+                               ETC.
+                                                                        Page 28
+PRTAID
+
+
+       USERNAME:
+                              SMITHJOHN
+                                OR                       PROGRAM WILL ACCEPT
+                               <CR>                      USERNAMES WITHOUT
+                                                         SURROUNDING PARENS.
+                                                         A CARRIAGE RETURN AT
+                                                         THIS PROMPT TERMIN-
+                                                         ATES THE PROGRAM.
+
+       FILENAMES (SEPARATED BY COMMAS ONLY):
+
+                              FN1,FN2,FN3,...
+                                  OR                     PROGRAM ACCEPTS A
+                              FN4,@FN5,@FN6,...          LIST OF FILENAMES
+                                                         SEPARATED BY COMMAS
+                                                         WITH THE OPTION OF
+                                                         ANY NUMBER OF THE
+                                                         FILENAMES BEING A
+                                                         FILE WITH OTHER
+                                                         FILENAMES WITHIN IT
+                                                         TO BE ACCESSED.
+                                                         (MAXIMUM NUMBER
+                                                          OF CHARACTERS
+                                                          PERMITTED IS
+                                                          320).
+                                                                        Page 29
+PRTAID
+
+
+       ((SAMPLE RUN))
+
+       .R (UTIL)PRTAID (CR)
+
+       VERSION 1.0  5/1/78
+
+       LIST OR PRINT: P (CR)                           (ENTER 'L' OR 'P')
+
+       OPTIONS EX: /OPT1/OPT2/...: /FULLCH/COUNT (CR)  (ENTER OPTIONS AS
+                                                        DESCRIBED ABOVE)
+
+       USERNAME: DANIELSR (CR)
+
+       FILENAMES (SEPARATED BY COMMAS ONLY): PRTAID.MEM,PRTAID,ETC (CR)
+
+       USERNAME: (CR)                                  (ENTER (CR) HERE
+                                                        IF NO OTHER ENTRIES)
+
+       016PR1.TMP IS THE FIRST COMMAND FILE            (OUTPUTS AFTER 
+                                                        ENTERING A (CR)
+                                                        ABOVE)
+
+
+                                         NOTE
+
+           The following is a breakdown of the first command file:   016  =
+           your  job number;  PR1 indicates it is the first file;  and, TMP
+           shows it is a temporary file.
+
+
+       EXIT                                            (PROGRAM 'EXITS' OUT
+                                                        AFTER PRINTING THE
+                                                        FIRST COMMANDS FILE
+                                                        NAME)
+
+
+                                         NOTE
+
+           Before printing or listing file to the line printer,  make  sure
+           you  have  the  paper set up correctly.  After setting the paper
+           up, type the following command.
+
+
+       .RUN (QASYS)COM;016PR1.TMP (CR) (CR)             (MAXIMUM # OF
+                                                         COMMAND FILES =
+                                                         36).
+                                                                        Page 30
+PRTAID
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                        Page 31
+INDEX
+
+
+       INDEX . . . . . . . . . . . . . . .  31
+
+       LIST AND PRINT IN XEXEC . . . . . .  25
+
+       PRTAID COMMAND DESCRIPTION  . . . .  27
+       PRTAID INTRODUCTION . . . . . . . .  27
+       PRTAID SAMPLE RUN . . . . . . . . .  29
+
+       SPLFIX HOW TO RUN . . . . . . . . .  19
+       SPLFIX INTRODUCTION . . . . . . . .  19
+       SPLFIX PROBLEMS . . . . . . . . . .  22
+       SPLFIX REPAIR COMMAND . . . . . . .  21
+       SPLFIX SAMPLE SESSION . . . . . . .  23
+       SPLFIX VALID COMMANDS . . . . . . .  20
+       SPLFIX WHEN TO RUN  . . . . . . . .  19
+       SPOOL COMMAND DESCRIPTION . . . . .  7
+       SPOOL COMMAND SUMMARY . . . . . . .  5
+       SPOOL COMMANDS REMOTE . . . . . . .  13
+       SPOOL INTRODUCTION  . . . . . . . .  5
+       SPOOL PRINT COMMANDS  . . . . . . .  8
+       SPOOL QUALITY ASSURANCE . . . . . .  17
+       SPOOL SAMPLES . . . . . . . . . . .  14
+       SPOOL STATUS COMMANDS . . . . . . .  7
+       SPOOL UTILITY COMMANDS  . . . . . .  11
+
+       TABLE OF CONTENTS . . . . . . . . .  3
+
+                                                                        Page 32
+INDEX
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      THIS PAGE INTENTIONALLY LEFT BLANK
+                                                                        Page 33
+READER'S COMMENT FORM
+
+
+                             READER'S COMMENT FORM
+
+                           LISTINGS ON THE TYMCOM-X
+
+       Your comments on this document are welcome.  Please  list  page  numbers
+       where appropriate and any suggestions for further development.  Hardcopy
+       of "LIVE" runs would be helpful.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       PLEASE SEND COMMENTS, WITH HARDCOPY, TO:
+
+       FREMONT COMPUTER OPERATIONS
+       4340 SOLAR WAY
+       FREMONT, CALIFORNIA 94537
+
+       ATTENTION:  TYMCOM-10 COORDINATOR
+ v}[
