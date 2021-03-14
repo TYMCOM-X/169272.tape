@@ -1,0 +1,294 @@
+!:logfile rdist.log
+:define $substitution=$true
+sysno
+TYMSHARE X32-P035/E-1 3-2-89
+!daytime
+13-FEB-1990 18:24:25 PST
+
+!run (xexec)minit
+
+!rdist *.*/master:33/host:14,32/check
+Master host: 33
+559 files on master system.
+Slave hosts: 14,32
+Checking host 14
+(OLD11       :  14) RDIST.LOG      3 13-Feb-90 15:30 -- bad checksum BACLIN
+                           should be 13-Feb-90 15:46 KUTLEL  ALL  RD  NO
+(OLD11       :  14) SV2235.IMG    26 19-Mar-86 02:49 -- bad checksum FOLPAD
+                           should be 19-Mar-86 02:49 KAVPAM  ALL  RD  NO
+Checking host 32
+(OLD11       :  32) RDIST.MON     13 27-Nov-89 19:13 -- bad checksum BAKBUD
+                           should be 01-Feb-90 15:45 HIZXOS  ALL  RD  NO
+(OLD11       :  32) RDIST.LOG      1 13-Feb-90 18:24 -- bad checksum YOVMIX
+                           should be 13-Feb-90 15:46 KUTLEL  ALL  RD  NO
+(OLD11       :  32) RDIST.TUE      2 21-Nov-89 16:03 -- bad checksum SOTYON
+                           should be 13-Feb-90 15:47 WUPGAF  ALL  RD  NO
+(OLD11       :  32) RDIST.WED     20 15-Nov-89 16:00 -- bad checksum ZATRIB
+                           should be 07-Feb-90 15:48 SITLAJ  ALL  RD  NO
+(OLD11       :  32) RDIST.THU      2 30-Nov-89 15:40 -- bad checksum QALSOF
+                           should be 01-Feb-90 15:45 YIKHIR  ALL  RD  NO
+(OLD11       :  32) SV2235.IMG    26 19-Mar-86 02:49 -- bad checksum FOLPAD
+                           should be 19-Mar-86 02:49 KAVPAM  ALL  RD  NO
+(OLD11       :  32) RDIST.FRI      2 24-Nov-89 15:59 -- bad checksum RODWIS
+                           should be 26-Jan-90 15:47 DAXXEH  ALL  RD  NO
+(OLD11       :  32) RDIST.SUN      2 01-Oct-89 15:57 -- bad checksum PUBHEP
+                           should be 04-Feb-90 15:45 COWZAD  ALL  RD  NO
+(OLD11       :  32) RDIST.SAT      2 18-Nov-89 16:01 -- bad checksum HOKHIP
+                           should be 10-Feb-90 15:45 KOTXUP  ALL  RD  NO
+(OLD11       :  32) RDIST.OUT      2 30-Nov-89 15:39 -- bad checksum CUZGOF
+                           should be 13-Feb-90 15:47 GOGPOT  ALL  RD  NO
+
+End of SAIL execution
+!copy rdist.log,rdist.out
+
+!mung findit,rdist.out
+
+FINDIT.TEC V5 - Clean up log from MHX+(SPL)FINDIT and sort by file name
+12
+R SORT
+rdist.out=rdist.out/R80/K21.10/K54.6/K1.20
+SORTED 12 RECORDS
+
+EXIT
+
+!copy rdist.log,rdist.Tuesday
+
+!; System X17 has only RDIST.* files
+!rdist rdist.*/host:14,17,32,33
+Master host: 32
+10 files on master system.
+Slave hosts: 14,17,32,33
+Checking host 14
+(OLD11       :  14) RDIST.LOG      3 13-Feb-90 15:30 -- bad checksum BACLIN
+                           should be 13-Feb-90 18:24 GUXLAX  ALL  RD  NO
+(OLD11       :  14) RDIST.MON      2 29-Jan-90 15:44 -- bad checksum HIZXOS
+                           should be 27-Nov-89 19:13 BAKBUD  ALL  RD  NO
+(OLD11       :  14) RDIST.TUE      2 13-Feb-90 15:45 -- bad checksum WUPGAF
+                           should be 13-Feb-90 19:18 FUJPEL  ALL  RD  NO
+(OLD11       :  14) RDIST.WED      2 07-Feb-90 15:46 -- bad checksum SITLAJ
+                           should be 15-Nov-89 16:00 ZATRIB  ALL  RD  NO
+(OLD11       :  14) RDIST.THU      2 01-Feb-90 15:44 -- bad checksum YIKHIR
+                           should be 30-Nov-89 15:40 QALSOF  ALL  RD  NO
+(OLD11       :  14) RDIST.OUT      2 13-Feb-90 15:44 -- bad checksum GOGPOT
+                           should be 13-Feb-90 19:18 FOWRUD  ALL  RD  NO
+(OLD11       :  14) RDIST.FRI      2 26-Jan-90 15:45 -- bad checksum DAXXEH
+                           should be 24-Nov-89 15:59 RODWIS  ALL  RD  NO
+(OLD11       :  14) RDIST.SUN      2 04-Feb-90 15:44 -- bad checksum COWZAD
+                           should be 01-Oct-89 15:57 PUBHEP  ALL  RD  NO
+(OLD11       :  14) RDIST.SAT      2 10-Feb-90 15:44 -- bad checksum KOTXUP
+                           should be 18-Nov-89 16:01 HOKHIP  ALL  RD  NO
+Checking host 17
+
+?unable to build circuit to OLD11:17
+?host unavailable
+
+?unable to build circuit to OLD11:17
+?host unavailable
+
+?unable to build circuit to OLD11:17
+?host unavailable
+
+?unable to build circuit to OLD11:17
+?host unavailable
+
+?unable to build circuit to OLD11:17
+?host unavailable
+Creaux failed to OLD11:17
+Checking host 32
+(OLD11       :  32) RDIST.LOG      1 13-Feb-90 18:24 -- bad checksum NEWKUQ
+                           should be 13-Feb-90 18:24 GUXLAX  ALL  RD  NO
+Checking host 33
+(OLD11       :  33) RDIST.MON      2 01-Feb-90 15:45 -- bad checksum HIZXOS
+                           should be 27-Nov-89 19:13 BAKBUD  ALL  RD  NO
+(OLD11       :  33) RDIST.LOG      3 13-Feb-90 15:46 -- bad checksum KUTLEL
+                           should be 13-Feb-90 18:24 GUXLAX  ALL  RD  NO
+(OLD11       :  33) RDIST.TUE      2 13-Feb-90 15:47 -- bad checksum WUPGAF
+                           should be 13-Feb-90 19:18 FUJPEL  ALL  RD  NO
+(OLD11       :  33) RDIST.THU      2 01-Feb-90 15:45 -- bad checksum YIKHIR
+                           should be 30-Nov-89 15:40 QALSOF  ALL  RD  NO
+(OLD11       :  33) RDIST.SUN      2 04-Feb-90 15:45 -- bad checksum COWZAD
+                           should be 01-Oct-89 15:57 PUBHEP  ALL  RD  NO
+(OLD11       :  33) RDIST.OUT      2 13-Feb-90 15:47 -- bad checksum GOGPOT
+                           should be 13-Feb-90 19:18 FOWRUD  ALL  RD  NO
+(OLD11       :  33) RDIST.WED      2 07-Feb-90 15:48 -- bad checksum SITLAJ
+                           should be 15-Nov-89 16:00 ZATRIB  ALL  RD  NO
+(OLD11       :  33) RDIST.FRI      2 26-Jan-90 15:47 -- bad checksum DAXXEH
+                           should be 24-Nov-89 15:59 RODWIS  ALL  RD  NO
+(OLD11       :  33) RDIST.SAT      2 10-Feb-90 15:45 -- bad checksum KOTXUP
+                           should be 18-Nov-89 16:01 HOKHIP  ALL  RD  NO
+Starting TELECOPY
+
+: 
+: 
+: 
+REPLACING FILE (OLD11:14)RDIST.LOG
+
+COPY STARTING
+
+(OLD11:32)RDIST.LOG COPIED TO (OLD11:14)RDIST.LOG
+
+6912 (4090) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:14)RDIST.MON
+
+COPY STARTING
+
+(OLD11:32)RDIST.MON COPIED TO (OLD11:14)RDIST.MON
+
+27648 (17653) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:14)RDIST.TUE
+
+COPY STARTING
+
+(OLD11:32)RDIST.TUE COPIED TO (OLD11:14)RDIST.TUE
+
+2304 (1709) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:14)RDIST.WED
+
+COPY STARTING
+
+(OLD11:32)RDIST.WED COPIED TO (OLD11:14)RDIST.WED
+
+43776 (35621) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:14)RDIST.THU
+
+COPY STARTING
+
+(OLD11:32)RDIST.THU COPIED TO (OLD11:14)RDIST.THU
+
+2304 (840) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:14)RDIST.OUT
+
+COPY STARTING
+
+(OLD11:32)RDIST.OUT COPIED TO (OLD11:14)RDIST.OUT
+
+833 (716) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:14)RDIST.FRI
+
+COPY STARTING
+
+(OLD11:32)RDIST.FRI COPIED TO (OLD11:14)RDIST.FRI
+
+2304 (727) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:14)RDIST.SUN
+
+COPY STARTING
+
+(OLD11:32)RDIST.SUN COPIED TO (OLD11:14)RDIST.SUN
+
+2304 (714) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:14)RDIST.SAT
+
+COPY STARTING
+
+(OLD11:32)RDIST.SAT COPIED TO (OLD11:14)RDIST.SAT
+
+2304 (1287) CHARS. TRANSMITTED
+
+: 
+"COPY TO" AND "COPY FROM" SYSTEM MUST NOT BE THE SAME.
+
+: 
+REPLACING FILE (OLD11:33)RDIST.MON
+
+COPY STARTING
+
+(OLD11:32)RDIST.MON COPIED TO (OLD11:33)RDIST.MON
+
+27648 (17653) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:33)RDIST.LOG
+
+COPY STARTING
+
+(OLD11:32)RDIST.LOG COPIED TO (OLD11:33)RDIST.LOG
+
+6912 (5952) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:33)RDIST.TUE
+
+COPY STARTING
+
+(OLD11:32)RDIST.TUE COPIED TO (OLD11:33)RDIST.TUE
+
+2304 (1709) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:33)RDIST.THU
+
+COPY STARTING
+
+(OLD11:32)RDIST.THU COPIED TO (OLD11:33)RDIST.THU
+
+2304 (840) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:33)RDIST.SUN
+
+COPY STARTING
+
+(OLD11:32)RDIST.SUN COPIED TO (OLD11:33)RDIST.SUN
+
+2304 (714) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:33)RDIST.OUT
+
+COPY STARTING
+
+(OLD11:32)RDIST.OUT COPIED TO (OLD11:33)RDIST.OUT
+
+833 (716) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:33)RDIST.WED
+
+COPY STARTING
+
+(OLD11:32)RDIST.WED COPIED TO (OLD11:33)RDIST.WED
+
+43776 (35621) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:33)RDIST.FRI
+
+COPY STARTING
+
+(OLD11:32)RDIST.FRI COPIED TO (OLD11:33)RDIST.FRI
+
+2304 (727) CHARS. TRANSMITTED
+
+: 
+REPLACING FILE (OLD11:33)RDIST.SAT
+
+COPY STARTING
+
+(OLD11:32)RDIST.SAT COPIED TO (OLD11:33)RDIST.SAT
+
+2304 (1287) CHARS. TRANSMITTED
+
+: 
+!LOGOUT
+1852.05 tru
+terminal time: 1:04:58
+
+; Req #7998 completed
+   
