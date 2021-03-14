@@ -1,0 +1,120 @@
+(HELGEM      :  14) ACCESS.MSG     2 31-Oct-86 13:34 LOHJES  ALL  RD  NO   
+(HELGEM      :  32) A.CBL          2 18-Oct-85 00:01 LEVVAD  ALL  RD  NO   
+(HELGEM      :  32) ACCESS.MSG     2 31-Oct-86 13:34 LOHJES  ALL  RD  NO   
+(HELGEM      :  32) ASCII          3 08-Feb-85 19:00 ZOKDIM  ALL  RD  NO   
+(HELGEM      :  32) AUX.MAC        3 25-Nov-78 12:56 CIHHON  ALL  RD  NO   
+(HELGEM      :  32) AUXLIB.REQ     2 01-Sep-83 03:35 WOFSED  ALL  RD  NO   
+(HELGEM      :  32) COMSUB.REQ    12 01-Mar-85 17:54 PUTPUP  ALL  RD  NO   
+(HELGEM      :  32) CUPHST.LST     2 15-Feb-85 11:25 TIZYEH  ALL  RD  NO   
+(HELGEM      :  32) CURTIM.SAI     2 11-Nov-85 15:39 WERJOV  ALL  RD  NO   
+(HELGEM      :  32) DALHST.LST     2 15-Feb-85 11:25 GEDFOP  ALL  RD  NO   
+(HELGEM      :  32) FREHST.LST     2 15-Feb-85 11:25 JAWXES  ALL  RD  NO   
+(HELGEM      :  32) HELGEM.DIR     4 28-Nov-89 16:56 XOFVAQ  ALL  RD  NO   
+(HELGEM      :  32) HOSTS          2 04-Jan-85 13:03 DUFROK  ALL  RD  NO   
+(HELGEM      :  32) HSTLST.LOC     2 06-Feb-87 12:02 RIDHID  ALL  RD  NO   
+(HELGEM      :  32) MAGCON.LOW     2 12-Mar-86 13:02 YOKGOK  ALL  RD  NO   
+(HELGEM      :  32) MAGCON.SHR    16 12-Mar-86 13:14 TAWNAD  ALL  RD  NO   
+(HELGEM      :  32) MAGNUM.DIR     2 04-Mar-85 11:43 VULFEM   CP  NO  NO   
+(HELGEM      :  32) MILE.DOC       2 14-Jan-86 10:28 REBYIS  ALL  RD  NO   
+(HELGEM      :  32) MYLIB.REQ      6 26-Mar-85 12:49 LEQDUJ  ALL  RD  NO   
+(HELGEM      :  32) NEWCOM         2 23-Apr-86 14:43 BARXUM  ALL  RD  NO   
+(HELGEM      :  32) NEWLIB.REQ     3 10-Aug-84 10:19 NUPQUC  ALL  RD  NO   
+(HELGEM      :  32) NUMS           2 03-Jul-86 13:58 JILDON  ALL  RD  NO   
+(HELGEM      :  32) P1.CBL         6 11-Feb-85 12:33 QOKZOQ  ALL  RD  NO   
+(HELGEM      :  32) P11           34 12-May-86 15:14 WUFXET  ALL  RD  NO   
+(HELGEM      :  32) PARCOD.SAI     8 20-Sep-85 12:36 FOCHAR  ALL  RD  NO   
+(HELGEM      :  32) PE            39 18-Jun-86 11:46 YUTBIJ  ALL  RD  NO   
+(HELGEM      :  32) PEAK.INI       2 27-Jun-86 17:20 NETNAK  ALL  RD  NO   
+(HELGEM      :  32) PIK           12 19-Mar-86 12:54 LOFNUH  ALL  RD  NO   
+(HELGEM      :  32) PROMPT.REQ     2 27-Feb-85 11:11 DODTAY  ALL  RD  NO   
+(HELGEM      :  32) PT             4 11-Mar-86 15:40 TEHHOS  ALL  RD  NO   
+(HELGEM      :  32) RCDATE.MAC     5 21-Mar-85 23:07 FACSON  ALL  RD  NO   
+(HELGEM      :  32) RCOM.MAC       2 10-Jun-78 11:12 HECTOF  ALL  RD  NO   
+(HELGEM      :  32) RDATE.MAC     14 10-Jun-78 11:11 KEXZEH  ALL  RD  NO   
+(HELGEM      :  32) RDFILE.SAI     2 13-May-86 09:55 QUNVOP  ALL  RD  NO   
+(HELGEM      :  32) REMM.MAC      17 21-Mar-85 23:12 KICGUD  ALL  RD  NO   
+(HELGEM      :  32) RIO.MAC        3 10-Jun-78 11:11 QOZJAY  ALL  RD  NO   
+(HELGEM      :  32) RMAIN.MAC      5 10-Jun-78 11:10 LEYMOH  ALL  RD  NO   
+(HELGEM      :  32) RRMD.MAC       6 10-Jun-78 11:10 SEQBOV  ALL  RD  NO   
+(HELGEM      :  32) RSCAN.MAC      3 10-Jun-78 11:09 MATKIT  ALL  RD  NO   
+(HELGEM      :  32) SCAN.CBL       4 26-Feb-85 12:43 DOKPAZ  ALL  RD  NO   
+(HELGEM      :  32) SKILLS.INV     5 27-Mar-86 11:22 YUYFER  ALL  RD  NO   
+(HELGEM      :  32) SUPCHK.DIF     2 21-Jan-87 09:57 SUMJER  ALL  RD  NO   
+(HELGEM      :  32) SUPCHK.DOC     6 21-May-85 14:37 JIYCOV  ALL  RD  NO   
+(HELGEM      :  32) SUPCHK.FDM    44 06-Feb-87 10:20 RUQNIZ  ALL  RD  NO   
+(HELGEM      :  32) SUPCHK.LOC     5 02-Feb-87 09:53 DECCEB  ALL  RD  NO   
+(HELGEM      :  32) SUPCHK.LST    28 19-Jan-87 14:14 ZIWZIF  ALL  RD  NO   
+(HELGEM      :  32) SUPCHK.REL    17 21-May-85 14:35 CIQVIZ  ALL  RD  NO   
+(HELGEM      :  32) SUPCHK.RND     6 21-May-85 14:38 LEVXIV  ALL  RD  NO   
+(HELGEM      :  32) SUPCHK.SAI    19 21-May-85 14:36 BAPPIH  ALL  RD  NO   
+(HELGEM      :  32) SUPCHK.SAV    31 25-Mar-85 10:18 XIQVEG  ALL  RD  NO   
+(HELGEM      :  32) SUPCHK.WOK    19 25-Mar-85 10:17 HATZUZ  ALL  RD  NO   
+(HELGEM      :  32) TALL.GO2       6 20-Mar-85 10:55 VEGZOG  ALL  RD  NO   
+(HELGEM      :  32) TALL.GOD       5 05-Mar-85 13:27 YETWUM  ALL  RD  NO   
+(HELGEM      :  32) TALL.SAI       6 13-Dec-85 10:16 KUKBUN  ALL  RD  NO   
+(HELGEM      :  32) TALL.SAV      18 20-Mar-85 10:53 HEQPOX  ALL  RD  NO   
+(HELGEM      :  32) TALLU.SAV     19 14-Apr-85 21:12 COXNAK  ALL  RD  NO   
+(HELGEM      :  32) TALLW.SAV     19 14-Apr-85 21:13 ZUQPIG  ALL  RD  NO   
+(HELGEM      :  32) TALS.CHK       2 01-Apr-85 23:22 KUFBAN  ALL  RD  NO   
+(HELGEM      :  32) TALS.SAV      18 06-Mar-85 11:58 GIVLES  ALL  RD  NO   
+(HELGEM      :  32) TEMP           3 01-Jul-86 14:52 NAKZEQ  ALL  RD  NO   
+(HELGEM      :  32) TENS.LST       2 03-Jan-86 13:41 SUPLIK  ALL  RD  NO   
+(HELGEM      :  32) TES.SAI        2 24-Jun-86 10:52 KOHPIB  ALL  RD  NO   
+(HELGEM      :  32) TEST.JOB       2 24-Jul-82 03:50 BIPXOZ  ALL  RD  NO   
+(HELGEM      :  32) TEST.LST       2 13-Feb-85 13:02 WAQNEY  ALL  RD  NO   
+(HELGEM      :  32) TEST.SAI       2 28-Apr-86 14:58 VOGZEC  ALL  RD  NO   
+(HELGEM      :  32) TEXT           2 23-Mar-83 02:18 MASCUK  ALL  RD  NO   
+(HELGEM      :  32) TMP            2 26-Mar-85 09:00 GIFXEJ  ALL  RD  NO   
+(HELGEM      :  32) TS.SAI         2 13-Dec-85 14:21 HACMIJ  ALL  RD  NO   
+(HELGEM      :  32) TTTT           4 22-Apr-85 12:47 COCHAZ  ALL  RD  NO   
+(HELGEM      :  32) TUMS.INI       2 21-Oct-85 16:08 BATNUV  ALL  RD  NO   
+(HELGEM      :  32) TUMS.MSG      11 01-May-86 09:00 WUQRAK  ALL  RD  NO   
+(HELGEM      :  32) TUMS.TIX       3 01-May-86 09:00 VUVYEQ  ALL  RD  NO   
+(HELGEM      :  32) TURNUP.DOC     3 10-Jan-84 20:05 DODVUP  ALL  RD  NO   
+(HELGEM      :  32) TURNUP.SAV    17 10-Jan-84 17:41 LIJZEH  ALL  RD  NO   
+(HELGEM      :  32) VAX           10 19-Mar-86 14:13 JUZWIM  ALL  RD  NO   
+(HELGEM      :  32) VFGHST.LST     2 15-Feb-85 11:26 QOXYAT  ALL  RD  NO   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:17 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:25 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:54 
+?unable to build circuit to JMS:58 
+?unable to build circuit to JMS:58 
+?unable to build circuit to JMS:58 
+?unable to build circuit to JMS:58 
+?unable to build circuit to JMS:58 
+Creaux failed to JMS:17  
+Creaux failed to JMS:25  
+Creaux failed to JMS:54  
+Creaux failed to JMS:58  
