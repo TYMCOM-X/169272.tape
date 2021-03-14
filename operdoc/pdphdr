@@ -1,0 +1,63 @@
+^^
+.FLAG CAPIT
+.LM 7
+.PAPER SIZE 60,79
+.NOFILL.NOJUST
+M   M   CCC   DDDD    OOO   N   N  N   N  EEEEE  L      L
+MM MM  C   C  D   D  O   O  NN  N  NN  N  E      L      L
+M M M  C      D   D  O   O  N   N  N   N  E      L      L
+M M M  C      D   D  O   O  N N N  N N N  EEE    L      L
+M   M  C      D   D  O   O  N   N  N   N  E      L      L
+M   M  C   C  D   D  O   O  N  NN  N  NN  E      L      L
+M   M   CCC   DDDD    OOO   N   N  N   N  EEEEE  LLLLL  LLLLL
+.SKIP 1
+.LM 21
+
+ OOO
+O   O
+O   O
+O   O
+O   O         TYMCOM-X DISK RECOVERY PROCEDURES
+O   O
+ OOO             OPERATIONS MINI-MANUAL _#5A
+.SKIP 1
+U   U
+U   U
+U   U
+U   U
+U   U
+U   U
+ UUU
+.SKIP 1
+ GGG
+G   G
+G
+G
+G GGG
+G   G
+ GGG
+.SKIP 1
+L
+L                 INFORMATION SYSTEMS GROUP
+L
+L
+L              INFORMATION PROCESSING SERVICES
+L
+LLLLL
+.SKIP 1
+  A                  PRODUCTION SERVICES
+ A A
+A   A
+A   A                   20 AUGUST 1987
+AAAAA
+A   A
+A   A
+.SKIP 1
+ SSSS         SUPERSEDES: 11 JULY 1986 MANUAL
+S
+S
+ SSS
+    S
+    S
+SSSS          (FREMONTDOC:74)PDPREC.M5A
+.PAGE
