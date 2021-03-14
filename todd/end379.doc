@@ -1,0 +1,79 @@
+                                                             Page 1 of 2
+
+
+                                M E M O
+
+To:                Art Atkinson
+
+From:              Todd Corenson
+                   PDP-10 monitor group
+
+Date:              October 4, 1979  13:50
+
+Subject:           3rd Quarter Status Report
+
+
+        -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+ACTIVITY                                        DAYS         %
+                                              CONSUMED   COMPLETED
+
+
+Monitor Enhancements:
+
+   Backspace As Puncation:                        5         100
+      The break characteristics of backspace are
+      now settable by invoking the new .AXBBP AUXCAL
+      (function 66).  If the "backspace as punctuation"
+      bit is set, backspace counts as puncuation,
+      otherwise it is a break character.
+
+   Virtual Peek/Poke:                             2         100
+      Augmentation of PEEK, POKE, and BITPOK to
+      handle virtual addresses.
+
+   Soft Crashing Phase I:                        45          85
+      Mechanism which enables extreme flexibility
+      in user/monitor/operator selection of OS bring-
+      up activities and which guarantees the validity
+      of soft crashing code prior to execution.
+
+         Design.
+
+         Implemented new SETUUO function 12 (.REST)
+         to read/write restart bits.  The restart bits
+         define the manner in which a TYMCOM-10 will
+         come-up after a crash/hang.
+
+         Implemented new SETUUO function 11 (.BTSTR)
+         to read/write BOOTS command string.
+
+         Implemented a set of primitive drivers to read/
+         write a page to a 3330 type device.
+
+         Integration of above and supporting logic.
+
+DDT Enhancements/Fixes:                           0           0
+3rd Quarter Status Report                                    Page 2 of 2
+
+
+LOGINN Enhancement/Fix:                           1         100
+
+   Fixed minor bug causing job num. prompt input to not
+   be echoed when no project code required is set.
+
+   Added bit to login stream record that is set if
+   user logs in with shut override.
+
+Maintenance:                                      5           -
+   Crash analysis and logging.
+
+Training:                                         5           -
+   Further exploration of monitor internals, use of
+   KL-10 simulator, SA-10 3330 details, sundry other
+   programs.
+
+Two unexpected events have impeeded development efforts this
+quarter: 2020/KI,KL smerge and the neccessity of writing the
+primitive 3330 drivers.
+ 
+
