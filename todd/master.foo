@@ -1,0 +1,116 @@
+;
+; COMMENTS IN MASTER.DOC
+;
+START:  ;
+;INITIALIZE INTERRUPT SYSTEM
+        MOVE    3,[2,,INTVEC]
+        INTADR  3,
+        JRST    4,0
+;
+;AUX CIRCUIT CREATION
+;WITH LOGIN-NAME
+        MOVE    3,[-1,,-22]
+        GETTAB  3,
+        JRST    4,0
+        MOVEM   3,USRNAM
+        MOVE    3,[-1,,-21]
+        GETTAB  3,
+        JRST    4,0
+        MOVEM   3,USRNM1
+;
+        MOVEI   3,^D16
+SIXASC: ILDB    4,PTUS
+        JUMPE   4,CPTASC
+        ADDI    4,40
+        IDPB    4,PTLOG
+CPTASC: SOJG    3,SIXASC
+;
+        MOVEI   3,LOGSTR
+        CREAUX  3,
+        JRST    4,0
+        MOVEM   3,PORTE
+;
+        HRLZ    3,3
+        HRRI    3,4
+        AUXCAL  3,15    ;CARRIAGE RETURN
+;
+        JSR     0,AUXSTS
+;RECEIPT ORANGE BALL,CHANNEL 1
+        MOVE    3,[6B8+1B17]
+        HRR     3,PORTE
+        TINASS  3,
+        JRST    4,0
+;
+        MOVE    3,[1B0+1B1]
+        INTENB  3,
+        JRST    4,0
+;
+        JSR     0,AUXCLI
+;STARTS SLAVE
+        HRL     3,PORTE
+        HRRI    3,52    ;AXOST
+        AUXCAL  3,[ASCIZ/RU SLAVE/]
+        HRRI    3,4
+        AUXCAL  3,15    ;CR
+
+
+;SYNCHRO WITH SLAVE
+;SEND YELLOW BALL
+        JSR     0,AUXSYB
+;WAIT FOR ORANGE BALL
+        MOVEI   15,12
+LWAIT:  MOVE    3,PORTE
+        LSH     3,^D27
+        ADD     3,[131,,15]   ;HIBER 15S,WAIT FOR BREAK AND ORD. CHAR.
+        CALLI   3,72
+        JRST    4,0
+;
+W:      JSR     0,AUXICS
+        JUMPGE  3,W
+;
+        MOVE    3,PORTE
+        GETLCH  3
+        TLNE    3,020000        ;ORANGE BALL SEEN?
+        JRST    0,OK            ;YES
+        SOJG    15,LWAIT
+        JRST    4,0             ;THERE IS A PROBLEM
+;
+OK:
+;BECAUSE GMT MIDNIGHT IS DIFFERENT ON TWO DIFFERENT HOSTS
+        JSR     0,JIFGMT
+        MOVEM   3,JIFREF
+        ;SEND SYNCHRO CHAR
+        JSR     0,OUTSYN
+        JSR     0,INSYN
+        JSR     0,JIFGMT
+        SUB     3,JIFREF
+        MOVE    16,3
+        JSR     0,AFFICH        ;PRINTS APPROXIMATION IN SEC.
+        OUTCHI  15
+        OUTCHI  12
+        MOVE    3,16
+        IDIVI   3,2
+        ADDB    3,JIFREF
+;
+        JSR     0,AUXEBM
+;
+;NOW,READ NUMBER OF TRYS
+;
+LOOP1:  OUTCHI  52      ;*
+        SETZ    15,
+;
+READ:   INCHWL  3
+        CAIN    3,15
+        JRST    0,ENDRD
+        IMULI   15,^D10
+        SUBI    3,60
+        ADD     15,3
+        JRST    0,READ
+;
+ENDRD:  INCHWL  3
+        CAIE    3,12
+        JRST    4,0
+        CAIG    15,0
+        JRST    0,SORTIE;0=>END OF TESTS
+;
+;SEND A SHORT BLOCK AND A YELLOW BA
