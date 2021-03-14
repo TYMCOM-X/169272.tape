@@ -1,0 +1,57 @@
+
+	SNOOPY-TYM vers.3 MONITOR TIME ANALYSIS C37-P034/B04  12-7-79
+listing at 11-DEC-79 12:46:24 sampling began 11-DEC-79 12:42:39
+LOOP WITHOUT SW JOB
+
+
+
+
+Sampling MONITOR PC at approx. 520-microsecond intervals.
+selecting by job 12
+sampling includes uuo level and pi level(s) 2 3 4 5 6 7 
+histcnt: 7555	totcnt: 320060
+syscnt: 73735	usrcnt: 246325
+oorcnt: 0	nulcnt: 0
+range: '20 to '777777 by '1000-word steps
+percentages of jobs' mws's being swapped:
+0 to 10%:	********************
+percent total counts caught:
+	in user jobs:  76.96%  in nuljob:  .00%  in monitor:  23.04%
+out-of-range: oorcnt/histcnt =  .00
+% total counts at:   UUO level	pi 2	pi 3	pi 4	pi 5	pi 6	pi 7
+			 19.50%	 .00%	 1.06%	 .00%	 .00%	 .00%	 2.48%
+symbols from (SYS)SYSTEM.SAV
+MONITOR-PC HISTOGRAM BETWEEN 20  and  777777
+print threshold: 151 counts
+    addr         label     hits    % total counts
+COMMOD
+   17020      JBTMPC+2      184     .06%***
+COMMOD,  .08%
+ FILIO
+   34020      COMFIN+5      798     .25%*************
+ FILIO,  .27%
+FILRIB
+   55020     PRRCHK+13      227     .07%***
+FILRIB,  .07%
+BPXKON
+   56020      ERRCM1+2      268     .08%****
+   57020      BPXUPA+4      569     .18%*********
+BPXKON,  .26%
+FTASER,  .05%
+ PICON
+  106020      TAKTR3+1      177     .06%***
+  107020      INTCLK+3     1729     .54%******************************
+ PICON,  .60%
+SCHED1
+  110020        QCMW+1      852     .27%**************
+  111020        SWISW0      176     .05%***
+SCHED1,  .33%
+SCNSER
+  113020         GREEN      670     .21%***********
+  116020       SPEUX+4      350     .11%******
+  117020      TTYIN6+1      174     .05%***
+  125020     DDBSR1+10      211     .07%***
+SCNSER,  .47%
+ IOCSS
+  140020      DVCNSG+4      262     .08%****
+ IOCSS,  .08%
