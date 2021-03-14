@@ -1,0 +1,98 @@
+.outline Roman,Alpha,Decimal,Lalpha,Decimal
+.no justify
+.spacing 1
+.Title Changes to the TYMCOM-X operating system between P034/K and P034/L
+.first title
+.list
+.lm 0.rm 75
+.le;Reliability:
+.list
+.le;Fixed problem that sometimes caused crash when Setuuo to talk to a job
+(.Sttlk) was executed for a job in the process of logging out.
+.le;Fixed problem that caused crash when CORE command deleted Hiseg.
+.le;Fixed problem that caused crash or bogus device name to be printed
+when address check error message was necessary.
+.le;Fixed problem that caused crash when closing a file that was doing
+buffered i/o.  Solves XBASIC Getseg crashes.
+.le;Cleaned up ONCE dialog.  Removed all references to the obsolete swapping
+area.  Removed references to ONCDSK.
+.le;Fixed problem that caused bad pack set ID message to be printed
+when building a file structure from a virgin pack set.
+.le;Fixed problem that sometimes caused two frames looking at each other's
+address spaces to deadlock.
+.le;Fixed problem that caused job capacity exceeded not to zap port.
+.le;Only negotiate for block I/O ports if host is on a Tymnet base.
+That is, if system is a KI or KL.  This solves the problem Rainier Bank
+was having with block I/O negotiation.
+.le;Check for yellow ball arrived when Tinass UUO is issued to enable
+interrupt on receipt of yellow ball.  This prevents yellow ball races.
+.le;Fixed problem that caused creation of a frame to sometimes crash a
+KI when a particular hardware bug exists. This solves PCOM induced crashes.
+.els
+.tp 11
+.le;Performance:
+.list
+.le;Removed some obsolete code and data structures.  This results in more
+space available for user programs.
+.le;Changed the way that some data structures are allocated so that
+the aggregate maximum number of files open on a system can be increased.
+.le;Make old style file I/O use VMOVPG (see below) to improve its efficiency.
+.els
+.tp 11
+.le;New Features and Changes:
+.list
+.le;Added POP command.  POP attaches a user to his parent (if any) and
+logs out the current job.
+.le;Added TALK GAN command to allow a user to talk to everyone in his
+GAN if he is the account supervisor or has OP license.
+.le;Added PCOM and DCOM commands to run Pcom and the PEAK command to
+run the Peak editor.
+.le;Added capability to scale the TRU.  XCHARG function 7 was implemented
+to allow the user to set scale factors.
+.le;Changed UNDEL command to UNDELETE.
+.le;Removed PCHECK command.
+.le;Added capability to display incremental frame data with _^T.  The
+capability can be enabled and disabled with the TTY [NO] RTCOMP
+command and Auxcal 101.
+.le;Added inactivity timeout capability.  Once-a-minute a counter is
+incremented for every frame.  A frame's counter is cleared when that frame
+becomes active.  Frames that exceed a set limit are evicted if so enabled,
+otherwise they are killed.  The limit can be set with the SET 
+AUTOLOGOUT <minutes> command and cleared with the SET NOAUTOLOGOUT command.
+Also, it can be modified with Calli -146, or set to a default (15 min.) with
+privilege bit lh 400.  Gettab -55 was added to read the inactivity word.
+.le;Updated several messages to refer to frames instead of jobs.
+.le;Replaced "TRANSMISSION ERROR" message with the more
+explanatory "I/O error on file FILNAM.EXT".
+.le;Give a "!" as prompt if PDP mode is in effect and any license
+is set.
+.le;Added Frmop 41 (Stop Frame).  This allows a _^C to be simulated on a
+frame.
+.le;Added Frmop 42 to allow a command to be forced on a frame plus the new
+Frmop error code 37 (illegal command).
+.le;Added Frmop 43 to allow a project code for a frame to be changed.
+.le;Added new style .Focfm (Create Frame) to allow Loginn to be run in 
+child and to allow license to be passed to child.
+.le;Copy project code from parent to child in Create Frame.
+.le;Added frame fail stop (Calli -147) and frame fail exit (Calli -142) and 
+associated error codes.
+.le;Added Chanio function 47 (Vmovpg).  This is the capability to move a
+private page into a file.
+.le;Added new Close flag 200 to set file dumped bit.  This allows TITO to
+set file dumped bit without having to do a Rename and potentially changing
+some other RIB data.
+.le;Changed Attach to require that the target have less 
+or the same frame license as the source in order for the attach to succeed.
+.le;Changed Setlic so that the requested read and write privileges
+are not zeroed if they are greater than the corresponding frame
+license entries.
+.le;Added new mail waiting bit JP.MAI (1B8) in privlege word to indicate
+that new mail is waiting.  This allows a new mail system to be implemented
+without confusing users of the old system.
+.le;Added new Hang flag (1B13) to hard kill a frame without detaching.
+.le;Widened terminal ID code (TIC) field to 5 bits.
+.le;Allow ATTACH and RETACH UUOs to force target frame to RUN state
+if desired.
+
+.els
+.els
