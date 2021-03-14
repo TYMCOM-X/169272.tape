@@ -1,0 +1,1738 @@
+
+
+
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        $$$$                        $$$$
+       $$$$                          $$$$
+       $$$$                          $$$$
+       $$$$$                        $$$$$  TYMCOM-X MISCELLANEOUS DOCUMENTS
+       $$$$$$                      $$$$$$
+       $$$$$$                      $$$$$$  OPERATIONS MINI-MANUAL #00
+       $$$$$$                      $$$$$$
+       $$$$$$$                    $$$$$$$
+       $$$$$$$                    $$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$  WESTERN COMPUTER OPERATIONS
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$  COMPUTER MANAGEMENT SERVICES
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$  NOVEMBER 1981
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$
+       $$$$$$$$$$$     ::     $$$$$$$$$$$              
+       $$$$$$$$$$$     ::     $$$$$$$$$$$              
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$       ::       $$$$$$$$$
+       $$$$$$$$$      ::::      $$$$$$$$$
+       $$$$$$$$      ::::::      $$$$$$$$
+       $$$$$$$$     ::::::::     $$$$$$$$      
+       $$$$$$$     ::::::::::     $$$$$$$
+       $$$$$$$    ::::::::::::    $$$$$$$  
+       $$$$$$    ::::::::::::::    $$$$$$
+       $$$$$$   ::::::::::::::::   $$$$$$  
+       $$$$$   ::::::::::::::::::   $$$$$
+       $$$$$  ::::::::::::::::::::  $$$$$
+       $$$$  ::::::::::::::::::::::  $$$$
+        $$$$::::::::::::::::::::::::$$$$
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                                                                         Page 2
+TABLE OF CONTENTS
+
+
+                               TABLE OF CONTENTS
+                               -----------------
+
+               TITLE                                   PAGE
+
+               BACKUP
+                       INTRODUCTION                     4
+                       COMMAND SUMMARY                  4
+                       EXAMPLES                         6
+
+               FAILSAFE
+                       INTRODUCTION                     8
+                       DESCRIPTION                      8
+                       SAMPLE RUNS                     10
+                       RUNNING FAILSAFE                10
+                       GETTING DIRECTORY               10
+                       RESTORING A FILE                11
+                       ERRORS AND RECOVERIES           12
+
+               MTCOPY
+                       INTRODUCTION                    13
+                       SUMMARY                         13
+                       DENSITY SWITCHES, ETC           13
+                       DESCRIPTION                     14
+                       SAMPLE RUNS                     14
+                       ERRORS AND RECOVERIES           14
+
+               VARIAN AND VARREC
+                       INTRODUCTION                    15
+                       SUMMARY                         15
+                       DESCRIPTION                     15
+                       SAMPLE RUNS                     16
+                       ERRORS AND RECOVERIES           17
+
+               TAPER
+                       INTRODUCTION                    18
+                       SAMPLE BATCH REQUEST            19
+                       SAMPLE RUN                      20
+
+               AUXMAP
+                       INTRODUCTION                    22
+                       PROCEDURES                      22
+                       RUNNING PROGRAM                 23
+                       SAMPLE RUN                      24
+
+               CLRMAI
+                       INTRODUCTION                    25
+                       PROCEDURE                       25
+                       SAMPLE RUN                      26
+                                                                         Page 3
+TABLE OF CONTENTS
+
+
+               COM (COMMAND FILES)
+                       INTRODUCTION                    27
+                       PROCEDURE                       27
+                       CREATING COM FILES              28
+                       SAMPLE RUN                      30
+
+               INDIRECT OR COMMAND FILES               32
+
+               TELHLP
+                       PURPOSE                         37
+                       SAMPLE RUN                      38
+
+               XFORM
+                       INTRODUCTION                    39
+                       PROCEDURES                      39
+
+               INDEX                                   40
+                                                                         Page 4
+BACKUP PROGRAM
+
+
+                             PDP-10 BACKUP PROGRAM
+                             ---------------------
+
+       ((INTRODUCTION))
+
+            BACKUP is the Standard DEC Program for  doing  tape  work.   BACKUP
+       replaced  FAILSAFE.   The  BACKUP program on Tymshare's PDP-10S has been
+       modified  to  work  with   Tymshare's   Operating   Systems.    Complete
+       Documentation  for BACKUP is in (SYSNEWS)BACKUP.DOC on any PDP-10.  Some
+       of the features described in that document work and some do  not.   This
+       document  describes  the  features  that  are  currently  working and is
+       followed by examples of how to use the program.
+
+            BACKUP stores files in Save Set groupings.  The Save  Sets  do  not
+       have numbers.  Save Sets may be given names for reference purposes.  The
+       wild cards * and # work when referencing file names.   BACKUP  formatted
+       tapes  do  not  have  tape  position  numbers.   Files are referenced by
+       savesets and file names.  
+
+       ((COMMAND SUMMARY))
+
+       TAPE POSITIONING COMMANDS
+       -------------------------
+
+           EOT                      SKIP TO LOGICAL END OF TAPE
+
+           REWIND                   REWIND TAPE
+
+           UNLOAD                   UNLOAD TAPE
+
+           SKIP N                   SKIP N SAVE SETS
+
+           SKIP -N                  BACKSPACE N SAVE SETS
+
+       DENSITY
+       -------
+
+            Currently the density command doesn't work in BACKUP.  The  default
+       for  writting  to  tape  is  the  lowest  density.  BACKUP will read any
+       density.
+
+       ACTION COMMANDS
+       ---------------
+
+           SAVE [PPN]FN.EXT         STORE DISC FILES TO TAPE. ONLY WORKS
+                                    WITH PPN NUMBERS, NOT USERNAMES.
+
+           RESTORE [PPN]FN.EXT      RESTORE FILES FROM TAPE TO DISC.
+
+           TAPE FTAN:               INITIALIZES TAPE DRIVE WHERE N=DRIVE
+                                    NUMBER.
+                                                                         Page 5
+BACKUP PROGRAM
+
+
+                 LPT:               OUTPUTS A TAPE DIRECTORY TO DEVICE
+           PRINT DSK:FILENAME       INDICATED. IF OUTPUT IS TO DSK: AND
+                 TTY:               FILE NAME IS OMITTED THE FILE NAME 
+                                    WILL DEFAULT TO BACKUP.LOG.
+
+           SSNAME XXXX              NAMES THE SAVESET WHICH WILL NEXT BE
+                                    READ OR WRITTEN. XXXX MAY BE UP TO
+                                    30 CHARACTERS. XXXX = ALL INDICATES
+                                    ALL SAVESETS ON TAPE BEING READ.
+
+           CHECK                    COMPARES FILES ON DISC TO SAME FILE
+                                    NAMES ON TAPE. WILL REPORT AN
+                                    ERROR MESSAGE IF FILES ARE DIFFERENT.
+
+       OTHER COMMANDS
+       --------------
+
+           EXIT                     EXITS FROM BACKUP PROGRAM.
+
+           OLD/NEW FILE CONFIRMATION - CURRENTLY THE SUPERSEDE COMMAND
+                                    WHICH IS SUPPOSED TO REPORT WHEN A
+                                    DISC FILE ALREADY EXISTS AND ALLOW
+                                    A CHOICE AS TO OVERWRITTING EXISTING FILES
+                                    DOES NOT WORK. PROGRAM WILL OVERWRITE OLD
+                                    FILES WITHOUT REPORTING THAT IT DID SO.
+                                                                         Page 6
+BACKUP PROGRAM
+
+
+       ((EXAMPLES))
+
+       STORING FILES
+       -------------
+
+           R BACK              CALL PROGRAM.
+
+           /TAPE FTA1:              / IS THE PROGRAM PROMPT. THIS COMMAND
+                                    INITIALIZES THE TAPE DRIVE.
+
+           /SSNAME DUMMY            NAMES THE NEXT SAVESET TO BE STORED
+                                    AS "DUMMY". IF THIS COMMAND IS OMITTED
+                                    THE SAVESET WILL NOT BE NAMED.
+
+           /SAVE [1,21]*.*          STORE ALL FILES FROM USERNAME OPER. PPN
+                                    IS NOT NECESSARY IF STORING FROM DIRECTORY
+                                    YOU'RE LOGGED INTO. PROGRAM ACCEPTS INDI-
+                                    VIDUAL FILENAMES AS WELL AS WILD CARD
+                                    REFERENCES.
+
+           !1,21      DSKB          MESSAGE OUTPUT BY PROGRAM WHILE STORING.
+                                    ! INDICATES PROGRAM IS DOING AN OPERATION.
+
+           /REWIND                  REWIND THE TAPE.
+
+       TAPE DIRECTORY
+       --------------
+
+           R BACKUP
+
+           /TAPE FTA1:
+
+           /INTERCHANGE             RUNS IN INTERCHANGE MODE
+
+           /PRINT LPT:              PRINT A DIRECTORY OF TAPE TO
+                                    LINE PRINTER.
+
+           !                        INDICATES DIRECTORY IS RUNNING.
+
+           /UNLOAD                  UNLOAD TAPE.
+
+           /EXIT                    EXIT FROM PROGRAM.
+                                                                         Page 7
+BACKUP PROGRAM
+
+
+       RESTORING FILES
+       ---------------
+
+           R BACKUP
+
+           /TAPE FTA2:
+
+           /INTERCHANGE             RUNS IN INTERCHANGE MODE
+
+           /SSNAME ALL              SETS SWITCH TO READ ANY SAVESET NAME.
+
+           /SKIP 1                  SKIP OVER FIRST SAVESET.
+
+           /RESTORE [1,21]FILE.EXT  RESTORE FILE NAMED FILE.EXT TO USER
+                                    OPER. PPN NOT NECESSARY IF RESTORING
+                                    TO DIRECTORY YOU'RE LOGGED INTO.
+
+           !
+
+           /REWIND
+
+       APPENDING AND CHECKING
+       ----------------------
+
+           R BACKUP
+
+           /TAPE FTA1:
+
+           /EOT                     SKIPS TO LOGICAL END OF TAPE.
+
+           /SAVE *.*
+
+           !1,21      DSKB
+
+           /SKIP -1                 BACKSPACE ONE SAVESET.
+
+           /CHECK                   COMPARES FILES STORED WITH FILES ON DISC.
+                                    IF ANY DIFFERENCES PROGRAM WILL
+                                    REPORT THEM.
+
+           !
+
+           /UNLOAD
+
+           /EXIT
+                                                                         Page 8
+FAILSA
+
+
+                                   FAILSAFE
+                                   --------
+
+       ((INTRODUCTION))
+
+            FAILSAFE (abbreviated to FAILSA when  run)  is  a  utility  program
+       written  by DEC and is the original tape program used on the TYMCOM-X'S.
+       Now that TITO has been developed, FAILSA is used  primarily  to  restore
+       files  from  old  customer tapes written by DIAL-DATA sources on 7 track
+       tapes.
+
+            This program has a hardware  requirement  of  an  assigned  channel
+       which  should  be  set  before the program is run.  When the program has
+       been loaded it prompts it's command mode with an asterisk  (*)  and  the
+       general  command format (sometimes called switches) are in the form /STR
+       where STR is some alphanumeric character plus argument string.
+
+            FAILSAFE operates on PPN's (project-programmer numbers) rather than
+       usernames.   These  PPN'S  are  in  the  form  [N,N1] where N and N1 are
+       numbers that can be obtained using the EXEC command PPN USERNAME (cr).
+
+            All FAILSAFE files are stored in SAVESETS -  separate  sections  of
+       the tape which correspond to the particular sessions when the files were
+       stored on to the tape.  You must be  positioned  on  the  given  saveset
+       containing  the file(s) you to restore.  Use the /J(UMP) command to skip
+       over the earlier savesets on the tape.
+
+            To EXIT the program and return to EXEC, type ^C (Control C).
+
+       ((COMMAND DESCRIPTION))
+
+       /H this is the HELP command and yields the list of switches
+            below.
+
+       /Z sets the beginning PPN for the next /S.
+
+       /Y sets the beginning file name, and /T sets the tape reel
+            number.
+
+       /W rewinds the tape.
+
+       /J jumps over the current saveset. 
+
+       /U saves the entire disk area the user is logged in under.
+
+       NAME1.EXT,NAME2.EXT,*.EXT etc.  restores particular files for
+            any user.
+
+       /P lists directory of entire tape on device "LST".
+            Filename "FAILSA.DIR" is used if LST=DSK.  You must preas-
+            sign LPT to LST to divert directory listing to printer.
+                                                                         Page 9
+FAILSA
+
+
+       /L lists directory of all the user's files on the device TTY.
+
+       /GMMM,NNN<CR> sets the project-programmer area number so that
+            the user may run /U, /L, and selective restore commands on
+            an area other than his own.
+
+       /OMMM,NNN<CR> changes the output PPN so that a translation can
+            occur when files are restored; used with the /Gmmm,nnn<cr>
+            command.
+
+       /N/R or /N (selective restore string) causes all files on the
+            tape to be restored regardless of the creation dates of
+            existing disk files.
+
+       /I,/2,/5,/8 set magtape density to INSTALLATION STANDARD, 200BPI,
+            556 BPI, and 800 BPI respectively.  Density remains set
+            until reset by another switch.
+
+            You are referred to the DEC LIBRARY writeup 'FAILSAFE -  DISK  SAVE
+       AND  RESTORE  PROGRAM'  (DEC  1-<ypda-D).   A  copy  of this document is
+       available from the Training Office.
+                                                                        Page 10
+FAILSA
+
+
+       ((SAMPLE RUNS))
+
+            To run the FAILSAFE program to store a particular  users  files  to
+       tape, do the following:
+
+            1.  Set OPER status.
+
+            2.  Assign the physical mag tape unit to the logical name 
+                FAILSAFE by typing:
+
+                '.'AS FTAn FAILSA<CR>  (Where n  is the device number)
+
+            3.  Type:
+
+                '.'R FAILSA<CR>  
+
+                '*'/8        Sets the tape density to 800 BPI
+
+                '*'/G PP,NN  Where PP,NN=USERS project-programmer number
+
+                '*'/U        Stores the users files on tape
+
+                '*'/W        Rewinds the tape
+
+                '.'DEAS      Deassigns devices
+
+            4.  If tape is completely full, the operator will be re-
+                quested to mount new tape and type /C when ready.
+
+            To get a directory of a FAILSA tape, do the following:
+
+            1.  Set OPER status.
+
+            2.  Assign the physical mag tape drive the logical name
+                FAILSAFE as in step 2 above.
+
+            3.  Assign Line Printer to logical name LST by typing:
+
+                '.'ASSIGN LPT LST<CR>  (LPT is LINE PRINTER)
+
+            4.  Type:
+                       '.'R FAILSA<CR>
+                       '*'/8
+                       '*'/P  (Tells FAILSAFE to print a directory)
+
+                If there is more then one saveset on the tape, you
+                must type /P for each saveset.
+
+                       '*'/W  (Rewinds the tape)   
+                       '.'DEAS  (Deassign devices)
+                                                                        Page 11
+FAILSA
+
+
+            To restore a file from an old FAILSAFE tape do the following:
+
+            1.  Set status.
+
+            2.  Assign the magtape to FAILSAFE.
+
+            3.  At this point you may need to use the PPN username<cr>
+                command.
+
+            4.  Type:
+
+                       '.'R FAILSA<CR>
+
+                       '*'/J        (It may be necessary to 'jump' over
+                                    savesets until you are at the save-
+                                    set containing the desired file(s)).
+
+                       '*'/G PP,NN  (The PPN from the tape:  this sets
+                                    up a 'GET')
+
+                       '*'/O PP,NN  (Sets up output to PPN specified on
+                                    DISK)
+
+                       '*'NAME1.EXT,NAME2.EXT  (Now type the filenames
+                                               to be restored from the
+                                               current saveset)
+
+                       '*'/W     (Rewinds the tape)
+
+                       '*'^C^C   (Exits the program)
+
+                       '.'DEAS   (Deassigns devices)
+                                                                        Page 12
+FAILSA
+
+
+       ((ERRORS AND RECOVERIES))
+
+            After any I/O error which returns to MONITOR LEVEL, type  'REENTER'
+       to continue.
+
+            Below are some of the more common errors that  can  be  encountered
+       while running FAILSA:
+
+        ERROR MESSAGE                   MEANING/RECOVERY
+        ----- -------                   ----------------
+
+        CANNOT FIND PROJ,PROG           FAILSA cannot find that user's
+                                        area in the given saveset; you
+                                        may not be positioned on the
+                                        correct saveset or perhaps the
+                                        user is not on the tape.
+
+        CANNOT FIND FILE X.Y            Tape has gone to logical EOT
+                                        without finding the file;
+                                        perhaps the name was typed
+                                        in wrong.  Check the tape dir..
+
+        CANNOT WRITE UFD PPN            Most likely a protection
+                                        problem.  FAILSA skips to the
+                                        next job.
+
+        ERROR WHILE READING FILE        A tape error has occurred.
+                                        There may be an incomplete 
+                                        partial copy that should be
+                                        deleted from the disk.
+
+        MAGTAPE PHYSICAL DEV. ERR       FAILSA has tried 3 times and
+                                        failed.  Try cleaning the drive
+                                        or try another device.
+
+        ILL FORMAT ON TAPE              You are reading a tape that is
+                                        not in FAILSAFE format.  Use
+                                        XET or TITO instead.
+                                                                        Page 13
+MTCOPY
+
+
+                          MTCOPY (TAPE COPY PROGRAM)
+                          --------------------------
+
+       ((INTRODUCTION))
+
+            The purpose of MTCOPY is to copy one or more  files  from  tape  to
+       tape.   It  is  used  whenever a copy of a tape is needed (eg.  from a 7
+       track to a 9 track) or if a tape rebuild must be done.   MTCOPY  can  be
+       used  for most tape formats including 940 1STORE format.  It defaults to
+       copy and verify one entire tape  to  another  and  to  use  the  highest
+       density  for  the  tape drive where it is being run.  However, there are
+       switches that can be used to specify other options.   MTCOPY  cannot  be
+       used for TITO tapes where the drives used have different densities.
+
+       ((COMMAND SUMMARY)) 
+
+            MTCOPY uses the traditional  DECSYSTEM-10  command  string  format:
+       that  is,  destination  (or output to) name, a backarrow (_)or equal (=)
+       sign and the source (or input from) name.  
+
+                   OUTTAPE:/OUTSWITCH = INTAPE:/INSWITCH
+
+        DENSITY SWITCHES                MEANING
+        ----------------                -------
+        /2                                SET DENSITY TO 200 BPI
+        /5                                SET DENSITY TO 556 BPI
+        /8                                SET DENSITY TO 800 BPI
+        /1                                SET DENSITY TO 1600 BPI
+        /6                                SET DENSITY TO 6250 BPI
+
+        POSITION SWITCH                  EFFECT
+        ---------------                  ------
+        /A                                ADVANCE TAPE 1 FILE BEFORE OPERATION
+        /A:N                              ADVANCE TAPE N FILES BEFORE OPERATION
+        /B                                BACKSPACE TAPE 1 FILE BEFORE
+                                          OPERATION
+        /B:N                              BACKSPACE TAPE N FILES BEFORE
+                                          OPERATION
+        /R                                REWIND BEFORE AND AFTER OPERATION
+                                          (DEFAULT)
+        /U                                UNLOAD TAPE AFTER OPERATION
+
+        MODE SWITCH                      MEANING
+        -----------                      -------
+        /E                                EVEN PARITY (USED FOR BCD TAPES) 
+
+        GENERAL SWITCH                   EFFECT
+        --------------                   ------
+        /C:N                              COPY N FILES
+        /C                                (DEFAULT)COPY ALL FILES TO DOUBLE EOF
+                                          (EOT)
+        /G                                PROCEED ON ERRORS
+        /H                                LIST SWITCHES (HELP)
+        /N                                SUPRESS AUTOMATIC REWINDS
+        /V:N                              VERIFY N FILES
+        /V                                VERIFY ALL FILES TO EOT.
+                                                                        Page 14
+MTCOPY
+
+
+       ((COMMAND DESCRIPTION))
+
+            Spaces and Tabs are ignored in MTCOPY command strings  and  may  be
+       used  to  make  commands  easier to read.  If more than 1 switch is used
+       they can be included in parentheses.
+
+            To copy and verify both, you must use both /C and /V.  If  both  /C
+       and  /V are used for a specific number of files, the number need only be
+       included on one of the switches.
+
+            Density setting switches will apply until a tape is either  rewound
+       or  unloaded.   Rewinds  will  occur automatically except where position
+       switches are used as separate commands, or when the /N switch surpresses
+       it.
+
+       ((SAMPLE RUNS)) 
+
+       "."R (UTIL)MTCOPY (CR)
+       "*"FTA#:/6_FTA#:/6 (CR)
+       "DENSITY OUT AT 6250 BPI, IN AT 6250 BPI"
+       "5* FILES, 5152 BLOCKS COPIED"
+       "5* FILES, 5152 BLOCKS VERIFIED"
+       "*" (WAITING FOR NEXT COMMAND)
+
+       ((ERRORS AND RECOVERIES))
+
+            TITO (and TEX)  use  end  of  file  marks  differently  than  other
+       formats:   for  customer tapes an end of file mark is used at the end of
+       each save set;  for backup and all files tapes an end of  file  mark  is
+       used  at  the  end  of  each  user's  files.  Thus if you use the MTCOPY
+       command to advance or backspace a file on TITO or TEX tapes the  program
+       will  skip  either  a  save set or a username instead.  Be aware of this
+       problem and pay attention to what you are skipping.
+                                                                        Page 15
+VARIAN AND VARREC SPECIAL TAPE PROGRAMS
+
+
+                   VARIAN AND VARREC - SPECIAL TAPE PROGRAMS
+                   -----------------------------------------
+
+       ((INTRODUCTION))
+
+            Varian associates has  a  very  large  application  which  requires
+       fairly  prompt  delivery of file updates from TYMCOM-IX to 9-track tapes
+       with special formats that can be read on tape drives on computers at the
+       customer's  site.   Because  problems  arose  when  MAGCON was used, the
+       VARREC and VARIAN programs  were  developed.   These  two  programs  are
+       located  on  the  TYMCOM-X'S under directory (UTIL) and they essentially
+       copy from 7-track 1STORE format tapes to 9-track  EBCDIC  format  tapes.
+       VARIAN  writes  in  80  character  records  with  no blocking, labels or
+       carriage-return/linefeeds;  VARREC is  much  the  same  except  variable
+       record  lengths  are  accepted.  A batch request must specify explicitly
+       which of these programs is to be used.  The customer supplies the  tapes
+       that  are  written  with  these  two  programs.   When  the job has been
+       completed, batch types 5 (files disk to tape) and  7  (tape  conversion)
+       are entered into the batch accounting.  
+
+       ((COMMAND SUMMARY))
+
+                    (SEE DESCRIPTION AND SAMPLE RUNS BELOW)
+
+       ((COMMAND DESCRIPTION))
+
+            The first step for running either program is to use 1STORE  on  the
+       TYMCOM-IX to prepare a scratch tape containing the files to be copied.
+
+            This  tape  is  taken  to  a   TYMCOM-X   7-track   drive   and   a
+       customer-supplied  tape is made ready on a 9-track drive.  Both programs
+       default to  FTAN.   Assign  the  FTAN  and  then  whichever  program  is
+       requested  is  run.   You  will be prompted for a single digit input and
+       output unit and should use a digit 'N' where N is  the  device  you  are
+       using;   the program prompts for tape density (normally 800 BPI - follow
+       the instructions on the request).  Input a position on  the  input  tape
+       and  the  file  will  be  copied  onto  the output tape.  For the VARIAN
+       program, after each position is copied the program exits  to  the  EXEC;
+       for  the VARREC program, you are prompted for the next tape position and
+       must type 'E(CR)' to exit.
+                                                                        Page 16
+VARIAN SAMPLE RUNS
+
+
+       ((SAMPLE RUNS)
+
+       (IT IS ASSUMED THE TAPES ARE MOUNTED ON THE CORRECT DRIVES)
+
+        VARIAN
+        ------
+
+        '.'ATT FTA0 (CR)
+        'FTA0 ATTACHED'                   THIS IS THE 7 TRACK DRIVE WHERE THE
+                                           TAPE IS IN 1STORE FORMAT.
+
+        '.'AS FTA2 (CR)
+        'FTA2 ASSIGNED'                   THIS IS THE 9-TRACK DRIVE WITH THE
+                                           VARIAN TAPE MOUNTED.
+
+        '.'R (UTIL)VARIAN(CR)
+
+        '7 TRACK TO 9 TRACK VERS. 1.3 FOR VARIAN'
+        'INPUT FROM MAG TAPE UNIT :'0(CR)
+                                           USE ONLY ONE DIGIT FOR THE UNIT.
+        'OUTPUT TO MAG TAPE UNIT  :'2(CR)
+
+        'OUTPUT DENSITY (1600,800):'800(CR)
+                                           WHATEVER IS SPECIFIED ON THE
+                                           BATCH REQUEST.
+
+        'TAPE POSITION:'1(CR)            THIS REFERS TO THE 1STORE TAPE.
+
+        'END OF JOB'
+        'EXIT'
+        '.'
+                                                                        Page 17
+VARREC SAMPLE RUNS
+
+
+        VARREC
+        ------
+
+            (ASSIGN THE DRIVES AS ABOVE)
+
+        '.'R (UTIL)VARREC(CR)
+
+        '7 TRACK TO 9 TRACK VERSION 2.0 VARIABLE RECORD'
+        'INPUT FROM MAG TAPE UNIT  :'0
+
+        'OUTPUT TO MAG TAPE UNIT  :'2
+        'OUTPUT DENSITY (1600,800):'800(CR)
+
+        'OUTPUT TAPE POSITION :'1(CR)   
+                                           USUALLY START AT 1 - BEGINNING OF
+        'INPUT TAPE POSITION :'1-2(CR)
+
+        'INPUT TAPE POSITION :'4(CR)    THE NEXT POSITION IF ANY.
+
+        'INPUT TAPE POSITION :'E(CR)    ALL DONE NOW; EXIT THE PROGRAM.
+
+        'END OF JOB'
+        '.'
+
+
+       ((ERRORS AND RECOVERIES))
+
+            Be sure you are running the correct program (that is, following the
+       instructions  on  the  batch  request).   Often the request will include
+       information about the format  characteristics;   except  in  rare  cases
+       these will be handled automatically by the program.  Also, pay attention
+       to the directory listing from the 1STORE  tape.   We  cannot  check  the
+       output tapes here at WCO so you must reference the correct input file.
+                                                                        Page 18
+TAPER PROGRAM
+
+
+                                 TAPER PROGRAM
+                                 ----- -------
+
+       ((INTRODUCTION))
+
+            (UTIL)TAPER is a program used occasionally to transfer data from  a
+       tape  to  disk.  Usually the user entering the request will specify that
+       the TAPER program be used instead of MAGCON.   Remember  that  TAPER  is
+       used  for  EBCDIC only, and that you must ASSIGN FTA# as MTA# before you
+       run TAPER.
+
+            If an EBCDIC tape cannot be read with MAGCON, attempt  to  read  it
+       using TAPER.  Use this program at your discretion.
+                                                                        Page 19
+ TAPER SAMPLE BATCH REQUEST
+
+
+       ((SAMPLE BATCH REQUEST))
+
+       REQUEST NUMBER          #####
+
+       SYSTEM NUMBER           C##
+
+       DATE AND TIME           DD-MTH-YY  HH:MM
+
+       ENTERED FROM            #####
+
+       COMPANY NAME            ###
+
+       USER NAME               #####
+
+       PROJECT CODE            #####
+
+       TELEPHONE NO. (EXT.)    ### ###-####
+
+       REQUESTED BY            ### #####
+
+       GLOBAL ACCT. NO.        #####
+
+       DISTRICT NO.            ##
+
+       DESCRIPTION OF WORK
+       WILL DELIVER 3 TAPES TO THE COMPUTER CENTER.
+       EACH TAPE IS:  9 TRACK   EBCDIC   800 BPI   ODD PARITY
+                      VARIABLE RECORD LENGTH (MAX = 800 CHARS/RECORD)
+                      BLOCKING FACTOR = 1
+
+       IT IS SUGGESTED THAT YOU USE THE TAPER PROGRAM TO READ TAPES:
+        -GO (UTIL) TAPER
+           7 OR 9 TRACK: 9
+           BLOCK SIZE IN CHARS: 9999
+           ADD CR/LF TO END OF RECORD: Y
+
+       TAPE 1 : HAS ONE SMALL FILE (1 RECORD).  STARTS WITH BRACKET, LETTER X,
+                AND SIX DIGITS.  WILL BE 2ND OR 3RD FILE ON TAPE.  CAN USE 
+                MAGCON ON THIS ONE, IF YOU WISH.
+
+       TAPE 2 : HAS TWO SMALL FILES (1 TO 3 RECORDS EACH).  BOTH START WITH
+                BRACKET, LETTER AND SIX DIGITS.  LIKELY THE 2ND AND 3RD FILES,
+                OR 3RD AND 4TH FILES.  USE TAPER.
+
+       TAPE 3 : HAS ONE VERY LARGE FILE.  STARTS WITH BRACKET, LETTER AND SIX
+                DIGITS.  WILL BE THE 2ND OR 3RD FILE ON TAPE.  (LIKELY THE
+                3RD:  FILE 1 IS TAPE MARK, FILE 2 IS BINARY FILE .)
+
+       CALL THE FILES:  TAPE1,  TAPE2A,  TAPE2B,  TAPE3
+
+       ON FILE FROM TAPE 3, EACH RECORD SHOULD START WITH A BRACKET.
+
+       CALL IF ANY QUESTIONS.  THANK YOU.
+
+       DELIVERY INSTRUCTIONS
+       HOLD TAPES FOR PICKUP.  SEND MESSAGE WHEN COMPLETED.
+                                                                        Page 20
+TAPER SAMPLE RUN
+
+
+       ((SAMPLE RUN))
+
+       "."R (UTIL)MAGCON (CR)
+       "MAGCON (V5.2) HERE AT (TIME)(DATE)"
+
+       "*** INPUT SPECIFICATION ***"
+       "1. FILE:" FTA1: (CR)
+       "2. MODE:" EBCDIC (CR)
+       "5. RECORD SIZE:" 800 (CR)
+       "6. BLOCKING FACTOR:" 1 (CR)
+       "8. STOP ON ERRORS?" Y (CR)
+       "11. DENSITY:" 800 (CR)
+       "13. ADVANCE FILES:" 0 (CR)
+       "    BACKSPACE:" 0 (CR)
+       "14. ADVANCE RECORDS:" 0 (CR)
+       "15. REWIND:" O (CR)
+       "16. LABEL:" N (CR)
+       "20. UNLOAD TAPE?" N (CR)
+       "22. MULTIPLE OUTPUT FILES FOR THIS INPUT FILE?" N (CR)
+
+       "ALL INPUT ENTRIES CORRECT?" Y (CR)
+
+       "*** OUTPUT SPECIFICATION ***"
+       "1. FILE:" (OPER)FIL1 (CR)
+       "2. MODE:" ASCII (CR)
+       "3. VARIABLE LENGTH RECORDS?" Y (CR)
+       "4. CRLF'S IN ASCII FILE?" Y (CR)
+       "5A. MAXIMUM RECORD SIZE:" 800 (CR)
+       "8. STOP ON ERRORS?" Y (CR)
+       "24. DELETE TRAILING BLANKS?" N (CR)
+
+       "ALL OUTPUT ENTRIES CORRECT?" Y (CR)
+
+       "MAGCON (TIME)(DATE)
+
+       "SUBSTITUTIONS?" N (CR)
+       "MAGCON: DSK:FIL1(OPER)                 1 BLK. 1 REC. WRITTEN."
+
+       "8.992 SEC. 7 I/0 UNITS."
+       "5777 OCTAL LOCATIONS USED."
+       "1 BLK. 1 REC. READ."
+       "1 BLK. 1 REC. WRITTEN."
+
+       "REPEAT SPECIFICATIONS?" Y (CR)
+                                                                        Page 21
+TAPER SAMPLE RUN
+
+
+       "."AS FTA1 MTA1 (CR)
+       "FTA1 ASSIGNED"
+
+       "."R (UTIL)TAPER (CR)
+
+       "INPUT FROM DEVICE :"MTA1 (CR)
+
+       "7 OR 9 TRACK TAPE (7 OR 9) :" 9 (CR)
+
+       "BLOCK SIZE IN CHARACTERS :"9999 (CR)
+
+       "ADD CR/LF TO END OF RECORD (Y OR N):"Y (CR)
+
+       "OUTPUT TO DEVICE :" DSK (CR)
+
+       "FILE NAME :"FIL4 (CR)
+
+       "OUTPUT TO DEVICE :"DSK (CR)
+
+       "FILE NAME :"FIL5 (CR)
+
+       "OUTPUT TO DEVICE :"DSK (CR)
+
+       "FILE NAME :"FIL6 (CR)
+
+       "OUTPUT TO DEVICE :"DSK (CR)
+
+       "FILE NAME :"FIL7 (CR)
+
+       "END OF JOB"
+
+       "EXIT"
+
+
+                                         NOTE
+
+           DON'T FORGET TO RENAME FILES OVER TO REQUESTOR DIRECTORY.
+
+
+                                                                        Page 22
+AUXMAP
+
+
+                                AUXMAP PROGRAM
+                                --------------
+
+       ((INTRODUCTION))
+
+            Program builds auxiliary circuits to TYMCOM X's and runs the DSKMAP
+       program.  The information is edited and printed at the terminal.
+
+       ((PROCEDURES))
+
+       To compile the program:
+
+        1.  Log into the USERNAME the program is to reside in.
+
+        2.  Make sure 'AUXMAP.TBA' and 'EGTLIB.MAC' are present.
+
+        3.  Do the following.
+
+               .'COM EGTLIB'
+
+               .'R (FTTBA)TBA'
+
+               VER 4.5
+
+               >'LIBRARY EGTLIB,(TBATLIB)TLIB'
+
+               >'GET AUXMAP'
+
+               >'SAVE BINARY'
+
+               AUXMAP.SHR: NEW FILE, OK? 'Y'
+
+               >'QUIT'
+
+               EXIT
+
+               .'R SETLIC'
+
+               FILE NAME: 'AUXMAP.LOW'
+
+               HOME FILE ACCESS? 'Y'
+
+               EXIT
+
+               .
+
+        4.  Create a file named 'SYSNOS.DAT' containing the system 
+            numbers (no letters) that the program defaults to.
+            The numbers should be separated by a comma.
+
+               EX.  34,35,36,37,38
+
+        5.  The files needed for the program to run are
+            'AUXMAP.SHR', 'AUXMAP.LOW', and 'SYSNOS.DAT'.
+            Any other file may be deleted.
+                                                                        Page 23
+PROCEDURES
+
+
+       To run the program:
+
+        1.  Log into a USERNAME that is valid on the TYMCOM X's that 
+            you want DSKMAPS for.
+
+        2.  At this point you may create your own 'SYSNOS.DAT' file.
+            Use the format described in #4 above.
+            The program will look for this file before looking for the
+            file in the run from directory.
+
+        3.  Type 'R (USER)AUXMAP' to run the program using the default
+            systems (the one in your logged in directory or the
+            one in the run from directory).
+
+        4.  Type 'R (USER)AUXMAP;SYSTEM NUMBERS separated by commas'
+            to override defaults.
+
+        5.  Type two escapes or two control C's (depending on whether
+            you're in TYMEX or PDP-10 mode) to trap out.  The program
+            will probably print several lines before actually stopping.
+            But have faith, it will stop.
+
+        6.  If the program appears to hang, give it 2 to 3 mins before
+            aborting the run (see item #5 above), it will usually try
+            to recover and restart from the system that caused the
+            problem.
+                                                                        Page 24
+SAMPLE RUN
+
+
+       ((SAMPLE RUN))
+
+       "SYSN"
+       "TYMSHARE C35-P034/G-1 10-7-80"
+       "-"O OP SY WF (CR)
+       (YOUR NAME)(CR)
+
+       "-"(YOUR PASSWORD)(CR)
+       "-"RU (UTIL)AUXMAP;22,23,25,26,33 (CR)
+
+
+       "VERSION 6.2"
+
+
+       "DSKMAP FOR SYSTEM C22      8-JAN-81 09:23"
+
+        "FILE   CKSUM  LAST UPD VERSION COMMENTS"
+       "SYSTEM DOSMER 21-DEC-80 P034/G-4     Fix to GIVPGK crashes."
+       "BACKUP JIQKAH 11-Dec-80 P034/G-3     Temporary fix to IL problem"
+       "OLDMON XOFQAK 12-Nov-80 P034/F-7     ***"
+       "NEWMON SAKGUC 11-Nov-80 P034/G-2     ***"
+       "BCODEB YAVKUG  7-Sep-78 SYNC BOOT    (TYMNET)SYNCLD.SAV 9-7-78"
+
+
+
+       "DSKMAP FOR SYSTEM V23      8-JAN-81 09:24"
+
+        "FILE   CKSUM  LAST UPD VERSION COMMENTS"
+       "SYSTEM TENKIR 22-DEC-80 P034/G-2     FIX FOR BLTPAG USER WORKING SET
+                                             BUG"
+       "BACKUP XEZXIC 21-Oct-80 P034/F-2     108 JOBS,FAST DSKCLN"
+       "OLDMON SUYHIK 21-Oct-80 P034/D3-33   NODE FIX"
+       "NEWMON LUKRAB 21-Oct-80 P034/G10-7   ASK BILL SOLEY FOR EXPLANATION"
+       "BCODE  XODLUB  3-Nov-78 413.00       (TYMNET)NOD43.SAV 11-03-78"
+       "BCODEB YAVKUG  4-Oct-78 SYNC BOOT    (TYMNET)SYNCLD.SAV"
+       "DSPCH  QOTCAB 15-Nov-76 OPS27        (TYMNET)RPS620.CUR DISPATCH"
+       "DSPCHB TEDSEH  9-Feb-76 OPS26        (TYMNET)RPS620.BAK DISPATCH"
+       "BADMON YOXSAF 19-Sep-80 P034/F-4     FRECOR_3*FCWDS;FC DEADLOCK BUG
+                                             FIX"
+
+
+       " ** WE HAVE BEEN ZAPPED" ** "
+
+
+       "UNKNOWN ERROR"
+
+
+       "SYSTEM 33 IS UNAVAILABLE."
+
+
+       "EOJ"
+
+
+       "-"
+                                                                        Page 25
+CLRMAI INTRODUCTON
+
+
+                                CLRMAI PROGRAM
+                                --------------
+
+       ((INTRODUCTION)
+
+            CLRMAI is designed to clear mail sent to a particular  username  on
+       any TYMCOM-X from one system.
+
+       ((PROCEDURE))
+
+            To run the program you have to be logged into the username you want
+       to clear.  Being GFD'D into another directory will not affect this.
+
+            The program has three ways of determining which systems to clear.
+
+        1.  The system numbers are included in the command string as follows:
+
+               R (USER)CLRMAI;33,35,37
+
+            Note that the system numbers must be separated by a comma, no other
+            character will do.
+
+        2.  The system numbers are contained in a file called SYSNOS.DAT
+            which is in the logged in or GFD'D to directory.  The system
+            numbers may be separated by commas or carriage returns.
+
+            To use this  default system type:
+
+               R (USER)CLRMAI
+
+        3.  If the above file was not found then the program looks for the
+            the same filename in the program owner's directory (the directory
+            that the program is stored in).  For this reason the
+            file CLRMAI.LOW should have license HF.
+
+            The above conventions allow many users to run the same disk copy of
+       the program while still allowing them to personalize the default systems
+       that the program will clear.
+                                                                        Page 26
+SAMPLE RUN
+
+
+       ((SAMPLE RUN))
+
+       -RU (USERNAME)CLRMAI
+
+       VERSION 4.1
+
+       08
+       22
+       23
+       24
+       25
+       26
+       27
+       28
+       29
+       30
+       31
+       32
+       33
+       34
+       35
+       36
+       38
+       39
+       54
+       56
+
+       -
+                                                                        Page 27
+COM PROGRAM
+
+
+                               COM DOCUMENTATION
+                               -----------------
+
+       ((INTRODUCTION))
+
+            COM is a program that takes the contents of a  file  and  loads  it
+       into  an input buffer for execution.  Any commands normally input at the
+       monitor level (or as a response to a program prompt) can be put  in  the
+       file.  The file can be created by program or in an editor.
+
+       ((PROCEDURE))
+
+            The program is called in the following manner after GFDing to UTIL:
+
+            -RU COM;FILE.EXT (CR)    (ENTER THE FILE CREATED IN EDITOR)
+
+            At this point COM will output a carriage return line  feed  if  the
+       file has been found.  Too start execution type a second carriage return.
+       The program will take the contents of FILE.EXT and load it in the  input
+       buffer  and start executing the commands.  After loading the contents of
+       the file into a buffer COM will print 
+
+            EXIT            (THEN COM WILL DISPLAY EACH COMMAND AS IT
+                             IS EXECUTED).
+
+            VARIATIONS:
+
+            -RU COM (CR)
+
+            If no file has been specified the command string COM will  look  in
+       the current USER directory for a file named
+
+            FILE.CMD.  
+
+            If found COM will prompt with a carriage return indicating  it  has
+       found  FILE.CMD.   A carriage return at this point will start execution.
+       If FILE.CMD is not found COM will prompt the user with
+
+            INPUT FILE:___._           (ASKING FOR A FILE NAME)
+
+            Any file name may be entered at this point.  COM will check for the
+       name given and then prompt with a carriage return if found or display 
+
+            ****ERROR: CANNOT FIND ___._ (FILE NAME ENTERED)
+
+            EXIT
+
+            -
+
+       WARNINGS:
+               DO NOT EXCEED 200 CHARACTERS PER FILE (BUFFER) THIS IS THE
+       MAXIMUM NUMBER OF CHARACTERS THAT CAN BE PUT IN AN INPUT BUFFER.
+
+            The files can be linked by having the last entry in  the  file  (or
+       buffer at execution time) call the next file to be loaded.
+                                                                        Page 28
+CREATING COM FILES
+
+
+                         CREATING COM FILES IN EDITOR
+                         ----------------------------
+
+       .R EDITOR (CR)
+       *A (CR)
+       WATCH
+       SYSN
+       DAY
+       SYS UP
+       WHE OPR:
+       SET HAPPY
+       PSP
+       R LETTER ; BE SURE YOU REMOVE OBSOLETE LETTER(S).
+       C
+       Q
+       SCH
+       SYS <PAM>
+       ;
+       ;
+       ; **** IMPORTANT NOTE **** IF PJ IS IN A CONTROL C (^C)
+       ;                          STATE OR NOT LOGGED IN, NOTIFY
+       ;                          YOUR SUPERVISOR IMMEDIATELY.
+       ;
+       ;
+       SYS <CHKPNT>
+       R CHKCLK ('KI' ONLY)
+       ;
+       ; IF ANY STATEMENT OTHER THAN THE ABOVE OUTPUT, NOTIFY
+       ; YOUR SUPERVISOR IMMEDIATELY.
+       ;
+       RU (UTIL)COM;MIDS1
+       *W MIDS (CR)
+        EXISTING FILE - OK? Y (CR)
+       ### CHARS
+       *Q (CR)
+                                                                        Page 29
+CREATING COM FILES
+
+
+       .R EDITOR (CR)
+       *A (CR)
+       R 1CLEAR; GIVE BATCH CONTROLLER ANY REQUESTS THAT OUTPUT HERE.
+       DIR (OPER)/TOT
+       DIR (HOLD)/TOT
+       ;
+       ;
+       ; *** NOTE *** IF A BACKUP HAS BEEN TAKEN, AND YOU HAVE NOT BEEN
+       ; NOTIFIED TO SAVE THESE FILES, THEY SHOULD BE DELETED.
+       ;
+       ; WARNING!  DO NOT DELETE ANY FILE THAT HAS TO DO WITH
+       ;           ALL FILES (EXAMPLE:  33AF11.07).
+       ;
+       GFD OPER
+       SYSN
+       SYS ME
+       SETE OP SY GD TD WF
+       WATCH DAY
+       *W MIDS1 (CR)
+        EXISTING FILE - OK? Y (CR)
+       ### CHARS
+       *Q (CR)
+                                                                        Page 30
+COM SAMPLE RUN
+
+
+       ((SAMPLE RUN))
+
+       .GFD UTIL
+
+       .RU COM;MIDS
+
+       EXIT
+       .WATCH
+
+       .SYSN
+       TYMSHARE C35-P034/G-1 10-7-80
+       .DAY
+       3-JAN-1981 15:46:37
+
+       .SYS UP
+
+       TYMSHARE C35-P034/G-1 10-7-80 up 15:14:05 at 15:46:38 on Sat Jan 3,1981
+
+       .WHE OPR:
+
+       On Job  3 WCOSR1  71 OPER +
+       .SET HAPPY
+
+       .PSP
+       DSKB:   62992
+       BPA2(DSKB2:350402):  SDATAI(CTRL:0 DRV:C Data field correctable)
+        SCONI( Recoverable data check) SLBN(CYL:101 HEAD:0 RECORD:4) SDAT:1
+       BPA4(DSKB4:350404):  RETRIES:2 SDATAI(CTRL:0 DRV:E No message) SCONI(
+        Count error Equipment check) SLBN(CYL:0 HEAD:1 RECORD:15) SDEV:13
+
+       .R LETTER ; BE SURE YOU REMOVE OBSOLETE LETTER(S).
+       @C
+       1   0
+       2   0
+       3   0
+       4   0
+       5   0
+       6   0
+       @Q
+
+       .SCH
+       000000
+
+       .SYS <PAM>
+        1  DETACHED      PAM    4        SL       143.88  0:00:02 PJ +
+
+       .SYS <CHKPNT>
+        2  DETACHED      CHKPNT 8        TI        81.84  0:00:02 OPER +$
+
+        2  010381 SAT 69    DUMP UN1         OPER
+        2  010381 DAT 22    DUMP SYS         OPER
+
+        2  ACT    as+init         OPER
+                                                                        Page 31
+COM SAMPLE RUN
+
+
+       .R CHKCLK ('KI' ONLY)
+       THE DK10 CLOCK WORKS CORRECTLY.
+
+       EXIT
+
+       .RU (UTIL)COM;MIDS1
+
+       EXIT
+
+       .R 1CLEAR; GIVE BATCH CONTROLLER ANY REQUESTS THAT OUTPUT HERE.
+
+       BATCH CLEAR - VERSION 3.06
+       FILE LAST CLEARED  03-JAN-81  15:33
+
+       03-JAN-81  15:48
+
+       EXIT
+
+       .DIR (OPER)/TOT
+
+       TOTAL PAGES 473 FILES 12
+
+       .DIR (HOLD)/TOT
+
+       TOTAL PAGES 2 FILES 1
+
+       .GFD OPER
+
+       .SYSN
+       TYMSHARE C35-P034/G-1 10-7-80
+       .SYS ME
+        8* OPER +
+
+       .SETE OP SY GD TD WF
+
+       .WATCH DAY
+       [15:50:12]
+                                                                        Page 32
+INDIRECT OR COMMANDS FILES
+
+
+                          INDIRECT OR COMMANDS FILES
+
+       WHAT:   A SEPARATE FILE REFERRING TO NUMEROUS OTHER FILES IN 
+              A USERS DIRECTORY.
+
+       REASON:   TO HAVE AN ACCURATE LIST OF FILE NAMES ALREADY MADE UP.
+
+       USE:   MAY BE USED WITH TITO, SPOOL, PRINT AND LIST, DIRECT
+
+       FORMAT:   PROPER FORMAT FOR A COMMANDS OR INDIRECT FILE IS USER
+                NAME IN PARENTHESIS IN FRONT OF FIRST FILE ONLY: EX:
+
+                (USER)FILE.NM1
+                FILE.NM2
+                FILE.NM3
+                ETC...
+
+
+
+                                EDITOR COMMANDS
+
+                       COMMONLY USED FOR INDIRECT FILES
+
+                        ^ STANDS FOR CONTROL CHARACTER
+
+       APPEND OR A  = ALLOWS YOU TO START A FILE OR ADD TO EXISTING TEXT.
+       READ OR R  = READS INTO EDITOR AN EXISTING FILE.
+       WRITE OR W  = WRITES OUT TO FILE THE TEXT IN EDITOR.
+       ^A = DELETES THE CHARACTER AFTER WHICH IT IS TYPED.
+       ^Q = DELETES THE LINE AFTER WHICH IT IS TYPED.
+       ^D = DURING APPEND - TERMINATES APPEND.
+       ^D = DURING EDIT - COPIES REST OF OLD LINE AND TERMINATES EDIT.
+       ^D = DURING SUBSTITUTE - TERMINATES FIRST, THEN SECOND
+               PARTS OF SUBSTITUTE.
+       ^E = INSERT TEXT IN OLD LINE-END INSERT WITH ANOTHER ^E.
+       /  = TYPES OUT ENTIRE FILE AS EXISTS IN EDITOR.
+       #/ = TYPES OUT LINE NUMBER INDICATED BY #.
+       #EDIT OR #E =  TYPES OUT LINE NUMBER INDICATED READY TO
+                      BE EDITED.
+       SUBSTITUTE OR S  = ALLOWS CHARACTER(S) TO BE INSERTED IN PLACE OF
+                        CHARACTER(S) THROUGHOUT THE TEXT.
+       F"ANYTHING"=  = FINDS WHATEVER IS IN QUOTES ASKING PRINT?
+                      AND GIVING LINE NUMBER(S) WHERE FOUND.
+       $=  = GIVES LINE NUMBER OF LAST LINE OF TEXT.
+                                                                        Page 33
+INDIRECT OR COMMANDS FILES
+
+
+            IF NO LIST OF FILES ALREADY EXIST YOU MUST BUILD YOUR OWN
+       IN EDITOR. THIS MAY BE DONE IN TWO WAYS:
+
+       1) EX.
+          R EDITOR
+          *APP (CR)
+          (USER)FILE.NM1
+          FILE.NM2
+          FILE.NM3
+          ETC...(CONTROL D TO END APPEND)
+          *WRITE ANY.ANY
+
+       2) EX. IF BATCH REQUEST IS USED.
+          MOD (*1BATCH)PPRBAK.DAT  (FILE OF BATCH REQUESTS)
+          42905 CHARS
+          *F"FILE.NM1"=   (LOOKING FOR PROPER SECTION OF BATCH FILE)
+          PRINT? N    (YOU COULD ANSWER EITHER Y OR N)
+          2105          (GIVES YOU LINE NUMBER(S) WHERE FOUND)
+          1   (THIS TELLS YOU NUMBER OF TIMES FOUND)
+          *1,2104D     (DELETES TEXT IN FRONT, MAKING YOUR
+                          FIRST FILE LINE 1.)
+          *1/
+          FILE.NM1
+          *F"FILE.200"=  (LOOKING FOR LINE NUMBER OF LAST FILE YOU WANT)
+          PRINT? (Y OR N)
+          200
+          1
+          *201,$D  (DELETES TEXT AFTER YOUR LAST FILE)
+          *$=200
+          *1MODIFY  (SAME AS EDIT BUT DOESN'T PRINT OUT LINE)
+          <(SAMPLE)>FILE.NM1   (DONE BY ^E(SAMPLE)^E^D WHERE ^=CONTROL)
+          *1,2/
+          (SAMPLE)FILE.NM1
+          FILE.NM2  
+          *W (OPER)FILE.CMD
+           NEW FILE
+          385 CHRS
+          *Q
+          .
+                                                                        Page 34
+INDIRECT OR COMMANDS FILES
+
+
+                      EXAMPLE OF  USING PPRBAK.DAT FILE:
+
+       .R EDITOR
+       *R (*1BATCH)PPRBAK.DAT
+       65995 Chars
+       *F"H9477.DAT"=
+       Print? Y
+       3527
+       H9477.DAT
+       1
+       *1,3526D
+       *F"H9277.DAT"=
+       Print? N
+       7
+       1
+       *8,$D
+       */
+       H9477.DAT
+       H5277.DAT
+       H9577.DAT
+       H9677.DAT
+       H1177.DAT
+       H9177.DAT
+       H9277.DAT
+       *1MOD
+       <(MARZ49)>H9477.DAT
+       *1/
+       (MARZ49)H9477.DAT
+       *W MARZ.CMD
+        New file Y
+       85 Chars
+       *Q
+       .TYPE MARZ.CMD
+       (MARZ49)H9477.DAT
+       H5277.DAT
+       H9577.DAT
+       H9677.DAT
+       H1177.DAT
+       H9177.DAT
+       H9277.DAT
+                                                                        Page 35
+INDIRECT OR COMMANDS FILES
+
+
+            IF YOU HAVE AN EXISTING LIST OF FILES THEY MAY NOT BE
+       IN PROPER FORMAT. SOME EXAMPLES OF WHAT YOU MAY GET AND
+       HOW TO CORRECT FOLLOW:
+
+               1)ADDING USER NAME IN FRONT OF FIRST FILE.
+                       A. EDIT LINE 1 WITH ^E(USER)^E^D
+                       B. EDIT LINE 1 BY TYPING WHOLE NEW LINE
+                          WITH (USER)FILE.NM1
+
+               2)DELETING USER NAME IN FRONT OF ALL FILENAMES,EXCEPT LINE 1
+                       *2,$S (SAYS SUBSTITUTE LINES 2 THRU END)
+                       "^D"FOR"(USER)^D"
+                       WAIT? NO
+                       #  (TELLS NUMBER SUBS MADE, SHOULD BE
+                          1 LESS THAN TOTAL NUMBER OF FILES.)
+
+               3)SPACES IN FRONT OF FILENAMES.
+                       *S
+                       "^D"FOR"_^D"(WHERE_ IS NUMBER OF SPACES)
+                                                                        Page 36
+INDIRECT OR COMMANDS FILES
+
+
+       YOU CAN ALSO CREATE A FILE FROM A USER DIRECTORY ON DISK.
+       FOR EXAMPLE THE PRINT AND LIST COMMANDS WILL NOT ACCEPT
+       ANY WILCARD BUT (*). YOU GET A REQUEST TO LIST ALL
+       *.##.0 FILES IN OLDEST TO NEWEST ORDER NOT
+       SEPARATING BETWEEN THE FILES.
+
+               1)TYPE IN COMMAND: FI FILE.DIR_(USERNAME)*.##0/REV
+                       A. THIS WILL CREATE A FILE IN (OPER) CALLED
+                           FILE.DIR WHICH WILL LIST IN ORDER FROM
+                           OLDEST TO NEWEST THE FILES SPECIFIED.
+
+               2) YOU MUST DO SOME EDITING AS THERE WILL BE SPACES
+                   BETWEEN THE NAME AND EXTENSION RATHER THAN THE (.)
+
+
+
+
+            ONCE INDIRECT FILE IS BUILT PROPERLY, YOU MAY USE IT THUS:
+
+               DIR @ANY.ANY  (ANY.ANY NAME OF YOUR INDIRECT FILE)
+               PRINT @ANY.ANY
+               LIST @ANY.ANY
+               IN TITO  STORE @ANY.ANY **
+               IN SPOOLING REQUEST FILES? @ANY.ANY
+
+
+
+       **TITO HAS A LIMIT TO THE NUMBER OF CHARACTERS WHICH MAY
+       BE USED IN A COMMAND (INDIRECT)FILE. IF YOU HAVE MORE
+       THAN 50 FILES TO STORE YOU SHOULD MAKE YOUR INDIRECT
+       FILES IN BLOCKS OF 50. IF FILE NAMES ARE SHORTER YOU COULD
+       GO TO 60 BLOCKS.
+                                                                        Page 37
+TELHLP
+
+
+                             TELHLP DOCUMENTATION
+                             --------------------
+
+       PURPOSE:        To create a commands file for (SYS)TELECO and start
+                       TELECO running.
+
+       TO START:       Type 'R (UTIL)TELHLP'
+
+       TO ABORT:       Type Escape Key or a ^C.
+
+       Below is a list of questions asked by the program and possible answers:
+
+       DO YOU WANT TO RUN DETACHED ?
+
+       Type a 'Y' followed by a carriage return if you want TELECO to run in  a
+       detached state.  
+
+       COPY FROM USERNAME:
+
+       Type a username on the current system, or  type  a  carriage  return  to
+       default  to  your current directory name (Logged In or GFD'D), or type a
+       period ('.') to default to your Logged In directory name  regardless  of
+       GFD  status.   The  first time you use either of the default methods you
+       are prompted for the actual username, once this  is  done  it  is  never
+       asked again.
+
+       COPY TO USERNAME:
+
+       Type a username, or use  either  of  the  default  methods  above.   The
+       program  will  allow  any  username, but remember that you will not have
+       write files status on the remote systems so be careful what you enter.
+
+       COPY TO SYSTEM(S):
+
+       Type the system number or system numbers separated by  commas  that  you
+       want to copy files to.  The current default system numbers are 29-39.
+
+       REPLACE EXISTING FILES ?
+
+       Type a 'Y' if you want to overwrite the remote files, an 'N' if  you  do
+       not want to overwrite the remote files.
+
+       FILE NAMES:
+
+       Type the file names you want copied.  Do not type  a  username  at  this
+       point.   You  may  use  the TYMCOM-X wildcarding characters '*' and '#'.
+       separate filenames by commas.
+
+       O.K. ?
+
+       Answer 'Y' if you want to start TELECO running, or an 'N' if you want to
+       start over.
+                                                                        Page 38
+SAMPLE RUN
+
+
+       ((SAMPLE RUN))
+
+       .R (UTIL)TELHLP
+
+       VERSION #.#
+
+       DO YOU WANT TO RUN DETACHED ? (Y OR N)
+
+       COPY FROM USERNAME : (USERNAME, <CR>, OR '.')
+
+       COPY TO USERNAME : (SAME AS ABOVE)
+
+       SYSTEM NUMBERS : (SYSTEM NUMBER TO COPY TO SEPARATED BY ',')
+
+       REPLACE EXISTING FILES ? (Y OR N)
+
+       FILES: (FILENAMES SEPARATED BY COMMAS)
+
+       O.K. ? (Y OR N)
+
+       :
+       :
+       :
+       CANNOT OPEN 'COPY TO' FILE: /TELHLP.LOW/
+       :
+       REPLACING FILE (UTIL:26)TELHLP.LOW
+
+       COPY STARTING
+
+       (UTIL:33)TELHLP.LOW COPIES TO (UTIL:26)TELHLP.LOW
+
+       455 (470) CHARS. TRANSMITTED
+       :
+       -
+                                                                        Page 39
+XFORM
+
+
+                         XFORM PROGRAM ON THE TYMCOM-X
+                         -----------------------------
+
+       ((INTRODUCTION))
+
+            Program was developed to convert customer TITO 7TRK tapes  to  TITO
+       9TRK 6250 tapes.
+
+       ((PROCEDURES))
+
+            The program begins by asking for the input unit to be used and asks
+       for the density of informatin on the tape.  A check is made to make sure
+       the unit is a 7TRK unit.  Next, the user is asked for the unit  name  of
+       the  output  tape.  Checks are made on the unit for 9TRK, write ring and
+       6250 BPI.  The density is automatically set to 6250.
+
+            Next the user is querried as to if the  tapes  are  ready.   A  YES
+       response  will  continue the program.  The tapes are reset to LOAD point
+       before the copy begins.
+
+            Upon copy completion, a message is typed out  indicating  that  the
+       copy  is done;  both tapes are rewound and unloaded and then the user is
+       asked for the next tape(s) for conversion.
+
+
+                                         NOTE
+
+           This program is good for tapes with TEX and TITO save  sets  and
+           single  reel  tapes.   It does not convert TEX save sets to TITO
+           save sets and it cannot handle save sets  and  files  which  are
+           split over to another tape.
+
+
+                                                                        Page 40
+INDEX
+
+
+                                     INDEX
+                                     -----
+
+       AUXMAP  . . . . . . . . . . . . . .  22
+       AUXMAP INTRODUCTION . . . . . . . .  22
+       AUXMAP PROCEDURES . . . . . . . . .  22
+       AUXMAP SAMPLE RUN . . . . . . . . .  24
+
+       BACKUP ACTION COMMANDS  . . . . . .  4
+       BACKUP APPENDING/CHECKING . . . . .  7
+       BACKUP DENSITY  . . . . . . . . . .  4
+       BACKUP OTHER COMMANDS . . . . . . .  5
+       BACKUP PROGRAM  . . . . . . . . . .  4
+       BACKUP RESTORING FILES  . . . . . .  7
+       BACKUP STORING FILES  . . . . . . .  6
+       BACKUP TAPE DIRECTORY . . . . . . .  6
+       BACKUP TAPE POSITIONING COMMANDS  .  4
+
+       CLRMAI  . . . . . . . . . . . . . .  25
+       CLRMAI INTRODUCTION . . . . . . . .  25
+       CLRMAI PROCEDURE  . . . . . . . . .  25
+       CLRMAI SAMPLE RUN . . . . . . . . .  26
+       COM CREATING FILES  . . . . . . . .  28
+       COM INTRODUCTION  . . . . . . . . .  27
+       COM PROCEDURE . . . . . . . . . . .  27
+       COM SAMPLE RUN  . . . . . . . . . .  30
+       COMMAND SUMMARY . . . . . . . . . .  4
+
+       FAILSA COMMAND DESCRIPTION  . . . .  8
+       FAILSA ERRORS AND RECOVERIES  . . .  12
+       FAILSA INTRODUCTION . . . . . . . .  8
+       FAILSA SAMPLE RUNS  . . . . . . . .  10
+
+       INDEX . . . . . . . . . . . . . . .  40
+       INDIRECT OR COMMANDS FILES  . . . .  32
+       INTRODUCTION  . . . . . . . . . . .  39
+
+       MTCOPY COMMAND DESCRIPTION  . . . .  14
+       MTCOPY COMMAND SUMMARY  . . . . . .  13
+       MTCOPY ERRORS AND RECOVERIES  . . .  14
+       MTCOPY INTRODUCTION . . . . . . . .  13
+       MTCOPY SAMPLE RUNS  . . . . . . . .  14
+
+       TABLE OF CONTENTS . . . . . . . . .  2
+       TAPER PROGRAM . . . . . . . . . . .  18
+       TAPER SAMPLE BATCH REQUEST  . . . .  19
+       TAPER SAMPLE RUN  . . . . . . . . .  20
+       TELHLP DOCUMENTATION  . . . . . . .  37
+       TELHLP SAMPLE RUN . . . . . . . . .  38
+
+       VARIAN COMMAND DESCRIPTION  . . . .  15
+       VARIAN COMMAND SUMMARY  . . . . . .  15
+       VARIAN ERRORS AND RECOVERIES  . . .  17
+       VARIAN SAMPLE RUNS  . . . . . . . .  16
+       VARIAN SPECIAL TAPE PROGRAMS  . . .  15
+       VARREC COMMAND DESCRIPTION  . . . .  15
+       VARREC COMMAND SUMMARY  . . . . . .  15
+       VARREC ERRORS AND RECOVERIES  . . .  17
+       VARREC SAMPLE RUNS  . . . . . . . .  16
+       VARREC SPECIAL TAPE PROGRAMS  . . .  15
+
+       XFORM PROCEDURES  . . . . . . . . .  39
+
+    H	á
