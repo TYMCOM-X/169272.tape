@@ -1,0 +1,1581 @@
+
+
+
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        $$$$                        $$$$
+       $$$$                          $$$$
+       $$$$                          $$$$
+       $$$$$                        $$$$$
+       $$$$$$                      $$$$$$      KL-10 CONCEPTS AND OPERATION
+       $$$$$$                      $$$$$$
+       $$$$$$                      $$$$$$      OPERATIONS MINI-MANUAL #10
+       $$$$$$$                    $$$$$$$
+       $$$$$$$                    $$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$      WESTERN COMPUTER OPERATIONS
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$      COMPUTER OPERATIONS DIVISION
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$      JULY 1980
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$
+       $$$$$$$$$$$     ::     $$$$$$$$$$$
+       $$$$$$$$$$$     ::     $$$$$$$$$$$
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$       ::       $$$$$$$$$
+       $$$$$$$$$      ::::      $$$$$$$$$
+       $$$$$$$$      ::::::      $$$$$$$$
+       $$$$$$$$     ::::::::     $$$$$$$$      REPLACES DOCUMENT
+       $$$$$$$     ::::::::::     $$$$$$$      DATED JULY 1979
+       $$$$$$$    ::::::::::::    $$$$$$$
+       $$$$$$    ::::::::::::::    $$$$$$
+       $$$$$$   ::::::::::::::::   $$$$$$
+       $$$$$   ::::::::::::::::::   $$$$$
+       $$$$$  ::::::::::::::::::::  $$$$$
+       $$$$  ::::::::::::::::::::::  $$$$
+        $$$$::::::::::::::::::::::::$$$$
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+                                                                         Page 2
+
+
+                               TABLE OF CONTENTS
+                               -----------------
+
+
+                 TITLE                                          PAGE
+                 -----                                           ----
+
+                 KL-10 CONFIGURATION                            3
+
+                 INTRODUCTION TO THE KL-10                      4
+
+                 PDP-11/40 CONSOLE                              5
+
+                 PDP-11 CONSOLE SWITCHES                        6
+
+                 WHAT IS KLDCP?                                 7
+
+                 KLDCP CONSOLE FUNCTIONS                        8
+
+                 DECTAPE MOUNTING / DISMOUNTING                11
+
+                 DECTAPE FORMATTING COPYING AND DELETING       12
+
+                 TYPICAL BT TAPE PROGRAMS                      17
+
+                 COLD START - LOADING KLDCP                    18
+
+                 SENSE SWITCH COMMANDS                         18
+
+                 WARM START - LOADING THE MONITOR              19
+
+                 CRASH RECOVERY FLOWCHART                      20
+
+                 HUNG KL-10 PROCEDURES                         21
+
+                 KLDCP RESTART  / RELOAD                       23
+
+                 KLHUNG PROCEDURE                              24
+
+                 MANUAL BRINGDOWN / CRASHSAVE                  25
+
+                 PARITY ERROR RECOVERY PROCEDURES              27
+
+                 SETTING UP A REMOTE CONSOLE                   34
+
+                 INDEX                                         35
+                                                                         Page 3
+
+
+                              KL-10 CONFIGURATION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                         Page 4
+
+
+                           INTRODUCTION TO THE KL-10
+                           ------------ -- --- -----
+
+                             COMPARISON WITH KI-10
+
+            Within the DECsystem-10 series, the KL-10 represents a considerable
+       hardware  departure  from  the  central  processor configurations of the
+       earlier KA-10 and KI-10.  One of the most significant  features  of  the
+       KL-10  is  the  PDP-11 based Console/Diagnostic front end computer which
+       replaces the KA/KI standard console I/O equipment (used for READIN), the
+       operator  console  and  the  arithmetic  processor indicator panels.  In
+       place of the various keys, switches and lights on the KI-10 console is a
+       program  called  KLDCP.  This program runs in the PDP-11 to allow system
+       checking, setting sense switches, accessing  stand-alone  utilities  and
+       diagnosing various hardware malfunctions on the KL-10.
+
+            The instruction set for the KL-10 is microprogrammed, loaded by the
+       PDP-11  using  a DECTAPE channel.  As the micro-code is fetched, it sets
+       and resets flip flops and data paths within the KL-10.  This allows  the
+       possibility  of  using  microcode  to  establish  a variety of potential
+       processor instruction sets.
+
+            The KI-10 paper tape boots is replaced by a KL-10 BOOTS, loaded (as
+       is  KLDCP) through the PDP-11 DECTAPE equipment.  The command facilities
+       available through the console terminal  (CTY)  permit  the  operator  to
+       communicate  with the KL-10 through the PDP-11, examine and deposit into
+       memory locations and monitor the processor similar to the  way  afforded
+       through the KI-10 operator console and indicator panels.
+
+            The PDP-11 also acts as a diagnostic computer  able  to  check  the
+       KL-10  even  if  it's  down.   A special capability called KLINIK allows
+       maintenance of a system problem via the PDP-11 from a  remote  location.
+       This  capability accesses the front end processor and KLDCP using a data
+       set mounted near the PDP-11.
+
+            The KL-10 memory bus architecture differs from the  KI-10  in  that
+       it's  width  can  be  four 36-bit words instead of a single 36-bit word.
+       That is, the KL-10 can read/write four words from memory simultaneously.
+       The  KL-10  also  features  a  high-speed  buffer memory called the Data
+       Cache.  Cache may be viewed as 2048 general purpose fast registers which
+       substitute  temporarily  for  the most frequently referenced real memory
+       locations.  Data read from memory is likely to be found already  in  the
+       cache,  thus  reducing  the  core cycle access time for certain types of
+       reads and writes.
+
+            The DK-10 real time clock on  the  KI-10  is  replaced  with  KL-10
+       internal  accounting  meters.   As a result, the method for checking the
+       clock (CHKCLK on KI-10) will be different to support these differences.
+                                                                         Page 5
+
+
+                           PDP-11 FRONT-END CONSOLE
+                                                                         Page 6
+
+
+                                PDP-11 CONSOLE
+                                ------ -------
+
+            There are various operating switches, indicator lights,  and  other
+       controls  located  on  the  console  processor  panel directly below the
+       dectape drive.  Below these controls, another panel contains a row of 30
+       switches  and  additional  indicator  lights.   The  switches  that  are
+       numbered from 0 through 17 comprise the  switch  register.   The  switch
+       register  contains  18  switches representing bit settings of 0 or 1 and
+       numbered 0-17 from right to left according to PDP-11  convention.   NOTE
+       THAT  THIS IS THE REVERSE OF THE WAY THAT BITS ARE NUMBERED IN THE KI-10
+       PROCESSOR.  
+
+            The four load switches are labeled above  from  left  to  right  as
+       DISK, DECTAPE, SW/REG, and ENABLE.  The purpose of each is given below.
+
+               LOAD SWITCH     PURPOSE
+               -----------     -------
+
+               DISK            LOAD THE SYSTEM FROM A DISK PACK.
+                               (THIS IS NOT USED W/ TYMCOM-X)
+
+               DECTAPE         LOAD THE SYSTEM FROM DECTAPE
+
+               SW/REG          LOAD THE SYSTEM ACCORDING TO THE CONTENTS
+                               OF THE SWITCH REGISTER.
+
+               ENABLE          ENABLE LOADING VIA ANY LOAD SWITCH
+
+            There are two power switches.  The black switch, labeled  POWER  ON
+       above  and POWER OFF below, is the switch normally used to y or cut
+       power to the system.  The red emergency power off switch should be  used
+       only  for  emergencies  (eg.  fire) where you must turn off the power as
+       quickly  as  possible.   If  you  ever  have  to  press   this   switch,
+       Tymshare/Maintenance must assist you with restoring power to the system.
+
+            The power light glowing red indicates that power  is  on.   If  the
+       power  light  is  blinking,  an  override  condition  has  been  set  by
+       Tymshare/Maintenance.  You should not run the KL-10 with  this  override
+       on because the system will not power down from overheating.
+
+            The fault light should  normally  be  off.   If  it  glows  contact
+       Tymshare/Maintenance;   A  glowing light indicates a malfunction such as
+       overheating.
+
+                                  POWERING UP
+
+            In most cases you should only have to check to see that  the  power
+       light  to  the  right  of  the load switches is glowing red.  Otherwise,
+       press the black power switch to the POWER ON position.
+                                                                         Page 7
+
+
+                                 KLDCP OVERVIEW
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                         Page 8
+
+
+                 KLDCP - KL CONSOLE FUNCTIONS ON THE PDP-11/40
+                ----- - -- ------- ---------- -- --- ---------
+
+            As mentioned, the KLDCP program in the PDP-11/40 replaces  most  of
+       the  functions  accomplished from the KI-10 console.  This document will
+       describe several functions of interest to  operations  and  compare  the
+       KLDCP operation or command with the KI-10 equivalent.
+
+
+                             ((KLDCP INTERACTION))
+
+
+        KLDCP OPERATION/
+           COMMAND              FUNCTION                KI EQUIVALENT
+        ----------------        --------                -------------
+
+        MOUNT DECTAPE ON 0      LOAD KLDCP INTO              -
+        PRESS 'ENABLE'          PDP-11
+        PRESS LOAD SWITCH
+        DECTAPE
+
+        ^X (CTRL. X)            FROM 10 MONITOR              -
+                                GET ATTENTION OF
+                                KLDCP
+
+        MC                      LEAVE KLDCP AND              -
+                                CONTINUE
+
+        RN                      RUN 10 MONITOR MODE          -
+                                (USED WITH MC)
+
+
+                        ((KLDCP SENSE SWITCH FUNCTION))
+
+
+        KLDCP OPERATION/
+           COMMAND              FUNCTION                KI EQUIVALENT
+        ----------------        --------                -------------
+
+        SW N(NNNNN)             ENABLE SENSE SWITCH     SET SENSE SWITCH
+                                SETTING                 ON CONSOLE
+
+        SW                      DETERMINE SENSE         LOOK AT SENSE
+                                SWITCH SETTING          SWITCHES ON
+                                                        CONSOLE
+
+        SW 0                    TURN OFF SENSE          RESET SENSE
+                                SWITCHES                SWITCH ON
+                                                        CONSOLE
+                                                                         Page 9
+
+
+                               ((KL-10 LOADING))
+
+
+        KLDCP OPERATION/
+           COMMAND              FUNCTION                KI EQUIVALENT
+        ----------------        --------                -------------
+
+        MOUNT DECTAPE ON N      SELECT INPUT DEVICE     MOUNT PAPERTAPE
+        DTN                     DEVICE FOR LOAD         SET I/O DEVICE
+                                                        KEYS ON CONSOLE
+
+        BT                      LOAD BOOTSTRAP          PRESS READIN KEY
+
+        MOUNT MONITOR TAPE      LOAD FTALOD/MONITOR     MOUNT FTALOD PTP
+        AND DECTAPE W/ PROG                             AND MONITOR TAPE
+        J FTALOD                                        PRESS READIN
+
+        BOOTS COMMAND           FUNCTION                KI EQUIVALENT
+        -------------           --------                -------------
+
+        (CR)                    LOAD MONITOR            (CR)
+
+        BACKUP                  LOAD BACKUP MONITOR     BACKUP
+
+        PAKCOP                  LOAD PACKCOPY PROG.     PAKCOP
+
+
+
+
+                             ((KL-10 STOP/START))
+
+
+        KLDCP OPERATION/
+           COMMAND              FUNCTION                KI EQUIVALENT
+        ----------------        --------                -------------
+
+        SP                      STOP PROCESSING         PRESS CONSOLE 
+                                                        STOP KEY
+
+        RN                      CONTINUE FROM STOP      PRESS CONTINUE
+                                                        KEY
+
+        SM                      RESET PROCESSOR ETC     PRESS RESET KEY
+
+        SI                      SET SINGLE INSTRUCTION  PRESS SING INSTR
+                                MODE                    KEY ON CONSOLE
+
+        ST ADDR                 START 10 AT ADDR        SET MA TO ADDR
+                                                        PRESS START KEY
+                                                                        Page 10
+
+
+                       ((KL-10 MEMORY EXAMINE/DEPOSIT))
+
+
+        KLDCP OPERATION/
+           COMMAND              FUNCTION                KI EQUIVALENT
+        ----------------        --------                -------------
+
+        EM ADDR                 EXAMINE AND DISPLAY     KEYIN MA AND 
+                                PDP-10 MEMORY ADDR      PRESS EXAMINE 
+                                                        THIS KEY ON 
+                                                        CONSOLE
+
+        EN                      EXAMINE AND DISPLAY     PRESS EXAMINE
+                                NEXT PDP-10 MEMORY      NEXT KEY ON
+                                ADDRESS                 CONSOLE
+
+        DM ADDR:DATA            DEPOSIT DATA INTO       KEYIN MA AND
+                                A MEMORY LOCATION       DATA THEN PRESS
+                                                        DEPOSIT THIS KEY
+
+        DN DATA                 DEPOSIT DATA INTO       KEYIN DATA THEN
+                                THE NEXT MEMORY ADDR    PRESS DEPOSIT
+                                                        NEXT KEY
+
+        MZ ADDR,COUNT           CLEAR PDP10 CORE        DEPOSIT DATA 0
+        (MZ 0,-1)               CLEARS 256K ONLY        INTO MA 0, SET
+                                USE FASCLR TO           PAR STOP, NXM
+                                CLEAR ALL CORE          STOP AND REPEAT,
+                                                        PRESS DEPOSIT
+                                                        NEXT
+
+
+
+                                                                        Page 11
+
+
+                       DECTAPE MOUNTING AND DISMOUNTING
+                       ------- -------- --- -----------
+
+            Most frequently, the DECTAPES necessary for KL-10  operations  will
+       already  be  mounted on the TU56 DECTAPE transports.  The DECTAPE on the
+       left (unit 0) will contain KLDCP for  use  by  the  PDP-11  for  console
+       functions  and  diagnostics;   The  right hand DECTAPE (unit 1) contains
+       various utility programs including BOOTS and FTALOD.
+
+            DECTAPE TRANSPORT SHOULD BE TURNED OFF WHEN NOT IN USE.  
+
+            Should you ever need to mount or dismount a DECTAPE, the  procedure
+       below should be used:
+
+
+                                   MOUNTING
+
+               1.  MOUNT THE DECTAPE ONTO THE LEFT HAND HUB SO THE TAPE 
+                   FEEDS UPWARD AT THE LEFT PERIMETER OF THE REEL.
+
+               2.  THREAD THE TAPE TO THE RIGHT, OVER THE TOP OF THE
+                   TAPE GUIDES AND TAPE HEAD, AND CLOCKWISE ONTO THE 
+                   TAKEUP REEL.
+
+               3.  WIND SEVERAL TURNS OF TAPE CLOCKWISE ONTO THE TAKEUP
+                   REEL.
+
+               4.  PRESS THE REMOTE/LOCAL SWITCH INTO THE LOCAL (BOTTOM
+                   PRESSED) POSITION.
+
+               5.  ADVANCE THE TAPE ABOUT TEN TURNS ONTO THE TAKEUP REEL 
+                   BY DEPRESSING THE TOP END OF THE RIGHTMOST 
+                   ROCKER SWITCH.
+
+               6.  PRESS THE REMOTE/LOCAL SWITCH INTO THE REMOTE (TOP
+                   PRESSED) POSITION.
+
+               7.  THE WRITE ENABLE/WRITE LOCK SWITCH SHOULD BE SET TO
+                   WRITE LOCK BECAUSE THERE SHOULD BE NO REASON TO
+                   WRITE ONTO ONE OF THESE DECTAPES.
+
+
+                                  DISMOUNTING
+
+               1.  SET THE REMOTE/LOCAL SWITCH TO THE LOCAL POSITION.
+
+               2.  WIND THE TAPE COMPLETELY ONTO THE LEFT REEL BY
+                   PRESSING THE REWIND SWITCH (TOP END OF THE LEFT
+                   MOST ROCKER SWITCH) AND HOLDING IT PRESSED UNTIL
+                   THE TAPE HAS WOUND ONTO THE LEFT REEL.
+
+               3.  PLACE THE REMOTE/LOCAL SWITCH TO OFF (MIDDLE
+                   POSITION) AND REMOVE THE TAPE.
+                                                                        Page 12
+
+
+                             FORMATTING A DECTAPE
+                             --------------------
+
+       A. TO FORMAT DECTAPE:
+
+          1. READ IN KLDCP.
+
+          2. CONTROL C OUT OF KLDCP.
+
+          3. AT PROMPT '>.' P YPTC.BIN <CR>
+
+          4. COMES BACK TO PROMPT '>.'
+
+          5. MAKE SURE TAPE TO BE FORMATTED IS ON "DT0"
+             AND IS "WRITE-ENABLED" AND IN "REMOTE".
+
+          6. MAKE SURE OTHER UNIT NOT BEING USED IS OFF.
+
+          7. ENABLE "WRITE ALL" AND "WRITE T&M" SWITCHES.
+             (LOCATED BEHIND PANEL ABOVE DECTAPE UNITS)
+
+          8. PUSH "HALT" ON 11/40 (MINI-CONSOLE).
+
+          9. LOAD ADDRESS "600" INTO 11/40.
+             (PUSH ADDRESS SWITCHES "7&8" UP)
+
+         10. PUSH "LOAD ADR" ON 11/40.
+
+         11. PUSH "HALT" BACK UP ON 11/40.
+
+         12. PUSH "START" ON 11/40 AND TAPE SHOULD START
+             FORMATTING.
+
+       B. TO VERIFY FORMATTED DECTAPE:
+
+          1. LEAVE FORMATTED TAPE ON UNIT EXACTLY AS IS.
+
+          2. DISABLE "WRITE T&M" SWITCH.
+
+          3. REWIND FORMATTED TAPE PARTIALLY.
+             (UNIT MUST BE IN "LOCAL" TO REWIND)
+
+          4. AFTER REWINDING, PUT UNIT BACK IN "REMOTE".
+
+          5. PUSH "CONTINUE" ON 11/40 AND TAPE VERIFIES.
+
+
+                                     NOTE
+
+               AFTER FORMATTING TAPE, BE SURE TO DISABLE  "WRITE
+               ALL"  SWITCH AND REMOVE ADDRESS "600" ON 11/40 BY
+               PUSHING DOWN ADDRESS SWITCHES "7&8".   THIS  MUST
+               BE  DONE  BEFORE  READING  IN  KLDCP OR COPYING A
+               TAPE.
+
+
+                                                                        Page 13
+
+
+                               COPYING A DECTAPE
+                               -----------------
+
+
+          A. CHECKING TO SEE IF DECTAPE IS FORMATTED:
+
+             1. READ IN KLDCP.
+
+             2. CONTROL C OUT OF KLDCP.
+
+             3. AT PROMPT '>.' P KLDCPU.A11 <CR>
+
+             4. AT PROMPT '>.' SED <CR>
+
+             5. COMES TO PROMPT '*'
+
+             6. MOUNT TAPE YOU ARE COPYING TO ON "DT1".
+
+             7. MAKE SURE "WRITE ALL" AND "WRITE T&M" SWITCHES
+                ARE DISABLED AND "DT1" IS "WRITE-ENABLED".
+
+             8. AT PROMPT '*' DIR DT1 <CR>
+
+             9. IF TAPE IS FORMATTED, "FREE FILES:56, FREE BLOCKS:
+                507" WILL OUTPUT. IF NOT FORMATTED, FORMAT BEFORE COPY.
+
+          B. TO COPY DECTAPE:
+
+             1. MOUNT TAPE TO BE COPIED ON "DT0" AND MAKE SURE
+                UNIT IS ON "WRITE LOCK".
+
+             2. AT PROMPT '*' DTCOPY <CR>
+
+             3. WILL ASK YOU TO MOUNT MASTER TAPE ON "UNIT 0" AND
+                NEW DECTAPE ON "UNIT 1". TYPE ALTMODE WHEN READY.
+                (IF ABOVE PROCEDURE WAS FOLLOWED, TAPES ARE ON PROPER
+                UNITS)
+
+             4. TAPE AUTOMATICALLY VERIFIES, AND "COMPLETE" WILL
+                PRINT OUT IF COPY IS ALRIGHT.
+
+             5. AT PROMPT '*' DIR DT1 <CR>
+                (TO OBTAIN DIRECTORY OF FILES ON TAPE)
+                                                                        Page 14
+
+
+                          DELETING FILES FROM DECTAPE
+                          ---------------------------
+
+
+          1. READ IN KLDCP.
+
+          2. CONTROL C OUT OF KLDCP.
+
+          3. AT PROMPT '>.' P KLDCPU.A11 <CR>
+
+          4. AT PROMPT '>.' SED <CR>
+
+          5. COMES TO PROMPT '*'
+
+          6. MOUNT TAPE YOU ARE DELETING FILES FROM ON "DT1".
+
+          7. MAKE SURE "WRITE ALL" AND "WRITE T&M" SWITCHES
+             ARE DISABLED AND "DT1" IS "WRITE-ENABLED".
+
+          8. MAKE SURE OTHER UNIT NOT BEING USED IS OFF.
+
+
+                                     NOTE
+
+               AFTER  STEPS  1-7  ARE  COMPLETED,  AND   ANYTIME
+               THEREAFTER  IN DELETING AND APPENDING PROCEDURES,
+               YOU CAN DO A "DIR DT1" AT PROMPT '*' TO SEE  WHAT
+               FILES  ARE  ON TAPE BEFORE BEGINNING, OR TO CHECK
+               IF THE PROCEDURE IS WORKING.  YOU CAN ALSO  DO  A
+               "DIR   DT#:YOUR.FIL   <CR>"   TO   CHECK  FOR  AN
+               INDIVIDUAL FILE ON EITHER TAPE.  SUBSTITUTE  YOUR
+               FILE NAME FOR "YOUR.FIL" IN THESE PROCEDURES.
+
+
+          9. AT PROMPT '*' DEL DT1:YOUR.FIL <CR>
+             (THIS CAN BE REPEATED AS MANY TIMES AS NECESSARY)
+
+          10. AT PROMPT '*' DIR DT1 <CR>
+              (TO OBTAIN DIRECTORY OF FILES ON TAPE)
+                                                                        Page 15
+
+
+                          APPENDING FILES TO DECTAPE
+                          --------------------------
+
+
+                                     NOTE
+
+               IF FILES HAVE BEEN DELETED FROM TAPE, FILES  WILL
+               BE APPENDED TO TAPE IN THE POSITIONS WHERE OTHERS
+               WERE DELETED, PROVIDED THERE IS  ROOM.   IF  NOT,
+               THEY WILL BE APPENDED TO END OF TAPE.
+
+
+          1. READ IN KLDCP.
+
+          2. CONTROL C OUT OF KLDCP.
+
+          3. AT PROMPT '>.' P KLDCPU.A11 <CR>
+
+          4. AT PROMPT '>.' SED <CR>
+
+          5. COMES TO PROMPT '*'
+
+          6. MOUNT TAPE YOU ARE APPENDING FILES "TO" ON "DT1".
+
+          7. MOUNT MASTER TAPE ON "DT0".
+
+          8. MAKE SURE "WRITE ALL" AND "WRITE T&M" SWITCHES ARE DISABLED,
+             AND "DT1" IS "WRITE-ENABLED" AND "DT0" IS "WRITE-LOCKED".
+
+          9. SEE "NOTE" ON PAGE 14.
+             (APPLIES TO BOTH "DT0" AND "DT1" AS BOTH ARE ON)
+
+          10. AT PROMPT '*' PIP DT1:YOUR.FIL<DT0:YOUR.FIL <CR>
+              (THIS CAN BE REPEATED AS MANY TIMES AS NECESSARY)
+
+          11. AT PROMPT '*' DIR DT1 <CR>
+              (TO OBTAIN DIRECTORY OF FILES ON TAPE)
+
+
+                                     NOTE
+
+               THIS PROCEDURE CAN  ALSO  BE  USED  TO  PUT  ONLY
+               CERTAIN  FILES  ON  A DECTAPE.  REPEAT STEP 10 AS
+               MANY TIMES AS NECESSARY, UNTIL ALL FILES YOU WANT
+               ARE  ON  TAPE.   SHOULD  IT  FAIL  TO  WORK,  USE
+               "ALTERNATE PROCEDURE TO  COPY  CERTAIN  FILES  TO
+               DECTAPE" ON PAGE 16.
+
+
+                                                                        Page 16
+
+
+             ALTERNATE PROCEDURE TO COPY CERTAIN FILES TO DECTAPE
+             ----------------------------------------------------
+
+
+                                     NOTE
+
+               THIS PROCEDURE IS TO BE USED ONLY IF PROCEDURE ON
+               PAGE 15 FAILS.  FOLLOW ALL STEPS ON PAGE 13 UP TO
+               PART  B,  STEP  2.   CONTINUE  FROM  THERE   WITH
+               FOLLOWING  STEPS.  ALSO MAKE SURE TO MOUNT MASTER
+               TAPE ON "UNIT 0" AND NEW DECTAPE ON "UNIT 1".
+
+
+          1. AT PROMPT '*' ZERO DT1 <CR>
+
+          2. AT PROMPT '*' SVBOOT DT1:<DT0:KLDTBT.BIN <CR>
+
+          3. AT PROMPT '*' PIP DT1:KLDCP.BIN=DT0:KLDCP.BIN <CR>
+
+          4. AT THIS POINT, THE FIRST FILE YOU WANT ON TAPE
+             CAN BE ENTERED. USE FORMAT IN STEP 5.
+
+          5. AT PROMPT '*' FILE DT1:<DT0:YOUR.FIL<CR>
+
+
+                                     NOTE
+
+               REPEAT STEP 5 AS MANY TIMES AS  NECESSARY,  UNTIL
+               ALL FILES YOU WANT ARE ON TAPE, SUBSTITUTING YOUR
+               FILE NAME FOR "YOUR.FIL".  AFTER ALL  FILES  HAVE
+               BEEN ENTERED IN THIS MANNER, GO TO STEP 6.
+
+
+          6. AT PROMPT '*' DIR DT1 <CR>
+             (TO OBTAIN DIRECTORY OF FILES ON TAPE)
+
+
+                                     NOTE
+
+               WARNING:  THIS IS AN  ALTERNATE  PROCEDURE  ONLY.
+               WITH  THIS  PROCEDURE  YOU  CAN  ONLY PUT CERTAIN
+               FILES ON DECTAPE.  ONCE YOU HAVE DONE A DIRECTORY
+               OF  THE  TAPE, YOU CANNOT APPEND ANYMORE FILES TO
+               IT WITHOUT OVERWRITING TAPE.  TO DELETE OR APPEND
+               FILES, USE PROCEDURES ON PAGES 14 & 15.
+
+
+                                                                        Page 17
+
+
+                          TYPICAL BT DECTAPE CONTENTS
+                          ------- -- ------- --------
+
+
+
+           FILENAME                FUNCTION
+           --------                --------
+
+           KLDCP.BIN               KL CONSOLE AND DIAGNOSTIC PROGRAM
+           BBT.CMD                 COMMANDS FILE TO START IPL ('BT)
+           UB.RAM                  PART OF IPL - LOAD MICROCODE
+           CONFIG.CCL              PART OF IPL - CONFIGURE MEMORY
+           MEMCON.A11              PDP-11 ASCII - CONFIGURE 10 MEMORY
+           BOTLOD.A10              PART OF IPL - KL-10 BOOTSTRAP
+           FTALOD.A10              ASCII-10 - LOAD MON FROM MAGTAPE
+           FTALOD.CMD              COMMANDS FILE TO RUN FTALOD
+           FASCLR.CMD              COMMANDS FILE TO CLEAR MEMORY
+           CORCLR.CCL              COMMANDS TO CLEAR MEMORY
+           NEWSCN.CMD              COMMANDS FILE - FIND BAD PARITY
+           INIT.CCL                COMMANDS TO INIT FOR NEWSCN
+           147.CCL                 COMMANDS TO FORCE BOOTS LOADED
+           KLHUNG.CMD              COMMANDS FILE - DUMP DIAG INFO
+           DHQFA.A11               PDP-11 ASCII - DIAG TRACE UTILITY
+           KLDCP.HLP               TEXT FILE OF KLDCP OPTIONS, COMMANDS
+           YPTC.BIN                BINARY PROG. TO FORMAT DECTAPE
+           KLDCPU.A11              PDP-11 ASCII - CHECKS DECTAPE FORMAT
+           KLDTBT.BIN              11/40 BOOT TO LOAD KLDCP FROM DECTAPE
+           KLINIK.CMD              COMMANDS FILE - SET UP REMOTE CONSOLE
+           PUTSCN.CCL              COMMANDS TO SCAN PG 0 FOR BAD PARITY
+           P0ONES.CCL              COMMANDS TO TEST PG 0 WITH ONES
+           P0ONE.CCL               COMMANDS TO TEST PG 0 PARITY BIT
+           P0ALTB.CCL              COMMANDS TO TEST PG 0 ALTERNATE BITS
+           P0CLTB.CCL              COMMANDS TO TEST PG 0 ALTERNATE BITS
+           P0ZROS.CCL              COMMANDS TO TEST PG 0 WITH ZEROS
+           PUTSC2.CCL              COMMANDS TO TEST CORE FOR BAD PARITY
+           PUTSC3.CCL              COMMANDS TO TEST CORE FOR BAD PARITY
+           PEWRTR.CMD              COMMANDS FILE - WRITE BAD PARITY
+           PEWRTR.CCL              COMMANDS TO PUT BAD PARITY IN CORE
+           TSALDR.A10              ASCII-10 - LOAD DIAGNOSTICS
+           TSALDR.CMD              COMMANDS FILE - LOAD DIAGNOSTICS
+           BOTLOD.CMD              CMDS FILE - LOAD BOOTS W/O CORE CLEAR
+                                                                        Page 18
+
+
+                         COLD START - (LOADING KLDCP)
+                          ---- ----- - -------- -----
+
+            As mentioned above, the console front end in  the  PDP-11  must  be
+       running KLDCP to allow the operator contact with the KL-10.  If not, you
+       must load KLDCP from dectape mounted on DPA0.
+
+               1) MAKE SURE THE DECTAPE ON DTA0 CONTAINS KLDCP.
+                  IF NOT, MOUNT THE CORRECT TAPE ON UNIT 0.
+
+               2) ON THE PDP-11, PRESS THE LOAD SWITCH 'ENABLE';
+
+               3) NEXT PRESS THE PDP-11 LOAD SWITCH 'DECTAPE'.
+
+            A message reporting the load of KLDCP should now output on the CTY.
+       Once this has been accomplished, you can procede to load the appropriate
+       P03N monitor from disk or from  monitor  tape  using  the  'warm  start'
+       procedure on the next page.
+
+
+                                SENSE SWITCHES
+                                ----- --------
+
+            Since KLDCP performs the console functions  that  were  handled  by
+       keys on the earlier DECSYSTEM-10'S, sense switches also are set, checked
+       and turned off via the program.
+
+            There are six sense switches that are used on  the  TYMCOM-X.   The
+       commands  to  set  these  (e.g.   'SW  4'  to  set sense switch 4) and a
+       translation of the KLDCP setting for each possible sense switch is given
+       below:
+
+               SSW1    IS      'SW 40'
+               SSW2    IS      'SW 20'
+               SSW3    IS      'SW 10'
+               SSW4    IS      'SW 4'
+               SSW5    IS      'SW 2'
+               SSW6    IS      'SW 1'
+
+               'SW 0' CLEARS ANY SENSE SWITCHES THAT MAY BE ON.
+               'SW (CR)' REPORTS ANY SENSE SWITCHES SET.
+                                                                        Page 19
+
+
+                WARM START - (USING KLDCP TO LOAD THE MONITOR)
+                ---- ----- - ------ ----- -- ---- --- --------
+
+
+                                         NOTE
+
+           The CTY is shared by the KL-10  and  the  PDP-11.   To  get  the
+           attention  of  KLDCP  for this procedure, you may have to type a
+           control X.
+
+           The function of sense switch 4 on the KL-10 is similar  to  it's
+           use  on KI-10'S with respect to automatic restarts.  To set SSW4
+           prior to loading the monitor, type 'SW4' to set it using  KLDCP;
+           type 'SW0' to turn off all sense switches.
+
+
+            The Tymshare monitor for the KL-10 can be loaded either  from  disk
+       or from monitor tape.
+
+                               MONITOR FROM DISK
+                               ------- ---- ----
+
+               1) MAKE SURE THE DECTAPE ON DTA1 CONTAINS A COPY 
+                  OF BOOTS. IF NOT, FIND THE CORRECT TAPE AND MOUNT
+                  IT ON THE RIGHT HAND DECTAPE DRIVE.
+
+               2) USING KLDCP, TYPE 'DT1(CR)'. THIS SELECTS
+                  THE RIGHT HAND DRIVE SET UP AS UNIT 1.
+
+               3) TYPE 'BT(CR). THIS SHOULD LOAD THE BOOTSTRAP.
+
+               4) AT THIS POINT, TYPING ANOTHER CARRIAGE RETURN
+                  WILL LOAD THE CURRENT MONITOR FROM DISK;
+                  ALTERNATELY, TYPING 'BACKUP' LOADS THE BACKUP
+                  MONITOR; OR TYPE 'PAKCOP' TO LOAD PACKCOPY.
+
+
+                             MONITOR FROM MAGTAPE
+                             ------- ---- -------
+
+               1) MAKE SURE THE DECTAPE ON DTA1 CONTAINS A COPY
+                  OF FTALOD. IF NOT, FIND THE CORRECT TAPE AND
+                  MOUNT IT ON THE RIGHT HAND DRIVE.
+
+               2) USING KLDCP, TYPE 'DT1(CR)'. THIS SELECTS
+                  THE RIGHT HAND DRIVE SET UP AS UNIT 1.
+
+               3) TYPE 'J FTALOD(CR)' TO LOAD THE PROGRAM.
+
+               4) FTALOD WILL ASK FOR TAPE DRIVE NUMBER (FTAN)
+                  OF THE STC DRIVE WHERE THE MONITOR TAPE IS
+                  ON-LINE.
+                                                                        Page 20
+
+
+                            CRASH RECOVERY FLOWCHART
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        Page 21
+
+
+                          KL-10 HUNG SYSTEM RECOVERY
+                          ----- ---- ------ --------
+
+
+       ((INTRODUCTION))
+
+            For normal crash situations, the TYMCOM-KL operating system is able
+       to  halt  the  system,  dump  a  core image to a fixed area of the disk,
+       initiate a BT (boots) and restart.  These normal recovery situations are
+       described  elsewhere.   Occasionally  however,  a  problem  arises which
+       disables the normal crash  /  auto-restart  sequence:   The  KL-10  will
+       appear to be hung up.  Symptoms of this abnormal situation may include:
+
+               -THERE MAY BE AN UNUSUAL KLDCP ERROR MESSAGE
+               -THERE MAY BE NO RESPONSE TO LOGGED-IN TTY INPUT
+               -ATTEMPTS TO LOGIN TO THE SYSTEM WILL BE UNSUCCESSFUL
+               -A TYMNET CHECK MAY SHOW THE HOST UNAVAILABLE
+
+       ((SUMMARY)) - see procedure flow on next page
+
+       1.  Check to see if the TYMBASE has caused the hangup.  This is detailed
+       in the mini-manual TYMCOM-X OPERATING SYSTEM.
+
+       2.  Memory hangups can hang the system.  Refer to  the  description  and
+       procedure in TYMCOM-X OPERATING SYSTEM.
+
+       3.  Perhaps the disk controller caused the hanging of the KL-10.  Follow
+       the procedure described in DISK AND FILES mini-manual.
+
+       4.  Is KLDCP itself hung up?  If you can't get a response to  'CTRL  X',
+       restart  KLDCP  by loading and starting from PDP-11 address 15;  if this
+       fails to get KLDCP, reload the it from dectape using  the  'COLD  START'
+       procedure.
+
+       5.  Check the CTY for an unusual KLDCP error message.  If so, attempt to
+       get  a  PDP-11  dump of status information.  Type 'J KLHUNG' in KLDCP to
+       load the dump program from DECTAPE.
+
+       6.  Attempt to get a normal  crash/restart  by  the  KLDCP  command  'DM
+       30:1'.  If successful, return to monitor mode ('MC'), run ('RN) and save
+       crash with /D.
+
+       7.  If this doesn't work, the crash routine may  be  looping.   In  this
+       case,  load from dectape using the 'I 147' command.  This should force a
+       crash and branch to 'BOOTS LOADED'.  If so, return to monitor  mode  and
+       /D to save crash.
+
+       8.  If neither of the above two steps get  a  crash,  type  'J  BOTLOD'.
+       This  should  load  BOOTS from dectape without clearing core.  Return to
+       monitor mode and save the crash with /D.
+                                                                        Page 22
+
+
+                                  HUNG KL FLOW
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        Page 23
+
+
+                            KLDCP RESTART / RELOAD
+                            ----- ------- - ------
+
+            Steps 5 thru 8 of the Hung System Summary all require that you  use
+       the console TTY to input comands to KLDCP.  Recall that a 'control x' is
+       used to enter KLDCP from the CTY and that '>.' is the KLDCP prompter.
+
+            If you are unable to get into KLDCP, chances are the unibus  itself
+       is  hung up.  An additional symptom of this problem is that only the RUN
+       and BUS lights may be on.  To restart KLDCP, the following steps  should
+       be taken:
+
+          a) On the PDP-11/40 push the 'HALT' switch down;
+
+          b) Push the PDP-11/40 address switch 15 up;
+
+          c) Next, push the 'LOAD ADRS' switch down.
+
+          d) Now push the 'START' switch and reset (push up) the 'HALT' switch.
+          At this point, you should see the KLDCP prompter on the CTY.
+
+            If this procedure fails to get a KLDCP prompt on the  CTY  and  the
+       terminal  itself  is  functioning properly, procede to reload KLDCP from
+       dectape.  This procedure is  fully  described  in  this  manual  in  the
+       section titled 'COLD START - LOADING KLDCP'.
+
+            Get maintenance help if this procedure fails.
+                                                                        Page 24
+
+
+                                    KLHUNG
+                                    ------
+
+            The KLHUNG.CMD is a command file on DECTAPE which will  break  down
+       the  KL-10  CPU  status  for  Tymshare  Maintenance  whenever the system
+       crashes with other than a 'BOOTS LOADED' or memory parity error.  If the
+       KL-10  is  hung  with  no apparent hardware problem.  'J KLHUNG' must be
+       used.  In particular, it should be run if any  of  the  messages  listed
+       below output on the CTY:
+
+              U-CODE HUNG
+              ?10TTI
+              ?10CMD
+              ?10SWS
+              ?CLOCK ERROR STOP CRAM PARITY ;POSSIBLE MICROCODE
+              ?CLOCK ERROR STOP DRAM PARITY ;PROB.  'V UB' CHECKS.
+              ?CLOCK ERROR STOP FM PARITY
+
+            The command file itself is self explaining.  To  run  it,  use  the
+       following CTY typein:
+
+                  CONTROL X               ;CALL KLDCP
+
+                  '>.'DT1                 ;SELECT THE DECTAPE HAVING
+                                           KLHUNG.CMD ON IT
+
+                  '>.'SP                  ;STOP THE PDP-10
+
+                  '>.'J KLHUNG            ;LOAD KLHUNG FROM DECTAPE.
+                                           IT DUMPS ABOUT 3 PAGES OF
+                                           STATUS INFO TO CTY.
+
+                  '>.'MC,RN               ;CONTINUE THE MONITOR.
+
+                  'BASE INITIATED CRASH'  ;IF YOU DONT SEE THESE 
+                  'BOOTS LOADED'           YOU'LL HAVE TO 'DM 30:1' IN
+                                           KLDCP (DESCRIBED BELOW).
+
+                  /D                      ;SAVE THE CRASH DUMP BEFORE
+                                           BRINGING THE SYSTEM BACK UP.
+
+            It is essential that ALL CTY output, both before and during  KLHUNG
+       is saved for analysis by computer maintenance engineers.
+                                                                        Page 25
+
+
+                         MANUAL BRINGDOWN / CRASHSAVE
+                         ------ --------- - ---------
+
+            Evidence that the system is  down  comes  primarily  from  the  CTY
+       output  of  a  'BOOTS  LOADED'  or 'BASE INITIATED CRASH' message.  This
+       message will not output if the CTY is in KLDCP;   if  it  is,  you  must
+       first  return  to  monitor  with the 'MC' command.  If the KL-10 has not
+       taken itself down by this point, you  must  attempt  to  bring  it  down
+       manually.  This is important to assure a situation in which a meaningful
+       dump of the core image can be retained with a '/D' crash save.
+
+                  (CTRL X)                ;ENTER KLDCP
+
+                  '>.'DM 30:1             ;DEPOSIT 1 IN MEMORY ADDR 30
+                                           THIS SHOULD FORCE A CRASH.
+
+                  '>.'MC,RN               ;RETURN CTY TO MONITOR
+
+                  'DEPOSIT 1 IN 30'       ;IF SUCCESSFUL YOU SEE THIS
+                  'BOOTS LOADED'           MESSAGE.
+
+                  /D                      ;DUMP THE CRASH CODE BEFORE
+                                           BRINGING THE SYSTEM BACK UP.
+
+            In certain unusual situations, a 'DM  30:1'  will  not  work.   For
+       these instances the following procedure should be used:
+
+                  (CTRL X)                ;ENTER KLDCP
+
+                  '>.'DT1                 ;SELECT DECTAPE WITH 147.CCL
+
+                  '>.'I 147               ;LOAD AND RUN TO FORCE CRASH
+
+                  '>.'MC,RN               ;RETURN TO MONITOR FOR
+                  'BOOTS LOADED'           CRASH INDICATION.
+
+                  /D                      ;DUMP CRASH CODE PRIOR TO
+                                           SYSTEM BRINGUP.
+
+            Should neither of the above procedures cause a crash and allow  you
+       to  issue the '/D', turn on the dectape unit with the 'BT' tape mounted.
+       The following procedure will load BOTLOD  and  allow  you  to  save  the
+       crash.
+
+                  '>.'J BOTLOD            ;LOAD FROM DECTAPE
+
+                  ';LOADS BOTLOD WITHOUT CLEARING TEN MEMORY.
+                   ;THIS FILE WORKS ON KLDCP VER 16 ONLY.'
+
+                  'DE 132516/415'
+                  'P BOTLOD'              ;PROG. OUTPUT
+                  'DE 132516/1015'
+                  'MC'
+                  'GO'
+                  '>.'/D                  ;DUMP CRASH PRIOR TO
+                                           SYSTEM BRINGUP.
+                                                                        Page 26
+
+
+            If none of the above procedures succeed  and  maintenance  help  is
+       unavailable,  the last resort is to stop and reset the machine in KLDCP.
+       With this procedure, you cannot use the '/D' crash dump.  Make a written
+       note  of  the  circumstances  and  indications  that  exist  since  this
+       procedure will eliminate any other system information reports  concering
+       the problem.
+
+                  (CTRL X)                ;ENTER KLDCP
+
+                  '>.'SP                  ;STOP KL-10
+
+                  '>.'MR                  ;MASTER RESET
+
+                  '>.'DT1                 ;SELECT DECTAPE WITH BT
+
+                  '>.'BT                  ;LOAD AND RUN BOOTSTRAP
+                                           CONTINUE WITH SYSTEM BRINGUP.
+                                                                        Page 27
+
+
+                       MEMORY PARITY ERRORS ON THE KL-10
+                       ------ ------ ------ -- --- -----
+
+       ((INTRODUCTION))
+
+            The KL-10 runs with odd parity:  every 36 bit word should  have  an
+       odd  number of bits set (counting the extra parity bit).  Three types of
+       violations to this odd parity standard can occur.  An extra bit  may  be
+       turned  on, a bit that should be on may be dropped or the parity bit may
+       not function to insure odd parity.  All of these violations are hardware
+       problems.   Monitor mode parity errors cause the PDP-10 to crash and not
+       auto restart;  user mode parity errors will smash a  particular  process
+       or user's job but will not cause a system crash.
+
+            When possible, prompt maintenance attention to monitor mode  parity
+       errors  is  the  correct  procedure.   However,  when maintenance is not
+       availble, operations should perform emergency  procedures  to  determine
+       how  solid  the  monitor  parity error is and if necessary, deselect the
+       portion of memory involved.
+
+            For general information in this  area,  you  are  referred  to  the
+       mini-manual  titled  'TYMCOM-X  OPERATING SYSTEM'.  The current document
+       will provide procedural information specific to the KL-10.
+
+
+       ((PROCEDURE SUMMARY)) - MONITOR PARITY ERRORS 
+
+       1) Check the automatic core scan
+
+       2) Call for Tymshare Maintenance
+
+       3) If maintenance is not available follow the NEWSCN  procedure  and  if
+       necessary, deselect the failing memory module.
+
+       4) Clear core with FASCLR, bring the system back up and DO NOT save  the
+       crash.
+
+       5) Fill out the system log and write up a MAR on the crash for  Tymshare
+       Maintenance.
+                                                                        Page 28
+
+
+       ((PROCEDURE DESCRIPTION))
+
+       1) When monitor parity occur the system  should  scan  core,  print  out
+       error  locations  and contents and stop.  The first thing to do is check
+       the CTY for core scan output.  A sample auto core scan is shown below
+
+                       'PARITY ERROR'
+                       'LOC            CONTENTS'
+                       '000000004147   000000,021400'
+                       '000000004243   000000,001000'
+
+                        'END OF CORE SCAN'
+
+       If there is no typeout, go into KLDCP (CTRL  X)  and  type  'RN'.   This
+       should  force  another  core  scan by the monitor.  Then type 'MC,RN' to
+       return the CTY to the monitor to start the scan  typeout.   Notify  your
+       supervisor of the situation.
+
+
+                                         NOTE
+
+           There may be other parity error messages referring to the PDP-11
+           or  other  parts  of  the system architecture.  for all of these
+           situations you should get Tymshare Maintenance help immediately.
+
+           User mode parity errors will cause the  message  'SWAP  READ  OR
+           PARITY  ERROR'  to output to the CTY.  This error condition will
+           not cause a system crash.  However, you should save  the  output
+           and a PSP to attach to a M.A.R.
+
+
+       2) Contact maintenance and when they arrive, take the appropriate  steps
+       to  turn  the system over to them for diagnostics and corrective action.
+       Be sure to enter a 1DOWN message  if  it  appears  the  system  will  be
+       unavailable for more than 30 minutes.
+
+       3) If T/M is not available you should manually check core  with  NEWSCN.
+       This  analysis  begins to isolate the problem to a particular portion of
+       memory and helps determine how 'solid' the parity  error  condition  is.
+       Refer to the ERRORS AND RECOVERIES section of this document for details.
+
+            It may eventually be necessary to reconfigure memory and deselect a
+       bad  portion  of core.  It is better to run with less memory online than
+       to crash  again  with  another  parity  error  in  monitor  mode.   This
+       procedure is also described in the ERRORS AND RECOVERIES section.
+                                                                        Page 29
+
+
+                             BRINGUP AND FOLLOWUP
+                             ------- --- --------
+
+
+       4) Now clear core with FASCLR and bring the system back up.  You must be
+       certain  that all memory believed to be online is online.  Here's how to
+       use FASCLR:
+
+               '>.'DT1                 ;SELECT DECTAPE CONTAINING
+                                        FASCLR.CMD
+               '>.'J FASCLR            ;LOAD THE PROGRAM
+               'WHEN YOU GET THE HALT MESSAGE....ETC'
+                                       ;FOLLOW THE PROGRAM'S
+                                        INSTRUCTIONS
+               'KL10 HALTED PC /000014 VMA/000014'
+
+               '>.'EM 20               ;AFTER THE HALT EXAMINE 20.
+
+               '000020/000003 111000'  ;THIS SHOWS 992K ON LINE (SEE
+                                        TABLE BELOW.)
+
+            Below is a memory address table to assist you  in  determining  the
+       NXM occurs at the correct address.
+
+                                       NEWSCN END OF MEMORY OR
+               WITH THIS MEMORY        FASCLR ADDR 20 SHOWS
+               ----------------        -------------------- 
+                   768K                3 000000 
+                   800K                3 001000
+                   832K                3 010000
+                   864K                3 011000
+                   896K                3 100000
+                   928K                3 101000
+                   960K                3 110000
+                   992K                3 111000
+                  1024K                4 000000
+
+            Now bring up the system with the BT command in KLDCP.
+
+            DO NOT SAVE THE CRASH.
+
+            5) It is very important that the operator copy  all  addresses  and
+       data contents that have been obtained in step 3 in the system log.  Also
+       keep an accurate record if  any  deselecting  and/or  reconfiguring  was
+       done.   A copy of this info should be given to the shift manager or lead
+       operator so that it can be entered into the shift log.  It must also  be
+       attached to the MAR notifying Tymshare Maintenance of the the crash.
+                                                                        Page 30
+ERRORS AND RECOVERIES
+
+
+       ERRORS AND RECOVERIES
+       --------------------- 
+
+            If the memory reported to be online  is  different  than  what  you
+       expect,  check to ARM10LX to see if any sectors are hung.  This would be
+       evident by the control error lights being on.  To clear  a  hung  sector
+       press  the  RESET  button  for the affected sector.  To clear the entire
+       ARM-10LX move the hang/cont/clear switch to the clear position.
+
+            On a TYMCOM-X with more than one ARM-10LX online, if  any  part  of
+       the  lower  ARM-10  is  deselected you will receive the message 'hole in
+       core from addr1-addr2' when you  bring  the  system  up.   This  may  be
+       acceptible:  just a reflection that part of physical memory box 0 is off
+       line because it was deseleted.  However on manual core scans  the  first
+       NXM  will  occur at the low address of the memory deselected.  This will
+       not hinder monitor operation or system bringup unless the hole  in  core
+       occurs  in the low ARM-10LX in address space needed for the monitor.  In
+       this situation, either sectors or entire LX'S can be  readdressed  using
+       the  sector  address switches.  This address switching should be left to
+       TYMSHARE MAINTENANCE if at all possible.
+
+            If any of  the  ARM-10LX  control  status  lights  are  on,  memory
+       malfunctions may be in the controller rather than parity errors.  Again,
+       maintenance intervention is necessary for this.
+                                                                        Page 31
+ERRORS AND RECOVERIES
+
+
+                            NEWSCN MEMORY CORE SCAN
+                            ------ ------ ---- ----
+
+            A Tymshare developed program called NEWSCN.CMD has  been  developed
+       to search for hard parity errors in a way comperable to the console core
+       scan used on KI-10 systems.  Once the program is loaded from DECTAPE via
+       KLDCP,  it  will  scan  for  parity  errors  or NXM (Non eXisting Memory
+       address - the highest memory address plus 1).  If NEWSCN does not find a
+       hard  parity error, it simply indicates that it's encountered the end of
+       memory - NXM.  If however, any hard memory errors are found, the program
+       lists both the address and data where the error occurred.  Here's how to
+       run the program:
+
+               'END CORE SCAN'            ;END OF MONITOR CORE SCAN.
+
+               (CONTROL X)                ;GO INTO KLDCP
+               '>.'SP                     ;STOP THE PDP-10
+               '>.'DT0                    ;SELECT DECTAPE CONTAINING
+                                           ;NEWSCN.CMD
+               '>.'J NEWSCN               ;LOAD THE PROGAM
+               'MR,SM,I INIT,CCL...ETC'   ;SETUP FOR TEST
+               'I PUTSCN                  ;SCAN PAGE 0 FOR BAD PARITY
+               '>, I P0ONES.CCL..ETC      ;TEST PATTERNS FOR PG. 0
+               'I PUTSC2.CCL              ;LOAD SCAN INTO TESTED
+               'I PUTSC3.CCL              ;PG. 0 AND SCAN ALL CORE
+               'ST 1'
+               '>.'
+               'END OF MEMORY ENCOUNTERED AT OCTAT ADDR:NNNNNNN/NNNNNNN
+                TYPE RN TO KLDCP TO SCAN AGAIN FROM 0.'
+                                          ;THIS MSG. ONLY MEANS THE
+                                          ;PAR. ERR WAS SOFT MEMORY HIT
+                                      (OR)
+               'ADDRESS/DATA              ;HARD PARITY ERRORS ARE LISTED
+               0002000/105105105105
+               0300011/456123456123
+               (ETC)
+               'END OF MEMORY ENCOUNTERED AT OCTAL...ETC'
+
+               '>.'J FASCLR               ;WHEN DONE USE THIS TO
+                                          ;CLEAR CORE
+
+
+                                         NOTE
+
+           If NEWSCN outputs an error message while it's  scanning  page  0
+           for  bad  parity,  it means that the area of memory where NEWSCN
+           runs is itself bad.  To get around this problem, first take  the
+           memory  out  of  interleaving and try NEWSCN again.  Should this
+           fail, memory will have to be readdressed to allow the program to
+           run.   For  this situation, it is recommended you seek help from
+           Tymshare Maintenance or from your lead or supervisor.
+
+
+                                                                        Page 32
+ERRORS AND RECOVERIES
+
+
+                             ARM-10LX CONTROL PANEL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                        Page 33
+ERRORS AND RECOVERIES
+
+
+                   ARM-10LX RECONFIGURATION AND DESELECTING
+                   -------- --------------- --- -----------
+
+
+                                         NOTE
+
+           Whenever possible, Tymshare Maintenance and/or  your  supervisor
+           should  do  any  memory  deselecting.   If this is not possible,
+           consult the ARM-10LX  control/indicator  panel  diagram  on  the
+           preceding page as you go thru this procedure.
+
+
+            If any parity errors are found during the  NEWSCN  check,  you  may
+       have  to  deselect  the  32K  module or 128K sector containing the solid
+       parity error problem.  You should  attempt  to  deselect  as  little  as
+       necessary  to  make  the  offending memory offline.  The smallest amount
+       that can be deselected is 32K.
+
+          a)  Before  anything  can  be  deselected  on   the   ARM-10LX,   the
+          interleaving  switch  must be turned to the OFF position.  Since each
+          separate ARM-10LX box is internally interleaved, you can  treat  each
+          LX as a unit.
+
+          b) From checking the NEWSCN output and the parity error matrix lights
+          on the LX panel, you should have a good knowlege of which part memory
+          is to be deselected.
+
+          c) If all the parity errors have occurred within a single module, set
+          the  'LAST MODULE' switches on that sector so that the bad 32K module
+          is last (the switches allow octal module 0, 1, 2, 3).  Once  this  is
+          done, set the module 'ENABLE/DISABLE' switch to 'DISABLE'.  This will
+          deselect that 32K.
+
+          If all the parity errors have occurred within a single  128K  sector,
+          the entire sector can be deselected using the 'ENABLE/DISABLE' switch
+          on the lower left portion of the sector panel.  There are precautions
+          to  follow  if  this  is  done  on the 'low' LX box so be sure to get
+          assistance from your supervisor or maintenance.
+
+          If the parity errors occurred in more than one sector get  corrective
+          maintenance  help.   A  KL-10 should not be allowed to timeshare with
+          less than 768K of memory online.   Do  not  deselect  more  than  one
+          sector without Tymshare Maintenance assistance.
+                                                                        Page 34
+
+
+                             REMOTE CONSOLE SETUP
+                             ------ ------- -----
+
+
+                                         NOTE
+
+           This procedure is very center specific.  Particular details  (if
+           any)  for use of the KLINIK capability should be added below for
+           each specific KL-10 installation.
+
+
+            Before any remote diagnostics or debugging can occur, KLDCP must be
+       running in the front end processor.  To set up a remote console do this:
+
+               1) MAKE SURE THE DATAPHONE HAS POWER AND IS PROPERLY
+                  CABLED TO THE PHONE LINE AND PDP-11. IF YOU HAVE
+                  ANY DOUBT THAT IT IS SETUP CORRECTLY, OBTAIN
+                  MAINTENANCE ASSISTANCE.
+
+               2) PRESS THE RED (OR AUTO) BUTTON ON THE DATAPHONE 
+                  AND WAIT FOR THE PHONE TO RING.
+
+               3) TYPE IN THE KLDCP COMMAND 'J KLINIK'. THE SYSTEM
+                  SHOULD NOW BE IN REMOTE CONSOLE MODE.
+                                                                        Page 35
+
+
+                              ALPHABETICAL INDEX
+
+       ARM-10LX CONTROL PANEL  . . . . . .  32
+       ARM-10LX DESELECTING  . . . . . . .  33
+
+       BRINGDOWN - MANUAL OPTIONS  . . . .  25
+
+       COMPARING KL-10 TO KI-10  . . . . .  4
+       CONFIGURATION OF KL-10  . . . . . .  3
+       CRASH RECOVERY FLOWCHART  . . . . .  20
+       CRASH SAVING  . . . . . . . . . . .  25
+
+       DECTAPE DUPLICATION . . . . . . . .  13
+       DECTAPE FILE APPENDING  . . . . . .  15
+       DECTAPE FILE DELETING . . . . . . .  14
+       DECTAPE FORMATTING  . . . . . . . .  12
+       DECTAPE MOUNTING/DISMOUNTING  . . .  11
+       DECTAPE SELECT FILE COPYING . . . .  16
+
+       GETTING KLDCP . . . . . . . . . . .  23
+
+       HUNG KL-10 PROCEDURES . . . . . . .  21
+       HUNG PROCEDURE FLOWCHART  . . . . .  22
+
+       INTRO TO THE KL-10  . . . . . . . .  4
+
+       KLDCP CONSOLE FUNCTIONS . . . . . .  8
+       KLDCP INTERACTION COMMANDS  . . . .  8
+       KLDCP LOADING COMMANDS  . . . . . .  9
+       KLDCP MEMORY EXAMINE/DEPOSIT  . . .  10
+       KLDCP OVERVIEW  . . . . . . . . . .  7
+       KLDCP SENSE SWITCH FUNCTIONS  . . .  8
+       KLDCP STOP/START COMMANDS . . . . .  9
+
+       LOADING KLDCP - COLD START  . . . .  18
+       LOADING MONITOR - WARM START  . . .  19
+
+       MEMORY CONFIGURATION DETAILS  . . .  30
+       MONITOR LOAD FROM DISK  . . . . . .  19
+       MONITOR LOAD FROM TAPE  . . . . . .  19
+       MONITOR PARITY ERROR SUMMARY  . . .  27
+       MONITOR PARITY PROCEDURES . . . . .  28
+
+       NEWSCN - MANUAL CORE SCAN . . . . .  31
+
+       PARITY BRINGUP AND FOLLOWUP . . . .  29
+       PARITY ERRORS INTRO . . . . . . . .  27
+       PDP-11 CONSOLE PHOTO  . . . . . . .  5
+       PDP-11 CONSOLE SWITCHES . . . . . .  6
+
+       REMOTE CONSOLE - KLINIK . . . . . .  34
+
+       SENSE SWITCHES  . . . . . . . . . .  18
+
+       TABLE OF CONTENTS . . . . . . . . .  2
+       TYPICAL BT DECTAPE CONTENTS . . . .  17
+
+Up'=É
