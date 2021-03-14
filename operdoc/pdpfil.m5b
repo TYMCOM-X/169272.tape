@@ -1,0 +1,992 @@
+
+
+
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        $$$$                        $$$$
+       $$$$                          $$$$
+       $$$$                          $$$$
+       $$$$$                        $$$$$
+       $$$$$$                      $$$$$$      FILES ON THE TYMCOM-X
+       $$$$$$                      $$$$$$
+       $$$$$$                      $$$$$$      OPERATIONS MINI-MANUAL #5B
+       $$$$$$$                    $$$$$$$
+       $$$$$$$                    $$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$                  $$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$                $$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$::::::::::::::$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$::::::::::::$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$      WESTERN COMPUTER OPERATIONS
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$      COMPUTER OPERATIONS DIVISION
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$      JULY 1980
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$      
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+       $$$$$$$$$$$$$   ::   $$$$$$$$$$$$$              
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$              
+       $$$$$$$$$$$$    ::    $$$$$$$$$$$$              
+       $$$$$$$$$$$     ::     $$$$$$$$$$$              
+       $$$$$$$$$$$     ::     $$$$$$$$$$$              
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$$      ::      $$$$$$$$$$
+       $$$$$$$$$       ::       $$$$$$$$$
+       $$$$$$$$$      ::::      $$$$$$$$$
+       $$$$$$$$      ::::::      $$$$$$$$
+       $$$$$$$$     ::::::::     $$$$$$$$      
+       $$$$$$$     ::::::::::     $$$$$$$
+       $$$$$$$    ::::::::::::    $$$$$$$      REPLACES DOCUMENT
+       $$$$$$    ::::::::::::::    $$$$$$      DATED MARCH 1980
+       $$$$$$   ::::::::::::::::   $$$$$$              
+       $$$$$   ::::::::::::::::::   $$$$$
+       $$$$$  ::::::::::::::::::::  $$$$$
+       $$$$  ::::::::::::::::::::::  $$$$
+        $$$$::::::::::::::::::::::::$$$$
+         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+                                                                         Page 2
+
+
+                               TABLE OF CONTENTS
+                               -----------------
+
+
+               TITLE                            PAGE NO.
+               -----                            --------
+
+               EXEC                                3
+
+               DIRIT                               6
+
+               CKSUM                               13
+
+               FNDFIL                              14
+
+               SZRPT                               16
+
+               INDEX                               20
+                                                                         Page 3
+EXEC
+
+
+                              USING FILES IN EXEC
+                              -------------------
+
+       Files are an important part of the Tymshare  system.   A  file  contains
+       information such as a program or data and is stored on a storage device.
+       Unless the  user  declares  files  as  temporary,  files  are  permanent
+       storage;   that  is,  they  stay  on the system until the user explicity
+       removes them, even  though  he  logs  off  after  each  session  at  the
+       terminal.    XEXEC  has  commands  to  create  and  modify  files,  list
+       descriptive information about the files, change the standard  protection
+       controls  for  files,  copy files, print files, rename files, and delete
+       files from the storage area.
+
+                            Rules For Naming Files
+                            ----------------------
+
+       The user identifies a file with a file name and an  optional  extension.
+       A  file name may contain as many as six characters, with any combination
+       of letters and digits.  The user may find it convenient  to  include  an
+       extension  in  the  file  identifier to indicate the type of information
+       stored on the file.  Usually the extension is a standard one which XEXEC
+       recognizes.   A  period  (.) separates the file name from its extension.
+       The extension may contain no more than  three  alphanumeric  characters.
+       The system reserves certain file names which the user should not attempt
+       to use to identify his files.  The following are reserved  files  names:
+       ALL,  HELP,  NOT, SAME, and any left substring of the words TERMINAL and
+       TELETYPE.
+
+                        Referring To Files In Commands
+                        ------------------------------
+
+       All XEXEC commands recognize a reference to an existing file if both the
+       file name and extension are specified.  Certain XEXEC commands allow the
+       user to refer to a file without specifying an  extension  provided  that
+       the  file  identifier  has  a  standard  extension or no extension.  The
+       compile-type commands, described on page 51 of  the  TYMCOM-X  Reference
+       Manual,  search  for a standard extension or append a standard extension
+       to a file identifier that has  no  extension.   The  GET,  RUN,  and  GO
+       commands,  described  on  page 66 of the same manual, search for the HGH
+       extension first, then the SHR extension, then the SAV extension.  If the
+       file  identifier has no extension, SAV is assumed.  If a file identifier
+       has a non-standard extension,  the  extension  must  be  specified  when
+       referring to the file.
+
+                             Asterisk (*) Notation
+                             ---------------------
+
+       Asterisk notation allows the user to specify several files with a single
+       identifier.   An  asterisk  (*)  can  be  used  as either part of a file
+       identifier to indicate all file names or all extensions.   For  example,
+       TEST1.*  refers  to  all  files  with  the name TEST1, regardless of the
+       extension.  Similarly, *.F4 refers to all files with the  F4  extension.
+       The  user  may  refer to all files in his directory with *.* or the word
+       ALL.
+
+       Asterisk notation can  be  used  with  the  following  commands:   COPY,
+                                                                         Page 4
+EXEC
+
+
+       DECLARE, DELETE, DIRECTORY, FILES, LIST, PRINT, RENAME, and TYPE.
+
+                 Crosshatch (#) or Question mark (?) Notation
+                  -------------------------------------------
+
+       Crosshatch or questiom mark notation also allows  the  user  to  specify
+       several files with a single identifier.  A crosshatch or a question mark
+       can be used instead of a character in a  file  identifier  to  mean  any
+       character.   The  crosshatch or question mark can be used repeatedly and
+       can be interspersed throughout the file identifier.  If  the  crosshatch
+       or  question  mark  is  at  the  end  of  a  file  name or extension, it
+       represents no character  as  well  as  any  character.   TEST#.REL,  for
+       example,  refers  to all file identifiers with the REL extension and the
+       file name TEST followed by one character or by no characters as  in  the
+       case of TEST.REL.  
+
+       The user may refer to all the files previously listed by typing
+
+           TEST#.*
+
+       To refer to all TEST1 files, the user types
+
+           TEST1.*
+
+       To refer once to all the above files that have the NEW or REL extension,
+       the user types
+
+           TEST#.#E#
+
+       The crosshatch or question mark notation can be used with the  following
+       commands:  COPY, DECLARE, DELETE, DIRECTORY, FILES, and RENAME.
+
+                        NOT or Minus Sign (-) Notation
+                        ------------------------------
+
+       To exclude a particular file or group of files from a command, the  user
+       may  type  NOT or a minus sign (-) followed by the file name or group of
+       names to be excluded.  For example, to refer to all files  except  those
+       with the .F4 extension, the user types
+
+           ALL NOT *.F4
+
+       To refer to all files that begin with TEST, except TEST4 and TEST5,  the
+       user types
+
+           TEST#.*-TEST4.*-TEST5.* 
+
+       The NOT or minus sign notation can be used with the following  commands:
+       DECLARE, DELETE, DIRECTORY, and FILES.
+
+
+               Referring to Files in Another User's Storage Area
+               -------------------------------------------------
+
+       A user can refer to a file in another user's storage area  by  preceding
+       the  file name with the owner's user name, enclosed in parentheses.  for
+                                                                    Page 5
+EXEC
+
+
+       example, (OLSON) INVEN refers to  the  file  INVEN  located  in  OLSON'S
+       storage  area.   One  user  may  gain access to a file in another user's
+       storage area if the owner declares that file to be sharable.  The  owner
+       can allow another user to run programs from his storage area, read files
+       from his storage area, or change files in his storage area.
+
+       For example, if user WONG declares his file COMPUTE to be sharable, user
+       ALVIN  can  copy  COMPUTE  to  a  file  named MYCOMP which is in ALVIN'S
+       storage area by typing
+
+           COPY (WONG)COMPUTE TO MYCOMP (CARRIAGE RETURN) 
+
+       In the FILES, DIRECTORY, DELETE, and DECLARE commands,  only  the  first
+       file  name  in a list of file names can have a user name associated with
+       it.  This user name applies to all the files in the list.  For example,
+
+           DELETE (MARGE)FIL1,FIL2,FIL3 (CARRIAGE RETURN) 
+
+       deletes FIL1, FIL2, and FIL3 in MARGE'S storage area if  the  protection
+       of each file has been declared ALL.
+                                                                         Page 6
+DIRIT
+
+
+                                     DIRIT
+                                     -----
+
+       ((INTRODUCTION))
+
+       DIRIT is the software that processes  the  following  commands:   FILES,
+       DIRECTORY, RENAME, and DELETE.  A description of these commands is found
+       in the following paragraphs and in the TYMCOM-X Reference Manual.  DIRIT
+       is not directly specified on command input.
+
+       ((COMMAND DESCRIPTION))
+
+                           LISTING FILE INFORMATION
+                           ------------------------
+
+       XEXEC offers commands which  print  descriptive  information  about  the
+       files  in  the user's directory.  The FILES command prints the names and
+       extensions of the files in the directory.  The DIRECTORY command  prints
+       the names and extensions of the files as well as the size, creation date
+       and time, date of most recent access, and protection of each file.
+
+       The  user  can  request  that  the  FILES  or  DIRECTORY  command  print
+       information  about specified files instead of the entire directory.  For
+       example, the command
+
+           -DIRECTORY PDATA,PGM.SAV,TDATA (CARRIAGE RETURN)
+
+       prints the directory information for the files PDATA, PGM.SAV, and TDATA
+       only.
+
+       When referring to specific files in the directory, the user may use  the
+       special  notation  *.   #,  ?, NOT (or -) and ALL to specify the desired
+       files.  For example, if the user wants to  list  all  his  files  except
+       those with the REL extension, he uses the command
+
+           -FILES ALL-*.REL (CARRIAGE RETURN)
+
+       The user can modify the information printed by the  FILES  or  DIRECTORY
+       command  by  including  switches  in the command.  These switches may be
+       used to request additional information about files, to specify the order
+       of listing files, or to select files according to various criteria.  The
+       switches are described in the 'SWITCHES' paragraph below.
+                                                                         Page 7
+DIRIT
+
+
+                               The FILES Command
+                               -----------------
+
+       The FILES command prints the names and extensions of the specified files
+       in  the  user's  directory  and  any additional information requested by
+       switches.  The form of the command is 
+
+           -FILES (file list) (Carriage Return)
+
+       where files list is a list  of  file  names  separated  by  commas,  and
+       optional switches.  If the file list is omitted, all files are listed.
+
+       Some examples of the FILES command are shown below.
+
+           COMMAND                RESULT
+           -------                ------
+
+           FILES                  Lists the names and extensions
+                                  of all the user's files
+
+           FILES *.REL            Lists the names and extensions
+                                  of the files with the
+                                  extension REL
+
+           FILES /HELP            Prints all switches available
+                                  with the FILES command
+
+           FILES /ALPHA /ACCESS   Lists all the user's files in
+                                  alphabetical order, showing
+                                  the most recent access date
+                                  for each file
+                                                                         Page 8
+DIRIT
+
+
+                             The DIRECTORY Command
+                             ---------------------
+
+       The DIRECTORY command prints the name, extension,  size,  creation  date
+       and  time,  file  protection,  and  date  of  most recent access for the
+       specified files in the user's directory.  The form of the command is
+
+           -DIRECTORY (file list) (Carriage Return)
+
+       where file list is a  list  of  file  names  separated  by  commas,  and
+       optional  switches.   If  the  file  list is omitted, the command prints
+       directory information for all files.
+
+       Some examples of the DIRECTORY command are shown below.
+
+           COMMAND                RESULT
+           -------                ------
+
+           DIRECTORY              Prints the directory information
+                                  for all the user's files
+
+           DIRECTORY PROG.*       Prints the directory information
+                                  for all files with the
+                                  name PROG regardless
+                                  of extension
+
+           DIRECTORY /FAST        Prints the name and extension
+                                  for all files
+
+                                   Switches
+                                   --------
+
+       There are three types of switches:  switches to  request  additional  or
+       restricted  information  about  files,  switches to specify the order of
+       listing files,  and  switches  to  select  files  according  to  various
+       criteria.   A  switch  can  be  abbreviated  to  the  minimum  number of
+       characters required to uniquely identify it and can be terminated by any
+       nonalphanumeric  character  such  as  a  blank  or  comma.  The switches
+       described in this subsection can be  used  with  any  of  the  following
+       commands:  FILES, DIRECTORY, DELETE, RENAME, and DECLARE.
+
+       The following switches  request  additional  or  restricted  information
+       about the user's files.
+                                                                         Page 9
+DIRIT
+
+
+           SWITCH                 INFORMATION REQUESTED
+           ------                 ---------------------
+
+           /ACCESS                Date of most recent access
+
+           /CREATION              Creation date
+
+           /FAST                  File name and extension
+
+           /PROTECTION            Protection assigned to the file
+
+           /SECONDS               Creation date and time to
+                                  the second
+
+           /SIZE                  Size of the file (number
+                                  of storage pages)
+
+           /TIME                  Creation date and time to
+                                  the minute
+
+           /TOTAL                 Number of storage pages
+                                  and files in the file
+                                  list.  This switch is
+                                  automatic for the
+                                  DIRECTORY or the
+                                  FILES command with
+                                  no file list
+
+           /EVERYTHING            Everything above, plus the
+                                  mode of the file
+
+
+                                         NOTE
+
+           The user may include several switches in a single command
+
+
+       Files are normally listed in reverse  chronological  order  by  creation
+       date;   that is, the system prints the most recently created file first.
+       If the user wants to see the files and corresponding  information  in  a
+       different order, the following switches are available.
+
+           SWITCH                 ORDER LISTED
+           ------                 ------------
+
+           /ALPHABETICAL          Alphabetically by file name
+                                  and secondarily by extension
+
+           /EXTENSION             Files with extensions are 
+                                  arranged in alphabetical
+                                  order by extension, 
+                                  followed by the files
+                                  with no extensions
+
+           /STORAGE               Decreasing order of storage
+                                  size; that is, the name
+                                                                        Page 10
+DIRIT
+
+
+                                  of the largest files is 
+                                  listed first
+
+           /UNSORTED              Order is which files appear in
+                                  the user's file directory
+
+           /REVERSE               Chronological order of creation.
+                                  /REVERSE can be used with
+                                  any other switch in this 
+                                  table to reverse the order
+                                  established by that switch
+
+
+                                         NOTE
+
+           The switches in the preceding table must be used only one  to  a
+           command  except  when  the  /REVERSE switch appears with another
+           switch to reverse its order
+
+
+       The remaining switches select files according to the criteria  specified
+       with  the  switch.   All  files in the user's directory except for those
+       with the extension TMP are selected when a command is  not  followed  by
+       file designations or by any of the switches shown below
+
+           SWITCH                 Files SELECTED
+           ------                 --------------
+
+           /AFTER date            Files created on and after 
+                                  the date specified
+
+           /BEFORE date           Files created before the
+                                  date specified
+
+           /TODAY                 Files created during the
+                                  present day
+
+           /TEMPS                 All files including those
+                                  with the extension TMP
+                                  which the system normally
+                                  does not print
+
+
+                                         NOTE
+
+           The /AFTER and /BEFORE switches can be used together to indicate
+           a range of dates
+
+
+       The user specifies the date by the  day,  first  three  letters  of  the
+       month,  and  last  two digits of the year, all separated by dashes.  For
+       example,
+
+           29-SEP-79 21-NOV-79 5-JUN-80 
+
+       If the user omits the year and/or month, the system assumes the  current
+                                                                        Page 11
+DIRIT
+
+
+       one.  Therefore, any of the three following ways of entering the date is
+       acceptable:
+
+           /BEFORE 5-OCT-79 /BEFORE 5-OCT /BEFORE 5
+
+                                DELETING FILES
+                                --------------
+
+       The DELETE command removes a file or group  of  files  from  the  user's
+       directory.  The command form is
+
+           -DELETE file list (Carriage Return)
+
+       where file list is a list of file names separated by commas and optional
+       switches,  including  the  /WAIT  switch, described below, or any of the
+       item, sort, or select switches listed in the 'Switches' paragraph above;
+       these  switches  provide  additional information about the files, delete
+       the files in a certain order, or select certain files to delete.
+
+       The system deletes the file only if its protection allows deletion, that
+       is,  if  its  protection  is ALL.  If the user attempts to delete a file
+       that has protection other than ALL, does not delete the file and  prints
+       the message:
+
+           file name **PROTECTED**
+
+       and does not delete the file.  For example,
+
+           -DELETE TDATA (Carriage Return)
+
+           TDATA **PROTECTED**
+
+           -
+
+       The /WAIT switch instructs the system to ask  the  user  to  verify  the
+       DELETE  command  for  each  file  specified  in the command.  The system
+       prints the heading
+
+           FILES DELETED:
+
+       followed by a file identifier and a question  mark  (?)  for  each  file
+       specified in the command.  The user must type Y to delete the file and N
+       to prevent the deletion of the file.  A  Carriage  Return  need  not  be
+       typed  after  the  response.   For example, the user wants to delete the
+       files
+
+           INV.SEP,PGM1.REL, AND PGM1.F4:
+
+           -DELETE /WAIT INV.SEP,PGM1.* (CARRIAGE RETURN)
+
+           FILES DELETED:
+           PGM1    F4   ?Y
+           PGM1    REL  ?Y
+           INV     SEP  ?Y
+           PGM1    CRF  ?N **NOT DELETED**
+                                                                        Page 12
+DIRIT
+
+
+           -
+
+       In the example shown below, the user  wants  to  delete  specific  files
+       created after April 24.  He uses the /WAIT switch and also requests that
+       the system print the size with the file identifier.
+
+           -DELETE ALL /WAIT /SIZE /AFTER 24-APR (CARRIAGE RETURN)
+
+           FILES DELETED:
+           OLDF                5  ?Y
+           TDATA               5  ?Y **PROTECTED**
+           TEXT                5  ?N **NOT DELETED**
+           A                   5  ?Y
+
+           -
+
+                                RENAMING FILES
+                                --------------
+
+       The RENAME command changes  the  identifiers  of  existing  files.   The
+       command form is
+
+           -RENAME old file identifier AS new file identifier (Carriage
+           Return)
+
+       For example, to change the name of file LDATA to MDATA, the user types
+
+           -RENAME LDATA AS MDATA (Carriage Return)
+
+       The user may simply type RENAME followed by a Carriage Return,  and  the
+       system prompts for the file identifiers.  For example,
+
+           -RENAME (CR)
+           OLD NAME:  PROG (CR)
+           NEW NAME:  LPROG (CR)
+
+           -
+
+       The system prevents the user from changing the  file  identifier  to  an
+       existing file identifier.
+
+       The user may change several file identifiers with one command  by  using
+       *, #, or ?  notation.  For example, the command
+
+           -RENAME TEST1.* AS TEST6.* (CR)
+
+       changes the names of all files named TEST1, regardless of extension,  to
+       TEST6 with the same extension.  The command
+
+           -RENAME EOM### AS ACT### (CR)
+
+       renames all files whose names begin with EOM and contain six  characters
+       to ACT followed by the last three characters of the previous name;  that
+       is, EOM122 is changed to ACT122, EOMNTH is changed to ACTNTH, etc.
+                                                                        Page 13
+CKSUM
+
+
+                                   CHECKSUM
+                                   --------
+
+       ((INTRODUCTION))
+
+       A CHECKSUM is a unique alphabetic character  string  associated  with  a
+       particular  file  content.   The  CHECKSUM  is  calculated by adding the
+       binary equivalent of all the words on the file.  if a  file  is  copied,
+       renamed,  or  transferred  from one USER to another, the CHECKSUM should
+       remain the same.  If the contents of a file are changed in any way,  the
+       CHECKSUM  changes.  Therefore, CHECKSUMS are useful for keeping track of
+       various versions of files and for ensuring that  a  file  has  not  been
+       altered  in any way.  (NOTE:  The CHECKSUM is not related to the size of
+       the file.) CHECKSUMS are also included on tape  directories  for  backup
+       copies of disc files.
+
+       ((COMMAND DESCRIPTION))
+
+       File names can be entered in response to the prompt one per prompt or as
+       a list of names separated by either commas or spaces.  They should be in
+       the following general format:
+
+                   (USERNAME)FILNAM.EXT
+
+       The file names (but not the  device  or  user  names)  may  contain  the
+       wild-card characters "*", or "#".  User names are optional if you are in
+       same directory.  After each input line, CKSUM will  type  out  CHECKSUMS
+       and ask for the input again.  The user's TTY is the default list device.
+
+       Start the CKSUM program with the command:
+
+                   .R CKSUM
+
+       The program will ask for input by typing:
+
+                INPUT:
+
+       Acceptable responses are  a  list  of  file  names.   To  terminate  the
+       program, type a carriage return.
+
+       ((SAMPLE RUN))
+
+       .R CKSUM
+       INPUT: (SYS)CKSUM.*      (Normal operation - input from TTY)
+       CIVRUP (SYS)CKSUM.LOW    (Output to TTY)
+       QAVNEY (SYS)CKSUM.SHR
+       INPUT:                   (CR to terminate)
+
+       ((ERRORS AND RECOVERIES))
+
+           NONE
+                                                                        Page 14
+FNDFIL
+
+
+                                 FNDFIL
+                                 ------
+
+       ((INTRODUCTION))
+
+       The FNDFIL program allows you to search all or the partial  DISC  for  a
+       given  file  name  or  group  of  files (using 'WILD-CARD' characters to
+       accept all entries for field or character position.  FNDFIL  is  similar
+       to the 1FIND of the 940.
+
+       ((COMMAND DESCRIPTION))
+
+       The program is accessed by the command .R FNDFIL and prompts with:
+
+           FILE NAME(S):
+
+       The user may enter a string of file names, separated by commas, each  of
+       which can consist of one of the following:
+
+           FILE NAME.*           LOCATES ALL FILES ON THE DISC WITH
+                                 THAT NAME AND ANY EXTENSION.
+
+           *.EXT                 LOCATES ALL FILES ON THE DISC WITH
+                                 THE SPECIFIED EXTENSION AND ANY NAME
+
+           FILENAME.EXT          LOCATES ALL FILES ON THE DISC WITH
+                                 THIS FILENAME AND EXTENSION
+
+           *.*                   LOCATES ALL FILES ON THE DISC
+
+       A file name or extension may contain the wildcard character "#"  or  "?"
+       in any position to indicate don't-care characters.
+
+       The program will print the names and locations in the following format:
+
+           (USERNAME)FILENAME.EXT    HR:MIN DAY-MON-YEAR
+
+       Output is normally to the user's TTY;  however, it may  be  diverted  to
+       the  logical  device  FNDFIL.   If  disc  file  output  is  desired, the
+       following command:
+
+           .AS DSK FNDFIL
+
+       must be issued before running FNDFIL.  This causes output to  be  dumped
+       to the file FNDFIL.LST.
+                                                                        Page 15
+FNDFIL
+
+
+       ((SAMPLE RUNS))
+
+       FNDFIL is run as follows:
+
+           .R FNDFIL
+           FILE NAME(S):  FNDFIL.*
+           (GADOL)FNDFIL.FIL               06:38   1-JUN-1976
+           (GADOL)FNDFIL.CMP               15:55   2-NOV-1976
+           (SYS)FNDFIL.SAV                 13:27  13-JAN-1977
+
+       FNDFIL is extremely fast, and the TTY which  is  normally  used  as  the
+       output  device can be changed to any device.  For example, let's use the
+       DISC as the output device.
+
+           .AS DSK FNDFIL
+           DSK ASSIGNED
+
+           .R FNDFIL
+           FILE NAME(S):  SYSTEM.SAV
+
+           EXIT
+
+           .DEAS
+
+       FNDFIL will output the  results  to  a  file  in  OPER  directory  named
+       FNDFIL.LST.  The file can be listed on the PRINTER or TTY.
+
+           .TYP FNDFIL.LST
+           (M33)SYSTEM.SAV               15:04  16-SEP-1976
+           (SYS)SYSTEM.SAV               09:29   9-JUN-1977
+           (WFW)SYSTEM.SAV               16:02  21-JAN-1977
+
+           .DEL (OPER)FNDFIL.LST
+
+       ((ERRORS AND RECOVERIES))
+
+           FILE NOT FOUND                   FILE DOES NOT EXIST
+
+           CANNOT READ SYSTEM FILES         LICENSE NOT SET
+                                                                        Page 16
+SZRPT
+
+
+                          SZRPT - STORAGE SIZE REPORT
+                          ---------------------------
+
+       ((INTRODUCTION))
+
+       The Storage SZRPT Report  allows  the  USER  to  receive  specific  disc
+       storage  information  on  the  entire disc concerning an individual USER
+       directory or an entire account.  The Storage Report is  similar  to  the
+       1SUMMARY program on the 940.
+
+       ((COMMAND SUMMARY))
+
+           COMMAND                      FUNCTION
+           -------                      --------
+
+           SIZE; NAMEUSER               LISTS THE NUMBER OF FILES
+                                         IN ADDITION TO THE TOTAL
+                                         PAGES USED BY A USER.
+
+           FILES                        LISTS USERS IN NUMERICAL
+                                         ORDER WHO HAS THE MOST
+                                         FILES, THE MOST PAGES
+                                         IN USE, AND PERCENTAGES.
+
+           DISTRICT                     LISTS USERS BY DISTRICT
+                                         WITH INFO ON STORAGE AND
+                                         PERCENTAGES OF STORAGE
+                                         USED.
+
+           ACCOUNT                      LISTS USERS BY GAN AND
+                                         PERCENTAGES OF STORAGE
+                                         USED.
+
+           USER                         LISTS USERS ALPHABETICALLY.
+
+           NUMDISTRICT                  LISTS USER STORAGE BY 
+                                         DISTRICT
+
+           NUMACCOUNT                   LISTS USER STORAGE BY GAN
+
+           NAMEACCOUNT                  LISTS STORAGE ON A NAME
+                                         IN ANY ACCOUNT
+
+       ((COMMAND DESCRIPTION))
+
+       The Storage SZRPT Report has several features.  If the user has  Account
+       Supervisor  status  but  does not have OPER license or RF license, SZRPT
+       will run and give information about all files in the account the user is
+       in.   SZRPT  prints  the number of files in addition to the total blocks
+       used.  The normal printout for a user has percentage, pages,  files  and
+       user  name.  When the quuestion SORT BY is output any one of the options
+       listed in the COMMAND SUMMARY paragraph above may be entered.
+
+       Any one answer may be given.  Account user would  sort  by  ACCOUNT  and
+       within  an  account  by  user.   If  ACCOUNT  or  DISTRICT  is selected,
+       subheadings are generated for each ACCOUNT/DISTRICT giving  the  ACCOUNT
+                                                                        Page 17
+SZRPT
+
+
+       NUMBER/DISTRICT   NUUMBER.   The  number  of  pages  and  files  in  the
+       ACCOUNT/DISTRICT and the percentage of the DISC these  represent.   Note
+       that percentages are always of the next higher classification.  Thus, if
+       the sort is by DISTRICT account size, the percentages for DISTRICTS  are
+       percentages  of the entire DISC.  For each ACCOUNT, they are percentages
+       of the DISTRICT the account is in.  For each user, they are  percentages
+       of  the  storage in that account in that district.  If a sort on user or
+       FILES precedes a sort on size, the percentages for  each  user  are  the
+       percentage  of  the next higher category.  If SIZE precedes all FILE and
+       user sorts, the percentages are cumulative percentages  since  the  last
+       subheading.
+
+       To list the options NUMACCOUNT, NAMEACCOUNT, and  NUMDISTRICT  you  must
+       have  OPER or RF license.  The use of any of these will cause additional
+       questions to be asked.  They will restrict printout to a single  account
+       or  a  single district.  NAMEACCOUNT asks for the name of anyone in that
+       account and will report any USER who is over quota.
+
+       The Operator has the option to output the listing either to the PRINTER,
+       DISC, or OPER TTY.
+
+                               OUTPUT TO PRINTER
+                               -----------------
+
+       To output the listing to the PRINTER, the Operator must  first  type  in
+       .AS  LPT  TTY.   The program will come back with LPT ASSIGNED as soon as
+       the assign statement is entered.  The next input is .R SZRPT.   Enter  Y
+       to  the  next  prompt.   This  tells the program that you want the USERS
+       separated:  INHOUSE versus OUTHOUSE.  Your next prompt will be SORT BY?.
+       Here  you  enter  your  option  from  the  list  in  the COMMAND SUMMARY
+       paragraph above.  After the listing  has  completed  printing,  EXIT  is
+       output  to  the OPER TTY.  Release the printer from the TTY by typing in
+       DEAS.
+
+                                OUTPUT TO DISC
+                                --------------
+
+       To output the listing to the DISC, the Operator must first type  in  .AS
+       DSK  TTY.   The  program will come back with DSK ASSIGNED as soon as you
+       enter the assign statement.  Follow the steps under the paragraph OUTPUT
+       TO  PRINTER  for  your next entries.  After typing in DEAS you can print
+       the listing to the printer from the filename LICRPT.LST.  If no  printer
+       is  available,  the  file  can either be telecopied or put on a tape and
+       printed on another system.
+                                                                        Page 18
+SZRPT
+
+
+                              OUTPUT TO OPER TTY
+                              ------------------
+
+       To output the listing to the OPER TTY no  assign  statement  is  needed.
+       Just type in R SZRPT and enter commands as indicated above.
+
+       ((SAMPLE RUN))
+
+           .AS LPT TTY                   (LISTING OUTPUT TO
+           LPT ASSIGNED                    PRINTER)
+
+           .R SZRPT                      (CALLING PROGRAM)
+
+           INHOUSE SEPARATED? Y           (ENTERING 'Y' SEPARATES THE
+                                           INHOUSE USERS FROM THE
+                                           OUTHOUSE USERS)
+
+           SORT BY? SIZE                  (SIZE GIVES COMPLETE DISC
+                                           STORAGE OF ALL USERS ON THE
+                                           SYSTEM)
+
+           EXIT                           (OUTPUTS WHEN COMPLETED)
+
+           .DEAS                         (ENTERED AFTER LISTING HAS
+                                           PRINTED OUT TO PRINTER TO
+                                           RELEASE PRINTER FROM TTY)
+
+           .AS DSK TTY                   (FILE OUTPUT TODISC
+           DSK ASSIGNED                    UNDER THE FILE NAME OF
+                                           LICRPT.LST)
+
+           .R SZRPT                      (LIST OUTPUT TO
+                                           OPER TTY)
+
+           INHOUSE SEPARATED? Y           (SAME AS ABOVE)
+
+           SORT BY? SIZE                  (SAME AS ABOVE)
+                                                                        Page 19
+SZRPT
+
+
+       7-JULY-1977      13:55
+
+       TOTAL BLOCKS 998452  FILES 6905
+
+         INHOUSE      QUOTA             OVER          OUTHOUSE
+
+       985852   6873                            12600   32
+
+        27 275072 682 1000000 NETPROD            94 11920  24  50000 SHEGGEBY
+        37 94616  65 85000000 NETSTAT           100   680   8 1000000 TYMGEN
+        46 91008 113 100000 EUSKEW              100     0   0 100000 SPOOLING
+        55 84112 626 17473473480 PDPDEV
+        61 62488 279 100000 UN1
+        67 58452 672 100000 370DEV
+        72 53044 630 400000 SYS
+        75 24688 418 100000 UPL
+        77 21436  59 500000 BRETTF
+        79 20104 384 100000 WFWCUSP
+        81 19812 153 10000000 BILLING10
+        83 18032 161 500000 ACTRTY
+        85 17108 132  40000 SSBACKUP
+        86 15492  64 100000 SAL
+        88 14400 367 1000000 OPER
+        89 12668  62  50000 FTMAGNUM
+        90 11936  94 1000000 PJ
+        91  9564  57  10000 UAS
+        92  8156  88  25000 SSINSTALL
+        93  6616  24 100000 MARTINEZ
+        93  5908  64 100000 GINZBURGA
+        94  5720  70  10000 UTIL
+        94  5668 147 100000 DIAG10
+        95  4972 126   5000 WESTLAKE
+        95  4752  97  20000 SALTYRON
+        96  4456  40  50000 MAGNUM
+        96  3844  95  10000 *6NEWS
+        97  3356  24 1000000 SPOOL
+        97  3196  83  10000 *1BATCH
+        97  2692  96 100000 UFD
+        97  2472 125   5000 TRAINING
+        98  2448  70  10000 QASYS
+        98  1940  71   5000 DANIELSR
+        98  1604 154  15000 ACCG1
+        98  1504  23  10000 *1KEN
+               (ETC)
+
+           EXIT
+
+           .
+
+       ((ERRORS AND RECOVERIES))
+
+           UNRECOGNIZABLE SORT OPTION      (ENTER CORRECT SORT
+                                           OPTION)
+                                                                        Page 20
+INDEX
+
+
+                                     INDEX
+                                     -----
+
+       CKSUM . . . . . . . . . . . . . . .  13
+       CKSUM COMMAND DESCRIPTION . . . . .  13
+       CKSUM ERRORS AND RECOVERIES . . . .  13
+       CKSUM INTRODUCTION  . . . . . . . .  13
+       CKSUM SAMPLE RUN  . . . . . . . . .  13
+
+       DIRIT . . . . . . . . . . . . . . .  6
+       DIRIT COMMAND DESCRIPTION . . . . .  6
+       DIRIT DELETING FILES  . . . . . . .  11
+       DIRIT DIRECTORY COMMAND . . . . . .  8
+       DIRIT FILES COMMAND . . . . . . . .  7
+       DIRIT INTRODUUCTION . . . . . . . .  6
+       DIRIT LISTING FILE INFORMATION  . .  6
+       DIRIT RENAMING FILES  . . . . . . .  12
+       DIRIT SWITCHES  . . . . . . . . . .  8
+
+       EXEC  . . . . . . . . . . . . . . .  3
+       EXEC ASTERISK NOTATION  . . . . . .  3
+       EXEC NAMING FILES . . . . . . . . .  3
+       EXEC NOR OR MINUS NOTATION  . . . .  4
+       EXEC REFERRING TO FILES . . . . . .  3
+       EXEC USER'S STORAGE AREA  . . . . .  4
+       EXEC # AND ?  . . . . . . . . . . .  4
+
+       FNDFIL  . . . . . . . . . . . . . .  14
+       FNDFIL COMMAND DESCRIPTION  . . . .  14
+       FNDFIL ERRORS AND RECOVERIES  . . .  15
+       FNDFIL INTRODUCTION . . . . . . . .  14
+       FNDFIL SAMPLE RUN . . . . . . . . .  15
+
+       INDEX . . . . . . . . . . . . . . .  20
+
+       SZRPT . . . . . . . . . . . . . . .  16
+       SZRPT COMMAND DESCRIPTION . . . . .  16
+       SZRPT COMMAND SUMMARY . . . . . . .  16
+       SZRPT ERRORS AND RECOVERIES . . . .  19
+       SZRPT INTRODUCTION  . . . . . . . .  16
+       SZRPT OUTPUT TO DISC  . . . . . . .  17
+       SZRPT OUTPUT TO OPER TTY  . . . . .  18
+       SZRPT OUTPUT TO PRINTER . . . . . .  17
+       SZRPT SAMPLE RUN  . . . . . . . . .  18
+
+       TABLE OF CONTENTS . . . . . . . . .  2
+
+ UgŽ
