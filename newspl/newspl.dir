@@ -1,0 +1,65 @@
+(NEWSPL      :  32) ACCESS.LIS     2 05-Sep-82 02:42 RIBDAP  ALL  RD  NO   
+(NEWSPL      :  32) ACCESS.MSG     2 03-Oct-82 23:43 SENGAS  ALL  RD  RD   
+(NEWSPL      :  32) BOOHIS         2 02-Oct-82 17:54 CAWCEP  ALL  RD  NO   
+(NEWSPL      :  32) DRWSPR.EPO    10 28-Jul-70 18:05 YUKXUQ  ALL  RD  NO 400000 
+(NEWSPL      :  32) ENTER.SAI      2 15-Oct-82 02:21 ZIQXUW  ALL  RD  NO   
+(NEWSPL      :  32) FICHE.SAI      4 21-Sep-82 18:57 JUSDAN  ALL  RD  NO   
+(NEWSPL      :  32) GETFIL.SAI     2 04-Oct-82 13:44 PAPCOM  ALL  RD  NO   
+(NEWSPL      :  32) NODPRI        10 03-Jun-82 16:22 VUJJED  ALL  RD  NO   
+(NEWSPL      :  32) PPRTMP.DAT     2 03-Jun-82 16:17 CIKWOD  ALL  RD  NO   
+(NEWSPL      :  32) PRFILE.SAI     4 25-Sep-82 20:00 RUNKOY  ALL  RD  NO   
+(NEWSPL      :  32) PRIADR        14 03-Jun-82 16:22 CEXKOC  ALL  RD  NO   
+(NEWSPL      :  32) REMCNT         2 15-Oct-82 06:14 NEVBEK  ALL  RD  NO   
+(NEWSPL      :  32) REQNUM.DAT     2 03-Sep-82 04:16 BIBWUR  ALL  RD  NO   
+(NEWSPL      :  32) SLPSUB.SAI    18 15-Oct-82 04:55 VAKXIY  ALL  RD  NO   
+(NEWSPL      :  32) SPL.CMD        2 03-Sep-82 04:37 YITWUN  ALL  RD  NO   
+(NEWSPL      :  32) SPL.DCL        2 15-Oct-82 05:01 TITHEB  ALL  RD  NO   
+(NEWSPL      :  32) SPL.SAI       14 15-Oct-82 05:41 COLSUD  ALL  RD  NO   
+(NEWSPL      :  32) SPL.SAV       48 15-Oct-82 06:10 SELZEK  ALL  RD  NO   
+(NEWSPL      :  32) SPLARR.DCL     2 27-Sep-82 23:54 JOKCOP  ALL  RD  NO   
+(NEWSPL      :  32) SPLARR.MAC     2 03-Sep-82 15:20 KETREQ  ALL  RD  NO   
+(NEWSPL      :  32) SPLARR.OLD     2 01-Sep-82 02:15 QOBXOM  ALL  RD  NO   
+(NEWSPL      :  32) SPLARR.REL     2 03-Sep-82 15:21 LOZJOG  ALL  RD  NO   
+(NEWSPL      :  32) SPLCMD.DEF     3 12-Oct-82 23:33 ROCXAH  ALL  RD  NO   
+(NEWSPL      :  32) SPLCNT         2 15-Oct-82 06:14 SAVVAV  ALL  RD  NO   
+(NEWSPL      :  32) SPLDAY.DCL     2 01-Oct-82 00:19 HAWJIB  ALL  RD  NO   
+(NEWSPL      :  32) SPLDAY.REL     5 01-Oct-82 00:23 YILWAP  ALL  RD  NO   
+(NEWSPL      :  32) SPLDAY.SAI     6 30-Sep-82 23:54 GOTKAY  ALL  RD  NO   
+(NEWSPL      :  32) SPLDEF.DEF     2 15-Oct-82 03:29 YIVCUM  ALL  RD  NO   
+(NEWSPL      :  32) SPLFMT.DEF     2 22-Feb-84 16:52 HAYGAB  ALL  RD  NO   
+(NEWSPL      :  32) SPLLIC.DCL     2 27-Sep-82 23:58 KOCDUW  ALL  RD  NO   
+(NEWSPL      :  32) SPLLIC.REL     5 19-Sep-82 14:45 VADTAR  ALL  RD  NO   
+(NEWSPL      :  32) SPLLIC.SAI     3 06-Sep-82 04:12 YEGXIT  ALL  RD  NO   
+(NEWSPL      :  32) SPLMAP.OLD     2 31-Aug-82 22:50 FOTQIS  ALL  RD  NO   
+(NEWSPL      :  32) SPLPAG.DCL     2 27-Sep-82 23:55 FIVFOH  ALL  RD  NO   
+(NEWSPL      :  32) SPLPAG.REL     2 30-Sep-82 22:44 VAPZAW  ALL  RD  NO   
+(NEWSPL      :  32) SPLPAG.SAI     3 30-Sep-82 22:42 DUZYAF  ALL  RD  NO   
+(NEWSPL      :  32) SPLSTR.DCL     2 29-Sep-82 01:10 ZONKIY  ALL  RD  NO   
+(NEWSPL      :  32) SPLSTR.REL     2 29-Sep-82 01:11 MOFXAV  ALL  RD  NO   
+(NEWSPL      :  32) SPLSTR.SAI     3 29-Sep-82 01:09 VEPXUL  ALL  RD  NO   
+(NEWSPL      :  32) SPLSUB.BAK    18 15-Aug-86 17:02 SIVSEW  ALL  RD  NO   
+(NEWSPL      :  32) SPLSUB.DCL     2 15-Oct-82 05:43 MOGHOL  ALL  RD  NO   
+(NEWSPL      :  32) SPLSUB.NEW    18 09-Mar-85 22:33 SIVSEW  ALL  RD  NO   
+(NEWSPL      :  32) SPLSUB.REL    16 15-Oct-82 06:03 DINVIJ  ALL  RD  NO   
+(NEWSPL      :  32) SPLSWS.SAI     2 01-Sep-82 04:26 WUDQES  ALL  RD  NO   
+(NEWSPL      :  32) SPOOL.BAK      2 31-Mar-88 12:54 FOSQOK  ALL  RD  NO   
+(NEWSPL      :  32) SPOOL.FDF      3 29-Mar-88 19:07 DUPJUY  ALL  RD  NO   
+(NEWSPL      :  32) SPOOL.FMT      2 31-Mar-88 14:23 QOKCAX  ALL  RD  NO   
+(NEWSPL      :  32) SPOOL.GDF      5 29-Mar-88 19:13 LIQLOP  ALL  RD  NO   
+(NEWSPL      :  32) SPOOL.MAP     17 31-Mar-88 12:54 WUZLOH  ALL  RD  NO   
+(NEWSPL      :  32) SPOOL.SAV     23 10-Dec-82 15:23 QUYGEN  ALL  RD  NO   
+(NEWSPL      :  32) SSPOOL.DAT     7 09-Oct-82 23:20 ZOSJIM  ALL  RD  NO   
+(NEWSPL      :  32) SWDEFS.DEF     5 01-Sep-82 03:59 BOBZOW  ALL  RD  NO   
+(NEWSPL      :  32) UUOSYM.DEF    10 21-Jul-82 02:41 TEMWIH  ALL  RD  NO   
+(NEWSPL      :  32) [MAIL]         2 04-Oct-82 16:09 HAQWOW  ALL  RD  NO   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?host unavailable   
+?unable to build circuit to JMS:38 
+?unable to build circuit to JMS:38 
+?unable to build circuit to JMS:38 
+?unable to build circuit to JMS:38 
+?unable to build circuit to JMS:38 
+Creaux failed to JMS:38  
