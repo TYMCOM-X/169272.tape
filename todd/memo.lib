@@ -1,0 +1,94 @@
+.variable ToList, FromList, Respectus, CcList, TitleTag;
+
+.macro	to (name) $(
+.	ToList _ ToList & "\name{break}";
+.)$;
+
+.macro	from (name) $(
+.	FromList _ "\name";
+.)$;
+
+.macro	re (subject) $(
+.	Respectus _ "subject";
+.)$;
+
+.macro	cc (name) $(
+.	CcList _ CcList & "\name{break}";
+.)$;
+
+.from |Todd Corenson{break}\Tymcom-X Operating Systems Manager|
+
+.macro	Title (name) $(
+.	TitleTag _ name;
+.)$;
+
+.TitleTag _ "M E M O";
+
+.macro body $(
+.	nofill
+.	turn on "{\#";
+.	begin center
+{TitleTag}
+.	end
+.	skip 1;
+.	tabs 20;
+.	spacing 0;
+.if length(ToList) then start
+To:{ToList}
+.skip 1;
+.end
+From:{FromList}
+.	skip 1;
+.if length(CcList) then start
+Copies:{CcList}
+.skip 1
+.end
+Date:\{Date}  {Time}
+.	preface 0;
+.	indent 0,19,0;
+.	fill;
+.	nojust;
+.if length(Respectus) then start
+Subject:\{Respectus}
+.skip 1;
+.end
+.	skip 1;
+.	once center;
+-##-##-##-##-##-##-##-##-##-##-##-##-##-##-##-##-##-##-
+.	preface 1;
+.	indent 0,0,0;
+.at "/" $(}/{)$;
+.begin)$;
+
+.macro EndBody $(
+.EndPage:
+#
+.end )$;
+
+.at "/" $(break}\{)$;
+
+.before page $( Begin
+.	place heading;
+.	turn on "";
+.	once flush left;
+.	if Page = 1 then start 
+Page {Page " of "; Page! EndPage}
+.	end else start
+{Respectus}Page {Page " of "; Page! EndPage}
+.	end
+.	turn off "";
+.end )$;
+
+.next page
+.turn on "";
+
+.macro list $(
+.	begin "LIST"
+.	indent 8,12,8;
+.	preface 1;
+.	AT "--" $( BREAK )$;
+.)$ <<list>>;
+
+.macro endList $(
+.	end "LIST"
+.)$ <<endList>>;
