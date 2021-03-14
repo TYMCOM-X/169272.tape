@@ -1,0 +1,53 @@
+                                                             Page 1 of 1
+
+
+                                M E M O
+
+To:                J. Barasz, Sligos (Paris)
+                   B. Mathieu, Sligos (Paris)
+                   K. Holcomb, Corp
+                   D. McQuoid, Corp
+                   A. Ginzburg, Tech Div
+                   L. Bolton, Tech Div
+                   E. Socci, Tech Div
+                   S. Gavette, Tech Div
+                   A. Atkinson, Tech Div
+                   B. Soley, Tech Div
+                   M. Bowles, Tech Div
+
+From:              Todd Corenson
+                   PDP-10 monitor group
+
+Date:              August 1, 1979  12:51
+
+Subject:           Backspace As Break-On-Puncuation
+
+
+        -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+In monitor versions P034/B and later, the break characteristics of
+backspace are settable. If the "backspace-as-break-on-puncuation" bit
+(the bit) is set, backspace counts as a punctuation character (it causes
+a break only if enabled for break-on-puncuation); if the bit is cleared,
+the default state, backspace always causes a break.  The bit can be set
+and cleared by invoking the .AXBBP AUXCAL (function code 66) as shown
+below:
+
+              MOVE   ac, [port,,66]
+              AUXCAL ac, addr
+
+where <addr> points to either:
+     1) a word containing a negative number, in which case
+        .AXBBP reads the current value of the bit into
+        c<addr>.
+     2) a word containing a nonnegative number, in which case
+        c<addr> bit 35 is swapped with the current setting
+        of the bit.
+
+The normal AUXCAL checks are performed.
+
+
+Note that in order for backspace to be echoed on full-duplex terminals,
+the "remote backspace echo" bit must be set.  This can be accomplished
+with the .AXRBS AUXCAL.   
+
