@@ -1,0 +1,259 @@
+ANSI Escape sequences:
+
+All sequences are presumed to be prefaced by <ESC>
+
+Mnemonic	Code	 	LA-120  VT-102	VT-240	Description
+========	====		======  ======	======	===========
+S7C1T		<sp>F				x	Select 7-bit C1 control transmission
+S8C1T		<sp>G				x	Select 8-bit C1 control transmission
+DECDHL		#3			x	x	Line attributes -- Double height top half
+DECDHL		#4			x	x	Line attributes - Double height bottom half
+DECSWL		#5			x	x	Line attributes -- single width, single height
+DECDWL		#6			x	x	Line attributes - Double width single height
+DECALN		#8			x	x	Fill screen with Es
+		(0			1	1	Select drawing characters
+		(1			1      		Select ROM character set
+		(2			1		Select ROM special character set
+		(<				x	Select DEC supplimental character set to G0
+		(A		x	1	3	Select UK character set
+		(B		x	1	1	Select US character set
+		(C		x			Select Finland character set
+		(E		x			Select Norway/Denmark character set
+		(H		x			Select Swedish character set
+		(K		x			Select German Character set
+		(R		x			Select French character set (why???)
+		)0			x		Select drawing G1 character set
+		)1			x		Select ROM G1 character set
+		)2			x		Select ROM G1 character set
+		)<				x	Select DEC supplimental character set to G1
+		)A			x	3	Select UK national character set to G1
+		)B			x	x	Select US character set to G1
+		*0				x	Select DEC special graphics to G2
+		*<				x	Select DEC supplimental character set to G2
+		*B				x	Select US character set in G2
+		+0				x	Select DEC special graphics to G3
+		+<				x	Select DEC supplimental character set to G3
+		+B				x	Select US character set to G3
+		1		2			Set horizontal tab stop at current column
+		2		2			Clear all horizontal tab stops
+		3		2			Set vertical tab stop at current line
+		4		2			Clear all vertical tab stops
+DECSC		7			x	x	Save cursor position and attributes
+DECRC		8			x	x	Restore cursor position and attributes
+		<					Enter ANSI mode (VT52 only)
+DECKPAM		=		x	x	x	Enter alternate keypad mode
+DECKPNM		>		x	x	x	Disable alternate keypad mode
+IND		D		x	x	x	Index
+NEL		E		x	x	x	New line
+HTS		H		x	x	x	Set horizontal tab stop at current column
+RI		M			x	x	Reverse index
+SS2		N			x	x	Single shift to G2 character set
+SS3		O			x	x	Single shift to G3 character set
+DCS		P				x	Start of device control string
+DECID		Z		2	2	2	Identify terminal ($\Z=VT52, $[?6c=VT102, $[?2c=LA120,
+							 $[?62;1;2;3;4;6;7;8c=VT240)
+CSI		[		x	x	x	Control sequence introducer
+ST		\				x	String terminator
+RIS		c			x	x	Reset terminal to initial state
+LS2		n				x	Invoke G2 into GL
+LS3		o				x	Invoke G3 into GL
+LS3R		|				x	invoke G3 into GR
+LS2R		}				x	Invoke G2 into GR
+LS1R		~				x	Invoke G1 into GR
+
+Notes:
+
+1)	Selects G0 character set on VT-102
+2)	LA-36 compatibility
+3)	In VT-100 compatibility mode only
+
+
+ANSI Control Sequences:
+
+All control sequences are presumed to be prefixed by <ESC>[ (octal 33, 133)
+
+Mnemonic	Code		LA-120	VT-102	VT-240	Description
+========	====		======	======	======	===========
+
+DECSTR		!p				x	Soft terminal reset
+DECSCA		0"q				x	Select character attributes -- all attributes off (does not apply to SGR)
+DECSCA		1"q				x	Select character attributes -- Designate set as "non-erasable" by DECSEL
+DECSCA		2"q				x	Select character attributes -- Designate set as "erasable" by DECSEL/DECSED
+ICH		Pc @				x	Insert Pc spaces
+CUU		Pr A			x	x	Cursor up Pr lines
+CUD		Pr B			x	x	Cursor down Pr lines
+CUF		Pc C			x	x	Cursor right Pc columns
+CUB		Pc D			x	x	Cursor left Pc columns
+CUP		Pr;Pc H			x	x	Cursor address to row Pr, column Pc
+EL		0K			x		Erase from cursor to end of line
+EL		1K			x		Erase from beginning of line to cursor (including current position)
+EL		2K			x		Erase entire line containing cursor
+DECSEL		?0K				x	Selective erase to end of line
+DECSEL		?1K				x	Selective erase to beginning of line
+DECSEL		?2K				x	Selective erase line
+ED		0J			x		Erase from cursor to end of screen
+ED		1J			x		Erase from beginning of screen to cursor (including cursor)
+ED		2J			x		Erase entire screen (doesn't change cursor position)
+DECSED		?0J				x	Selective erase to end of screen
+DECSED		?1J				x	Selective erase to beginning of screen
+DECSED		?2J				x	Selective erase of screen
+IL		Pr L			x	x	Insert Pr blank lines
+DL		Pr M			x	x	Delete Pr lines
+DCH		Pc P			x	x	Delete Pc characters
+ECH		Pc X				x	Erase Pc characters
+HPA		Pc `		x			(terminator is grave accent) Set current column to Pc
+HPR		Pc a		x			Advance Pc columns
+DA		0c		x	x	x	Terminal identification request
+DA		>0c				x	Secondary DA request
+VPA		Pr d		x			Move to line Pr
+VPR		Pr e		x			Advance Pr lines
+HVP		Pr;Pc f			x	x	Cursor address (identical to $[H)
+TBC		0g		x	x	x	Clear horizontal tab stop at current column
+TBC		1g		x			Clear vertical tab stop at current line
+TBC		2g		x			Clear all horizontal tab stops
+TBC		3g		x	x	x	Clear all horizontal tab stops
+TBC		4g		x			Clear all vertical tab stops
+KAM		2h			x	x	Lock keyboard
+IRM		4h			x	x	Set insert mode
+SRM		12h			x	x	Clear send/receive mode
+LNM		20h		x	x	x	Enable line feed newline mode
+DECCKM		?1h			x	x	Set cursor key application mode
+DECCOLM		?3h			x	x	Set 132 column mode
+DECSCLM		?4h			x	x	Set smooth scroll
+DECSCNM		?5h			x	x	Set inverse video
+DECOM		?6h			x	x	Set origin mode
+DECAWM		?7h			x	x	Set autowrap mode
+DECARM		?8h			x	x	Set autorepeat mode
+DECPFF		?18h			x	x	Print form feed
+DECPEX		?19h			x	x	Print full screen
+DECTEK		?38h				x	Set Tektronix mode
+MC		0i			x	x	Media copy - print screen
+MC		4i			x	x	Media copy - exit printer controller
+MC		5i			x	x	Media copy - enter printer controller
+MC		?0i				x	Media copy - select graphics to printer
+MC		?1i			x	x	Media copy - print cursor line
+MC		?2i				x	Media copy - graphics to host
+MC		?4i			x	x	Media copy - exit auto print
+MC		?5i			x	x	Media copy - enter auto print
+KAM		2l			x	x	Unlock keyboard
+IRM		4l			x	x	Set replace mode
+SRM		12l			x	x	Set send/receive mode
+LNM		20l		x	x	x	Disable line feed newline mode
+DECCKM		?1l			x	x	Clear cursor key application mode
+DECANM		?2l			x	x	Clear ANSI mode (set Vt-52 emulation)
+DECCOLM		?3l			x	x	Set 80 column mode
+DECSCLM		?4l			x	x	Set jump scroll
+DECSCNM		?5l			x	x	Clear inverse video
+DECOM		?6l			x	x	Clear origin mode
+DECAWM		?7l			x	x	Clear autowrap mode
+DECARM		?8l			x	x	Clear autorepeat mode
+DECPFF		?18l			x	x	Clear form feed mode
+DECPEX		?19l			x	x	Print scrolling region
+DECTEK		?38l				x	Clear Tektronix mode
+SGR		0m			x	x	Select graphic rendition (no attributes)
+SGR		1m			x	x	Select graphic rendition (bold)
+SGR		4m			x	x	Select graphic rendition (underline)
+SGR		5m			x	x	Select graphic rendition (blink)
+SGR		7m			x	x	Select graphic rendition (reverse video)
+SGR		22m				x	Select graphic rendition (normal intensity)
+SGR		24m				x	Select graphic rendition (not underlined)
+SGR		25m				x	Select graphic rendition (not blinking)
+SGR		27m				x	Select graphic rendition (positive image)
+DSR		5n			x	x	Device status report ($[0n=OK, $[3n=not OK)
+DSR		6n			x	x	Report cursor position (responds $[Pr;PcR)
+DSR		?15n			x	x	Request printer status ($[?10n=OK, $[?11n=not OK, $[?13n=no printer)
+DSR		?25n				x	"Are User Defined Keys Locked?"
+		0q			x		Clear leds
+		1q			x		Lite led 1
+DECSTBM		Pr;Pr r		x	x	x	Set top and bottom margins
+		Pc;Pc s		x			Set left and right margins
+		Pr t		x			Set form length to Pr lines
+		Pc;Pc;Pc;Pc u	x			Set horizontal tab stops at columns Pc
+		Pr;Pr;Pr;Pr v	x			Set vertical tab stops a lines Pr
+		0w		x			Set horizontal pitch to 10cpi
+		1w		x			Set horizontal pitch to 10cpi
+		2w		x			Set horizontal pitch to 12cpi
+		3w		x			Set horizontal pitch to 13.2cpi
+		4w		x			Set horizontal pitch to 16.5 cpi
+		5w		x			Set horizontal pitch to 5 cpi
+		6w		x			Set horizontal pitch to 6 cpi
+		7w		x			Set horizontal pitch to 6.6 cpi
+		8w		x			Set horizontal pitch to 8.25 cpi
+		2;1y			x		Power up test
+		2;2y			x		Data loopback test
+		2;4y			x		EIA modem control test
+		2;9y			x		Repeat power up test
+		2;10y			x		Repeat data loopback test
+		2;12y			x		Repeat EIA test
+		2;16y			x		Printer port loopback test
+		2;24y			x		Repeat printer port data loopback test
+		0z		x			Set vertical pitch to 6 lpi
+		1z		x			Set vertical pitch to 6 lpi
+		2z		x			Set vertical pitch to 8 lpi
+		3z		x			Set verical pitch to 12 lpi
+		4z		x			Set vertical pitch to 2 lpi
+		5z		x			Set vertical pitch to 3 lpi
+		6z		x			Set vertical pitch to 4 lpi
+
+Notes:
+
+Pc     Decimal number specifying column number
+Pr     Decimal number specifying row number
+
+Special key codes sent by terminal:
+
+Key		LA-120	VT-102	VT-240	Code sent	Alternate mode
+===		======	======	======	=========	========= ====
+FIND				x	CSI 1 ~
+Insert Here			x	CSI 2 ~
+Remove				x	CSI 3 ~
+Select				x	CSI 4 ~
+Previous Screen			x	CSI 5 ~
+Next Screen			x	CSI 6 ~
+
+up			x	x	CSI A		SS3 A
+down			x	x	CSI B		SS3 B
+right			x	x	CSI C		SS3 C
+left			x	x	CSI D		SS3 D
+
+keypad 0	?	x	x	0		SS3 p
+keypad 1	?	x	x	1		SS3 q
+keypad 2	?	x	x	2		SS3 r
+keypad 3	?	x	x	3		SS3 s
+keypad 4	?	x	x	4		SS3 t
+keypad 5	?	x	x	5		SS3 u
+keypad 6	?	x	x	6		SS3 v
+keypad 7	?	x	x	7		SS3 w
+keypad 8	?	x	x	8		SS3 x
+keypad 9	?	x	x	9		SS3 y
+keypad -	?	x	x	-		SS3 m
+keypad ,	?	x	x	,		SS3 l
+keypad .	?	x	x	.		SS3 n
+Enter		?	x	x	<CR>	M
+
+PF1		?	x	x	SS3 P
+PF2		?	x	x	SS3 Q
+PF3		?	x	x	SS3 R
+PF4		?	x	x	SS3 S
+
+F6				x	CSI 17 ~
+F7				x	CSI 18 ~
+F8				x	CSI 19 ~
+F9				x	CSI 20 ~
+F10				x	CSI 21 ~
+F11				x	CSI 23 ~	<ESC>
+F12				x	CSI 24 ~	<BS>
+F13				x	CSI 25 ~	<LF>
+F14				x	CSI 26 ~
+Help (F15)			x	CSI 28 ~
+DO (F16)			x	CSI 29 ~
+F17				x	CSI 31 ~
+F18				x	CSI 32 ~
+F19				x	CSI 33 ~
+F20				x	CSI 34 ~
+
+notes:
+
+CSI is control sequence introducer (<ESC>[ or 1/11 5/11 or 9/11)
+SS3 is Single Shift to G3 (<ESC>O or 1/11 4/15 or 8/15)
+    ]@kˆ
