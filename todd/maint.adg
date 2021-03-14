@@ -1,0 +1,21 @@
+Tentative Agenda for Tops-20 Maintenance Meeting	Todd Corenson 11/11/82
+
+A.  Error logging programs
+
+B.  Crash analysis
+
+C.  Checkd vs. Dskcln
+
+D.  CTY crash and warning messages
+
+E.  Front-end
+
+    1.  Interaction with host
+    2.  Diagnostic facilities
+    3.  Maintenance
+
+F.  Administrative issues
+
+    1.  Patching monitors
+    2.  Logging crashes
+
