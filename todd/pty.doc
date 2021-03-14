@@ -1,0 +1,141 @@
+
+
+
+                        An Introduction to PTYs
+
+
+
+
+
+
+
+      PTYs (pseudo teletypes) are something like internal aux circuits.
+      PTYs come in pairs. To get a pair of PTYs, you execute
+
+              SETZ    ac,
+              CREPTY  ac,     ;(CALLI ac, -'141)
+                error return  ;ac/ error code
+              normal return   ;ac/ one port #,,the other port #
+
+      where <error code> is one of:
+
+              CPNPT%  1       out of PTYs
+              CPNRM%  2       no DDB space for another PTY
+
+      When the call returns, the two PTYs will be attached to your job
+      as slave ports; you will normally attach one of the two to some
+      other job (using the RETACH UUO) as its command port.
+
+      Unlike aux circuits, where the "near" end (the one you got from
+      CREAUX as opposed to the one that's logged-in at the specified
+      host) is always in image state and is initialized to not echo,
+      PTYs are symmetrical: in order to get the effect of an aux
+      circuit, you should set the data mode of "your" end to '214 (no
+      echo, binary).
+
+      Doing a circuit zap on either PTY of the pair will free up both
+      PTYs (the opposite end will get a circuit-zapped interrupt).
+
+      Yellow balls and character gobblers and such pass between PTYs
+      exactly as they would between ends of an aux circuit.
+
+      PTYs always apply backpressure when they are overloaded,
+      regardless of the data mode set. They will never send XONs or
+      XOFFs or bells on their own. The TYMNET reverse-XON parameter is
+      not simulated -- there is no state in which sending an XOFF to a
+      PTY will backpressure it. It is conceivable, though unlikely, that
+      a PTY pair could lose characters; in such a case, the sender would
+      receive an "output characters lost" interrupt and the intended
+      recipient an "input characters lost" interrupt.
+
+      Block i/o between PTYs will be extremely fast if both ends are
+      doing block i/o and using the same buffer sizes.
+
+      If you are writing a program that runs some job in a separate
+      frame attached to a PTY and records its output in a file, you
+      typically do not want the monitor to do things like expanding HTs
+
+
+
+      into spaces or inserting rubouts after formfeeds, regardless of
+      what the controlled job is trying to do to its terminal
+      characteristics. There is a "suppress-output-translation" bit for
+      this purpose, which can be read, set or cleared (in the usual way)
+      with the  .AXSOX AUXCAL function (fn '71). You specify your end's
+      port number to control translation of the other end's output.
+      (What to do if the job then begins to output image characters is
+      still a loose end. The most acceptable alternative currently
+      apparent is to insert escape characters into the character stream
+      to indicate the changes of mode).
+
+      The terminal characteristics of a PTY (including all of the TYMNET
+      characteristics, however inappropriate) are always reflected by
+      the monitor: if you set parameter A to 6, you will then read it
+      back as 6.
+
+      There is a new TINASS interrupt, .IATCC (terminal characteristics
+      changed, cause 10.) which goes off whenever the "other end"
+      changes one or more of its terminal characteristics (the
+      corresponding POLPRT bit is LXRTCC, mask = '400).  The recipient
+      of an .IATCC interrupt can use the .AXTCP (terminal
+      characteristics for PTY) AUXCAL (fn '74) to read the "next" unread
+      changed terminal characteristic:
+
+              MOVE    ac, [port,,.AXTCP]
+              AUXCAL  ac, arg
+                error return  ;usual AUXCAL reasons, or not a PTY
+              normal return   ;arg/(tc#,,new value) or -1 if none
+
+      You specify your end's port number to read the other end's
+      characteristics.  The "changed" bits are only set when a frame
+      actually changes a terminal characteristic; they are initially
+      clear, and are not set by RETACH.
+
+      If you are writing a transparent program (like AUXIO) which stands
+      between a controlled job and a real TTY, you will want to set the
+      "suppress-output-translation" bit for the PTY you are controlling
+      the job through, then use the .IATCC/.AXTCP mechanism to pass on
+      the controlled job's terminal characteristics settings to the real
+      TTY.
+
+      To make it easier to live with the characteristics numbers, there
+      is a new AUXCAL function, .AXTCN (fn '73), which reads and/or sets
+      (in the usual way) terminal characteristics by number:
+
+              MOVE    ac, [port,,.AXTCN]
+              MOVE    arg, [tc#,,new val (or -1 to just read)]
+              AUXCAL  ac, arg
+                error return  ;bad tc# or new value is illegal
+              normal return   ;arg/ tc#,,old value
+
+
+
+
+      The terminal characteristics, and their numbers, are:
+
+              .TCCRD  0       delay after CR not after LF
+              .TCIR   1       input baud rate
+              .TCOR   2       output baud rate
+              .TCPAR  3       set output parity
+              .TCHDX  4       half-duplex
+              .TCPA   5       parameter A
+              .TCPB   6       parameter B
+              .TCPC   7       parameter C
+              .TCXON  8       remote XON
+              .TCECH  9       remote backspace echo
+              .TCRXE  10      reverse XON enable
+              .TCTYP  11      terminal type
+              .TCNXO  12      never send XON/XOFF
+              .TCWID  13      terminal line width
+              .TCFC1  14      filler class 1
+              .TCFC2  15      filler class 2
+              .TCBSP  16      backspace for character delete
+              .TCERA  17      backspace/space/backspace for delete
+              .TCDEF  18      stay in deferred echo mode
+              .TCLCO  19      lower case output only
+              .TCTAB  20      hardware HT
+              .TCFRM  21      hardware VT/FF
+              .TCLCT  22      map lower-case input to upper
+              .TCNFC  23      no free CR/LFs on long lines
+              .TCPTP  24      paper tape mode
+
