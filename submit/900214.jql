@@ -1,0 +1,97 @@
+02:23:22 S ** 14-Feb-90 XEXEC %1(215) in frame 5 ** user PERPOPER **
+02:23:23 S -S- run #1 job 9 Req #0 :()
+02:23:24 S -S- stream #1 Req #7994 DSK:(DIAG10F)STARTU.TMP=DSK:(DIAG10F)STARTU.SYS
+02:23:32 S Processor status JSU EXECX Setup in frame 6
+02:23:32 P Waiting for interlock
+02:23:33 P Got interlock
+02:23:33 P EXECX Job Processor %1(226) starting in frame 6
+02:23:34 S Starting job processor in frame 6
+02:23:34 S -S- stream #2 Req #7981 DSK:(KL10)RDIST.LOG=DSK:(KL10)RDIST.CTL
+02:23:34 P Stream #1 Req #7994 DSK:(DIAG10F)STARTU.TMP=DSK:(DIAG10F)STARTU.SYS
+02:23:36 P Stream #2 Req #7981 DSK:(KL10)RDIST.LOG=DSK:(KL10)RDIST.CTL
+02:23:41 S -S- stream #3 Req #7983 DSK:(NEW11)RDIST.LOG=DSK:(NEW11)RDIST.CTL
+02:23:46 P Stream #3 Req #7983 DSK:(NEW11)RDIST.LOG=DSK:(NEW11)RDIST.CTL
+02:23:48 S -S- stream #4 Req #7986 DSK:(CURR11)RDIST.LOG=DSK:(CURR11)RDIST.CTL
+02:23:49 P Stream #4 Req #7986 DSK:(CURR11)RDIST.LOG=DSK:(CURR11)RDIST.CTL
+02:23:54 S -S- stream #5 Req #7996 DSK:(JMS)SZRPTX.LOG=DSK:(JMS)SZRPTX.CTL
+02:23:56 P Stream #5 Req #7996 DSK:(JMS)SZRPTX.LOG=DSK:(JMS)SZRPTX.CTL
+02:23:59 S -S- stream #6 Req #7991 DSK:(KS2020)RDIST.LOG=DSK:(KS2020)RDIST.CTL
+02:24:03 P Stream #6 Req #7991 DSK:(KS2020)RDIST.LOG=DSK:(KS2020)RDIST.CTL
+02:24:06 S -S- stream #7 Req #7995 DSK:(TOOLS11)RDIST.LOG=DSK:(TOOLS11)RDIST.CTL
+02:24:09 P Stream #7 Req #7995 DSK:(TOOLS11)RDIST.LOG=DSK:(TOOLS11)RDIST.CTL
+02:24:12 S -S- stream #8 Req #7997 DSK:(KSDIAG)RDIST.LOG=DSK:(KSDIAG)RDIST.CTL
+02:24:16 P Stream #8 Req #7997 DSK:(KSDIAG)RDIST.LOG=DSK:(KSDIAG)RDIST.CTL
+02:24:20 S -S- stream #9 Req #7998 DSK:(OLD11)RDIST.LOG=DSK:(OLD11)RDIST.CTL
+02:24:23 P Stream #9 Req #7998 DSK:(OLD11)RDIST.LOG=DSK:(OLD11)RDIST.CTL
+02:24:34 S 14-Feb-90
+02:25:28 P Stream #1 Req #7994 * completed *
+02:25:29 S -R- stream #1 Done-End <0>
+02:25:31 S -S- stream #1 Req #7999 DSK:(F3CODE)RDIST.LOG=DSK:(F3CODE)RDIST.CTL
+02:25:35 P Stream #1 Req #7999 DSK:(F3CODE)RDIST.LOG=DSK:(F3CODE)RDIST.CTL
+02:36:41 P Stream #7 Req #7995 * completed *
+02:36:44 S -R- stream #7 Done-End <0>
+02:36:45 S -S- stream #7 Req #7992 DSK:(M33)RDIST.LOG=DSK:(M33)RDIST.CTL
+02:37:43 P Stream #5 Req #7996 * completed *
+02:37:45 S -R- stream #5 Done-End <0>
+02:38:46 P Stream #8 Req #7997 * completed *
+02:38:50 S -R- stream #8 Done-End <0>
+02:43:41 P Stream #2 Req #7981 * completed *
+02:43:44 S -R- stream #2 Done-End <0>
+02:48:15 P Stream #1 Req #7999 * completed *
+02:48:15 S -R- stream #1 Done-End <0>
+03:00:04 P Stream #1 Req #8006 DSK:(NEW11)RDIST.LOG=DSK:(NEW11)RDIST.CTL
+03:00:34 S 14-Feb-90
+T.LOG=DSK:(NEW11)RDIST.CTL
+03:06:05 P Stream #6 Req #7991 * completed *
+03:06:05 S -R- stream #6 Done-End <0>
+03:27:47 P Stream #1 Req #8006 * completed *
+03:27:49 S -R- stream #1 Done-End <0>
+03:29:52 P Stream #9 Req #7998 * completed *
+03:29:55 S -R- stream #9 Done-End <0>
+03:42:07 P Stream #7 Req #7992 * completed *
+03:42:10 S -R- stream #7 Done-End <0>
+04:36:43 P Stream #4 Req #7986 * completed *
+04:36:44 S -R- stream #4 Done-End <0>
+04:52:38 P Signing off.
+06:00:36 S 14-Feb-90
+19:53:19 S ** 14-Feb-90 XEXEC %1(215) in frame 5 ** user PERPOPER **
+19:53:19 S -S- run #1 job 9 Req #0 :()
+19:53:19 S -S- stream #1 Req #8000 DSK:(DIAG10F)STARTU.TMP=DSK:(DIAG10F)STARTU.SYS
+19:53:25 S Processor status JSU EXECX Setup in frame 8
+19:53:25 P Waiting for interlock
+19:53:27 P Got interlock
+19:53:27 P EXECX Job Processor %1(226) starting in frame 8
+19:53:27 P Stream #1 Req #8000 DSK:(DIAG10F)STARTU.TMP=DSK:(DIAG10F)STARTU.SYS
+19:53:27 S Starting job processor in frame 8
+19:53:29 S -S- stream #2 Req #8002 DSK:(JMS)SZRPTX.LOG=DSK:(JMS)SZRPTX.CTL
+19:53:32 P Stream #2 Req #8002 DSK:(JMS)SZRPTX.LOG=DSK:(JMS)SZRPTX.CTL
+19:54:45 S 14-Feb-90
+19:54:46 P Stream #1 Req #8000 * completed *
+19:54:46 S -R- stream #1 Done-End <0>
+20:03:02 S ** 14-Feb-90 XEXEC %1(215) in frame 5 ** user PERPOPER **
+20:03:02 S -S- run #1 job 9 Req #0 :()
+20:03:02 S -S- stream #1 Req #8012 DSK:(DIAG10F)STARTU.TMP=DSK:(DIAG10F)STARTU.SYS
+20:03:09 S Processor status JSU EXECX Setup in frame 6
+20:03:10 P Waiting for interlock
+20:03:11 P Got interlock
+20:03:11 P EXECX Job Processor %1(226) starting in frame 6
+20:03:12 S Starting job processor in frame 6
+20:03:12 P Stream #1 Req #8012 DSK:(DIAG10F)STARTU.TMP=DSK:(DIAG10F)STARTU.SYS
+20:03:14 S -S- stream #2 Req #8002 DSK:(JMS)SZRPTX.LOG=DSK:(JMS)SZRPTX.CTL
+20:03:15 P Stream #2 Req #8002 DSK:(JMS)SZRPTX.LOG=DSK:(JMS)SZRPTX.CTL
+21:52:13 S ** 14-Feb-90 XEXEC %1(215) in frame 5 ** user PERPOPER **
+21:52:13 S -S- run #1 job 9 Req #0 :()
+21:52:13 S -S- stream #1 Req #8012 DSK:(DIAG10F)STARTU.TMP=DSK:(DIAG10F)STARTU.SYS
+21:52:20 S Processor status JSU EXECX Setup in frame 6
+21:52:20 P Waiting for interlock
+21:52:22 P Got interlock
+21:52:22 P EXECX Job Processor %1(226) starting in frame 6
+21:52:22 S Starting job processor in frame 6
+21:52:22 P Stream #1 Req #8012 DSK:(DIAG10F)STARTU.TMP=DSK:(DIAG10F)STARTU.SYS
+21:52:24 S -S- stream #2 Req #8002 DSK:(JMS)SZRPTX.LOG=DSK:(JMS)SZRPTX.CTL
+21:53:22 S 14-Feb-90
+21:54:22 P Stream #1 Req #8012 * completed *
+21:59:59 S -R- stream #2 Done-End <0>
+ted *
+22:15:23 P Signing off.
+00:00:22 S 15-Feb-90
