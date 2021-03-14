@@ -1,0 +1,23 @@
+
+BEGIN
+    REQUIRE "(SAILIB)SAIL.DEF" SOURCE!FILE;
+    INTEGER chan1,chan2,flag1,flag2,decnum,octnum,brch,brtab,eof;
+    SETBREAK(brtab := GETBREAK,#LF,#FF&#CR,"ins");
+    OPEN( chan1 := GETCHAN,"dsk",'14,4,4,200,brch,eof );
+    OPEN( chan2 := GETCHAN,"dsk",'14,4,4,0,0,0);
+    IF NOT eof THEN
+      BEGIN
+        LOOKUP( chan1,"DECNUM.DAT",flag1 );
+        ENTER( chan2,"OCTNUM.DAT",flag2 );
+        IF NOT flag1 OR flag2 THEN
+          WHILE NOT eof DO
+            BEGIN
+              decnum := WORDIN(chan1);
+              octnum := CVOS(decnum);
+              PRINT ("DECNUM :",DECNUM,"  OCTNUM :",OCTNUM,CRLF);
+              WORDOUT(chan2,octnum);
+            END;
+          RELEASE( chan1 );
+          RELEASE( chan2 );
+      END;
+END;
