@@ -1,0 +1,2848 @@
+^^
+.VARIABLE SYSTEM,$,%
+.IF SYSTEM
+.FLAG CAPIT
+.PAPER SIZE 60,79
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ $$$$                        $$$$
+$$$$                          $$$$
+$$$$                          $$$$
+$$$$$                        $$$$$  TYMNET AND THE TYMCOM-X
+$$$$$$                      $$$$$$
+$$$$$$                      $$$$$$  OPERATIONS MINI-MANUAL _#4
+$$$$$$                      $$$$$$
+$$$$$$$                    $$$$$$$  REPRINTED MAY 1981
+$$$$$$$                    $$$$$$$
+$$$$$$$$                  $$$$$$$$
+$$$$$$$$                  $$$$$$$$
+$$$$$$$$$                $$$$$$$$$
+$$$$$$$$$                $$$$$$$$$
+$$$$$$$$$$::::::::::::::$$$$$$$$$$
+$$$$$$$$$$::::::::::::::$$$$$$$$$$
+$$$$$$$$$$$::::::::::::$$$$$$$$$$$
+$$$$$$$$$$$::::::::::::$$$$$$$$$$$
+$$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+$$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+$$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+$$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+$$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$  WESTERN COMPUTER OPERATIONS
+$$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$  TYMSHARE COMPUTER MANAGEMENT
+$$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$           SERVICES
+$$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$  
+$$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+$$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+$$$$$$$$$$$$    ::    $$$$$$$$$$$$
+$$$$$$$$$$$$    ::    $$$$$$$$$$$$
+$$$$$$$$$$$     ::     $$$$$$$$$$$              
+$$$$$$$$$$$     ::     $$$$$$$$$$$              
+$$$$$$$$$$      ::      $$$$$$$$$$
+$$$$$$$$$$      ::      $$$$$$$$$$
+$$$$$$$$$       ::       $$$$$$$$$
+$$$$$$$$$      ::::      $$$$$$$$$
+$$$$$$$$      ::::::      $$$$$$$$
+$$$$$$$$     ::::::::     $$$$$$$$      
+$$$$$$$     ::::::::::     $$$$$$$  REPLACES MINI-MANUAL _#4
+$$$$$$$    ::::::::::::    $$$$$$$  
+$$$$$$    ::::::::::::::    $$$$$$  DATED JUNE 1978
+$$$$$$   ::::::::::::::::   $$$$$$  
+$$$$$   ::::::::::::::::::   $$$$$
+$$$$$  ::::::::::::::::::::  $$$$$
+$$$$  ::::::::::::::::::::::  $$$$
+ $$$$::::::::::::::::::::::::$$$$
+  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+.PAGE!END OF HEADER
+.ELSE SYSTEM
+.PAPER SIZE 60,79
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ $$$$                        $$$$
+$$$$                          $$$$
+$$$$                          $$$$
+$$$$$                        $$$$$  TYMNET AND THE TYMCOM-IX
+$$$$$$                      $$$$$$
+$$$$$$                      $$$$$$  OPERATIONS MINI-MANUAL _#4
+$$$$$$                      $$$$$$
+$$$$$$$                    $$$$$$$  REPRINTED MAY 1981
+$$$$$$$                    $$$$$$$
+$$$$$$$$                  $$$$$$$$
+$$$$$$$$                  $$$$$$$$
+$$$$$$$$$                $$$$$$$$$
+$$$$$$$$$                $$$$$$$$$
+$$$$$$$$$$::::::::::::::$$$$$$$$$$
+$$$$$$$$$$::::::::::::::$$$$$$$$$$
+$$$$$$$$$$$::::::::::::$$$$$$$$$$$
+$$$$$$$$$$$::::::::::::$$$$$$$$$$$
+$$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+$$$$$$$$$$$$::::::::::$$$$$$$$$$$$
+$$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+$$$$$$$$$$$$$::::::::$$$$$$$$$$$$$
+$$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$::::::$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$::::$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$::$$$$$$$$$$$$$$$$  WESTERN COMPUTER OPERATIONS
+$$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$ :: $$$$$$$$$$$$$$$  TYMSHARE COMPUTER MANAGEMENT
+$$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$           SERVICES
+$$$$$$$$$$$$$$  ::  $$$$$$$$$$$$$$  
+$$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+$$$$$$$$$$$$$   ::   $$$$$$$$$$$$$
+$$$$$$$$$$$$    ::    $$$$$$$$$$$$
+$$$$$$$$$$$$    ::    $$$$$$$$$$$$
+$$$$$$$$$$$     ::     $$$$$$$$$$$              
+$$$$$$$$$$$     ::     $$$$$$$$$$$              
+$$$$$$$$$$      ::      $$$$$$$$$$
+$$$$$$$$$$      ::      $$$$$$$$$$
+$$$$$$$$$       ::       $$$$$$$$$
+$$$$$$$$$      ::::      $$$$$$$$$
+$$$$$$$$      ::::::      $$$$$$$$
+$$$$$$$$     ::::::::     $$$$$$$$      
+$$$$$$$     ::::::::::     $$$$$$$  REPLACES MINI-MANUAL _#4
+$$$$$$$    ::::::::::::    $$$$$$$  
+$$$$$$    ::::::::::::::    $$$$$$  DATED JUNE 1978
+$$$$$$   ::::::::::::::::   $$$$$$  
+$$$$$   ::::::::::::::::::   $$$$$
+$$$$$  ::::::::::::::::::::  $$$$$
+$$$$  ::::::::::::::::::::::  $$$$
+ $$$$::::::::::::::::::::::::$$$$
+  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+.PAGE!END OF HEADER
+.ENDIF SYSTEM
+.SUBTITLE TABLE OF CONTENTS
+.PAGE
+.NOFILL.NOJUST
+.CENTER
+((TABLE OF CONTENTS))
+.SKIP 1
+        INTRODUCTION TO TYMNET                  3
+                NETWORK DEVELOPMENT             4
+                ESTABLISHING A CONNECTION       4
+                LOGIN ERROR MESSAGES            6
+                SUPERVISORY TAKEOVER            7
+                GENERAL NET SCHEMATIC           9
+                TYMNET IN ACTION                10
+                SAMPLE TYMNET MAP               11
+                MAP KEY                         12
+.SKIP 1
+        BASE CRASHES AND RECOVERIES             13
+                COMMAND SUMMARY                 14
+                COMMAND DESCRIPTION             15
+                BASE CONSOLE DIAGRAM            17
+                BASECODE RESTART                18
+                LINE TABLE FOR DOWNSTREAM LOAD  19
+.IF SYSTEM
+                ERRORS AND BOOTSTRAP RELOAD     20
+                BOOTSTRAP CHECKING              21
+.ELSE SYSTEM
+                ERRORS AND RECOVERIES           20
+                BOOTSTRAP RELOAD / CHECKING     21
+.ENDIF SYSTEM
+                CHANGING BOOTSTRAP ENTRIES      22
+.SKIP 1
+        PROBE - NETWORK CHECKING                23
+                STARTUP AND COMMAND MODE        24
+                INFORMATION COMMANDS            25
+                TYMNET STATUS COMMANDS          26
+                NODE STATUS COMMANDS            27
+                LOGGER EXTRACT COMMANDS         29
+                SAMPLE RUNS                     30
+                ERROR RECOVERY                  31
+.SKIP 1
+        TELECOPY - MOVING FILES OVER TYMNET     32
+                COMMAND SUMMARY                 33
+                COMMAND DESCRIPTION             39
+                TYMCOM-IX SPECIFICS             41
+                TYMCOM-X SPECIFICS              42
+                TYMCOM-370 SPECIFICS            42
+                TELECOPY COMMANDS FILES         43
+                SAMPLE RUNS                     44
+                ERROR RECOVERY                  46
+.SKIP 1
+        ALPHABETICAL INDEX                      47
+.FILL.JUST
+\\
+.SUBTITLE <INTRODUCTION <TO <TYMNET
+.PAGE
+\\
+.FLAG CAPIT
+.PAPER SIZE 60,79
+.LEFT MARGIN 7
+.CENTER
+<AN <INTRODUCTION <TO <TYMNET
+.CENTER
+-- ------------ -- ------
+.SKIP 1
+.INDENT 5
+<TYMNET IS A GEOGRAPHICALLY DISTRIBUTED VIRTUAL CIRCUIT SWITCHING COMPUTER
+NETWORK.
+^CIRCUIT SWITCHING INVOLVES THE DICIPLINE OF UTILIZING PREESTABLISHED
+PHONE LINE ROUTES BETWEEN EACH ENTRY POINT AND EACH
+COMPUTER HOST. 
+^IF ANY PATH BLOCKAGE, DETERIORATION OF SIGNAL QUALITY OR
+OVERLOAD CONDITION DEVELOPS ALONG THIS 'PREFERRED ROUTE'
+AN ALTERNATE PHONE LINE PATH FOR SUBSEQUENT TRAFFIC  CAN BE AUTOMATICALLY SUBSTITUTED BY THE
+CENTRALIZED NETWORK CONTROL SUPERVISOR.
+^THIS IS POSSIBLE BECAUSE THE GEOGRAPHICAL DISTRIBUTION OF THE NETWORK
+USES AN 'EXPANDED RING' STRUCTURE: THERE ARE TWO (OR MORE)
+POSSIBLE PATHS TO ROUTE DATA FROM ANY POINT IN THE NET TO ANY DESTINATION
+COMPUTER.
+.SKIP 1
+.INDENT 5
+^SINCE <TYMNET BECAME FULLY OPERATIONAL IN 1971, IT HAS EXPANDED AND EVOLVED
+INTO AN INTERNATIONAL DATA COMMUNICATIONS NETWORK
+WITH CONSIDERABLE SCOPE AND FLEXIBILITY.
+^THE PRINCIPLE USE OF THE NETWORK HAS BEEN PROVIDING USERS WITH TIMESHARING
+SERVICES AND APPLICATIONS.
+^IT IS THEREFORE ORGANIZED AROUND A 'TERMINAL TO COMPUTER' TECHNOLOGY
+INVOLVING LOW SPEED, FULL DUPLEX, VOICE GRADE COMMUNICATIONS LINES.
+<TYMNET NULIFIES ANY GEOGRAPHICAL DISTANCES BETWEEN THE USER AND
+THE USER'S DATA.
+^IN FACT, THE GEOGRAPHICAL LOCATION OF THE USER'S DATA BECOMES
+IRRELEVANT ONCE THE USER DIALS A LOCAL ROTOR NUMBER AND ACCESSES
+THE NET.
+^AN ADDITIONAL ADVANTAGE OF THIS GEOGRAPHICAL DISTRIBUTION IS THE
+ABILITY TO LEVEL USAGE LOADS ACROSS TIME ZONES: FOR EXAMPLE, DAYTIME ^EUROPEAN
+USERS CAN TAKE ADVANTAGE OF THE LIGHT LOADS THAT
+EXIST AT NIGHT ON ^CALIFORNIA COMPUTERS.
+.SKIP 1
+.INDENT 5
+<TYMNET ALSO INSULATES THE USER FROM PHONELINE ERRORS BY CHECKING 
+ALL DATA PACKETS EACH TIME THE DATA IS PASSED FROM ONE POINT TO
+ANOTHER ALONG A GIVEN ROUTE.
+^IF THIS CHECKSUM INDICATES AN ERROR, THE 'STORE AND FORWARD' OF
+THE DATA IS DEFERRED UNTIL AN AUTOMATIC RETRANSMISSION OF CORRECT
+DATA IS PERFORMED.
+.SKIP 1
+.INDENT 5
+^THE ABILITY TO ACCOMODATE A VARIETY OF USERS REQUIRES THAT <TYMNET
+BE ABLE TO UNDERSTAND A WIDE VARIETY OF TERMINAL TYPES. 
+^THE NETWORK ACCOMPLISHES THIS AT THE ENTRY POINTS INTO <TYMNET.
+^ONCE THE USER HAS ENTERED THE NETWORK, THE LOCAL MINICOMPUTER
+(REMOTE OR ^TYMSAT), THE SYSTEM PROMPTS FOR A TERMINAL IDENTIFIER.
+^THIS IDENTIFIER SETS UP ALL THE PARAMETERS WHICH ALLOW THE TERMINAL
+TO UNDERSTAND THE NET AND VICE VERSA.
+.SKIP 1
+.INDENT 5NET ALSO HAS A 'COMPUTER TO COMPUTER' CAPABILITY SO THAT DATA AND
+COMPUTING CAN BE DISPERSED THROUGHOUT THE NETWORK. 
+^THIS ENABLES REMOTE JOB ENTRY AND DISTRIBUTED PROCESSING.
+^FOR EXAMPLE, LOCAL TAX RETURN DATA CAN BE ENTERED INTO REGIONAL BATCH
+COMPUTERS AND THEN TRANSMITTED OVER THE NETWORK TO LARGE SCALE SYSTEMS
+WHERE THE MAIN PROCESSING CAN BE ACCOMPLISHED.
+.SKIP 1
+.INDENT 5
+^STILL ANOTHER WAY TO USE <TYMNET IS FOR A CLIENT ORGANIZATION TO
+USE ONLY THE NETWORK TO INTERCONNECT TERMINALS AND COMPUTERS OWNED
+BY THE CLIENT. 
+^THIS SAVES THE CLIENT THE COST AND EFFORT OF SETTING UP AND MAINTAINING
+A SEPARATE NETWORK.
+^THIS ILLUSTRATES HOW <TYMNET IS A '<VAN' - ^VALUE
+^ADDED ^NETWORK.
+.SUBTITLE <TYMNET <DEVELOPMENT
+.INDEX <TYMNET <DEVELOPMENT
+.PAGE
+^^
+.paper size 60,79
+.no flag capit
+.left margin 7
+.center
+TYMNET DEVELOPMENT
+.skip 1
+.indent 5
+In 1969, a centrally directed network of Varian 620 mini-computers was developed
+by Tymshare.
+When the network became fully operational in 1971 it consisted of
+30 nodes and a central supervisor (with 3 backup supervisors) that ran on an
+SDS 940 computer system.  The network has since undergone a prolonged evolution
+and has grown to over 300 NODES.
+These nodes connect 90 domestic and international cities utilizing
+over 50,000 miles of leased telephone lines, including two
+independent trans-Atlantic cables and a trans-Pacific cable.
+Over 4000 users perform a wide range of data processing activies on
+95 large scale host computers tied into Tymnet.
+The nodes (or TYMSATS) are equipped with hardware to handle up to
+32 or 64 asynchronous low speed ports (110 - 1200 baud) and up to
+12 synchronous ports (2400 - 9600 baud) and 4 bisynchronous ports
+(2400 to 4800 baud).
+Connected to the asynchronous ports are either Bell 103/113 modems or
+Tymshare's equivalent MARK XV modems.
+The TYMSATS are connected using Bell long Lines with Bell 
+(201C, 202, 208, 209, 212, Bell's D.D.S. service) and Vadic modems.
+Virtually every TYMSAT is connected with multiple phone lines
+permitting alternate routing capability.
+Routing within the nodes is done through routing tables
+called permuter tables.
+.PARA
+Tymnet technology is moving into several new areas:
+A major message switching system called ONTYME has been implemented
+to provide mail storage and forwarding to a variety of user groups;
+Design and production of a powerful network mini-computer called the
+TYMNET ENGINE is underway to assume a major role in supervisor and
+node hardware requirements of the future.
+.skip 1
+.CENTER
+ESTABLISHING A CONNECTION
+.skip 1
+.indent 5
+	A user connects his/her terminal to a host on the network by dialing
+a local node.  After typing a character to identify his/her terminal
+characteristics, the user enters his/her user name, host number and password.  This
+information is sent, by the local node, to the network supervisor.  The supervisor verifies
+the user's name in the Master User Directory (MUD) and then checks for a
+correct password.
+If the user did not specify a host number, his/her
+standard "home" host number is taken from the MUD.
+	The supervisor now knows the node which the user called (origination)
+and the node to which he wishes a connection (destination).  The supervisor then
+computes the minimum cost path for the virtual circuit.
+Once a path has been plotted,
+the supervisor allocates buffer pairs and permuter table positions in each node on the path to create
+the virtual circuit.  Messages are sent to all nodes along the path to make the appropriate
+permuter table entries.  This implicitly causes buffer assignments in the nodes.
+Nodes send an acknowledgement to the supervisor after making a permuter table
+entry.  Once all the acknowledgements are in, the supervisor sends the user name,
+the user's status (from the MUD),
+the originating node number and port number, and the terminal characteristics to the destination
+node, plus a message to tell the attached host that there is a new login.
+.PAGE
+.INDENT 5
+	The host may now read the user name to verify that this user name is valid
+on this host.  No further checking is required!  All the security checking has
+been done for the host, with access restricted to network personnel.
+And all passwords are virtually invulnerable to theft.
+This allows a host with minimal login security to be connected to the
+network, with confidence that only authorized people may log in
+through the network.  Additional log in security may, of course, be imposed
+by the host computer system.
+.SUBTITLE LOGIN ERROR MESSAGES
+.PAGE
+.FLAG CAPIT
+.INDEX <LOGIN <ERROR <MESSAGES
+.no flag capit
+.center
+ERROR MESSAGES ASSOCIATED WITH LOGINS
+.skip 1
+.indent 5
+The following messages are transmitted to the user when a login attempt
+fails:
+.NOFILL.NOJUST
+.skip 1
+1. HOST NOT AVAILABLE THROUGH NET
+   ------------------------------
+.skip 1
+   THIS MESSAGE INDICATES THAT THE SUPERVISORS ARE NOT AWARE OF
+   THE HOST NUMBER THE USER REQUESTED. IT CAN OCCUR WHEN (1) THE 
+   SUPERVISOR HAS NOT TAKEN OVER THE BASE ASSOCIATED WITH THE 
+   REQUESTED HOST (I.E., ITS BASE IS DOWN), OR (2) IF THE SUPER-
+   VISOR IS IN THE PROCESS OF TAKING OVER ALL OR A PORTION OF THE
+   NETWORK AND HAS NOT TAKEN OVER THE BASE OR HOST BEING
+   REQUESTED.
+.skip 1
+2. HOST DOWN
+   ---------
+.skip 1
+   THIS MESSAGE INDICATES THE BASE ASSOCIATED WITH THE REQUESTED
+   HOST IS UP; HOWEVER, THE HOST ITSELF IS DOWN. THIS MESSAGE
+   SHOULD ONLY OCCUR WHEN THE HOST IS TRULY DOWN.
+.skip 1
+3. HOST SHUT
+   ---------
+.skip 1
+   THIS INDICATES THE BASE AND HOST ARE UP; HOWEVER, LINES
+   HAVE NOT BEEN ANSWERED. CERTAIN USERS (IE. OPER) CAN STILL
+   LOGIN WITH THE 'SHUT OVERRIDE' BIT. THIS WILL NOT AFFECT
+   ANY USERS ALREADY LOGGED ON THE SYSTEM.
+.skip 1
+4. HOST OUT OF PORTS
+   -----------------
+.skip 1
+   THIS MESSAGE INDICATES EVERYTHING IS UP AND OPERATIONAL;
+   THERE ARE NO MORE PORTS AVAILABLE BETWEEN THE BASE AND HOST.
+   IN OTHER WORDS, THE SYSTEM IS FULL.
+.skip 1
+5. CIRCUITS BUSY
+   -------------
+.skip 1
+   THIS MESSAGE INDICATES EVERYTHING IS WORKING; HOWEVER, THERE
+   IS NOT ENOUGHT CAPACITY BETWEEN THE USER AND SELECTED HOST
+   TO COMPLETE THE CIRCUIT.  TRY A DIFFERENT PHONE NUMBER,
+   OR WAIT AND TRY AGAIN LATER.
+.skip 1
+6. TRY AGAIN IN 5 MINS.
+   --------------------
+.skip 1
+   DURING A SUPERVISOR TAKEOVER, LOG-INS ARE INHIBITED.
+   THIS WAS DONE AS PART OF THE FIX TO PREVENT GARBAGE FROM
+   ACCUMULATING IN THE NETWORK, AND THE HUNG USERS. DURING
+   THE TWO TO FIVE MINUTES THE SUPERVISOR RETAKES THE NETWORK
+   THE ABOVE MESSAGE WILL BE SENT.
+.FILL.JUST
+.SUBTITLE NETWORK SUPERVISOR
+.PAGE
+.FLAG CAPIT
+.INDEX <NETWORK <SUPERVISOR
+.no flag capit
+.CENTER
+NETWORK SUPERVISOR
+.skip 1
+.indent 5
+	The network supervisor is a program that runs under a special
+time sharing system on an Interdata 7/32.  The supervisor, like any piece of
+software, and the 7/32, like any piece of hardware, are subject to failure.
+Although failures are infrequent (on the order of one every 3 weeks) the absence
+of a supervisor to build virtual circuits cannot be tolerated for very long.
+To deal with this problem 4 potential supervisors exist in the network, only one
+of which is active at any one time.  The active supervisor keeps the other
+supervisors dormant by sending "sleeping pills" to them at regular intervals.
+If the active supervisor fails, the operators at the network control center 
+can immediately awaken one of the dormant supervisors.  Even without
+human intervention, the dormant supervisors will notice the absence of the
+active supervisor when they cease to receive "sleeping pills".  The various
+supervisors have staggered 'drowsiness factors', at the end of which they will awaken
+if no sleeping pills have arrived.  Thus, in case of a supervisor failure one of the dormant supervisors will
+awaken and take control of the network.  It is possible for multiple supervisors
+to be trying to take over the network simultaneously.  This situation is
+resolved gracefully by the less dominant supervisor going to sleep when it
+discovers the presence
+of a more dominant supervisor.
+.SKIP 1
+.CENTER
+NETWORK TAKEOVER
+.skip 1
+.indent 5
+	In order to control nodes and carry out the supervisor's function of
+building virtual circuits, the supervisor must know the capacity of all nodes,
+their link capacities, the network topology and the value of every permuter
+table entry in the network.
+	A supervisor starting network takeover has no presupposed knowledge of
+the network topology.  The supervisor first sends a takeover command to its own 
+node, and learns of that node's capacity, the capacity of its links, every
+permuter table entry in that node and the neighbors of that node on each
+link.  The latter is the basis on which the supervisor discovers the topology
+of the network.  The supervisor now sends takeover commands to each neighbor
+of its own node.  As each of these nodes comes under complete control of
+the supervisor, each of its neighbors is checked to discover previously
+unknown nodes, and these are in turn taken over.
+	In this way the supervisor learns the topology of the network, all its
+capacities and (from the permuter tables) which resources are in use.
+In 1975 the supervisor running on the SDS 940 reached its capacity
+and was replaced by a supervisor running on an Interdata 7/32, reducing
+network takeover time from 15 minutes to 2.5 minutes.
+The time determining factors
+are the number of nodes, the bandwidth of links in the vicinity of the
+supervisor, the number of permuter table entries and the
+connectivity of the network vis-a-vis the supervisor's own node.  From a
+control standpoint the supervisor views the network as a tree.
+The control tree comprises a subset of the links in the network.
+The balance and depth
+of this tree is the measure of connectivity of the network in relation to the
+supervisor's own node.
+	If a previously non-operational link becomes operational it may reveal one or
+more nodes that were previously inaccessible.  The supervisor would then
+extend the control tree by taking over these newly discovered nodes.  On the
+other hand, if a link that is part of the control tree goes out, the supervisor
+loses control of the nodes in that subtree.  The control tree is then rebuilt to
+regain control of all the lost nodes that are still accessible through the
+network topology.
+.skip 1
+.indent 5
+	The original TYMNET#I nodes allowed only 3 links per node.
+Presently TYMNET#I nodes allow 16 links per node.  The cost of more links is increased CPU
+and memory requirements for the node.  However, even 16 links per node will soon be inadequate
+for the growth of TYMNET.  One solution to this problem is the use of node
+clusters.  A node cluster is a group of 2 or more nodes in close proximity, interconnected by
+an inexpensive high speed distributed memory transfer device.  We call this device a
+"memory shuffler", and it is capable of data transfers at memory bandwidth
+rates.  A fully interconnected eight node cluster at TYMNET's Cupertino
+center, with 72 links to the rest of the network is planned.
+This approach creates
+a logically very large node (including two supervisor machines) that does not
+change the fundamental logical structure of the network.
+\\
+.FLAG CAPIT
+.SUBTITLE <TYMNET <GENERAL <SCHEMATIC
+.PAGE
+.INDEX <TYMNET <GENERAL <SCHEMATIC
+.FIGURE 40
+.PAGE
+.SUBTITLE <TYMNET <IN <ACTION
+.INDEX <TYMNET <IN <ACTION
+.FIGURE 40
+.PAGE
+.SUBTITLE <TYMNET <MAP
+.INDEX <TYMNET <MAP
+.FIGURE 40
+.PAGE
+.SUBTITLE <KEY <TO <TYMNET <MAP
+.INDEX <KEY <TO <TYMNET <MAP
+.FIGURE 40
+.PAGE
+.SUBTITLE <BASE <CRASHES
+.PAGE!END OF NETINT
+.IF SYSTEM
+\\
+.FLAG CAPIT
+.LEFT MARGIN 7
+.PAPER SIZE 60,79
+^^
+.CENTER
+TYMCOM-X BASE CRASHES AND RECOVERIES
+\\
+.CENTER
+-------- ---- ------- --- ----------
+.SKIP 1
+((<INTRODUCTION))
+.SKIP 1
+.INDENT 5
+^SINCE THE ^TYMBASE PROVIDES NETWORK ACCESS TO
+TWO HOSTS, IF EITHER HOST CRASHES, THE BASE
+WILL CONTINUE TO FUNCTION AS A NODE IN ^TYMNET. 
+^BUT FOR MOST BASE CRASHES, THE CHANCES ARE VERY GOOD THAT THE BASE
+WILL CRASH THE PRIMARY HOST CONNECTED TO THAT BASE; A HOST WITHOUT A BASE IS 
+CUT OFF FROM THE OUTSIDE WORLD AND CANNOT TIMESHARE EFFECTIVELY.
+^A LARGE MAJORITY OF BASE CRASHES WILL BE SELF-RECOVERING.
+^THIS MEANS THAT THE BASE HAS ROUTINES WITHIN ITSELF TO DUMP A COPY OF
+IT'S CORE IMAGE INTO THE RESPECTIVE HOSTS FOR ANALYSIS LATER ON.
+^AFTER THE BASE CRASH CODE HAS BEEN DUMPED, THE BASE THEN CRASHES
+THE PRIMARY HOST CONNECTED TO IT AND RETURNS TO IT'S NORMAL OPERATION 
+AUTOMATICALLY.
+^ON THE SECONDARY HOST, IT WILL BE POSSIBLE FOR USERS TO ATTACH TO
+THEIR JOBS WHICH MAY HAVE DETACHED WHEN THE BASE WENT DOWN.
+.SKIP 1
+.INDENT 5
+^OCCASIONALLY HOWEVER, THE ^TYMBASE WILL HANGUP IN A LOOP WITH THE <RUN
+LIGHT FLASHING OR SIMPLY
+STOP FUNCTIONING WITH THE 'STEP' LIGHT ON.
+^IN THESE CASES THE OPERATOR MUST FOLLOW THE PROCEDURES DESCRIBED
+IN THIS DOCUMENT IN ORDER THAT THE BASE CRASH CODE CAN BE SAVED,
+THE HOSTS CAN BE HALTED IN AN ORDERLY FASHION AND THE BASE CAN
+BE RETURNED TO NORMAL FUNCTIONING THROUGH A <TYMNET <CONTROL INITIATED
+DOWNSTREAM BASE CODE LOAD.
+.SKIP 1
+.INDENT 5
+^ALWAYS REMEMBER TO KEEP <TYMNET <NETWORK <CONTROL <CENTER
+INFORMED ON THE STATUS OF ANY UNUSUAL ACTIVITY THAT OCCURS
+ON ANY BASE.
+.SUBTITLE <BASE <CRASH <SUMMARY
+.INDEX <BASE <CRASH <SUMMARY
+.PAGE
+((<COMMAND <SUMMARY))
+.NOTE
+^FULL DETAILS ON ALL SUMMARIZED PROCEDURES ARE IN THE <COMMAND 
+<DESCRIPTION SECTION OF THIS DOCUMENT.
+.END NOTE
+.NOFILL.NOJUST
+^^
+        1) ANNOUNCE THE CRASH OVER THE COMLINE SPEAKER; CONTACT
+           TYMNET CONTROL TO ADVISE THEM OF THE SITUATION.
+.SKIP 1
+        2) CHECK IF THE BASE IS IN STEP. IF NOT AND THE BIT LAMPS
+           ARE NOT FLICKERING FAINTLY OR IF THE 'RUN' LIGHT
+           IS FLASHING, THE BASE IS HUNG IN A LOOP.
+.SKIP 1
+        3) FOR V73 TYPE BASES TURN THE FRONT PANEL KEY TO ON'
+           TO UNLOCK THE CONSOLE. IF THE BASE WAS LOOPING HIT THE
+           'STEP-RUN' SWITCH.
+.SKIP 1
+        4) CHECK AND RECORD (ON BASECRASH FORM) THE FOLLOWING
+           V73 REGISTERS:    RECORD P,I,REG (0), (1) AND (2)
+.SKIP 1
+        5) CLEAR THE REGISTERS AND ATTEMPT TO RESTART FROM
+           P LOCATION 0; WHEN 'BOOTS LOADED' TYPES ON THE CTTY
+           TYPE A '/D';
+.SKIP 1
+        6) IF RESTART FROM 0 FAILS, YOU MAY HAVE TO SET
+           SENSE SWITCH 4 ON THE PRIMARY HOST TO PREVENT AUTO-
+           RESTART. TAKE THE HOST DOWN WITH A NON-ZERO DEPOSIT
+           INTO MEMORY ADDRESS LOCATION 30; CONTACT <NETCON
+           AND REQUEST NEW COPY OF THE BASECODE BE LOADED OVER
+           THE NETWORK USING THE DOWNSTREAM LOADING PROTOCOL;
+.SKIP 1
+        7) IF <NETWORK <CONTROL IS UNABLE TO LOAD THE CODE, CHECK
+           AND IF NEEDED CORRECT THE BOOTSTRAP FOR THAT BASE;
+.SKIP 1
+        8) WAIT A FEW MINUTES, THEN LOG A  TTY INTO PROBE;
+           CHECK THE STATUS OF THE BASE YOU JUST RESTARTED
+           OR <NETWORK <CONTROL JUST RELOADED WITH PROBE;
+.SKIP 1
+        9) IF THE BASE IS RUNNING PROPERLY, BRINGUP THE HOSTS
+           CONNECTED TO IT FOR TIMESHARING WITH PAPERTAPE BOOTS;
+.SKIP 1
+        10) LEAVE A THOROUGH RECORD OF WHAT YOU DID WITH THE
+           M.A.R. YOU GIVE YOUR LEAD OPERATOR. MAIL SHOULD ALSO
+           BE SENT TO @(UTIL)CRALIST (A LIST OF USERS).
+\\
+.SUBTITLE <BASE <SAVE <DESCRIPTION
+.INDEX <BASE <SAVE <DESCRIPTION
+.INDEX <RECORDING <BASE <REGISTERS
+.INDEX <RESTARTING <BASE <FROM 0
+.FILL.JUST
+.PAGE
+((<COMMAND <DESCRIPTION))
+.CENTER
+1.
+.SKIP 1
+.INDENT 5
+^FROM TIME TO TIME THE AUTOMATIC SELF RECOVERY OF A ^TYMBASE CRASH
+WILL NOT OCCUR.
+^GENERALLY IF PORTIONS OF THE BASE CODE ARE CLOBBERED, CORRECTING
+THE SITUATION DEPENDS ON THE OPERATOR'S ABILITY TO COORDINATE THE
+APPROPRIATE PROCEDURES WITH <TYMNET <CONTROL.
+^THERE ARE OVER 10,000 INSTRUCTIONS IN A BASE CODE.
+^THESE INSTRUCTIONS ARE REFLECTED IN THE VARIOUS REGISTERS OF THE
+MINICOMPUTER.
+^PART OF THIS CODE IS THE <BOOTSTRAP - A SERIES OF INSTRUCTIONS
+WHICH THE BASE USES TO BRING ITSELF TO A FUNCTIONING STATE BY
+LOADING AND RUNNING THE REST OF THE CODE.
+.SKIP 1
+.INDENT 5
+^IF ANY TYPE OF BASE CRASH OCCURS, THE PRIMARY HOST (IN <CUPC THE LEFT HOST)
+INTERFACING <TYMNET THROUGH THAT BASE WILL CRASH IF AND WHEN THE BASE
+DUMPS IT'S CRASH CODE INTO THE <TYMCOM-X.
+^WHEN YOU FIRST NOTICE THE CRASH, ANNOUNCE IT OVER THE LOUDSPEAKER.
+^ON THE CONSOLE <TTY THE '<BOOTS <LOADED' MESSAGE WILL PROBABLY
+BE ACCOMPANIED BY THE MESSAGE '<BASE <INITIATED <CRASH'.
+^THESE MESSAGES WILL OCCUR ON BOTH AFFECTED HOSTS AND
+GENERALLY BOTH THE HOSTS AND THE ^TYMBASE WILL
+RECOVER AUTOMATICALLY.
+^THIS AUTO-RESTART INCLUDES THE '/^D' TO SAVE
+THE BASE CRASH CODE.
+.SKIP 1
+.CENTER
+2.
+.SKIP 1
+.INDENT 5
+^IF HOWEVER, THE BASE IS UNABLE TO RECOVER, THEN
+THE HOSTS MAY NOT CRASH EVEN THOUGH THEY ARE NOW CUT OFF FROM THE NET.
+^ALL LOGIN ATTEMPTS WILL FAIL AND THE MESSAGE 
+^^
+'HOST NOT AVAILABLE THROUGH NET'
+\\
+WILL TYPE OUT.
+^BY THIS TIME, THE OPERATOR SHOULD HAVE BEGUN TO SUSPECT A BASE
+PROBLEM REQUIRING MANUAL INTERVENTION.
+^WHEN THE BASE CRASHES AND IS NOT ABLE TO RESTART ITSELF
+THE MACHINE WILL EITHER BE IN '<STEP' (THAT IS THE <STEP LIGHT
+WILL BE LIT AND THERE WILL BE NO ACTIVITY IN ANY OF THE REGISTER
+LIGHTS) OR THE MACHINE WILL BE HUNG UP IN A LOOP.
+^IF THE ^V73 IS IN A LOOP, THE
+LIGHTS ON THE CONSOLE WILL NOT BE FLICKERING AND/OR THE <RUN LIGHT
+WILL BE FLASHING.
+^ADDITIONAL SYMPTOMS OF A NON-RECOVERING BASE CRASH CAN
+BE OBTAINED BY USING THE <PROBE PROGRAM TO CHECK THE STATUS OF THE BASE
+FROM THE VANTAGE OF THE NETWORK SUPERVISOR.
+^THIS PROGRAM IS DOCUMENTED IN ANOTHER SECTION OF THIS MANUAL.
+.NOTE
+^FOR THE FOLLOWING DESCRIPTION YOU ARE REFERRED TO THE CONSOLE
+DIAGRAM ON THE PAGE AFTER NEXT.
+.END NOTE
+.CENTER
+3.
+.SKIP 1
+.INDENT 5
+^THE FIRST RECOVERY PROCEDURE IS TO TURN THE CONSOLE ENABLE KEY TO
+'UNLOCK' THE ^V73 CONSOLE.
+^IF THE BASE IS NOT IN <STEP-RUN, PRESS THE '<STEP-RUN' KEY TO
+STOP THE MACHINE FROM LOOPING.
+^ON THE HOSTS YOU SHOULD ENABLE THE CONSOLE BY PUSHING THE
+LOCK AND DATA LOCK BUTTONS SO THE LIGHTS GO OFF.
+.SKIP 1
+.CENTER
+4.
+.SKIP 1
+.INDENT 5
+^AT THIS POINT YOU SHOULD RECORD THE CONTENTS OF THE BASE'S REGISTERS
+ON THE BASE CRASH FORM.
+.SKIP 1
+.INDENT 5
+^TO DO THIS ON THE <V73 TYPE BASE (<TYMCOM-X), FIRST GET THE FORM AND
+PREPARE TO WRITE THE CONTENTS OF THE VARIOUS REGISTERS.
+^YOU MUST PUSH THE FOLLOWING 
+BUTTONS ONE AT A TIME: (FROM RIGHT TO LEFT) <REG (THE <REG <SELECT LIGHTS SHOULD
+SHOW 0), '<INCR' BUTTON (TO DISPLAY <REG <SELECT 1), '<INCR'
+AGAIN (TO DISPLAY <REG <SELECT 2),
+<DISPLAY <SELECT ^P AND <DISPLAY <SELECT ^I.
+^FOR EACH REGISTER 
+AN OCTAL NUMBER WILL BE DISPLAYED IN THE DATA DISPLAY LABELED (FROM RIGHT
+TO LEFT) 0 THROUGH 15.
+^THIS INFORMATION SHOULD BE RECORDED IN THE FORM '0=<NNNNNN, 1=<NNNNNN' ETC.
+.SKIP 1
+.INDENT 5
+^ONCE YOU HAVE RECORDED ALL OF THE REGISTER ONE AT A TIME, PROCEED TO
+CLEAR EACH REGISTER.
+^TO DO THIS SET THE <REG BUTTON AND SO YOU ARE SELECTING <REG 0.
+^WHILE HOLDING THE <DISPL <CLR BUTTON, PRESS THE <INCR BUTTON (NEAR THE
+<REG <SELECT KEYS) SEVERAL TIMES TO CLEAR ALL THE REGISTERS.
+^AS YOU DO THIS THE LIGHTS ABOVE <REG 1-2-4-8 WILL LIGHT AND THEN GO OUT.
+^AFTER <REG LIGHT 8 HAS GONE OUT PRESS THE ^P REGISTER BUTTON AND THEN
+<DISPL <CLR.
+^DO THE SAME THING WITH THE ^I REGISTER.
+.SKIP 1
+.CENTER
+5.
+.SKIP 1
+.INDENT 5
+^NOW THAT THE REGISTERS ARE CLEAR, ATTEMPT TO RESTART THE BASE FROM
+'^P' REGISTER = 0.
+^TO DO THIS PRESS THE <RESET BUTTON TWICE, THEN PRESS <STEP-RUN.
+^AT THIS POINT THE <RUN LIGHT WILL BE BLINKING.
+^PRESS <START AND THE <RUN LIGHT SHOULD REMAIN ON.
+^IT MAY BE NECESSARY TO PRESS <START A FEW TIMES (IF THE CONSOLE SWITCHES
+ARE TEMPERMENTAL) TO GET THE BASE TO STAY IN <RUN.
+^THE DATA DISPLAY 
+LIGHTS SHOULD START TO FLICKER FAINTLY.
+^WHEN YOU RESTART THE BASE FROM 0, THE BASE CODE IS AUTOMATICALLY
+DUMPED INTO <TYMCOM-X CORE.
+^AFTER THE CODE IS DUMPED THE HOST WILL CRASH. 
+^AFTER THE '<BOOTS <LOADED' MESSAGE ON THE <CTTY, YOU
+SHOULD TYPE '/^D' TO SAVE THE BASE CRASH CODE SO IT WILL BE AVAILABLE
+WHEN THE <COPYCR PROGRAM WRITES IT'S CRASH FILES.
+.SKIP 1!PDP CLEAR0 ENDS
+.INDENT 5
+^IT ALWAYS TAKES AT LEAST TWO MINUTES FOR A RESTARTED BASE TO BE
+RECOGNIZED BY THE NETWORK.
+^YOU SHOULD USE THE <PROBE PROGRAM TO VERIFY THAT THE BASE
+HAS RESTARTED CORRECTLY.
+.SUBTITLE <V73 <CONSOLE
+.INDEX <V73 <CONSOLE
+.PAGE
+.FIGURE 40
+.INDEX <BASE <CODE <RELOAD
+.SUBTITLE <BASE <CODE <RELOAD
+.PAGE
+.CENTER
+6.
+.SKIP 1
+.INDENT 5
+^IF RESTARTING THE CODE FROM 0 FAILS, CHANCES ARE THE BASE WILL GO INTO
+STEP OR THE <RUN LIGHT WILL FLASH INDICATING A HANGUP.
+^IF THAT HAPPENS, OR IF THE NETWORK DOES NOT ACKNOWLEDGE THE BASE RESTART
+WITH <PROBE WITHIN 3 MINUTES, THE NEXT CORRECTIVE PROCEDURE IS TO
+CONTACT <TYMNET <NETWORK <CONTROL (408-446-6180 OR EXT. 6468) AND 
+REQUEST THAT THEY FORCE THE BASE TO IT'S APPROPRIATE SYNCHRONOUS BOOTSTRAP
+LOCATION, LOAD A FRESH COPY OF BASE CODE FROM DOWNSTREAM AND START IT RUNNING.
+^BASE CODE ON THE TENS IS CONTAINED IN A DISKFILE ON EITHER SYSTEM 33 OR
+SYSTEM 36 IN DIRECTORY <TYMNET.
+^UNDER NORMAL SITUATIONS, THIS CODE CAN BE LOADED OVER <TYMNET
+SO LONG AS THE HOST (OR HOSTS) INVOLVED IS DOWN AND THE BASE IS IN THE NET.
+^HOWEVER, AT THIS POINT, IT IS ASSUMED THAT THE BASE IS IN STEP, THAT THE
+REGISTERS HAVE BEEN RECORDED AND CLEARED (STEP 4 ABOVE).
+^ALSO, YOU SHOULD HAVE ALREADY TRIED THE LESS DRASTIC PROCEDURE
+OF ATTEMPTING TO RESTART THE BASE FROM ^P LOCATION 0 (STEP 5).
+^SINCE THE BASE MAY NOT HAVE BEEN ABLE TO DUMP ITSELF INTO THE PRIMARY HOST
+AND CRASH IT, YOU SHOULD SET SENSE SWITCH 4 AND TAKE THE HOST
+DOWN BY DEPOSITING A NON-ZERO NUMBER INTO <PDP-10 MEMORY LOCATION 30.
+^CONTACT <NETWORK <CONTROL AND FIND OUT WHICH NET LINE FROM THE
+BASE WILL BE USED FOR THE DOWNSTREAM CODE LOAD.
+^IF THEY INDICATE THAT THE CURRENT LINE SET UP FOR THE DOWNSTREAM LOAD
+WILL BE USED, ENTER A 57640 INTO THE <V72 ^P REGISTER, THEN PRESS <RESET
+TWICE, <STEP-RUN AND <START.
+^FROM THIS POINT, <NETCON CAN PROCEED WITH THE CODE RELOAD.
+.SKIP 1
+.CENTER
+<NOTE
+.SKIP 1
+^THE BOOTSTRAP LOCATION ABOVE REFLECTS A ^V73 WITH 24^K OF CORE (STANDARD).
+^IF HOWEVER, THE ^V73 HAS 
+.NOFILL.NOJUST
+.SKIP 1
+        16^K OF CORE    USE     ^P=37640
+        32^K OF CORE    USE     ^P=77640
+.FILL.JUST
+.SKIP 1
+.CENTER
+7.
+.PARA
+^IF HOWEVER, <NETCON INDICATES THAT SOME LINE OTHER THAN THE CURRENT LINE WILL
+BE USED FOR THE DOWNSTREAM LOAD, YOU WILL HAVE TO CHECK AND POSSIBLY CHANGE 
+THE CONTENTS OF FIVE LOCATIONS IN THE BOOTSTRAP BEFORE PROCEEDING TO START
+THE SYNCHRONOUS BOOT.
+^THE LOCATIONS AND CONTENTS TO BE CHANGED IN THESE CASES ARE LISTED
+BELOW.
+.PARA
+^TO DETERMINE WHICH LINE IS CURRENTLY SET UP FOR THE DOWNSTREAM LOAD,
+CHECK THE VALUE OF ONE OF THESE LOCATIONS AND COMPARE IT TO THE TABLE
+BELOW.
+^IF FOR EXAMPLE, A 24K <V73 BOOTSTRAP ^P LOCATION 57655 CONTAINS 50040,
+DOWNSTREAM LOADING IS SET UP FOR NET LINE 0 (THE DEFAULT) ON THE BASE.
+.PARA
+^THE TABLE BELOW CONTAINS THE APPROPRIATE LOCATIONS AND CONTENTS NECESSARY
+TO LOAD BASECODE DOWNSTREAM FROM VARIOUS NETWORK LINES.
+^REFER TO THE PROCEDURE UNDER <ERRORS <AND <RECOVERIES FOR DETAILS ON
+HOW TO EXAMINE AND CHANGE THESE LOCATIONS.
+.PAGE
+.INDEX <DOWNSTREAM <LINE <TABLE <IN <BOOTS
+.LEFT MARGIN 6
+.CENTER
+<BOOTSTRAP <VALUES <FOR <USE <OF <VARIOUS <LINES <ON <DOWNSTREAM <LOADS
+.SKIP 1
+.NOFILL.NOJUST
+^^
+.PAPER SIZE 60,79
+LOCATION   LINE   LINE   LINE   LINE   LINE   LINE   LINE   LINE
+            0      1      2      3      4      5      6      7
+--------   ----   ----   ----   ----   ----   ----   ----   ----
+X7655      50040  50044  50050  50054  50060  50064  50070  50074
+X7656      50042  50046  50052  50056  50062  50066  50072  50076
+X7663      50043  50047  50053  50057  50063  50067  50073  50077
+X7666      50041  50045  50051  50055  50061  50065  50071  50075
+X7770      00021  00023  00025  00027  00031  00033  00035  00037
+.LEFT MARGIN 7
+.PAPER SIZE 60,79
+.SKIP 1
+        THE 'X' PORTION OF THE LOCATION IS A NUMBER DEPENDING ON
+        THE MEMORY SIZE OF THE MACHINE IN QUESTION. THE 'X' IS
+        REPLACED BY ONE OF THE FOLLOWING NUMBERS:
+.SKIP 1
+                        MEMORY          X REPLACED
+                         SIZE               BY
+                        ------          ----------
+                         12K                2
+                         16K                3
+                         20K                4
+          (STANDARD)     24K                5
+                         32K                7
+.FILL.JUST
+\\
+.PARA
+^ONCE THESE FIVE LOCATIONS HAVE BEEN CHANGED TO REFLECT THE APPROPRIATE NET
+LINE FOR THE DOWNSTREAM LOAD, NOW ENTER A 57640 INTO THE <V72
+^P REGISTER.
+^PRESS <RESET TWICE, <STEP-RUN AND <START.
+^FROM THIS POINT, <NETCON CAN PROCEED WITH THE CODE LOAD.
+.SKIP 1
+.INDENT 5
+^IF THE BASE RELOAD FAILS YOU MAY HAVE TO MANUALLY RELOAD THE BASE
+BOOTSTRAP; THE PROCEDURE FOR THIS IS DETAILED IN THE <ERRORS <AND
+<RECOVERIES SECTION OF THIS DOCUMENT.
+.SKIP 1
+.CENTER
+8.
+.SKIP 1
+.INDENT 5
+^IF THIS BASE LOAD WAS A SUCCESS, THE INITIAL EVIDENCE WILL BE THAT
+THE <RUN LIGHT STAYS ON STEADY AND THE <DATA <DISPLAY
+LIGHTS WILL FLICKER FAINTLY.
+^CONCLUSIVE EVIDENCE OF SUCCESS COMES FROM CHECKING THE STATUS
+OF THE BASE NODE <NETCON JUST RELOADED WITH THE <PROBE PROGRAM.
+^REMEMBER, IT WILL TAKE THE NETWORK AT LEAST 2 MINUTES TO RECOGNIZE THE
+BASE AGAIN.
+.SKIP 1
+.CENTER
+9.
+.SKIP 1
+.INDENT 5
+^IF THIS PROCEDURE HAS SUCCEEDED, YOU CAN PROCEED TO BRING UP BOTH
+<TYMCOM-X'S FOR TIMESHARING USING THE PAPERTAPE BOOTSTRAP.
+^WHEN THE CONSOLE TERMINAL OUTPUTS A CARRIAGE-RETURN SIMPLY TYPE
+IN ANOTHER CARRIAGE-RETURN.
+^ONCE THE MONITOR HAS STARTED YOU CAN RESET (TURN OFF) SENSE SWITCH 4.
+.SKIP 1
+.CENTER
+10.
+.SKIP 1
+.INDENT 5
+^FOLLOW UP WHATEVER STEPS WERE NECESSARY BY WRITING A ^M.^A.^R.
+OUTLINING THE INITIAL PROBLEM, THE STEPS YOU TOOK TO CORRECT
+THE SITUATION AND THE NAME OF THE CRASH-SAVE FILE (IE. <CRA003).
+.SUBTITLE <BOOTSTRAP <RELOAD
+.PAGE
+((<SAMPLE <RUN))
+.SKIP 1
+.INDENT 5
+^SEE THE <COMMAND <DESCRIPTION ABOVE FOR THE PROCEDURES AND AN OUTLINE
+OF THE RESULTS FROM EACH STEP.
+.SUBTITLE <BASE <RELOAD <ERRORS
+.INDEX <BASE <RELOAD <ERRORS
+.INDEX <RELOADING <SYNCHRONOUS <BOOT
+.SKIP 1
+((<ERRORS <AND <RECOVERIES))
+.SKIP 1
+\\
+.INDENT 5
+^THE MOST COMMON CAUSE OF BASE RELOAD FAILURE IS A CLOBBERED
+BOOTSTRAP. 
+^IF ANY OF THE INSTRUCTIONS IN THE BOOTSTRAP HAVE BEEN ALTERED BY AN
+EARLIER HARDWARE MALFUNCTION OR CRASH, THE BASE
+RELOAD WILL NOT WORK CORRECTLY.
+^TO IDENTIFY THIS PROBLEM IT IS NECESSARY TO CHECK THE CURRENT BOOTSTRAP
+IN THE ^V73; IF ANY INSTRUCTION(S) ARE FOUND TO DEVIATE FROM THE CORRECT
+ENTRY, THE INSTRUCTION(S) INVOLVED MUST BE CHANGED TO THE CORRECT VALUE.
+.NOTE
+^THE STARTING LOCATION OF THE ^V73 BOOTSTRAP VARIES WITH THE AMOUNT
+OF MEMORY ONLINE FOR THE MACHINE IN QUESTION. 
+^IT IS ASSUMED HERE THAT THE ^V73 IS A 24^K MACHINE.
+^IF LESS MEMORY IS ONLINE YOU MUST ALTER THE STARTING LOCATION AS INDICATED
+ON THE NOTE IN <COMMAND <DESCRIPTION '6'.
+.END NOTE
+.CENTER
+((<RELOADING <SYNCHRONOUS <BOOTS))
+.SKIP 1
+.INDENT 5
+^WITH THE DOWNSTREAM LOADER, THE BOOTSTRAP USED IS CALLED A 'SYNCHRONOUS'
+BOOT;
+IF IT SHOULD FAIL, YOU CAN RELOAD IT BY FIRST LOADING THE OLDER 'SYSTEM'
+BOOTSTRAP.
+.SKIP 1
+A) <READIN THE <TYMCOM-X <BOTLOD TAPE; ON THE CONSOLE TERMINAL A CARRIAGE
+RETURN WILL OUTPUT;
+.SKIP 1
+B) TYPE IN THE FILENAME (<TYMNET) <SYNCLD TO LOAD THE SYSTEM BOOTSTRAP INTO
+<PDP-10 MEMORY;
+.SKIP 1
+C) ON THE <V73 HIT THE <RESET KEY TWICE;
+.SKIP 1
+D) ON THE <V73 SET THE THREE SENSE SWITCHES TO INDICATE THE OCTAL
+NUMBER OF THE NET LINE THAT WILL BE USED FOR THE DOWNSTREAM LOAD;
+.SKIP 1
+E) FINALLY, HIT <STEP-RUN AND <START TWICE TO START THE SYNCHRONOUS
+BOOTSTRAP; ONCE THIS IS DONE, RESET THE SENSE SWITCHES.
+<NETCON CAN RESUME WITH THE ACTUAL BASE CODE LOAD AT THIS POINT.
+.PAGE
+.INDEX <CHECKING <BASE <BOOTSTRAP
+.NOFILL.NOJUST
+^^
+.CENTER
+((CHECKING THE BOOTSTRAP))
+.SKIP 1
+        1) THE V73 MUST BE IN 'STEP'; IF NOT HIT 'STEP-RUN'
+           TO PUT IT INTO STEP. NEXT HIT 'RESET'.
+.SKIP 1
+        2) YOU MUST CLEAR ALL THE REGISTERS (SEE STEP 5 IN THE
+           COMMAND DESCRIPTION ABOVE).
+.SKIP 1
+        3) SELECT THE 'P' REGISTER AND (FOR A 24K V73) ENTER AN
+           OCTAL 57640 (OR WHICHEVER LOCATION YOU WISH TO CHECK)
+           INTO THE DATA DISPLAY LIGHTS.
+.SKIP 1
+        4) GET A HARDCOPY OF THE CORRECT BOOTSTRAP LISTING OR
+           THE TABLE CONTAINING THE FIVE LOCATIONS INVOLVED IN
+           DETERMINING WHICH LINE WILL BE USED FOR THE LOAD; HIT
+           'MEM' ON THE V73 THEN 'DISPLAY'. THE ENTRY FOR THAT
+           LOCATION IN THE BOOTSTRAP WILL BE SHOWN AS AN OCTAL
+           NUMBER IN THE DATA DISPLAY LIGHTS. IF YOU ARE
+           CHECKING THE ENTIRE BOOTSTRAP, THIS ENTRY SHOULD
+           BE IDENTICAL TO THE FIRST OCTAL ENTRY ON YOUR LIST.
+           FOR THE LOCATIONS INVOLVED IN NET LINE SETTING, THE
+           ENTRY SHOULD BE THE SAME AS THE APPROPRIATE VALUE
+           OF THE LINE TABLE CONTAINED IN THIS DOCUMENT. IF IT
+           IS NOT CORRECT, MAKE A MARK NEXT TO THE LOCATION ON
+           YOUR HARDCOPY SO YOU CAN CHANGE THAT LOCATION LATER.
+.SKIP 1
+        5) TO MOVE ON TO THE NEXT INSTRUCTION IN THE BOOTSTRAP,
+           HIT THE 'DISPLAY' BUTTON ON THE V73. THIS INCREMENTS
+           THE REGISTER AND DISPLAYS THE NEXT BOOTSTRAP ENTRY
+           IN THE DATA DISPLAY LIGHTS. REPEAT THE COMPARISON
+           WITH THE BOOTSTRAP LISTING AND MAKE A MARK IF THE V73
+           ENTRY IS INCORRECT. IF YOU WISH TO CHECK THE ENTIRE
+           BOOTSTRAP, PROCEED TO CHECK EACH SUCCESSIVE ENTRY
+           BY HITTING THE 'DISPLAY' KEY.
+.INDEX <CHANGING <A <BOOTSTRAP <ENTRY
+.PAGE
+.CENTER
+((CHANGING A BOOTSTAP ENTRY))
+.SKIP 1
+        6) NOW, REFERRING TO THE INCORRECT ENTRIES YOU'VE CHECKED
+           ON THE BOOTSTAP LIST, (OR, TO THE LIST OF THE FIVE
+           LOCATIONS THAT NEED TO BE MODIFIED TO LOAD FROM A
+           NET LINE OTHER THAN THE CURRENT LINE SETTING) SELECT
+           SELECT THE 'P' REGISTER AND ENTER THE BOOTSTRAP
+           LOCATION TO BE CHANGED INTO THE DATA LIGHTS.
+.SKIP 1
+        7) HIT THE 'MEM' BUTTON, THEN HIT 'DISPL-CLR' TO CLEAR
+           THE DATA LIGHTS FOR THE BAD ENTRY IN THAT LOCATION.
+.SKIP 1
+        8) KEY INTO THE DATA LIGHTS THE CORRECT ENTRY FOR THAT
+           LOCATION FROM THE BOOTSTRAP HARDCOPY LIST (OR
+           THE LINE TABLE). NOW HIT THE 'ENTER' BUTTON ONCE.
+           REPEAT STEPS 6 THRU 8 FOR EACH ENTRY YOU WISH TO
+           CHANGE.
+.SKIP 1
+        9) WHEN ALL THE APPROPRIATE ENTRIES HAVE BEEN MADE,
+           RECHECK ALL THE CHANGES (WITH STEPS 1 THRU 5) TO 
+           MAKE SURE THE V73 NOW CONTAINS THE EXACT ENTRY FOR
+           EACH LOCATION AS YOU HAVE ON THE LIST.
+.SKIP 1
+        10) IF NOT, REDO THIS PROCEDURE UNTIL THE BOOTSTRAP
+           IS CORRECT; IF IT IS CORRECT, YOU CAN PROCEED TO
+           RESTART THE BOOTSTRAP AND NOTIFY <NETCON TO RESUME
+           THE BASE CODE LOAD AGAIN.
+.FILL.JUST
+\\
+.NOTE
+^THERE HAVE BEEN OCCASIONS WHERE THE BUTTONS ON THE ^V73 STICK OR DO
+NOT TAKE EFFECT CORRECTLY. ^BE PARTICULARLY AWARE
+OF THIS WHEN USING THE '<ENTER' BUTTON: ^IF THE KEY IS
+TOUCHY IT IS POSSIBLE TO ENTER A VALUE INTO TWO LOCATIONS INSTEAD OF
+JUST ONE. ^IF YOU ENTER ANYTHING, DOUBLECHECK THAT THE NEXT LOCATION
+IN THE '^P' REGISTER DOES NOT CONTAIN THE SAME VALUE AS THE ONE
+YOU JUST ENTERED.
+.END NOTE
+.INDENT 5
+^REMEMBER TO KEEP <TYMNET <DESK INFORMED ON ALL DEVELOPMENTS  REGARDING
+CORRECTIVE MEASURES TO THE BASE.
+^IF NONE OF THE ABOVE PROCEDURES CORRECT A BASE PROBLEM, CONTACT
+<TYMSHARE <MAINTENANCE FOR ASSISTANCE.
+.SUBTITLE <PROBE
+.PAGE!END OF XBASAV.RNO
+.ELSE SYSTEM
+\\
+.FLAG CAPIT
+.LEFT MARGIN 7
+.PAPER SIZE 60,79
+^^
+.CENTER
+TYMCOM-IX BASE CRASHES AND RECOVERIES
+\\
+.CENTER
+-------- ---- ------- --- ----------
+.SKIP 1
+((<INTRODUCTION))
+.SKIP 1
+.INDENT 5
+^SINCE THE ^TYMBASE PROVIDES NETWORK ACCESS TO
+TWO HOSTS, IF EITHER HOST CRASHES, THE BASE
+WILL CONTINUE TO FUNCTION AS A NODE IN ^TYMNET. 
+^BUT IF THE BASE CRASHES, THE BASE
+WILL CRASH BOTH HOSTS CONNECTED TO THAT BASE; A HOST WITHOUT A BASE IS 
+CUT OFF FROM THE OUTSIDE WORLD AND CANNOT TIMESHARE EFFECTIVELY.
+^A LARGE MAJORITY OF BASE CRASHES WILL BE SELF-RECOVERING FOR THE BASE.
+^THIS MEANS THAT THE BASE HAS ROUTINES WITHIN ITSELF TO DUMP A COPY OF
+IT'S CORE IMAGE INTO THE RESPECTIVE HOSTS FOR ANALYSIS LATER ON.
+^AFTER THE BASE HAS DUMPED ITSELF, IT CRASHES
+BOTH HOSTS CONNECTED TO IT AND RETURNS TO IT'S NORMAL OPERATION 
+AUTOMATICALLY.
+.SKIP 1
+.INDENT 5
+^OCCASIONALLY HOWEVER, THE ^TYMBASE WILL HANGUP IN A LOOP OR SIMPLY
+STOP FUNCTIONING AND DISPLAY THE 'STEP' LIGHT.
+^IN THESE CASES THE OPERATOR MUST FOLLOW THE PROCEDURES DESCRIBED
+IN THIS DOCUMENT IN ORDER THAT THE BASE CRASH CODE CAN BE SAVED,
+THE HOSTS CAN BE HALTED IN AN ORDERLY FASHION AND THE BASE CAN
+BE RETURNED TO NORMAL FUNCTIONING THROUGH A <TYMNET <CONTROL INITIATED
+DOWNSTREAM BASE CODE LOAD.
+.SKIP 1
+.INDENT 5
+^ALWAYS REMEMBER TO KEEP <TYMNET <NETWORK <CONTROL <CENTER INFORMED ON THE STATUS OF ANY
+UNUSUAL ACTIVITY THAT IS OCCURRING ON ANY BASE.
+.SUBTITLE <BASE <CRASH <SUMMARY
+.INDEX <BASE <CRASH <SUMMARY
+.PAGE
+((<COMMAND <SUMMARY))
+.NOTE
+^FULL DETAILS ON ALL SUMMARIZED PROCEDURES ARE IN THE <COMMAND 
+<DESCRIPTION SECTION OF THIS DOCUMENT.
+.END NOTE
+.NOFILL.NOJUST
+^^
+        1) ANNOUNCE THE CRASH OVER THE COMLINE SPEAKER AND
+           CONTACT <NETCON TO ADVISE THEM OF THE SITUATION;
+.SKIP 1
+        2) CHECK IF THE BASE IS IN STEP. IF NOT AND THE BIT LAMPS
+           ARE NOT FLICKERING FAINTLY THE BASE IS LOOPING.
+.SKIP 1
+        3) FOR 620L-100 BASES TURN THE FRONT PANEL KEY TO '<ON'
+           TO UNLOCK THE CONSOLE. IF THE BASE WAS LOOPING HIT THE
+           'STEP' SWITCH.
+.SKIP 1
+        4) CHECK AND RECORD THE FOLLOWING REGISTERS:
+           ON 620 BASES         RECORD P,U,A,B AND X REGISTERS
+.SKIP 1
+        5) CLEAR THE REGISTERS AND ATTEMPT TO RESTART FROM
+           P LOCATION 0; THIS DUMPS BASECODE TO THE 940.
+           AS THIS IS DONE THE 940'S WILL CRASH (IF THEY 
+           HAVEN'T CRASHED EARLIER). THIS PROCEDURE WILL
+           USUALLY CORRECT THE PROBLEM.
+.SKIP 1
+        6) IF RESTART FROM 0 FAILS, CONTACT <NETWORK <CONTROL AND
+           REQUEST A FRESH COPY OF THE BASE CODE BE LOADED OVER
+           THE NETWORK USING THE DOWNSTREAM LOADING PROTOCOL;
+.SKIP 1
+        7) IF <NETCON IS UNABLE TO LOAD THE BASE, CHECK AND IF
+           NECESSARY CORRECT THE BOOTSTRAP FOR THAT BASE;
+.SKIP 1
+        8) WAIT A FEW MINUTES, THEN LOG A NEARBY TTY INTO PROBE.
+           CHECK THE STATUS OF THE BASE YOU JUST RESTARTED OR
+           OR <NETCON JUST RELOADED WITH THE PROBE PROGRAM;
+.SKIP 1
+        9) IF THE BASE IS RUNNING PROPERLY, BRINGUP THE HOSTS
+           CONNECTED TO IT FOR TIMESHARING;
+.SKIP 1
+        10) LEAVE A THOROUGH RECORD OF WHAT YOU DID WITH THE
+           M.A.R. YOU GIVE YOUR LEAD OPERATOR AND IN THE SYSTEM
+           LOGBOOK.
+\\
+.SUBTITLE <BASE <SAVE <DESCRIPTION
+.INDEX <BASE <SAVE <DESCRIPTION
+.INDEX <RECORDING <BASE <REGISTERS
+.INDEX <RESTARTING <BASE <FROM 0
+.FILL.JUST
+.PAGE
+((<COMMAND <DESCRIPTION))
+.CENTER
+1.
+.SKIP 1
+.INDENT 5
+^FROM TIME TO TIME THE AUTOMATIC SELF-RECOVERY OF A ^TYMBASE CRASH
+WILL NOT OCCUR.
+^GENERALLY IF PORTIONS OF THE BASE CODE ARE CLOBBERED, CORRECTING
+THE SITUATION DEPENDS ON THE OPERATOR'S ABILITY TO COORDINATE THE
+APPROPRIATE PROCEDURES WITH <TYMNET <NETWORK <CONTROL.
+^THERE ARE OVER 10,000 INSTRUCTIONS IN A BASE CODE.
+^THESE INSTRUCTIONS CAN BE REFLECTED IN THE VARIOUS REGISTERS OF THE
+MINICOMPUTER.
+^PART OF THIS CODE IS THE <BOOTSTRAP - A SERIES OF INSTRUCTIONS
+WHICH THE BASE USES TO BRING ITSELF TO A FUNCTIONING STATE BY
+LOADING AND RUNNING THE REST OF THE CODE.
+.SKIP 1
+.INDENT 5
+^IF ANY TYPE OF BASE CRASH OCCURS, BOTH HOSTS
+INTERFACING <TYMNET THROUGH THAT BASE WILL CRASH.
+^AS WITH ANY HOST CRASH, YOU SHOULD ANNOUNCE THE CRASH OVER THE
+LOUDSPEAKER.
+^WHEN YOU SEE BOTH HOSTS ON A BASE CRASH YOU SHOULD CHECK THAT BASE
+BEFORE BRINGING UP EITHER 940.
+^GENERALLY THE ^TYMBASE WILL HAVE ALREADY DUMPED IT'S CODE INTO 940 CORE
+AND THE HOSTS CAN BE BROUGHT BACK UP.
+^WHEN YOU LOAD THE <TYMCOM-IX MONITOR WITH '<UP;G' THE CRASH CODE WILL BE
+SAVED TO A SPECIAL AREA ON DISK 0.
+^THEN THE <2CRASHSAVE PROGRAM (DURING <OPCOM) WILL INCLUDE IT IN THE
+CRASH SAVE FILES.
+.SKIP 1
+.CENTER
+2.
+.SKIP 1
+.INDENT 5
+^IF HOWEVER, THE BASE IS UNABLE TO RECOVER, THEN
+ALL LOGINS TO THE HOST WILL FAIL
+AND THE MESSAGE 
+^^
+'HOST NOT AVAILABLE THROUGH NET'
+\\
+WILL TYPE OUT.
+^BY THIS TIME, THE OPERATOR SHOULD HAVE BEGUN TO SUSPECT A BASE
+PROBLEM REQUIRING MANUAL INTERVENTION.
+^WHEN THE BASE CRASHES AND IS NOT ABLE TO RESTART ITSELF
+THE MACHINE WILL EITHER BE IN '<STEP' (THAT IS THE <STEP LIGHT
+WILL BE LIT AND THERE WILL BE NO ACTIVITY IN ANY OF THE REGISTER
+LIGHTS) OR THE MACHINE WILL BE HUNG UP IN A LOOP (IN WHICH CASE THE
+LIGHTS ON THE CONSOLE WILL NOT BE FLICKERING).
+^ADDITIONAL SYMPTOMS OF A NON-RECOVERING BASE CRASH CAN
+BE OBTAINED BY USING THE <PROBE PROGRAM TO CHECK THE STATUS OF THE BASE
+FROM THE VANTAGE OF THE NETWORK SUPERVISOR.
+^THIS PROGRAM IS DOCUMENTED IN ANOTHER SECTION OF THIS MANUAL.
+.PARA
+.NOTE
+^FOR THE FOLLOWING DESCRIPTION YOU ARE REFERRED TO THE CONSOLE
+DIAGRAM ON THE PAGE AFTER NEXT.
+.END NOTE
+.PAGE
+.CENTER
+3.
+.SKIP 1
+.SKIP 1
+.INDENT 5
+^THE FIRST RECOVERY PROCEDURE IS TO TURN THE CONSOLE ENABLE KEY TO
+THE '<ON' POSITION TO 'UNLOCK' THE 620^L-100 CONSOLE.
+^IF THE BASE IS NOT IS <STEP, PRESS THE '<STEP' KEY TO
+STOP THE MACHINE FROM LOOPING.
+.SKIP 1
+.CENTER
+4.
+.SKIP 1
+.INDENT 5
+^AT THIS POINT YOU SHOULD RECORD THE CONTENTS OF THE BASE'S REGISTERS.
+^TO DO THIS ON THE 620 ^L-100 TYPE BASE (<TYMCOM-IX) YOU
+MUST PUSH EACH OF THE REGISTER SWITCHES (LABELED FROM RIGHT TO LEFT)
+'^P, ^U, ^A, ^B AND ^X TO THE DOWN POSITION ONE AT A TIME.
+^WHEN EACH SWITCH IS IN THE DOWN POSITION, THE CONTENTS OF THAT REGISTER
+WILL BE DISPLAYED AS AN OCTAL NUMBER IN THE DATA LIGHTS LABELED (RIGHT TO LEFT)
+0 THROUGH 15.
+^THIS INFORMATION SHOULD BE RECORDED IN THE FORM '<P=NNNNNN, <U=NNNNNN' ETC.
+.SKIP 1
+.CENTER
+5.
+.SKIP 1
+.INDENT 5
+^ONCE YOU HAVE RECORDED ALL OF THE REGISTERS ONE AT A TIME, PROCEED TO
+CLEAR EACH REGISTER.
+^TO DO THIS PUT EACH INDIVIDUAL REGISTER IN THE DOWN POSITION, PRESS
+THE <BIT <RESET BUTTON, AND THEN PUT THE REGISTER KEY BACK TO THE UP
+POSITION.
+^WHEN THE <BIT <RESET BUTTON IS PUSHED THE LIGHT IN THE DATA DISPLAY
+WILL RESET TO 0 (ALL LIGHTS OUT).
+^PROCEED WITH THE SAME PROCEDURE WITH THE NEXT REGISTER AND CONTINUE UNTIL
+ALL REGISTERS HAVE BEEN CLEARED.
+.SKIP 1
+.INDENT 5
+^NEXT ATTEMPT TO RESTART THE BASE FROM <P LOCATION 0.
+^TO DO THIS PRESS THE <SYSTEM <RESET BUTTON TWICE AND THEN THE <RUN
+BUTTON.
+^THE CODE SHOULD NOW BE RUNNING.
+^A RESTART FROM ^P LOCATION 0 DUMPS THE ^TYMBASE INTO 940 CORE ON
+BOTH HOSTS CONNECTED TO THE BASE.
+^IF THIS PROCEDURE SUCCEEDS THE LIGHTS IN THE DATA DISPLAY WILL BEGIN
+TO FLICKER, AND THE <RUN LIGHT SHOULD REMAIN ON.
+.SKIP 1!940 CLEAR0 ENDS
+.INDENT 5
+^IT ALWAYS TAKES AT LEAST TWO MINUTES FOR A RESTARTED BASE TO BE
+RECOGNIZED BY THE NETWORK.
+^YOU SHOULD USE THE <PROBE PROGRAM TO VERIFY THAT THE BASE
+HAS RESTARTED CORRECTLY.
+^IF SO, PROCEED TO BRING THE HOSTS BACK UP.
+.SUBTITLE <620 <L-100 <CONSOLE
+.INDEX <620 <L-100 <CONSOLE
+.PAGE
+.FIGURE 40
+.SUBTITLE <BASE <CODE <RELOAD
+.INDEX <BASE <CODE <RELOAD
+.PAGE
+.CENTER
+6.
+.SKIP 1
+.INDENT 5
+^IF RESTARTING THE CODE FROM 0 FAILS, CHANCES ARE THE BASE WILL
+GO INTO STEP.
+^IF THAT HAPPENS, OR IF THE NETWORK DOES NOT ACKNOWLEDGE THE BASE RESTART
+WITHIN <PROBE AFTER 3 MINUTES, THE NEXT CORRECTIVE PROCEDURE IS TO CONTACT
+<TYMNET <NETWORK <CONTROL (408 446-6180 OR EXT. 6468) AND REQUEST THAT THEY
+FORCE THE BASE TO IT'S APPROPRIATE SYNCHRONOUS BOOTSTRAP LOCATION, LOAD A
+FRESH COPY OF BASECODE FROM DOWNSTREAM AND START IT RUNNING.
+^BASE CODE FOR THE 940'S IS CONTAINED IN DISKFILES ON EITHER SYSTEM 33 OR
+SYSTEM 36 UNDER DIRECTORY (<TYMNET).
+^UNDER NORMAL SITUATIONS, THIS CODE CAN BE LOADED OVER <TYMNET SO
+LONG AS BOTH HOSTS ARE DOWN AND THE BASE IS IN THE NETWORK.
+^HOWEVER, AT THIS POINT, IT IS ASSUMED THAT THE BASE IS IN STEP, THAT THE
+REGISTERS HAVE BEEN RECORDED (STEP 4 ABOVE) AND CLEARED (STEP 5 ABOVE)
+AND THAT YOU HAVE ALREADY TRIED THE LESS DRASTIC
+MEASURE OF RESTARTING THE ^TYMBASE FROM ^P=0.
+^IF BOTH HOSTS ARE NOT YET DOWN, USE BREAKPOINT 4 TO CRASH THEM.
+^CONTACT <NETWORK <CONTROL AND FIND OUT WHICH NETWORK LINE FROM THE BASE
+WILL BE USED FOR THE DOWNSTREAM CODE LOAD.
+^IF THEY INDICATE THE CURRENT NET LINE SET UP FOR THE BASE LOAD,
+GO OVER TO THE BASE AND PUT THE '^P' REGISTER KEY DOWN.
+^ENTER AN OCTAL 37640 INTO THE DATA DISPLAY.
+^WHEN YOU HAVE DONE THIS HIT THE <SYSTEM <RESET BUTTON TWICE, THEN
+HIT <RUN.
+^FROM THIS POINT, <NETCON CAN PROCEED WITH THE RELOAD.
+.SKIP 1
+.CENTER
+<NOTE
+.SKIP 1
+^THE BOOTSTRAP START LOCATION ABOVE REFLECTS A 620 WITH 16^K OF CORE
+(STANDARD).
+^IF HOWEVER THE 620 HAS
+.NOFILL.NOJUST
+.SKIP 1
+        12^K OF CORE    USE     ^P=27640
+        20^K OF CORE    USE     ^P=47640
+        24^K OF CORE    USE     ^P=57640
+.FILL.JUST
+.SKIP 1
+.CENTER
+7.
+.PARA
+^IF HOWEVER, <NETCON INDICATES THAT SOME LINE OTHER THAN THE CURRENT LINE WILL
+BE USED FOR THE DOWNSTREAM CODE LOAD, YOU WILL HAVE TO CHECK AND
+POSSIBLY CHANGE THE CONTENTS OF FIVE LOCATIONS IN THE BOOTSTRAP BEFORE 
+PROCEEDING TO START THE SYNCHRONOUS BOOT.
+^THE LOCATIONS AND CONTENTS TO BE CHANGED IN THESE CASES ARE LISTED BELOW.
+.PARA
+^THIS TABLE CAN ALSO BE USED TO DETERMINE WHICH LINE IS CURRENTLY SET UP
+FOR THE DOWNSTREAM LOAD.
+^FOR EXAMPLE, IF YOU CHECK THE 16K 620 VALUE OF BOOTSTRAP LOCATION
+37655 AND FIND IT CONTAINS 50040, THEN LINE 0 (THE DEFAULT) IS THE
+CURRENT LINE SETTING FOR THE CODE LOAD.
+.PARA
+^THE TABLE BELOW CONTAINS THE APPROPRIATE LOCATIONS AND CONTENTS NECESSARY
+TO LOAD BASECODE DOWNSTREAM FROM VARIOUS NETWORK LINES.
+^REFER TO THE PROCEDURE UNDER <ERRORS <AND <RECOVERIES FOR DETAILS ON
+HOW TO EXAMINE AND CHANGE THESE LOCATIONS.
+.PAGE
+.INDEX <DOWNSTREAM <LINE <TABLE <IN <BOOTS
+.LEFT MARGIN 6
+.CENTER
+<BOOTSTRAP <VALUES <FOR <USE <OF <VARIOUS <LINES <ON <DOWNSTREAM <LOADS
+.SKIP 1
+.NOFILL.NOJUST
+^^
+.PAPER SIZE 60,79
+LOCATION   LINE   LINE   LINE   LINE   LINE   LINE   LINE   LINE
+            0      1      2      3      4      5      6      7
+--------   ----   ----   ----   ----   ----   ----   ----   ----
+X7655      50040  50044  50050  50054  50060  50064  50070  50074
+X7656      50042  50046  50052  50056  50062  50066  50072  50076
+X7663      50043  50047  50053  50057  50063  50067  50073  50077
+X7666      50041  50045  50051  50055  50061  50065  50071  50075
+X7770      00021  00023  00025  00027  00031  00033  00035  00037
+.LEFT MARGIN 7
+.PAPER SIZE 60,79
+.SKIP 1
+        THE 'X' PORTION OF THE LOCATION IS A NUMBER DEPENDING ON
+        THE MEMORY SIZE OF THE MACHINE IN QUESTION. THE 'X' IS
+        REPLACED BY ONE OF THE FOLLOWING NUMBERS:
+.SKIP 1
+                        MEMORY          X REPLACED
+                         SIZE               BY
+                        ------          ----------
+                         12K                2
+          (STANDARD)     16K                3
+                         20K                4
+                         24K                5
+                         32K                7
+\\
+.FILL.JUST
+.PARA
+^IF THE BASE RELOAD FAILS YOU MAY HAVE TO MANUALLY RELOAD THE BASE BOOTSTRAP;
+^THE PROCEDURE FOR THIS IS DETAILED IN THE <ERRORS <AND <RECOVERIES
+SECTION OF THIS DOCUMENT.
+.SKIP 1
+.CENTER
+8.
+.SKIP 1
+.INDENT 5
+^IF THIS BASE LOAD WAS A SUCCESS, THE
+THE INITIAL EVIDENCE IS THAT THE <RUN AND <OVFL LIGHTS STAY ON AND THE
+DATA DISPLAY LIGHTS (ESP. BIT 10) FLICKER FAINTLY.
+^CONCLUSIVE EVIDENCE
+OF A SUCCESSFUL BASE RELOAD COMES FROM CHECKING THE STATUS OF THE
+BASE NODE YOU JUST RELOADED WITH THE <PROBE PROGRAM.
+^REMEMBER, IT WILL TAKE THE ^NETWORK ^SUPERVISOR AT LEASE 2 MINUTES TO
+RECOGNIZE THE BASE AGAIN.
+.SKIP 1
+.CENTER
+9.
+.SKIP 1
+.INDENT 5
+^IF THIS PROCEDURE HAS SUCCEEDED, YOU CAN PROCEED TO BRING UP BOTH
+940S FOR TIMESHARING BY TYPING <UP;G TO THE SELECTOR CHANNEL <DIM.
+^THE DUMPED BASE CRASH WILL THEN BE SAVED WITH THE CRASH DUMP.
+.SKIP 1
+.CENTER
+10.
+.SKIP 1
+.INDENT 5
+^FOLLOW UP WHATEVER STEPS WERE NECESSARY BY WRITING A ^M.^A.^R. OUTLINING
+THE INITIAL PROBLEM AND WHAT STEPS YOU TOOK TO CORRECT THE SITUATION.
+.PAGE
+\\
+((<SAMPLE <RUN))
+.SKIP 1
+.INDENT 5
+^SEE THE COMMAND DESCRIPTION ABOVE FOR THE PROCEDURES AND AN OUTLINE
+OF THE RESULTS OF EACH STEP.
+.SUBTITLE <BASE <RELOAD <ERRORS
+.INDEX <BASE <RELOAD <ERRORS
+.SKIP 1
+((<ERRORS AND <RECOVERIES))
+.SKIP 1
+.INDENT 5
+^ALTHOUGH THE 620 BOOTSTRAP SELDOM GETS CLOBBERED, A BAD
+BOOTSTRAP IS THE MOST COMMON REASON FOR A BASE RELOAD NOT WORKING
+PROPERLY: THE MECHANISM FOR MOVING CODE FROM 940 CORE TO 620 WHERE
+IT CAN RUN WILL BE DISABLED IF ANY PART OF THE BOOTSTRAP IS
+INCORRECT.
+^TO IDENTIFY THIS PROBLEM IT IS NECESSARY TO CHECK THE CURRENT
+BOOTSTRAP IN THE 620^L-100.
+^IF ANY INSTRUCTION(S) IS FOUND TO DEVIATE FROM THE CORRECT ENTRY,
+THE INSTRUCTION(S) INVOLVED MUST BE MANUALLY CHANGED TO THE 
+CORRECT VALUE.
+^BEFORE OUTLINING THESE TECHNIQUES, A FEW BASIC DEFINITIONS
+ARE PRESENTED:
+.SKIP 1
+.NOFILL.NOJUST
+        ^P <REGISTER             ^THE ^P REGISTER IS THE PROGRAM 
+                                LOCATION COUNTER. ^THIS
+                                PROGRAM COUNTER IS 16 BITS LONG.
+.SKIP 1
+        ^U <REGISTER             ^THE ^U REGISTER IS THE INSTRUCTION
+                                REGISTER OF THE <CPU; 16 BITS.
+.SKIP 1
+        ^A <REGISTER             ^THE ^A REGISTER IS THE ACCUMULATOR
+                                REGISTER AND IS ALSO 16 BITS;
+                                THE CONTENTS OF A LOCATION ARE
+                                USUALLY HERE.
+.SKIP 1
+        014000                  THIS IS THE '<LOAD ^A' REGISTER
+                                INSTRUCTION; 10000 IS 'LOAD A'
+                                AND 4000 IS 'RELATIVE TO THE 'P'
+                                REGISTER. ^USE THIS TO CHECK.
+.SKIP 1
+        054000                  THIS IS THE '<STORE ^A' REGISTER
+                                INSTRUCTION; 50000 IS 'STORE A'
+                                AND 4000 IS 'RELATIVE TO THE 'P'
+                                REGISTER'. USE THIS TO CORRECT.
+.SUBTITLE <CHECKING/RELOADING <THE <BOOTSTRAP
+.PAGE
+.INDEX <CHECKING <THE <BASE <BOOTSTRAP
+.INDEX <RELOADING <BASE <SYNCHRONOUS <BOOT
+.FILL.JUST
+.CENTER 
+((<RELOADING <SYNCHRONOUS <BOOTS))
+.PARA
+^WITH THE DOWNSTREAM LOADER, THE BOOTSTRAP USED IS CALLED A 'SYNCHRONOUS'
+BOOT;
+IF IT SHOULD FAIL, YOU CAN RELOAD IT BY FIRST LOADING THE OLDER 'SYSTEM'
+BOOTSTRAP FOR THE 620.
+.SKIP 1
+A) USE THE SELECTOR CHANNEL MODE ON THE TERMINAL TO TYPE <UP;G TO <DIM;
+IF YOU MUST DO THIS REMEMBER TO USE <UP-1;G WHEN BRINGING UP THE HOST
+SO YOU WILL AVOID OVERWRITING THE ORIGINAL CRASH DUMP.
+.SKIP 1
+B) TO THE PROMPT '<HOST:' YOU SHOULD TYPE WHICHEVER HOST NUMBER IS HOST 0 (THE FIRST NUMBER ON THE BASE LABEL - EG. <C5 FOR <C5-20B);
+.SKIP 1
+C) TO THE '<LOC.:' PROMPT, TYPE 11 (OR 14) TO LOAD THE FILE
+(<TYMNET) <SYNCLD; THIS IS THE 'SYSTEM' BOOT;
+.SKIP 1
+D) ON THE 620 HIT THE RESET KEY TWICE;
+.SKIP 1
+E) SET THE 620 SENSE SWITCHES TO INDICATE THE OCTAL NUMBER OF THE NET
+LINE THAT WILL BE USED BY <NETCON FOR THE DOWNSTREAM LOAD;
+.SKIP 1
+F) FINALLY, HIT <RUN ON THE 620 TO START THE SYNCHRONOUS BOOT;
+<NETCON CAN RESUME WITH THE ACTUAL BASE CODE LOAD AT THIS POINT.
+.SKIP 1
+^^
+.CENTER
+((CHECKING THE BOOTSTRAP))
+.SKIP 1
+        1) THE 620L-100 MUST BE IN 'STEP'; IF NOT HIT 'STEP'.
+.SKIP 1
+        2) CLEAR ALL THE REGISTERS (SEE STEP 5 IN THE COMMAND
+           DESCRIPTION ABOVE ON HOW TO DO THIS).
+.SKIP 1
+        3) SET THE 'REPEAT' KEY ON; SELECT THE
+           'U' REGISTER AND ENTER 14000; SELECT THE 'P'
+           REGISTER AND ENTER 37640 (OR WHICHEVER THE
+           LOCATION IS YOU WISH TO CHECK). NEXT SELECT
+           THE 'A' REGISTER.
+.SKIP 1
+        4) GET A HARDCOPY OF THE CORRECT BOOTSTRAP LISTING
+           OR THE TABLE CONTAINING THE FIVE LOCATIONS INVOLVED
+           IN DETERMINING WHICH NET LINE WILL BE USED FOR THE
+           DOWNSTREAM BASE LOAD. HIT 'STEP' AND THE ENTRY FOR
+           THAT LOCATION IN THE CURRENT BASE BOOTSTRAP WILL
+           BE SHOWN AS AN OCTAL NUMBER IN THE DATA DISPLAY.
+           IF YOU ARE CHECKING THE ENTIRE BOOTSTRAP, THIS
+           SHOULD MATCH  THE FIRST OCTAL ENTRY ON YOUR LIST.
+           FOR CHECKING THE FIVE LOCATIONS INVOLVED IN NET
+           LINE FOR THE LOAD, THIS SHOULD MATCH THE 
+           APPROPRIATE VALUE CONTAINED IN THE LINE TABLE IN
+           THIS DOCUMENT. IF IT IS NOT CORRECT, MARK THAT
+           LOCATION ON YOUR HARDCOPY SO THAT LATER YOU CAN
+           CHANGE THAT ENTRY IN THE 620L-100 BOOTSTRAP.
+.SKIP 1
+        5) TO MOVE ON TO THE NEXT INSTRUCTION IN THE BOOTSTRAP,
+           HIT 'STEP' AGAIN. THIS WILL INCREMENT THE 'P'
+           REGISTER AND DISPLAY THE NEXT BOOTSTRAP ENTRY IN
+           THE DATA LIGHTS. REPEAT THE COMPARISON WITH
+           THE BOOTSTRAP LISTING AND MAKE A MARK IF THE
+           620 ENTRY IS INCORRECT. IF YOU WISH TO CHECK THE
+           ENTIRE BOOTSTRAP, TO DO THIS PROCEED TO DISPLAY
+           EACH SUCCESSIVE ENTRY IN THE BOOTSTRAP BY
+           HITTING 'STEP'.
+.PAGE
+.INDEX <CHANGING <THE <BASE <BOOTSTRAP
+.CENTER
+((CORRECTING A BOOTSTRAP ENTRY))
+.SKIP 1
+        6) NOW, REFERRING TO THE INCORRECT ENTRIES YOU'VE CHECKED
+           ON THE BOOTSTRAP LIST, (OR, TO THE LIST OF THE FIVE
+           LOCATIONS THAT NEED TO BE MODIFIED TO LOAD FROM A
+           NET LINE OTHER THAN THE CURRENT LINE SETTING)
+           SELECT THE 'U' REGISTER AND ENTER 54000;
+           NEXT, SELECT THE 'P' REGISTER AND ENTER WHICHEVER
+           BOOTSTRAP LOCATION CONTAINS THE ENTRY YOU WISH TO
+           CHANGE; SELECT THE 'A' REGISTER. HIT 'BIT RESET' TO
+           CLEAR THE DATA DISPLAY LIGHTS.
+.SKIP 1
+        7) INTO THE 'A' REGISTER YOU SHOULD KEYIN THE CORRECT
+           ENTRY FOR THE LOCATION THAT IS IN THE 'P' REGISTER.
+           NOW HIT 'STEP' ONCE. REPEAT THE PROCEDURES 6
+           AND 7 FOR EACH ENTRY YOU NEED TO CHANGE.
+.SKIP 1
+        8) WHEN ALL THE APPROPRIATE ENTRIES HAVE BEEN MADE,
+           RECHECK ALL THE CHANGES (WITH PROCEDURES 1 THRU 5)
+           TO MAKE SURE THE 620L-100 NOW CONTAINS THE EXACT
+           SAME ENTRY FOR EACH LOCATION AS YOU HAVE ON THE
+           BOOTSTRAP LIST OR LINE TABLE.
+.SKIP 1
+        9) IF NOT, REDO THIS ENTIRE PROCEDURE UNTIL THE 
+           BOOTSTRAP IS CORRECT; IF IT IS CORRECT, YOU CAN
+           PROCEED TO RESTART THE BOOTSTRAP AND NOTIFY <NETCON
+           TO RESUME THE BASE CODE LOAD AGAIN.
+.SUBTITLE <BASE <RELOAD <ERRORS
+.SKIP 1
+.FILL.JUST
+\\
+.SKIP 1
+.INDENT 5
+^OCCASIONALLY WHEN A POWER FAILURE TAKES THE BASE DOWN, THE 620^L-100
+MAY BE IN A 'PWR CHECKED' MODE.
+^THE KEY ON THE CONSOLE WOULD BE ON BUT NONE OF THE FRONT PANEL
+SWITCHES WOULD WORK.
+^IF SO, TURN THE KEY TO '<OFF', THEN BACK TO '<PWR <ON'.
+.PARA
+^IF NONE OF THE ABOVE PROCEDURES CORRECT A BASE PROBLEM,
+CONTACT <TYMSHARE <MAINTENANCE FOR ASSISTANCE.
+.SUBTITLE <PROBE
+.PAGE!END OF IX BASE SAVE,RESTART,RELOAD
+.ENDIF SYSTEM
+\\
+.FLAG CAPIT
+.LEFT MARGIN 7
+.PAPER SIZE 60,79
+.CENTER
+<PROBE <ON <THE <INTERDATA 7/32
+.CENTER
+----- -- --- --------- ----
+.SKIP 1
+((<INTRODUCTION))
+.SKIP 1
+.INDENT 5
+<PROBE IS THE ACCESS AND CONTROL PROGRAM FOR THE <TYMNET SUPERVISOR.
+^IT IS A MAJOR SUBSYSTEM WHICH RUNS ON THE ^INTERDATA MODEL 7/32.
+^THE PRIMARY OPERATOR FUNCTIONS IN <PROBE ARE:
+.NOFILL.NOJUST
+.SKIP 1
+        1) TO DETERMINE THE GENERAL STATUS OF THE NETWORK;
+.SKIP 1
+        2) TO CHECK ON THE STATUS OF INDIVIDUAL NODES IN THE NET
+           ESPECIALLY IF IT BECOMES NECESSARY TO RELOAD A NODE
+           OR MOVE A HOST FROM ONE HARDWARE TO ANOTHER;
+.SKIP 1
+        3) TO ESTABLISH A CENTRAL LOGGER TERMINAL WHICH CAN
+           EXTRACT INFORMATION OF INTEREST TO OPERATIONS ABOUT
+           ALL THE SYSTEMS IN AN ENTIRE COMPUTER CENTER.
+.SKIP 1
+.FILL.JUST
+.INDENT 5
+^IN ADDITION, <PROBE CAN BE USED TO MANIPULATE THE USEAGE OF INDIVIDUAL
+NODES AND LONG LINES, MOVE THE NETWORK SUPERVISOR FROM ONE
+^INTERDATA TO ANOTHER, AND PERFORM OTHER ACTIVITIES VITAL TO THE
+MAINTENANCE OF <TYMNET.
+^FOR THE MOST PART, THESE ADDITIONAL CAPABILITIES ARE WITHIN THE
+DOMAIN OF <TYMNET <NETWORK <CONTROL <CENTER AND REQUIRE SPECIAL
+STATUS.
+^IT IS IMPERATIVE THAT <NETWORK <CONTROL BE INVOLVED AS MUCH
+AS POSSIBLE IN ANY OF THESE OTHER PROCEDURES.
+.SKIP 1
+.NOFILL.NOJUST
+^^
+((COMMAND SUMMARY))
+.SKIP 1
+        1) LOGIN TO PROBE ON THE ACTIVE SUPERVISOR;
+.SKIP 1
+        2) NEXT ENTER THE NAME WCO AND THE CURRENT OPER PASSWORD;
+.SKIP 1
+        3) TYPE THE PROBE COMMAND 'STATUS';
+.SKIP 1
+.CENTER
+(A. NODE CHECKING - N IS A NODE NUMBER)
+.CENTER
+---------------------------------------
+.SKIP 1
+        A4) TYPE THE COMMAND 'HOST N' TO DETERMINE THE STATUS OF
+            THAT HOST (EG. 'HOST 38')
+.SKIP 1
+        A5) TYPE 'NODE N' FOR ADDITIONAL INFO ON THAT NODE;
+.SKIP 1
+        A6) QUIT THE PROGRAM AND LOGOUT OF THE INTERDATA WITH
+            THE 'EXIT' COMMAND.
+.SKIP 1
+.CENTER
+(B. FOR RUNNING A LOGGER TERMINAL)
+.CENTER
+----------------------------------
+.SKIP 1
+        B4) TYPE THE COMMAND 'EXTRACT 700' FOR CUPA CHECKING
+            TYPE 'EXTRACT 701' FOR CUPC CHECKING.
+.SKIP 1
+.FILL.JUST
+\\
+.SUBTITLE <PROBE <OPERATION
+.INDEX <PROBE <START <UP
+.INDEX <PROBE <LOGIN <PROCEDURE
+.INDEX <PROBE <COMMAND <MODE
+.PAGE
+.CENTER
+<STARTUP
+.SKIP 1
+.INDENT 5
+^THE FIRST PERSON TO LOGIN TO <PROBE AFTER THE 7/32 HAS BEEN BROUGHT
+UP WILL BE ASKED TO SUPPLY ^GREENWICH ^MEAN ^TIME (<GMT) IN THE FORMAT
+<DD:HH:MM WHERE <DD IS THE NUMBER OF DAYS SINCE THE BEGINING OF THE YEAR.
+^WHEN THE <TYMNET CLOCK IS INSTALLED, THIS FUNCTION WILL NORMALLY
+BE HANDLED BY THE <TYMNET CLOCK.
+^BY TYPING A CONTROL ^Q HERE THE PROGRAM WILL SKIP THE DATE INPUT
+AND PROMPT FOR LOGIN.
+.SKIP 1
+.CENTER
+<LOGIN
+.SKIP 1
+.INDENT 5
+^ALL ^INTERDATA SUPERVISORS WILL RUN ON "HOST" SYSTEMS 120 THROUGH 127.
+^THE FOLLOWING ARE VALID WAYS OF GETTING INTO <PROBE:
+.NOFILL.NOJUST
+.SKIP 1
+                <PROBE:127;(<PASSWORD);
+                <PROBE:*;(<PASSWORD)CR
+.SKIP 1
+.FILL.JUST
+\\
+.INDENT 5
+^THE ASTERISK (*) REFERS TO THE CURRENTLY ACTIVE SUPERVISOR.
+.NOTE
+^ONE MAY END THE <PROBE PASSWORD WITH A SEMICOLON OR CARRIAGE RETURN, BUT
+NOT BOTH.
+.END NOTE
+.SKIP 1
+.INDENT 5
+^AFTER THE CIRCUIT HAS BEEN BUILT TO THE 7/32, <PROBE WILL ASK FOR
+AN ADDITIONAL USERNAME.
+^YOU SHOULD USE <WCO AS THE USERNAME.
+^AFTER THE NAME HAS BEEN ENTERED, <PROBE WILL ASK FOR
+THE PASSWORD.
+^THIS PASSWORD IS THE SAME FOR <WCO AS THE LOGIN PASSWORD FOR
+<OPER ON ^TYMSHARE HOSTS.
+.SKIP 1
+.CENTER
+<COMMAND <MODE
+.SKIP 1
+.INDENT 5
+^WHENEVER A COLON APPEARS ON THE LEFT HAND MARGIN, <PROBE IS
+READY TO ACCEPT ANOTHER COMMAND.
+.SKIP 1
+.INDENT 5
+^ALL <PROBE COMMANDS MUST BE TYPED OUT IN FULL ON ONE LINE
+AND ENDED WITH A CARRIAGE RETURN.
+.SKIP 1
+.INDENT 5
+^TO GET BACK TO <PROBE COMMAND MODE (AFTER
+LOGIN HAS BEEN COMPLETED) TYPE A CONTROL ^Q OR ESCAPE.
+^THIS WILL ABORT THE CURRENT ACTIVITY AND RETURN TO COMMAND MODE.
+.INDEX <GENERAL <PROBE <COMMANDS
+.SUBTITLE <GENERAL <PROBE <COMMANDS
+.PAGE
+.CENTER
+<COMMANDS <WHICH <INVOLVE <GENERAL <INFORMATION
+.CENTER
+-------- ----- ------- ------- -----------
+.SKIP 1
+<HELP (OR <H, OR ?)
+.SKIP 1
+^REFERS USER TO THE DOCUMENT FILE <PROBE.DOC.
+.SKIP 1
+<SEND <J <MESSAGE       
+.SKIP 1
+^THIS SENDS A MESSAGE TO THE USER ON JOB J.
+^USE THE <WHO COMMAND TO FIND OUT  THE PROPER JOB LABEL.
+.SKIP 1
+<SYS                  
+.SKIP 1
+^TYPE OUT HOST, OR SYSTEM NUMBER.
+.SKIP 1
+<TIME                 
+.SKIP 1
+^TYPE OUT THE CURRENT TIME.
+.SKIP 1
+<WHO                  
+.SKIP 1
+^THE <WHO COMMAND LISTS THE CURRENT <PROBE USERS AND THEIR JOB LABELS.
+^THE JOBLABELS ARE NEEDED FOR THE <SEND AND <HANG COMMANDS.
+.SKIP 1
+<VERSION              
+.SKIP 1
+^PRINT OUT THE VERSION NUMBERS OF <PROBE, THE KERNEL,
+AND THE SUPERVISOR.
+.SKIP 1
+<EXIT
+.SKIP 1
+^THIS COMMAND QUITS THE <PROBE PROGRAM AND LOGS OUT OF THE <INTERDATA 7/32.
+.INDEX <TYMNET <STATUS <COMMANDS
+.SUBTITLE <TYMNET <STATUS <COMMANDS
+.PAGE
+.CENTER
+<COMMANDS <WHICH <INVOLVE <THE <STATUS <OF <TYMNET
+.CENTER
+-------- ----- ------- --- ------ -- ------
+.SKIP 1
+<STAT                 
+.SKIP 1
+^THIS COMMAND PRINTS OUT THE NUMBERS
+OF NODES IN EACH OF THE 5 TAKEOVER STATES, THE DF (SEE BELOW), 
+AND THE REJECT COUNT.
+^THE REJECT COUNT IS THE COUNT OF THE NUMBER
+OF TIMES THE SUPERVISOR COULD NOT BUILD A CIRCUIT BECAUSE OF
+SHUT LINES, LINES OUT OF CHANNELS, OR NODES OUT OF PASSTHROUGHS.
+^THE SOURCE AND DESTINATION NODES OF THE LAST REJECTED
+LOGIN ATTEMPT ARE PRINTED AFTER THE REJECT COUNT.
+^IF <SUP IS NOT RUNNING (NEITHER AWAKE NOR ASLEEP) THE KERNEL'S ^STATUS
+WILL APPEAR AT THE END OF THE FIRST LINE.
+^THE KERNEL STATUS MAY BE INTERPRETED AS FOLLOWS:
+.SKIP 1
+.NOFILL.NOJUST
+^^
+        NUMBER  MEANING
+        ------  -------
+	1000	FROZEN BY OPERATOR
+	 800	PARITY ERROR IN THE SUPERVISOR - OR JOE RINDE HAS
+		STOPPED THE SUPERVISOR FOR EXAMINATION
+	 100	SUPERVISOR HAS FAILED TO RECOVER FROM A CRASH - THE
+		SUPERVISOR CODE AREA HAS PROBABLY BEEN CLOBBERED.
+.FILL.JUST
+\\
+.SKIP 1
+<COUNT                
+.SKIP 1
+^THIS COUNTS THE NUMBER OF NODES, TERMINATIONS, AND PASSTHROUGHS IN THE NET.
+^IT DOES NOT COUNT INTERNAL CIRCUITS AS TERMINATIONS.
+.SKIP 1
+<DF (<NUMBER)          (^REQUIRES ^STATUS 01)
+.SKIP 1
+^THIS IS USED TO COMPUTE THE DROWSINESS FACTOR.
+^WHEN A SUPERVISOR GOES TO SLEEP OR OTHERWISE FAILS TO SEND 'SLEEPING
+PILLS', THE OTHER SUPERVISOR SYSTEMS WILL REMAIN DORMANT FOR ONLY
+THE NUMBER OF SECONDS THEY ARE SUPPOSED TO REMAIN ASLEEP BASED ON
+THEIR RANKING IN THE 'SUPERVISOR PECKING ORDER'.
+^THE DROWSINESS FACTOR IS A NUMBER THAT IS FACTORED INTO THIS.
+1000 DECIMAL IS THE LARGEST NUMBER THAT ONE MAY ENTER.
+^THIS HAS THE EFFECT OF SUPPRESSING THE SUPERVISOR.
+.SKIP 1
+<AWAKE                (^REQUIRES ^STATUS 01)
+.SKIP 1
+^THIS COMMAND WILL AWAKEN THE SUPERVISOR IMMEDIATELY.
+^THIS OVERRIDES ALL PREVIOUS REASONS FOR
+SLEEPING, INCLUDING A LARGE <DF (^DROWSINESS ^FACTOR - HOW LONG THE
+SUPERVISOR IN QUESTION WILL REMAIN DORMANT WHEN AN ACTIVE SUPERVISOR
+GOES TO 'SLEEP'.
+.SKIP 1
+<SLEEP                (^REQUIRES ^STATUS 01)
+.SKIP 1
+^PUT THE CURRENT ACTIVE SUPERVISOR TO SLEEP.
+.SKIP 1
+<LSHUT                
+.SKIP 1
+^LIST ALL THE SHUT LINES.
+.SUBTITLE <NODE <COMMANDS
+.INDEX <NODE <COMMANDS
+.PAGE
+.CENTER
+<COMMANDS <WHICH <INVOLVE <THE <STATUS <OF <NODES
+.CENTER
+-------- ----- ------- --- ------ -- -----
+.SKIP 1
+<CT <NODE              
+.SKIP 1
+^THIS COMMAND TRACES ALL CIRCUITS TERMINATING AT THIS NODE.
+^ALL PORT NUMBERS ARE IN DECIMAL.
+.SKIP 1
+<CP <NODE              
+.SKIP 1
+^THIS TRACES ALL CIRCUITS PASSING THROUGH THIS NODE.
+.SKIP 1
+<CL <NODE <LINE         
+.SKIP 1
+^USE THIS TO TRACE ALL CIRCUITS ON THIS LINE.
+.SKIP 1
+<HOST                 
+.SKIP 1
+^THIS COMMAND TYPES INFORMATION ABOUT A HOST OR HOSTS.
+^IF FOR EXAMPLE, YOU TYPE '<HOST 19' <PROBE TYPES INFO ABOUT HOST 19.
+^IF YOU TYPE '<HOST'(CR), THE PROGRAM TYPES INFO ABOUT ALL HOSTS.
+^THE INFO TYPED IS HOST NUMBER, DOWN, SHUT OR ANSWERED,
+POSITION NUMBER ON ITS BASE, AND BASE NUMBER.
+.SKIP 1
+<AN                   
+.SKIP 1
+^THIS COMMAND WILL TYPE OUT NODE NUMBER, VERSION NUMBER,
+HOST NUMBERS (IF ANY), TERMINATIONS (NOT COUNTING INTERNAL CIRCUITS),
+PASSTHROUGHS, CRASH COUNT, UPSTREAM NODE NUMBER, AND DOWNSTREAM
+NODE NUMBER FOR ALL NODES IN THE NET.
+.SKIP 1
+<AD                  
+.SKIP 1
+^THIS WILL LIST ALL DOWN NODES INCLUDING THOSE  NODES WHICH ARE NOT IN NET, BUT ARE
+KNOWN BY NODES WHICH ARE IN THE NET.
+.SKIP 1
+<EXC                 
+.SKIP 1
+^LIST LINES WHICH ARE OUT OR IN SOME OTHER EXCEPTIONAL STATE.
+.SKIP 1
+^N
+.SKIP 1
+^N IS    SHORT FOR NODE. SEE BELOW.
+.SKIP 1
+<NODE <NODE            
+.SKIP 1
+^THIS WILL GIVE VERSION NUMBER, CRASH COUNT, UPSTREAM DIRECTION, DOWNSTREAM
+DIRECTION, AND EXCEPTIONAL CONDITIONS FOR THIS NODE.
+^THIS COMMAND WILL ALSO PROVIDE THE NUMBER OF PASSTHROUGHS AND TERMINATIONS.
+^IF THE NODE IS A BASE IT WILL GIVE HOST NUMBERS AND STATUS OF EACH HOST.
+^HOSTS WILL APPEAR IN ORDER OF POSITION ON BASE (0 OR 1).
+NEIGHBOR NUMBER, NUMBER OF GROUPS, COST OF USING LINE, AND EXCEPTIONAL
+CONDITIONS FOR EACH LINE WILL BE OUTPUT.
+.PAGE
+<NEIGHBOR <NODE        
+.SKIP 1
+^THIS WILL SCAN NODE DESCRIPTORS OF ALL NODES TO FIND REFERENCES TO THE
+SPECIFIED NODE.
+^OUTPUT FROM THIS COMMAND INCLUDES THE NODE NUMBER, LINE NUMBER, AND
+NUMBER OF GROUPS FOR THE NEIGHBOR OF THE SPECIFIED NODE.
+.SKIP 1
+<RETAKE <NODE          (^REQUIRES ^STATUS 20)
+.SKIP 1
+^THIS INSTRUCTS THE SUPERVISOR TO RETAKE THE NODE.
+.SKIP 1
+<BORI NODE <LINE       (^REQUIRES ^STATUS 20)
+.SKIP 1
+^THIS TELLS A NODE TO RESET IT'S <BORI HEADER (^BEGINNING ^OF ^RECORD ^INPUT).
+.SKIP 1
+<ESHUT <NODE <NODE      (^REQUIRES ^STATUS 10)
+.SKIP 1
+^THIS WILL MAKE AN ENTRY TO THE SUPERVISOR'S SHUT LINE TABLE.
+^THE EFFECT IS TO SHUT THE LINE BETWEEN THE SPECIFIED NODES.
+^THIS CAN ALSO BE DONE BY USING THE <1DOWN PROGRAM.
+.SKIP 1
+<RSHUT <NODE <NODE      (^REQUIRES ^STATUS 10)
+.SKIP 1
+^USE THIS COMMAND TO REMOVE A SHUT BETWEEN THESE TWO NODES.
+.SKIP 1
+<CLEAR <NODE           (^REQUIRES ^STATUS 10)
+.SKIP 1
+^THIS REMOVES ALL LINE SHUTS INVOLVING THE SPECIFIED NODE.
+.SKIP 1
+<NSHUT <NODE           (^REQUIRES ^STATUS 10)
+.SKIP 1
+^THIS PUTS A SHUT IN ALL LINES ON THE SPECIFIED NODE.
+.INDEX <EXTRACT
+.INDEX <LOGGER <TERMINAL
+.SUBTITLE <PROBE <EXTRACT
+.PAGE
+.CENTER
+<COMMANDS <WHICH <EXTRACT <INFORMATION <TO <THE <LOGGER
+.CENTER
+-------- ----- ------- ----------- -- --- ------
+.SKIP 1
+<EXTRACT <NODE <NODELIST
+.SKIP 1
+.INDENT 5
+<EXTRACT WILL GENERATE CURRENT LOG REPORTS FROM CERTAIN NODES AND PROVIDE
+MESSAGES OF INTEREST TO OPERATIONS SUCH AS '<HOST <DOWN', '<OUT <OF <DBITS' AND SO ON.
+^TO SPECIFY ALL RELEVANT BASES WITHIN A COMPUTER CENTER, A CODE
+MAY BE TYPED:
+.SKIP 1
+.NOFILL.NOJUST
+^^
+        CUPERTINO BUILDING A    700
+        CUPERTINO BUILDING C    701
+        PALO ALTO               702
+        HOUSTON                 703
+        VALLEY FORGE            704
+\\
+.FILL.JUST
+.SKIP 1
+.INDENT 5
+^THE FORMAT OF THIS <PROBE COMMAND IS '<EXTRACT <NODE <NODE <LIST'.
+^FOR EXAMPLE IF YOU TYPE '<EXTRACT 1 701,
+THIS WILL REPORT DATA FROM ALL BASES IN ^CUPERTINO ^C PLUS BASE 1.
+^IF YOU TYPE  '<EXTRACT 703' THE PROGRAM WILL REPORT ONLY INFORMATION
+ON <SCO - ^TYMSHARE'S COMPUTER CENTER IN ^HOUSTON ^TEXAS.
+.SKIP 1
+<LOG <TIME
+.SKIP 1
+.INDENT 5
+^THE '<LOG <TIME' COMMAND STARTS THE LOGGER OUTPUT OF ALL OR SPECIFIED
+INFORMATION ON ALL HOSTS, LINES AND NODES IN THE NETWORK.
+^THE VALID FORMATS TO THIS COMMAND ARE:
+.SKIP 1
+.NOFILL.NOJUST
+<LOG 100         ^START 100 MINUTES BEFORE NOW.
+<LOG 123:12:30   ^START ON THE 123 DAY OF THE YEAR, 12 HOUR,
+                30 MINUTES. ^THE TIME IS IN <GMT.
+<LOG             ^START NOW.
+<LOG <S10         ^START 10 MINUTES AGO. ^PRINT EACH RECORD WITH
+                THE TIME TO THE NEAREST SECOND.
+<LOG ^H5          ^START 5 MINUTES AGO. ^PRINT ALL RECORDS IN HEX.
+<LOG ^B3          ^START 3 BLOCKS BEFORE CURRENT SUPERVISOR
+                POSITION. ^A BLOCK IS 64 ENTRIES.
+                ^THIS IS USEFUL WHEN TIME IS SCRAMBLED.
+.FILL.JUST
+.SKIP 1
+.INDENT 5
+^THE <PROBE <LOG COMMAND WILL ALLOW THE OPTION OF SINGLE LETTER QUALIFIERS
+WHICH MODIFY WHAT INFORMATION WILL BE OUTPUT AND IN WHAT FORMAT.
+^THE ^S QUALIFIER INSTRUCTS THE PROGRAM TO PRINT A TIME TO THE NEAREST
+SECOND WITH EACH RECORD OUTPUT.
+^IF THE QUALIFIER ^H IS USED ALL RECORDS OUTPUT WILL BE IN HEXADECIMAL.
+^THE OTHER QUALIFIERS ARE ^D (^DISABLE) AND ^X (E^XCEPTIONS ONLY).
+^THE ^D QUALIFIER WILL IGNORE NONFATAL ERRORS, BAD RECORDS, AND CERTAIN
+UNDECODED ERRORS.
+^THE ^X QUALIFIER WILL PRINT OUT ONLY HOST AND LINE RELATED INFORMATION
+(^LINE ^OUT, ^RESET, OR <OK, ^HOST ^UP, ^DOWN, ^ANSWERED, OR ^SHUT,
+^HOST ^UNHAPPY BITS).
+^THE '^X' QUALIFIER WILL OVERRIDE A ^D QUALIFIER.
+.SUBTITLE <PROBE <SAMPLES
+.INDEX <PROBE <SAMPLE <RUNS
+.PAGE
+((<SAMPLE <RUN))
+.SKIP 1
+.NOFILL.NOJUST
+^^
+.CENTER
+(LOGGING INTO PROBE ON THE INTERDATA 7/32)
+.SKIP 1
+'PLEASE LOG IN:' PROBE:*;               (A '*' DIRECTS LOGIN
+                                         TO THE ACTIVE SUPERVISOR
+                                         ALSO NOTE: NO FINAL ';')
+'NAME' WCO(CR)                          (NOW IDENTIFY YOURSELF
+                                         TO THE PROBE PROGRAM)
+
+'PASSWORD:'                             (USE THE OPER PSWD HERE)
+'121'                                   (THIS IS ACTIVE SUPV.)
+':'                                     (PROBE IS READY FOR
+                                         COMMAND INPUT NOW)
+.SKIP 1
+.CENTER
+(PROBE COMMANDS FOR OVERALL STATUS)
+.SKIP 1
+':'STAT(CR)                             (SEE COMMAND DESCR.
+'0 0 0 0 204'                            ABOVE FOR THE MEANING
+'DF 0 REJECTS 196 1015 53'               OF THESE NUMBERS)
+.SKIP 1
+':'COUNT(CR)                            (THIS COUNTS NODES,
+'204 NODES 2303 TERMINATIONS 2340 PASSTHROUGHS'
+                                         AND TRAFFIC IN NET)
+.SKIP 1
+':'LSHUT(CR)                            (WHICH LINES ARE SHUT?)
+'1201 1026'                             (THESE ARE THE NODES
+'34 127'                                 WHOSE LINES ARE SHUT)
+'1026 1070'
+'1026 1172'
+'ETC'
+.SKIP 1
+':'AD(CR)                               (USE THIS TO LIST ALL
+                                         NODES DOWN IN THE NET)
+'16 125 131 377 1026 1077 1151 1206     (NODES DOWN LISTED
+1220 1224 1231 1240 1370 1374 1377      IN NUMERICAL ORDER)
+.SKIP 1
+.CENTER
+(PROBE SAMPLES OF INDIVIDUAL NODE INFO)
+.SKIP 1
+':'NODE 1000(CR)                        (LIST ALL INFO ON THAT
+'VERSION 413 TYPE 3 CRASH 3 UP 177       NODE)
+DOWN 1006 PORTS 26 PASSTHROUGHS 126
+LINE STATUS:
+0 5 3 0 1
+1 1006 3 6 5 
+ETC'                                   (HERE ARE CIRCUITS TO
+                                         THAT NODE. SEE COMMAND
+                                         DESCR. ABOVE)
+.SKIP 1
+':'HOST 33(CR)                          (ALL NET INFO ON C33)
+'33 ANSWERED 0 47'                       33 IS HOST 0 ON BASE)
+.SKIP 1
+.CENTER 
+(EXTRACTING TO THE LOGGER TTY)
+.SKIP 1
+':'EXTRACT 700 30(CR)                     (USE THIS FOR CUPA AND
+                                         THE PERP SYSTEM ON H8)
+.SKIP 1
+':'EXTRACT 701(CR)                      (MONITOR CUPC ONLY)
+.SKIP 1
+':'EXTRACT 702(CR)                      (LOGGER FOR PALO ALTO)
+.SKIP 1
+':'EXTRACT 703(CR)                      (USE THIS FOR SCO)
+.SKIP 1
+':'EXTRACT 704(CR)                      (AND THIS FOR VFO)
+.FILL.JUST
+\\
+.INDEX <PROBE <ERROR <RECOVERIES
+.SKIP 3
+((<ERRORS <AND <RECOVERIES))
+.SKIP 1
+.INDENT 5
+^AS MENTIONED EARLIER, ALL <PROBE COMMANDS MUST BE TYPED IN FULL.
+^IN GENERAL IF AN OPERAND IS OMMITTED THE PROGRAM WILL ASSUME '<ALL' WAS
+INTENDED.
+^ANY COMMAND CAN BE ABORTED BY USING THE ^CONTROL ^Q OR '<ESCAPE'
+KEY.
+.SKIP 1
+.INDENT 5
+^REGARDING LOGIN ERRORS, THE MOST COMMON HAS BEEN FORGETTING THAT THE
+PASSWORD TYPEIN MUST BE TERMINATED BY <EITHER A <CR OR A SEMICOLON (;)
+BUT <NOT <BOTH.
+^IF YOU TYPE BOTH THE PROGRAM WILL ASSUME THE <CR WAS PART OF THE PROBE
+USER INPUT AND WILL LOOP WITH THIS INCORRECT INPUT.
+^IN CASES WHERE THE LOGIN WAS CORRECT BUT THE MESSAGE '<PLEASE <LOG <IN'
+OCCURS INSTEAD OF BEING LOGGED INTO THE <INTERDATA, THE MOST LIKELY
+CAUSE IS THAT THERE ARE NO AVAILABLE JOB SLOTS REMAINING ON THE
+MACHINE.
+^CURRENTLY THERE ARE 12 AVAILABLE SLOTS AND OFTEN MANY OF THESE
+MUST BE USED IN THE FIELD WHILE CORRECTIVE MAINTENANCE OCCURS ON THE NET.
+.SUBTITLE <TELECOPY
+.PAGE!END OF PROBE
+\\
+.FLAG CAPIT
+.LEFT MARGIN 7
+.PAPER SIZE 60,79
+.CENTER
+<TELECOPY - <MOVING <FILES <ON <TYMNET
+.CENTER
+--------   ------ ----- -- ------
+.SKIP 3
+((<INTRODUCTION))
+.SKIP 1
+.INDENT 5
+<TELECOPY IS A FILE TRANSFER PROGRAM USED TO COPY FILES BETWEEN TWO
+^TYMSHARE HOST COMPUTER SYSTEMS.
+^IT CAN COPY ANY TYPE OF FILES TO OR FROM SIMILAR SYSTEMS (IE. ONE
+<TYMCOM-X TO ANOTHER <TYMCOM-X)
+AND IT NOW HAS THE ABILITY TO TRANSFER FILES IN OTHER MODES TO
+AND FROM DIFFERENT TYPES OF HOSTS (IE. <TYMCOM-X TO <TYMCOM-IX).
+.NOTE
+^FOR INFORMATION ON THESE CAPABILITIES, YOU ARE REFERRED TO
+THE <TYMCOM-X FILE
+^^
+(*6NEWS)TELECO.INF
+\\
+ON ANY <TYMCOM-X.
+.END NOTE
+.INDENT 5
+^IN ALL CASES, THE CONVENTIONS AND PROTOCOLS OF THE SYSTEMS INVOLVED
+MUST BE FOLLOWED.
+^FOR EXAMPLE, ON THE <TYMCOM-IX, THE MAXIMUM ALLOWABLE FILE SIZE IS
+THE SAME FOR <TELECOPY AS IT IS FOR THE <EXEC COMMAND '<COPY'.
+^ALSO, THE FILE NAMING CONVENTIONS MUST MEET THE SYNTAX REQUIREMENTS
+ON BOTH THE SENDING AND THE RECEIVING SYSTEMS.
+.SKIP 1
+.INDENT 5
+^TO COPY FILES BETWEEN SYSTEMS WITH THIS PROGRAM, IT IS NECESSARY
+THAT THE SAME USERNAME BE VALID ON BOTH THE ORIGINATING HOST
+AND THE DESTINATION HOST.
+^IT IS BEST TO <TELECOPY FILES FROM ONE USERNAME ON A SYSTEM TO THE
+SAME USERNAME ON THE OTHER SYSTEM.
+^FILES CAN BE COPIED EITHER FROM OR TO THE SYSTEM THE USER IS
+CURRENTLY LOGGED ON, BUT HE/SHE MUST BE LOGGED IN TO ONE OF THE TWO
+SYSTEMS INVOLVED IN THE <TELECOPY.
+^FOR EXAMPLE, IF THE USER IS LOGGED INTO ^C33, HE/SHE CANNOT
+TELECOPY FROM ^H8 TO ^C38.
+.SUBTITLE <TELECOPY <SUMMARY
+.INDEX <TELECOPY <SUMMARY
+.PAGE
+((<COMMAND <SUMMARY))
+.SKIP 1
+^^
+.SPACING 1
+.PAPER SIZE 60,79
+.LEFT MARGIN 7
+.paragraph
+^When TELECOPY is ready to accept commands from the terminal, a ":"
+prompt is printed.  ^The following commands are implemented:
+.skip
+.LEFT MARGIN 7
+^^
+.NOFILL.NOJUST
+RUn
+.FILL.JUST
+.LEFT MARGIN 27
+                        Begins program execution.  Will prompt for
+                        "copy from" filename and "copy to" filename.
+                        When entered from the RUN command, filenames
+                        must be specified in full with only one
+                        filename per line in form:
+.SKIP 1
+                        (username:sysno)filename
+.skip
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+VErsion
+.FILL.JUST
+.LEFT MARGIN 27
+                        Prints the controller version number.
+.skip
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+ONlc
+.FILL.JUST
+.LEFT MARGIN 27
+                        Allows lower case to appear in ASCII
+                        transmission.  Unless this command is issued, lower
+                        case will be converted to upper case when
+                        transferring files between dissimilar
+                        operating systems.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+OFlc
+.FILL.JUST
+.LEFT MARGIN 27
+                        Turns off lower case (default for ASCII
+                        transmission).
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+Truncate (length)
+.FILL.JUST
+.LEFT MARGIN 27
+                        Affects ASCII transmission from TYMCOM 370 to
+                        TYMCOM X or TYMCOM IX.  {length} must
+                        be an integer from 2 to 255.  Indicates that
+                        TYMCOM 370 files should be truncated starting
+                        at the specified column in order to delete
+                        sequence numbers.  Usually, this option must
+                        be specified when a file has sequence numbers
+                        before SUPRESS will have any useful effect.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+No Truncate
+.FILL.JUST
+.LEFT MARGIN 27
+                        Turns off truncate feature of TYMCOM 370.
+                        This is the default setting.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+SUppress
+.FILL.JUST
+.LEFT MARGIN 27
+                        Affects ASCII transmission from TYMCOM 370 to
+                        TYMCOM X or TYMCOM IX.  Causes trailing blanks
+                        to be discarded from TYMCOM 370 records,
+                        greatly shortening transmission time and the
+                        size of the target file.
+                        This is the default setting.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+No Suppress
+.FILL.JUST
+.LEFT MARGIN 27
+                        Stops the removal of trailing blanks by the
+                        TYMCOM 370.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.PAGE
+Fixed [frecl]
+.FILL.JUST
+.LEFT MARGIN 27
+                        Causes a TYMCOM 370 to create fixed length
+                        file records of length [frecl] where [frecl]
+                        is an integer not to exceed 65536.  If
+                        [frecl] is omitted, then frecl=80 is assumed.
+                        The TYMCOM 370 will use blanks to pad the
+                        records it receives to the desired length.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip 1
+VAriable [vrecl]
+.FILL.JUST
+.LEFT MARGIN 27
+                        Causes a TYMCOM 370 to create variable length
+                        file records of maximum length [vrecl] where
+                        [vrecl] is an integer not to exceed 65536.
+                        When [vrecl] is omitted, 65536 is assumed,
+                        and the default setting of this switch is
+                        such that the TYMCOM 370 will create variable
+                        length records of maximum length 65536
+                        unless the FIXED option has been set.
+.LEFT MARGIN 7
+.skip
+.NOFILL.NOJUST
+                { Native }
+                { Serial }
+Mode {[Transmit]  Binary [BLocking= N1] [Fill= Left] [BYtesize= N2]}
+     {[Receive ]                        [Fill= Right]              }
+                 { Ascii }
+                 { Katakana }
+                 { Image }
+.skip
+.FILL.JUST
+.LEFT MARGIN 27
+                        This command is used to force setting of
+                        transmission mode to other than the program
+                        default.  In the case of BINARY mode,
+                        parameters may be set differently for
+                        the transmitter (file donor) and receiver.
+                        N1 is the number of bytes to be packed
+                        (unpacked)per machine word.  N1 must be
+                        between 1 and 16.  n2 is the bytesize
+                        in bits, and must lie between 1 and 8
+                        inclusive.  When FILL=LEFT, bytes are
+                        packed left justified and unused
+                        bits to the right are zeroed.  When
+                        FILL=RIGHT, bytes are packed right justified
+                        and the more significant bits
+                        are zeroed.
+.skip
+                        SERIAL, NATIVE, and IMAGE are all special
+                        cases of binary transmission which have
+                        been given their own names.  When BLOCKING,
+                        FILL, and BYTESIZE specifications are all
+                        omitted from the BINARY parameter list,
+                        BINARY becomes equivalent to SERIAL mode.
+.skip
+                        ASCII and KATAKANA modes are nearly
+                        identical in their character sets and are
+                        subject to the same option switches.
+.LEFT MARGIN 7
+.PAGE
+.NOFILL.NOJUST
+         { Off }
+Compress { Duplicate }
+         { Rank [Auto]}
+.LEFT MARGIN 27
+.skip
+.FILL.JUST
+                        This command forces the setting of the
+                        data compression method to other than the
+                        program default.  Compression may be disabled
+                        altogether by specifying OFF.  The
+                        AUTO option of RANK causes TELECOPY
+                        to decide for itself whether to use the RANK
+                        or the DUPLICATE method.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.SKIP 1
+SCratch
+.FILL.JUST
+.LEFT MARGIN 27
+                        This command clears all user-supplied MODE
+                        and COMPRESS switches so that the normal
+                        program defaults will be reinstated.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.SKIP 1
+Talk [sysno]
+.FILL.JUST
+.LEFT MARGIN 27
+                        This command builds a TYMNET circuit to the
+                        system number given by integer [sysno].
+                        If [sysno] is omitted, an existing circuit
+                        will be used if one exists.  Once
+                        the circuit has been established, the logged
+                        in userid begins to accrue usage charges just
+                        as if the userid had logged directly into the
+                        remote system with his terminal.  Input from
+                        the local terminal is passed along to the
+                        remote system, and its terminal output is
+                        directed to the local terminal, allowing the
+                        user to converse with the remote system.
+                        This feature will be needed to use TELECOPY
+                        when the logged-in userid has a PROFILE EXEC
+                        or inititialized file that asks questions
+                        before proceeding to the system command
+                        level.  It is also useful for modifying
+                        the environment at the remote system
+                        prior to file transfer.
+.skip
+                        TALK mode may be exited by typing %%F(cr)
+                        at the local terminal.  A %%U(cr) sends
+                        a unit separator to the remote system.
+                        Escapes typed at the local terminal will
+                        be sent to the remote system.
+.skip
+                        Due to the difference in echoing rules
+                        of the TYMCOM 370 and the TYMCOM IX or X,
+                        echo is currently doubled by a TYMCOM IX or X
+                        system, and type-a-head is not supported.
+.PAGE
+                        When connection is made to a TYMCOM X or
+                        TYMCOM 370 via the TALK command, the
+                        possibility exists that the user may be detached
+                        for up to 1/2 hour if the circuit is broken.
+                        The recommended procedure for breaking such
+                        a circuit is to use the TALK command
+                        and to send a LOGOUT command to the remote
+                        system.  The warning message "CIRCUIT REMAINS
+                        TO SYSTEM xx--USE TALK COMMAND TO LOGOUT"
+                        will be given by TELECOPY prior to
+                        breaking the TYMNET circuit.  The QUIT command
+                        will ask a user if he wishes to exit if a
+                        TALK connection to a TYMCOM X or TYMCOM
+                        370 exists.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+Loquacious
+.FILL.JUST
+.LEFT MARGIN 27
+                        This command causes checkpoint and other
+                        messages to be printed on the terminal during
+                        program execution.  Information about
+                        modes selected and progress reports are given.
+                        The progress reports are useful when copying
+                        very large files.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip 1
+Not Loquacious
+.FILL.JUST
+.LEFT MARGIN 27
+                        Stops printing of checkpoint information.
+                        This is the default setting.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+Ask
+.FILL.JUST
+.LEFT MARGIN 27
+This command will cause TELECOPY to require
+a 'Y' or 'N' confirmation before copying over an existing file.
+This is the default mode of operation.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+REplace
+.FILL.JUST
+.LEFT MARGIN 27
+This command will cause TELECOPY to copy
+over any existing files without requiring confirmation.  TELECOPY
+will print "REPLACING FILE ..." when this option is in effect and
+a file is to be overwritten.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+Keep
+.FILL.JUST
+.LEFT MARGIN 27
+This command will cause TELECOPY to bypass
+copying over an existing file, without requiring
+confirmation.  TELECOPY will print "KEEPING FILE ..." when
+this option is in effect and an existing file was specified to be
+overwritten.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.PAGE
+Update
+.FILL.JUST
+.LEFT MARGIN 27
+                        This command will force TELECOPY to
+                        update the contents of an old file being
+                        replaced, rather than copy an entire file.
+                        This is the default setting.  Effective only
+                        for BINARY, SERIAL, or NATIVE mode
+                        file transfers between TELECOPY controllers
+                        and slaves which have UPDATE capability
+                        (that is, all except TYMCOM 370).
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+No Update
+.FILL.JUST
+.LEFT MARGIN 27
+                        Forces copying the entire contents of
+                        a file even if UPDATE mode could have been
+                        used.  May be faster than UPDATE mode if the
+                        old file being replaced has been modified
+                        sequentially starting near the beginning,
+                        or greatly differs from the replacement.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+Help
+.FILL.JUST
+.left margin 27
+                        Prints a list of valid program commands.
+.skip 1
+.left margin 7
+.nofill.nojust
+Instructions
+.FILL.JUST
+.LEFT MARGIN 27
+                        Prints brief instructions on how to use
+                        the program.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+PDP
+.FILL.JUST
+.LEFT MARGIN 27
+                        TYMCOM IX command for printing
+                        additional instructions relating to TYMCOM
+                        IX, TYMCOM X file transfers.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.SKIP 1
+SYS940
+.FILL.JUST
+.LEFT MARGIN 27
+                        TYMCOM X command for printing additional
+                        instructions relating to TYMCOM X,
+                        TYMCOM IX file transfers.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+SYS_#
+.FILL.JUST
+.LEFT MARGIN 27
+                        Additional instructions relating to
+                        TYMCOM IX, TYMCOM 370 file transfers.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+SYS370
+.FILL.JUST
+.LEFT MARGIN 27
+                        TYMCOM X command for printing
+                        additional instructions relating to
+                        TYMCOM X, TYMCOM 370 file transfers.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+Quit
+.FILL.JUST
+.LEFT MARGIN 27
+                        This command breaks any existing TYMNET
+                        circuit, so that the logged-in remote userid
+                        stops accruing usage charges, and exits
+                        the TELECOPY program to the system command
+                        level.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.PAGE
+CAPabilities
+.FILL.JUST
+.LEFT MARGIN 27
+                        TYMCOM IX command for printing program
+                        capabilities.
+.LEFT MARGIN 7
+.NOFILL.NOJUST
+.skip
+PROject
+.FILL.JUST
+.LEFT MARGIN 27
+                        TYMCOM IX command for changing the project
+                        code which is used when logging into
+                        the target system.
+.NOFILL.NOJUST
+.LEFT MARGIN 7
+.skip
+Why
+.FILL.JUST
+.LEFT MARGIN 27
+                        Causes a TYMCOM 370 slave to send its
+                        latest error explanation message.
+.left margin 7
+.FLAG CAPIT
+\\
+.FILL.JUST
+.SUBTITLE <TELECOPY <DESCRIPTION
+.INDEX <TELECOPY <DESCRIPTION
+.PAGE
+((<COMMAND <DESCRIPTION))
+.SKIP 1
+.INDENT 5
+^TO START THE PROGRAM, ENTER THE FOLLOWING PROGRAM NAME FROM THE EXEC:
+.NOFILL.NOJUST
+.SKIP 1
+        ^ON <TYMCOM-IX  HOSTS            '<TELECOPY'
+        ^ON <TYMCOM-X   HOSTS            '^R <TELECO'
+        ^ON <TYMCOM-370 HOSTS            '<TELECOPY'
+.FILL.JUST
+.SKIP 1
+^THE PROGRAM RESPONDS WITH A COLON (:) PROMPT AT WHICH POINT THE USER
+MAY ENTER ANY VALID <TELECOPY COMMAND.
+^IF ANY OF THE PRELIMINARY COMMANDS ARE NEEDED TO ESTABLISH PARAMETERS RELEVANT
+TO THE USE OF LOWER CASE CHARACTERS, TRAILING BLANKS AND SO
+ON, THEY SHOULD BE INPUT FIRST.
+.SKIP 1
+.INDENT 5
+^AS A USER WITH ^TYMSHARE LICENSE,
+YOU MAY RECEIVE PROGRESS REPORTS PERIODICALLY BY USING THE '<TIME'
+COMMAND AT THIS POINT.
+^IT IS ONLY NECESSARY TO DO THIS ONCE TO SET THE SWITCH.
+^THIS WILL ALSO REPORT THE RATE PER SECOND CHARACTERS ARE BEING 
+TRANSFERRED.
+.paragraph
+There are two ways to begin program execution.  The first is to issue
+the RUN command, which will prompt for the "copy from" and "copy to"
+filenames as shown in the following example:
+.skip
+.NOFILL.NOJUST
+':<RUN (<CR)
+.skip
+^^
+'COPY FROM FILE:' (YOUNGERC:38)TELECO.RNO(cr)
+.skip
+'COPY TO FILE:' (YOUNGERC:33)TELECO.RNO(cr)
+.skip
+'COPY STARTING'
+.skip
+'(YOUNGERC:38)TELECO.RNO COPIED TO (YOUNGERC:33)TELECO.RNO'
+'32000 (26454) CHARS. TRANSMITTED'
+.skip
+':'
+.SKIP 1
+.FILL.JUST
+^Only one file can be specified for transfer when the <run command is
+used.  ^The filename must be preceded by the username and system number
+which complete the path name for the file.  ^The syntax for both
+"<FROM" and "<TO" pathnames is:
+.skip
+.NOFILL.NOJUST
+     (username:{sysno})filename
+               { *   }
+.skip
+.FILL.JUST
+^The filename that is typed must obey the syntax rules on its
+respective system.
+.skip
+^An asterisk "*" may be used in place of the system number on
+which <TELECOPY is being run.  ^The system nos. in the "<FROM"
+and the "<TO" specifications must not the same system, and at least
+one of them must be the system on which <TELECOPY is being run.
+.paragraph
+^In the example above, if the file <TELECO.RNO already existed on
+the destination system and was to be replaced, <TELECOPY
+would have printed
+.skip
+.NOFILL.NOJUST
+^^
+'OK TO WRITE ON OLD FILE? '
+\\
+.SKIP
+.FILL.JUST
+^in order to require confirmation of the replacement.  ^This question
+must be answered <Yes or <No.  ^If the answer is <Yes, and file transfer
+is between identical system types (except <TYMCOM 370's), or
+is a binary mode transfer between dissimilar system types (but neither
+is a <TYMCOM 370), then <TELECOPY will switch to <UPDATE mode and send
+only blocks of the donor file which differ from blocks  in the destination
+file.  ^In this case, <TELECOPY would have printed "'<UPDATING <STARTED'"
+instead of "'<COPY <STARTED'".
+.paragraph
+^Two commands, <REPLACE and <KEEP, may be used to provide automatic
+confirmation or rejection, respectively, of file replacement.  ^The
+<KEEP command, for example, will cause <TELECOPY to retain any
+existing files that would otherwise have been written over.  ^Still
+another command, <ASK, restores the normal mode of requiring confirmation
+from the terminal.  ^These commands are useful when creating commands
+files and it is uncertain whether the files being copied will need
+a '^Y' or '^N' response in the commands file.
+.paragraph
+^When <TELECOPY has finished copying the file, it will print a message
+to this effect, including complete "<FROM" and "<TO" specifications.
+<TELECOPY also prints the total number of 8-bit characters
+transfered, and the number of <TYMNET characters transmitted
+in parentheses.
+.skip
+.paragraph
+^The second, and prefered, method of beginning program execution
+is to type the "<FROM" and "<TO" filename specifications directly
+at the prompting ":".  ^When the command dispatcher sees a left
+parentheses as the first character of any command, a <RUN is implied
+and extended syntax rules apply.  ^The format for this command line
+is
+.skip
+.NOFILL.NOJUST
+^^
+"FROM"specifications[,]"TO"specifications(cr)
+.FILL.JUST
+\\
+.skip
+^The comma separating "<FROM" and "<TO" specifications is optional.
+^The "<TO" specifications will be recognized by the presence of
+a colon ":" somewhere in the "<TO" system no. specification.
+.paragraph
+^The total length of the line cannot exceed 300 chars.  ^A linefeed
+may be used to continue typing the line.
+.skip
+.center
+"<FROM" <SPECIFICATIONS
+.skip
+.NOFILL.NOJUST
+(username[:{sysno}])filename1[,filename2[,...]]
+         [:{ *   }]
+.FILL.JUST
+.paragraph
+^A number of filenames belonging to the same username may be specified.
+^If the system no. and its preceding colon ":" is omitted altogether,
+":*" is assumed (the system on which <TELECOPY is run).
+.skip
+.center
+"<TO" <SPECIFICATIONS
+.skip
+.NOFILL.NOJUST
+[(username]:{sysno}[)][filename1[,filename2[,...]]]
+            { *   }
+.skip
+.FILL.JUST
+^If the "TO" username is omitted, the "<FROM" username is assumed.
+^The "<TO" system number and its preceding colon ":" may never be
+omitted.
+^If fewer filenames are listed in the "<TO" specifications than
+appear in the list of "<FROM" filenames, then the name given in
+the "<FROM" specifications is assumed.  ^The "<TO" filenames may be
+omitted altogether, and then all files specified on the "<FROM" system
+will be copied to identical filenames on the "<TO" system.
+.SKIP 1
+\\
+.FLAG CAPIT
+.PAPER SIZE 60,79
+.CENTER
+<TYMCOM-IX <SPECIFIC <INSTRUCTIONS
+.CENTER
+--------- -------- -------------
+.SKIP 1
+.INDENT 5
+^THE FOLLOWING DIFFERENCES PREVAIL WHEN USING THIS PROGRAM TO TRANSFER
+FILES FROM OR TO A <TYMCOM-IX AND ANOTHER TYPE OF HOST:
+.SKIP 1
+.INDENT 5
+<ASCII FILES MAY BE TRANSFERRED, AND TO A LESSER DEGREE OF SUCCESS, <SERIAL BINARY MODE ALSO.
+^BETWEEN THE <TYMCOM-IX AND  <TYMCOM-X, <IMAGE AND <BINARY FILES CAN BE
+TRANSFERRED.
+^TYMCOM-X LINE NUMBERED FILES, SUCH AS CREATED WITH <LINED, WILL HAVE
+THE LINE NUMBERS STRIPPED WHEN TRANSFERRING TO THE <TYMCOM-IX SYSTEM.
+<TYMCOM-X TABS WILL BE EXPANDED TO SPACES BASED ON STANDARD TAB SETTINGS
+WHEN TRANSFERRING TO THE <TYMCOM-IX.
+^THE <TYMCOM-IX COMPRESSED BLANKS WILL BE EXPANDED WHEN TRANSFERRING TO THE 
+<TYMCOM-X.
+^FILE NAMES MUST MEET THE SYNTAX REQUIREMENTS OF THE APPROPRIATE SYSTEM.
+.PARA
+^YOU ARE REFERRED TO THE NAMING CONVENTIONS FOR THE <TYMCOM-IX IN THE
+<EXECUTIVE <MANUAL (^MAY 1976) PAGE 23,24.
+.PAGE
+.CENTER
+<TYMCOM-X <SPECIFIC <INSTRUCTIONS
+.CENTER
+-------- -------- ------------
+.SKIP 1
+.INDENT 5
+^THE FOLLOWING DIFFERENCES SHOULD BE BORNE IN MIND WHEN USING THIS PROGRAM
+TO TRANSFER FILES BETWEEN THE  <TYMCOM-X AND OTHER HOST TYPES:
+.SKIP 1
+.INDENT 5
+<ASCII FILES MAY BE TRANSFERRED, AND TO A LESSER DEGREE OF SUCCESS, <SERIAL BINARY MODE ALSO.
+^BETWEEN THE <TYMCOM-X AND <TYMCOM-IX, <IMAGE AND <BINARY FILES CAN BE
+TRANSFERRED.
+<TYMCOM-X LINE NUMBERED FILES, SUCH AS CREATED WITH <LINED, WILL HAVE
+THE LINE NUMBERS STRIPPED WHEN TRANSFERRED TO THE <TYMCOM-IX SYSTEM.
+<TYMCOM-IX COMPRESSED BLANKS WILL BE EXPANDED WHEN TRANSFERRED TO <TYMCOM-X.
+<TYMCOM-X TABS WILL BE CONVERTED TO SPACES BASED ON STANDARD TAB SETTING
+WHEN TRANSFERRED TO THE <TYMCOM-IX.
+^WHEN TRANSFERRING ONTO AN OLD FILE ON THE <TYMCOM-IX, THE FILE WILL BE OPENED
+IN SEQUENTIAL MODE, MEANING THAT THE OLD CONTENTS ARE LOST.
+^THIS DIFFERS FROM THE <TYMCOM-IX
+TRANSFER WHERE OLD FILES ARE OPENED IN UPDATE MODE.
+^THIS MEANS THAT IF THE THE <TELECOPY IS ABORTED BY USING AN ESCAPE KEY
+THE ORIGINAL CONTENTS OF THE OLD FILE WILL BE PRESERVED.
+^FILE NAMES MUST MEET THE SYNTAX REQUIREMENTS OF THE RECIPIENT SYSTEM.
+.PARA
+^REFER TO THE ^TYMSHARE <XEXEC <MANUAL (^DEC. 1974) PAGE 13,14 FOR
+A DISCUSSION OF VALID FILE NAMES ON THE <TYMCOM-X.
+.SKIP 1
+.CENTER
+<TYMCOM-370 <SPECIFIC <INSTRUCTIONS
+.CENTER
+---------- -------- ------------
+.SKIP 1
+.INDENT 5
+^THE FOLLOWING DIFFERENCES PREVAIL WHEN USING THIS PROGRAM TO TRANSFER 
+FILES FROM OR TO A <TYMCOM-370 AND ANOTHER TYPE OF SYSTEM:
+.SKIP 1
+.INDENT 5
+<ASCII FILES MAY BE TRANSFERRED, AND TO A LESSER DEGREE OF SUCCESS, <SERIAL BINARY MODE ALSO.
+^BETWEEN THE <TYMCOM-370 AND <TYMCOM-X, <KATAKANA MODE FILES CAN BE TRANSFERED.
+<TYMCOM-X LINE NUMBERED FILES, SUCH AS CREATED WITH <LINED, WILL HAVE THE
+LINE NUMBERS STRIPPED WHEN TRANSFERRING TO THE <TYMCOM-370 SYSTEM.
+<TYMCOM-X TABS WILL BE EXPANDED TO SPACES BASED ON STANDARD TAB SETTINGS
+WHEN TRANSFERRING TO THE <TYMCOM-370.
+^BLANK LINES IN THE <TYMCOM-X FILE WILL CAUSE A RECORD OF ONE BLANK ON THE 
+<TYMCOM-370, AND IF THE FILE IS RETURNED TO THE <TYMCOM-X BY A SUBSEQUENT
+FILE TRANSFER, THE "<SUPRESS" OPTION SHOULD BE GIVEN.
+^FILE NAMES MUST MEET THE SYNTAX REQUIREMENTS OF THE APPROPRIATE SYSTEM.
+.PARA
+^FOR A DISCUSSION OF THESE REQUIREMENTS ON THE <TYMCOM-370, REFER
+TO ^TYMSHARE'S '<CMS <REFERENCE <MANUAL' (^OCT 1974) PAGE 20-22.
+.PAGE
+.INDEX <TELECO <COMMANDS <FILES
+.CENTER
+<TELECOPY <COMMANDS <FILES
+.CENTER
+-------- -------- -----
+.PARA
+^On the <TYMCOM <IX system, <TELECOPY  input
+may be taken from a commands file; output will always be directed to
+the terminal.  ^When input is from a commands file, questions
+requiring a <YES/NO type of response may not
+be anticipated.  ^The user is advised to include a REPLACE or KEEP command
+at the beginning of his commands file.
+.paragraph
+^On the <TYMCOM ^X, commands file input may be initiated by creating
+a <.TMP file containing the user commands.  ^This file should
+be named <XXXTEL.TMP or <XXXTEL.COM, where <XXX = <PJOB
+number as typed by the <PJOB command, with sufficient leading
+0's as required.  ^Several jobs logged into the same userid may use
+different commands files, each with its own <PJOB number.  ^To initiate
+<TELECOPY, type:
+.skip
+.NOFILL.NOJUST
+^^
+-GET (SYS)TELECO
+.skip
+-REE
+\\
+.FILL.JUST
+.paragraph
+<TELECOPY will now begin execution, taking commands from the <.TMP
+or <.COM file, until it reaches a <QUIT command or end-of-file.
+^Furthermore, <TELECOPY will run detached if the commands file has
+the <.COM extension.  ^In this case, terminal output may be found in
+a commands output file named <XXXTEL.OUT.  <TELECOPY will 
+continue to run detached until it reaches a <QUIT command or end-of-file, when the job will log itself out.
+.FLAG CAPIT
+.PAGE
+((<SAMPLE <RUNS))
+.SKIP 1
+.NOFILL.NOJUST
+^^
+'.'R TELECO (CR)                        (CALL THE PROGRAM)
+.SKIP 1
+':'RUN (CR)
+'COPY FROM FILE:' (TRAINING:33)TELECO.DOC (CR)
+.SKIP 1
+'COPY TO FILE:' (TRAINING:40)TELECO TEXT (CR)
+                                        (NOTE FILENAME
+                                         FOR 370 SYNTAX)
+'COPY STARTING'
+.SKIP 1
+'TELECO.DOC SYSTEM 33
+ COPIED TO
+ TELECO TEXT SYSTEM 40'
+.SKIP 1
+'10354 CHARS. TRANSMITTED'              (COMPLETION MESSAGE)
+':'QUIT (CR)                            (RETURN TO EXEC)
+.SKIP 1
+\\
+^HERE THE SAME TRANSFER IS ACCOMPLISHED BUT PROMPTING IS
+OMITTED. ^IT IS ASSUMED THE USER IS LOGGED ON TO ^C33 SO THE
+'<TO' SYSTEM MAY ALSO BE OMITTED.
+.SKIP 1
+^^
+'.'R TELECO (CR)
+.SKIP 1
+':'(TRAINING)TELECO.DOC,(TRAINING:40)TELECO TEXT (CR)
+'COPY STARTING'
+.SKIP 1
+'TELECO.DOC SYSTEM 33
+ COPIED TO
+ TELECO TEXT SYSTEM 40'
+.SKIP 1
+10354 CHARS. TRANSMITTED'
+\\
+.SKIP 1
+^IN THIS EXAMPLE, THE FILE IS TRANSFERRED TO ^C35 WITH THE SAME
+FILE NAME KEPT ON BOTH SYSTEMS. ^ALSO, '<FROM' AND '<TO' SPECIFICATIONS
+ARE INPUT TOGETHER ON THE SAME LINE.
+.SKIP 1
+^^
+':'(TRAINING:33)TELECO.DOC,:35 (CR)     (NOTE USE OF : TO 
+'COPY STARTING'                          SEPARATE 'FROM' AND
+                                         'TO' SPECS.)
+.SKIP 1
+'TELECO.DOC SYSTEM 33
+COPIED TO
+  SYSTEM 35'                            (SAME FILENAME)
+.SKIP 1
+'10354 CHARS. TRANSMITTED'
+':'
+.SKIP 1
+\\
+^NOW <TELECOPY IS RUN ON A <TYMCOM-IX. ^SEVERAL FILES CAN BE COPIED
+WITH A SINGLE COMMAND STRING INPUT.
+.SKIP 1
+^^
+'-'TELECOPY (CR)
+.SKIP 1
+':'(MARTINEZ:10)AFILE,BFILE,CFILE,:8,AFILE1,BFILE1,CFILE1 (CR)
+                                        (USE COMMA BETWEEN FILES)
+'COPY STARTING'
+.SKIP 1
+'AFILE SYSTEM 10
+COPIED TO
+'AFILE1 SYSTEM 8'
+.SKIP 1
+'25 CHARS. TRANSMITTED'
+.SKIP 1
+'BFILE SYSTEM 10
+COPIED TO                               (THE PROGRAM CONTINUES
+BFILE1 SYSTEM 8'                         WITH THE NEXT FILE)
+.SKIP 1
+'465 CHARS. TRANSMITTED'
+.SKIP 1
+'CFILE SYSTEM 10
+COPIED TO
+CFILE1 SYSTEM 8'
+.SKIP 1
+'2534 CHARS. TRANSMITTED'               (WHEN ALL DONE TELECOPY
+':'                                      RETURNS TO COMMAND
+                                         MODE)
+.SKIP 1
+\\
+^IN THIS EXAMPLE, THE DESTINATION NAME FOR THE <TELECOPY 
+ALREADY EXISTS.
+.SKIP 1
+^^
+':'(940MAN:35)OPSYS.DOC,:33 (CR)
+.SKIP 1
+'OKAY TO WRITE ON OLD FILE?' Y (CR)     (A 'NO' HERE ABORTS THE
+                                         TELECOPY AND RETURNS
+                                         TO COMMAND MODE)
+.SKIP 1
+'COPY STARTED'
+.SKIP 1
+'OPSYS.DOC SYSTEM 35
+ COPIED TO
+   SYSTEM 33'
+.SKIP 1
+'243578 CHARS. TRANSMITTED'
+':'
+.SUBTITLE <TELECOPY <ERROR <RECOVERY
+.PAGE
+.INDEX <TELECOPY <ERROR <RECOVERY
+.FILL.JUST
+\\
+((<ERRORS <AND <RECOVERIES))
+.SKIP 1
+.INDENT 5
+^IF THE ERROR MESSAGE '<UNABLE <TO <LOG <INTO <SYSTEM <NN' OUTPUTS,
+THERE IS A POSSIBILITY THAT THE DESTINATION SYSTEM IS UNAVAILABLE.
+^TO TEST THIS POSSIBILITY, LOGIN TO THE DESTINATION SYSTEM.
+^IF YOU CAN LOGIN, PROCEED TO 'PULL' THE FILE FROM THE SOURCE SYSTEM.
+^ANOTHER CAUSE OF THIS ERROR MESSAGE IS ATTEMPTING TO USE A
+DIFFERENT USERNAME ON ONE SYSTEM THAN ANOTHER.
+^IF NOT, PERHAPS ONE OF THE THE USERNAMES IS NOT VALID
+ON THE HOST SYSTEM IT REFERENCES.
+.SKIP 1
+.INDENT 5
+^FOR ERROR MESSAGES IN THE FORM
+^^
+'UNABLE TO OPEN FILE FILENAME',
+\\
+CHANCES ARE THERE IS A PROTECTION ON THE FILE OR DIRECTORY INVOLVED.
+^CHECK THIS BY USING THE APPROPRIATE <EXEC COMMANDS THAT OUTPUT
+FILE OR DIRECTORY PROTECTION STATUS.
+.SKIP 1
+.INDENT 5
+^THE ERROR MESSAGE '<CIRCUIT <ZAPPED' INDICATES THAT A TELECOMMUNICATIONS
+PROBLEM OCCURRED DURING THE <TELECOPY.
+^FOR BEST RESULTS, QUIT OUT OF TELECOPY AND REENTER THE PROGRAM TO
+TRY AGAIN.
+^IF THE METHOD OF OLD FILE OVERWRITING WAS SEQUENTIAL, THEN THE
+DESTINATION FILE IS PROBABLY GONE.
+.SUBTITLE <INDEX
+.PAGE!END OF TELECO
+.PRINT INDEX!END OF NETWRK
+ /[4=j
