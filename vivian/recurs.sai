@@ -1,0 +1,79 @@
+BEGIN
+  REQUIRE "(SAILIB)SAIL.DEF" SOURCE!FILE;
+  DEFINE DEBUG = {TRUE};
+  IFCR DEBUG THENC
+    REQUIRE "(SYS)BAIPD8.REL" LOAD!MODULE;
+    EXTERNAL PROCEDURE BAIL;
+  ENDC
+  DEFINE #COLON = {'72&NULL};
+  INTEGER ptr,chan,brtab1,brtab2,brchr,brchr1,brchr2,eof,flag;
+  STRING textline,filename,newfile;
+  INTEGER ARRAY chanstk,eofstk[ 1:16 ];
+
+  PROCEDURE Push;
+    BEGIN
+      ptr := ptr + 1;
+      chanstk[ ptr ] := chan;
+      eofstk[ ptr ] := eof;
+PRINT( "   PUSH---PTR  :  ",ptr,"     chan  :  ",chan,crlf);
+    END;
+
+  PROCEDURE Pop;
+    BEGIN
+      chan := chanstk[ ptr ];
+      eof := eofstk[ ptr ];
+      ptr := ptr - 1;
+PRINT("   POP---PTR  :  ",ptr,"     chan  :  ",chan,crlf);
+    END;  
+
+  RECURSIVE PROCEDURE Getfile( INTEGER brtabA,brtabB; STRING filename );
+    BEGIN "openchan"
+      IF ptr < 16 THEN
+        BEGIN "getfile"
+          OPEN( chan := GETCHAN,"dsk",0,4,4,200,brchr := 0,eof := -1 );
+          LOOKUP( chan,filename,flag := -1 );
+          IF NOT flag THEN
+            WHILE true DO
+            BEGIN "morefiles"
+              WHILE NOT eof DO 
+                BEGIN "text"
+                  newfile := textline := INPUT( chan,brtabA );
+                  SCAN( newfile,brtabB,brchr := 0 );
+                  IF brchr THEN
+                    BEGIN
+                      Push;
+                      Getfile( brtabA, brtabB, newfile );
+                    END
+                  ELSE
+                    IF NOT eof THEN
+                      PRINT( CRLF,textline );
+                END "text";
+              IF ptr NEQ 0 THEN
+                BEGIN
+                  RELEASE( chan );
+print(" chan :  ",chan);
+                  Pop;
+                END
+              ELSE
+                RETURN;
+            END "morefiles"
+          ELSE
+            BEGIN
+              PRINT( CRLF,"bad filename" );
+              RETURN;
+            END;
+        END "getfile"    
+      ELSE  
+        BEGIN
+          PRINT( CRLF,"*****EXCEEDED MAXIMUM # CHANNELS OPENED" );
+          RETURN;
+        END;
+    END "openchan";
+
+  IFCR DEBUG THENC BAIL ENDC;                                     
+  SETBREAK( brtab1 := GETBREAK,#LF,#FF&#CR,"ins" );
+  SETBREAK( brtab2 := GETBREAK,#COLON,NULL,"ins" );
+  PRINT( "type filename :  ");
+  Getfile( brtab1, brtab2, filename := INCHWL );
+
+END;
